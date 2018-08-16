@@ -1,5 +1,5 @@
 package com.site.client.board.dao;
 
-public class Delete {
+public interface ClImgbDao {
 
 }

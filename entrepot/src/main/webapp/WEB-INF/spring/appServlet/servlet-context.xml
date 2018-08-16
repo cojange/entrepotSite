@@ -46,7 +46,7 @@
 	<aop:aspectj-autoproxy/>
 	
 	<!-- client 뿐이 아닌 admin도 접근 가능하도록 **로 변경 / @Component필요 / 자동 객체 생성 -->
-	<context:component-scan base-package="com.site.**.**.**" />
+	<context:component-scan base-package="com.site.**.**.**.**" />
 	
 	
 	

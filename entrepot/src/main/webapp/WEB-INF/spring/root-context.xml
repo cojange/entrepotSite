@@ -37,7 +37,7 @@
 	
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage">
-			<value>com.site.**.**.dao</value> <!-- value값을 분리해도 되고 분리 안해도 됨. -->
+			<value>com.site.**.**.**.dao</value> <!-- value값을 분리해도 되고 분리 안해도 됨. -->
 		</property>
 	</bean>
 		
