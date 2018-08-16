@@ -21,6 +21,6 @@
 	</head>
 	<body>
 		<h1>시작페이지 aa</h1>
-		<a href="/client/imgbList.do"></a>
+		<a href="/client/imgbList.do">go clImgbList</a>
 	</body>
 </html>

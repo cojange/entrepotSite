@@ -6,8 +6,10 @@ import org.springframework.stereotype.Service;
 import com.site.client.board.dao.ClImgbDao;
 
 @Service
-public class ClImgbServiceImpl {
+public class ClImgbServiceImpl implements ClImgbService{
 
 	@Autowired
 	private ClImgbDao clImgbDao;
+	
+	
 }
