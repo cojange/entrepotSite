@@ -22,5 +22,6 @@
 	<body>
 		<h1>시작페이지 aa</h1>
 		<a href="/client/imgbList.do">go clImgbList</a>
+		<a href="/admin">go admin Page</a>
 	</body>
 </html>
