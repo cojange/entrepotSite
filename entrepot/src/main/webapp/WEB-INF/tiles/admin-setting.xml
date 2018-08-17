@@ -2,8 +2,15 @@
 
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN" "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 <tiles-definitions>
-	<definition name="intro" template="/WEB-INF/views/admin/template/adMainLayout.jsp">
-		<put-attribute name="title" value="Entrepot관리자페이지"/>
+	<definition name="basic" template="/WEB-INF/views/admin/template/adMainLayout.jsp">
+		<put-attribute name="adTitle" value="Entrepot관리자페이지"/>
+		<put-attribute name="adHeader" value="/WEB-INF/views/admin/template/adHeader.jsp"/>
+		<put-attribute name="adSidebar" value="/WEB-INF/views/admin/template/adSidebar.jsp"/>
+		<put-attribute name="adContent" value=""/>
+		<put-attribute name="adFooter" value="/WEB-INF/views/admin/template/adFooter.jsp"/>
 	</definition>
 	
+	<definition name="admin" extends="basic">
+		<put-attribute name="adContent" value="/WEB-INF/views/admin/template/adContent.jsp"/>
+	</definition>
 </tiles-definitions>
