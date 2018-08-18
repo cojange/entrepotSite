@@ -27,5 +27,6 @@
 	</head>
 	<body>
 		<h1>Img Board List Test Page</h1>
+		<a href="/client/mForm.do">go clMForm</a>
 	</body>
 </html>

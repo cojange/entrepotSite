@@ -8,7 +8,7 @@ public class AdMainController {
 	
 	@RequestMapping(value="/admin")
 	public String main() {
-		return "admin/template/adMainLayout";
+		return "admin/adHome";
 	}
 	
 

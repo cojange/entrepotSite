@@ -3974,11 +3974,6 @@ input[type="button"].btn-block {
   justify-content: space-between;
   padding: 0.5rem 1rem;
 }
-.sidebar, .container-fluid{
-  position:static;
-  margin-top:56px;
-  z-index:1;
-}
 
 .navbar > .container,
 .navbar > .container-fluid {

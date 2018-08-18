@@ -584,4 +584,11 @@
             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
           </div>
 		</div>
+		<footer class="sticky-footer">
+          <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+              <span>Copyright © 박진영   신혜주  | Entrepot Admin <i class="fas fa-user-ninja"></i></span>
+            </div>
+          </div>
+        </footer>
         </div>
