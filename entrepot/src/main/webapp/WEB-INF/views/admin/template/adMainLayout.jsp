@@ -42,13 +42,7 @@
 			<tiles:insertAttribute name="adContent"/>
 		</div>
 			<tiles:insertAttribute name="adEtc"/>
-
-			
-
-		
-		<div id="STATICMENU">
-			<img alt="사진" src="/resources/images/admin/testBear.png">
-		</div>		
+	
 		
 		<!-- Bootstrap core JavaScript-->
 	    <script src="/resources/include/admin/vendor/jquery/jquery.min.js"></script>
