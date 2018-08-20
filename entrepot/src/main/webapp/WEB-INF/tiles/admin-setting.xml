@@ -15,4 +15,8 @@
 	<definition name="introAdmin" extends="basic">
 		<put-attribute name="adContent" value="/WEB-INF/views/admin/template/adContent.jsp"/>
 	</definition>
+	
+	<definition name="admin/ctrl/*" extends="basic">
+		<put-attribute name="adContent" value="/WEB-INF/vies/admin/adMember/{1}.jsp"/>
+	</definition>
 </tiles-definitions>

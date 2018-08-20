@@ -12,6 +12,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
+                      <th>순번</th>
                       <th>이름</th>
                       <th>아이디</th>
                       <th>전화번호</th>
@@ -22,6 +23,7 @@
                   </thead>
                   <tfoot>
                     <tr>
+                      <th>순번</th>
                       <th>이름</th>
                       <th>아이디</th>
                       <th>전화번호</th>
@@ -32,16 +34,16 @@
                   </tfoot>
                   <tbody>
 	                  <c:choose>
-		              	<c:when test="${not empty memberList }">
-		              		<c:forEach var="board" items="${memberList }" varStatus="status">
-		              			<tr class="tac" data-num="${member.idx }">
-		              				<%--<td>${status.count}</td> --%>
-		              				<%--반복에 따라 순서(index) 나 카운트(count)를 가져 올 수 잇다. --%>
-		              				<td class="goDetail tal">${member.userId }</td>
-		              				<td>${member.userName }</td>
-		              				<td>${member.email }</td>
-		              				<td>${member.phone }</td>
-		              				<td>${member.joinDate }</td>
+		              	<c:when test="${not empty adminList }">
+		              		<c:forEach var="adminM" items="${adminList }" varStatus="status">
+		              			<tr class="tac" data-num="${status.count }">
+		              				<td>${adminM.userId }</td>
+		              				<td>${adminM.ad_name }</td>
+		              				<td>${adminM.ad_id }</td>
+		              				<td>${adminM.ad_tell }</td>
+		              				<td>${adminM.ad_email }</td>
+		              				<td>${adminM.ad_date }</td>
+		              				<td>${adminM.ad_grade }</td>
 		              			</tr>
 		              		</c:forEach>
 		              	</c:when>

@@ -1,4 +1,4 @@
-package com.site.admin.ctrl.member.vo;
+package com.site.admin.ctrl.adMember.vo;
 
 public class AdManagerVO {
 	
@@ -10,6 +10,7 @@ public class AdManagerVO {
 	private String ad_date;
 	private String com_no;
 	private String ad_grade;
+	
 	@Override
 	public String toString() {
 		return "AdManagerVO [ad_id=" + ad_id + ", ad_pw=" + ad_pw + ", ad_tell=" + ad_tell + ", ad_name=" + ad_name
