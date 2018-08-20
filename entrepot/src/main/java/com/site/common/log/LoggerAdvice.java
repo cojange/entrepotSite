@@ -14,6 +14,6 @@ public class LoggerAdvice {
 	@Before("execution(* com.site..*.*(..))")
 	public void printLogging() {
 		logger.info("---------------------------");
-		logger.info("[공통 로그 log] 비즈니스 로직 수행 전 logger");
+		logger.info("[怨듯넻logging]");
 	}
 }

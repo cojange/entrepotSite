@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%@ page trimDirectiveWhitespaces="true" %>   
- <div id="content-wrapper">
 
         <div class="container-fluid">
 
@@ -584,11 +584,3 @@
             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
           </div>
 		</div>
-		<footer class="sticky-footer">
-          <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-              <span>Copyright © 박진영   신혜주  | Entrepot Admin <i class="fas fa-user-ninja"></i></span>
-            </div>
-          </div>
-        </footer>
-        </div>

@@ -39,7 +39,11 @@
     	</nav>		
 		<div id="wrapper">
 			<tiles:insertAttribute name="adSidebar"/>
-			<tiles:insertAttribute name="adContent"/>
+			 <div id="content-wrapper">
+		
+				<tiles:insertAttribute name="adContent"/>
+				<tiles:insertAttribute name="adFooter"/>
+        	</div>
 		</div>
 			<tiles:insertAttribute name="adEtc"/>
 	

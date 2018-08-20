@@ -1,10 +1,10 @@
-package com.site.client.board.controller;
+package com.site.client.board.imgb.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.site.client.board.service.ClImgbService;
+import com.site.client.board.imgb.service.ClImgbService;
 
 @Controller
 @RequestMapping(value="/client")

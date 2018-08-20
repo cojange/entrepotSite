@@ -8,7 +8,7 @@
 	<!-- DataSource -->
 		<!-- ServersTomcat v8.5 Server at localhost-config context.xml에 명시된 정보 가져옴. -->
 	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
-		<property name="jndiName" value="java:comp/env/jdbc/Oracle11g" />
+		<property name="jndiName" value="java:comp/env/entrepot" />
 	</bean>
 	
 	<!-- Mybatis Setting -->
@@ -20,7 +20,7 @@
 		<!-- mybatis 환경설정 한개  Location -->
 		<property name="configLocation" value="classpath:config/mybatis-config.xml" />
 		<!-- mapperXml(실제 명령어를 가지고 있는 xml) 여러개 -> Locations / *.xml -->
-		<property name="mapperLocations" value="classpath:query/*.xml" />
+		<property name="mapperLocations" value="classpath:query/**/*.xml" />
 	</bean>
 	
 	
