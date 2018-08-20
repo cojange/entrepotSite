@@ -3,7 +3,7 @@
 <%@ page trimDirectiveWhitespaces="true" %>   
       <ul class="sidebar navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="admin/ctrl/adMemberCtr.do">
+          <a class="nav-link" href="admin/ctrl/adMemberCtrl.do">
             <i class="fas fa-fw fa-users"></i>
             <span>회원관리</span>
           </a>

@@ -18,15 +18,14 @@ public class AdMemberController {
 	@Autowired
 	private AdMemberService adMemberService;
 	
-	@RequestMapping(value="/adMemberCtr.do")
+	@RequestMapping(value="/adMemberCtrl.do")
 	public ModelAndView adMemberCtr(AdManagerVO amvo) {
 		ModelAndView mav = new ModelAndView();
 		
 		List<AdManagerVO> adminList=adMemberService.adminList(amvo);
-		
 		//관리자 리스트
 		mav.addObject("adminList",adminList);
-		mav.setViewName("adMember/adMemberCtrl");
+		mav.setViewName("admin/ctrl/adMemberCtrl");
 		
 		return mav;
 	}

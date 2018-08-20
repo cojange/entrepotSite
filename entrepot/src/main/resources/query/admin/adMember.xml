@@ -4,7 +4,7 @@
 <mapper namespace="com.site.admin.ctrl.adMember.dao.AdMemberDao">
 	<select id="adminList" parameterType="amvo" resultType="amvo">
 		/*관리자 리스트*/
-		select ad_id, ad_name, ad_email, ad_date, ad_tell, to_char(ad_grade,'yy-mm-dd') ad_grade
+		select ad_id, ad_name, ad_email, to_char(ad_date,'yy-mm-dd') ad_date, ad_tell, ad_grade
 		from admin
 	</select>
 </mapper>
