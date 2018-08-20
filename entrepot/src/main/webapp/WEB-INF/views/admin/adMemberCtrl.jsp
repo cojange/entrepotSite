@@ -1,31 +1,67 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>  </title>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-     	 	<!-- 브라우저의 호환성 보기 모드를 막고, 해당 브러우저에서 지원하는 가장 최신 버전의 방식으로 HTML 보여주도록 설정. -->
-    	  
-     		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
-     		 <!-- viewport : 화면에 보이는 영역을 제어하는 기술. width는 device-width로 설정. initial-scale는 초기비율 -->
-      
-    	 	 <!-- 모바일 웹 페이지 설정 -->
-    		 <link rel="shortcut icon" href="/resources/image/icon.png" />
-     	 	<link rel="apple-touch-icon" href="/resources/image/icon.png" />
-    		  <!-- 모바일 웹 페이지 설정 종료 -->
-
-    		 <!-- IE8이하 브라우저에서 HTML5를 인식하기 위해서는 아래의 패스필터를 적용하면 된다. -->
-    		 <!-- [if lt IE 9] -->
-        	 <!-- <script src="/resources/include/js/html5shiv.js"</script> -->
-     		 <!-- [endif] -->
-     		 <!-- 사용자 cSS-->
-     	 
-     		 <!--사용자 js-->
-     	 		
-	</head>
-	<body>
-
-	</body>
-</html>
+<%@ page trimDirectiveWhitespaces="true" %>
+<%@ include file="/WEB-INF/views/common/common.jspf" %>
+    <!-- 관리자 관리 -->
+          <div class="card mb-3">
+            <div class="card-header">
+              <i class="fas fa-table"></i>
+              	관리자 관리</div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>이름</th>
+                      <th>아이디</th>
+                      <th>전화번호</th>
+                      <th>이메일</th>
+                      <th>입사일</th>
+                      <th>직급</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>이름</th>
+                      <th>아이디</th>
+                      <th>전화번호</th>
+                      <th>이메일</th>
+                      <th>입사일</th>
+                      <th>직급</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+	                  <c:choose>
+		              	<c:when test="${not empty memberList }">
+		              		<c:forEach var="board" items="${memberList }" varStatus="status">
+		              			<tr class="tac" data-num="${member.idx }">
+		              				<%--<td>${status.count}</td> --%>
+		              				<%--반복에 따라 순서(index) 나 카운트(count)를 가져 올 수 잇다. --%>
+		              				<td class="goDetail tal">${member.userId }</td>
+		              				<td>${member.userName }</td>
+		              				<td>${member.email }</td>
+		              				<td>${member.phone }</td>
+		              				<td>${member.joinDate }</td>
+		              			</tr>
+		              		</c:forEach>
+		              	</c:when>
+		              	<c:otherwise>
+		              		<tr>
+		              			<td colspan="4" class="tac"> 등록된 회원이 존재 하지 않습니다.</td>
+		              		</tr>
+		              	</c:otherwise>
+	              	</c:choose>
+	                    <tr>
+	                      <td>Donna Snider</td>
+	                      <td>Customer Support</td>
+	                      <td>New York</td>
+	                      <td>27</td>
+	                      <td>2011/01/25</td>
+	                      <td>$112,000</td>
+	                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+          </div>
