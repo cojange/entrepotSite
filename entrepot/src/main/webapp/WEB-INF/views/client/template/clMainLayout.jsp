@@ -12,7 +12,7 @@
     <meta name="author" content="">
     <link rel="icon" href="/resources/images/favicon.ico">
 
-    <title>Sticky Footer Navbar Template for Bootstrap</title>
+    <title>앙뜨흐뽀</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/resources/include/client/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -53,7 +53,7 @@
      <div class="container">
    		 <div class="page-header">
   			  <div class="jumbotron">
-      			  <h1>JOBG~~~~~~~~~~~~~~~~№㏇T℡L</h1>
+      			  <h1>앙뜨흐뽀</h1>
        			  <p>★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆</p>
      		  </div>
    	     </div>
