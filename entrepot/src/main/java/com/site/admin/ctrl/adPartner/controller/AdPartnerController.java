@@ -31,7 +31,7 @@ public class AdPartnerController {
 		
 		List<CourierPartnerVO> couPartnerList = adPartnerService.couPartnerList(cpvo);
 		mav.addObject("couPartnerList", couPartnerList);
-		mav.setViewName("admin/crtl/adPartner/adPartnerListCtrl");
+		mav.setViewName("admin/adPartner/adPartnerListCtrl");
 		
 		
 		/*List<MagazinePartnerVO> magPartnerList = adPartnerService.magPartnerList(mpvo);
