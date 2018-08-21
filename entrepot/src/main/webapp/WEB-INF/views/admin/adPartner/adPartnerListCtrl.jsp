@@ -20,15 +20,17 @@
       	<!-- [if lt IE 9] -->
       	<!-- <script src="/resources/include/js/html5shiv.js"</script> -->
       	<!-- [endif] -->
+      	
+      	
 	</head>
 	<body>
-	<!-- 잡지거래처 리스트 -->
-	<div class="container-fluid">
-		<div class="card mb-3">
+	<!-- 잡지거래처 리스트 -->		
+	<div class="container-fluid" >
+		<div class="card mb-3" id="adMagazine">
             <div class="card-header">
               <i class="fas fa-table"></i>
               	잡지 거래처
-            </div>
+            </div>   
             <div class="card-body">
               <div class="table-responsive">
               	<div>
@@ -39,9 +41,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>택배사명</th>
-                      <th>계약지역</th>
-                      <th>건수</th>                      
+                      <th>거래처명</th>                     
                       <th>담당자 이름</th>
                       <th>담당자 연락처</th>
                       <th>담당자 email</th>
@@ -51,9 +51,7 @@
                   </thead>
                   <tfoot>
                     <tr>
-                      <th>택배사명</th>
-                      <th>계약지역</th>
-                      <th>건수</th>                      
+                      <th>거래처명</th>                     
                       <th>담당자 이름</th>
                       <th>담당자 연락처</th>
                       <th>담당자 email</th>
@@ -62,18 +60,16 @@
                     </tr>
                   </tfoot>
                   <tbody>
-                    <tr>
                      <c:choose>
-						<c:when test="${not empty couPartnerList}">
-							<c:forEach var="couPartner" items="${couPartnerList}" varStatus="status">
+						<c:when test="${not empty magPartnerList}">
+							<c:forEach var="magPartner" items="${magPartnerList}" varStatus="status">
 								<tr class="tac" data-num="${status.count}">
-									<td>${couPartner.couacc_name}</td>
-									<td>${couPartner.couacc_area}</td>
-									<td>${couPartner.couacc_cnt}</td>
-									<td>${couPartner.char_manager}</td>
-									<td>${couPartner.char_tel}</td>
-									<td>${couPartner.startdate}</td>
-									<td>${couPartner.enddate}</td>
+									<td>${magPartner.com_name}</td>
+									<td>${magPartner.char_manager}</td>
+									<td>${magPartner.char_tel}</td>
+									<td>${magPartner.char_email}</td>
+									<td>${magPartner.startdate}</td>
+									<td>${magPartner.enddate}</td>
 								</tr>
 							</c:forEach>
 						</c:when>
@@ -89,17 +85,18 @@
             </div>
             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
           </div>
+          </div>
          
          <br/>
          <hr/>
          <br/>
          
-         
+        <div class="container-fluid">
          <!-- 택배거래처 리스트 -->
-		<div class="card mb-3">
+		<div class="card mb-3"  id="adCourier">
             <div class="card-header">
               <i class="fas fa-table"></i>
-              	잡지 거래처
+              	택배 거래처
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -111,35 +108,38 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>거래처명</th>
-                      <th>거래시작일</th>
-                      <th>거래종료일</th>
+                      <th>택배사명</th>
+                      <th>계약지역</th>                     
                       <th>담당자 이름</th>
                       <th>담당자 연락처</th>
-                      <th>담당자 email</th>
+                      <th>건수</th> 
+                      <th>거래시작일</th>
+                      <th>거래종료일</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
-                      <th>거래처명</th>
-                      <th>거래시작일</th>
-                      <th>거래종료일</th>
+                      <th>택배사명</th>
+                      <th>계약지역</th>                                           
                       <th>담당자 이름</th>
                       <th>담당자 연락처</th>
-                      <th>담당자 email</th>
+                      <th>건수</th> 
+                      <th>거래시작일</th>
+                      <th>거래종료일</th>
                     </tr>
                   </tfoot>
                   <tbody>
-                    <tr>
-                     <%-- <c:choose>
-						<c:when test="${not empty boardList}">
-							<c:forEach var="board" items="${boardList}" varStatus="status">
-								<tr class="tac" data-num="${board.b_num}">
-									<td>${board.b_num}</td>
-									<td class="goDetail tal">${board.b_title }</td>
-									<!-- 클래스명 사이에 공백은 구분자 역할 / goDetail클래스와 tal클래스가 적용됨 -->
-									<td>${board.b_date}</td>
-									<td class="name">${board.b_name}</td>
+                     <c:choose>
+						<c:when test="${not empty couPartnerList}">
+							<c:forEach var="couPartner" items="${couPartnerList}" varStatus="status">
+								<tr class="tac" data-num="${status.count}">
+									<td>${couPartner.couacc_name}</td>
+									<td>${couPartner.couacc_area}</td>
+									<td>${couPartner.char_manager}</td>
+									<td>${couPartner.char_tel}</td>
+									<td>${couPartner.couacc_cnt}</td>
+									<td>${couPartner.startdate}</td>
+									<td>${couPartner.enddate}</td>
 								</tr>
 							</c:forEach>
 						</c:when>
@@ -148,7 +148,7 @@
 								<td colspan="4" class="tac">등록된 게시물이 존재하지 않습니다.</td>
 							</tr>
 						</c:otherwise>
-					</c:choose> --%>
+					</c:choose>
                   </tbody>
                 </table>
               </div>

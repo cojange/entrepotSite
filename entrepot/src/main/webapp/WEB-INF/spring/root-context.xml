@@ -8,10 +8,10 @@
 	<!-- DataSource -->
 		<!-- ServersTomcat v8.5 Server at localhost-config context.xml에 명시된 정보 가져옴. -->
 	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
-		<property name="jndiName" value="java:comp/env/jdbc/Oracle11g" />
-	</bean>
+		<property name="jndiName" value="java:comp/env/entrepot" />
+	</bean> 
 	
-	<!-- Mybatis Setting -->
+	<!-- Mybatis Setting --> 
 	<!-- -SqlSessionFactory는 데이터베이스와의 연결과 SQL의 실행에 대한 모든 것을 가진 가장 중요한 객체이다.
 		 -SqlSessionFactory는 생성해 주는 객체를 설정해 주어야 하는데 SqlSessionFactoryBean이라는 클래스이다. -->
 	

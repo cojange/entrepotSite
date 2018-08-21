@@ -31,16 +31,10 @@ public class AdPartnerController {
 		
 		List<CourierPartnerVO> couPartnerList = adPartnerService.couPartnerList(cpvo);
 		mav.addObject("couPartnerList", couPartnerList);
-<<<<<<< HEAD
-		mav.setViewName("admin/adPartner/adPartnerListCtrl");
-=======
-		mav.setViewName("/admin/crtl/adPartner/adPartnerListCtrl");
->>>>>>> branch 'master' of https://github.com/cojange/entrepotSite.git
-		
-		
-		/*List<MagazinePartnerVO> magPartnerList = adPartnerService.magPartnerList(mpvo);
-		mav.addObject("magPartnerList", magPartnerList);*/
-		
+
+		List<MagazinePartnerVO> magPartnerList = adPartnerService.magPartnerList(mpvo);
+		mav.addObject("magPartnerList", magPartnerList);
+		mav.setViewName("admin/ctrl/adPartner/adPartnerListCtrl");
 		
 		return mav;
 		

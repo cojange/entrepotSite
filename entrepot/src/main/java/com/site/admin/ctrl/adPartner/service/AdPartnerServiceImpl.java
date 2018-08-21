@@ -7,17 +7,27 @@ import org.springframework.stereotype.Service;
 
 import com.site.admin.ctrl.adPartner.dao.AdPartnerDao;
 import com.site.admin.ctrl.adPartner.vo.CourierPartnerVO;
+import com.site.admin.ctrl.adPartner.vo.MagazinePartnerVO;
 
 @Service
 public class AdPartnerServiceImpl implements AdPartnerService {
 	
 	@Autowired
 	private AdPartnerDao adPartnerDao; 
-
+	
+	//잡지거래처 리스트
 	@Override
 	public List<CourierPartnerVO> couPartnerList(CourierPartnerVO cpvo) {
 		List<CourierPartnerVO> couPartnerList = null;
 		couPartnerList = adPartnerDao.couPartnerList(cpvo);
 		return couPartnerList;
+	}
+	
+	//택배거래처 리스트
+	@Override
+	public List<MagazinePartnerVO> magPartnerList(MagazinePartnerVO mpvo) {
+		List<MagazinePartnerVO> magPartnerList = null;
+		magPartnerList = adPartnerDao.magPartnerList(mpvo);
+		return magPartnerList;
 	}
 }

@@ -70,7 +70,7 @@
 	    <script type="text/javascript" src="/resources/include/admin/js/ad-clock.js"></script>  
 	    <script type="text/javascript">
 	    	$(function(){
-	    		printClock();
+	    		printClock();	    			
 	    	});
 	    </script>
   </body>
