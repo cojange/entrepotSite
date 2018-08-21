@@ -14,7 +14,7 @@ import com.site.admin.ctrl.adPartner.vo.CourierPartnerVO;
 import com.site.admin.ctrl.adPartner.vo.MagazinePartnerVO;
 
 @Controller
-@RequestMapping(value="/admin")
+@RequestMapping(value="/admin/ctrl/adPartner")
 public class AdPartnerController {
 	Logger logger = Logger.getLogger(AdPartnerController.class);
 	
@@ -24,14 +24,18 @@ public class AdPartnerController {
 	/** 
 	 * 거래처 리스트 구현하기
 	 *  **/
-	@RequestMapping(value="/crtl/adPartnerListCtrl.do", method=RequestMethod.GET)
+	@RequestMapping(value="/adPartnerListCtrl.do", method=RequestMethod.GET)
 	public ModelAndView adPartnerList(CourierPartnerVO cpvo, MagazinePartnerVO mpvo) {
 		logger.info("adPartnerList 호출 성공");
 		ModelAndView mav = new ModelAndView();
 		
 		List<CourierPartnerVO> couPartnerList = adPartnerService.couPartnerList(cpvo);
 		mav.addObject("couPartnerList", couPartnerList);
+<<<<<<< HEAD
 		mav.setViewName("admin/adPartner/adPartnerListCtrl");
+=======
+		mav.setViewName("/admin/crtl/adPartner/adPartnerListCtrl");
+>>>>>>> branch 'master' of https://github.com/cojange/entrepotSite.git
 		
 		
 		/*List<MagazinePartnerVO> magPartnerList = adPartnerService.magPartnerList(mpvo);

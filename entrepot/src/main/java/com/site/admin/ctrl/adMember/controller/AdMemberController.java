@@ -12,7 +12,7 @@ import com.site.admin.ctrl.adMember.service.AdMemberService;
 import com.site.admin.ctrl.adMember.vo.AdManagerVO;
 
 @Controller
-@RequestMapping(value="/admin/ctrl")
+@RequestMapping(value="/admin/ctrl/adMember")
 public class AdMemberController {
 	
 	@Autowired
@@ -25,7 +25,7 @@ public class AdMemberController {
 		List<AdManagerVO> adminList=adMemberService.adminList(amvo);
 		//관리자 리스트
 		mav.addObject("adminList",adminList);
-		mav.setViewName("admin/ctrl/member/adMemberCtrl");
+		mav.setViewName("admin/ctrl/adMember/adMemberCtrl");
 		
 		return mav;
 	}
