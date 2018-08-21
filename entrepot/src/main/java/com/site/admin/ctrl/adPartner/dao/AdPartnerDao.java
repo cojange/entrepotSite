@@ -1,6 +1,6 @@
 package com.site.admin.ctrl.adPartner.dao;
 
-import java.util.List;
+import java.util.List; 
 
 import com.site.admin.ctrl.adPartner.vo.CourierPartnerVO;
 

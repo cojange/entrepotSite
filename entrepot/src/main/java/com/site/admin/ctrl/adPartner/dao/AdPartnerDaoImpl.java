@@ -11,11 +11,11 @@ import com.site.admin.ctrl.adPartner.vo.CourierPartnerVO;
 @Repository
 public class AdPartnerDaoImpl implements AdPartnerDao {
 	
-	@Autowired
+	@Autowired 
 	private SqlSession session;
 
 	@Override
 	public List<CourierPartnerVO> couPartnerList(CourierPartnerVO cpvo) {
-		return session.selectList("couPartnerList");
+		return session.selectList("couPartnerList", cpvo);
 	}
 }

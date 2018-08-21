@@ -12,7 +12,7 @@ import com.site.admin.ctrl.adPartner.vo.CourierPartnerVO;
 public class AdPartnerServiceImpl implements AdPartnerService {
 	
 	@Autowired
-	private AdPartnerDao adPartnerDao;
+	private AdPartnerDao adPartnerDao; 
 
 	@Override
 	public List<CourierPartnerVO> couPartnerList(CourierPartnerVO cpvo) {

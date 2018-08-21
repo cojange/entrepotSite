@@ -12,7 +12,7 @@ public class MagazinePartnerVO {
     private String acc_email;
     private String acc_fax;
     private String mcom_add;
-    private String acc_tel;
+    private String acc_tel; 
     private String startdate;
     private String enddate;
     private String mcom_update;

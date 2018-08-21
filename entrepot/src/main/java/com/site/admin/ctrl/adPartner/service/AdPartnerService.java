@@ -7,5 +7,5 @@ import com.site.admin.ctrl.adPartner.vo.CourierPartnerVO;
 public interface AdPartnerService {
 
 	public List<CourierPartnerVO> couPartnerList(CourierPartnerVO cpvo);
-
+ 
 }
