@@ -8,7 +8,7 @@
 	<!-- DataSource -->
 		<!-- ServersTomcat v8.5 Server at localhost-config context.xml에 명시된 정보 가져옴. -->
 	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
-		<property name="jndiName" value="java:comp/env/entrepot" />
+		<property name="jndiName" value="java:comp/env/jdbc/Oracle11g" />
 	</bean>
 	
 	<!-- Mybatis Setting -->
