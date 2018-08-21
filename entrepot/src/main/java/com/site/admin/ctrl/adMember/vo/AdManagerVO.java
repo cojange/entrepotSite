@@ -8,7 +8,7 @@ public class AdManagerVO {
 	private String ad_name;
 	private String ad_email;
 	private String ad_date;
-	private String com_no;
+	private String com_no; 
 	private String ad_grade;
 	
 	@Override

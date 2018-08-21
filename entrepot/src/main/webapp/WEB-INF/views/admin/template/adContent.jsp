@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
-<%@ page trimDirectiveWhitespaces="true" %>   
+<%@ page trimDirectiveWhitespaces="true" %>
+<%@ include file="/WEB-INF/views/common/common.jspf" %>
 
         <div class="container-fluid">
 
@@ -584,4 +585,5 @@
             </div>
             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
           </div>
+          
 		</div>

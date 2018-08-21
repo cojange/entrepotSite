@@ -3,13 +3,13 @@
 <%@ page trimDirectiveWhitespaces="true" %>   
       <ul class="sidebar navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="admin/ctrl/adMember/adMemberCtrl.do">
+          <a class="nav-link" href="/admin/ctrl/adMember/adMemberCtrl.do">
             <i class="fas fa-fw fa-users"></i>
             <span>회원관리</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="admin/ctrl/adPartner/adPartnerListCtrl.do">
+          <a class="nav-link" href="/admin/ctrl/adPartner/adPartnerListCtrl.do">
             <i class="fas fa-fw fa-address-card"></i>
             <span>거래처관리</span>
           </a>
