@@ -99,6 +99,7 @@
               Data Table Example</div>
             <div class="card-body">
               <div class="table-responsive">
+              	<p>잡지검색기능추가</p>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>

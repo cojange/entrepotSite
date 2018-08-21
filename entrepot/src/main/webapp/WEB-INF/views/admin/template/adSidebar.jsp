@@ -9,7 +9,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="admin/crtl/adPartnerListCtrl.do">
             <i class="fas fa-fw fa-address-card"></i>
             <span>거래처관리</span>
           </a>
