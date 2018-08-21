@@ -17,6 +17,5 @@
 		</script>
 	</head>
 <body>
-	<p>회원가입폼</p>
 </body>
 </html>
