@@ -1,7 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page trimDirectiveWhitespaces="true"%>
-
+<script type="text/javascript">
+function popct(url, w, h) {
+	popw = (screen.width - w) / 2;//중앙에띄우기위한 x값
+	poph = (screen.height - h) / 2;//중앙에띄우기위한 y값
+	popft = 'height=' + h + ',width=' + w + ',top=' + poph + ',left=' + popw;
+	window.open(url, '', popft);
+	}
+</script>
 <div class="container">
+		<div class="memberlogin" style="font-size: 10pt;">
+			<!-- <a href="javascript:void(window.open('/client/login/login.do', '_blank','width=300px, height=350px',))">로그인</a> -->
+			<a href="/client/login/login.do" onClick="popct(this.href, '300', '350');return false">로그인</a>
+			<span>/</span>
+			<a href="/client/member/mForm.do">회원가입</a>
+		</div>
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -16,7 +29,7 @@
             <li class="active"><a href="/">Home</a></li>
             <li><a href="#">게시판</a></li>
             <li><a href="#">갤러리</a></li>
-            <li><a href="client/member/mForm.do">회원가입</a></li>
+            <li></li>
            <!--  <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
