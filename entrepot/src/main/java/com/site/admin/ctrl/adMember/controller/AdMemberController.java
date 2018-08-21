@@ -13,20 +13,20 @@ import com.site.admin.ctrl.adMember.vo.AdManagerVO;
 @Controller
 @RequestMapping(value="/admin/ctrl/adMember")
 public class AdMemberController {
-	
-	@Autowired
-	private AdMemberService adMemberService;
-	
-	@RequestMapping(value="/adMemberCtrl.do")
-	public ModelAndView adMemberCtr(AdManagerVO amvo) {
-		ModelAndView mav = new ModelAndView();
-		
-		List<AdManagerVO> adminList=adMemberService.adminList(amvo);
-		//관리자 리스트
-		mav.addObject("adminList",adminList);
-		mav.setViewName("admin/ctrl/adMember/adMemberCtrl");
-		
-		return mav;
-	}
-	
+   
+   @Autowired
+   private AdMemberService adMemberService;
+   
+   @RequestMapping(value="/adMemberCtrl.do")
+   public ModelAndView adMemberCtr(AdManagerVO amvo) {
+      ModelAndView mav = new ModelAndView();
+      
+      List<AdManagerVO> adminList=adMemberService.adminList(amvo);
+      //관리자 리스트
+      mav.addObject("adminList",adminList);
+      mav.setViewName("admin/ctrl/adMember/adMemberCtrl");
+      
+      return mav;
+   }
+   
 }
