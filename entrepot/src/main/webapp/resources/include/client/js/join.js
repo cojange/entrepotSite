@@ -14,7 +14,7 @@ function passwordCheck() {
 function idPwdCheck() {
 	var m_id = $("#m_id").val();
 	var m_pwd = $("#m_pwd").val();
-	if(userPw.indexOf(m_id) > -1){
+	if(m_pwd.indexOf(m_id) > -1){
 		alert("비밀번호에 아이디를 포함할 수 없습니다.");
 		$("#m_pwd").val();
 		$("#m_pwd").focus();
@@ -26,6 +26,7 @@ function idPwdCheck() {
 
 var idConfirm = 1;
 $(function() {
+	var direct = document.getElementById('direct');
 	errCodeCheck();
 	//사용자에게 요구사항에 대한 문자열로 배열 초기화.
 	var message = ["영문,숫자만 가능. 6~12자로 입력해 주세요",
@@ -46,7 +47,7 @@ $(function() {
 		else if(!inputVerify(0,$("#m_id"),$(".error:eq(0)")))return;
 		else{
 			$.ajax({
-				url : "client/member/userIdConfirm.do",
+				url : "/client/member/userIdConfirm.do",
 				type : "post",
 				data : "m_id="+$("#m_id").val(),
 				error : function() {
@@ -78,19 +79,44 @@ $(function() {
 		else if(!passwordCheck())return;
 		else if(!formCheck($("#m_phone"),$(".error:eq(3)"),"전화번호를"))return;
 		else if(!inputVerify(2,"#m_phone",".error:eq(3)"))return;
-		else if(!formCheck($("#m_name"),$(".error:eq(5)"),"이름을"))return;
-		else if(!formCheck($("#m_email"),$(".error:eq(6)"),"이메일 주소를"))return;
+		else if(!formCheck($("#m_job"),$(".error:eq(4)"),"직업을"))return;
+		else if(!formCheck(($("#m_zipcode")||$("#m_address")),$(".error:eq(5)"),"우편주소를"))return;
+		else if(!formCheck(($("#m_birth")&&$("#m_gender")),$(".error:eq(7)"),"생년월일 및 주민번호를"))return;
+		else if(!formCheck($("#m_name"),$(".error:eq(8)"),"이름을"))return;
+		else if(!formCheck($("#m_email"),$(".error:eq(9)"),"이메일 주소를"))return;
 		else if(idConfirm!=2){alert("아이디 중복 체크 진행해 주세요.");return;}
 		else{
-			$("#email").val($("#m_email").val()+"@"+$("#emailDomain").val());
-			$("#pinno").val($("#birth").val()+"-"+$("#gender").val());
-			$("#memberForm").attr({
-				"method":"post",
-				"action":"/member/mForm.do"
+			if($(direct).is(":checked")==true){
+				$("#email").val($("#m_email").val()+"@"+$("#emailDirect").val());
+				$("#pinno").val($("#birth").val()+"-"+$("#gender").val());
+				$("#memberForm").attr({
+					"method":"post",
+					"action":"/client/member/mForm.do"
 			});
+			}else if($(direct).is(":checked")==false){
+				$("#email").val($("#m_email").val()+"@"+$("#emailDomain").val());
+				$("#pinno").val($("#birth").val()+"-"+$("#gender").val());
+				$("#memberForm").attr({
+					"method":"post",
+					"action":"client/member/mForm.do"
+				});
+			}
 			$("#memberForm").submit();
 		}
 	});
+	//이메일 직접입력 체크시
+	$("#direct").click(function() {
+		
+		console.log(direct);
+		if($(direct).is(":checked")==true){	
+			$("#emailDirect").show();
+			$("#emailDomain").hide();
+		}else if($(direct).is(":checked")==false){
+			$("#emailDomain").show();
+			$("#emailDirect").hide();
+		}
+	});
+	
 	
 	$("#joinCancel").click(function() {
 		location.href="/member/login.do";

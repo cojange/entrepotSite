@@ -9,9 +9,9 @@
 		<!-- ServersTomcat v8.5 Server at localhost-config context.xml에 명시된 정보 가져옴. -->
 	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
 		<property name="jndiName" value="java:comp/env/entrepot" />
-	</bean> 
-
-	<!-- Mybatis Setting --> 
+	</bean>
+	
+	<!-- Mybatis Setting -->
 	<!-- -SqlSessionFactory는 데이터베이스와의 연결과 SQL의 실행에 대한 모든 것을 가진 가장 중요한 객체이다.
 		 -SqlSessionFactory는 생성해 주는 객체를 설정해 주어야 하는데 SqlSessionFactoryBean이라는 클래스이다. -->
 	
@@ -39,6 +39,49 @@
 		<property name="basePackage">
 			<value>com.site.**.**.**.dao</value> <!-- value값을 분리해도 되고 분리 안해도 됨. -->
 		</property>
+	</bean>	
+</beans>
+<!-- <?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	Root Context: defines shared resources visible to all other web components
+	DB Connection
+	DataSource
+		ServersTomcat v8.5 Server at localhost-config context.xml에 명시된 정보 가져옴.
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:comp/env/entrepot" />
+	</bean> 
+
+	Mybatis Setting 
+	-SqlSessionFactory는 데이터베이스와의 연결과 SQL의 실행에 대한 모든 것을 가진 가장 중요한 객체이다.
+		 -SqlSessionFactory는 생성해 주는 객체를 설정해 주어야 하는데 SqlSessionFactoryBean이라는 클래스이다.
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		mybatis 환경설정 한개  Location
+		<property name="configLocation" value="classpath:config/mybatis-config.xml" />
+		mapperXml(실제 명령어를 가지고 있는 xml) 여러개 -> Locations / *.xml
+		<property name="mapperLocations" value="classpath:query/**/*.xml" />
+	</bean>
+	
+	
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+		이 속성은 설정자는 없고 생성자만 있다.
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	a PlatformTransactionManager is still required	
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage">
+			<value>com.site.**.**.**.dao</value> value값을 분리해도 되고 분리 안해도 됨.
+		</property>
 	</bean>
 		
 </beans>
+ -->

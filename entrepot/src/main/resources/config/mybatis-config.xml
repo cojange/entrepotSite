@@ -5,6 +5,7 @@
 		<typeAlias type="com.site.client.board.vo.ClImgbVO" alias="imgb" />
 		<typeAlias type="com.site.admin.ctrl.adMember.vo.AdManagerVO" alias="amvo"/>
 		<typeAlias type="com.site.admin.ctrl.adPartner.vo.CourierPartnerVO" alias="couPartner"/>
+		<typeAlias type="com.site.client.member.individual.vo.ClMVO" alias="member"/>
 		<typeAlias type="com.site.admin.ctrl.adPartner.vo.MagazinePartnerVO" alias="magPartner"/>
 		<typeAlias type="com.site.admin.cost.adCost.vo.AdCostVO" alias="acvo"/>
 	</typeAliases>

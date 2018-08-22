@@ -17,5 +17,7 @@ public class ClLoginController{
 		logger.info("login.do get 방식에 의한 메서드 호출 성공");
 		return "client/login/login";
 	}
+	
+	
 
 }
