@@ -3,13 +3,18 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ include file="/WEB-INF/views/common/common.jspf" %>
   <div class="container-fluid">
+  
+  	 <select id="switchMember" name="switchMember">
+        <option value="member">회원</option>
+        <option value="admin">관리자</option>
+     </select>
      <!-- 회원 관리 -->
      <div class="card mb-3">
             <div class="card-header">
               <i class="fas fa-users"></i>
                  회원 관리</div>
             <div class="card-body">
-              <div class="table-responsive">
+              <div class="table-responsive" id="memberList">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
@@ -61,17 +66,13 @@
             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
           </div>
           
-          <br/>
-          <hr/>
-          <br/>
-          
     <!-- 관리자 관리 -->
-          <div class="card mb-3">
+        <div class="card mb-3">
             <div class="card-header">
               <i class="fas fa-user-cog"></i>
                  관리자 관리</div>
             <div class="card-body">
-              <div class="table-responsive">
+              <div class="table-responsive" id="memberList">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
