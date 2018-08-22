@@ -40,7 +40,7 @@ public class AdCostController {
 		}
 		
 		if(result == 1) {
-			url="/admin/adcost/adCostList";
+			url="/admin/adcost/adCostList.do";
 		}else {
 			url="/admin";
 		}

@@ -38,9 +38,9 @@ public class FileUploadUtil {
 			String code="";
 			if(!mode.equals("cost")) {
 				code = System.currentTimeMillis()+"";
-			}else {
+			}else if(mode.equals("cost")){
 				GetDateUtil gdu =GetDateUtil.getInstance();
-				code=gdu.getMonth()+gdu.getDate();
+				code=gdu.getMonth()+gdu.getDay();
 			}
 			real_name = fileName + "_" + code +"_" +org_name;
 			
