@@ -24,7 +24,7 @@ public class FileUploadUtil {
 	}
 	
 	/*파일 업로드 메서드*/
-	public static String fileUpload(MultipartFile file, HttpServletRequest request,String fileName) 
+	public static String fileUpload(MultipartFile file, HttpServletRequest request,String fileName, String mode) 
 		throws IOException{
 		logger.info("fileUpload 호출 성공");
 		String real_name=null;
@@ -33,7 +33,11 @@ public class FileUploadUtil {
 		
 		//저장할 파일이름
 		if(org_name !=null &&(!org_name.equals(""))) {
-			real_name = fileName + "_" + System.currentTimeMillis()+"_" +org_name;
+			String code="";
+			if(!mode.equals("cost")) {
+				code = System.currentTimeMillis()+"";
+			}
+			real_name = fileName + "_" + code +"_" +org_name;
 			
 			String docRoot = request.getSession().getServletContext().getRealPath("/uploadStorage/"+fileName);
 			makeDir(docRoot);

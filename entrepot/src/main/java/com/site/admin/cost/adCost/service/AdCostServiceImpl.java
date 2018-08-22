@@ -28,7 +28,7 @@ public class AdCostServiceImpl implements AdCostService{
 		
 		
 		if(!acvo.getFile().isEmpty()) {
-			String cost_file = FileUploadUtil.fileUpload(acvo.getFile(), request, "cost"+currentMonth.getYear());
+			String cost_file = FileUploadUtil.fileUpload(acvo.getFile(), request, "cost"+currentMonth.getYear(),"cost");
 			acvo.setCost_file(cost_file);
 		}else {
 			acvo.setCost_file("");
