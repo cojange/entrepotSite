@@ -48,7 +48,7 @@
             <span>통계</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="/admin/adcost/adCostList.do">
             <i class="fas fa-fw fa-won-sign"></i>
             <span>비용</span></a>
         </li>

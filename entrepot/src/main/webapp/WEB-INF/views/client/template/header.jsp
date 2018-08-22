@@ -2,8 +2,8 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <script type="text/javascript">
 function popct(url, w, h) {
-	popw = (screen.width - w) / 2;//중앙에띄우기위한 x값
-	poph = (screen.height - h) / 2;//중앙에띄우기위한 y값
+	popw = (screen.width - w) / 2;/* 중앙에띄우기위한 x값 */
+	poph = (screen.height - h) / 2;/* 중앙에띄우기위한 y값 */
 	popft = 'height=' + h + ',width=' + w + ',top=' + poph + ',left=' + popw;
 	window.open(url, '', popft);
 	}
@@ -11,7 +11,8 @@ function popct(url, w, h) {
 <div class="container">
 		<div class="memberlogin" style="font-size: 10pt;">
 			<!-- <a href="javascript:void(window.open('/client/login/login.do', '_blank','width=300px, height=350px',))">로그인</a> -->
-			<a href="/client/login/login.do" onClick="popct(this.href, '300', '350');return false">로그인</a>
+			<a href="/client/member/login.do">로그인</a>
+			<!-- <a href="/client/member/login.do" onClick="popct(this.href, '300', '350');return false">로그인</a> -->
 			<span>/</span>
 			<a href="/client/member/mForm.do">회원가입</a>
 		</div>

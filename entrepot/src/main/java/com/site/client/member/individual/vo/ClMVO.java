@@ -1,6 +1,6 @@
 package com.site.client.member.individual.vo;
 
-import com.site.client.login.vo.LoginVO;
+import com.site.client.member.login.vo.LoginVO;
 
 public class ClMVO extends LoginVO{
 

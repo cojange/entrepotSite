@@ -74,44 +74,21 @@
 	    	$(function(){
 	    		printClock();	    	
 	    		
-	    		/* $("#partner").change(function(){
-	    			var adTbody = "";
-	    			var addTbody = "";
-		    		var choiceText = $("#partner option:selected").val();
-		    		if(choiceText=="magazine"){
-		        		console.log("잡지");
-		        		adTbody = "";
-		        		adTable = "<thead><tr><th>거래처명</th><th>담당자 이름</th><th>담당자 연락처</th><th>담당자 email</th><th>거래시작일</th><th>거래종료일</th></tr></thead>";
-		        		adTable += "<tfoot><tr><th>거래처명</th><th>담당자 이름</th><th>담당자 연락처</th><th>담당자 email</th><th>거래시작일</th><th>거래종료일</th></tr></tfoot>";
-	                  	adTable += "<tbody><c:choose><c:when test='${not empty magPartnerList}'><c:forEach var='magPartner' items='${magPartnerList}' varStatus='status'>";
-	                  	adTable += "<tr class='tac' data-num='${status.count}'><td>${magPartner.com_name}</td><td>${magPartner.char_manager}</td><td>${magPartner.char_tel}</td>";
-	                  	adTable += "<td>${magPartner.char_email}</td><td>${magPartner.startdate}</td><td>${magPartner.enddate}</td></tr></c:forEach></c:when><c:otherwise>";
-	                  	adTable += "<tr><td colspan='4' class='tac'>등록된 게시물이 존재하지 않습니다.</td></tr></c:otherwise></c:choose></tbody>";
-		        		adTbody = "<tr><td>Tiger Nixon</td><td>System Architect</td><td>Edinburgh</td><td>61</td><td>2011/04/25</td><td>$320,800</td></tr>";
-		        		adTbody += "<tr><td>Garrett Winters</td><td>Accountant</td><td>Tokyo</td><td>63</td><td>2011/07/25</td><td>$170,750</td></tr>";
-		        		adTbody += "<tr><td>Ashton Cox</td><td>Junior Technical Author</td><td>San Francisco</td><td>66</td><td>2009/01/12</td><td>$86,000</td></tr>";
-		        		
-			    		
-		        	}else if(choiceText=="courier"){
-		        		console.log("택배");
-		        		adTbody = "";
-		        		adTable = "";
-		        		adTable = "<thead><tr><th>Name</th><th>Position</th><th>Office</th><th>Age</th><th>Start date</th><th>Salary</th></tr></thead>";
-	                  	adTable += "<tfoot><tr><th>Name</th><th>Position</th><th>Office</th><th>Age</th><th>Start date</th><th>Salary</th></tr></tfoot>";
-		        		adTable += "<tbody><tr><td>혜주</td><td>System Architect</td><td>Edinburgh</td><td>61</td><td>2011/04/25</td><td>$320,800</td></tr>";
-		        		adTable += "<tr><td>으어어어아어ㅐㅓ</td><td>Accountant</td><td>Tokyo</td><td>63</td><td>2011/07/25</td><td>$170,750</td></tr>";
-		        		adTable += "<tr><td>ㅇㅅㅇ</td><td>Junior Technical Author</td><td>San Francisco</td><td>66</td><td>2009/01/12</td><td>$86,000</td></tr><tbody>";
-		        		adTbody = "<tr><td>혜주</td><td>System Architect</td><td>Edinburgh</td><td>61</td><td>2011/04/25</td><td>$320,800</td></tr>";
-		        		adTbody += "<tr><td>ㅇㅂㅇ</td><td>Accountant</td><td>Tokyo</td><td>63</td><td>2011/07/25</td><td>$170,750</td></tr>";
-		        		adTbody += "<tr><td>ㅇㅅㅇ</td><td>Junior Technical Author</td><td>San Francisco</td><td>66</td><td>2009/01/12</td><td>$86,000</td></tr>";
-		        		
-		        	
-		        	}
-		    		var addTbody = $(adTbody);
-		    		
-		    		$("#tbody").html(addTbody);
-		    		
-	    		}); */
+	    		console.log($(location).attr("href"));
+	    		
+	    		if($(location).attr("href")=="http://localhost:8080/admin/adcost/adCostList.do"){
+	    			$("#uploadBtn").click(function(){
+	    				if($("#excelCost").val() ==""){
+	    					alert("파일을 선택해 주세요.");
+	    				}else{
+	    					$("#cost_ExcelFile").attr({
+	    						"method":"POST",
+	    						"action":"/admin/adcost/uploadExcel"
+	    					});
+	    					$("#cost_ExcelFile").submit();
+	    				}
+	    			})
+	    		}
 	    	});
 	    </script>
   </body>
