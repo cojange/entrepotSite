@@ -29,4 +29,25 @@ public class AdMemberController {
       return mav;
    }
    
+   @RequestMapping(value="/adminList.do")
+   public ModelAndView adminList(AdManagerVO amvo) {
+	      ModelAndView mav = new ModelAndView();
+	      
+	      List<AdManagerVO> adminList=adMemberService.adminList(amvo);
+	      //관리자 리스트
+	      mav.addObject("adminList",adminList);
+	      mav.setViewName("admin/adMember/list/adminList");
+	      
+	      return mav;
+	}
+   
+   @RequestMapping(value="/memberList.do")
+   public ModelAndView memberList() {
+	      ModelAndView mav = new ModelAndView();
+	      
+	      mav.setViewName("admin/adMember/list/memberList");
+	      
+	      return mav;
+	}
+   
 }

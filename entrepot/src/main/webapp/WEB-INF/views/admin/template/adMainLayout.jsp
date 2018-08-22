@@ -70,7 +70,23 @@
 	    <script type="text/javascript" src="/resources/include/admin/js/ad-clock.js"></script>  
 	    <script type="text/javascript">
 	    	$(function(){
-	    		printClock();	    			
+	    		printClock();
+	    		
+	    		console.log($(location).attr("href"));
+	    		
+	    		if($(location).attr("href")=="http://localhost:8080/admin/adcost/adCostList.do"){
+	    			$("#uploadBtn").click(function(){
+	    				if($("#excelCost").val() ==""){
+	    					alert("파일을 선택해 주세요.");
+	    				}else{
+	    					$("#cost_ExcelFile").attr({
+	    						"method":"POST",
+	    						"action":"/admin/adcost/uploadExcel"
+	    					});
+	    					$("#cost_ExcelFile").submit();
+	    				}
+	    			})
+	    		}
 	    	});
 	    </script>
   </body>

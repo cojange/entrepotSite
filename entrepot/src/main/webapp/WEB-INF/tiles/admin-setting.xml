@@ -19,4 +19,9 @@
 	<definition name="admin/ctrl/*/*" extends="basic">
 		<put-attribute name="adContent" value="/WEB-INF/views/admin/{1}/{2}.jsp"/>
 	</definition>
+	
+	<definition name="admin/adcost/*" extends="basic">
+		<put-attribute name="adContent" value="/WEB-INF/views/admin/adCost/{1}.jsp"/>
+	</definition>
+
 </tiles-definitions>
