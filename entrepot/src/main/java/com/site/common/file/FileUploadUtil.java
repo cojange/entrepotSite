@@ -11,6 +11,8 @@ import org.apache.log4j.Logger;
 import org.imgscalr.Scalr;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.site.common.util.GetDateUtil;
+
 public class FileUploadUtil {
 	static Logger logger = Logger.getLogger(FileUploadUtil.class);
 	
@@ -36,6 +38,9 @@ public class FileUploadUtil {
 			String code="";
 			if(!mode.equals("cost")) {
 				code = System.currentTimeMillis()+"";
+			}else {
+				GetDateUtil gdu =GetDateUtil.getInstance();
+				code=gdu.getMonth()+gdu.getDate();
 			}
 			real_name = fileName + "_" + code +"_" +org_name;
 			
