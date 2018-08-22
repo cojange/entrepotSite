@@ -14,10 +14,16 @@
 	<logger name="com.site.client">
 		<level value="info" />
 	</logger>
+	<logger name="com.site.client.member.individual.service">
+		<level value="trace" />
+	</logger>
 	<logger name="com.site.client.member.individual.dao">
 		<level value="trace" />
 	</logger>
 	<logger name="com.site.client.member.login.dao">
+		<level value="trace"/>
+	</logger>
+	<logger name="com.site.client.member.login.service">
 		<level value="trace"/>
 	</logger>
 	<!-- <logger name="com.site.client.member.individual.dao">

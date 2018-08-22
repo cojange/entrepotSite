@@ -50,7 +50,7 @@ public class ClMController{
 		logger.info("mForm.do post 방식에 의한 메서드 호출 성공");
 		
 		clMService.memberInsert(cmvo);
-		mav.setViewName("client/member/join_success");
+		mav.setViewName("client/member/joinsuccess");
 		return mav;
 	}
 

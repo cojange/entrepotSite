@@ -26,13 +26,13 @@ function idPwdCheck() {
 
 var idConfirm = 1;
 $(function() {
-	var direct = document.getElementById('direct');
-	errCodeCheck();
+	var direct = document.getElementById('direct');//체크박스 체크여부확인
+	errCodeCheck();//mForm.jsp 에 script함수
 	//사용자에게 요구사항에 대한 문자열로 배열 초기화.
 	var message = ["영문,숫자만 가능. 6~12자로 입력해 주세요",
 					"영문,숫자,특수문자만 가능. 8~15자 입력해 주세요.",
 					"비밀번호와 비밀번호 확인란은 값이 일치해야 합니다.",
-					"-포함 입력해 주세요. 예시) 010-0000-0000","직업을 입력해 주세요."];
+					"-포함 입력해 주세요. 예시) 010-0000-0000","직업을 선택해 주세요."];
 	$('.error').each(function(index) {
 		$('.error').eq(index).html(message[index]);
 	});
@@ -41,7 +41,7 @@ $(function() {
 		//console.log("대상 : "+ idx);
 		$(this).parents(".form-group").find(".error").html(message[idx]);
 	});
-	
+	//아이디중복체크
 	$("#idConfirmBtn").click(function() {
 		if(!formCheck($("#m_id"),$('.error:eq(0)'),"아이디를"))return;
 		else if(!inputVerify(0,$("#m_id"),$(".error:eq(0)")))return;
@@ -83,24 +83,28 @@ $(function() {
 		else if(!formCheck(($("#m_zipcode")||$("#m_address")),$(".error:eq(5)"),"우편주소를"))return;
 		else if(!formCheck(($("#m_birth")&&$("#m_gender")),$(".error:eq(7)"),"생년월일 및 주민번호를"))return;
 		else if(!formCheck($("#m_name"),$(".error:eq(8)"),"이름을"))return;
-		else if(!formCheck($("#m_email"),$(".error:eq(9)"),"이메일 주소를"))return;
+		else if(!formCheck($("#emailName"),$(".error:eq(9)"),"이메일 주소를"))return;
+		else if(!inputVerify(3,"#m_email",".error:eq(9)"))return;
+		else if(!formCheck($("#ans"),$(".error:eq(11)"),"비밀번호 질문답을"))return;
 		else if(idConfirm!=2){alert("아이디 중복 체크 진행해 주세요.");return;}
 		else{
-			if($(direct).is(":checked")==true){
-				$("#email").val($("#m_email").val()+"@"+$("#emailDirect").val());
-				$("#pinno").val($("#birth").val()+"-"+$("#gender").val());
+				$("#emailName").val().replace(/\@/g,'');//@입력시 제거
+				$("#emailName").val().replace(/^\s+|\s+$/g,''); //앞뒤 공백 제거
+				$("#emailName").val().replace(/\s/g,''); //문자열 내의 공백 제거
+				if($(direct).is(":checked")==true){// 직접입력 체크되어있을시
+					$("#m_email").val($("#emailName").val()+"@"+$("#emailDirect").val());	
+				}else if($(direct).is(":checked")==false){// 직접입력 체크안되있을때
+					$("#m_email").val($("#emailName").val()+"@"+$("#emailDomain").val());
+				}
+				if($("#m_gender").val()==1){
+					$("#m_gender").val("남");	
+				}else if($("m_gender").val()==1){
+					$("#m_gender").val("여");
+				}
 				$("#memberForm").attr({
 					"method":"post",
 					"action":"/client/member/mForm.do"
-			});
-			}else if($(direct).is(":checked")==false){
-				$("#email").val($("#m_email").val()+"@"+$("#emailDomain").val());
-				$("#pinno").val($("#birth").val()+"-"+$("#gender").val());
-				$("#memberForm").attr({
-					"method":"post",
-					"action":"client/member/mForm.do"
 				});
-			}
 			$("#memberForm").submit();
 		}
 	});
@@ -116,12 +120,22 @@ $(function() {
 			$("#emailDirect").hide();
 		}
 	});
-	
-	
-	$("#joinCancel").click(function() {
-		location.href="/member/login.do";
+	//비밀번호 질문선택시
+	$("#quiz").change(function() {
+		if($("#quiz").val()!="없음"){
+		$("#ans").show();
+		$("#ans").val("");
+		}
+		if($("#quiz").val()=="없음"){
+		$("#ans").hide();
+		$("#ans").val("없음");
+		}
 	});
-	
+	//취소 클릭시 홈화면으로
+	$("#joinCancel").click(function() {
+		location.href="/";
+	});
+	//재작성 클릭시 입력한값 초기화
 	$("#joinReset").click(function() {
 		$("#memberForm").each(function() {
 			this.reset();
@@ -134,9 +148,15 @@ $(function() {
 	var pattren = [
 		"((?=.*[a-zA-Z])(?=.*[0-9]).{6,10})",
 		"((?=.*[a-zA-Z])(?=.*[0-9@#$%]).{8,12})",
-		"^\\d{3}-\\d{3,4}-\\d{4}"];
+		"^\\d{3}-\\d{3,4}-\\d{4}"
+		];
+	
+	/**입력 형식이 맞지않을때 발생하는메서드
+	 * 
+	 * if(!inputVerify(사용할pattren의index,참조할 id,비교할값))return;
+	**/
 	function inputVerify(index,data,printarea) {
-		var data_regExp = new RegExp(pattren[index]);
+		var data_regExp = new RegExp(pattren[index]);//정규표현식 객체
 		var match = data_regExp.exec($(data).val());
 		if(match==null){
 			$(printarea).html("입력값이 형식에 맞지 않습니다. 다시 입력해 주세요.");
