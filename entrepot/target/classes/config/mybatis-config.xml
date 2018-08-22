@@ -6,6 +6,8 @@
 		<typeAlias type="com.site.admin.ctrl.adMember.vo.AdManagerVO" alias="amvo"/>
 		<typeAlias type="com.site.admin.ctrl.adPartner.vo.CourierPartnerVO" alias="couPartner"/>
 		<typeAlias type="com.site.admin.ctrl.adPartner.vo.MagazinePartnerVO" alias="magPartner"/>
+		<typeAlias type="com.site.admin.regulations.regulations.vo.RegAgreeVO" alias="regAgree"/>
+		<typeAlias type="com.site.admin.regulations.regulations.vo.RegulationsVO" alias="reg"/>
 	</typeAliases>
 </configuration>
 <!-- mybatis xml mapper파일로 생성 후에 변경(5곳/대소문자 구별) -->
