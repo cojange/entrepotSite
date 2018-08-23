@@ -15,7 +15,9 @@
 		<typeAlias type="com.site.admin.regulations.regulations.vo.RegulationsVO" alias="reg"/>
 		<typeAlias type="com.site.client.member.individual.vo.ClMSecurity" alias="security"/>
 		<typeAlias type="com.site.client.member.login.vo.LoginVO" alias="login"/>
+
 		<typeAlias type="com.site.admin.cost.adCost.vo.AdCostVO" alias="acvo"/>
+
 
 	</typeAliases>
 </configuration>
