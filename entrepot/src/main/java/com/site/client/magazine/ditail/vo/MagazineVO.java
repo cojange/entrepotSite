@@ -1,6 +1,8 @@
 package com.site.client.magazine.ditail.vo;
 
-public class MagazineVO  {
+import com.site.common.vo.CommonVO;
+
+public class MagazineVO extends CommonVO {
 	
 	//상품테이블 (product)
 	private String pd_num;                  	//상품코드
@@ -22,11 +24,39 @@ public class MagazineVO  {
 	
 	
 	//상품상세 테이블(details)
-	private	String dt_terget;					//대상
+	
+	private	String dt_target;					//대상
 	private	String dt_brief;					//간략소개
 	private String dt_detail;					//상품상세
 	private String dt_contents;					//목차
 	private String dt_keyword;					//키워드
+	
+	//필요 필드
+	private int pd_salecost;     //활인가
+	private String com_name;          //출판사
+	
+	
+
+	
+	public int getPd_salecost() {
+		return pd_salecost;
+	}
+	public void setPd_salecost(int pd_salecost) {
+		this.pd_salecost = pd_salecost;
+	}
+
+	public String getDt_target() {
+		return dt_target;
+	}
+	public void setDt_target(String dt_target) {
+		this.dt_target = dt_target;
+	}
+	public String getCom_name() {
+		return com_name;
+	}
+	public void setCom_name(String com_name) {
+		this.com_name = com_name;
+	}
 	public String getPd_num() {
 		return pd_num;
 	}
@@ -100,10 +130,10 @@ public class MagazineVO  {
 		this.pl_type = pl_type;
 	}
 	public String getDt_terget() {
-		return dt_terget;
+		return dt_target;
 	}
 	public void setDt_terget(String dt_terget) {
-		this.dt_terget = dt_terget;
+		this.dt_target = dt_terget;
 	}
 	public String getDt_brief() {
 		return dt_brief;

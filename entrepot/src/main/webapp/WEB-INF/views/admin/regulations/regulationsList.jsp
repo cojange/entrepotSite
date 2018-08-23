@@ -12,63 +12,57 @@
      	<!-- viewport : 화면에 보이는 영역을 제어하는 기술. width는 device-width로 설정. initial-scale는 초기비율 -->
       
       	<!-- 모바일 웹 페이지 설정 -->
-      	<link rel="shortcut icon" href="/resources/images/admin/adLog.ico" />
-      	<link rel="apple-touch-icon" href="/resources/images/admin/adLog.ico"  />
+      	<link rel="shortcut icon" href="/resources/images/common/icon.png" />
+      	<link rel="apple-touch-icon" href="/resources/images/common/icon.png" />
       	<!-- 모바일 웹 페이지 설정 종료 -->
       
       	<!-- IE8이하 브라우저에서 HTML5를 인식하기 위해서는 아래의 패스필터를 적용하면 된다. -->
       	<!-- [if lt IE 9] -->
       	<!-- <script src="/resources/include/js/html5shiv.js"</script> -->
       	<!-- [endif] -->
- 	
-      	
 	</head>
 	<body>
-	<!-- 잡지거래처 리스트 -->		
+	<!-- 약관동의  리스트 -->		
 	<div class="container-fluid" >
 		<div class="card mb-3" id="adMagazine">
             <div class="card-header">
-            	<i class="fas fa-table"></i>            	
+            	<i class="fas fa-table"></i>
+            	약관동의 리스트      	
             </div>   
             <div class="card-body">
               <div class="table-responsive">
-              	<div>
-              		<select>
-              			<option>
-              		</select>
-              	</div>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>거래처명</th>                     
-                      <th>담당자 이름</th>
-                      <th>담당자 연락처</th>
-                      <th>담당자 email</th>
-                      <th>거래시작일</th>
-                      <th>거래종료일</th>
+                      <th>번호</th>          
+                      <th>약관이름</th>           
+                      <th>회원ID</th>
+                      <th>회원명</th>
+                      <th>동의날짜</th>
+                      <th>회원타입</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
-                      <th>거래처명</th>                     
-                      <th>담당자 이름</th>
-                      <th>담당자 연락처</th>
-                      <th>담당자 email</th>
-                      <th>거래시작일</th>
-                      <th>거래종료일</th>
+                      <th>번호</th>          
+                      <th>약관이름</th>           
+                      <th>회원ID</th>
+                      <th>회원명</th>
+                      <th>동의날짜</th>
+                      <th>회원타입</th>
                     </tr>
                   </tfoot>
                   <tbody>
                      <c:choose>
-						<c:when test="${not empty magPartnerList}">
-							<c:forEach var="magPartner" items="${magPartnerList}" varStatus="status">
+						<c:when test="${not empty regAgreeList}">
+							<c:forEach var="regAgree" items="${regAgreeList}" varStatus="status">
 								<tr class="tac" data-num="${status.count}">
-									<td>${magPartner.com_name}</td>
-									<td>${magPartner.char_manager}</td>
-									<td>${magPartner.char_tel}</td>
-									<td>${magPartner.char_email}</td>
-									<td>${magPartner.startdate}</td>
-									<td>${magPartner.enddate}</td>
+									<td>${status.count}</td>
+									<td>${regAgree.reg_type}</td>
+									<td>${regAgree.m_name}</td>
+									<td>${regAgree.m_id}</td>
+									<td>${regAgree.ag_date}</td>
+									<td>${regAgree.mt}</td>
 								</tr>
 							</c:forEach>
 						</c:when>
@@ -88,56 +82,64 @@
         
          <br/>
          <hr/>
-         
+                  
         <div class="container-fluid">
-         <!-- 택배거래처 리스트 -->
+         <!-- 약관 리스트 -->
 		<div class="card mb-3"  id="adCourier">
             <div class="card-header">
               <i class="fas fa-table"></i>
-              	택배 거래처
+              	약관 리스트
             </div>
             <div class="card-body">
               <div class="table-responsive">
-              	<div>
-              		<select>
-              			<option>
-              		</select>
-              	</div>
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              	<table width="100%">
+              		<colgroup>
+							<col width="50%" />
+							<col width="50%" />
+						</colgroup>
+              		<tr>
+              			<td>
+		              		<select>
+		              			<option>사이트이용약관</option>
+		              			<option>정보이용동의약관</option>
+		              		</select>
+              			</td>
+              			<td style="text-align: right">
+              				<label>파일명 조회</label>
+              				<input type="text" />
+              			</td>
+              		</tr>
+              	</table>
+              	<br/>
+                <table class="table table-bordered" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>택배사명</th>
-                      <th>계약지역</th>                     
-                      <th>담당자 이름</th>
-                      <th>담당자 연락처</th>
-                      <th>건수</th> 
-                      <th>거래시작일</th>
-                      <th>거래종료일</th>
+                      <th>번호</th>
+                      <th>약관 유형</th>                     
+                      <th>등록일</th>
+                      <th>수정일</th> 
+                      <th>파일명</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
-                      <th>택배사명</th>
-                      <th>계약지역</th>                                           
-                      <th>담당자 이름</th>
-                      <th>담당자 연락처</th>
-                      <th>건수</th> 
-                      <th>거래시작일</th>
-                      <th>거래종료일</th>
+                      <th>번호</th>
+                      <th>약관 유형</th>                     
+                      <th>등록일</th>
+                      <th>수정일</th> 
+                      <th>파일명</th>
                     </tr>
                   </tfoot>
                   <tbody>
                      <c:choose>
-						<c:when test="${not empty couPartnerList}">
-							<c:forEach var="couPartner" items="${couPartnerList}" varStatus="status">
+						<c:when test="${not empty regList}">
+							<c:forEach var="reg" items="${regList}" varStatus="status">
 								<tr class="tac" data-num="${status.count}">
-									<td>${couPartner.couacc_name}</td>
-									<td>${couPartner.couacc_area}</td>
-									<td>${couPartner.char_manager}</td>
-									<td>${couPartner.char_tel}</td>
-									<td>${couPartner.couacc_cnt}</td>
-									<td>${couPartner.startdate}</td>
-									<td>${couPartner.enddate}</td>
+									<td>${status.count}</td>
+									<td>${reg.reg_type}</td>
+									<td>${reg.reg_date}</td>
+									<td>${reg.reg_update}</td>
+									<td>${reg.reg_file}</td>
 								</tr>
 							</c:forEach>
 						</c:when>
