@@ -7,12 +7,10 @@
 		<typeAlias type="com.site.admin.ctrl.adPartner.vo.CourierPartnerVO" alias="couPartner"/>
 		<typeAlias type="com.site.client.member.individual.vo.ClMVO" alias="member"/>
 		<typeAlias type="com.site.admin.ctrl.adPartner.vo.MagazinePartnerVO" alias="magPartner"/>
-<<<<<<< HEAD
 		<typeAlias type="com.site.client.member.individual.vo.ClMSecurity" alias="security"/>
 		<typeAlias type="com.site.client.member.login.vo.LoginVO" alias="login"/>
-=======
+
 		<typeAlias type="com.site.admin.cost.adCost.vo.AdCostVO" alias="acvo"/>
->>>>>>> branch 'master' of https://github.com/cojange/entrepotSite.git
 	</typeAliases>
 </configuration>
 <!-- mybatis xml mapper파일로 생성 후에 변경(5곳/대소문자 구별) -->

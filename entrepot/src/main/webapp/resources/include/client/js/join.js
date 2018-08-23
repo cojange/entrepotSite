@@ -82,15 +82,14 @@ $(function() {
 		else if(!formCheck($("#m_job"),$(".error:eq(4)"),"직업을"))return;
 		else if(!formCheck(($("#m_zipcode")||$("#m_address")),$(".error:eq(5)"),"우편주소를"))return;
 		else if(!formCheck(($("#m_birth")&&$("#m_gender")),$(".error:eq(7)"),"생년월일 및 주민번호를"))return;
+		else if(!inputVerify(3,"#m_birth",".error:eq(7)"))return;
+		else if(!inputVerify(4,"#m_gender",".error:eq(7)"))return;
 		else if(!formCheck($("#m_name"),$(".error:eq(8)"),"이름을"))return;
-		else if(!formCheck($("#emailName"),$(".error:eq(9)"),"이메일 주소를"))return;
-		else if(!inputVerify(3,"#m_email",".error:eq(9)"))return;
+		else if(!formCheck($("#emailName"),$(".error:eq(9)"),"이메일을 @를제거하고"))return;
+		else if(!inputVerify(5,"#emailName",".error:eq(9)"))return;
 		else if(!formCheck($("#ans"),$(".error:eq(11)"),"비밀번호 질문답을"))return;
 		else if(idConfirm!=2){alert("아이디 중복 체크 진행해 주세요.");return;}
 		else{
-				$("#emailName").val().replace(/\@/g,'');//@입력시 제거
-				$("#emailName").val().replace(/^\s+|\s+$/g,''); //앞뒤 공백 제거
-				$("#emailName").val().replace(/\s/g,''); //문자열 내의 공백 제거
 				if($(direct).is(":checked")==true){// 직접입력 체크되어있을시
 					$("#m_email").val($("#emailName").val()+"@"+$("#emailDirect").val());	
 				}else if($(direct).is(":checked")==false){// 직접입력 체크안되있을때
@@ -142,13 +141,13 @@ $(function() {
 		});
 	});
 	/* 배열 : 유효성 체크 시 필요한 정규식으로 배열을 초기화.
-	 * pattren = [아이디,비밀번호,핸드폰번호]
+	 * pattren = [아이디,비밀번호,핸드폰번호,생년월일,주민번호앞자리,이메일앞자리(emailName)]
 	 * 함수명:inputVerify(배열 인덱스번호,비교할 값,출력영역)
 	 * */
 	var pattren = [
 		"((?=.*[a-zA-Z])(?=.*[0-9]).{6,10})",
 		"((?=.*[a-zA-Z])(?=.*[0-9@#$%]).{8,12})",
-		"^\\d{3}-\\d{3,4}-\\d{4}"
+		"^\\d{3}-\\d{3,4}-\\d{4}","^(?=.*[0-9]).{6}$","^[0-9]$","^(?=.*[0-9a-zA-Z]).{4,20}$"
 		];
 	
 	/**입력 형식이 맞지않을때 발생하는메서드

@@ -185,7 +185,7 @@
          <div class="form-group form-group-sm">
             <label for="emailName" class="col-sm-2 control-label">회원 이메일</label>
             <div class="col-sm-3">
-               <input type="text" id="emailName" name="emailName" maxlength="60" class="form-control" placeholder="EMAIL">
+               <input type="text" id="emailName" name="emailName" maxlength="60" class="form-control" placeholder="'@'를빼고 입력해주세요.">
             </div>
             <div class="col-sm-2">
                <select id="emailDomain" class="form-control" style="width: 100px;">
