@@ -11,36 +11,39 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.site.client">
-		<level value="info" />
-	</logger>
-	<logger name="com.site.client.member.individual.service">
-		<level value="trace" />
-	</logger>
-	<logger name="com.site.client.member.individual.dao">
-		<level value="trace" />
-	</logger>
-	<logger name="com.site.client.member.login.dao">
-		<level value="trace"/>
-	</logger>
-	<logger name="com.site.client.member.login.service">
-		<level value="trace"/>
-	</logger>
-	<!-- <logger name="com.site.client.member.individual.dao">
-		<level value="trace"/>
-	</logger> -->
-	<logger name="com.site.admin.main.controller">
-		<level value="info" />
-	</logger>
-	<logger name="com.site.admin.ctrl.adMember.dao">
-		<level value="trace"/>
-	</logger>
-	<logger name="com.site.admin.ctrl.adPartner.dao">
-		<level value="trace"/>
-	</logger>
-	<logger name="com.site.admin.adBoard.regulations.dao">
-		<level value="trace"/>
-	</logger>
+	   <logger name="com.site.client">
+      	  <level value="info" />
+	   </logger>
+	   <logger name="com.site.client.member.individual.service">
+	      <level value="trace" />
+	   </logger>
+	   <logger name="com.site.client.member.individual.dao">
+	      <level value="trace" />
+	   </logger>
+	   <logger name="com.site.client.member.login.dao">
+	      <level value="trace"/>
+	   </logger>
+	   <logger name="com.site.client.member.login.service">
+	      <level value="trace"/>
+	   </logger>
+	   <!-- <logger name="com.site.client.member.individual.dao">
+	      <level value="trace"/>
+	   </logger> -->
+	   <logger name="com.site.admin.main.controller">
+	      <level value="info" />
+	   </logger>
+	   <logger name="com.site.admin.ctrl.adMember.dao">
+	      <level value="trace"/>
+	   </logger>   
+	   <logger name="com.site.client.magazine.list.dao">
+	      <level value="trace"/>
+	   </logger>   
+	   <logger name="com.site.admin.ctrl.adPartner.dao">
+	      <level value="trace"/>
+	   </logger>
+	   <logger name="com.site.admin.adBoard.regulations.dao">
+		  <level value="trace"/>
+	   </logger>	
 	
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework.core">
