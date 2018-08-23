@@ -6,4 +6,15 @@
 		insert into cost(cost_file, ad_id)
 		values(#{cost_file},'entrepot')
 	</insert>
+	
+	<select id="selectCard" parameterType="String" resultType="acvo">
+		select cost_file,ad_id from cost where substr(cost_file,instr(cost_file,'_',1,3)+1,2)=#{keyword}
+		and	to_number(substr(cost_file,instr(cost_file,'_')+1,4))
+		= (select max(to_number(substr(cost_file,instr(cost_file,'_')+1,4)))
+		from cost where substr(cost_file,instr(cost_file,'_',1,3)+1,2)=#{keyword})
+	</select>
+	
+	<select id="excelSelect" parameterType="String" resultType="acvo">
+		select cost_file, ad_id from cost where cost_file = #{cost_file}
+	</select>
 </mapper>

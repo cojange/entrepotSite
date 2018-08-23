@@ -41,15 +41,15 @@
                   <tbody>
                      <c:choose>
                        <c:when test="${not empty memberList }">
-                          <c:forEach var="adminM" items="${memberList }" varStatus="status">
+                          <c:forEach var="memberM" items="${memberList }" varStatus="status">
                              <tr class="tac" data-num="${status.count }">
                                 <td>${status.count}</td>
-                                <td>${memberList.m_name }</td>
-                                <td>${memberList.m_id }</td>
-                                <td>${memberList.m_phone }</td>
-                                <td>${memberList.m_email }</td>
-                                <td>${memberList.m_date }</td>
-                                <td>${memberList.grade }</td>
+                                <td>${memberM.m_name }</td>
+                                <td>${memberM.m_id }</td>
+                                <td>${memberM.m_phone }</td>
+                                <td>${memberM.m_email }</td>
+                                <td>${memberM.m_date }</td>
+                                <td>${memberM.grade }</td>
                              </tr>
                           </c:forEach>
                        </c:when>

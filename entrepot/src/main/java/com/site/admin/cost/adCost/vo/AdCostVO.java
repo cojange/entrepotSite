@@ -5,7 +5,14 @@ import org.springframework.web.multipart.MultipartFile;
 public class AdCostVO {
 	private String cost_file="";
 	private String ad_id;
+	private String cardName;
 	
+	public String getCardName() {
+		return cardName;
+	}
+	public void setCardName(String cardName) {
+		this.cardName = cardName;
+	}
 	private MultipartFile file;
 	
 	

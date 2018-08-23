@@ -85,8 +85,12 @@
 	    					});
 	    					$("#cost_ExcelFile").submit();
 	    				}
-	    			})
-	    		}
+	    			});//Excel 업로드 Btn
+	    			
+	    			$("#templateDown").click(function(){
+	    				location.href ="/admin/adcost/downloadTemplate.do";
+	    			});
+	    		}//비용 탭 일때 JS
 	    	});
 	    </script>
   </body>
