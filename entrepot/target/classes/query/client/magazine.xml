@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.client.magazine.list.dao.ListDao">
+<select id="magazineList" parameterType="mgvo" resultType="mgvo">
+	/*magazine - magazineList*/
+	
+	select mg_name,com_name,pd_sale,pd_rate,pd_date,dt_target,dt_keyword,dt_brief,pl_path
+	from bast_view5 
+	<where>
+		<if test="listkey=='target'">
+		 <![CDATA[dt_target like '%'|| #{key} ||'%']]>
+		 </if>
+		 <if test="listkey=='key'">
+		 <![CDATA[dt_keyword like '%'|| #{key} ||'%']]>
+		 </if>
+	</where>
+	
+	
+</select>
+
+</mapper>

@@ -35,10 +35,20 @@
 	<logger name="com.site.admin.ctrl.adMember.dao">
 		<level value="trace"/>
 	</logger>
+	<logger name="com.site.common.file">
+		<level value="info"/>
+	</logger>
+	
+
+	
+	<logger name="com.site.client.magazine.list.dao">
+		<level value="trace"/>
+	</logger>	
 	<logger name="com.site.admin.ctrl.adPartner.dao">
 		<level value="trace"/>
 	</logger>
 	<logger name="com.site.admin.regulations.regulations.dao">
+
 		<level value="trace"/>
 	</logger>
 	

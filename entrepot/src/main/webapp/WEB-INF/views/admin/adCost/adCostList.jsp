@@ -15,15 +15,16 @@
                   </div>
                   <div class="mr-5">${cardData.cardName}</div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="#">
+                <a class="card-footer text-white clearfix small z-1 viewExcel" href="${status.count }">
                   <span class="float-left">${cardData.ad_id }</span>
                   <span class="float-right">
                     <i class="fas fa-angle-right"></i>
                   </span>
                 </a>
               </div>
-            	<form id="loadExcel" name="loadExcel" method="post">
+            	<form id="loadExcel${status.count }" name="loadExcel">
             		<input type="hidden" name="cost_file" value="${cardData.cost_file }"/>
+            		<input type="hidden" name="ad_id" value="${cardData.ad_id}"/>
             	</form>
             </div>
   	 		</c:forEach>
@@ -68,80 +69,56 @@
           <div class="card mb-3">
             <div class="card-header">
               <i class="fas fa-users"></i>
-                 비용 리스트</div>
+                 회원 관리</div>
             <div class="card-body">
-              <div class="table-responsive">
+              <div class="table-responsive" id="memberList">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>Name</th>
-                      <th>Position</th>
-                      <th>Office</th>
-                      <th>Age</th>
-                      <th>Start date</th>
-                      <th>Salary</th>
+                      <th>순번</th>
+                      <th>일자</th>
+                      <th>거래처</th>
+                      <th>비용</th>
+                      <th>비고</th>
+                      <th>관리자</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
-                      <th>Name</th>
-                      <th>Position</th>
-                      <th>Office</th>
-                      <th>Age</th>
-                      <th>Start date</th>
-                      <th>Salary</th>
+                      <th>순번</th>
+                      <th>일자</th>
+                      <th>거래처</th>
+                      <th>비용</th>
+                      <th>비고</th>
+                      <th>관리자</th>
                     </tr>
                   </tfoot>
                   <tbody>
-                    <tr>
-                      <td>Tiger Nixon</td>
-                      <td>System Architect</td>
-                      <td>Edinburgh</td>
-                      <td>61</td>
-                      <td>2011/04/25</td>
-                      <td>$320,800</td>
-                    </tr>
-                    <tr>
-                      <td>Garrett Winters</td>
-                      <td>Accountant</td>
-                      <td>Tokyo</td>
-                      <td>63</td>
-                      <td>2011/07/25</td>
-                      <td>$170,750</td>
-                    </tr>
-                    <tr>
-                      <td>Ashton Cox</td>
-                      <td>Junior Technical Author</td>
-                      <td>San Francisco</td>
-                      <td>66</td>
-                      <td>2009/01/12</td>
-                      <td>$86,000</td>
-                    </tr>
-                    <tr>
-                      <td>Cedric Kelly</td>
-                      <td>Senior Javascript Developer</td>
-                      <td>Edinburgh</td>
-                      <td>22</td>
-                      <td>2012/03/29</td>
-                      <td>$433,060</td>
-                    </tr>
-                    <tr>
-                      <td>Airi Satou</td>
-                      <td>Accountant</td>
-                      <td>Tokyo</td>
-                      <td>33</td>
-                      <td>2008/11/28</td>
-                      <td>$162,700</td>
-                    </tr>
-                    <tr>
-                      <td>Brielle Williamson</td>
-                      <td>Integration Specialist</td>
-                      <td>New York</td>
-                      <td>61</td>
-                      <td>2012/12/02</td>
-                      <td>$372,000</td>
-                    </tr>
-                   </tbody>
+                     <c:choose>
+                       <c:when test="${not empty costTable }">
+                          <c:forEach var="costList" items="${costTable }" varStatus="status">
+                             <tr class="tac" data-num="${status.count }">
+                                <td>${status.count}</td>
+                                <td>${costList.costDate }</td>
+                                <td>${costList.company }</td>
+                                <td>${costList.cost }</td>
+                                <td>${costList.memo }</td>
+                                <td>${costList.manager }</td>
+                             </tr>
+                          </c:forEach>
+                       </c:when>
+                       <c:otherwise>
+                          <tr>
+                             <td>0</td>
+                                <td>.</td>
+                                <td>.</td>
+                                <td>.</td>
+                                <td>.</td>
+                                <td>.</td>
+                          </tr>
+                       </c:otherwise>
+                    </c:choose>
+                  </tbody>
                 </table>
               </div>
             </div>

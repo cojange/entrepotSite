@@ -1,23 +1,24 @@
 package com.site.admin.cost.adCost.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.site.admin.cost.adCost.service.AdCostService;
 import com.site.admin.cost.adCost.vo.AdCostVO;
 import com.site.common.excel.ListExcelView;
+import com.site.common.file.ExcelReadUtil;
 import com.site.common.util.GetDateUtil;
+import com.site.common.vo.CostExcelVO;
 
 
 @Controller
@@ -79,10 +80,23 @@ public class AdCostController {
 	}
 	
 	//엑셀 파일 읽어오기
-	@ResponseBody
 	@RequestMapping(value="/readExcel.do")
-	public String readExcel(@RequestBody String cost_file) {
+	public ModelAndView readExcel(@ModelAttribute("acvo") AdCostVO acvo, ModelAndView mav, HttpServletRequest request) {
 		
+		ExcelReadUtil eru = new ExcelReadUtil();
+		
+		List<CostExcelVO> ceList = new ArrayList<>();
+		try {
+			ceList = eru.readExcel(acvo.getCost_file(), request);
+		} catch (IOException e) {
+			e.printStackTrace();
+			mav.addObject("status","fail");
+		}
+		
+//		System.out.println(ceList.toString());
+		
+		mav.addObject("costTable",ceList);
+		return adCostList(mav);
 	}
 	
 }
