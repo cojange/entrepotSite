@@ -86,7 +86,7 @@
 	    						"action":"/admin/adcost/uploadExcel"
 	    					});
 	    					$("#cost_ExcelFile").submit();
-	    				}
+	    				} 
 
 	    			});//Excel 업로드 Btn
 	    			
