@@ -1,4 +1,4 @@
-package com.site.admin.regulations.regulations.vo;
+package com.site.admin.adBoard.regulations.vo;
 
 public class RegulationsVO {
 	private String reg_no;
@@ -18,7 +18,7 @@ public class RegulationsVO {
 	}
 	public void setReg_file(String reg_file) {
 		this.reg_file = reg_file;
-	}
+	} 
 	public String getReg_date() {
 		return reg_date;
 	}

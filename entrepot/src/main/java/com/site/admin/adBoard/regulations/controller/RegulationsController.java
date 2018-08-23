@@ -1,4 +1,4 @@
-package com.site.admin.regulations.regulations.controller;
+package com.site.admin.adBoard.regulations.controller;
 
 import java.util.List;
 
@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.site.admin.adBoard.regulations.service.RegulationsService;
+import com.site.admin.adBoard.regulations.vo.RegAgreeVO;
+import com.site.admin.adBoard.regulations.vo.RegulationsVO;
 import com.site.admin.ctrl.adPartner.controller.AdPartnerController;
-import com.site.admin.regulations.regulations.service.RegulationsService;
-import com.site.admin.regulations.regulations.vo.RegAgreeVO;
-import com.site.admin.regulations.regulations.vo.RegulationsVO;
 
 @Controller
-@RequestMapping(value="/admin/regulations/regulations")
+@RequestMapping(value="/admin/adBoard/regulations")
 public class RegulationsController {
 	Logger logger = Logger.getLogger(AdPartnerController.class);
 	
@@ -24,18 +24,16 @@ public class RegulationsController {
 	
 	/** 
 	 * 약관동의리스트 및 약관리스트 구현하기
-	 * **/
+	 * **/ 
 	@RequestMapping(value="/regulationsList.do", method=RequestMethod.GET)
 	public ModelAndView regulationsList(RegulationsVO rvo, RegAgreeVO ravo, ModelAndView mav) {
 		logger.info("regulations 호출 성공");
-		
-		
-		
+			
 		List<RegulationsVO> regList = regulationsService.regList(rvo);
 		mav.addObject("regList", regList);
 		List<RegAgreeVO> regAgreeList = regulationsService.regAgreeList(ravo);
 		mav.addObject("regAgreeList", regAgreeList);
-		mav.setViewName("admin/regulations/regulations/regulationsList");
+		mav.setViewName("admin/adBoard/regulations/regulationsList");
 		
 		return mav;
 		

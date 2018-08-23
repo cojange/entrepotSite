@@ -59,8 +59,8 @@
 								<tr class="tac" data-num="${status.count}">
 									<td>${status.count}</td>
 									<td>${regAgree.reg_type}</td>
-									<td>${regAgree.m_name}</td>
 									<td>${regAgree.m_id}</td>
+									<td>${regAgree.m_name}</td>									
 									<td>${regAgree.ag_date}</td>
 									<td>${regAgree.mt}</td>
 								</tr>
@@ -94,23 +94,25 @@
               <div class="table-responsive">
               	<table width="100%">
               		<colgroup>
-							<col width="50%" />
-							<col width="50%" />
-						</colgroup>
+						<col width="50%" />
+						<col width="50%" />
+					</colgroup>
               		<tr>
               			<td>
+              				<label>약관 유형 : </label>
 		              		<select>
 		              			<option>사이트이용약관</option>
 		              			<option>정보이용동의약관</option>
+		              			<option>기타</option>
 		              		</select>
               			</td>
               			<td style="text-align: right">
-              				<label>파일명 조회</label>
               				<input type="text" />
+              				<input type="button" value="파일명 조회" />
               			</td>
               		</tr>
               	</table>
-              	<br/>
+              	
                 <table class="table table-bordered" width="100%" cellspacing="0">
                   <thead>
                     <tr>
@@ -151,6 +153,11 @@
 					</c:choose>
                   </tbody>
                 </table>
+                <div style="text-align: right;">
+              		<input type="button" value="등록"/>
+					<input type="button" value="수정"/>
+					<input type="button" value="삭제"/>
+                </div>
               </div>
             </div>
             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>

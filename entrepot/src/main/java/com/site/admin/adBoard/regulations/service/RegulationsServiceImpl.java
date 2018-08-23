@@ -1,13 +1,13 @@
-package com.site.admin.regulations.regulations.service;
+package com.site.admin.adBoard.regulations.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.site.admin.regulations.regulations.dao.RegulationsDao;
-import com.site.admin.regulations.regulations.vo.RegAgreeVO;
-import com.site.admin.regulations.regulations.vo.RegulationsVO;
+import com.site.admin.adBoard.regulations.dao.RegulationsDao;
+import com.site.admin.adBoard.regulations.vo.RegAgreeVO;
+import com.site.admin.adBoard.regulations.vo.RegulationsVO;
 
 @Service
 public class RegulationsServiceImpl implements RegulationsService {
@@ -21,7 +21,7 @@ public class RegulationsServiceImpl implements RegulationsService {
 		List<RegulationsVO> regList = null;
 		regList = regulationsDao.regList(rvo);
 		return regList;
-	}
+	} 
 	
 	//약관동의 리스트
 	@Override

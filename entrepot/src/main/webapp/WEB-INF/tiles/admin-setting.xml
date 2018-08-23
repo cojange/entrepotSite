@@ -20,8 +20,8 @@
 		<put-attribute name="adContent" value="/WEB-INF/views/admin/{1}/{2}.jsp"/>
 	</definition>
 	
-	<definition name="admin/regulations/regulations/*" extends="basic">
-		<put-attribute name="adContent" value="/WEB-INF/views/admin/regulations/{1}.jsp"/>
+	<definition name="admin/adBoard/*/*" extends="basic">
+		<put-attribute name="adContent" value="/WEB-INF/views/admin/{1}/{2}.jsp"/>
 	</definition>
 
 	<definition name="admin/adcost/*" extends="basic">

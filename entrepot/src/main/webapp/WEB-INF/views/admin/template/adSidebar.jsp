@@ -39,7 +39,7 @@
             <a class="dropdown-item" href="#"></a>
             <div class="dropdown-divider"></div>
             <h6 class="dropdown-header">약관</h6>
-            <a class="dropdown-item" href="/admin/regulations/regulations/regulationsList.do"></a>
+            <a class="dropdown-item" href="/admin/adBoard/regulations/regulationsList.do"></a>
           </div>
         </li>
         <li class="nav-item">

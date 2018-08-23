@@ -38,7 +38,7 @@
 	<logger name="com.site.admin.ctrl.adPartner.dao">
 		<level value="trace"/>
 	</logger>
-	<logger name="com.site.admin.regulations.regulations.dao">
+	<logger name="com.site.admin.adBoard.regulations.dao">
 		<level value="trace"/>
 	</logger>
 	

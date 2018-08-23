@@ -1,4 +1,4 @@
-package com.site.admin.regulations.regulations.dao;
+package com.site.admin.adBoard.regulations.dao;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.site.admin.regulations.regulations.vo.RegAgreeVO;
-import com.site.admin.regulations.regulations.vo.RegulationsVO;
+import com.site.admin.adBoard.regulations.vo.RegAgreeVO;
+import com.site.admin.adBoard.regulations.vo.RegulationsVO;
 
 @Repository
 public class RegulationsDaoImpl implements RegulationsDao{
@@ -19,7 +19,7 @@ public class RegulationsDaoImpl implements RegulationsDao{
 	@Override
 	public List<RegulationsVO> regList(RegulationsVO rvo) {
 		return session.selectList("regList", rvo);
-	}
+	} 
 	
 	//약관동의 리스트
 	@Override
