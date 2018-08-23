@@ -23,7 +23,7 @@
 	
 	<!--  -->
 	<definition name="client/member/*" extends="content">
-	<put-attribute name="title" value="회원가입.."/>
+	<put-attribute name="title" value="회원가입"/>
 	<put-attribute name="body"
 	value="/WEB-INF/views/client/member/{1}.jsp"/>
 	</definition>
@@ -40,6 +40,12 @@
 	<put-attribute name="title" value="로그인"/>
 	<put-attribute name="body"
 	value="/WEB-INF/views/client/login/{1}.jsp"/>
+	</definition>
+	
+	<definition name="client/myPage/*" extends="content">
+	<put-attribute name="title" value="마이페이지"/>
+	<put-attribute name="body"
+	value="/WEB-INF/views/client/myPage/{1}.jsp"/>
 	</definition>
 	
 	

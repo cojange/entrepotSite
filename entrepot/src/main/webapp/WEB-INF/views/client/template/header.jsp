@@ -18,6 +18,7 @@
 			<div  style="font-size: 10pt;,display: inline-block;">
 			<span>[ ${login.m_name} ]님 환영합니다!!!</span>          
 			<input type="button" id="logout" value="로그아웃"><span>/</span>
+			<input type="button" id="myPage" value="마이페이지"><span>/</span>
 			<a href="/client/member/modify.do">정보수정(비밀번호변경)</a>
 			<!-- <a href="/client/member/delete.do">회원탈퇴</a> -->
 			</div>
