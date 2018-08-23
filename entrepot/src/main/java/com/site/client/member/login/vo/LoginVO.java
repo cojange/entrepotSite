@@ -1,4 +1,4 @@
-package com.site.client.login.vo;
+package com.site.client.member.login.vo;
 
 public class LoginVO extends LoginHistory{
 	/** 회원의  로그인 id,비밀번호,이름을가져옴**/

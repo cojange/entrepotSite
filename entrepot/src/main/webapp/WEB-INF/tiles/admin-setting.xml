@@ -16,7 +16,17 @@
 		<put-attribute name="adContent" value="/WEB-INF/views/admin/template/adContent.jsp"/>
 	</definition>
 	
-	<definition name="admin/ctrl/*" extends="basic">
-		<put-attribute name="adContent" value="/WEB-INF/views/admin/adMember/{1}.jsp"/>
+	<definition name="admin/ctrl/*/*" extends="basic">
+		<put-attribute name="adContent" value="/WEB-INF/views/admin/{1}/{2}.jsp"/>
 	</definition>
+	
+	<definition name="admin/regulations/regulations/*" extends="basic">
+		<put-attribute name="adContent" value="/WEB-INF/views/admin/regulations/{1}.jsp"/>
+	</definition>
+
+	<definition name="admin/adcost/*" extends="basic">
+		<put-attribute name="adContent" value="/WEB-INF/views/admin/adCost/{1}.jsp"/>
+	</definition>
+
+
 </tiles-definitions>

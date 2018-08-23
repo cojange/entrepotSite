@@ -7,8 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.site.client.member.individual.service.ClMService;
+import com.site.client.member.individual.vo.ClMVO;
 
 @Controller
 @RequestMapping(value="/client")
@@ -31,12 +33,25 @@ public class ClMController{
 	 * 사용자 아이디 중복 체크 메서드
 	 * ********************************************/
 	@ResponseBody
-	@RequestMapping(value="/userIdConfirm.do",
+	@RequestMapping(value="member/userIdConfirm.do",
 			method = RequestMethod.POST)
-	public String userIdConfirm(@RequestParam("userId")String userId) {
+	public String userIdConfirm(@RequestParam("m_id")String m_id) {
 		logger.info("userIdConfirm 메서드 호출 성공");
-		int result=clMService.userIdConfirm(userId);
+		int result=clMService.userIdConfirm(m_id);
 		return result+"";
+	}
+	
+	/***********************************************
+	 * 회원가입 정보입력후
+	 * ********************************************/
+	@RequestMapping(value="member/mForm.do",
+			method = RequestMethod.POST)
+	public ModelAndView memberInsert(ClMVO cmvo,ModelAndView mav) {
+		logger.info("mForm.do post 방식에 의한 메서드 호출 성공");
+		
+		clMService.memberInsert(cmvo);
+		mav.setViewName("client/member/joinsuccess");
+		return mav;
 	}
 
 }

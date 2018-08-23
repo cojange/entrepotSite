@@ -4,8 +4,19 @@
 	<typeAliases>
 		<typeAlias type="com.site.client.board.vo.ClImgbVO" alias="imgb" />
 		<typeAlias type="com.site.admin.ctrl.adMember.vo.AdManagerVO" alias="amvo"/>
+
 		<typeAlias type="com.site.client.magazine.ditail.vo.MagazineVO" alias="mgvo"/>
 		<typeAlias type="com.site.client.magazine.plus.vo.PlusVO" alias="plvo"/>
+
+		<typeAlias type="com.site.admin.ctrl.adPartner.vo.CourierPartnerVO" alias="couPartner"/>
+		<typeAlias type="com.site.client.member.individual.vo.ClMVO" alias="member"/>
+		<typeAlias type="com.site.admin.ctrl.adPartner.vo.MagazinePartnerVO" alias="magPartner"/>
+		<typeAlias type="com.site.admin.regulations.regulations.vo.RegAgreeVO" alias="regAgree"/>
+		<typeAlias type="com.site.admin.regulations.regulations.vo.RegulationsVO" alias="reg"/>
+		<typeAlias type="com.site.client.member.individual.vo.ClMSecurity" alias="security"/>
+		<typeAlias type="com.site.client.member.login.vo.LoginVO" alias="login"/>
+		<typeAlias type="com.site.admin.cost.adCost.vo.AdCostVO" alias="acvo"/>
+
 	</typeAliases>
 </configuration>
 <!-- mybatis xml mapper파일로 생성 후에 변경(5곳/대소문자 구별) -->

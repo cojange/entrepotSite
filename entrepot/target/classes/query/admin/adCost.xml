@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.site.admin.cost.adCost.dao.AdCostDao">
+	<insert id="excelInsert" parameterType="acvo">
+		insert into cost(cost_file, ad_id)
+		values(#{cost_file},'entrepot')
+	</insert>
+</mapper>

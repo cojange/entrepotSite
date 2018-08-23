@@ -35,6 +35,12 @@
       <h1 class="my-4">${mvo.homename}
         <small>>> ${mvo.key}</small>
       </h1>
+    <table>  
+      
+    <tr>
+    <td width="130" valign="top" align="center">
+    <td width="10"></td>
+    <td>  
 	<table width="90%" border="0" cellpadding="0" cellspacing="10px" align="center" >
 		 <c:choose>
      		 <c:when test="${not empty magazienlist}">
@@ -160,6 +166,9 @@
 	</c:forEach>
 	</c:when>	
 	</c:choose> 
+</table>
+</td>
+</tr>
 </table>
 </body>
 </html>

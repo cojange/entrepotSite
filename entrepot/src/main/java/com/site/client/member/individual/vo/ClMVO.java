@@ -1,6 +1,6 @@
 package com.site.client.member.individual.vo;
 
-import com.site.client.login.vo.LoginVO;
+import com.site.client.member.login.vo.LoginVO;
 
 public class ClMVO extends LoginVO{
 
@@ -20,6 +20,11 @@ public class ClMVO extends LoginVO{
 	private String whish;		//	찜번호
 	private String cart;		//	장바구니번호
 	private String grade;		//	등급
+	
+	private int mt_num; //회원타입번호
+	private String mt; //회원타입
+	
+	
 	public String getM_birth() {
 		return m_birth;
 	}
@@ -116,6 +121,19 @@ public class ClMVO extends LoginVO{
 	public void setGrade(String grade) {
 		this.grade = grade;
 	}
+	public int getMt_num() {
+		return mt_num;
+	}
+	public void setMt_num(int mt_num) {
+		this.mt_num = mt_num;
+	}
+	public String getMt() {
+		return mt;
+	}
+	public void setMt(String mt) {
+		this.mt = mt;
+	}
+	
 
 	
 

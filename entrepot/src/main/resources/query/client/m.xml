@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.client.member.individual.dao.ClMDao">
+	<select id="memberSelect" parameterType="member" resultType="member">
+		/* member - memberSelect */
+		select m_num,m_id,m_pwd,m_name,m_email,m_birth 
+		from member where m_id=#{m_id}
+	</select>
+	
+	<insert id="memberInsert" parameterType="member">
+		/*member - memberInsert*/
+		<selectKey keyProperty="m_num" resultType="int" order="BEFORE">
+			select  member_seq.nextval from dual
+		</selectKey>
+		insert into member(m_num,m_id,m_pwd,m_name,m_birth,m_gender,m_email
+		,m_phone,m_job,m_zipcode,m_address,m_date,quiz,ans,cart,whish,mt)
+		values('p_'||#{m_num},#{m_id},#{m_pwd},#{m_name}
+		,#{m_birth},#{m_gender},#{m_email},#{m_phone}
+		,#{m_job},#{m_zipcode},#{m_address},sysdate,#{quiz},#{ans},'cart_'||member_seq.nextval,'whish_'||member_seq.nextval,'개인')
+	</insert>
+	
+	<select id="securitySelect" parameterType="String" resultType="security">
+		/* security - securitySelect */
+		select m_id,salt from security where m_id=#{m_id}
+	</select>
+	
+	<insert id="securityInsert" parameterType="security">
+		/*security - securityInsert*/
+		insert into security(m_id,salt)
+		values(#{m_id},#{salt})
+	</insert>
+	
+</mapper>
