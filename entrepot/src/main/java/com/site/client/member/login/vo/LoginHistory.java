@@ -1,4 +1,4 @@
-﻿package com.site.client.login.vo;
+﻿package com.site.client.member.login.vo;
 
 /**************************************************************** 
  * 로그인 시도 횟수 제한시 고려해야 할 항목들을 정리해 보면,

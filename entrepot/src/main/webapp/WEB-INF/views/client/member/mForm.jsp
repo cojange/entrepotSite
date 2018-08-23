@@ -20,7 +20,6 @@
 		<script type = "text/javascript">
 		
 			function errCodeCheck() {
-				$("#emailDirect").hide();
 				var errCode = '<c:out value="${errCode}" />';
 				if(errCode !=''){
 					switch(parseInt(errCode)){
@@ -35,6 +34,9 @@
 			}
 			
 			$(function() {
+
+				$("#ans").hide();
+				$("#emailDirect").hide();
 			    $("#m_zipcodeFind").click(function(){
 			    	new daum.Postcode({//다음 우편코드 프로그램 사용.
 			    		oncomplete: function(data) {
@@ -71,8 +73,7 @@
 	<div class="contentContainer">
    <div class="well">
       <form id="memberForm" class="form-horizontal">
-         <input type="hidden" name="email" id="email" />
-         <input type="hidden" name="pinno" id="pinno" />
+         <input type="hidden" name="m_email" id="m_email" />
          <div class="form-group form-group-sm">
             <label for="userId" class="col-sm-2 control-label">사용자 ID</label>
             <div class="col-sm-3">
@@ -106,7 +107,7 @@
          <div class="form-group form-group-sm">
             <label for="phone" class="col-sm-2 control-label">핸드폰 번호</label>
             <div class="col-sm-3">
-               <input type="text" id="m_phone" name="m_phone" maxlength="15" class="form-control" placeholder="Phone Number">   
+               <input type="text" id="m_phone" name="m_phone" maxlength="13" class="form-control" placeholder="Phone Number">   
             </div>
             <div class="col-sm-5">
                <p class="form-control-static error"></p>
@@ -115,7 +116,22 @@
          <div class="form-group form-group-sm">
             <label for="m_job" class="col-sm-2 control-label">직업</label>
             <div class="col-sm-3">
-               <input type="text" id="m_job" name="m_job" maxlength="15" class="form-control" placeholder="Job">   
+               <select id="m_job" name="m_job" class="form-control" class="form-control">
+                  <option></option>
+                  <option value="직장인">직장인</option>
+                  <option value="초등학생">초등학생</option>	
+                  <option value="중학생">중학생</option>
+                  <option value="고등학생">고등학생</option>
+                  <option value="대학생">대학생</option>
+                  <option value="운동선수">운동선수</option> 
+                  <option value="주부">주부</option> 
+                  <option value="프리랜서">프리랜서</option>
+                  <option value="디자이너">디자이너</option> 
+                  <option value="요리사">요리사</option>
+                  <option value="웹앱개발자">웹앱개발자</option> 
+                  <option value="정치인">정치인</option>
+                  <option value="건축가">건축가</option>                                            
+               </select>  
             </div>
             <div class="col-sm-5">
                <p class="form-control-static error"></p>
@@ -136,10 +152,10 @@
                <p class="form-control-static error"></p>
             </div>
          </div>
-          <div class="form-group form-group-sm">
+        <div class="form-group form-group-sm">
              <label for="m_address" class="col-sm-2 control-label"></label>
-             <div class="col-sm-2">
-			<input type="text" id="m_address" class="form-control" placeholder="주소" style="width:500px;" readonly="readonly" >
+            <div class="col-sm-2">
+				<input type="text" id="m_address" name="m_address"class="form-control" placeholder="주소" style="width:500px;" readonly="readonly" >
 			</div>
 			<div class="col-sm-5">
                <p class="form-control-static error"></p>
@@ -167,24 +183,50 @@
             </div>                  
          </div>
          <div class="form-group form-group-sm">
-            <label for="m_email" class="col-sm-2 control-label">회원 이메일</label>
+            <label for="emailName" class="col-sm-2 control-label">회원 이메일</label>
             <div class="col-sm-3">
-               <input type="text" id="m_email" name="m_email" maxlength="60" class="form-control" placeholder="EMAIL">
+               <input type="text" id="emailName" name="emailName" maxlength="60" class="form-control" placeholder="EMAIL">
             </div>
             <div class="col-sm-2">
-               <select id="emailDomain" class="form-control">
+               <select id="emailDomain" class="form-control" style="width: 100px;">
                   <option value="naver.com">naver.com</option>
                   <option value="daum.net">daum.net</option>
                   <option value="nate.com">nate.com</option>                                                 
                </select>
-               <input type="text" id="emailDirect" name="emailDirect" maxlength="60" class="form-control" placeholder="EMAIL"/>
+               <input type="text" id="emailDirect" name="emailDirect" maxlength="60" class="form-control" placeholder="EMAIL" style="width: 100px;"/>
 				<input id="direct" type="checkbox" width="10px;" height="10px;" >직접입력	
 			</div>
-         </div>   
+			<div class="col-sm-3">
+               <p class="form-control-static error"></p>
+            </div>
+         </div>        
+         <div class="form-group form-group-sm">
+            <label for="m_job" class="col-sm-2 control-label">비밀번호 질문</label>
             <div class="col-sm-3">
+               <select id="quiz" name="quiz" class="form-control" class="form-control" >
+                  <option value="없음">없음</option>
+                  <option value="나의 별명은 무엇입니까?">나의 별명은 무엇입니까?</option>
+                  <option value="나의 결혼기념일은 언제입니까?">나의 결혼기념일은 언제입니까?</option>	
+                  <option value="나는 어떤사람입니까?">나는 어떤사람입니까?</option>
+                  <option value="내가 좋아하는 장소는 어디입니까?">내가 좋아하는 장소는 어디입니까?</option>
+                  <option value="내가 좋아하는 음식은 무엇입니까?">내가 좋아하는 음식은 무엇입니까?</option>
+                  <option value="내가 싫어하는 장소는 어디입니까?">내가 싫어하는 장소는 어디입니까?</option> 
+                  <option value="나는 어떠한 취미가있습니까?">나는 어떠한 취미가있습니까?</option>                                         
+               </select>  
+            </div>
+            <div class="col-sm-5">
                <p class="form-control-static error"></p>
             </div>
          </div>
+          <div class="form-group form-group-sm">
+             <label for="ans" class="col-sm-2 control-label"></label>
+            <div class="col-sm-2">
+				<input type="text" id="ans" name="ans" class="form-control" placeholder="비밀번호질문답" style="width:300px;" value="없음">
+			</div>
+			<div class="col-sm-5">
+               <p class="form-control-static error"></p>
+            </div>
+		</div>
          <div class="form-group">   
             <div class="col-sm-offset-2 col-sm-6">
                <input type="button" value="확인" id="joinInsert" class="btn btn-default" /> 

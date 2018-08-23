@@ -25,6 +25,7 @@
 
     <!-- Page level plugin CSS-->
     <link href="/resources/include/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="/resources/include/admin/vendor/datatables/dataTables.bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="/resources/include/admin/css/sb-admin.min.css" rel="stylesheet">
@@ -59,7 +60,8 @@
 	    <script src="/resources/include/admin/vendor/chart.js/Chart.min.js"></script>
 	    <script src="/resources/include/admin/vendor/datatables/jquery.dataTables.min.js"></script>
 	    <script src="/resources/include/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-	
+	    <script src="/resources/include/admin/vendor/datatables/dataTables.bootstrap.js"></script>
+		
 	    <!-- Custom scripts for all pages-->
 	    <script src="/resources/include/admin/js/sb-admin.min.js"></script>
 	
@@ -70,7 +72,7 @@
 	    <script type="text/javascript" src="/resources/include/admin/js/ad-clock.js"></script>  
 	    <script type="text/javascript">
 	    	$(function(){
-	    		printClock();
+	    		printClock();	    	
 	    		
 	    		console.log($(location).attr("href"));
 	    		
@@ -85,12 +87,16 @@
 	    					});
 	    					$("#cost_ExcelFile").submit();
 	    				}
+
 	    			});//Excel 업로드 Btn
 	    			
 	    			$("#templateDown").click(function(){
 	    				location.href ="/admin/adcost/downloadTemplate.do";
 	    			});
 	    		}//비용 탭 일때 JS
+
+	    			})
+	    		}
 	    	});
 	    </script>
   </body>
