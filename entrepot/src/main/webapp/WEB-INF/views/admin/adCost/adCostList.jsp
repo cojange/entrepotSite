@@ -22,6 +22,9 @@
                   </span>
                 </a>
               </div>
+            	<form id="loadExcel" name="loadExcel" method="post">
+            		<input type="hidden" name="cost_file" value="${cardData.cost_file }"/>
+            	</form>
             </div>
   	 		</c:forEach>
   	 	</c:when>

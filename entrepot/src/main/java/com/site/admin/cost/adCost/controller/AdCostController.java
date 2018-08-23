@@ -7,8 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.site.admin.cost.adCost.service.AdCostService;
@@ -59,7 +62,7 @@ public class AdCostController {
 		return "redirect:"+url;
 	}
 	
-
+	//template 다운로드
 	@RequestMapping(value="/downloadTemplate.do", method=RequestMethod.GET)
 	public ModelAndView costExcel() {
 		
@@ -73,6 +76,13 @@ public class AdCostController {
 		mav.addObject("file_name","board");
 		
 		return mav;
+	}
+	
+	//엑셀 파일 읽어오기
+	@ResponseBody
+	@RequestMapping(value="/readExcel.do")
+	public String readExcel(@RequestBody String cost_file) {
+		
 	}
 	
 }
