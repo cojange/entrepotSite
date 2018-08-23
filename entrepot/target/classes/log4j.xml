@@ -20,6 +20,11 @@
 	<logger name="com.site.admin.ctrl.adMember.dao">
 		<level value="trace"/>
 	</logger>
+
+	
+	<logger name="com.site.client.magazine.list.dao">
+		<level value="trace"/>
+	</logger>
 	
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework.core">

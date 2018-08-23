@@ -14,9 +14,9 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="/">Home</a></li>
-            <li><a href="#">게시판</a></li>
+            <li><a href="/client/list/magazinelist.do?key=여성&listkey=target&homename=베스트" >게시판</a></li>
             <li><a href="#">갤러리</a></li>
-            <li><a href="client/member/mForm.do">회원가입</a></li>
+            <li><a href="/client/member/mForm.do">회원가입</a></li>
            <!--  <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
