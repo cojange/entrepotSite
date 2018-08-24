@@ -78,6 +78,20 @@
 	    		//회원관리탭
 	    		if($(location).attr("href") == "http://localhost:8080/admin/ctrl/adMember/adMemberCtrl.do"){
 	    			$("#adminTable").dataTable();
+	    			//현재 회원관리 select 값 담기
+	    			var mbType = $("#mbType");
+	    			
+	    			$("#mbType").change(function(){
+	    				if($("#mbType").val()!=mbType){
+	    					if(mbType == "total"){
+	    						
+	    					}else if(mbType == "personal"){
+	    						
+	    					}else if(mbType == "group"){
+	    						
+	    					}
+	    				}
+	    			})
 	    		}
 	    		
 	    		//비용관리탭

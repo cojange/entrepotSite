@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.site.admin.ctrl.adMember.vo.AdManagerVO;
+import com.site.admin.ctrl.adMember.vo.AdMbCommonVO;
 
 @Repository
 public class AdMemberDaoImpl implements AdMemberDao{
@@ -17,5 +18,10 @@ public class AdMemberDaoImpl implements AdMemberDao{
 	@Override
 	public List<AdManagerVO> adminList(AdManagerVO amvo) {
 		return session.selectList("amdinList",amvo);
+	}
+	
+	@Override
+	public List<AdMbCommonVO> memberList(AdMbCommonVO amcvo){
+		return session.selectList("memberList",amcvo);
 	}
 }

@@ -11,31 +11,41 @@
      <!-- 회원 관리 -->
      <div class="card mb-3">
             <div class="card-header">
-              <i class="fas fa-users"></i>
-                 회원 관리</div>
+              <i class="fas fa-users"></i>회원 관리
+              <form id="searchMB" name="searchMB">
+              	<select id="mbType" name="mbType">
+              	  <option value="total">전체</option>
+	              <option value="personal">개인 회원</option>
+	              <option value="group">단체 회원</option>
+              	</select>
+              </form>
+              
+            </div>
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>순번</th>
-                      <th>이름</th>
+                      <th>회원번호</th>
                       <th>아이디</th>
+                      <th>이름</th>
                       <th>전화번호</th>
                       <th>이메일</th>
                       <th>가입일</th>
-                      <th>등급</th>
+                      <th>직업/기관</th>
+                      <th>회원타입</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
-                      <th>순번</th>
-                      <th>이름</th>
+                      <th>회원번호</th>
                       <th>아이디</th>
+                      <th>이름</th>
                       <th>전화번호</th>
                       <th>이메일</th>
                       <th>가입일</th>
-                      <th>등급</th>
+                      <th>직업/기관</th>
+                      <th>회원타입</th>
                     </tr>
                   </tfoot>
                   <tbody>
@@ -43,13 +53,14 @@
                        <c:when test="${not empty memberList }">
                           <c:forEach var="memberM" items="${memberList }" varStatus="status">
                              <tr class="tac" data-num="${status.count }">
-                                <td>${status.count}</td>
+                                <td>${memberM.m_num}</td>
+                                <td>${memberM.m_id}</td>
                                 <td>${memberM.m_name }</td>
-                                <td>${memberM.m_id }</td>
                                 <td>${memberM.m_phone }</td>
                                 <td>${memberM.m_email }</td>
                                 <td>${memberM.m_date }</td>
-                                <td>${memberM.grade }</td>
+                                <td>${memberM.m_job}</td>
+                                <td>${memberM.mt}</td>
                              </tr>
                           </c:forEach>
                        </c:when>
