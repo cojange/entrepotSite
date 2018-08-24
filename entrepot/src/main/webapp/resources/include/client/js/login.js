@@ -8,13 +8,11 @@ errorCodeCheck();
 /* 로그인 버튼 클릭 시 처리 이벤트 */
 	$("#loginBtn").click(function(){
 		if (!formCheck($('#m_id'), $('.error:eq(0)'), "아이디를")) return;
-		else if (!inputVerify(0,$('#m_id'),'.error:eq(0)')) return;
 		else if (!formCheck($('#m_pwd'),$('.error:eq(1)'), "비밀번호를")) return;
-		else if (!inputVerify(1,$('#m_pwd'), '.error:eq(1)')) return;
 		else {
 			$("#loginForm").attr({
 				"method":"POST",
-				"action":"/client/login/login.do"
+				"action":"/client/member/login.do"
 			});
 			$("#loginForm").submit();
 		}

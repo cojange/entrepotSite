@@ -35,6 +35,9 @@
 	<logger name="com.site.admin.ctrl.adMember.dao">
 		<level value="trace"/>
 	</logger>
+	<logger name="com.site.common.file">
+		<level value="info"/>
+	</logger>
 	
 
 	
