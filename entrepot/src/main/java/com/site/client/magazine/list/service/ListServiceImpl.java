@@ -20,11 +20,17 @@ public class ListServiceImpl implements ListService {
 	public List<MagazineVO> magazineList(MagazineVO mvo) {
 		List<MagazineVO> alist =null;
 		
+		
+		
 		alist = listDao.magazineList(mvo);
 		for(MagazineVO ad : alist) {
 			ad.setPd_salecost((int)(ad.getPd_sale()-(ad.getPd_sale()*(ad.getPd_rate()*0.01))));
 		}
 		return alist;
 	}
+
+
+
+
 	
 }

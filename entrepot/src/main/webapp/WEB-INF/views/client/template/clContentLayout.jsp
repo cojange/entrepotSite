@@ -15,11 +15,10 @@
 
 	
 	
-    <!-- Bootstrap core CSS -->
-    <link href="/resources/include/client/dist/css/bootstrap.min.css" rel="stylesheet">
+  	<link href="/resources/include/client/css/default.css" rel="stylesheet" type="text/css" media="all" />
+  	<link href="/resources/include/client/css/list.css" rel="stylesheet" type="text/css" media="all" />
 
     <!-- Custom styles for this template -->
-    <link href="/resources/include/client/css/sticky-footer-navbar.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -40,11 +39,12 @@
      <!-- 헤더 설정 -->
      	<tiles:insertAttribute name="header"/>
     </nav>
+     <div>
+    	<tiles:insertAttribute name="sidebar"/>
+    </div>
 
      <div class="container">
-     	<div class="page-header">
-     		<h1><tiles:getAsString name="title"/></h1>
-     	</div>
+     	
      	<tiles:insertAttribute name="body"/>
      </div>
 

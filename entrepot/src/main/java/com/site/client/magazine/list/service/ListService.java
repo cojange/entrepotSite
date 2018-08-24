@@ -7,5 +7,7 @@ import com.site.client.magazine.ditail.vo.MagazineVO;
 public interface ListService {
 
 	public List<MagazineVO> magazineList(MagazineVO mvo);
+
+
 	
 }
