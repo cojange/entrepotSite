@@ -93,70 +93,83 @@
             <div class="card-body">
               <div class="table-responsive">
               	<table width="100%">
-              		<colgroup>
-						<col width="50%" />
-						<col width="50%" />
-					</colgroup>
               		<tr>
               			<td>
               				<label>약관 유형 : </label>
 		              		<select>
-		              			<option>사이트이용약관</option>
-		              			<option>정보이용동의약관</option>
+		              			<option>[개인회원]사이트이용약관</option>
+		              			<option>[단체회원]사이트이용약관</option>
+		              			<option>[개인회원]정보이용동의약관</option>
+		              			<option>[단체회원]정보이용동의약관</option>
+		              			<option>[개인회원]환불·취소규정약관</option>
+		              			<option>[단체회원]환불·취소규정약관</option>
 		              			<option>기타</option>
 		              		</select>
               			</td>
-              			<td style="text-align: right">
-              				<input type="text" />
-              				<input type="button" value="파일명 조회" />
-              			</td>
+              		</tr>
+              		<tr id="factory_tbody">
               		</tr>
               	</table>
-              	
-                <table class="table table-bordered" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>번호</th>
-                      <th>약관 유형</th>                     
-                      <th>등록일</th>
-                      <th>수정일</th> 
-                      <th>파일명</th>
-                    </tr>
-                  </thead>
-                  <tfoot>
-                    <tr>
-                      <th>번호</th>
-                      <th>약관 유형</th>                     
-                      <th>등록일</th>
-                      <th>수정일</th> 
-                      <th>파일명</th>
-                    </tr>
-                  </tfoot>
-                  <tbody>
-                     <c:choose>
-						<c:when test="${not empty regList}">
-							<c:forEach var="reg" items="${regList}" varStatus="status">
-								<tr class="tac" data-num="${status.count}">
-									<td>${status.count}</td>
-									<td>${reg.reg_type}</td>
-									<td>${reg.reg_date}</td>
-									<td>${reg.reg_update}</td>
-									<td>${reg.reg_file}</td>
+              	<form id="regWriteForm">
+	                <table class="table table-bordered" width="100%" cellspacing="0">
+	               	 <colgroup>
+							<col width="7%" />
+							<col width="23%" />
+							<col width="11%" />
+							<col width="11%" />
+							<col width="11%" />
+							<col width="12%" />
+							<col width="25%" />
+						</colgroup>
+	                  <thead>
+	                    <tr>
+	                      <th>번호</th>
+	                      <th>약관 유형</th>                     
+	                      <th>등록일</th>
+	                      <th>수정일</th>
+	                      <th>공개일</th>
+	                      <th>비공개전환일</th>
+	                      <th>파일명</th>
+	                    </tr>
+	                  </thead>
+	                  <tfoot>
+	                    <tr>
+	                      <th>번호</th>
+	                      <th>약관 유형</th>                     
+	                      <th>등록일</th>
+	                      <th>수정일</th>
+	                      <th>공개일</th>
+	                      <th>비공개전환일</th>                      
+	                      <th>파일명</th>
+	                    </tr>
+	                  </tfoot>
+	                  <tbody id="factory_table">                  	
+	                     <c:choose>
+							<c:when test="${not empty regList}">
+								<c:forEach var="reg" items="${regList}" varStatus="status">
+									<tr class="tac" data-num="${status.count}">
+										<td>${status.count}</td>
+										<td>${reg.reg_type}</td>
+										<td>${reg.reg_date}</td>
+										<td>${reg.reg_update}</td>
+										<td>${reg.reg_open}</td>
+										<td>${reg.reg_close}</td>									
+										<td>${reg.reg_file}</td>
+									</tr>
+								</c:forEach>
+							</c:when>
+							<c:otherwise>
+								<tr>
+									<td colspan="4" class="tac">등록된 게시물이 존재하지 않습니다.</td>
 								</tr>
-							</c:forEach>
-						</c:when>
-						<c:otherwise>
-							<tr>
-								<td colspan="4" class="tac">등록된 게시물이 존재하지 않습니다.</td>
-							</tr>
-						</c:otherwise>
-					</c:choose>
-                  </tbody>
-                </table>
+							</c:otherwise>
+						</c:choose>
+	                  </tbody>
+	                </table>
+                </form>
                 <div style="text-align: right;">
-              		<input type="button" value="등록"/>
+              		<input type="button" value="등록" id="addData"/>
 					<input type="button" value="수정"/>
-					<input type="button" value="삭제"/>
                 </div>
               </div>
             </div>

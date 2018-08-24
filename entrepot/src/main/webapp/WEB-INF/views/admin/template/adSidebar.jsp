@@ -32,6 +32,9 @@
             <span>게시판관리</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+           	<h6 class="dropdown-header">1:1 게시판</h6>
+            <a class="dropdown-item" href="#"></a>
+            <div class="dropdown-divider"></div>
             <h6 class="dropdown-header">공지사항 게시판</h6>
             <a class="dropdown-item" href="#"></a>
             <div class="dropdown-divider"></div>

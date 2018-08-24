@@ -1,11 +1,15 @@
 package com.site.admin.adBoard.regulations.vo;
 
-public class RegulationsVO {
+import com.site.common.vo.CommonVO;
+
+public class RegulationsVO extends CommonVO{
 	private String reg_no;
 	private String reg_file;
 	private String reg_date;
 	private String reg_update;
 	private String reg_type;
+	private String reg_open;
+	private String reg_close;
 	
 	public String getReg_no() {
 		return reg_no;
@@ -36,5 +40,17 @@ public class RegulationsVO {
 	}
 	public void setReg_type(String reg_type) {
 		this.reg_type = reg_type;
+	}
+	public String getReg_open() {
+		return reg_open;
+	}
+	public void setReg_open(String reg_open) {
+		this.reg_open = reg_open;
+	}
+	public String getReg_close() {
+		return reg_close;
+	}
+	public void setReg_close(String reg_close) {
+		this.reg_close = reg_close;
 	}
 }

@@ -5,14 +5,15 @@
 	<select id="regList" parameterType="reg" resultType="reg">
 		/*약관 리스트*/
 		select reg_no, reg_file, to_char(reg_date,'yy-mm-dd') reg_date,
-		to_char(reg_update,'yy-mm-dd') reg_update, reg_type
+		to_char(reg_update,'yy-mm-dd') reg_update, reg_type,
+		to_char(reg_open,'yy-mm-dd') reg_open, to_char(reg_close,'yy-mm-dd') reg_close
 		from regulations
 		<!-- <where>
 			<if test="keyword != null and keyword != ''">
 				<![CDATA[ reg_type LIKE '%'|| #{keyword} ||'%' ]]>
 			</if>
 		</where> -->
-		order by reg_no
+		order by reg_no desc
 	</select>
 	<select id="regAgreeList" parameterType="regAgree" resultType="regAgree">
 		/*약관동의 리스트*/

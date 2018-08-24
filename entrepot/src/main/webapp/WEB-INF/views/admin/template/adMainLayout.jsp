@@ -25,7 +25,6 @@
 
     <!-- Page level plugin CSS-->
     <link href="/resources/include/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <link href="/resources/include/admin/vendor/datatables/dataTables.bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="/resources/include/admin/css/sb-admin.min.css" rel="stylesheet">
@@ -60,7 +59,7 @@
 	    <script src="/resources/include/admin/vendor/chart.js/Chart.min.js"></script>
 	    <script src="/resources/include/admin/vendor/datatables/jquery.dataTables.min.js"></script>
 	    <script src="/resources/include/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-	    <script src="/resources/include/admin/vendor/datatables/dataTables.bootstrap.js"></script>
+	    <script src="/resources/include/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 		
 	    <!-- Custom scripts for all pages-->
 	    <script src="/resources/include/admin/js/sb-admin.min.js"></script>
@@ -69,7 +68,10 @@
 	    <script src="/resources/include/admin/js/demo/datatables-demo.js"></script>
 	    <script src="/resources/include/admin/js/demo/chart-area-demo.js"></script> 
 	    
+	    <!-- 사용자 정의 js -->
+	    <script type="text/javascript" src="/resources/include/common/js/common.js"></script>
 	    <script type="text/javascript" src="/resources/include/admin/js/ad-clock.js"></script>  
+	    <script type="text/javascript" src="/resources/include/admin/js/regulationsList.js"></script>
 	    <script type="text/javascript">
 	    	$(function(){
 	    		printClock();	    	
@@ -89,6 +91,9 @@
 	    				}
 	    			})
 	    		}
+	    		
+	    		/* 약관추가 */
+	    		addRegulation();
 	    	});
 	    </script>
   </body>

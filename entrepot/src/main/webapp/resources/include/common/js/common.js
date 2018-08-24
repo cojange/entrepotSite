@@ -42,6 +42,20 @@ function chkFile(item){
 	}
 }
 
+/* 함수명 : chkText(유효성 체크 대상)
+ * 셜명 : 이미지 파일 여부를 확인하기 위해 확장자 확인 함수. */
+function chkText(item){
+	/* 배열내의 값을 찾아서 인덱스를 반환(요소가 없을 경우 -1반환)
+	 * jQuery.inArray(찾을 값, 검색 대상의 배열) */
+	var ext = item.val().split('.').pop().toLowerCase();
+	if(jQuery.inArray(ext, ['pdf']) == -1) {
+		alert('pdf 파일만 업로드 할수 있습니다.');
+		return false;
+	}else{
+		return true;
+	}
+}
+
 /* formCheck(유효성 체크 대상, 출력 영역, 메세지 내용) */
 function formCheck(main, item, msg){
 	if(main.val().replace(/\s/g,"")==""){
@@ -54,7 +68,7 @@ function formCheck(main, item, msg){
 }
 
 /* 함수명 : getDateFormat(날짜 데이터)
- * 설명 : dataValue의 갓을 년-월-일 형식(예시: 2018-01-01)으로 반환. */
+ * 설명 : dataValue의 값을 년-월-일 형식(예시: 2018-01-01)으로 반환. */
 function getDateFormat(dateValue){
 	var year = dateValue.getFullYear();
 	
