@@ -23,6 +23,7 @@ public class AdCostServiceImpl implements AdCostService{
 	@Autowired
 	private AdCostDao adCostDao;
 
+	//cost DB 입력
 	@Override
 	public int excelInsert(AdCostVO acvo, HttpServletRequest request)  throws IllegalStateException, IOException{
 		
@@ -48,6 +49,7 @@ public class AdCostServiceImpl implements AdCostService{
 		return result;
 	}
 
+	//card에 쓸 파일 등록
 	@Override
 	public List<AdCostVO> selectCard(String month) {
 		
@@ -61,7 +63,11 @@ public class AdCostServiceImpl implements AdCostService{
 		for(int i=0; i<mon; i++) {
 			try {
 			keyword = (i+1)+"월";
+			
+			//db에서 꺼내오기
 			acvo = adCostDao.selectCard(keyword);
+			
+			//card에 쓸 이름
 			acvo.setCardName(keyword+" 지출내역");
 			acList.add(acvo);
 			}catch(NullPointerException e) {

@@ -44,7 +44,7 @@ public class FileUploadUtil {
 			}
 			real_name = fileName + "_" + code +"_" +org_name;
 			
-			String docRoot = request.getSession().getServletContext().getRealPath("/uploadStorage/"+fileName);
+			String docRoot = request.getSession().getServletContext().getRealPath("/uploadStorage/cost/"+fileName);
 			makeDir(docRoot);
 			
 			File fileAdd = new File(docRoot+"/" +real_name);

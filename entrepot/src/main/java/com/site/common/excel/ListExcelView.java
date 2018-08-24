@@ -14,6 +14,8 @@ import org.apache.log4j.Logger;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.web.servlet.view.AbstractView;
 
+import com.site.common.util.GetDateUtil;
+
 import net.sf.jxls.transformer.XLSTransformer;
 
 public class ListExcelView extends AbstractView {
@@ -30,8 +32,12 @@ public class ListExcelView extends AbstractView {
       //""은 큰따옴표 하나로 출력됨
       //file_name의 값은 board(AdminBoardController에서 확인)
       //board_20180810.xlsx의 형태로 출력
-      response.setHeader("Content-Disposition", "attachment;fileName=\""+model.get("file_name")+"_"+new SimpleDateFormat("yyyyMMdd").format(Calendar.getInstance().getTime())+".xlsx\"");
-      response.setContentType("application/x-msexcel; charset=UTF-8");
+	   
+	   GetDateUtil gdu = GetDateUtil.getInstance();
+	   response.setContentType("application/x-msexcel; charset=UTF-8");
+      response.setHeader("Content-Disposition", "attachment;fileName=\""+model.get("file_name")+
+    		  gdu.getYear()+"_"+gdu.getMonth()+gdu.getDay()+"_"+model.get("file_key")+"_"+gdu.getMonth()+model.get("endWord")+".xlsx\"");
+      
       
       /***************************************************************************************************
        * 참고 : jXLS는 엑셀파일 포맷의 템플릿을 이용하여 엑셀파일을 손쉽게 생성하기 위한 패키지

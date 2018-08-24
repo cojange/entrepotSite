@@ -31,7 +31,7 @@ public class ExcelReadUtil {
 		
 		String excelFile = path.substring(path.lastIndexOf(".")).toLowerCase();
 		String filePath = 
-			request.getSession().getServletContext().getRealPath("/uploadStorage/"+path.substring(0, 8)+"/"+path);
+			request.getSession().getServletContext().getRealPath("/uploadStorage/cost/"+path.substring(0, 8)+"/"+path);
 		
 		
 		

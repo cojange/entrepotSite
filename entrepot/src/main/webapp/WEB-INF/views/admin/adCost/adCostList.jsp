@@ -38,7 +38,7 @@
                   </div>
                   <div class="mr-5">지출 내역 없음</div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="#">
+                <a class="card-footer text-white clearfix small z-1 viewExcel" href="#">
                   <span class="float-left">지출 내역 엑셀파일을 업로드 해주세요.</span>
                   <span class="float-right">
                     <i class="fas fa-angle-right"></i>
@@ -69,7 +69,7 @@
           <div class="card mb-3">
             <div class="card-header">
               <i class="fas fa-users"></i>
-                 회원 관리</div>
+                 지출 비용 관리</div>
             <div class="card-body">
               <div class="table-responsive" id="memberList">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

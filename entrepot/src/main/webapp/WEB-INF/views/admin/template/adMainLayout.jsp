@@ -80,9 +80,14 @@
 	    			/* if(${status} == "fail"){
 	    				alert("엑셀 파일이 존재하지 않습니다.");
 	    			} */
+	    			
+	    			//엑셀 파일 업로드
 	    			$("#uploadBtn").click(function(){
 	    				if($("#excelCost").val() ==""){
 	    					alert("파일을 선택해 주세요.");
+	    					//엑셀파일여부 유효성검사
+	    				}else if(!chkExcelFile($("#cost_ExcelFile"))){
+	    					return;
 	    				}else{
 	    					$("#cost_ExcelFile").attr({
 	    						"method":"POST",
@@ -100,8 +105,10 @@
 	    			//card 클릭시 엑셀 로드
 	    			$(".viewExcel").click(function(event){
 	    				event.preventDefault();
+	    				if($(this).attr("href")=="#"){
+	    					return;
+	    				}
 	    				var formId=$("#loadExcel"+$(this).attr("href"));
-	    				console.log(formId);
 	    				formId.attr({
 	    					"method":"post",
 	    					"action":"/admin/adcost/readExcel.do"
