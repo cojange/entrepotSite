@@ -16,6 +16,13 @@
 	</select>
 	
 	<select id="excelSelect" parameterType="String" resultType="acvo">
-		select cost_file, ad_id from cost where cost_file = #{cost_file}
+		select cost_file, ad_id from cost 
+		where substr(cost_file,'0','8') = 'cost'||to_char(sysdate,'yyyy') and cost_file like '%'||#{month}||'%'
 	</select>
+	
+	<update id="excelUpdate" parameterType="acvo">
+		update cost
+		set cost_file = #{cost_file}, ad_id='entrepot'
+		where cost_file like '%'||#{lastFile}||'%'
+	</update>
 </mapper>

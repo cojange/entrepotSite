@@ -63,7 +63,7 @@
 		
 	    <!-- Custom scripts for all pages-->
 	    <script src="/resources/include/admin/js/sb-admin.min.js"></script>
-	
+		<script type="text/javascript" src="/resources/include/common/js/common.js"></script>
 	    <!-- Demo scripts for this page-->
 	    <script src="/resources/include/admin/js/demo/datatables-demo.js"></script>
 	    <script src="/resources/include/admin/js/demo/chart-area-demo.js"></script> 
@@ -75,6 +75,12 @@
 	    		
 	    		console.log($(location).attr("href"));
 	    		
+	    		//회원관리탭
+	    		if($(location).attr("href") == "http://localhost:8080/admin/ctrl/adMember/adMemberCtrl.do"){
+	    			$("#adminTable").dataTable();
+	    		}
+	    		
+	    		//비용관리탭
 	    		if($(location).attr("href")=="http://localhost:8080/admin/adcost/adCostList.do" ||
 	    				$(location).attr("href")=="http://localhost:8080/admin/adcost/readExcel.do" ){
 	    			/* if(${status} == "fail"){
@@ -86,7 +92,7 @@
 	    				if($("#excelCost").val() ==""){
 	    					alert("파일을 선택해 주세요.");
 	    					//엑셀파일여부 유효성검사
-	    				}else if(!chkExcelFile($("#cost_ExcelFile"))){
+	    				}else if(!chkExcelFile($("#excelCost"))){
 	    					return;
 	    				}else{
 	    					$("#cost_ExcelFile").attr({

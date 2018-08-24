@@ -74,9 +74,7 @@ public class AdCostController {
 		ModelAndView mav = new ModelAndView(new ListExcelView());
 		mav.addObject("month", month);
 		mav.addObject("template","cost_template.xlsx");
-		mav.addObject("file_name","cost");
-		mav.addObject("file_key","지출내역");
-		mav.addObject("endWord","월");
+		mav.addObject("file_name","cost_template");
 		
 		return mav;
 	}

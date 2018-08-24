@@ -14,7 +14,7 @@
               <i class="fas fa-users"></i>
                  회원 관리</div>
             <div class="card-body">
-              <div class="table-responsive" id="memberList">
+              <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
@@ -72,8 +72,8 @@
               <i class="fas fa-user-cog"></i>
                  관리자 관리</div>
             <div class="card-body">
-              <div class="table-responsive" id="memberList">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="adminTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
                       <th>순번</th>

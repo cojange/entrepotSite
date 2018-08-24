@@ -9,6 +9,7 @@ public interface AdCostDao {
 	public int excelInsert(AdCostVO acvo);
 	public AdCostVO selectCard(String keyword);
 	
-	public AdCostVO excelSelect(String cost_file);
+	public AdCostVO excelSelect(String month);
+	public int excelUpdate(AdCostVO acvo);
 
 }

@@ -47,7 +47,7 @@ function chkFile(item){
 function chkExcelFile(item){
 	var ext = item.val().split(".").pop().toLowerCase();
 	if(jQuery.inArray(ext,['xls','xlsx'])==-1){
-		alert("xls,xlsx형식의 파일만 업로드 할 수 있습니다.");
+		alert("xls,xlsx형식의 파일만 업로드 할 수 있습니다."+ext);
 		return false;
 	}else{
 		return true;

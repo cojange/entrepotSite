@@ -35,6 +35,8 @@ public class AdMemberController {
 	      
 	      List<AdManagerVO> adminList=adMemberService.adminList(amvo);
 	      //관리자 리스트
+	/*      List<A>*/
+	      
 	      mav.addObject("adminList",adminList);
 	      mav.setViewName("admin/adMember/list/adminList");
 	      

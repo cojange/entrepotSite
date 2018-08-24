@@ -25,8 +25,13 @@ public class AdCostDaoImpl implements AdCostDao {
 	}
 
 	@Override
-	public AdCostVO excelSelect(String cost_file) {
-		return session.selectOne("excelSelect",cost_file);
+	public AdCostVO excelSelect(String month) {
+		return session.selectOne("excelSelect",month);
+	}
+
+	@Override
+	public int excelUpdate(AdCostVO acvo) {
+		return session.update("excelUpdate",acvo);
 	}
 
 }

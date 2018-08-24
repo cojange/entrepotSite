@@ -26,7 +26,7 @@ public class FileUploadUtil {
 	}
 	
 	/*파일 업로드 메서드*/
-	public static String fileUpload(MultipartFile file, HttpServletRequest request,String fileName, String mode) 
+	public static String fileUpload(MultipartFile file,String folder, HttpServletRequest request,String fileName, String mode) 
 		throws IOException{
 		logger.info("fileUpload 호출 성공");
 		String real_name=null;
@@ -44,7 +44,8 @@ public class FileUploadUtil {
 			}
 			real_name = fileName + "_" + code +"_" +org_name;
 			
-			String docRoot = request.getSession().getServletContext().getRealPath("/uploadStorage/cost/"+fileName);
+			String docRoot = request.getSession().getServletContext().getRealPath("/uploadStorage/"+folder+"/"+fileName);
+			
 			makeDir(docRoot);
 			
 			File fileAdd = new File(docRoot+"/" +real_name);
@@ -56,12 +57,12 @@ public class FileUploadUtil {
 	}
 	
 	/*파일 삭제 메서드*/
-	public static void fileDelete(String fileName, HttpServletRequest request) throws IOException{
+	public static void fileDelete(String fileName,String folder, HttpServletRequest request) throws IOException{
 		logger.info("fileDelete 호출 성공");
 		
 		boolean result = false;
 		String dirName = fileName.substring(0, fileName.indexOf("_"));
-		String docRoot = request.getSession().getServletContext().getRealPath("/uploadStorage/"+dirName);
+		String docRoot = request.getSession().getServletContext().getRealPath("/uploadStorage/"+folder+"/"+dirName);
 		
 		File fileDelete = new File(docRoot + "/" + fileName);
 		logger.info("삭제할 파일(fileDelete) : "+fileDelete);

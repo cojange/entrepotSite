@@ -35,8 +35,7 @@ public class ListExcelView extends AbstractView {
 	   
 	   GetDateUtil gdu = GetDateUtil.getInstance();
 	   response.setContentType("application/x-msexcel; charset=UTF-8");
-      response.setHeader("Content-Disposition", "attachment;fileName=\""+model.get("file_name")+
-    		  gdu.getYear()+"_"+gdu.getMonth()+gdu.getDay()+"_"+model.get("file_key")+"_"+gdu.getMonth()+model.get("endWord")+".xlsx\"");
+      response.setHeader("Content-Disposition", "attachment;fileName=\""+model.get("file_name")+".xlsx\"");
       
       
       /***************************************************************************************************
