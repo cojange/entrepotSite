@@ -15,10 +15,9 @@
     <title>앙뜨흐뽀</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/resources/include/client/dist/css/bootstrap.min.css" rel="stylesheet">
-
+  	<link href="/resources/include/client/css/default.css" rel="stylesheet" type="text/css" media="all" />
     <!-- Custom styles for this template -->
-    <link href="/resources/include/client/css/sticky-footer-navbar.css" rel="stylesheet">
+
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -50,32 +49,70 @@
     </div> -->
     
    <!-- Begin page content -->
-     <div class="container">
-   		 <div class="page-header">
-  			  <div class="jumbotron">
-      			  <h1>앙뜨흐뽀</h1>
-       			  <p>★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆★☆</p>
-     		  </div>
-   	     </div>
-      <div class="row">
-        <div class="col-xs-6 col-lg-4">
-          <h2>게시판 관리</h2>
-          <p>처음으로 만든 게시판. 이미지 첨부가 가능한 게시판. 입력/수정/삭제 및 댓글 작성까지 처리 완료.</p>
-          <p><a class="btn btn-default" href="/board/boardList.do" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-xs-6 col-lg-4">
-          <h2>갤러리 게시판 관리</h2>
-          <p>썸네일 처리 게시판. 입력 처리 완료. lightbox 처리.</p>
-          <p><a class="btn btn-default" href="/gallery/galleryList.do" role="button">View details &raquo;</a></p>
-       </div>
-        <div class="col-xs-6 col-lg-4">
-          <h2>로그인 및 회원 관리</h2>
-          <p>회원 가입/정보 수정/회원 탈퇴 처리 완료. 로그인 및 로그아웃 처리 완료.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
-     </div>
-     </div>
-      
+<div id="wrapper">
+	<div id="page" class="container">
+		<div><a href="#" class="image image-full"><img src="/resources/images/pic03.jpg"alt="" /></a></div>
+		<div class="column1">
+			<div class="title">
+				<h2>Maecenas luctus</h2>
+				<span class="byline">Pellentesque lectus gravida blandit</span>
+			</div>
+			<p>This is <strong>Reciprocal</strong>, a free, fully standards-compliant CSS template designed by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>. The photos in this template are from <a href="http://fotogrph.com/"> Fotogrph</a>. This free template is released under the <a href="http://templated.co/license">Creative Commons Attribution</a> license, so you're pretty much free to do whatever you want with it (even use it commercially) provided you give us credit for it. Have fun :) </p>
+			<a href="#" class="button">Etiam posuere</a>
+		</div>
+		<div class="column3">
+			<div class="title">
+				<h2>Mauris vulputate</h2>
+			</div>
+			<img src="/resources/images/pic01.jpg"width="282" height="150" alt="" />
+			<p>Phasellus tempor vehicula justo. Aliquam lacinia metus ut elit.</p>
+			<a href="#" class="button">Etiam posuere</a>
+		</div>
+		<div class="column4">
+			<div class="title">
+				<h2>Praesent tempor</h2>
+			</div>
+			<img src="/resources/images/pic02.jpg" width="282" height="150" alt="" />
+			<p>Quisque eleifend. Phasellus tempor vehicula justo. Aliquam lacinia metus.</p>
+			<a href="#" class="button">Etiam posuere</a>
+		</div>
+	</div>
+	<div id="portfolio-wrapper">
+		<div id="portfolio" class="container">
+			<div class="title">
+				<h2>Aenean elementum</h2>
+				<span class="byline">Integer sit amet pede vel arcu aliquet pretium</span> </div>
+			<div class="column1">
+				<div class="box">
+					<span class="icon icon-cloud-download"></span>
+					<h3>Vestibulum venenatis</h3>
+					<p>Fermentum nibh augue praesent a lacus at urna congue rutrum.</p>
+					<a href="#" class="button">Etiam posuere</a> </div>
+			</div>
+			<div class="column2">
+				<div class="box">
+					<span class="icon icon-coffee"></span>
+					<h3>Praesent scelerisque</h3>
+					<p>Vivamus fermentum nibh in augue praesent urna congue rutrum.</p>
+					<a href="#" class="button">Etiam posuere</a> </div>
+			</div>
+			<div class="column3">
+				<div class="box">
+					<span class="icon icon-globe"></span>
+					<h3>Donec dictum metus</h3>
+					<p>Vivamus fermentum nibh in augue praesent urna congue rutrum.</p>
+					<a href="#" class="button">Etiam posuere</a> </div>
+			</div>
+			<div class="column4">
+				<div class="box">
+					<span class="icon icon-dashboard"></span>
+					<h3>Mauris vulputate dolor</h3>
+					<p>Rutrum fermentum nibh in augue praesent urna congue rutrum.</p>
+					<a href="#" class="button">Etiam posuere</a> </div>
+			</div>
+		</div>
+	</div>
+</div>
       <footer class="footer">	
       		<!-- 푸터 설정 -->
       		<tiles:insertAttribute name="footer"/>

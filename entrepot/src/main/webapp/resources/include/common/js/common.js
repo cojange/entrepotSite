@@ -42,6 +42,18 @@ function chkFile(item){
 	}
 }
 
+/*함수명 : chkExelFile(유혀성 체크대상)
+ * 설명 : 엑셀 파일 여부를 확인하기 위해 확장자 확인 함수 */
+function chkExcelFile(item){
+	var ext = item.val().split(".").pop().toLowerCase();
+	if(jQuery.inArray(ext,['xls','xlsx'])==-1){
+		alert("xls,xlsx형식의 파일만 업로드 할 수 있습니다."+ext);
+		return false;
+	}else{
+		return true;
+	}
+}
+
 /* formCheck(유효성 체크 대상, 출력 영역, 메세지 내용) */
 function formCheck(main, item, msg){
 	if(main.val().replace(/\s/g,"")==""){

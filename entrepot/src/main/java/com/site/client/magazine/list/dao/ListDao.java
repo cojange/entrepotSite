@@ -8,4 +8,8 @@ public interface ListDao {
 
 	public List<MagazineVO> magazineList(MagazineVO mvo);
 
+	
+
+
+		
 }

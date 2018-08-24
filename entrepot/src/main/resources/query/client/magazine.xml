@@ -7,15 +7,21 @@
 	select mg_name,com_name,pd_sale,pd_rate,pd_date,dt_target,dt_keyword,dt_brief,pl_path
 	from bast_view5 
 	<where>
-		<if test="listkey=='target'">
-		 <![CDATA[dt_target like '%'|| #{key} ||'%']]>
+		<if test="listkey=='1'">
+			dt_keyword like '%'|| #{key1} ||'%'
 		 </if>
-		 <if test="listkey=='key'">
-		 <![CDATA[dt_keyword like '%'|| #{key} ||'%']]>
+		 <if test="listkey=='2'">
+		 	dt_keyword like '%'|| #{key1} ||'%' or dt_keyword like  '%'|| #{key2} ||'%'
 		 </if>
+		 <if test="listkey=='3'">
+		 	dt_keyword like '%'|| #{key1} ||'%' or dt_keyword like  '%'|| #{key2} ||'%' or  dt_keyword like  '%'|| #{key3} ||'%'
+		 </if>	 
 	</where>
 	
 	
 </select>
+
+
+
 
 </mapper>

@@ -1,6 +1,7 @@
 package com.site.admin.cost.adCost.dao;
 
 
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -16,6 +17,21 @@ public class AdCostDaoImpl implements AdCostDao {
 	@Override
 	public int excelInsert(AdCostVO acvo) {
 		return session.insert("excelInsert",acvo);
+	}
+
+	@Override
+	public AdCostVO selectCard(String keyword) {
+		return session.selectOne("selectCard",keyword);
+	}
+
+	@Override
+	public AdCostVO excelSelect(String month) {
+		return session.selectOne("excelSelect",month);
+	}
+
+	@Override
+	public int excelUpdate(AdCostVO acvo) {
+		return session.update("excelUpdate",acvo);
 	}
 
 }
