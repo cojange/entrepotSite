@@ -13,26 +13,27 @@
  * ④ 로그인한 사용자의 IP 정보 
  *************************************************************** */
 public class LoginHistory {
-	private int m_num;//순번
+	private int idx;//순번
 	private int retry;//로그인 시도횟수
 	private long lastFailedLogin;//마지막으로 실패한 로그인 시간
 	private long lastSuccessedLogin;//마지막으로 성공한 로그인 시간
 	private String clientIP;//로그인한 사용자의 ip주소
 	
 	public LoginHistory(){}
-	public LoginHistory(int m_num, int retry, long lastFailedLogin, long lastSuccessedLogin, String clientIP) {
+	public LoginHistory(int idx, int retry, long lastFailedLogin, long lastSuccessedLogin, String clientIP) {
 		super();
-		this.m_num = m_num;
+		this.idx = idx;
 		this.retry = retry;
 		this.lastFailedLogin = lastFailedLogin;
 		this.lastSuccessedLogin = lastSuccessedLogin;
 		this.clientIP = clientIP;
 	}
-	public int getM_num() {
-		return m_num;
+	
+	public int getIdx() {
+		return idx;
 	}
-	public void setM_num(int m_num) {
-		this.m_num = m_num;
+	public void setIdx(int idx) {
+		this.idx = idx;
 	}
 	public int getRetry() {
 		return retry;

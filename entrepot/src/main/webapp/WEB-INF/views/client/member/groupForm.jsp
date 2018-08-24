@@ -70,7 +70,7 @@
 		</script>
 	</head>
 <body>
-	<h1>개인회원가입</h1>
+	<h1>단체회원가입</h1>
 	<img src="/resources/images/client/member2.png"/>
 <div class="contentContainer">
    <div class="well">

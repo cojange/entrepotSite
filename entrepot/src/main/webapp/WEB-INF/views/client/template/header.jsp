@@ -26,7 +26,7 @@
 			 <c:if test="${login.m_id == null or login.m_id == ''}">
 			 <a href="/client/member/login.do">로그인</a>
 			 <span>/</span>
-			 <a href="/client/member/mForm.do">회원가입</a>
+			 <a href="/client/member/mChoose.do">회원가입</a>
 			 </c:if>
 			<!-- <a href="/client/member/login.do" onClick="popct(this.href, '300', '350');return false">로그인</a> -->
 			
@@ -39,16 +39,15 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">앙뜨흐뽀</a>
+          <a class="navbar-brand" href="/">앙뜨흐뽀</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="/">Home</a></li>
             <li><a href="/client/list/magazinelist.do?key=여성&listkey=target&homename=베스트" >게시판</a></li>
             <li><a href="#">갤러리</a></li>
-
-            <li><a href="/client/member/mForm.do">회원가입</a></li>
-
+            <li><a href="/client/member/mChoose.do">회원가입</a></li>
+            
             <li></li>
 
            <!--  <li class="dropdown">

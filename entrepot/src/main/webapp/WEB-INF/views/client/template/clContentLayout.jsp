@@ -11,7 +11,7 @@
     <meta name="author" content="">
   
 
-    <title><tiles:getAsString name="title"/></title>
+    <%-- <title><tiles:getAsString name="title"/></title> --%>
 
 	
 	
@@ -42,9 +42,9 @@
     </nav>
 
      <div class="container">
-     	<div class="page-header">
+     	<%-- <div class="page-header">
      		<h1><tiles:getAsString name="title"/></h1>
-     	</div>
+     	</div> --%>
      	<tiles:insertAttribute name="body"/>
      </div>
 
