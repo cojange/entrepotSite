@@ -2,10 +2,12 @@ package com.site.client.member.individual.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.site.client.member.individual.dao.ClMDao;
 import com.site.client.member.individual.vo.ClMSecurity;
 import com.site.client.member.individual.vo.ClMVO;
+import com.site.common.util.OpenCrypt;
 import com.site.common.util.Util;
 
 @Service
@@ -15,7 +17,7 @@ public class ClMServiceImpl implements ClMService {
 	private ClMDao clMDao;
 
 	@Override
-	public int userIdConfirm(String m_id) {
+	public int m_idConfirm(String m_id) {
 		int result;
 		if(clMDao.memberSelect(m_id) != null) {
 			result =1;
@@ -24,7 +26,7 @@ public class ClMServiceImpl implements ClMService {
 		}
 		return result;
 	}
-
+	@Transactional
 	@Override
 	public int memberInsert(ClMVO cmvo) {
 		if(clMDao.memberSelect(cmvo.getM_id()) != null) {
@@ -34,6 +36,7 @@ public class ClMServiceImpl implements ClMService {
 			sec.setM_id(cmvo.getM_id());
 			sec.setSalt(Util.getRandomString());
 			clMDao.securityInsert(sec);
+			cmvo.setM_pwd(new String(OpenCrypt.getSHA256(cmvo.getM_pwd(),sec.getSalt())));
 			int result = clMDao.memberInsert(cmvo);
 			return result;
 		}

@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ include file="/WEB-INF/views/common/common.jspf" %>
 <!DOCTYPE html>
 <html lang="ko">
   <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" href="../image/icon.png">
 
@@ -53,6 +53,7 @@
         </div>
         <button class="btn btn-lg btn-primary btn-block" id="loginBtn">로그인</button>
       </form> -->
+      <!-- 로그인전화면 -->
       <c:if test="${login.m_id == null or login.m_id == ''}">
 			<form id="loginForm" class="form-horizontal">
 				<div class="form-group">
@@ -75,6 +76,18 @@
 					</div>
 				</div>
 			</form> 
+		</c:if>
+		<%-- 로그인 후 화면 --%>
+		<c:if test="${login.m_id != null and login.m_id != ''}">
+		<fieldset id="loginAfter">
+		<legend><strong>[ ${login.m_name} ]님 로그인을 환영합니다!!!</strong></legend>
+		<span id="memberMenu" class="tac">
+		<a href="/">메인페이지로이동</a>&nbsp;&nbsp;&nbsp;
+		<!-- <a href="/member/logout.do">로그아웃</a>&nbsp;&nbsp;&nbsp;
+		<a href="/member/modify.do">정보수정(비밀번호변경)</a>&nbsp;&nbsp;&nbsp;
+		<a href="/member/delete.do">회원탈퇴</a> -->
+		</span>
+		</fieldset>
 		</c:if>
 		</div>
     </div> <!-- /container -->

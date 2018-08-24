@@ -44,7 +44,9 @@
    <logger name="com.site.admin.adBoard.regulations.dao">
 	  <level value="trace"/>
    </logger>	
-	
+   <logger name="com.site.common.file">
+		<level value="info"/>
+	</logger>
    
    <!-- 3rdparty Loggers -->
    <logger name="org.springframework.core">
@@ -58,7 +60,6 @@
    <logger name="org.springframework.context">
       <level value="info" />
    </logger>
-
    <logger name="org.springframework.web">
       <level value="info" />
    </logger>

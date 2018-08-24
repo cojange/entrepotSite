@@ -37,7 +37,7 @@ public class ClMController{
 			method = RequestMethod.POST)
 	public String userIdConfirm(@RequestParam("m_id")String m_id) {
 		logger.info("userIdConfirm 메서드 호출 성공");
-		int result=clMService.userIdConfirm(m_id);
+		int result=clMService.m_idConfirm(m_id);
 		return result+"";
 	}
 	

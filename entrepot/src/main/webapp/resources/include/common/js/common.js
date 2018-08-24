@@ -50,6 +50,15 @@ function chkText(item){
 	var ext = item.val().split('.').pop().toLowerCase();
 	if(jQuery.inArray(ext, ['pdf']) == -1) {
 		alert('pdf 파일만 업로드 할수 있습니다.');
+	}
+}
+
+/*함수명 : chkExelFile(유효성 체크대상)
+ * 설명 : 엑셀 파일 여부를 확인하기 위해 확장자 확인 함수 */
+function chkExcelFile(item){
+	var ext = item.val().split(".").pop().toLowerCase();
+	if(jQuery.inArray(ext,['xls','xlsx'])==-1){
+		alert("xls,xlsx형식의 파일만 업로드 할 수 있습니다."+ext);
 		return false;
 	}else{
 		return true;
