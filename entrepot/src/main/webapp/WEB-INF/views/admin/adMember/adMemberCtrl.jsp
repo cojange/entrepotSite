@@ -12,6 +12,7 @@
      <div class="card mb-3">
             <div class="card-header">
               <i class="fas fa-users"></i>회원 관리
+              <!-- member Search keyword -->
               <form id="searchMB" name="searchMB">
               	<select id="mbType" name="mbType">
               	  <option value="total">전체</option>
@@ -23,7 +24,7 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="memberList" width="100%" cellspacing="0">
                   <thead>
                     <tr>
                       <th>회원번호</th>
@@ -77,6 +78,10 @@
             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
           </div>
           
+          <div id="example">
+          
+          </div>
+          
     <!-- 관리자 관리 -->
         <div class="card mb-3">
             <div class="card-header">
@@ -84,7 +89,7 @@
                  관리자 관리</div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="adminTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="adminList" width="100%" cellspacing="0">
                   <thead>
                     <tr>
                       <th>순번</th>

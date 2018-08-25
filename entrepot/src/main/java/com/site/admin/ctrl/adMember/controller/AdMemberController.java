@@ -4,12 +4,15 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.site.admin.ctrl.adMember.service.AdMemberService;
 import com.site.admin.ctrl.adMember.vo.AdManagerVO;
 import com.site.admin.ctrl.adMember.vo.AdMbCommonVO;
+import com.site.admin.ctrl.adMember.vo.AdMbPersnalVO;
 
 @Controller
 @RequestMapping(value="/admin/ctrl/adMember")
@@ -59,5 +62,17 @@ public class AdMemberController {
 	      
 	      return mav;
 	}
+   
+   //개인회원 ajax
+   @ResponseBody
+   @RequestMapping(value="/pmlist.do")
+   public List<AdMbCommonVO> getPmList(@ModelAttribute AdMbCommonVO ampvo) {
+	   
+	   List<AdMbCommonVO> pmList = adMemberService.pmList(ampvo);
+	   
+	   return pmList;
+	   
+	   
+   }
    
 }

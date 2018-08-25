@@ -11,6 +11,8 @@
 		<typeAlias type="com.site.admin.regulations.regulations.vo.RegulationsVO" alias="reg"/>
 		<typeAlias type="com.site.admin.cost.adCost.vo.AdCostVO" alias="acvo"/>
 		<typeAlias type="com.site.admin.ctrl.adMember.vo.AdMbCommonVO" alias="ambcvo"/>
+		<typeAlias type="com.site.admin.ctrl.adMember.vo.AdMbPersnalVO" alias="ampvo"/>
+		<typeAlias type="com.site.admin.ctrl.adMember.vo.AdMbGroupVO" alias="agmvo"/>
 		
 		<!-- client -->
 		<typeAlias type="com.site.client.board.vo.ClImgbVO" alias="imgb" />
