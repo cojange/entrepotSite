@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.site.client.member.individual.dao.ClMDao">
-	<select id="memberSelect" parameterType="member" resultType="member">
+	<select id="memberSelect" parameterType="String" resultType="member">
 		/* member - memberSelect */
-		select m_num,m_id,m_pwd,m_name,m_email,m_birth 
+		select m_num,m_id,m_pwd,m_name,m_birth,m_email
 		from member where m_id=#{m_id}
 	</select>
 	

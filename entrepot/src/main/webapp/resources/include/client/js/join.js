@@ -47,7 +47,7 @@ $(function() {
 		else if(!inputVerify(0,$("#m_id"),$(".error:eq(0)")))return;
 		else{
 			$.ajax({
-				url : "/client/member/userIdConfirm.do",
+				url : "/client/member/m_idConfirm.do",
 				type : "post",
 				data : "m_id="+$("#m_id").val(),
 				error : function() {

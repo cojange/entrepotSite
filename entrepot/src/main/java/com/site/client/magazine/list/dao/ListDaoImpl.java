@@ -15,4 +15,6 @@ public class ListDaoImpl implements ListDao {
 	public List<MagazineVO> magazineList(MagazineVO mvo) {
 		return sqlSession.selectList("magazineList",mvo);
 	}
+
+	
 }

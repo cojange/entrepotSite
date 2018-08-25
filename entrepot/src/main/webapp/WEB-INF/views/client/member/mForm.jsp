@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Insert title here</title>
+		<title>개인회원가입</title>
 		<meta http-equiv="X-UA-Compatible"content="IE=edge,chrome=1">
 		<meta name = "viewport"content="width=device-width,initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=no"/>	
 
@@ -14,7 +14,7 @@
 		<![emdif] -->
 		<!--<script type="text/javascript" src="/springSite/resources/include/js/jquery-1.12.4.min.js"></script>-->
 		<script type = "text/javascript" src="/resources/include/client/js/jquery-1.12.4.min.js"></script>
-		<script type = "text/javascript" src="/resources/include/client/js/common.js"></script>
+		<script type = "text/javascript" src="/resources/include/common/js/common.js"></script>
 		<script type = "text/javascript" src="/resources/include/client/js/join.js"></script>
 		<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 		<script type = "text/javascript">
@@ -70,7 +70,9 @@
 		</script>
 	</head>
 <body>
-	<div class="contentContainer">
+	<h1>개인회원가입</h1>
+	<img src="/resources/images/client/member2.png"/>
+<div class="contentContainer">
    <div class="well">
       <form id="memberForm" class="form-horizontal">
          <input type="hidden" name="m_email" id="m_email" />

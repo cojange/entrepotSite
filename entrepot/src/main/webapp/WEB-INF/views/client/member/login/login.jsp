@@ -8,13 +8,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" href="../image/icon.png">
 
-    <title>로그인창</title>
+    <title>로그인</title>
     <!-- Bootstrap core CSS -->
   	<link href="/resources/include/client/dist/css/bootstrap.css" rel="stylesheet">
     <link href="/resources/include/client/dist/css/signin.css" rel="stylesheet">
     <script src="/resources/include/client/js/html5shiv.js"></script>
     <script type="text/javascript" src="/resources/include/client/js/jquery-1.12.4.min.js"></script>
-	<script type="text/javascript" src="/resources/include/client/js/common.js"></script>
+	<script type="text/javascript" src="/resources/include/common/js/common.js"></script>
 	<script type="text/javascript" src="/resources/include/client/js/login.js"></script>
     <script type="text/javascript">
 
@@ -37,7 +37,7 @@
   </head>
 
   <body>
-
+	<h1>로그인</h1>
     <div class="contentContainer">
 		<div class="well">
      <!--  <form class="form-signin">
