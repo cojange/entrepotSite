@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.site.admin.ctrl.adMember.service.AdMemberService;
 import com.site.admin.ctrl.adMember.vo.AdManagerVO;
 import com.site.admin.ctrl.adMember.vo.AdMbCommonVO;
@@ -66,11 +68,18 @@ public class AdMemberController {
    //개인회원 ajax
    @ResponseBody
    @RequestMapping(value="/pmlist.do")
-   public List<AdMbCommonVO> getPmList(@ModelAttribute AdMbCommonVO ampvo) {
+   public String getPmList(@ModelAttribute AdMbCommonVO ampvo, ObjectMapper mapper) {
 	   
 	   List<AdMbCommonVO> pmList = adMemberService.pmList(ampvo);
+	   String listData ="";
 	   
-	   return pmList;
+	   try {
+		   listData = mapper.writeValueAsString(pmList);
+	   }catch(JsonProcessingException e) {
+		   e.printStackTrace();
+	   }
+	   
+	   return listData;
 	   
 	   
    }

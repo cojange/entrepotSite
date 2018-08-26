@@ -4,10 +4,7 @@
 <%@ include file="/WEB-INF/views/common/common.jspf" %>
   <div class="container-fluid">
   
-  	 <select id="switchMember" name="switchMember">
-        <option value="member">회원</option>
-        <option value="admin">관리자</option>
-     </select>
+
      <!-- 회원 관리 -->
      <div class="card mb-3">
             <div class="card-header">
@@ -22,9 +19,9 @@
               </form>
               
             </div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="memberList" width="100%" cellspacing="0">
+            <div class="card-body" >
+              <div class="table-responsive" id="switchDiv">
+                <table class="table table-bordered switchTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
                       <th>회원번호</th>
@@ -89,7 +86,7 @@
                  관리자 관리</div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="adminList" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="adminTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
                       <th>순번</th>

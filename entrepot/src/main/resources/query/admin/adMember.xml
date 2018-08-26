@@ -10,18 +10,19 @@
 	
 	<select id="memberList" parameterType="ambcvo" resultType="ambcvo">
 		/*공통 멤버 리스트*/
-		select m_num, m_id, m_name, m_job, m_address, m_phone, m_email, m_date, mt
+		select m_num, m_id, m_name, m_job, m_address, m_phone, m_email, to_char(m_date,'yy-mm-dd') m_date, mt
 		from mblist
 	</select>
 	
 	<select id="pmList" parameterType="ambcvo" resultType="ampvo">
 		/*개인 회원 리스트*/
-		select m_id, m_name, m_gender, m_job, m_email, m_phone, m_date, m_update
+		select m_id, m_name, m_gender, grade, m_email, m_phone, to_char(m_date,'yy-mm-dd') m_date, nvl(to_char(m_update,'yy-mm-dd'),'.') m_update
 		from member
 	</select>
 	
 	<select id="gpList" parameterType="ambcvo" resultType="agmvo">
 		/*단체 회원 리스트*/
-		select 
+		select m_id, m_name, com_no, m_job, m_email, m_phone, to_char(m_date,'yy-mm-dd') m_date, nvl(to_char(m_update,'yy-mm-dd'),'.') m_update
+		from group_member
 	</select>
 </mapper>

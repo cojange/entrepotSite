@@ -10,7 +10,16 @@ public class AdMbCommonVO {
 	private String m_phone;		//회원 전화번호
 	private String m_email;		//회원 이메일
 	private String m_date;		//회원 가입일
+	private String m_update;	//수정일
 	private String mt;			//회원 타입
+	
+	
+	public String getM_update() {
+		return m_update;
+	}
+	public void setM_update(String m_update) {
+		this.m_update = m_update;
+	}
 	public String getM_num() {
 		return m_num;
 	}

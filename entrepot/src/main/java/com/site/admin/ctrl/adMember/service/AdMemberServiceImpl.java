@@ -30,6 +30,7 @@ public class AdMemberServiceImpl implements AdMemberService{
 		return memberList;
 	}
 
+	//개인리스트
 	@Override
 	public List<AdMbCommonVO> pmList(AdMbCommonVO ambcvo) {
 		System.out.println("mt : " + ambcvo.getMt());
