@@ -33,13 +33,10 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
            	<h6 class="dropdown-header">1:1 게시판</h6>
-            <a class="dropdown-item" href="#"></a>
+            <a class="dropdown-item" href="/admin/adBoard/personalBoard/personalBoardList.do"></a>
             <div class="dropdown-divider"></div>
-            <h6 class="dropdown-header">공지사항 게시판</h6>
-            <a class="dropdown-item" href="#"></a>
-            <div class="dropdown-divider"></div>
-            <h6 class="dropdown-header">이벤트 게시판</h6>
-            <a class="dropdown-item" href="#"></a>
+            <h6 class="dropdown-header">공지사항&amp;이벤트 게시판</h6>
+            <a class="dropdown-item" href="/admin/adBoard/adminBoard/adminBoardList.do"></a>
             <div class="dropdown-divider"></div>
             <h6 class="dropdown-header">약관</h6>
             <a class="dropdown-item" href="/admin/adBoard/regulations/regulationsList.do"></a>

@@ -34,7 +34,7 @@ function goPage(){
 function addRegulation(){
 	/* 약관추가 */
 	$("#addData").click(function(){
-		var rowItem = "<tr><td>입력중</td><td><select id='regType' name='regType'><option value='default'>-------선택해주세요-------</option><option value='pSite'>[개인회원]사이트이용약관</option>";
+		var rowItem = "<tr><td>입력중</td><td><select id='regType' name='regType' style='width: 100px;'><option value='default'>-------선택해주세요-------</option><option value='pSite'>[개인회원]사이트이용약관</option>";
 		rowItem += "<option value='gSite'>[단체회원]사이트이용약관</option><option value='pInfo'>[개인회원]정보이용동의약관</option>";
 		rowItem += "<option value='gInfo'>[단체회원]정보이용동의약관</option><option value='pCan'>[개인회원]환불·취소규정약관</option>";
 		rowItem += "<option value='gCan'>[단체회원]환불·취소규정약관</option><option value='etc'>기타</option></select></td>";

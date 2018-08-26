@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.site.admin.adBoard.adminBoard.dao.AdminBoardDao">
+	<select id="adminBoardList" parameterType="adminBo" resultType="adminBo">
+		/*공지사항, 이벤트 게시판 리스트*/
+		select ab_no, ab_pre, ab_type, ab_title, to_char(ab_date,'yy-mm-dd') ab_date,
+		to_char(ab_update,'yy-mm-dd') ab_update, ad_id
+		from admin_board
+		order by decode(ab_pre, '상단고정', 1, '팝업', 2, 3), ab_date desc, ab_update desc
+	</select>
+	<select id="couponList" parameterType="coupon" resultType="coupon">
+		/*쿠폰 리스트*/
+		select coupon_no, coupon_type, coupon_discount,
+		to_char(coupon_date,'yy-mm-dd') coupon_date,
+		to_char(coupon_update,'yy-mm-dd') coupon_update, coupon_memo
+		from coupon
+		order by coupon_date desc, coupon_update desc
+	</select>
+</mapper>

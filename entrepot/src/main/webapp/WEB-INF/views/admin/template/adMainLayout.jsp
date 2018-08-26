@@ -76,11 +76,26 @@
 	    	$(function(){
 	    		printClock();	    	
 	    		
-	    		console.log($(location).attr("href"));
+	    		//console.log($(location).attr("href"));
 	    		
 	    		//회원관리탭
 	    		if($(location).attr("href") == "http://localhost:8080/admin/ctrl/adMember/adMemberCtrl.do"){
 	    			$("#adminTable").dataTable();
+	    		}
+	    		
+	    		//거래처 관리탭
+	    		if($(location).attr("href") == "http://localhost:8080/admin/ctrl/adPartner/adPartnerListCtrl.do"){
+	    			$("#adminTable").dataTable();
+	    		}
+	    		
+	    		//약관 관리탭
+	    		if($(location).attr("href") == "http://localhost:8080/admin/adBoard/regulations/regulationsList.do"){
+	    			$("#regBoard").dataTable();
+	    		}
+	    		
+	    		//공지사항,이벤트,쿠폰 관리탭 
+	    		if($(location).attr("href") == "http://localhost:8080/admin/adBoard/adminBoard/adminBoardList.do"){
+	    			$("#couponTable").dataTable();
 	    		}
 	    		
 	    		//비용관리탭
@@ -123,12 +138,12 @@
 	    					"action":"/admin/adcost/readExcel.do"
 	    				});
 	    				formId.submit();
-	    			})
-	    		}
+	    			});	    		
+	    		
+	    		}//비용 탭 일때 JS 
 	    		
 	    		/* 약관추가 */
 	    		addRegulation();
-	    		}//비용 탭 일때 JS 
 	    	});
 	    </script>
   </body>

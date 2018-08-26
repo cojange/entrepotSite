@@ -91,27 +91,8 @@
               	약관 리스트
             </div>
             <div class="card-body">
-              <div class="table-responsive">
-              	<table width="100%">
-              		<tr>
-              			<td>
-              				<label>약관 유형 : </label>
-		              		<select>
-		              			<option>[개인회원]사이트이용약관</option>
-		              			<option>[단체회원]사이트이용약관</option>
-		              			<option>[개인회원]정보이용동의약관</option>
-		              			<option>[단체회원]정보이용동의약관</option>
-		              			<option>[개인회원]환불·취소규정약관</option>
-		              			<option>[단체회원]환불·취소규정약관</option>
-		              			<option>기타</option>
-		              		</select>
-              			</td>
-              		</tr>
-              		<tr id="factory_tbody">
-              		</tr>
-              	</table>
               	<form id="regWriteForm">
-	                <table class="table table-bordered" width="100%" cellspacing="0">
+	                <table class="table table-bordered" id="regBoard" width="100%" cellspacing="0">
 	               	 <colgroup>
 							<col width="7%" />
 							<col width="23%" />
@@ -175,6 +156,5 @@
             </div>
             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
           </div>
-         </div>
 	</body>
 </html>

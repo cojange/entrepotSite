@@ -44,6 +44,12 @@
    <logger name="com.site.admin.adBoard.regulations.dao">
 	  <level value="trace"/>
    </logger>	
+   <logger name="com.site.admin.adBoard.adminBoard.dao">
+	  <level value="trace"/>
+   </logger>
+   <logger name="com.site.admin.adBoard.personalBoard.dao">
+	  <level value="trace"/>
+   </logger>
    <logger name="com.site.common.file">
 		<level value="info"/>
 	</logger>

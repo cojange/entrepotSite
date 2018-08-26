@@ -12,62 +12,63 @@
      	<!-- viewport : 화면에 보이는 영역을 제어하는 기술. width는 device-width로 설정. initial-scale는 초기비율 -->
       
       	<!-- 모바일 웹 페이지 설정 -->
-      	<link rel="shortcut icon" href="/resources/images/admin/adLog.ico" />
-      	<link rel="apple-touch-icon" href="/resources/images/admin/adLog.ico"  />
+      	<link rel="shortcut icon" href="/resources/images/common/icon.png" />
+      	<link rel="apple-touch-icon" href="/resources/images/common/icon.png" />
       	<!-- 모바일 웹 페이지 설정 종료 -->
       
       	<!-- IE8이하 브라우저에서 HTML5를 인식하기 위해서는 아래의 패스필터를 적용하면 된다. -->
       	<!-- [if lt IE 9] -->
       	<!-- <script src="/resources/include/js/html5shiv.js"</script> -->
       	<!-- [endif] -->
- 	
-      	
 	</head>
 	<body>
-	<!-- 잡지거래처 리스트 -->		
+	<!-- 공지사항 & 이벤트 공지사항 리스트 -->		
 	<div class="container-fluid" >
 		<div class="card mb-3" id="adMagazine">
             <div class="card-header">
-            	<i class="fas fa-table"></i> 
-            	잡지 거래처           	
+            	<i class="fas fa-table"></i>
+            	공지사항&이벤트 게시글 리스트
             </div>   
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>거래처명</th>                     
-                      <th>담당자 이름</th>
-                      <th>담당자 연락처</th>
-                      <th>담당자 email</th>
-                      <th>거래시작일</th>
-                      <th>거래종료일</th>
+                      <th>번호</th>
+                      <th>게시 유형</th>          
+                      <th>게시글 유형</th>           
+                      <th>제목</th>
+                      <th>등록일</th>
+                      <th>수정일</th>
+                      <th>작성자 아이디</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
-                      <th>거래처명</th>                     
-                      <th>담당자 이름</th>
-                      <th>담당자 연락처</th>
-                      <th>담당자 email</th>
-                      <th>거래시작일</th>
-                      <th>거래종료일</th>
+                      <th>번호</th>
+                      <th>게시 유형</th>          
+                      <th>게시글 유형</th>           
+                      <th>제목</th>
+                      <th>등록일</th>
+                      <th>수정일</th>
+                      <th>작성자 아이디</th>
                     </tr>
                   </tfoot>
                   <tbody>
                      <c:choose>
-						<c:when test="${not empty magPartnerList}">
-							<c:forEach var="magPartner" items="${magPartnerList}" varStatus="status">
+						<c:when test="${not empty adminBoardList}">
+							<c:forEach var="adminBo" items="${adminBoardList}" varStatus="status">
 								<tr class="tac" data-num="${status.count}">
-									<td>${magPartner.com_name}</td>
-									<td>${magPartner.char_manager}</td>
-									<td>${magPartner.char_tel}</td>
-									<td>${magPartner.char_email}</td>
-									<td>${magPartner.startdate}</td>
-									<td>${magPartner.enddate}</td>
+									<td>${status.count}</td>
+									<td>${adminBo.ab_pre}</td>
+									<td>${adminBo.ab_type}</td>
+									<td>${adminBo.ab_title}</td>									
+									<td>${adminBo.ab_date}</td>
+							 		<td>${adminBo.ab_update}</td>
+									<td>${adminBo.ad_id}</td>
 								</tr>
 							</c:forEach>
-						</c:when>
+						</c:when> 
 						<c:otherwise>
 							<tr>
 								<td colspan="4" class="tac">등록된 게시물이 존재하지 않습니다.</td>
@@ -80,58 +81,55 @@
             </div>
             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
           </div>
-          </div>
-        
-         <br/>
-         <hr/>
-         
-        <div class="container-fluid">
-         <!-- 택배거래처 리스트 -->
-		<div class="card mb-3"  id="adCourier">
+      </div>
+          
+          <!-- 공지사항 & 이벤트 공지사항 리스트 -->		
+	 <div class="container-fluid" >
+		<div class="card mb-3" id="adMagazine">
             <div class="card-header">
-              <i class="fas fa-table"></i>
-              	택배 거래처
-            </div>
+            	<i class="fas fa-table"></i>
+            	쿠폰 리스트
+            </div>   
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="adminTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="couponTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>택배사명</th>
-                      <th>계약지역</th>                     
-                      <th>담당자 이름</th>
-                      <th>담당자 연락처</th>
-                      <th>건수</th> 
-                      <th>거래시작일</th>
-                      <th>거래종료일</th>
+                      <th>번호</th>
+                      <th>쿠폰코드</th>          
+                      <th>유형</th>           
+                      <th>할인율</th>
+                      <th>등록일</th>
+                      <th>수정일</th>
+                      <th>설명</th>
                     </tr>
                   </thead>
                   <tfoot>
-                    <tr>
-                      <th>택배사명</th>
-                      <th>계약지역</th>                                           
-                      <th>담당자 이름</th>
-                      <th>담당자 연락처</th>
-                      <th>건수</th> 
-                      <th>거래시작일</th>
-                      <th>거래종료일</th>
+                   <tr>
+                      <th>번호</th>
+                      <th>쿠폰코드</th>          
+                      <th>유형</th>           
+                      <th>할인율</th>
+                      <th>등록일</th>
+                      <th>수정일</th>
+                      <th>설명</th>
                     </tr>
                   </tfoot>
                   <tbody>
                      <c:choose>
-						<c:when test="${not empty couPartnerList}">
-							<c:forEach var="couPartner" items="${couPartnerList}" varStatus="status">
+						<c:when test="${not empty couponList}">
+							<c:forEach var="coupon" items="${couponList}" varStatus="status">
 								<tr class="tac" data-num="${status.count}">
-									<td>${couPartner.couacc_name}</td>
-									<td>${couPartner.couacc_area}</td>
-									<td>${couPartner.char_manager}</td>
-									<td>${couPartner.char_tel}</td>
-									<td>${couPartner.couacc_cnt}</td>
-									<td>${couPartner.startdate}</td>
-									<td>${couPartner.enddate}</td>
+									<td>${status.count}</td>
+									<td>${coupon.coupon_no}</td>
+									<td>${coupon.coupon_type}</td>
+									<td>${coupon.coupon_discount}</td>									
+									<td>${coupon.coupon_date}</td>
+							 		<td>${coupon.coupon_update}</td>
+									<td>${coupon.coupon_memo}</td>
 								</tr>
 							</c:forEach>
-						</c:when>
+						</c:when> 
 						<c:otherwise>
 							<tr>
 								<td colspan="4" class="tac">등록된 게시물이 존재하지 않습니다.</td>
@@ -144,6 +142,6 @@
             </div>
             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
           </div>
-         </div>
+       </div>
 	</body>
 </html>
