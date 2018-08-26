@@ -1,11 +1,17 @@
 package com.site.admin.ctrl.adMember.vo;
 
-public class AdMbPersnolVO extends AdMbCommonVO{
+public class AdMbPersnalVO extends AdMbCommonVO{
 	
 
 	private String m_birth;		//회원 생일
 	private String m_gender;	//회원 성별
 	private String grade;		//회원등급
+	public String getGrade() {
+		return grade;
+	}
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
 	public String getM_birth() {
 		return m_birth;
 	}

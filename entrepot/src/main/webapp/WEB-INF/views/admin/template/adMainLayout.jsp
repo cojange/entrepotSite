@@ -31,6 +31,7 @@
     
     <!-- 사용자 추가사항 -->
     <link href="/resources/include/admin/css/ad-add.css" rel="stylesheet">
+    <link href="/resources/include/admin/css/card-slides.css" rel="stylesheet">
   </head>
 
   <body id="page-top">
@@ -68,19 +69,33 @@
 	    <script src="/resources/include/admin/js/demo/datatables-demo.js"></script>
 	    <script src="/resources/include/admin/js/demo/chart-area-demo.js"></script> 
 	    
+<<<<<<< HEAD
 	    <!-- 사용자 정의 js -->
 	    <script type="text/javascript" src="/resources/include/common/js/common.js"></script>
 	    <script type="text/javascript" src="/resources/include/admin/js/ad-clock.js"></script>  
 	    <script type="text/javascript" src="/resources/include/admin/js/regulationsList.js"></script>
+=======
+	    <script type="text/javascript" src="/resources/include/admin/js/ad-clock.js"></script> 
+	    <script type="text/javascript" src="/resources/include/admin/js/ad-newDataTable.js"></script>
+	    <script type="text/javascript" src="/resources/include/admin/js/card-slide.js"></script>
+>>>>>>> branch 'master' of https://github.com/cojange/entrepotSite.git
 	    <script type="text/javascript">
 	    	$(function(){
 	    		printClock();	    	
+<<<<<<< HEAD
 	    		
 	    		//console.log($(location).attr("href"));
+=======
+	    		ad_card();
+	    		console.log($(location).attr("href"));
+>>>>>>> branch 'master' of https://github.com/cojange/entrepotSite.git
+	    		
+	    		
 	    		
 	    		//회원관리탭
 	    		if($(location).attr("href") == "http://localhost:8080/admin/ctrl/adMember/adMemberCtrl.do"){
 	    			$("#adminTable").dataTable();
+<<<<<<< HEAD
 	    		}
 	    		
 	    		//거래처 관리탭
@@ -98,6 +113,65 @@
 	    			$("#couponTable").dataTable();
 	    		}
 	    		
+=======
+	    			var gpTable = $(".switchTable").DataTable();
+	    			
+	    			//현재 회원관리 select 값 담기
+	    			$("#mbType").change(function(){
+	    				var mbType = $("#mbType").val();
+	    				var mbListURL = "/admin/ctrl/adMember/pmlist.do";
+	    				
+	    				var column;
+	    				if(mbType=='group'){
+	    					column=['아이디','이름','사업자번호','기관','이메일','전화번호','등록일','수정일'];
+	    				}else if(mbType=='personal'){
+	    					column=['아이디','이름','성별','이메일','연락처','등급','등록일','수정일']
+	    				}else {
+	    					column=['회원코드','아이디','이름','직업/기관','주소','연락처','이메일','등록일']
+	    				}
+	    				
+	    				
+	    				
+	    				$("#switchDiv").html("");
+	    				
+	    				$.getJSON(mbListURL,{
+	    					mt:mbType
+	    				},function(datavo){
+	    					console.log(datavo.length);
+	    					addNewDatatable(column,$("#switchDiv"));
+	    					if(mbType=='group'){
+		    					$(".switchTable").DataTable({
+		    						data:datavo,
+		    						columns:[
+		    							{data : "m_id"},
+		    							{data : "m_name"},
+		    							{data : "com_no"},
+		    							{data : "m_job"},
+		    							{data : "m_email"},
+		    							{data : "m_phone"},
+		    							{data : "m_date"},
+		    							{data : "m_update"}
+		    						]
+		    					})
+	    					} else if(mbType=='personal'){
+		    					$(".switchTable").DataTable({
+		    						data:datavo,
+		    						columns:[
+		    							{data : "m_id"},
+		    							{data : "m_name"},
+		    							{data : "m_gender"},
+		    							{data : "m_email"},
+		    							{data : "m_phone"},
+		    							{data : "grade"},
+		    							{data : "m_date"},
+		    							{data : "m_update"}
+		    						]
+		    					})
+	    					}
+								});
+							});  							
+						};	    		
+>>>>>>> branch 'master' of https://github.com/cojange/entrepotSite.git
 	    		//비용관리탭
 	    		if($(location).attr("href")=="http://localhost:8080/admin/adcost/adCostList.do" ||
 	    				$(location).attr("href")=="http://localhost:8080/admin/adcost/readExcel.do" ){
@@ -138,12 +212,17 @@
 	    					"action":"/admin/adcost/readExcel.do"
 	    				});
 	    				formId.submit();
+<<<<<<< HEAD
 	    			});	    		
 	    		
 	    		}//비용 탭 일때 JS 
 	    		
 	    		/* 약관추가 */
 	    		addRegulation();
+=======
+	    			})
+	    		}//비용 탭 일때 JS 
+>>>>>>> branch 'master' of https://github.com/cojange/entrepotSite.git
 	    	});
 	    </script>
   </body>

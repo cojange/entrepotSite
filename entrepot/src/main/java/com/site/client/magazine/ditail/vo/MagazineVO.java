@@ -1,8 +1,9 @@
 package com.site.client.magazine.ditail.vo;
 
-import com.site.common.vo.CommonVO;
 
-public class MagazineVO extends CommonVO {
+
+
+public class MagazineVO{
 	
 	//상품테이블 (product)
 	private String pd_num;                  	//상품코드
@@ -34,10 +35,44 @@ public class MagazineVO extends CommonVO {
 	//필요 필드
 	private int pd_salecost;     //활인가
 	private String com_name;          //출판사
+	private String listkey;      // 키워드 개수 판별
+	private String home;         //리스트 제목
 	
+	private String key1;       //키워드1
+	private String key2;		//키워드2
+	private String key3;		//키워드3
 	
+	public String getKey1() {
+		return key1;
+	}
+	public void setKey1(String key1) {
+		this.key1 = key1;
+	}
+	public String getKey2() {
+		return key2;
+	}
+	public void setKey2(String key2) {
+		this.key2 = key2;
+	}
+	public String getKey3() {
+		return key3;
+	}
+	public void setKey3(String key3) {
+		this.key3 = key3;
+	}
 
-	
+	public String getHome() {
+		return home;
+	}
+	public void setHome(String home) {
+		this.home = home;
+	}
+	public String getListkey() {
+		return listkey;
+	}
+	public void setListkey(String listkey) {
+		this.listkey = listkey;
+	}
 	public int getPd_salecost() {
 		return pd_salecost;
 	}

@@ -38,7 +38,7 @@ public class ClLoginController{
 	@RequestMapping(value="/member/login.do",method = RequestMethod.GET)
 	public String memberForm(){
 		logger.info("login.do get 방식에 의한 메서드 호출 성공");
-		return "client/login/login";
+		return "client/member/login/login";
 	}
 	
 	/**************************************************************
@@ -55,7 +55,7 @@ public class ClLoginController{
 		// 우선 아이디가 존재하는지 먼저 확인 작업 진행(1: 존재하지 않을 때)
 		if(resultData==1){ 
 			mav.addObject("status", 1);
-			mav.setViewName("client/login/login"); 
+			mav.setViewName("client/member/login/login"); 
 			return mav; 
 		} else { 
 			LoginVO vo = clLoginService.loginHistorySelect(m_id);
@@ -67,7 +67,7 @@ public class ClLoginController{
 				
 				if (new Date().getTime() - vo.getLastFailedLogin() < 10000) {
 				mav.addObject("status", 6);   // 10초동안 로그인잠금 알림
-				mav.setViewName("client/login/login"); 
+				mav.setViewName("client/member/login/login"); 
 				return mav; 
 				
 				} else {
@@ -87,7 +87,7 @@ public class ClLoginController{
 			
 				mav.addObject("retry",vo.getRetry());
 				mav.addObject("status", 1);
-				mav.setViewName("client/login/login");   
+				mav.setViewName("client/member/login/login");   
 				
 				return mav; 
 			}
@@ -102,7 +102,7 @@ public class ClLoginController{
 			
 				//session.setAttribute("login", loginCheckResult);
 				mav.addObject("login", loginCheckResult);
-				mav.setViewName("client/login/login");
+				mav.setViewName("client/member/login/login");
 				return mav;
 			}
 		} 
