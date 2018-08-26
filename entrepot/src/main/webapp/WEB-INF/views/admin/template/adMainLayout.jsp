@@ -31,6 +31,7 @@
     
     <!-- 사용자 추가사항 -->
     <link href="/resources/include/admin/css/ad-add.css" rel="stylesheet">
+    <link href="/resources/include/admin/css/card-slides.css" rel="stylesheet">
   </head>
 
   <body id="page-top">
@@ -70,11 +71,14 @@
 	    
 	    <script type="text/javascript" src="/resources/include/admin/js/ad-clock.js"></script> 
 	    <script type="text/javascript" src="/resources/include/admin/js/ad-newDataTable.js"></script>
+	    <script type="text/javascript" src="/resources/include/admin/js/card-slide.js"></script>
 	    <script type="text/javascript">
 	    	$(function(){
 	    		printClock();	    	
-	    		
+	    		ad_card();
 	    		console.log($(location).attr("href"));
+	    		
+	    		
 	    		
 	    		//회원관리탭
 	    		if($(location).attr("href") == "http://localhost:8080/admin/ctrl/adMember/adMemberCtrl.do"){
