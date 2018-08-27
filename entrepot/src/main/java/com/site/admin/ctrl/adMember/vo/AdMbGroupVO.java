@@ -8,6 +8,12 @@ public class AdMbGroupVO extends AdMbCommonVO{
 	private String acc_name;	//회계부 이름
 	private String fax;			//팩스 번호
 	
+	private String[] columns = {"아이디","이름", "사업자번호", "기관", "이메일","연락처","등록일","수정일"};
+			
+	
+	public String[] getColumns() {
+		return columns;
+	}
 	public String getAcc_name() {
 		return acc_name;
 	}

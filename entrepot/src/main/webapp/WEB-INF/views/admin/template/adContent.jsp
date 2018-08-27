@@ -4,8 +4,9 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ include file="/WEB-INF/views/common/common.jspf" %>
 
-        <div class="container-fluid">
 
+
+        <div class="container-fluid">
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
@@ -13,6 +14,49 @@
             </li>
             <li class="breadcrumb-item active">Overview</li>
           </ol>
+          
+          <!-- crawler 카드 슬라이드스 -->
+          <h1 class="text-center mb-3">알라딘 사이트 기준 베스트 리스트</h1>
+		  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+		    <div class="carousel-inner row w-100 mx-auto">
+		      
+		      <c:choose>
+		      	<c:when test="${not empty booklist }">
+		      		 <c:forEach var="i" begin="0" end="10" varStatus="status">
+		      		 	<c:if test="${i==0}">
+		      		 		<div class="carousel-item col-md-4 active">
+		      		 		<div class="card">
+					          <img class="card-img-top img-fluid" src="${bookimg.get(i)}" alt="Card image cap">
+					          <div class="card-body">
+					            <h4 class="card-title">best 1.</h4>
+					            <p class="card-text">${booklist.get(i) }</p>
+					            <p class="card-text"><small class="text-muted">${update }</small></p>
+					          </div>
+		        			</div>
+		     		 	</div>
+		      		 	</c:if>
+		      		 	<c:if test="${i>0 }">
+		      		 		<div class="carousel-item col-md-4">
+		      		 		<div class="card">
+					          <img class="card-img-top img-fluid" src="${bookimg.get(i)}" alt="Card image cap">
+					          <div class="card-body">
+					            <h4 class="card-title"></h4>
+					            <p class="card-text">${booklist.get(i) }</p>
+					            <p class="card-text"><small class="text-muted">${update }</small></p>
+					          </div>
+		        			</div>
+		     		 	</div>
+		      		 	</c:if>
+		      		</c:forEach>
+
+		      	</c:when>
+		      </c:choose>
+		    </div>
+		    
+		    
+		    </div><!-- slides -->
+   
+          
 
           <!-- Icon Cards-->
           <div class="row">

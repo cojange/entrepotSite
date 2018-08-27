@@ -1,9 +1,11 @@
 package com.site.client.member.individual.service;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.site.client.member.individual.controller.ClMController;
 import com.site.client.member.individual.dao.ClMDao;
 import com.site.client.member.individual.vo.ClMSecurity;
 import com.site.client.member.individual.vo.ClMVO;
@@ -13,6 +15,8 @@ import com.site.common.util.Util;
 @Service
 public class ClMServiceImpl implements ClMService {
 		
+	Logger logger = Logger.getLogger(ClMServiceImpl.class);
+	
 	@Autowired
 	private ClMDao clMDao;
 

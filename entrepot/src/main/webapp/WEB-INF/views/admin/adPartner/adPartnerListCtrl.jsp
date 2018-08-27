@@ -28,15 +28,11 @@
 	<div class="container-fluid" >
 		<div class="card mb-3" id="adMagazine">
             <div class="card-header">
-            	<i class="fas fa-table"></i>            	
+            	<i class="fas fa-table"></i> 
+            	잡지 거래처           	
             </div>   
             <div class="card-body">
               <div class="table-responsive">
-              	<div>
-              		<select>
-              			<option>
-              		</select>
-              	</div>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
@@ -98,12 +94,7 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
-              	<div>
-              		<select>
-              			<option>
-              		</select>
-              	</div>
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="adminTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
                       <th>택배사명</th>

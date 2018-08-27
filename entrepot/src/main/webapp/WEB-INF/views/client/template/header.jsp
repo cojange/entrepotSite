@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ include file="/WEB-INF/views/common/common.jspf" %>
+
+
 <script type="text/javascript" src="/resources/include/client/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="/resources/include/client/js/header.js"></script>
+
 <script type="text/javascript">
 </script>
 <div id="header" class="container">
@@ -33,7 +36,7 @@
       </div> -->
 
    <div class="container" id="social">
-      <div class="	" style="font-size: 10pt;">
+      <div class="memberlogin" style="font-size: 10pt;">
          <!-- <a href="javascript:void(window.open('/client/login/login.do', '_blank','width=300px, height=350px',))">로그인</a> -->
          <c:if test="${login.m_id != null and login.m_id != ''}">
          <div  style="font-size: 10pt;,display: inline-block;">

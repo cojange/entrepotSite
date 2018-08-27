@@ -4,7 +4,6 @@
 <tiles-definitions>
 	<definition name="introClient"
 	template="/WEB-INF/views/client/template/clMainLayout.jsp">
-	<put-attribute name="title" value="앙뜨흐뽀 사이트"/>
 	<put-attribute name="header"
 	value="/WEB-INF/views/client/template/header.jsp"/>
 	<put-attribute name="footer"
@@ -16,7 +15,6 @@
 	
 	<definition name="content"
 	template="/WEB-INF/views/client/template/clContentLayout.jsp">
-	<put-attribute name="title" value="!앙뜨흐뽀 사이트!"/>
 	<put-attribute name="header"
 	value="/WEB-INF/views/client/template/header.jsp"/>
 	<put-attribute name="body" value=""/>
@@ -28,12 +26,17 @@
 	value="/WEB-INF/views/client/template/quick.jsp"/>
 	</definition>
 	
-	<!--  -->
 	<definition name="client/member/*" extends="content">
-	<put-attribute name="title" value="회원가입"/>
 	<put-attribute name="body"
 	value="/WEB-INF/views/client/member/{1}.jsp"/>
 	</definition>
+	
+	<!--  -->
+	<definition name="client/member/*/*" extends="content">
+	<put-attribute name="body"
+	value="/WEB-INF/views/client/member/{1}/{2}.jsp"/>
+	</definition>
+	
 	
 	<!--  -->
 
@@ -46,17 +49,6 @@
 	
 	</definition>
 
-	<definition name="client/login/*" extends="content">
-	<put-attribute name="title" value="로그인"/>
-	<put-attribute name="body"
-	value="/WEB-INF/views/client/login/{1}.jsp"/>
-	</definition>
-	
-	<definition name="client/myPage/*" extends="content">
-	<put-attribute name="title" value="마이페이지"/>
-	<put-attribute name="body"
-	value="/WEB-INF/views/client/myPage/{1}.jsp"/>
-	</definition>
 	
 
 

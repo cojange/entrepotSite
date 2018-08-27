@@ -1,5 +1,5 @@
 package com.site.client.member.individual.vo;
- 
+ //비밀번호 암호화
 public class ClMSecurity { 
     private String m_id;
     private String salt;

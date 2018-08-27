@@ -45,7 +45,7 @@
         </li>
         <!-- 클라이언트 홈페이지 이동 버튼 -->
         <li class="nav-item no-arrow">
-          <a class="nav-link" href="#" id="goClient" role="button" aria-haspopup="true" title="앙뜨흐뽀" aria-expanded="false">
+          <a class="nav-link" href="http://localhost:8080" id="goClient" role="button" aria-haspopup="true" title="앙뜨흐뽀" aria-expanded="false">
             <i class="fas fa-kiss-wink-heart fa-fw"></i>
           </a>
         </li>

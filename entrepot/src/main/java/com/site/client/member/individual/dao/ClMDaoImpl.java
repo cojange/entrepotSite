@@ -12,14 +12,14 @@ import com.site.client.member.individual.vo.ClMVO;
 @Repository
 public class ClMDaoImpl implements ClMDao {
 	
-	Logger logger = Logger.getLogger(ClMController.class);
+	Logger logger = Logger.getLogger(ClMDaoImpl.class);
 	
 	@Autowired
 	private SqlSession session;
 
 	@Override
 	public ClMVO memberSelect(String m_id) {
-		return session.selectOne("memberSelect",m_id);
+		return (ClMVO)session.selectOne("memberSelect",m_id);
 	}
 
 
@@ -39,7 +39,7 @@ public class ClMDaoImpl implements ClMDao {
 
 	@Override
 	public ClMSecurity securitySelect(String m_id) {
-		return session.selectOne("securitySelect",m_id);
+		return (ClMSecurity)session.selectOne("securitySelect",m_id);
 	}
 
 }

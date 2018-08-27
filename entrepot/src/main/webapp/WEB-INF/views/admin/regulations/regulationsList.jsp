@@ -59,8 +59,8 @@
 								<tr class="tac" data-num="${status.count}">
 									<td>${status.count}</td>
 									<td>${regAgree.reg_type}</td>
-									<td>${regAgree.m_name}</td>
 									<td>${regAgree.m_id}</td>
+									<td>${regAgree.m_name}</td>									
 									<td>${regAgree.ag_date}</td>
 									<td>${regAgree.mt}</td>
 								</tr>
@@ -91,70 +91,70 @@
               	약관 리스트
             </div>
             <div class="card-body">
-              <div class="table-responsive">
-              	<table width="100%">
-              		<colgroup>
-							<col width="50%" />
-							<col width="50%" />
+              	<form id="regWriteForm">
+	                <table class="table table-bordered" id="regBoard" width="100%" cellspacing="0">
+	               	 <colgroup>
+							<col width="7%" />
+							<col width="23%" />
+							<col width="11%" />
+							<col width="11%" />
+							<col width="11%" />
+							<col width="12%" />
+							<col width="25%" />
 						</colgroup>
-              		<tr>
-              			<td>
-		              		<select>
-		              			<option>사이트이용약관</option>
-		              			<option>정보이용동의약관</option>
-		              		</select>
-              			</td>
-              			<td style="text-align: right">
-              				<label>파일명 조회</label>
-              				<input type="text" />
-              			</td>
-              		</tr>
-              	</table>
-              	<br/>
-                <table class="table table-bordered" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>번호</th>
-                      <th>약관 유형</th>                     
-                      <th>등록일</th>
-                      <th>수정일</th> 
-                      <th>파일명</th>
-                    </tr>
-                  </thead>
-                  <tfoot>
-                    <tr>
-                      <th>번호</th>
-                      <th>약관 유형</th>                     
-                      <th>등록일</th>
-                      <th>수정일</th> 
-                      <th>파일명</th>
-                    </tr>
-                  </tfoot>
-                  <tbody>
-                     <c:choose>
-						<c:when test="${not empty regList}">
-							<c:forEach var="reg" items="${regList}" varStatus="status">
-								<tr class="tac" data-num="${status.count}">
-									<td>${status.count}</td>
-									<td>${reg.reg_type}</td>
-									<td>${reg.reg_date}</td>
-									<td>${reg.reg_update}</td>
-									<td>${reg.reg_file}</td>
+	                  <thead>
+	                    <tr>
+	                      <th>번호</th>
+	                      <th>약관 유형</th>                     
+	                      <th>등록일</th>
+	                      <th>수정일</th>
+	                      <th>공개일</th>
+	                      <th>비공개전환일</th>
+	                      <th>파일명</th>
+	                    </tr>
+	                  </thead>
+	                  <tfoot>
+	                    <tr>
+	                      <th>번호</th>
+	                      <th>약관 유형</th>                     
+	                      <th>등록일</th>
+	                      <th>수정일</th>
+	                      <th>공개일</th>
+	                      <th>비공개전환일</th>                      
+	                      <th>파일명</th>
+	                    </tr>
+	                  </tfoot>
+	                  <tbody id="factory_table">                  	
+	                     <c:choose>
+							<c:when test="${not empty regList}">
+								<c:forEach var="reg" items="${regList}" varStatus="status">
+									<tr class="tac" data-num="${status.count}">
+										<td>${status.count}</td>
+										<td>${reg.reg_type}</td>
+										<td>${reg.reg_date}</td>
+										<td>${reg.reg_update}</td>
+										<td>${reg.reg_open}</td>
+										<td>${reg.reg_close}</td>									
+										<td>${reg.reg_file}</td>
+									</tr>
+								</c:forEach>
+							</c:when>
+							<c:otherwise>
+								<tr>
+									<td colspan="4" class="tac">등록된 게시물이 존재하지 않습니다.</td>
 								</tr>
-							</c:forEach>
-						</c:when>
-						<c:otherwise>
-							<tr>
-								<td colspan="4" class="tac">등록된 게시물이 존재하지 않습니다.</td>
-							</tr>
-						</c:otherwise>
-					</c:choose>
-                  </tbody>
-                </table>
+							</c:otherwise>
+						</c:choose>
+	                  </tbody>
+	                </table>
+                </form>
+                <div style="text-align: right;">
+              		<input type="button" value="등록" id="addReg"/>
+					<input type="button" value="수정"/>
+                </div>
               </div>
             </div>
             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
           </div>
-         </div>
 	</body>
 </html>

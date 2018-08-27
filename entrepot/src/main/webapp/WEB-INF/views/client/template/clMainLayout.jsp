@@ -22,7 +22,7 @@
 			<tiles:insertAttribute name="header"/>	
 	</div>			
 	<div id="page" class="container">
-		<div><a href="#" class="image image-full"><img src="images/pic03.jpg" alt="" /></a></div>
+		<div><a href="#" class="image image-full"><img src="/resources/images/03.jpg" alt="" /></a></div>
 		<div class="column1">
 			<div class="title">
 				<h2>Maecenas luctus</h2>
@@ -35,7 +35,7 @@
 			<div class="title">
 				<h2>Mauris vulputate</h2>
 			</div>
-			<img src="images/pic01.jpg" width="282" height="150" alt="" />
+			<img src="/resources/images/pic01.jpg" width="282" height="150" alt="" />
 			<p>Phasellus tempor vehicula justo. Aliquam lacinia metus ut elit.</p>
 			<a href="#" class="button">Etiam posuere</a>
 		</div>
@@ -43,7 +43,7 @@
 			<div class="title">
 				<h2>Praesent tempor</h2>
 			</div>
-			<img src="images/pic02.jpg" width="282" height="150" alt="" />
+			<img src="/resources/images/pic02.jpg" width="282" height="150" alt="" />
 			<p>Quisque eleifend. Phasellus tempor vehicula justo. Aliquam lacinia metus.</p>
 			<a href="#" class="button">Etiam posuere</a>
 		</div>

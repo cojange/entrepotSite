@@ -33,10 +33,10 @@ public class ClMController{
 	 * 사용자 아이디 중복 체크 메서드
 	 * ********************************************/
 	@ResponseBody
-	@RequestMapping(value="member/userIdConfirm.do",
+	@RequestMapping(value="member/m_idConfirm.do",
 			method = RequestMethod.POST)
-	public String userIdConfirm(@RequestParam("m_id")String m_id) {
-		logger.info("userIdConfirm 메서드 호출 성공");
+	public String m_idConfirm(@RequestParam("m_id")String m_id) {
+		logger.info("m_idConfirm 메서드 호출 성공");
 		int result=clMService.m_idConfirm(m_id);
 		return result+"";
 	}
@@ -52,6 +52,24 @@ public class ClMController{
 		clMService.memberInsert(cmvo);
 		mav.setViewName("client/member/joinsuccess");
 		return mav;
+	}
+	
+	/***********************************************
+	 * 회원가입 선택폼
+	 * ********************************************/
+	@RequestMapping(value="member/mChoose.do",method = RequestMethod.GET)
+	public String mChoose(){
+		logger.info("mChoose.do  메서드 호출 성공");
+		return "client/member/memberChoose";
+	}
+	
+	/***********************************************
+	 * 14세미만 회원가입 보호자인증폼
+	 * ********************************************/
+	@RequestMapping(value="member/guardian.do",method = RequestMethod.GET)
+	public String guardianForm(){
+		logger.info("guardian.do  메서드 호출 성공");
+		return "client/member/guardianForm";
 	}
 
 }

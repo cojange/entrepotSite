@@ -1,7 +1,7 @@
 package com.site.client.member.individual.vo;
 
 import com.site.client.member.login.vo.LoginVO;
-
+//개인회원
 public class ClMVO extends LoginVO{
 
 	private String m_birth;//	생년월일-

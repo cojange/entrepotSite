@@ -8,5 +8,5 @@ public interface ClMDao {
 	public int memberInsert(ClMVO cmvo);
 	
 	public int securityInsert(ClMSecurity set);
-	public ClMSecurity securitySelect(String userId);
+	public ClMSecurity securitySelect(String m_Id);
 }

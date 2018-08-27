@@ -1,0 +1,19 @@
+
+.icon-ok:before { content: '\e800'; } /* '' */
+.icon-cancel:before { content: '\e801'; } /* '' */
+.icon-adult:before { content: '\e802'; } /* '' */
+.icon-calendar-inv:before { content: '\e803'; } /* '' */
+.icon-star-filled:before { content: '\e804'; } /* '' */
+.icon-truck:before { content: '\e805'; } /* '' */
+.icon-th-list:before { content: '\e806'; } /* '' */
+.icon-search:before { content: '\e807'; } /* '' */
+.icon-cw:before { content: '\e808'; } /* '' */
+.icon-heart:before { content: '\e809'; } /* '' */
+.icon-heart-filled:before { content: '\e80a'; } /* '' */
+.icon-star:before { content: '\e80b'; } /* '' */
+.icon-search-1:before { content: '\e80c'; } /* '' */
+.icon-thumbs-up:before { content: '\e80d'; } /* '' */
+.icon-thumbs-down:before { content: '\e80e'; } /* '' */
+.icon-location:before { content: '\e80f'; } /* '' */
+.icon-basket:before { content: '\e810'; } /* '' */
+.icon-smile:before { content: '\f118'; } /* '' */
