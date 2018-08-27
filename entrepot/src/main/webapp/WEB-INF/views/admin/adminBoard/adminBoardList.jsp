@@ -91,8 +91,18 @@
             	쿠폰 리스트
             </div>   
             <div class="card-body">
-              <div class="table-responsive">
+              <div class="table-responsive" style="overflow-x: hidden;">
+              <form id="couponForm">
                 <table class="table table-bordered" id="couponTable" width="100%" cellspacing="0">
+                <colgroup>
+					<col width="7%" />
+					<col width="10%" />
+					<col width="15%" />
+					<col width="11%" />
+					<col width="15%" />
+					<col width="15%" />
+					<col width="17%" />
+				</colgroup>
                   <thead>
                     <tr>
                       <th>번호</th>
@@ -115,7 +125,7 @@
                       <th>설명</th>
                     </tr>
                   </tfoot>
-                  <tbody>
+                  <tbody id="coupon_table">
                      <c:choose>
 						<c:when test="${not empty couponList}">
 							<c:forEach var="coupon" items="${couponList}" varStatus="status">
@@ -123,7 +133,7 @@
 									<td>${status.count}</td>
 									<td>${coupon.coupon_no}</td>
 									<td>${coupon.coupon_type}</td>
-									<td>${coupon.coupon_discount}</td>									
+									<td>${coupon.coupon_discount}%</td>									
 									<td>${coupon.coupon_date}</td>
 							 		<td>${coupon.coupon_update}</td>
 									<td>${coupon.coupon_memo}</td>
@@ -138,6 +148,11 @@
 					</c:choose>
                   </tbody>
                 </table>
+                </form>
+                 <div style="text-align: right;">
+              		<input type="button" value="등록" id="addCou"/>
+					<input type="button" value="수정"/>
+                </div>
               </div>
             </div>
             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>

@@ -149,7 +149,7 @@
 	                </table>
                 </form>
                 <div style="text-align: right;">
-              		<input type="button" value="등록" id="addData"/>
+              		<input type="button" value="등록" id="addReg"/>
 					<input type="button" value="수정"/>
                 </div>
               </div>

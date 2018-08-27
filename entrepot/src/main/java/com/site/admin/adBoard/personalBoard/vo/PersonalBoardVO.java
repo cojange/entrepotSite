@@ -14,6 +14,17 @@ public class PersonalBoardVO {
     private int board_no;
     private String m_num;
     
+    
+    private String m_name;    
+    
+	public String getM_name() {
+		return m_name;
+	}
+	public void setM_name(String m_name) {
+		this.m_name = m_name;
+	}
+	
+	
 	public int getPb_no() {
 		return pb_no;
 	}
