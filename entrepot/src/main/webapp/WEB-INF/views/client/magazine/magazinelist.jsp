@@ -25,8 +25,22 @@
 <!-- [endif] -->
 
 <!--   <link href="/resources/include/client/css/ditail-1-col-portfolio.css" rel="stylesheet"> -->
-
-
+ <script type="text/javascript" src="/resources/include/client/js/jquery-1.12.4.min.js"></script>   
+<script type="text/javascript">
+	$(function(){
+		$(".goDetail").click(function() {
+            var mg_num = $(this).parents("tr").attr("data-num");
+       		 $("#mg_num").val(mg_num); 
+            //상세 페이지로 이동하기위해  form추가(id:detailForm)
+            $("#detailForm").attr({
+               "method":"get",
+               "action":"/client/ditail/magazineDetail.do"
+            });
+            $("#detailForm").submit();
+         });
+	});
+	
+</script>
 
 
 
@@ -34,6 +48,7 @@
 </head>
 <body>
 <div>
+	<form id="detailForm" name="detailForm">
 	<div>
 		<div class="container-fluid">
 		<h1>${mvo.home}
@@ -44,7 +59,9 @@
 			<c:choose>
 				<c:when test="${not empty magazienlist}">
 					<c:forEach var="list" items="${magazienlist}" varStatus="status">
-						<tr height="100" bgcolor="#FFFFFF" style="margin-top: 50px;">
+						
+						<tr height="100" bgcolor="#FFFFFF" style="margin-top: 50px;" class="tac" data-num="${list.mg_num}">
+							<input type="hidden" id="mg_num" name="mg_num" value="${list.mg_num}" />
 							<td height="250" width="80" align="center"
 								style="word-break: break-all; font: 9pt 나눔고딕; line-height: 180%;">
 								<!-- <td align=center width=50 style="word-break:break-all;font:9pt 나눔고딕;line-height:180%;"><b>1위</b>&nbsp;</td> -->
@@ -55,13 +72,13 @@
 									<img src="" border="0"> <br>
 								</p>
 							</td>
-							<td width="200"
-								style="word-break: break-all; font: 9pt 나눔고딕; line-height: 180%;">
-								<a href="#"> <!-- 작은이미지만 보일 경우 
+							<td classwidth="200"
+								style="word-break: break-all; font: 9pt 나눔고딕; line-height: 180%;" class="godetail tal">
+									 <!-- 작은이미지만 보일 경우 
 			      <img src="../../data_book/2092-9625/s_2092-9625_2018_9_0_Y_20180817021056.jpg" width="200" height="270" border=0 /> -->
 									<!-- 먼저 작은이미지를 보이고, 없으면 큰 이미지를 보이게 할 경우 --> <img
 									src="${list.pl_path}" width="200" height="270" border="0">
-							</a>
+							
 							</td>
 							<td width="30"></td>
 							<!-- 간격넓히기 -->
@@ -70,12 +87,12 @@
 								<table cellspacing="0" cellpadding="0" border="0" width="500">
 									<tbody>
 										<tr>
-											<td width="542" colspan="2">
+											<td width="542" colspan="2"  class="godetail tal" >
 												<p>
-													<a href="#"> <font size="3"
+													 <font size="3"
 														style="font: 맑은 고딕, 나눔고딕, 굴림, verdana; color: #3399CC; FONT-WEIGHT: bold; line-height: 20px;">
 															"${list.mg_name}"</font>
-													</a> <label>월간</label> <label>부록</label>
+													 <label>월간</label> <label>부록</label>
 
 													<!-- 	<img src="../../img/nation_01.gif" border="0"> -->
 												</p>
@@ -166,7 +183,10 @@
 				</c:when>
 			</c:choose>
 		</table>
+		
 		</div>
+	</div>
+	</form>
 </div>	
 </body>
 </html>

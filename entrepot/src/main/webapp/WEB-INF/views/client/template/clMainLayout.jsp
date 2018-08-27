@@ -2,56 +2,27 @@
 <!DOCTYPE html>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
-
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="/resources/images/favicon.ico">
-
-    <title>앙뜨흐뽀</title>
-
-    <!-- Bootstrap core CSS -->
-  	<link href="/resources/include/client/css/default.css" rel="stylesheet" type="text/css" media="all" />
-    <!-- Custom styles for this template -->
-
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="/resources/include/client/js/jquery-1.12.4.min.js"></script>
-    <script src="/resources/include/client/dist/assets/js/ie-emulation-modes-warning.js"></script>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-
-  <body>
-
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-      	<!-- 헤더 설정 -->
-      	<tiles:insertAttribute name="header"/>
-    </nav>
-
-    <!-- Begin page content -->
-   <!--  <div class="container">
-      <div class="page-header">
-        <h1>Sticky footer with fixed navbar</h1>
-      </div>
-      <p class="lead">Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar has been added with <code>padding-top: 60px;</code> on the <code>body > .container</code>.</p>
-      <p>Back to <a href="../sticky-footer">the default sticky footer</a> minus the navbar.</p>
-    </div> -->
-    
-   <!-- Begin page content -->
+<<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900|Varela+Round" rel="stylesheet" />
+<link href="/resources/include/client/css/default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/resources/include/client/font/fonts.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/resources/include/client/css/quick.css" rel="stylesheet" type="text/css" media="all" />
+<!--[if IE 6]>
+<link href="default_ie6.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+</head>
+<body>
 <div id="wrapper">
+	<div id="header-wrapper">
+			<tiles:insertAttribute name="header"/>	
+	</div>			
 	<div id="page" class="container">
-		<div><a href="#" class="image image-full"><img src="/resources/images/pic03.jpg"alt="" /></a></div>
+		<div><a href="#" class="image image-full"><img src="images/pic03.jpg" alt="" /></a></div>
 		<div class="column1">
 			<div class="title">
 				<h2>Maecenas luctus</h2>
@@ -64,7 +35,7 @@
 			<div class="title">
 				<h2>Mauris vulputate</h2>
 			</div>
-			<img src="/resources/images/pic01.jpg"width="282" height="150" alt="" />
+			<img src="images/pic01.jpg" width="282" height="150" alt="" />
 			<p>Phasellus tempor vehicula justo. Aliquam lacinia metus ut elit.</p>
 			<a href="#" class="button">Etiam posuere</a>
 		</div>
@@ -72,7 +43,7 @@
 			<div class="title">
 				<h2>Praesent tempor</h2>
 			</div>
-			<img src="/resources/images/pic02.jpg" width="282" height="150" alt="" />
+			<img src="images/pic02.jpg" width="282" height="150" alt="" />
 			<p>Quisque eleifend. Phasellus tempor vehicula justo. Aliquam lacinia metus.</p>
 			<a href="#" class="button">Etiam posuere</a>
 		</div>
@@ -113,19 +84,11 @@
 		</div>
 	</div>
 </div>
-      <footer class="footer">	
-      		<!-- 푸터 설정 -->
-      		<tiles:insertAttribute name="footer"/>
-      </footer>
-      
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> -->
-    <script src="/resources/include/dist/js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="/resources/include/dist/assets/js/ie10-viewport-bug-workaround.js"></script>
-  </body>
+<div>
+	<tiles:insertAttribute name="quick"/>
+</div> 
+<div id="footer">
+	<tiles:insertAttribute name="footer"/>
+</div>
+</body>
 </html>

@@ -9,6 +9,8 @@
 	value="/WEB-INF/views/client/template/header.jsp"/>
 	<put-attribute name="footer"
 	value="/WEB-INF/views/client/template/footer.jsp"/>
+	<put-attribute name="quick"
+	value="/WEB-INF/views/client/template/quick.jsp"/>
 
 	</definition>	
 	
@@ -22,6 +24,8 @@
 	value="/WEB-INF/views/client/template/footer.jsp"/>
 	<put-attribute name="sidebar"
 	value=""/>
+	<put-attribute name="quick"
+	value="/WEB-INF/views/client/template/quick.jsp"/>
 	</definition>
 	
 	<!--  -->
@@ -54,6 +58,6 @@
 	value="/WEB-INF/views/client/myPage/{1}.jsp"/>
 	</definition>
 	
-	
+
 
 </tiles-definitions>
