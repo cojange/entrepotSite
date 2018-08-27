@@ -16,6 +16,7 @@
 
     <!-- Bootstrap core CSS -->
   	<link href="/resources/include/client/css/default.css" rel="stylesheet" type="text/css" media="all" />
+  	<link href="/resources/include/client/css/list.css" rel="stylesheet" type="text/css" media="all" />
     <!-- Custom styles for this template -->
 
 

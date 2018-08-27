@@ -4,20 +4,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+   <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-  
+    <link rel="icon" href="/resources/images/favicon.ico">
 
-    <%-- <title><tiles:getAsString name="title"/></title> --%>
+    <title>앙뜨흐뽀</title>
 
-	
-	
+    <!-- Bootstrap core CSS -->
   	<link href="/resources/include/client/css/default.css" rel="stylesheet" type="text/css" media="all" />
   	<link href="/resources/include/client/css/list.css" rel="stylesheet" type="text/css" media="all" />
-
+    <!-- Custom styles for this template -->
+	
     <!-- Custom styles for this template -->
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
@@ -31,7 +31,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-
+	
   <body>
 
     <!-- Fixed navbar -->
@@ -39,16 +39,14 @@
      <!-- 헤더 설정 -->
      	<tiles:insertAttribute name="header"/>
     </nav>
-     <div>
+     <%-- <div>
     	<tiles:insertAttribute name="sidebar"/>
-    </div>
+    </div> --%>
 
-     <div class="container">
+     <div id="wrapper">
      	<%-- <div class="page-header">
      		<h1><tiles:getAsString name="title"/></h1>
-     	</div> --%>
-
-     	
+     	</div> --%>    	
      	<tiles:insertAttribute name="body"/>
      </div>
 

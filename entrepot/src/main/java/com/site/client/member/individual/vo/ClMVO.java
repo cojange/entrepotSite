@@ -3,7 +3,7 @@ package com.site.client.member.individual.vo;
 import com.site.client.member.login.vo.LoginVO;
 //개인회원
 public class ClMVO extends LoginVO{
-
+	private int m_num;//회원번호
 	private String m_birth;//	생년월일-
 	private String m_gender;		//	성별-
 	private String m_job;		//	직업-
@@ -25,6 +25,13 @@ public class ClMVO extends LoginVO{
 	private String mt; //회원타입
 	
 	
+	
+	public int getM_num() {
+		return m_num;
+	}
+	public void setM_num(int m_num) {
+		this.m_num = m_num;
+	}
 	public String getM_birth() {
 		return m_birth;
 	}
