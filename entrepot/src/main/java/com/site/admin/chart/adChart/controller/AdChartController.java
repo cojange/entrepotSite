@@ -44,13 +44,17 @@ public class AdChartController {
 		
 		//엑셀 에서 지출 읽어오기
 		ExcelReadUtil eru = new ExcelReadUtil();
+		//읽어온 엑셀 데이터 담기
 		List<CostExcelVO> dataExcelList = new ArrayList<>();
+		
+		int sum = 0;
+		
 		try {
 			for(int i=0; i<excelList.size();i++) {
 				dataExcelList = eru.readExcel(excelList.get(i), request);
 				
 				if(dataExcelList.get(i).getMemo().equals("부자재비")) {
-					
+					sum += Integer.parseInt(dataExcelList.get(i).getCost());
 				}
 			}
 		} catch (Exception e) {

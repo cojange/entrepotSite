@@ -26,7 +26,10 @@ public class ListController {
 	@RequestMapping(value="/magazinelist.do",method = RequestMethod.GET)
 	public String megazineList(@ModelAttribute("data") MagazineVO mvo,Model model){
 		logger.info("magazinelist.do get 방식에 의한 메서드 호출 성공");
-		
+		logger.info("listkey:" +mvo.getListkey());
+		logger.info("key1:" +mvo.getKey1());
+		logger.info("key2:" +mvo.getKey2());
+		logger.info("key3:"+mvo.getKey3());
 		
 		
 		//전체 레코드 구현

@@ -1,3 +1,12 @@
+// 양쪽 공백 없애기 메서드 wrestTrim
+//fld : 문자열. $("#문자열아이디")
+/*function wrestTrim(fld)
+{
+    var pattern = /(^\s+)|(\s+$)/g; // \s 공백 문자
+    var value = fld.val().replace(pattern,"");
+    return value;
+}*/
+
 //비밀번호와 비밀번호 확인 일치 여부 확인
 function passwordCheck() {
 	if($("#m_pwd").val() != $("#userPwCheck").val()){
@@ -23,6 +32,40 @@ function idPwdCheck() {
 		return true;
 	}
 }
+function birthCheck() { 
+	var birth=$("#m_birth").val();
+//생년월일 검사
+	var birthYear = (birth.charAt(6) <= "2") ? "19" : "20";
+	birthYear += birth.substr(0, 2);
+	var birthMonth = birth.substr(2, 2) - 1;
+	var birthDate = birth.substr(4, 2);
+	var birthday = new Date(birthYear, birthMonth, birthDate);
+	
+	if ( birthday.getYear() % 100 != birth.substr(0,2)||birthday.getMonth() != birthMonth ||birthday.getDate() != birthDate) {
+	    alert("생년월일형식이맞지않습니다.");
+		return false;
+	 }else{
+		 return true;
+	 }
+}
+
+//이메일주소 형식 검사
+//fld : 검사할 문자열
+/*function wrestEmail(fld){
+    if (!wrestTrim(fld)) return;
+    //var pattern = /(\S+)@(\S+)\.(\S+)/; 이메일주소에 한글 사용시
+    var pattern = "/([0-9a-zA-Z_-]+)@([0-9a-zA-Z_-]+)\.([0-9a-zA-Z_-]+)/";
+    var regExp = new RegExp(pattren);//정규표현식 객체
+	var matchs = regExp.exec(fld);
+	if(match==null){
+		$alert("이메일이 형식에 맞지 않습니다. 다시 입력해 주세요.");
+		fld.val("");
+		return false;
+	}else{
+		return true;
+	}
+}*/
+
 
 var idConfirm = 1;
 $(function() {
@@ -82,19 +125,25 @@ $(function() {
 		else if(!formCheck($("#m_job"),$(".error:eq(4)"),"직업을"))return;
 		else if(!formCheck(($("#m_zipcode")||$("#m_address")),$(".error:eq(5)"),"우편주소를"))return;
 		else if(!formCheck(($("#m_birth")&&$("#m_gender")),$(".error:eq(7)"),"생년월일 및 주민번호를"))return;
+		else if(!birthCheck())return;
 		else if(!inputVerify(3,"#m_birth",".error:eq(7)"))return;
 		else if(!inputVerify(4,"#m_gender",".error:eq(7)"))return;
 		else if(!formCheck($("#m_name"),$(".error:eq(8)"),"이름을"))return;
 		else if(!formCheck($("#emailName"),$(".error:eq(9)"),"이메일을 @를제거하고"))return;
+		//이메일형식체크
 		else if(!inputVerify(5,"#emailName",".error:eq(9)"))return;
 		else if(!formCheck($("#ans"),$(".error:eq(11)"),"비밀번호 질문답을"))return;
 		else if(idConfirm!=2){alert("아이디 중복 체크 진행해 주세요.");return;}
 		else{
 				if($(direct).is(":checked")==true){// 직접입력 체크되어있을시
-					$("#m_email").val($("#emailName").val()+"@"+$("#emailDirect").val());	
+					$("#m_email").val($("#emailName").val()+"@"+$("#emailDirect").val());
+					console.log("체크입력"+$("#m_email").val());
 				}else if($(direct).is(":checked")==false){// 직접입력 체크안되있을때
 					$("#m_email").val($("#emailName").val()+"@"+$("#emailDomain").val());
+					console.log("직접입력"+$("#m_email").val());
 				}
+				
+				
 				if($("#m_gender").val()==1){
 					$("#m_gender").val("남");	
 				}else if($("m_gender").val()==1){
@@ -141,13 +190,16 @@ $(function() {
 		});
 	});
 	/* 배열 : 유효성 체크 시 필요한 정규식으로 배열을 초기화.
-	 * pattren = [아이디,비밀번호,핸드폰번호,생년월일,주민번호앞자리,이메일앞자리(emailName)]
+	 * pattren = [아이디,비밀번호,핸드폰번호,생년월일,주민번호앞자리,이메일]
 	 * 함수명:inputVerify(배열 인덱스번호,비교할 값,출력영역)
 	 * */
 	var pattren = [
 		"((?=.*[a-zA-Z])(?=.*[0-9]).{6,10})",
 		"((?=.*[a-zA-Z])(?=.*[0-9@#$%]).{8,12})",
-		"^\\d{3}-\\d{3,4}-\\d{4}","^(?=.*[0-9]).{6}$","^[0-9]$","^(?=.*[0-9a-zA-Z]).{4,20}$"
+		"^\\d{3}-\\d{3,4}-\\d{4}",
+		"^(?=.*[0-9]).{6}$",
+		"^[1-4]$",
+		"((?=.*[a-zA-Z])(?=.*[0-9]).{3,20})"
 		];
 	
 	/**입력 형식이 맞지않을때 발생하는메서드

@@ -69,120 +69,150 @@
 	    <script src="/resources/include/admin/js/demo/datatables-demo.js"></script>
 	    <script src="/resources/include/admin/js/demo/chart-area-demo.js"></script> 
 	    
+	    <!-- 사용자 정의 js -->
+	    <script type="text/javascript" src="/resources/include/common/js/common.js"></script>
+	    <script type="text/javascript" src="/resources/include/admin/js/ad-clock.js"></script>  
+	    <script type="text/javascript" src="/resources/include/admin/js/regulationsList.js"></script>
 	    <script type="text/javascript" src="/resources/include/admin/js/ad-clock.js"></script> 
 	    <script type="text/javascript" src="/resources/include/admin/js/ad-newDataTable.js"></script>
 	    <script type="text/javascript" src="/resources/include/admin/js/card-slide.js"></script>
+	    <script type="text/javascript" src="/resources/include/admin/js/couponList.js"></script>
 	    <script type="text/javascript">
 	    	$(function(){
+	    		/* main 상단 시계 */
 	    		printClock();	    	
-	    		ad_card();
-	    		console.log($(location).attr("href"));
+	    	
+				ad_card();   		
 	    		
+	    		/* 약관추가 */
+	    		addRegulation();
 	    		
+	    		/* 쿠폰추가 */
+	    		addCoupon();
 	    		
 	    		//회원관리탭
 	    		if($(location).attr("href") == "http://localhost:8080/admin/ctrl/adMember/adMemberCtrl.do"){
 	    			$("#adminTable").dataTable();
-	    			var gpTable = $(".switchTable").DataTable();
-	    			
-	    			//현재 회원관리 select 값 담기
-	    			$("#mbType").change(function(){
-	    				var mbType = $("#mbType").val();
-	    				var mbListURL = "/admin/ctrl/adMember/pmlist.do";
-	    				
-	    				var column;
-	    				if(mbType=='group'){
-	    					column=['아이디','이름','사업자번호','기관','이메일','전화번호','등록일','수정일'];
-	    				}else if(mbType=='personal'){
-	    					column=['아이디','이름','성별','이메일','연락처','등급','등록일','수정일']
-	    				}else {
-	    					column=['회원코드','아이디','이름','직업/기관','주소','연락처','이메일','등록일']
-	    				}
-	    				
-	    				
-	    				
-	    				$("#switchDiv").html("");
-	    				
-	    				$.getJSON(mbListURL,{
-	    					mt:mbType
-	    				},function(datavo){
-	    					console.log(datavo.length);
-	    					addNewDatatable(column,$("#switchDiv"));
-	    					if(mbType=='group'){
-		    					$(".switchTable").DataTable({
-		    						data:datavo,
-		    						columns:[
-		    							{data : "m_id"},
-		    							{data : "m_name"},
-		    							{data : "com_no"},
-		    							{data : "m_job"},
-		    							{data : "m_email"},
-		    							{data : "m_phone"},
-		    							{data : "m_date"},
-		    							{data : "m_update"}
-		    						]
-		    					})
-	    					} else if(mbType=='personal'){
-		    					$(".switchTable").DataTable({
-		    						data:datavo,
-		    						columns:[
-		    							{data : "m_id"},
-		    							{data : "m_name"},
-		    							{data : "m_gender"},
-		    							{data : "m_email"},
-		    							{data : "m_phone"},
-		    							{data : "grade"},
-		    							{data : "m_date"},
-		    							{data : "m_update"}
-		    						]
-		    					})
-	    					}
-								});
-							});  							
-						};	    		
-	    		//비용관리탭
-	    		if($(location).attr("href")=="http://localhost:8080/admin/adcost/adCostList.do" ||
-	    				$(location).attr("href")=="http://localhost:8080/admin/adcost/readExcel.do" ){
-	    			/* if(${status} == "fail"){
-	    				alert("엑셀 파일이 존재하지 않습니다.");
-	    			} */
-	    			
-	    			//엑셀 파일 업로드
-	    			$("#uploadBtn").click(function(){
-	    				if($("#excelCost").val() ==""){
-	    					alert("파일을 선택해 주세요.");
-	    					//엑셀파일여부 유효성검사
-	    				}else if(!chkExcelFile($("#excelCost"))){
-	    					return;
-	    				}else{
-	    					$("#cost_ExcelFile").attr({
-	    						"method":"POST",
-	    						"action":"/admin/adcost/uploadExcel"
-	    					});
-	    					$("#cost_ExcelFile").submit();
-	    				} 
+	    		}
+	    		
+	    		//거래처 관리탭
+	    		if($(location).attr("href") == "http://localhost:8080/admin/ctrl/adPartner/adPartnerListCtrl.do"){
+	    			$("#adminTable").dataTable();
+	    		}
+	    		
+	    		//약관 관리탭
+	    		if($(location).attr("href") == "http://localhost:8080/admin/adBoard/regulations/regulationsList.do"){
+	    			$("#regBoard").dataTable();
+	    		}
+	    		
+	    		//공지사항,이벤트,쿠폰 관리탭 
+	    		if($(location).attr("href") == "http://localhost:8080/admin/adBoard/adminBoard/adminBoardList.do"){
+	    			$("#couponTable").dataTable();
+	    		}
+	    		
 
-	    			});//Excel 업로드 Btn
-	    			
-	    			$("#templateDown").click(function(){
-	    				location.href ="/admin/adcost/downloadTemplate.do";
-	    			});
-	    			
-	    			//card 클릭시 엑셀 로드
-	    			$(".viewExcel").click(function(event){
-	    				event.preventDefault();
-	    				if($(this).attr("href")=="#"){
-	    					return;
-	    				}
-	    				var formId=$("#loadExcel"+$(this).attr("href"));
-	    				formId.attr({
-	    					"method":"post",
-	    					"action":"/admin/adcost/readExcel.do"
-	    				});
-	    				formId.submit();
-	    			})
-	    		}//비용 탭 일때 JS 
-	    	});
+  			var gpTable = $(".switchTable").DataTable();
+  			
+  			//현재 회원관리 select 값 담기
+  			$("#mbType").change(function(){
+  				var mbType = $("#mbType").val();
+  				var mbListURL = "/admin/ctrl/adMember/pmlist.do";
+  				
+  				var column;
+  				if(mbType=='group'){
+  					column=['아이디','이름','사업자번호','기관','이메일','전화번호','등록일','수정일'];
+  				}else if(mbType=='personal'){
+  					column=['아이디','이름','성별','이메일','연락처','등급','등록일','수정일']
+  				}else {
+  					column=['회원코드','아이디','이름','직업/기관','주소','연락처','이메일','등록일']
+  				}
+  				
+  				
+  				
+  				$("#switchDiv").html("");
+  				
+  				$.getJSON(mbListURL,{
+  					mt:mbType
+  				},function(datavo){
+  					console.log(datavo.length);
+  					addNewDatatable(column,$("#switchDiv"));
+  					if(mbType=='group'){
+   					$(".switchTable").DataTable({
+   						data:datavo,
+   						columns:[
+   							{data : "m_id"},
+   							{data : "m_name"},
+   							{data : "com_no"},
+   							{data : "m_job"},
+   							{data : "m_email"},
+   							{data : "m_phone"},
+   							{data : "m_date"},
+   							{data : "m_update"}
+   						]
+   					})
+  					} else if(mbType=='personal'){
+   					$(".switchTable").DataTable({
+   						data:datavo,
+   						columns:[
+   							{data : "m_id"},
+   							{data : "m_name"},
+   							{data : "m_gender"},
+   							{data : "m_email"},
+   							{data : "m_phone"},
+   							{data : "grade"},
+   							{data : "m_date"},
+   							{data : "m_update"}
+   						]
+   					})
+  					}
+				});
+			 });  							
+    		
+
+    		//비용관리탭
+    		if($(location).attr("href")=="http://localhost:8080/admin/adcost/adCostList.do" ||
+    				$(location).attr("href")=="http://localhost:8080/admin/adcost/readExcel.do" ){
+    			/* if(${status} == "fail"){
+    				alert("엑셀 파일이 존재하지 않습니다.");
+    			} */
+    			
+    			//엑셀 파일 업로드
+    			$("#uploadBtn").click(function(){
+    				if($("#excelCost").val() ==""){
+    					alert("파일을 선택해 주세요.");
+    					//엑셀파일여부 유효성검사
+    				}else if(!chkExcelFile($("#excelCost"))){
+    					return;
+    				}else{
+    					$("#cost_ExcelFile").attr({
+    						"method":"POST",
+    						"action":"/admin/adcost/uploadExcel"
+    					});
+    					$("#cost_ExcelFile").submit();
+    				} 
+
+    			});//Excel 업로드 Btn
+    			
+    			$("#templateDown").click(function(){
+    				location.href ="/admin/adcost/downloadTemplate.do";
+    			});
+    			
+    			//card 클릭시 엑셀 로드
+    			$(".viewExcel").click(function(event){
+    				event.preventDefault();
+    				if($(this).attr("href")=="#"){
+    					return;
+    				}
+    				var formId=$("#loadExcel"+$(this).attr("href"));
+    				formId.attr({
+    					"method":"post",
+    					"action":"/admin/adcost/readExcel.do"
+    				});
+    				formId.submit();
+
+    			});	    		    		
+    		}//비용 탭 일때 JS 
+	    });
 	    </script>
   </body>
 
