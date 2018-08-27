@@ -7,8 +7,10 @@ import com.site.admin.adBoard.adminBoard.vo.CouponVO;
 
 public interface AdminBoardDao {
 
-	List<AdminBoardVO> adminBoardList(AdminBoardVO advo);
+	public List<AdminBoardVO> adminBoardList(AdminBoardVO advo);
 
-	List<CouponVO> couponList(CouponVO cvo);
+	public List<CouponVO> couponList(CouponVO cvo);
+
+	public int couponInsert(CouponVO cvo);
 
 }

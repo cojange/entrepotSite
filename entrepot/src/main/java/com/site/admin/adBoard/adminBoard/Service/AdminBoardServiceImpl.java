@@ -35,4 +35,17 @@ public class AdminBoardServiceImpl implements AdminBoardService{
 		return couponList;
 	}
 
+	//쿠폰 등록
+	@Override
+	public int couponInsert(CouponVO cvo) {
+		int result = 0;
+		try {
+			result = adminBoardDao.couponInsert(cvo);
+		}catch(Exception e) {
+			e.printStackTrace();
+			result = 0;
+		}
+		return result;
+	}
+
 }

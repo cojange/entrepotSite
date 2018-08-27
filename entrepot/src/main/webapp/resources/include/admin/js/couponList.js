@@ -2,10 +2,9 @@
 function addCoupon(){
 	/* 쿠폰추가 */
 	$("#addCou").click(function(){
-		var rowItem = "<tr><td>-</td><td>-</td><td><select id='couType' name='couType'><option value='default'>선택해주세요</option><option value='level'>등급쿠폰</option>";
-		rowItem += "<option value='birth'>생일쿠폰</option><option value='event'>이벤트쿠폰</option></select></td><td><input type='number' id='couDiscount' name='couDiscount' style='width: 50px;'>%</td>";
+		var rowItem = "<tr><td>-</td><td>-</td><td>이벤트쿠폰</td><td><input type='number' id='couDiscount' name='couDiscount' style='width: 50px;'>%</td>";
 		rowItem += "<td><input type='date' style='width: 135px;' id='couDate' name='couDate'></td><td><input type='date' style='width: 135px;' id='couUpdate' name='couUpdate'></td>";
-		rowItem += "<td><input type='text' style='width: 100px;' id='couMemo' name='couMemo'> <i class='fas fa-minus-circle' id='couDel' style='font-size:20px; color:red;'></i>";
+		rowItem += "<td><input type='text' style='width: 100px;' id='couMemo' name='couMemo' value='-'> <i class='fas fa-minus-circle' id='couDel' style='font-size:20px; color:red;'></i>";
 		rowItem += " <i class='fas fa-save' id='couSave' style='font-size:20px; color:green;'></i></td></tr>";
 		
 		$("#coupon_table").append(rowItem);
@@ -29,7 +28,7 @@ function addCoupon(){
 		}
 		else if(!chkData($('#couDiscount'),"할인율을")) return;
 		else if(!chkData($('#couDate'),"등록일을")) return;
-		/*else{
+		else{
 			var insertUrl = "/admin/adBoard/adminBoard/couponInsert.do";
 			
 			$.ajax({
@@ -41,10 +40,21 @@ function addCoupon(){
 				},
 				dataType:"text",
 				data:JSON.stringify({
-					
-				});
+					coupon_discount:$("#couDiscount").val(),
+					coupon_date:$("#couDate").val(),
+					coupon_memo:$("#couMemo").val()
+				}),
+				error:function(){ //실행시 오류가 발생하였을 경우
+					alert('시스템 오류 입니다. 관리자에게 문의 하세요');
+				},
+				success:function(resultData){
+					if(resultData=="SUCCESS"){
+						alert("쿠폰 등록이 완료되었습니다.");
+						location.href="/admin/adBoard/adminBoard/adminBoardList.do";
+					}
+				}
 			});
-		}*/
+		}
 	});
 	
 	

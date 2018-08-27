@@ -17,4 +17,13 @@
 		from coupon
 		order by coupon_date desc, coupon_update desc
 	</select>
+	
+	<insert id="couponInsert" parameterType="coupon">
+		/*쿠폰 등록*/
+		<selectKey keyProperty="coupon_no" resultType="String" order="BEFORE">
+			select CONCAT('cp_event_',coupon_seq.nextval) coupon_no from dual
+		</selectKey>
+		insert into coupon(coupon_no, coupon_discount, coupon_memo)
+		values(#{coupon_no}, #{coupon_discount}, #{coupon_memo})
+	</insert>
 </mapper>
