@@ -16,14 +16,17 @@
     <!-- Bootstrap core CSS -->
   	<link href="/resources/include/client/css/default.css" rel="stylesheet" type="text/css" media="all" />
   	<link href="/resources/include/client/css/list.css" rel="stylesheet" type="text/css" media="all" />
+
     <!-- Custom styles for this template -->
 	
+	<link href="/resources/include/client/css/quick.css" rel="stylesheet" type="text/css" media="all" />
     <!-- Custom styles for this template -->
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="/resources/include/client/js/jquery-1.12.4.min.js"></script>
     <script src="/resources/include/client/dist/assets/js/ie-emulation-modes-warning.js"></script>
+    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -33,15 +36,10 @@
   </head>
 	
   <body>
-
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-     <!-- 헤더 설정 -->
+<div id="wrapper">
+	<div id="header-wrapper">
      	<tiles:insertAttribute name="header"/>
-    </nav>
-     <%-- <div>
-    	<tiles:insertAttribute name="sidebar"/>
-    </div> --%>
+    </div>
 
      <div id="wrapper">
      	<%-- <div class="page-header">
@@ -49,7 +47,10 @@
      	</div> --%>    	
      	<tiles:insertAttribute name="body"/>
      </div>
-
+</div>
+	<div>
+		<tiles:insertAttribute name="quick"/>
+	</div>
     <footer class="footer">
      	<!-- 푸터 설정 -->
      	<tiles:insertAttribute name="footer"/>

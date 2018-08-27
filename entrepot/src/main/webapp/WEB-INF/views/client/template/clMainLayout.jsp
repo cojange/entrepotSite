@@ -50,9 +50,27 @@
     </div> -->
     
    <!-- Begin page content -->
+<<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900|Varela+Round" rel="stylesheet" />
+<link href="/resources/include/client/css/default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/resources/include/client/font/fonts.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/resources/include/client/css/quick.css" rel="stylesheet" type="text/css" media="all" />
+<!--[if IE 6]>
+<link href="default_ie6.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+</head>
+<body>
 <div id="wrapper">
+	<div id="header-wrapper">
+			<tiles:insertAttribute name="header"/>	
+	</div>			
 	<div id="page" class="container">
-		<div><a href="#" class="image image-full"><img src="/resources/images/pic03.jpg"alt="" /></a></div>
+		<div><a href="#" class="image image-full"><img src="/resources/images/03.jpg" alt="" /></a></div>
 		<div class="column1">
 			<div class="title">
 				<h2>Maecenas luctus</h2>
@@ -65,7 +83,7 @@
 			<div class="title">
 				<h2>Mauris vulputate</h2>
 			</div>
-			<img src="/resources/images/pic01.jpg"width="282" height="150" alt="" />
+			<img src="/resources/images/pic01.jpg" width="282" height="150" alt="" />
 			<p>Phasellus tempor vehicula justo. Aliquam lacinia metus ut elit.</p>
 			<a href="#" class="button">Etiam posuere</a>
 		</div>
@@ -114,19 +132,11 @@
 		</div>
 	</div>
 </div>
-      <footer class="footer">	
-      		<!-- 푸터 설정 -->
-      		<tiles:insertAttribute name="footer"/>
-      </footer>
-      
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> -->
-    <script src="/resources/include/dist/js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="/resources/include/dist/assets/js/ie10-viewport-bug-workaround.js"></script>
-  </body>
+<div>
+	<tiles:insertAttribute name="quick"/>
+</div> 
+<div id="footer">
+	<tiles:insertAttribute name="footer"/>
+</div>
+</body>
 </html>
