@@ -112,6 +112,7 @@
                       <th>등록일</th>
                       <th>수정일</th>
                       <th>설명</th>
+                      <th>활성여부</th>
                     </tr>
                   </thead>
                   <tfoot>
@@ -123,13 +124,14 @@
                       <th>등록일</th>
                       <th>수정일</th>
                       <th>설명</th>
+                      <th>활성여부</th>
                     </tr>
                   </tfoot>
                   <tbody id="coupon_table">
                      <c:choose>
 						<c:when test="${not empty couponList}">
 							<c:forEach var="coupon" items="${couponList}" varStatus="status">
-								<tr class="tac" data-num="${status.count}">
+								<tr class="tac">
 									<td>${status.count}</td>
 									<td>${coupon.coupon_no}</td>
 									<td>${coupon.coupon_type}</td>
@@ -137,8 +139,10 @@
 									<td>${coupon.coupon_date}</td>
 							 		<td>${coupon.coupon_update}</td>
 									<td>${coupon.coupon_memo}</td>
+									<td><c:if test="${coupon.coupon_use=='false'}">비활성</c:if>
+									<c:if test="${coupon.coupon_use=='true'}">활성</c:if></td>									
 								</tr>
-							</c:forEach>
+							</c:forEach> 
 						</c:when> 
 						<c:otherwise>
 							<tr>
@@ -151,7 +155,8 @@
                 </form>
                  <div style="text-align: right;">
               		<input type="button" value="등록" id="addCou"/>
-					<input type="button" value="수정"/>
+					<input type="button" value="수정" id="upCou"/>
+					<input type="button" value="삭제" id="delCou"/>
                 </div>
               </div>
             </div>

@@ -8,9 +8,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.site.admin.adBoard.adminBoard.Service.AdminBoardService;
 import com.site.admin.adBoard.adminBoard.vo.AdminBoardVO;
@@ -59,5 +61,21 @@ public class AdminBoardController {
 		return entity;
 	}
 	
-	
+	/**
+	 * 쿠폰 수정 구현
+	 * **/
+	@ResponseBody
+	@RequestMapping(value = "/{coupon_no}.do", method = RequestMethod.PUT)
+	public String couponUpdate(@PathVariable("coupon_no") String coupon_no, @RequestBody CouponVO cvo){
+		logger.info("couponUpdate 호출 성공");
+		cvo.setCoupon_no(coupon_no);
+		logger.info("값확인 controller :" + cvo.getCoupon_no() +"/"+ cvo.getCoupon_discount()+"/"+cvo.getCoupon_memo()+"/"+cvo.getCoupon_use());
+
+		int reasult = adminBoardService.couponUpdate(cvo);
+		if (reasult==1) {
+			return "SUCCESS";
+		}else {
+			return "FALSE";
+		}
+	}
 }

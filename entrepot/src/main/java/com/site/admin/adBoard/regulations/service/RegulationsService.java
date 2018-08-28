@@ -9,5 +9,6 @@ public interface RegulationsService {
 
 	public List<RegulationsVO> regList(RegulationsVO rvo);
 	public List<RegAgreeVO> regAgreeList(RegAgreeVO ravo);
+	public int addRegulations(RegulationsVO rvo);
  
 }
