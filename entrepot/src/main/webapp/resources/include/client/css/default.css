@@ -128,7 +128,8 @@ hr {
 {
 	position: absolute;
 	top: 4em;
-	right: 0;
+	left: 1000px;
+	
 }
 
 /** LOGO */
@@ -185,7 +186,7 @@ hr {
 	text-align: center;
 }
 
-#menu li {
+.san ,.current_page_item{
 	display: inline-block;
 }
 
@@ -492,7 +493,7 @@ ul.style3 .first {
 	.column3,
 	.column4
 	{
-		width: 282px;
+		width: 350px;
 	}
 	
 	.column1,
@@ -555,45 +556,7 @@ ul.style3 .first {
 		color: #FFF;
 	}
 	
-/*********************************************************************************/
-/* Social Icon Styles                                                            */
-/*********************************************************************************/
 
-	ul.contact
-	{
-		margin: 0;
-		padding: 2em 0em 0em 0em;
-		list-style: none;
-	}
-	
-	ul.contact li
-	{
-		display: inline-block;
-		padding: 0em 0.10em;
-		font-size: 1em;
-	}
-	
-	ul.contact li span
-	{
-		display: none;
-		margin: 0;
-		padding: 0;
-	}
-	
-	ul.contact li a
-	{
-	}
-	
-	ul.contact li a:before
-	{
-		display: inline-block;
-		background: none;
-		width: 40px;
-		height: 40px;
-		line-height: 40px;
-		text-align: center;
-		color: rgba(255,255,255,1);
-	}
 
 /**************************************************************/
 /* 검색어 css                                                   */
@@ -795,3 +758,25 @@ ul.style3 .first {
     letter-spacing: 3px;
   }
 }	
+
+/**************************************************************/
+/* 매뉴 css                                                     */
+/**************************************************************/
+
+#menu ul ul {
+
+	display:none;
+	position:absolute;
+	background: #202020;
+	 width: 610px;
+}
+
+#menu ul li:hover ul {
+ display: block;
+}
+
+ #menu ul ul li {
+
+float:left;
+
+}

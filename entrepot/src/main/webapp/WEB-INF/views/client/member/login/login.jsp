@@ -37,6 +37,8 @@
   </head>
 
   <body>
+  	<div id="page" class="container">
+  	<div><a href="#" class="image image-full"><img src="/resources/images/pic03.jpg"alt="" /></a></div>
 	<h1>로그인</h1>
     <div class="contentContainer">
 		<div class="well">
@@ -91,6 +93,7 @@
 		</c:if>
 		</div>
     </div> <!-- /container -->
+    </div>
 
   </body>
 </html>
