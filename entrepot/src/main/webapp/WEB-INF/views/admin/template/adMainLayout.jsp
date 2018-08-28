@@ -79,6 +79,9 @@
 	    <script type="text/javascript" src="/resources/include/admin/js/couponList.js"></script>
 	    <script type="text/javascript">
 	    	$(function(){
+	    		
+	    		console.log($(location).attr("href"));
+	    		
 	    		/* main 상단 시계 */
 	    		printClock();	    	
 	    	
@@ -108,6 +111,71 @@
 	    		//공지사항,이벤트,쿠폰 관리탭 
 	    		if($(location).attr("href") == "http://localhost:8080/admin/adBoard/adminBoard/adminBoardList.do"){
 	    			$("#couponTable").dataTable();
+	    		}
+	    		
+	    		//통계탭
+	    		if($(location).attr("href")=="http://localhost:8080/admin/adChart/adChart.do"){
+	    			var chartURL = "/admin/adChart/rowAndacc.do"
+	    				$.getJSON(chartURL,function(columnchart){
+	    					console.log(columnchart);
+	    					 AmCharts.makeChart("chartdiv",
+	    							{
+	    								"type": "serial",
+	    								"categoryField": "category",
+	    								"startDuration": 1,
+	    								"colors": [
+	    									"#999999",
+	    									"#333333",
+	    									"#990000"
+	    								],
+	    								"categoryAxis": {
+	    									"gridPosition": "start"
+	    								},
+	    								"trendLines": [],
+	    								"graphs": [
+	    									{
+	    										"balloonText": "[[title]].[[category]]:[[value]]",
+	    										"fillAlphas": 1,
+	    										"id": "AmGraph-1",
+	    										"title": "rawm",
+	    										"type": "column",
+	    										"valueField": "rawm"
+	    									},
+	    									{
+	    										"balloonText": "[[title]].[[category]]:[[value]]",
+	    										"fillAlphas": 1,
+	    										"id": "AmGraph-2",
+	    										"title": "accm",
+	    										"type": "column",
+	    										"valueField": "accm"
+	    									}
+	    								],
+	    								"guides": [],
+	    								"valueAxes": [
+	    									{
+	    										"id": "ValueAxis-1",
+	    										"stackType": "regular",
+	    										"title": "지출(1,000)"
+	    									}
+	    								],
+	    								"allLabels": [],
+	    								"balloon": {},
+	    								"legend": {
+	    									"enabled": true,
+	    									"useGraphSettings": true
+	    								},
+	    								"titles": [
+	    									{
+	    										"id": "Title-1",
+	    										"size": 15,
+	    										"text": "원자재 & 부자재"
+	    									}
+	    								],
+	    								"dataProvider": columnchart
+	    							}
+	    						);
+	    					 
+	    				});
 	    		}
 	    		
 

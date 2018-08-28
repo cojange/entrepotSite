@@ -1,12 +1,11 @@
 package com.site.admin.chart.adChart.vo;
 
-import com.site.common.vo.AdDataUpdateVO;
 
-public class ColumnChartVO  extends AdDataUpdateVO{
+public class ColumnChartVO{
 
 	
 	private String category;
-	private String rowm;
+	private String rawm;
 	private String accm;
 	public String getCategory() {
 		return category;
@@ -14,17 +13,17 @@ public class ColumnChartVO  extends AdDataUpdateVO{
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	public String getRowM() {
-		return rowm;
+	public String getRawm() {
+		return rawm;
 	}
-	public void setRowM(String rowM) {
-		this.rowm = rowM;
+	public void setRawm(String rawm) {
+		this.rawm = rawm;
 	}
-	public String getAccM() {
+	public String getAccm() {
 		return accm;
 	}
-	public void setAccM(String accM) {
-		this.accm = accM;
+	public void setAccm(String accm) {
+		this.accm = accm;
 	}
 	
 	

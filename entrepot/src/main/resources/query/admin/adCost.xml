@@ -32,8 +32,9 @@
 	
 	<select id="selectExcelList" parameterType="int" resultType="String">
 	/*통계에 쓸 파일명 list*/
-		select cost_file from cost
-		where to_number(substr(cost_file,instr(cost_file,'_',1,3)+1,1)) > 
-		to_number(to_char(add_months(sysdate,#{selectmonth}),'mm'))
+		select cost_file from cost join 
+		(select distinct to_char(sell_date,'mm') keymonth from columnChartData where sell_date>add_months(sysdate,-#{selectmonth})) sell
+		on substr(cost_file,instr(cost_file,'_',1,3)+1,2) = sell.keymonth
+		where to_char(sysdate,'yyyy') = substr(cost_file,5,4)
 	</select>
 </mapper>

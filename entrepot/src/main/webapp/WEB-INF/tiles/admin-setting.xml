@@ -21,16 +21,10 @@
 	<definition name="admin/ctrl/*/*" extends="basic">
 		<put-attribute name="adContent" value="/WEB-INF/views/admin/{1}/{2}.jsp"/>
 	</definition>
-<<<<<<< HEAD
 	
-<!-- 	약관 -->
-	<definition name="admin/regulations/regulations/*" extends="basic">
-		<put-attribute name="adContent" value="/WEB-INF/views/admin/regulations/{1}.jsp"/>
-=======
-	
+<!-- 	게시판 관리 -->
 	<definition name="admin/adBoard/*/*" extends="basic">
 		<put-attribute name="adContent" value="/WEB-INF/views/admin/{1}/{2}.jsp"/>
->>>>>>> branch 'master' of https://github.com/cojange/entrepotSite.git
 	</definition>
 
 <!-- 	비용 -->

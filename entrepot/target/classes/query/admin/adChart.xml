@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.site.admin.chart.adChart.dao.AdChartDao">
-	<select id="columnChartData" parameterType="int" resultType="ccvo">
-		select to_char(sell_date,'mm') category, sum(chartdata) rowM from columnChartData
-		<where>
-			<if test="chartData>=0">
-				<![CDATA[sell_date > add_months(sysdate,#{selectmonth})]]>
-			</if>
-		</where>
+	<select id="getRowandAccChart" parameterType="int" resultType="ccvo">
+	/*원자재 통계 테이터*/
+		select to_char(sell_date,'mm') category, to_char(sum(chartdata)/1000) rawm from columnChartData
+		where sell_date > add_months(sysdate,-#{selectmonth}) and
+		to_char(sell_date,'yyyy') = to_char(sysdate,'yyyy')
 		group by to_char(sell_date,'mm')
 	</select>
+	
+	
+	
 </mapper>

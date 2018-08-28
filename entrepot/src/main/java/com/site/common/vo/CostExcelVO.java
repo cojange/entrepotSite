@@ -7,7 +7,16 @@ public class CostExcelVO {
 	private String cost;
 	private String manager;
 	private String memo;
+	private String stacksum;
 	
+	
+	
+	public String getStacksum() {
+		return stacksum;
+	}
+	public void setStacksum(String stacksum) {
+		this.stacksum = stacksum;
+	}
 	public String getMemo() {
 		return memo;
 	}

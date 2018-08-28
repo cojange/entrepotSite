@@ -16,6 +16,6 @@ public class AdChartDaoImpl implements AdChartDao {
 
 	@Override
 	public List<ColumnChartVO> getRowandAccChart(int selectmonth) {
-		return session.selectList("columnChartData",selectmonth);
+		return session.selectList("getRowandAccChart",selectmonth);
 	}
 }

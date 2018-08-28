@@ -77,7 +77,7 @@ public class ExcelReadUtil {
 								SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
 								value = date.format(cell.getDateCellValue());
 								} else {
-								value = cell.getNumericCellValue()+"";
+								value = String.format("%.0f",cell.getNumericCellValue());
 								}
 							break;
 						case XSSFCell.CELL_TYPE_STRING:
@@ -106,6 +106,9 @@ public class ExcelReadUtil {
 							break;
 						case 4:
 							cevo.setManager(value);
+							break;
+						case 5:
+							cevo.setStacksum(value);
 							break;
 						};
 						
@@ -187,6 +190,9 @@ public class ExcelReadUtil {
 							break;
 						case 4:
 							cevo.setManager(value);
+							break;
+						case 5:
+							cevo.setStacksum(value);
 							break;
 						};
 						logger.info(value);

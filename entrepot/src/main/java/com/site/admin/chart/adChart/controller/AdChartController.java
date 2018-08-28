@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -37,7 +38,8 @@ public class AdChartController {
 	
 	@ResponseBody
 	@RequestMapping(value="/rowAndacc.do")
-	public String getRowandAccChart(@ModelAttribute ColumnChartVO ccvo,HttpServletRequest request, ObjectMapper mapper, int selectmonth) {
+	public String getRowandAccChart(@ModelAttribute ColumnChartVO ccvo,HttpServletRequest request, ObjectMapper mapper) {
+		int selectmonth =7;
 		//service
 		List<ColumnChartVO> columnData = adChartService.getRowandAccChart(selectmonth);
 		List<String> excelList = adCostService.selectExcelList(selectmonth);
@@ -46,28 +48,31 @@ public class AdChartController {
 		ExcelReadUtil eru = new ExcelReadUtil();
 		//읽어온 엑셀 데이터 담기
 		List<CostExcelVO> dataExcelList = new ArrayList<>();
-		
-		int sum = 0;
-		
+		int sum =0;
 		try {
 			for(int i=0; i<excelList.size();i++) {
 				dataExcelList = eru.readExcel(excelList.get(i), request);
-				
-				if(dataExcelList.get(i).getMemo().equals("부자재비")) {
-					sum += Integer.parseInt(dataExcelList.get(i).getCost());
+			
+				for(int j=0; j<dataExcelList.size(); j++) {
+					if(dataExcelList.get(j).getMemo().equals("부자재비")) {
+						sum += (Integer.parseInt(dataExcelList.get(j).getCost()))/1000;
+					}		
 				}
+				columnData.get(i).setAccm(String.valueOf(sum));
+				sum=0;
+				
+				
 			}
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
-		
-		for (ColumnChartVO myList : columnData) {
-			
 		}
 		
 		String chartData = "";
 		try {
 			chartData = mapper.writeValueAsString(columnData);
+			
 		}catch(JsonProcessingException e) {
 			   e.printStackTrace();
 		   }

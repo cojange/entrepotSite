@@ -10,73 +10,8 @@
 
 		<!-- amCharts javascript code -->
 		<script type="text/javascript">
-			AmCharts.makeChart("chartdiv",
-				{
-					"type": "serial",
-					"categoryField": "category",
-					"startDuration": 1,
-					"categoryAxis": {
-						"gridPosition": "start"
-					},
-					"trendLines": [],
-					"graphs": [
-						{
-							"balloonText": "[[title]].[[category]]:[[value]]",
-							"fillAlphas": 1,
-							"id": "AmGraph-1",
-							"title": "graph 1",
-							"type": "column",
-							"valueField": "rawM"
-						},
-						{
-							"balloonText": "[[title]].[[category]]:[[value]]",
-							"fillAlphas": 1,
-							"id": "AmGraph-2",
-							"title": "graph 2",
-							"type": "column",
-							"valueField": "accM"
-						}
-					],
-					"guides": [],
-					"valueAxes": [
-						{
-							"id": "ValueAxis-1",
-							"stackType": "regular",
-							"title": "지출(1,000)"
-						}
-					],
-					"allLabels": [],
-					"balloon": {},
-					"legend": {
-						"enabled": true,
-						"useGraphSettings": true
-					},
-					"titles": [
-						{
-							"id": "Title-1",
-							"size": 15,
-							"text": "원자재 & 부자재"
-						}
-					],
-					"dataProvider": [
-						{
-							"category": "aa",
-							"rawM": 8,
-							"accM": 5
-						},
-						{
-							"category": "category 2",
-							"rawM": 6,
-							"accM": 7
-						},
-						{
-							"category": "category 3",
-							"rawM": 2,
-							"accM": 3
-						}
-					]
-				}
-			);
+		
+			
 		</script>
 	</head>
 	<body>

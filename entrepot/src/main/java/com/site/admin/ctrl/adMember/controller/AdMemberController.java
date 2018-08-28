@@ -15,6 +15,7 @@ import com.site.admin.ctrl.adMember.service.AdMemberService;
 import com.site.admin.ctrl.adMember.vo.AdManagerVO;
 import com.site.admin.ctrl.adMember.vo.AdMbCommonVO;
 import com.site.admin.ctrl.adMember.vo.AdMbPersnalVO;
+import com.site.admin.ctrl.adMember.vo.AdminVO;
 
 @Controller
 @RequestMapping(value="/admin/ctrl/adMember")
@@ -52,6 +53,12 @@ public class AdMemberController {
 	      
 	      return mav;
 	}
+   //관리자 등록
+   @RequestMapping(value="/adminRegit.do")
+   public String adminRegit() {
+	   return "/admin/regit/adRegist";
+   }
+   
    //회원조회
    @RequestMapping(value="/memberList.do")
    public ModelAndView memberList(AdMbCommonVO ambcvo, String mbType) {
