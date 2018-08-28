@@ -20,13 +20,21 @@
      		 <!-- [endif] -->
      		 <!-- 사용자 cSS-->
      	  <!-- Bootstrap core CSS-->
-			    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-			
-			    <!-- Custom fonts for this template-->
-			    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-			
-			    <!-- Custom styles for this template-->
-			    <link href="css/sb-admin.css" rel="stylesheet">
+			    <!-- Bootstrap core CSS-->
+    <link href="/resources/include/admin/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template-->
+    <link href="/resources/include/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Page level plugin CSS-->
+    <link href="/resources/include/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="/resources/include/admin/css/sb-admin.min.css" rel="stylesheet">
+    
+    <!-- 사용자 추가사항 -->
+    <link href="/resources/include/admin/css/ad-add.css" rel="stylesheet">
+    <link href="/resources/include/admin/css/card-slides.css" rel="stylesheet">
      		 <!--사용자 js-->
      	 		
 	</head>
@@ -34,13 +42,13 @@
 
     <div class="container">
       <div class="card card-register mx-auto mt-5">
-        <div class="card-header">Admin Login</div>
+        <div class="card-header">관리자 등록</div>
         <div class="card-body">
           <form>
           	<div class="form-group">
               <div class="form-label-group">
                 <input type="text" id="id" class="form-control" placeholder="Id" required="required">
-                <label for="id">Id</label>
+                <label for="id">아이디</label>
               </div>
             </div>
             <div class="form-group">
@@ -48,13 +56,13 @@
                 <div class="col-md-6">
                   <div class="form-label-group">
                     <input type="password" id="pw" class="form-control" placeholder="Password" required="required" autofocus="autofocus">
-                    <label for="pw">Password</label>
+                    <label for="pw">비밀번호</label>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-label-group">
-                    <input type="password" id="coPw" class="form-control" placeholder="Password" required="required" autofocus="autofocus">
-                    <label for="coPw">Confirm password</label>
+                    <input type="password" id="coPw" class="form-control" placeholder="Password Confirm" required="required" autofocus="autofocus">
+                    <label for="coPw">비밀번호 확인</label>
                   </div>
                 </div>
               </div>
@@ -64,13 +72,13 @@
                 <div class="col-md-6">
                   <div class="form-label-group">
                     <input type="text" id="name" class="form-control" placeholder="Name" required="required" autofocus="autofocus">
-                    <label for="name">Name</label>
+                    <label for="name">이름</label>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-label-group">
                     <input type="text" id="grade" class="form-control" placeholder="Grade" required="required" autofocus="autofocus">
-                    <label for="grade">Grade</label>
+                    <label for="grade">직급</label>
                   </div>
                 </div>
               </div>
@@ -78,31 +86,43 @@
             <div class="form-group">
               <div class="form-label-group">
                 <input type="text" id="tell" class="form-control" placeholder="Phone number" required="required">
-                <label for="tell">Phone number</label>
+                <label for="tell">연락처</label>
               </div>
             </div>
             <div class="form-group">
               <div class="form-label-group">
                 <input type="email" id="email" class="form-control" placeholder="Email address" required="required">
-                <label for="email">Email address</label>
+                <label for="email">이메일</label>
               </div>
             </div>
-            <a class="btn btn-primary btn-block" href="login.html">Register</a>
+            <a class="btn btn-primary btn-block" id="addAdmin">등록하기</a>
           </form>
           <div class="text-center">
-            <a class="d-block small mt-3" href="login.html">Login Page</a>
-            <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
+            <a class="d-block small" href="forgot-password.html">비밀번호 찾기</a>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	    <script src="/resources/include/admin/vendor/jquery/jquery.min.js"></script>
+	    <script src="/resources/include/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-  </body>
+   <!-- Core plugin JavaScript-->
+	    <script src="/resources/include/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+	    
+	    <!-- 사용자 정의 js -->
+	    <script src="/resources/include/common/js/common.js"></script>
+	    <script src="/resources/include/admin/js/adLogin.js"></script>
+		
+		<script type="text/javascript">
+			$(function(){
+				$("#addAdmin").click(function(){
+					adLogin();
+					
+				})
+			})
+		</script>  
+		
+	</body>
 </html>

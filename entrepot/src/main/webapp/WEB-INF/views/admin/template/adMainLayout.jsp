@@ -98,6 +98,10 @@
 	    		//회원관리탭
 	    		if($(location).attr("href") == "http://localhost:8080/admin/ctrl/adMember/adMemberCtrl.do"){
 	    			$("#adminTable").dataTable();
+	    			
+	    			$("#ad-add").click(function(){
+	    				window.open('/admin/ctrl/adMember/adminRegit.do','_blank','width=500px, height=600px')
+	    			})
 	    		}
 	    		
 	    		//거래처 관리탭
@@ -179,7 +183,6 @@
 	    					 
 	    				});
 	    		}
-	    		
 
   			var gpTable = $(".switchTable").DataTable();
   			

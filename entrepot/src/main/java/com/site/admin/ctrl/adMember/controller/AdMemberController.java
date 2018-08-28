@@ -56,7 +56,7 @@ public class AdMemberController {
    //관리자 등록
    @RequestMapping(value="/adminRegit.do")
    public String adminRegit() {
-	   return "/admin/regit/adRegist";
+	   return "/admin/login/adRegist";
    }
    
    //회원조회
