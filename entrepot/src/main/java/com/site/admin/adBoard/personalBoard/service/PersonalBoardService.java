@@ -6,6 +6,6 @@ import com.site.admin.adBoard.personalBoard.vo.PersonalBoardVO;
 
 public interface PersonalBoardService {
 
-	List<PersonalBoardVO> personalBoardList(PersonalBoardVO pbvo);
+	public List<PersonalBoardVO> personalBoardList(PersonalBoardVO pbvo);
 
 }

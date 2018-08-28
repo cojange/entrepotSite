@@ -27,4 +27,9 @@ public class RegulationsDaoImpl implements RegulationsDao{
 		return session.selectList("regAgreeList", ravo);
 	}
 
+	@Override
+	public int addRegulations(RegulationsVO rvo) {
+		return session.insert("addRegulations", rvo);
+	}
+
 }

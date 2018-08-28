@@ -72,12 +72,14 @@
 	    <!-- 사용자 정의 js -->
 	    <script type="text/javascript" src="/resources/include/common/js/common.js"></script>
 	    <script type="text/javascript" src="/resources/include/admin/js/ad-clock.js"></script>  
-	    <script type="text/javascript" src="/resources/include/admin/js/regulationsList.js"></script>
 	    <script type="text/javascript" src="/resources/include/admin/js/ad-clock.js"></script> 
 	    <script type="text/javascript" src="/resources/include/admin/js/ad-newDataTable.js"></script>
 	    <script type="text/javascript" src="/resources/include/admin/js/card-slide.js"></script>
 	    <script type="text/javascript" src="/resources/include/admin/js/couponList.js"></script>
+	    <script type="text/javascript" src="/resources/include/admin/js/regulationsList.js"></script>
+	    <script type="text/javascript" src="/resources/include/common/js/jquery.form.min.js"></script>
 	    <script type="text/javascript">
+	    /* input date에 현재 날짜 받아오기 */
 	    	$(function(){
 	    		
 	    		console.log($(location).attr("href"));

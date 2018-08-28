@@ -7,7 +7,8 @@ import com.site.admin.adBoard.regulations.vo.RegulationsVO;
 
 public interface RegulationsService {
 
-	List<RegulationsVO> regList(RegulationsVO rvo);
-	List<RegAgreeVO> regAgreeList(RegAgreeVO ravo);
+	public List<RegulationsVO> regList(RegulationsVO rvo);
+	public List<RegAgreeVO> regAgreeList(RegAgreeVO ravo);
+	public int addRegulations(RegulationsVO rvo);
  
 }

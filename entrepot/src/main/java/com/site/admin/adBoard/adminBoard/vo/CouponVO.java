@@ -7,7 +7,14 @@ public class CouponVO {
     private String coupon_date;
     private String coupon_update;
     private String coupon_memo;
-     
+    private String coupon_use;
+      
+	public String getCoupon_use() {
+		return coupon_use;
+	}
+	public void setCoupon_use(String coupon_use) {
+		this.coupon_use = coupon_use;
+	}
 	public String getCoupon_no() {
 		return coupon_no;
 	}
