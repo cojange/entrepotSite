@@ -32,6 +32,11 @@
     <!-- 사용자 추가사항 -->
     <link href="/resources/include/admin/css/ad-add.css" rel="stylesheet">
     <link href="/resources/include/admin/css/card-slides.css" rel="stylesheet">
+    <style type="text/css">
+    	.adt{
+			background-color: #ababab;
+		}
+    </style>
   </head>
 
   <body id="page-top">
@@ -67,7 +72,7 @@
 		<script type="text/javascript" src="/resources/include/common/js/common.js"></script>
 	    <!-- Demo scripts for this page-->
 	    <script src="/resources/include/admin/js/demo/datatables-demo.js"></script>
-	    <script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
+	    <script src="/resources/include/admin/js/dataTable-select.min.js"></script>
 	    <script src="/resources/include/admin/js/demo/chart-area-demo.js"></script> 
 	    
 	    <!-- 사용자 정의 js -->
@@ -98,32 +103,21 @@
 	    		
 	    		//회원관리탭
 	    		if($(location).attr("href") == "http://localhost:8080/admin/ctrl/adMember/adMemberCtrl.do"){
-	    			$("#adminTable").DataTable({
-	    				columnDefs:[{
-	    					orderable: false,
-	    					className:'select-checkbox',
-	    					targets:0
-	    				}],
-	    				select:{
-	    					style: 'os',
-	    					selector:'td:first-child'
-	    				},
-	    				order:[[1,'asc']]
-	    			});
+	    			$("#adminTable").dataTable();
 	    			
 	    			$("#adminTable tbody").on("click","tr", function(){
-	    				console.log("aa");
-	    				$(this).toggleClass('selected');
+	    				$(this).toggleClass('adt');
+	    				$(this).parent().find("tr").not(this).removeClass("adt");
 	    			});
-	    			
-	    			
+					//admin 추가버튼
 	    			$("#ad-add").click(function(){
 	    				window.open('/admin/ctrl/adMember/adminRegit.do','_blank','width=500px, height=600px')
 	    			});
 	    			
-	    		/* 	$("#adminFire").click(function(){
-	    				$.ajax()
-	    			}) */
+					//admin 해고버튼
+	    		 	$("#adminFire").click(function(){
+	    				
+	    			})
 	    		}
 	    		
 	    		//거래처 관리탭
