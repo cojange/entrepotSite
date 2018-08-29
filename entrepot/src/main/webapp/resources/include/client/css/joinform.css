@@ -23,7 +23,7 @@ html {
 
 
 .joinform label {
-	float: left; clear: left; margin: 11px 20px 0 0; width: 90px;
+	float: left; clear: left; margin: 11px 20px 0 0; width: 120px;
 	text-align: right; font-size: 12px; color: #000000;
 	text-transform: uppercase; text-shadow: 0px 1px 0px #f2f2f2;
 	
@@ -31,7 +31,7 @@ html {
 
 .joinform .col-sm-5 {
 	font-size: 16px; color: #000000; font-weight : bold;
-	padding-left : 110px;
+	padding-left : 140px;
 	text-transform: uppercase; text-shadow: 0px 1px 0px #f2f2f2;
 }
 
@@ -74,7 +74,7 @@ html {
 	}
 	
 
-.joinform input:focus, textarea:focus {
+.joinform .inputText:focus, textarea:focus {
 	background: #728eaa;
 	background: -moz-linear-gradient(top, #668099 0%, #728eaa 20%); /* firefox */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#668099), color-stop(20%,#728eaa)); /* webkit */
@@ -111,11 +111,11 @@ html {
 }
 
 .joinform .page {
-  width: 100vw;
-  height: 100vh;
+  width: 100px;
+  height: 100px;
   display: flex;
   justify-content: center;
-  padding-left:240px; 
+  padding-left:210px; 
 }
 
 .joinform .fun-btn {
@@ -158,8 +158,25 @@ html {
 #com_no3{
 	width: 50px;
 }
-
-
+/* .joinwell{
+	width: 800px;
+	border: solid 3px;
+	border-radius: 10px;
+	padding: 30px 30px;
+	margin-left: 200px;
+	background-color: #ccFFFF;	
+} */
+/* .joinwell{
+	padding-top: 30px;
+	padding-left:30px;
+	padding-bottom:30px;
+	padding-right:-500px;
+	margin-left:155px;
+	border: solid 3px;
+	width: 1100px;
+	background-color: #ccFFFF;
+	border-radius: 10px;	
+	} */
 
 
 

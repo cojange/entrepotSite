@@ -21,24 +21,23 @@
      		 <!-- 사용자 cSS-->
      	  <!-- Bootstrap core CSS-->
 			    <!-- Bootstrap core CSS-->
-    <link href="/resources/include/admin/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
-
-    <!-- Custom fonts for this template-->
-    <link href="/resources/include/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-
-    <!-- Page level plugin CSS-->
-    <link href="/resources/include/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="/resources/include/admin/css/sb-admin.min.css" rel="stylesheet">
-    
-    <!-- 사용자 추가사항 -->
-    <link href="/resources/include/admin/css/ad-add.css" rel="stylesheet">
-    <link href="/resources/include/admin/css/card-slides.css" rel="stylesheet">
-     		 <!--사용자 js-->
-     	 		
+		    <link href="/resources/include/admin/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+		
+		    <!-- Custom fonts for this template-->
+		    <link href="/resources/include/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+		
+		    <!-- Page level plugin CSS-->
+		    <link href="/resources/include/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+		
+		    <!-- Custom styles for this template-->
+		    <link href="/resources/include/admin/css/sb-admin.min.css" rel="stylesheet">
+		    
+		    <!-- 사용자 추가사항 -->
+		    <link href="/resources/include/admin/css/ad-add.css" rel="stylesheet">
+		    <link href="/resources/include/admin/css/card-slides.css" rel="stylesheet">
+		     	 		
 	</head>
-	 <body class="bg-dark">
+	<body class="bg-dark">
 
     <div class="container">
       <div class="card card-register mx-auto mt-5">

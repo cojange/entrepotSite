@@ -12,22 +12,8 @@
     <link rel="icon" href="/resources/images/favicon.ico">
 
     <title>앙뜨흐뽀</title>
-<<<<<<< HEAD
 
-    <!-- Bootstrap core CSS -->
-    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900|Varela+Round" rel="stylesheet" />
-  	<link href="/resources/include/client/css/default.css" rel="stylesheet" type="text/css" media="all" />
-  	<link href="/resources/include/client/css/list.css" rel="stylesheet" type="text/css" media="all" />
-  	<link href="/resources/include/client/css/joinform.css" rel="stylesheet" type="text/css" media="all" />
-  	<link href="/resources/include/client/font/fonts.css" rel="stylesheet" type="text/css" media="all" />
-  	<link rel="styleSheet" href="/resources/include/client/css/normalize.css"/>
-  	
-=======
->>>>>>> branch 'master' of https://github.com/cojange/entrepotSite.git
-
-	
-	\
-    <!-- Bootstrap core CSS -->
+    <link href="/resources/include/client/css/joinform.css" rel="stylesheet" type="text/css" media="all" />
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900|Varela+Round" rel="stylesheet" />
   	<link href="/resources/include/client/css/default.css" rel="stylesheet" type="text/css" media="all" />
   	<link href="/resources/include/client/css/list.css" rel="stylesheet" type="text/css" media="all" />
@@ -35,6 +21,7 @@
   	<link href="/resources/include/client/css/content.css" rel="stylesheet" type="text/css" media="all" />
   	<link href="/resources/include/client/font/fonts.css" rel="stylesheet" type="text/css" media="all" />
   	<link rel="styleSheet" href="/resources/include/client/css/normalize.css"  type="text/css" media="all"/>
+  	<link rel="styleSheet" href="/resources/include/client/css/loginform.css"  type="text/css" media="all"/>
 
     <!-- Custom styles for this template -->
 
@@ -79,12 +66,14 @@
 		 </tr>	    	 
 	   
 	</table>
+	</div>
 	<div>
 		<tiles:insertAttribute name="quick"/>
 	</div>
 	 <div id="footer">
 			<tiles:insertAttribute name="footer"/>
 	</div>
+
     	
     <!-- Bootstrap core JavaScript
     ================================================== -->

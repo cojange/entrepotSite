@@ -30,4 +30,17 @@ public class AdPartnerServiceImpl implements AdPartnerService {
 		magPartnerList = adPartnerDao.magPartnerList(mpvo);
 		return magPartnerList;
 	}
+	
+	//잡지거래처 등록
+	@Override
+	public int magazineInsert(MagazinePartnerVO mpvo) {
+		int result = 0;
+		try {
+			result = adPartnerDao.magazineInsert(mpvo);
+		}catch(Exception e) {
+			e.printStackTrace();
+			result = 0;
+		}
+		return result;
+	}
 }

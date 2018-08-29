@@ -59,8 +59,8 @@
 </script>
 <div id="header" class="container">
    <div id="logo">
-      <h1><a href="#">앙뜨흐뽀</a></h1>
-      <p>Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a></p>
+      <h1><a href="/">앙뜨흐뽀</a></h1>
+      <p>Design by <a href="/" rel="nofollow">TEMPLATED</a></p>
    </div>
 
    <form action="#" autocomplete="off" class="az">

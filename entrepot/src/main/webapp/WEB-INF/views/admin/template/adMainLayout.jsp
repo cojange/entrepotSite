@@ -107,6 +107,12 @@
 	    		//거래처 관리탭
 	    		if($(location).attr("href") == "http://localhost:8080/admin/ctrl/adPartner/adPartnerListCtrl.do"){
 	    			$("#adminTable").dataTable();
+	    			$("#addMagazine").click(function(){
+	    				window.open('/admin/ctrl/adPartner/magazineForm.do','_blank','width=500px, height=600px');
+	    			});    
+	    			$("#addCourier").click(function(){
+	    				window.open('/admin/ctrl/adPartner/courierForm.do','_blank','width=500px, height=600px');
+	    			});
 	    		}
 	    		
 	    		//약관 관리탭

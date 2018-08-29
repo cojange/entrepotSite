@@ -78,7 +78,7 @@
 				<!-- <span class="byline">Pellentesque lectus gravida blandit</span> -->
 			</div>
 			<div class="contentContainer">
-			   <div class="well">
+			   <div class="well joinwell">
 			      <form id="memberForm" class="form-horizontal">
 			         <input type="hidden" name="m_email" id="m_email" />
 			         <div class="form-group form-group-sm">
@@ -238,6 +238,5 @@
 			</div>
 		</div>
 	</div>
-
 </body>
 </html>
