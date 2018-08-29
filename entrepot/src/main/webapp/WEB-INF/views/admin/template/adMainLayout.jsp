@@ -72,13 +72,18 @@
 	    <!-- 사용자 정의 js -->
 	    <script type="text/javascript" src="/resources/include/common/js/common.js"></script>
 	    <script type="text/javascript" src="/resources/include/admin/js/ad-clock.js"></script>  
-	    <script type="text/javascript" src="/resources/include/admin/js/regulationsList.js"></script>
 	    <script type="text/javascript" src="/resources/include/admin/js/ad-clock.js"></script> 
 	    <script type="text/javascript" src="/resources/include/admin/js/ad-newDataTable.js"></script>
 	    <script type="text/javascript" src="/resources/include/admin/js/card-slide.js"></script>
 	    <script type="text/javascript" src="/resources/include/admin/js/couponList.js"></script>
+	    <script type="text/javascript" src="/resources/include/admin/js/regulationsList.js"></script>
+	    <script type="text/javascript" src="/resources/include/common/js/jquery.form.min.js"></script>
 	    <script type="text/javascript">
+	    /* input date에 현재 날짜 받아오기 */
 	    	$(function(){
+	    		
+	    		console.log($(location).attr("href"));
+	    		
 	    		/* main 상단 시계 */
 	    		printClock();	    	
 	    	
@@ -93,6 +98,10 @@
 	    		//회원관리탭
 	    		if($(location).attr("href") == "http://localhost:8080/admin/ctrl/adMember/adMemberCtrl.do"){
 	    			$("#adminTable").dataTable();
+	    			
+	    			$("#ad-add").click(function(){
+	    				window.open('/admin/ctrl/adMember/adminRegit.do','_blank','width=500px, height=600px')
+	    			})
 	    		}
 	    		
 	    		//거래처 관리탭
@@ -110,6 +119,70 @@
 	    			$("#couponTable").dataTable();
 	    		}
 	    		
+	    		//통계탭
+	    		if($(location).attr("href")=="http://localhost:8080/admin/adChart/adChart.do"){
+	    			var chartURL = "/admin/adChart/rowAndacc.do"
+	    				$.getJSON(chartURL,function(columnchart){
+	    					console.log(columnchart);
+	    					 AmCharts.makeChart("chartdiv",
+	    							{
+	    								"type": "serial",
+	    								"categoryField": "category",
+	    								"startDuration": 1,
+	    								"colors": [
+	    									"#999999",
+	    									"#333333",
+	    									"#990000"
+	    								],
+	    								"categoryAxis": {
+	    									"gridPosition": "start"
+	    								},
+	    								"trendLines": [],
+	    								"graphs": [
+	    									{
+	    										"balloonText": "[[title]].[[category]]:[[value]]",
+	    										"fillAlphas": 1,
+	    										"id": "AmGraph-1",
+	    										"title": "rawm",
+	    										"type": "column",
+	    										"valueField": "rawm"
+	    									},
+	    									{
+	    										"balloonText": "[[title]].[[category]]:[[value]]",
+	    										"fillAlphas": 1,
+	    										"id": "AmGraph-2",
+	    										"title": "accm",
+	    										"type": "column",
+	    										"valueField": "accm"
+	    									}
+	    								],
+	    								"guides": [],
+	    								"valueAxes": [
+	    									{
+	    										"id": "ValueAxis-1",
+	    										"stackType": "regular",
+	    										"title": "지출(1,000)"
+	    									}
+	    								],
+	    								"allLabels": [],
+	    								"balloon": {},
+	    								"legend": {
+	    									"enabled": true,
+	    									"useGraphSettings": true
+	    								},
+	    								"titles": [
+	    									{
+	    										"id": "Title-1",
+	    										"size": 15,
+	    										"text": "원자재 & 부자재"
+	    									}
+	    								],
+	    								"dataProvider": columnchart
+	    							}
+	    						);
+	    					 
+	    				});
+	    		}
 
   			var gpTable = $(".switchTable").DataTable();
   			

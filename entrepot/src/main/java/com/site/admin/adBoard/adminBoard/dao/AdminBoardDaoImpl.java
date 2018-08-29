@@ -27,4 +27,16 @@ public class AdminBoardDaoImpl implements AdminBoardDao {
 		return session.selectList("couponList", cvo);
 	}
 
+	//쿠폰 등록
+	@Override
+	public int couponInsert(CouponVO cvo) {
+		return session.insert("couponInsert", cvo);
+	}
+	
+	//쿠폰 수정
+	@Override
+	public int couponUpdate(CouponVO cvo) {
+		return session.update("couponUpdate", cvo);
+	}
+
 }
