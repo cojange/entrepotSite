@@ -59,8 +59,8 @@
 </script>
 <div id="header" class="container">
    <div id="logo">
-      <h1><a href="#">앙뜨흐뽀</a></h1>
-      <p>Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a></p>
+      <h1><a href="/">앙뜨흐뽀</a></h1>
+      <p>Design by <a href="/" rel="nofollow">TEMPLATED</a></p>
    </div>
 
    <form action="#" autocomplete="off" class="az">
@@ -159,23 +159,23 @@
          <li class="san"><a href="#" accesskey="2" title="">해외잡지</a>
          	<ul>
          		<li>
-         			<a href="/client/list/magazinelist.do?key1=미국&listkey=1&home=해외잡지" accesskey="1" title="">건축/인테리어/</a>
+         			<a href="/client/list/magazinelist.do?key1=미국&listkey=1&home=해외잡지" accesskey="1" title="미국">미국</a>
          		</li>
          		<li>
-         			<a href="/client/list/magazinelist.do?key1=영국&listkey=1&home=해외잡지" accesskey="1" title="">건축/인테리어/</a>
+         			<a href="/client/list/magazinelist.do?key1=영국&listkey=1&home=해외잡지" accesskey="1" title="영국">영국</a>
          		</li>
          		<li>
-         			<a href="/client/list/magazinelist.do?key1=일본&listkey=1&home=해외잡지" accesskey="1" title="">건축/인테리어/</a>
+         			<a href="/client/list/magazinelist.do?key1=일본&listkey=1&home=해외잡지" accesskey="1" title="일본">일본</a>
          		</li>
          		<li>
-         			<a href="/client/list/magazinelist.do?key1=프랑스&listkey=1&home=해외잡지" accesskey="1" title="">건축/인테리어/</a>
+         			<a href="/client/list/magazinelist.do?key1=프랑스&listkey=1&home=해외잡지" accesskey="1" title="프랑스">프랑스</a>
          		</li>
          		<li>
-         			<a href="/client/list/magazinelist.do?key1=중국&listkey=1&home=해외잡지" accesskey="1" title="">건축/인테리어/</a>
+         			<a href="/client/list/magazinelist.do?key1=중국&listkey=1&home=해외잡지" accesskey="1" title="중국">중국</a>
          		</li>
          		<li>
-         			<a href="/client/list/magazinelist.do?key1=이탈리아&listkey=1&home=해외잡지" accesskey="1" title="">건축/인테리어/</a>
-         		</li>
+         			<a href="/client/list/magazinelist.do?key1=이탈리아&listkey=1&home=해외잡지" accesskey="1" title="이탈리아">이탈리아</a>
+         		</li>    
          	</ul>
          </li>
          <li  class="san"><a href="#" accesskey="3" title="">게시판</a>

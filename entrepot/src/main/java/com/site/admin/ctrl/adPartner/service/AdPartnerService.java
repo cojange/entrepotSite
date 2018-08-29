@@ -9,5 +9,6 @@ public interface AdPartnerService {
 
 	public List<CourierPartnerVO> couPartnerList(CourierPartnerVO cpvo);
 	public List<MagazinePartnerVO> magPartnerList(MagazinePartnerVO mpvo);
+	public int magazineInsert(MagazinePartnerVO mpvo);
  
 }

@@ -11,7 +11,7 @@
 <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900|Varela+Round" rel="stylesheet" />
 <link href="/resources/include/client/css/default.css" rel="stylesheet" type="text/css" media="all" />
 <link href="/resources/include/client/font/fonts.css" rel="stylesheet" type="text/css" media="all" />
-<link href="/resources/include/client/css/quick.c67ss" rel="stylesheet" type="text/css" media="all" />
+<link href="/resources/include/client/css/quick.css" rel="stylesheet" type="text/css" media="all" />
 <link rel="stylesheet" href="/resources/include/client/css/fontello-619e3562/css/fontello-embedded.css">
 <!--[if IE 6]>
 <link href="default_ie6.css" rel="stylesheet" type="text/css" />

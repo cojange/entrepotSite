@@ -9,9 +9,6 @@
     <link rel="icon" href="../image/icon.png">
 
     <title>로그인</title>
-    <!-- Bootstrap core CSS -->
-  	<link href="/resources/include/client/dist/css/bootstrap.css" rel="stylesheet">
-    <link href="/resources/include/client/dist/css/signin.css" rel="stylesheet">
     <script src="/resources/include/client/js/html5shiv.js"></script>
     <script type="text/javascript" src="/resources/include/client/js/jquery-1.12.4.min.js"></script>
 	<script type="text/javascript" src="/resources/include/common/js/common.js"></script>
@@ -37,63 +34,67 @@
   </head>
 
   <body>
-  	<div id="page" class="container">
-  	<div><a href="#" class="image image-full"><img src="/resources/images/pic03.jpg"alt="" /></a></div>
-	<h1>로그인</h1>
-    <div class="contentContainer">
-		<div class="well">
-     <!--  <form class="form-signin">
-        <h2 class="form-signin-heading">앙뜨흐뽀</h2>
-        <label for="inputEmail" class="sr-only">Id</label>
-        <input type="text" id="m_id" name="m_id" class="form-control" placeholder="아이디" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="m_pwd" name="m_pwd" class="form-control" placeholder="비밀번호" required>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="remember-me"> 아이디 기억하기
-          </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" id="loginBtn">로그인</button>
-      </form> -->
-      <!-- 로그인전화면 -->
-      <c:if test="${login.m_id == null or login.m_id == ''}">
-			<form id="loginForm" class="form-horizontal">
-				<div class="form-group">
-					<label for="m_id" class="col-sm-2 control-label">아 이 디 </label>
-					<div class="col-sm-4">
-						<input type="text" id="m_id" name="m_id" class="form-control" placeholder="ID">
-					</div>
-					<p class="form-control-static error"></p>
-				</div>
-				<div class="form-group">
-					<label for="m_pwd" class="col-sm-2 control-label">비밀번호  </label> 
-					<div class="col-sm-4">
-						<input type="password"  id="m_pwd" name="m_pwd" class="form-control" placeholder="Password">
-					</div>
-					<p class="form-control-static error"></p>
-				</div> 
-				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-6">
-						<input type="button" value="로그인" id="loginBtn" class="btn btn-default" /> 
-					</div>
-				</div>
-			</form> 
-		</c:if>
-		<%-- 로그인 후 화면 --%>
-		<c:if test="${login.m_id != null and login.m_id != ''}">
-		<fieldset id="loginAfter">
-		<legend><strong>[ ${login.m_name} ]님 로그인을 환영합니다!!!</strong></legend>
-		<span id="memberMenu" class="tac">
-		<a href="/">메인페이지로이동</a>&nbsp;&nbsp;&nbsp;
-		<!-- <a href="/member/logout.do">로그아웃</a>&nbsp;&nbsp;&nbsp;
-		<a href="/member/modify.do">정보수정(비밀번호변경)</a>&nbsp;&nbsp;&nbsp;
-		<a href="/member/delete.do">회원탈퇴</a> -->
-		</span>
-		</fieldset>
-		</c:if>
+  	<div id="page" class="container joinform">
+  	<div><img src="/resources/images/pic03.jpg"alt="" /></div>
+	  <div>
+	  	<div class="title"> 
+			<h1>로그인창</h1>
 		</div>
+    <div class="contentContainer" id="login_box">
+		<div class="well loginwell">
+		     <!--  <form class="form-signin">
+		        <h2 class="form-signin-heading">앙뜨흐뽀</h2>
+		        <label for="inputEmail" class="sr-only">Id</label>
+		        <input type="text" id="m_id" name="m_id" class="form-control" placeholder="아이디" required autofocus>
+		        <label for="inputPassword" class="sr-only">Password</label>
+		        <input type="password" id="m_pwd" name="m_pwd" class="form-control" placeholder="비밀번호" required>
+		        <div class="checkbox">
+		          <label>
+		            <input type="checkbox" value="remember-me"> 아이디 기억하기
+		          </label>
+		        </div>
+		        <button class="btn btn-lg btn-primary btn-block" id="loginBtn">로그인</button>
+		      </form> -->
+      <!-- 로그인전화면 -->
+	      <c:if test="${login.m_id == null or login.m_id == ''}">
+				<form id="loginForm">
+					<div class="form-group">
+						<label for="m_id" class="col-sm-2 control-label">아 이 디 </label>
+						<div class="col-sm-4">
+							<input type="text" id="m_id" name="m_id" class="inputLogin" placeholder="ID">
+						</div>
+						<p class="form-control-static error"></p>
+					</div>
+					<div class="form-group">
+						<label for="m_pwd" class="col-sm-2 control-label">비밀번호  </label> 
+						<div class="col-sm-4">
+							<input type="password"  id="m_pwd" name="m_pwd" class="inputLogin" placeholder="Password">
+						</div>
+						<p class="form-control-static error"></p>
+					</div> 
+					<div class="form-group">
+						<div class="col-sm-3">
+							<input type="button" value="로그인" id="loginBtn" class="fun-btn " />&nbsp;
+							<input type="button" value="아이디/비밀번호찾기" id="loginFind" class="fun-btn" />
+						</div>
+					</div>
+				</form> 
+		   </c:if>
+			<%-- 로그인 후 화면 --%>
+			<c:if test="${login.m_id != null and login.m_id != ''}">
+			<fieldset id="loginAfter">
+			<legend><strong>[ ${login.m_name} ]님 로그인을 환영합니다!!!</strong></legend>
+			<span id="memberMenu" class="tac">
+			<a href="/">메인페이지로이동</a>&nbsp;&nbsp;&nbsp;
+			<!-- <a href="/member/logout.do">로그아웃</a>&nbsp;&nbsp;&nbsp;
+			<a href="/member/modify.do">정보수정(비밀번호변경)</a>&nbsp;&nbsp;&nbsp;
+			<a href="/member/delete.do">회원탈퇴</a> -->
+			</span>
+			</fieldset>
+			</c:if>
+		</div>
+	  </div>
     </div> <!-- /container -->
     </div>
-
   </body>
 </html>
