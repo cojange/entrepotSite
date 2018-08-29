@@ -47,7 +47,7 @@
           <form>
           	<div class="form-group">
               <div class="form-label-group">
-                <input type="text" id="id" class="form-control" placeholder="Id" required="required">
+                <input type="text" id="id" name="ad_id" class="form-control" placeholder="Id" required="required">
                 <label for="id">아이디</label>
               </div>
             </div>
@@ -55,7 +55,7 @@
               <div class="form-row">
                 <div class="col-md-6">
                   <div class="form-label-group">
-                    <input type="password" id="pw" class="form-control" placeholder="Password" required="required" autofocus="autofocus">
+                    <input type="password" id="pw" name="ad_pw" class="form-control" placeholder="Password" required="required" autofocus="autofocus">
                     <label for="pw">비밀번호</label>
                   </div>
                 </div>
@@ -71,13 +71,13 @@
               <div class="form-row">
                 <div class="col-md-6">
                   <div class="form-label-group">
-                    <input type="text" id="name" class="form-control" placeholder="Name" required="required" autofocus="autofocus">
+                    <input type="text" id="name" name="ad_name" class="form-control" placeholder="Name" required="required" autofocus="autofocus">
                     <label for="name">이름</label>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-label-group">
-                    <input type="text" id="grade" class="form-control" placeholder="Grade" required="required" autofocus="autofocus">
+                    <input type="text" id="grade" name="ad_grade" class="form-control" placeholder="Grade" required="required" autofocus="autofocus">
                     <label for="grade">직급</label>
                   </div>
                 </div>
@@ -85,13 +85,13 @@
             </div>
             <div class="form-group">
               <div class="form-label-group">
-                <input type="text" id="tell" class="form-control" placeholder="Phone number" required="required">
+                <input type="text" id="tell" name="ad_tell" class="form-control" placeholder="Phone number" required="required">
                 <label for="tell">연락처</label>
               </div>
             </div>
             <div class="form-group">
               <div class="form-label-group">
-                <input type="email" id="email" class="form-control" placeholder="Email address" required="required">
+                <input type="email" id="email" name="ad_email" class="form-control" placeholder="Email address" required="required">
                 <label for="email">이메일</label>
               </div>
             </div>
@@ -116,12 +116,19 @@
 	    <script src="/resources/include/admin/js/adLogin.js"></script>
 		
 		<script type="text/javascript">
-			$(function(){
-				$("#addAdmin").click(function(){
-					adLogin();
-					
-				})
+
+		$(function(){
+			$("#addAdmin").click(function(){
+				console.log("aa");
+				if(!inputVerify(0,"#id","아이디가","영문 숫자 혼합 6~10","admin")) return;
+				else if(!inputVerify(1,"#pw","비밀번호가","영문 숫자, 특수문자 혼합 8~12","admin")) return;
+				else if(!inputVerify(9,"#name","이름이","3~4자리","admin")) return;
+				else if(!chkData("#grade","직급을")) return;
+				else if(!inputVerify(7,"#tell","연락처가","3-2-5","admin")) return;
+				else if(!inputVerify(10,"#email","이메일이"," ","admin")) return;
 			})
+		})
+
 		</script>  
 		
 	</body>

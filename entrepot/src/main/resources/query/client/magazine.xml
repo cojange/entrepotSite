@@ -4,8 +4,8 @@
 <select id="magazineList" parameterType="mgvo" resultType="mgvo">
 	/*magazine - magazineList*/
 	
-	select mg_num,mg_name,com_name,pd_sale,pd_rate,pd_date,dt_target,dt_keyword,dt_brief,pl_path
-	from bast_view6 
+	select mg_num,mg_name,com_name,pd_sale,pd_rate,pd_date,dt_target,dt_keyword,dt_brief,pl_path,pd_cost
+	from bast_view8 
 	<where>
 		<if test="listkey==1">
 			dt_keyword like '%'|| #{key1} ||'%'
