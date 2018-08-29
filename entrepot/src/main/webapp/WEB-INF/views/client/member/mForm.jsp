@@ -70,9 +70,14 @@
 		</script>
 	</head>
 <body>
-	<h1>개인회원가입</h1>
-	<img src="/resources/images/client/member2.png"/>
-<div class="contentContainer">
+	<div id="page" class="container">
+		<div><a href="#" class="image image-full"><img src="/resources/images/client/member2.png"/></a></div>
+		<div class="column1">
+			<div class="title">
+				<h2>개인회원가입</h2>
+				<!-- <span class="byline">Pellentesque lectus gravida blandit</span> -->
+			</div>
+			<div class="contentContainer">
    <div class="well">
       <form id="memberForm" class="form-horizontal">
          <input type="hidden" name="m_email" id="m_email" />
@@ -164,7 +169,7 @@
             </div>
 		</div>
          <div class="form-group form-group-sm">
-            <label for="birth" class="col-sm-2 control-label">생년월일</label>
+            <label for="m_birth" class="col-sm-2 control-label">생년월일</label>
             <div class="col-sm-3">
                <input type="text" id="m_birth" name="m_birth" maxlength="6" class="form-control" placeholder="생년월일  6자리">   
             </div>
@@ -176,7 +181,7 @@
             </div>
          </div>                              
          <div class="form-group form-group-sm">
-            <label for="userName" class="col-sm-2 control-label">회원이름</label>
+            <label for="m_name" class="col-sm-2 control-label">회원이름</label>
             <div class="col-sm-3">
                <input type="text" id="m_name" name="m_name" maxlength="10" class="form-control" placeholder="NAME" >
             </div>
@@ -195,7 +200,7 @@
                   <option value="daum.net">daum.net</option>
                   <option value="nate.com">nate.com</option>                                                 
                </select>
-               <input type="text" id="emailDirect" name="emailDirect" maxlength="60" class="form-control" placeholder="EMAIL" style="width: 100px;"/>
+               <input type="text" id="emailDirect" maxlength="60" class="form-control" placeholder="EMAIL" style="width: 100px;"/>
 				<input id="direct" type="checkbox" width="10px;" height="10px;" >직접입력	
 			</div>
 			<div class="col-sm-3">
@@ -231,13 +236,16 @@
 		</div>
          <div class="form-group">   
             <div class="col-sm-offset-2 col-sm-6">
-               <input type="button" value="확인" id="joinInsert" class="btn btn-default" /> 
-               <input type="button" value="재작성" id="joinReset" class="btn btn-default" />
-               <input type="button" value="취소" id="joinCancel" class="btn btn-default" />                  
+               <input type="button" class="button" value="확인" id="joinInsert" class="btn btn-default" /> 
+               <input type="button" class="button" value="재작성" id="joinReset" class="btn btn-default" />
+               <input type="button" class="button" value="취소" id="joinCancel" class="btn btn-default" />                  
             </div>   
          </div>                                                                              
       </form>
    </div>
 </div>
+		</div>
+	</div>
+
 </body>
 </html>

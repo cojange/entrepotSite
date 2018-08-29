@@ -16,6 +16,7 @@
 		<typeAlias type="com.site.admin.ctrl.adMember.vo.AdMbCommonVO" alias="ambcvo"/>
 		<typeAlias type="com.site.admin.ctrl.adMember.vo.AdMbPersnalVO" alias="ampvo"/>
 		<typeAlias type="com.site.admin.ctrl.adMember.vo.AdMbGroupVO" alias="agmvo"/>
+		<typeAlias type="com.site.admin.chart.adChart.vo.ColumnChartVO" alias="ccvo"/>
 		
 		<!-- client -->
 		<typeAlias type="com.site.client.board.vo.ClImgbVO" alias="imgb" />
@@ -24,7 +25,7 @@
 		<typeAlias type="com.site.client.member.individual.vo.ClMVO" alias="member"/>
 		<typeAlias type="com.site.client.member.individual.vo.ClMSecurity" alias="security"/>
 		<typeAlias type="com.site.client.member.login.vo.LoginVO" alias="login"/>
-
+		<typeAlias type="com.site.client.member.individual.vo.ClGmVO" alias="groupMember"/>
 		
 
 

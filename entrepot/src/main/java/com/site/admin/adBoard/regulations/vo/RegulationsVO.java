@@ -1,5 +1,7 @@
 package com.site.admin.adBoard.regulations.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.site.common.vo.CommonVO;
 
 public class RegulationsVO extends CommonVO{
@@ -10,7 +12,14 @@ public class RegulationsVO extends CommonVO{
 	private String reg_type;
 	private String reg_open;
 	private String reg_close;
+	private MultipartFile file;
 	
+	public MultipartFile getFile() {
+		return file;
+	}
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
 	public String getReg_no() {
 		return reg_no;
 	}

@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>개인회원가입</title>
+		<title>단체회원가입</title>
 		<meta http-equiv="X-UA-Compatible"content="IE=edge,chrome=1">
 		<meta name = "viewport"content="width=device-width,initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=no"/>	
 
@@ -13,9 +13,20 @@
 		<script type="text/javascript" src="/springSite/resources/include/js/html5shiv.js"></script>
 		<![emdif] -->
 		<!--<script type="text/javascript" src="/springSite/resources/include/js/jquery-1.12.4.min.js"></script>-->
+		<style type="text/css">
+			#com_no1{
+				width: 30px;
+			}
+			#com_no2{
+				width: 20px;
+			}
+			#com_no3{
+				width: 50px;
+			}
+		</style>
 		<script type = "text/javascript" src="/resources/include/client/js/jquery-1.12.4.min.js"></script>
 		<script type = "text/javascript" src="/resources/include/common/js/common.js"></script>
-		<script type = "text/javascript" src="/resources/include/client/js/join.js"></script>
+		<script type = "text/javascript" src="/resources/include/client/js/gjoin.js"></script> 
 		<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 		<script type = "text/javascript">
 		
@@ -34,9 +45,8 @@
 			}
 			
 			$(function() {
-
-				$("#ans").hide();
-				$("#emailDirect").hide();
+				$("#emailDirect_c").hide();
+				$("#emailDirect_acc").hide();
 			    $("#m_zipcodeFind").click(function(){
 			    	new daum.Postcode({//다음 우편코드 프로그램 사용.
 			    		oncomplete: function(data) {
@@ -70,12 +80,20 @@
 		</script>
 	</head>
 <body>
-	<h1>단체회원가입</h1>
-	<img src="/resources/images/client/member2.png"/>
-<div class="contentContainer">
+	<div id="page" class="container">
+		<div><a href="#" class="image image-full"><img src="/resources/images/client/member2.png"/></a></div>
+		<div class="column1">
+			<div class="title">
+				<h1>단체회원가입</h1>
+				<!-- <span class="byline">Pellentesque lectus gravida blandit</span> -->
+			</div>
+			<div class="contentContainer">
    <div class="well">
-      <form id="memberForm" class="form-horizontal">
-         <input type="hidden" name="m_email" id="m_email" />
+      <form id="groupMemberForm" class="form-horizontal">
+         <input type="hidden" name="char_email" id="char_email" value=""/>
+         <input type="hidden" name="acc_email" id="acc_email" value="" />
+         <input type="hidden" name="com_no" id="com_no" value="" />
+         <img src="/resources/images/client/id.png"/><!-- id정보 -->
          <div class="form-group form-group-sm">
             <label for="userId" class="col-sm-2 control-label">사용자 ID</label>
             <div class="col-sm-3">
@@ -83,7 +101,7 @@
             </div>
             <div class="col-sm-2">
                <input type="button" id="idConfirmBtn" value="아이디 중복체크" class="form-control btn-primary" />
-            </div> 
+            </div>
             <div class="col-sm-5">
                <p class="form-control-static error"></p>
             </div>
@@ -106,41 +124,41 @@
                <p class="form-control-static error"></p>
             </div>
          </div>
+         <img src="/resources/images/client/groupMember.png"/><!-- 업체정보 -->
          <div class="form-group form-group-sm">
-            <label for="phone" class="col-sm-2 control-label">핸드폰 번호</label>
+            <label for="com_no" class="col-sm-2 control-label">사업자등록번호</label>
             <div class="col-sm-3">
-               <input type="text" id="m_phone" name="m_phone" maxlength="13" class="form-control" placeholder="Phone Number">   
+               <input type="text" id="com_no1" maxlength="3" class="form-control">-
+               <input type="text" id="com_no2" maxlength="2" class="form-control">-
+               <input type="text" id="com_no3" maxlength="5" class="form-control">   
             </div>
-            <div class="col-sm-5">
-               <p class="form-control-static error"></p>
-            </div>
-         </div> 
-         <div class="form-group form-group-sm">
-            <label for="m_job" class="col-sm-2 control-label">직업</label>
-            <div class="col-sm-3">
-               <select id="m_job" name="m_job" class="form-control" class="form-control">
-                  <option></option>
-                  <option value="직장인">직장인</option>
-                  <option value="초등학생">초등학생</option>	
-                  <option value="중학생">중학생</option>
-                  <option value="고등학생">고등학생</option>
-                  <option value="대학생">대학생</option>
-                  <option value="운동선수">운동선수</option> 
-                  <option value="주부">주부</option> 
-                  <option value="프리랜서">프리랜서</option>
-                  <option value="디자이너">디자이너</option> 
-                  <option value="요리사">요리사</option>
-                  <option value="웹앱개발자">웹앱개발자</option> 
-                  <option value="정치인">정치인</option>
-                  <option value="건축가">건축가</option>                                            
-               </select>  
-            </div>
+            <div class="col-sm-2">
+               <input type="button" id="comNoConfirmBtn" value="중복검사" class="form-control btn-primary" />
+            </div> 
             <div class="col-sm-5">
                <p class="form-control-static error"></p>
             </div>
          </div>
          <div class="form-group form-group-sm">
-			 <label for="m_zipcode" class="col-sm-2 control-label">우편번호</label>
+            <label for="m_name" class="col-sm-2 control-label">단체이름</label>
+            <div class="col-sm-3">
+               <input type="text" id="m_name" name="m_name" maxlength="10" class="form-control" placeholder="NAME" >
+            </div>
+            <div class="col-sm-5">
+               <p class="form-control-static error"></p>
+            </div>                  
+         </div>
+         <div class="form-group form-group-sm">
+            <label for="leader_name" class="col-sm-2 control-label">대표자 성명</label>
+            <div class="col-sm-3">
+               <input type="text" id="leader_name" name="leader_name" maxlength="10" class="form-control" placeholder="NAME" >
+            </div>
+            <div class="col-sm-5">
+               <p class="form-control-static error"></p>
+            </div>                  
+         </div>
+           <div class="form-group form-group-sm">
+			 <label for="m_zipcode" class="col-sm-2 control-label"> 사업장 주소(사업자등록증의 주소) </label>
 			 <div class="col-sm-3">
 			<input type="text" id="m_zipcode" name="m_zipcode" class="form-control" placeholder="우편번호" readonly="readonly">
 			</div>
@@ -164,80 +182,125 @@
             </div>
 		</div>
          <div class="form-group form-group-sm">
-            <label for="birth" class="col-sm-2 control-label">생년월일</label>
+            <label for="m_job" class="col-sm-2 control-label">업종</label>
             <div class="col-sm-3">
-               <input type="text" id="m_birth" name="m_birth" maxlength="6" class="form-control" placeholder="생년월일  6자리">   
-            </div>
-            <div class="col-sm-2">
-               <input type="text" id="m_gender" name="m_gender" maxlength="1" class="form-control" placeholder="주민번호뒷자리1번째">   
-            </div>
-            <div class="col-sm-5">
-               <p class="form-control-static error"></p>
-            </div>
-         </div>                              
-         <div class="form-group form-group-sm">
-            <label for="userName" class="col-sm-2 control-label">회원이름</label>
-            <div class="col-sm-3">
-               <input type="text" id="m_name" name="m_name" maxlength="10" class="form-control" placeholder="NAME" >
-            </div>
-            <div class="col-sm-5">
-               <p class="form-control-static error"></p>
-            </div>                  
-         </div>
-         <div class="form-group form-group-sm">
-            <label for="emailName" class="col-sm-2 control-label">회원 이메일</label>
-            <div class="col-sm-3">
-               <input type="text" id="emailName" name="emailName" maxlength="60" class="form-control" placeholder="'@'를빼고 입력해주세요.">
-            </div>
-            <div class="col-sm-2">
-               <select id="emailDomain" class="form-control" style="width: 100px;">
-                  <option value="naver.com">naver.com</option>
-                  <option value="daum.net">daum.net</option>
-                  <option value="nate.com">nate.com</option>                                                 
-               </select>
-               <input type="text" id="emailDirect" name="emailDirect" maxlength="60" class="form-control" placeholder="EMAIL" style="width: 100px;"/>
-				<input id="direct" type="checkbox" width="10px;" height="10px;" >직접입력	
-			</div>
-			<div class="col-sm-3">
-               <p class="form-control-static error"></p>
-            </div>
-         </div>        
-         <div class="form-group form-group-sm">
-            <label for="m_job" class="col-sm-2 control-label">비밀번호 질문</label>
-            <div class="col-sm-3">
-               <select id="quiz" name="quiz" class="form-control" class="form-control" >
-                  <option value="없음">없음</option>
-                  <option value="나의 별명은 무엇입니까?">나의 별명은 무엇입니까?</option>
-                  <option value="나의 결혼기념일은 언제입니까?">나의 결혼기념일은 언제입니까?</option>	
-                  <option value="나는 어떤사람입니까?">나는 어떤사람입니까?</option>
-                  <option value="내가 좋아하는 장소는 어디입니까?">내가 좋아하는 장소는 어디입니까?</option>
-                  <option value="내가 좋아하는 음식은 무엇입니까?">내가 좋아하는 음식은 무엇입니까?</option>
-                  <option value="내가 싫어하는 장소는 어디입니까?">내가 싫어하는 장소는 어디입니까?</option> 
-                  <option value="나는 어떠한 취미가있습니까?">나는 어떠한 취미가있습니까?</option>                                         
+               <select id="m_job" name="m_job" class="form-control" class="form-control">
+                  <option></option>
+                  <option value="병원">병원</option>
+                  <option value="도매업">도매업</option>	
+                  <option value="식품업체">식품업체</option>
+                  <option value="가공업체">가공업체</option>
+                  <option value="유치원">유치원</option> 
+                  <option value="초등학교">초등학교</option>
+                  <option value="중학교">중학교</option> 
+                  <option value="고등학교">고등학교</option> 
+                  <option value="대학교">대학교</option>                 
+                  <option value="댄서그룹">댄서그룹</option>
+                  <option value="헬스클럽">헬스클럽</option> 
+                  <option value="교회">교회</option>
+                  <option value="학원">학원</option>
+                  <option value="스포츠단체">스포츠단체</option>                                       
                </select>  
             </div>
             <div class="col-sm-5">
                <p class="form-control-static error"></p>
             </div>
          </div>
-          <div class="form-group form-group-sm">
-             <label for="ans" class="col-sm-2 control-label"></label>
-            <div class="col-sm-2">
-				<input type="text" id="ans" name="ans" class="form-control" placeholder="비밀번호질문답" style="width:300px;" value="없음">
-			</div>
-			<div class="col-sm-5">
+       	 <img src="/resources/images/client/char.png"/><!-- 담당자정보 -->
+       	 <div class="form-group form-group-sm">
+            <label for="char_name" class="col-sm-2 control-label">담당자명</label>
+            <div class="col-sm-3">
+               <input type="text" id="char_name" name="char_name" maxlength="10" class="form-control" placeholder="NAME" >
+            </div>
+            <div class="col-sm-5">
+               <p class="form-control-static error"></p>
+            </div>                  
+         </div>
+         <div class="form-group form-group-sm">
+            <label for="char_phone" class="col-sm-2 control-label">담당자 전화번호</label>
+            <div class="col-sm-3">
+               <input type="text" id="char_phone" name="char_phone" maxlength="13" class="form-control" placeholder="Phone Number">   
+            </div>
+            <div class="col-sm-5">
                <p class="form-control-static error"></p>
             </div>
-		</div>
+         </div> 
+         <div class="form-group form-group-sm">
+            <label for="emailName_c" class="col-sm-2 control-label">담당자 이메일</label>
+            <div class="col-sm-3">
+               <input type="text" id="emailName_c" name="emailName_c" maxlength="60" class="form-control" placeholder="'@'를빼고 입력해주세요.">
+            </div>
+            <div class="col-sm-2">
+               <select id="emailDomain_c" class="form-control" style="width: 100px;">
+                  <option value="naver.com">naver.com</option>
+                  <option value="daum.net">daum.net</option>
+                  <option value="nate.com">nate.com</option>                                                 
+               </select>
+               <input type="text" id="emailDirect_c" maxlength="60" class="form-control" placeholder="EMAIL" style="width: 100px;"/>
+				<input id="direct_c" type="checkbox" width="10px;" height="10px;" >직접입력	
+			</div>
+			<div class="col-sm-3">
+               <p class="form-control-static error"></p>
+            </div>
+         </div>        
+       	<img src="/resources/images/client/acc.png"/><!-- 회계부정보 -->
+       	 <div class="form-group form-group-sm">
+            <label for="acc_name" class="col-sm-2 control-label">회계담당자명</label>
+            <div class="col-sm-3">
+               <input type="text" id="acc_name" name="acc_name" maxlength="10" class="form-control" placeholder="NAME" >
+            </div>
+            <div class="col-sm-5">
+               <p class="form-control-static error"></p>
+            </div>                  
+         </div>
+         <div class="form-group form-group-sm">
+            <label for="acc_phone" class="col-sm-2 control-label">회계 담당자 전화번호</label>
+            <div class="col-sm-3">
+               <input type="text" id="acc_phone" name="acc_phone" maxlength="13" class="form-control" placeholder="Phone Number">   
+            </div>
+            <div class="col-sm-5">
+               <p class="form-control-static error"></p>
+            </div>
+         </div>
+          <div class="form-group form-group-sm">
+            <label for="fax" class="col-sm-2 control-label">팩스번호</label>
+            <div class="col-sm-3">
+               <input type="text" id="fax" name="fax" maxlength="13" class="form-control" placeholder="FAX Number">   
+            </div>
+            <div class="col-sm-5">
+               <p class="form-control-static error"></p>
+            </div>
+         </div>
+         <div class="form-group form-group-sm">
+            <label for="emailName_acc" class="col-sm-2 control-label">회계 담당자 이메일</label>
+            <div class="col-sm-3">
+               <input type="text" id="emailName_acc" name="emailName_acc" maxlength="60" class="form-control" placeholder="'@'를빼고 입력해주세요.">
+            </div>
+            <div class="col-sm-2">
+               <select id="emailDomain_acc" class="form-control" style="width: 100px;">
+                  <option value="naver.com">naver.com</option>
+                  <option value="daum.net">daum.net</option>
+                  <option value="nate.com">nate.com</option>                                                 
+               </select>
+               <input type="text" id="emailDirect_acc"maxlength="60" class="form-control" placeholder="EMAIL" style="width: 100px;"/>
+				<input id="direct_acc" type="checkbox" width="10px;" height="10px;" >직접입력	
+			</div>
+			<div class="col-sm-3">
+               <p class="form-control-static error"></p>
+            </div>
+         </div>        
          <div class="form-group">   
             <div class="col-sm-offset-2 col-sm-6">
-               <input type="button" value="확인" id="joinInsert" class="btn btn-default" /> 
-               <input type="button" value="재작성" id="joinReset" class="btn btn-default" />
-               <input type="button" value="취소" id="joinCancel" class="btn btn-default" />                  
+               <input type="button" value="확인" id="gjoinInsert" class="btn btn-default" /> 
+               <input type="button" value="재작성" id="gjoinReset" class="btn btn-default" />
+               <input type="button" value="취소" id="gjoinCancel" class="btn btn-default" />                  
             </div>   
          </div>                                                                              
       </form>
    </div>
 </div>
+		</div>
+	</div>
+
 </body>
 </html>

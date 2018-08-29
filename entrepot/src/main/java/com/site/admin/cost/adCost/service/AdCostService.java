@@ -11,4 +11,5 @@ import com.site.admin.cost.adCost.vo.AdCostVO;
 public interface AdCostService {
 	public int excelInsert(AdCostVO acvo, HttpServletRequest request) throws IllegalStateException, IOException;
 	public List<AdCostVO> selectCard(String month);
+	public List<String> selectExcelList(int selectmonth);
 }

@@ -30,5 +30,18 @@ public class RegulationsServiceImpl implements RegulationsService {
 		regAgreeList = regulationsDao.regAgreeList(ravo);
 		return regAgreeList;
 	}
+	
+	//약관등록
+	@Override
+	public int addRegulations(RegulationsVO rvo) {
+		int result = 0;
+		try {
+			result = regulationsDao.addRegulations(rvo);
+		}catch(Exception e) {
+			e.printStackTrace();
+			result = 0;
+		}
+		return result;
+	}
 
 }

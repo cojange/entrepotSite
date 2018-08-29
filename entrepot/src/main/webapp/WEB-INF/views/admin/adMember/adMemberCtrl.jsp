@@ -4,7 +4,7 @@
 <%@ include file="/WEB-INF/views/common/common.jspf" %>
   <div class="container-fluid">
   
-
+	
      <!-- 회원 관리 -->
      <div class="card mb-3">
             <div class="card-header">
@@ -133,6 +133,8 @@
                   </tbody>
                 </table>
               </div>
+              	<input type="button" id="ad-add" value="등록">
+              	<input type="button" id="ad-del" value="삭제">
             </div>
             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
           </div>

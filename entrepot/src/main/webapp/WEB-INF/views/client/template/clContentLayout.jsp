@@ -4,21 +4,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+   <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-  
+    <link rel="icon" href="/resources/images/favicon.ico">
 
-    <%-- <title><tiles:getAsString name="title"/></title> --%>
+    <title>앙뜨흐뽀</title>
 
-	<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900|Varela+Round" rel="stylesheet" />
-	<link href="/resources/include/client/font/fonts.css" rel="stylesheet" type="text/css" media="all" />
+	
+	\
+    <!-- Bootstrap core CSS -->
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900|Varela+Round" rel="stylesheet" />
   	<link href="/resources/include/client/css/default.css" rel="stylesheet" type="text/css" media="all" />
   	<link href="/resources/include/client/css/list.css" rel="stylesheet" type="text/css" media="all" />
 	<link href="/resources/include/client/css/quick.css" rel="stylesheet" type="text/css" media="all" />
   	<link href="/resources/include/client/css/content.css" rel="stylesheet" type="text/css" media="all" />
+  	<link href="/resources/include/client/font/fonts.css" rel="stylesheet" type="text/css" media="all" />
+  	<link rel="styleSheet" href="/resources/include/client/css/normalize.css"  type="text/css" media="all"/>
+
     <!-- Custom styles for this template -->
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
@@ -33,7 +38,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-
+	
   <body>
  <div id="wrapper">
   	<table id="table1">
@@ -62,7 +67,6 @@
 		 </tr>	    	 
 	   
 	</table>
-</div>
 	<div>
 		<tiles:insertAttribute name="quick"/>
 	</div>

@@ -37,6 +37,8 @@ public class DitailController {
 			return "client/magazine/bast/magazineDetail";
 		}
 	
+		
 	}
+
 	
 }

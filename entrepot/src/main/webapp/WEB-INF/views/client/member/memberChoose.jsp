@@ -17,12 +17,15 @@
 		</script>
 	</head>
 <body>
-	<h1>앙뜨흐뽀 사이트에 오신것을 환영합니다~^^</h1>
-	<img src="/resources/images/client/member.png"/>
+	
+	<div id="page" class="container">
+		<div><a href="#" class="image image-full"><img src="/resources/images/client/member.png"/></a></div>
+		<div><a href="#" class="image image-full"><img src="/resources/images/client/entrepotjoin.png"/></a></div>
 	<br><br>
-	<a href="/client/member/guardian.do" class="btn btn-info">14세미만 회원</a>
-	<a href="/client/member/mForm.do" class="btn btn-primary">14세이상 회원</a>
-	<a href="#" class="btn btn-warning">기업/단체 회원</a>
+	<a href="/client/member/guardian.do" class="button">14세미만 회원</a>
+	<a href="/client/member/mForm.do" class="button">14세이상 회원</a>
+	<a href="/client/member/groupForm.do" class="button">기업/단체 회원</a>
+	</div>
 	
 </body>
 </html>

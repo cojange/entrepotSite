@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
-<<html>
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title></title>
@@ -12,6 +12,7 @@
 <link href="/resources/include/client/css/default.css" rel="stylesheet" type="text/css" media="all" />
 <link href="/resources/include/client/font/fonts.css" rel="stylesheet" type="text/css" media="all" />
 <link href="/resources/include/client/css/quick.css" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" href="/resources/include/client/css/fontello-619e3562/css/fontello-embedded.css">
 <!--[if IE 6]>
 <link href="default_ie6.css" rel="stylesheet" type="text/css" />
 <![endif]-->

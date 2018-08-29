@@ -17,7 +17,7 @@
 	template="/WEB-INF/views/client/template/clContentLayout.jsp">
 	<put-attribute name="header"
 	value="/WEB-INF/views/client/template/header.jsp"/>
-	<put-attribute name="body" value=""/>
+<!-- 	<put-attribute name="body" value=""/> -->
 	<put-attribute name="footer"
 	value="/WEB-INF/views/client/template/footer.jsp"/>
 	<put-attribute name="sidebar"
@@ -40,7 +40,9 @@
 	
 	<!--  -->
 
+
 	<definition name="client/magazine/bast/*" extends="content">
+
 	<put-attribute name="title" value="페이지"/>
 	<put-attribute name="body"
 	value="/WEB-INF/views/client/magazine/{1}.jsp"/>
@@ -57,5 +59,4 @@
 	</definition>
 
 
-	
 </tiles-definitions>

@@ -14,6 +14,9 @@
    <logger name="com.site.client">
       <level value="info" />
    </logger>
+   <logger name="com.site.common">
+      <level value="info" />
+   </logger>
    <logger name="com.site.client.member.individual.service">
       <level value="trace" />
    </logger>
@@ -46,6 +49,12 @@
    </logger>	
    <logger name="com.site.admin.adBoard.adminBoard.dao">
 	  <level value="trace"/>
+   </logger>
+   <logger name="com.site.admin.adBoard.adminBoard.controller">
+	  <level value="info"/>
+   </logger>
+   <logger name="com.site.admin.adBoard.regulations.controller">
+	  <level value="info"/>
    </logger>
    <logger name="com.site.admin.adBoard.personalBoard.dao">
 	  <level value="trace"/>
