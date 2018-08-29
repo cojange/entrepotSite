@@ -74,7 +74,8 @@
 				</div> 
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-6">
-						<input type="button" value="로그인" id="loginBtn" class="btn btn-default" /> 
+						<input type="button" value="로그인" id="loginBtn" class="btn btn-default" />&nbsp;
+						<input type="button" value="아이디/비밀번호찾기" id="loginFind" class="btn btn-default" />
 					</div>
 				</div>
 			</form> 
