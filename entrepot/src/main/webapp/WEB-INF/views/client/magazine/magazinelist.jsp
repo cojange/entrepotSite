@@ -18,7 +18,7 @@
 <link rel="shortcut icon" href="/resources/images/icon.png" />
 <link rel="apple-touch-icon" href="/resources/images/icon.png" />
 <!-- 모바일 웹 페이지 설정 종료 -->
-
+<link href="/resources/include/client/css/magazinelist.css" rel="stylesheet" type="text/css" media="all" />
 <!-- IE8이하 브라우저에서 HTML5를 인식하기 위해서는 아래의 패스필터를 적용하면 된다. -->
 <!-- [if lt IE 9] -->
 <!-- <script src="../js/html5shiv.js"</script> -->
@@ -30,7 +30,9 @@
 	$(function(){
 		$(".goDetail").click(function() {
             var mg_num = $(this).parents("tr").attr("data-num");
-       		 $("#mg_num").val(mg_num); 
+            var listkey= $('#listkey').val();
+       		 $("#mg_num").val(mg_num);
+       		 $("#liskkey").val(listkey);
             //상세 페이지로 이동하기위해  form추가(id:detailForm)
             $("#detailForm").attr({
                "method":"get",
@@ -54,7 +56,8 @@
 		<h1>${mvo.home}
 			<small>>> ${mvo.key1}/${mvo.key2}/${mvo.key3}</small>
 		</h1>
-		<table width="90%" border="0" cellpadding="0" cellspacing="10px"
+		<input type="hidden" id="listkey" name="listkey" value="${mvo.listkey}" />
+		<table width="100%" border="0" cellpadding="0" cellspacing="10px"
 			align="center">
 			<c:choose>
 				<c:when test="${not empty magazienlist}">
@@ -62,7 +65,7 @@
 						
 						<tr height="100" bgcolor="#FFFFFF" style="margin-top: 50px;" class="tac" data-num="${list.mg_num}">
 							<input type="hidden" id="mg_num" name="mg_num" value="${list.mg_num}" />
-							<td height="250" width="80" align="center"
+							<td height="250" width="20" 
 								style="word-break: break-all; font: 9pt 나눔고딕; line-height: 180%;">
 								<!-- <td align=center width=50 style="word-break:break-all;font:9pt 나눔고딕;line-height:180%;"><b>1위</b>&nbsp;</td> -->
 
@@ -73,21 +76,21 @@
 								</p>
 							</td>
 							<td classwidth="200"
-								style="word-break: break-all; font: 9pt 나눔고딕; line-height: 180%;" class="godetail tal">
+								style="word-break: break-all; font: 9pt 나눔고딕; line-height: 180%;" class="goDetail">
 									 <!-- 작은이미지만 보일 경우 
 			      <img src="../../data_book/2092-9625/s_2092-9625_2018_9_0_Y_20180817021056.jpg" width="200" height="270" border=0 /> -->
 									<!-- 먼저 작은이미지를 보이고, 없으면 큰 이미지를 보이게 할 경우 --> <img
 									src="${list.pl_path}" width="200" height="270" border="0">
 							
 							</td>
-							<td width="30"></td>
+							<td width="5"></td>
 							<!-- 간격넓히기 -->
 							<td
 								style="word-break: break-all; font: 9pt 나눔고딕; line-height: 180%;">
 								<table cellspacing="0" cellpadding="0" border="0" width="500">
 									<tbody>
 										<tr>
-											<td width="542" colspan="2"  class="godetail tal" >
+											<td width="542" colspan="2"  class="goDetail" >
 												<p>
 													 <font size="3"
 														style="font: 맑은 고딕, 나눔고딕, 굴림, verdana; color: #3399CC; FONT-WEIGHT: bold; line-height: 20px;">
@@ -146,7 +149,7 @@
 											</td>
 
 											<td align="right">
-												<table width="80" cellspacing="0"
+												<table width="60" cellspacing="0"
 													style="border-collapse: collapse;">
 													<tbody>
 														<tr valign="top">
@@ -176,7 +179,7 @@
 						</tr>
 
 						<tr>
-							<td colspan="11" align="center" bgcolor="#FFFFFF"><img
+							<td colspan="11"  bgcolor="#FFFFFF"><img
 								src="/resources/images/lin_icon.jpg"></td>
 						</tr>
 					</c:forEach>

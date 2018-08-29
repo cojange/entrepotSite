@@ -23,11 +23,18 @@ public class MagazineVO{
 	private String pl_path;						//파일경로
 	private String pl_type;						//파일유형	
 	
+	private String pl_path2;					//프리뷰
 	
 	//상품상세 테이블(details)
 	
 	private	String dt_target;					//대상
 	private	String dt_brief;					//간략소개
+	public String getPl_path2() {
+		return pl_path2;
+	}
+	public void setPl_path2(String pl_path2) {
+		this.pl_path2 = pl_path2;
+	}
 	private String dt_detail;					//상품상세
 	private String dt_contents;					//목차
 	private String dt_keyword;					//키워드
@@ -35,7 +42,7 @@ public class MagazineVO{
 	//필요 필드
 	private int pd_salecost;     //활인가
 	private String com_name;          //출판사
-	private String listkey;      // 키워드 개수 판별
+	private int listkey;      // 키워드 개수 판별
 	private String home;         //리스트 제목
 	
 	private String key1;       //키워드1
@@ -67,10 +74,10 @@ public class MagazineVO{
 	public void setHome(String home) {
 		this.home = home;
 	}
-	public String getListkey() {
+	public int getListkey() {
 		return listkey;
 	}
-	public void setListkey(String listkey) {
+	public void setListkey(int listkey) {
 		this.listkey = listkey;
 	}
 	public int getPd_salecost() {

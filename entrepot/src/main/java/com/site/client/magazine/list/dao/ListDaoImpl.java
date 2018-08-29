@@ -12,7 +12,7 @@ public class ListDaoImpl implements ListDao {
 	@Autowired
 	 private SqlSession sqlSession;
 	@Override
-	public List<MagazineVO> magazineList(MagazineVO mvo) {
+	public List<MagazineVO> magazineList(MagazineVO mvo) {	
 		return sqlSession.selectList("magazineList",mvo);
 	}
 
