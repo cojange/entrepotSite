@@ -120,13 +120,12 @@
 		$(function(){
 			$("#addAdmin").click(function(){
 				console.log("aa");
-				if(!inputVerify(0,$("#ad_id"),"아이디가","admin")) return;
-			 	if(!inputVerify(1,$("#ad_pw"),"비밀번호가","admin")) return;
-				if(!inputVerify(9,$("#ad_name"),"이름이","admin")) return;
-				if(!chkData($("#ad_grade"),"직급을")) return;
-				if(!inputVerify(7,$("#ad_tell"),"연락처가","admin")) return;
-				if(!inputVerify(10,$("#ad_email"),"이메일이","admin")) return;
-					 
+				if(!inputVerify(0,"#id","아이디가","admin")) return;
+				else if(!inputVerify(1,"#pw","비밀번호가","admin")) return;
+				else if(!inputVerify(9,"#name","이름이","admin")) return;
+				else if(!chkData("#grade","직급을")) return;
+				else if(!inputVerify(7,"#tell","연락처가","admin")) return;
+				else if(!inputVerify(10,"#email","이메일이","admin")) return;
 			})
 		})
 

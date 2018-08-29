@@ -114,7 +114,7 @@ var pattren = [
 	"^\\d{2,3}-\\d{3,4}-\\d{4}",
 	"^([0-9]{3})-?([0-9]{2})-?([0-9]{5})",
 	"^[가-힣]{2,4}$",
-	"/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i"
+	"^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$"
 	];
 
 /**입력 형식이 맞지않을때 발생하는메서드
@@ -127,6 +127,7 @@ var pattren = [
 function inputVerify(index,data,printarea,mode) {
 	var data_regExp = new RegExp(pattren[index]);
 	var match = data_regExp.exec($(data).val());
+	console.log("data " + $(data).val());
 	console.log("mode" +mode);
 	if(match==null){
 		if(mode=='member'){		//특정 area에 메세지 뿌리기
@@ -134,13 +135,14 @@ function inputVerify(index,data,printarea,mode) {
 			$(data).val("");
 			return false;
 		}else if(mode=='admin'){	//alert로 정보 띄워주기
-			console.log("admin");
+			console.log(pattren[index]);
 			alert(printarea + " 입력값이 형식에 맞지 않습니다. 다시 입력해 주세요.");
-			$(data).val('');
 			return false;
 		}
 	}else{
+		if(mode=='member'){
+			$(printarea).html("");
+		}
 		return true;
-		$(printarea).html("");
 	}
 }
