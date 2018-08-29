@@ -24,7 +24,7 @@
 
 
 </head>
-<body>
+<body class="sideview">
 
 		<div class="floating">
 			<div>다음뷰 추천위젯코드 삽입</div>

@@ -67,6 +67,7 @@
 		<script type="text/javascript" src="/resources/include/common/js/common.js"></script>
 	    <!-- Demo scripts for this page-->
 	    <script src="/resources/include/admin/js/demo/datatables-demo.js"></script>
+	    <script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
 	    <script src="/resources/include/admin/js/demo/chart-area-demo.js"></script> 
 	    
 	    <!-- 사용자 정의 js -->
@@ -97,11 +98,32 @@
 	    		
 	    		//회원관리탭
 	    		if($(location).attr("href") == "http://localhost:8080/admin/ctrl/adMember/adMemberCtrl.do"){
-	    			$("#adminTable").dataTable();
+	    			$("#adminTable").DataTable({
+	    				columnDefs:[{
+	    					orderable: false,
+	    					className:'select-checkbox',
+	    					targets:0
+	    				}],
+	    				select:{
+	    					style: 'os',
+	    					selector:'td:first-child'
+	    				},
+	    				order:[[1,'asc']]
+	    			});
+	    			
+	    			$("#adminTable tbody").on("click","tr", function(){
+	    				console.log("aa");
+	    				$(this).toggleClass('selected');
+	    			});
+	    			
 	    			
 	    			$("#ad-add").click(function(){
 	    				window.open('/admin/ctrl/adMember/adminRegit.do','_blank','width=500px, height=600px')
-	    			})
+	    			});
+	    			
+	    		/* 	$("#adminFire").click(function(){
+	    				$.ajax()
+	    			}) */
 	    		}
 	    		
 	    		//거래처 관리탭

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -89,6 +90,21 @@ public class AdMemberController {
 	   return listData;
 	   
 	   
+   }
+   
+   @ResponseBody
+   @RequestMapping(value="/idCheck.do")
+   public String idCheck(AdminVO avo) {
+	   String result = adMemberService.idCheck(avo);
+	   return result;
+   }
+   
+   @ResponseBody
+  @RequestMapping(value="/insertAdmin.do")
+   public String insertAdmin(AdminVO avo) {
+	   String result = adMemberService.insertAdmin(avo);
+	  return result;
+	
    }
    
 }

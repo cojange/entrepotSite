@@ -89,6 +89,7 @@
                 <table class="table table-bordered" id="adminTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
+                   	  <th></th>
                       <th>순번</th>
                       <th>이름</th>
                       <th>아이디</th>
@@ -100,6 +101,7 @@
                   </thead>
                   <tfoot>
                     <tr>
+                      <th></th>
                       <th>순번</th>
                       <th>이름</th>
                       <th>아이디</th>
@@ -114,6 +116,7 @@
                        <c:when test="${not empty adminList }">
                           <c:forEach var="adminM" items="${adminList }" varStatus="status">
                              <tr class="tac" data-num="${status.count }">
+                             	<td></td>
                                 <td>${status.count}</td>
                                 <td>${adminM.ad_name }</td>
                                 <td>${adminM.ad_id }</td>
