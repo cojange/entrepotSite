@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -15,6 +16,7 @@ import com.site.admin.ctrl.adMember.service.AdMemberService;
 import com.site.admin.ctrl.adMember.vo.AdManagerVO;
 import com.site.admin.ctrl.adMember.vo.AdMbCommonVO;
 import com.site.admin.ctrl.adMember.vo.AdMbPersnalVO;
+import com.site.admin.ctrl.adMember.vo.AdminVO;
 
 @Controller
 @RequestMapping(value="/admin/ctrl/adMember")
@@ -52,6 +54,12 @@ public class AdMemberController {
 	      
 	      return mav;
 	}
+   //관리자 등록
+   @RequestMapping(value="/adminRegit.do")
+   public String adminRegit() {
+	   return "/admin/login/adRegist";
+   }
+   
    //회원조회
    @RequestMapping(value="/memberList.do")
    public ModelAndView memberList(AdMbCommonVO ambcvo, String mbType) {
@@ -82,6 +90,21 @@ public class AdMemberController {
 	   return listData;
 	   
 	   
+   }
+   
+   @ResponseBody
+   @RequestMapping(value="/idCheck.do")
+   public String idCheck(AdminVO avo) {
+	   String result = adMemberService.idCheck(avo);
+	   return result;
+   }
+   
+   @ResponseBody
+  @RequestMapping(value="/insertAdmin.do")
+   public String insertAdmin(AdminVO avo) {
+	   String result = adMemberService.insertAdmin(avo);
+	  return result;
+	
    }
    
 }

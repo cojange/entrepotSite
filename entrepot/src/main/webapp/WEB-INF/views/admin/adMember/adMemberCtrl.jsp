@@ -4,7 +4,7 @@
 <%@ include file="/WEB-INF/views/common/common.jspf" %>
   <div class="container-fluid">
   
-
+	
      <!-- 회원 관리 -->
      <div class="card mb-3">
             <div class="card-header">
@@ -83,12 +83,13 @@
         <div class="card mb-3">
             <div class="card-header">
               <i class="fas fa-user-cog"></i>
-                 관리자 관리</div>
+                 	관리자 관리</div>
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="adminTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
+                   	  <th></th>
                       <th>순번</th>
                       <th>이름</th>
                       <th>아이디</th>
@@ -100,6 +101,7 @@
                   </thead>
                   <tfoot>
                     <tr>
+                      <th></th>
                       <th>순번</th>
                       <th>이름</th>
                       <th>아이디</th>
@@ -114,6 +116,7 @@
                        <c:when test="${not empty adminList }">
                           <c:forEach var="adminM" items="${adminList }" varStatus="status">
                              <tr class="tac" data-num="${status.count }">
+                             	<td></td>
                                 <td>${status.count}</td>
                                 <td>${adminM.ad_name }</td>
                                 <td>${adminM.ad_id }</td>
@@ -133,6 +136,8 @@
                   </tbody>
                 </table>
               </div>
+              	<input type="button" id="ad-add" value="등록">
+              	<input type="button" id="ad-del" value="삭제">
             </div>
             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
           </div>

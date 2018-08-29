@@ -16,4 +16,15 @@
 		from magazine_company
 		order by startdate desc, enddate
 	</select>
+	<insert id="magazineInsert" parameterType="magPartner">
+		/*잡지 거래처 등록*/
+		insert into magazine_company(com_no, mcom_name, mcom_tel, char_tel, char_manager, char_email,
+		<if test="char_fax != null and char_fax != ''">char_fax,</if> acc_manager, acc_email,
+		<if test="acc_fax != null and acc_fax != ''">acc_fax,</if> mcom_add, acc_tel, startdate, enddate,
+		raddress, rzip_code, bacc_bank, bacc_accno, com_name, bacc_name, mcom_date)
+		values(#{com_no},#{mcom_name},#{mcom_tel},#{char_tel},#{char_manager}, #{char_email}
+		<if test="char_fax != null and char_fax != ''">#{char_fax},</if> #{acc_manager}, #{acc_email},
+		<if test="acc_fax != null and acc_fax != ''">#{acc_fax},</if> #{mcom_add}, #{acc_tel}, #{startdate}, #{enddate},
+		#{raddress}, #{rzip_code}, #{bacc_bank}, #{bacc_accno}, #{com_name}, #{bacc_name}, #{mcom_date})		
+	</insert>
 </mapper>

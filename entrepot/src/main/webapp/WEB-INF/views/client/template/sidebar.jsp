@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>    
 
-<div id="page-wrapper">
+<div id="page-wrapper" class="sideview">
 	<!-- 사이드바 -->
   <div id="sidebar-wrapper">
     <ul class="sidebar-nav">
