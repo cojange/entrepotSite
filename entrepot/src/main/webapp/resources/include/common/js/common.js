@@ -99,7 +99,8 @@ function getTrimStr (item){
 	return str;
 }
 /* 배열 : 유효성 체크 시 필요한 정규식으로 배열을 초기화.
- * pattren = [아이디(0),비밀번호(1),핸드폰번호(2),생년월일(3),주민번호앞자리(4),이메일이름(5),도메인(6),전화번호or팩스번호(7),사업자등록번호(8)]
+ * pattren = [아이디(0),비밀번호(1),핸드폰번호(2),생년월일(3),주민번호앞자리(4),이메일이름(5),도메인(6),
+ * 				전화번호or팩스번호(7),사업자등록번호(8),사용자이름(9),@를 포함한 email정규식(10)]
  * 함수명:inputVerify(배열 인덱스번호,비교할 값,출력영역)
  * */
 var pattren = [
@@ -111,7 +112,9 @@ var pattren = [
 	"((?=.*[a-zA-Z])(?=.*[0-9]).{3,20})",
 	"((([a-z\d](([a-z\d-]*[a-z\d])|([ㄱ-힣]))*)\.)+[a-z]{2,})",
 	"^\\d{2,3}-\\d{3,4}-\\d{4}",
-	"^([0-9]{3})-?([0-9]{2})-?([0-9]{5})"
+	"^([0-9]{3})-?([0-9]{2})-?([0-9]{5})",
+	"^[가-힣]{2,4}$",
+	"/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i"
 	];
 
 /**입력 형식이 맞지않을때 발생하는메서드
@@ -124,13 +127,15 @@ var pattren = [
 function inputVerify(index,data,printarea,mode) {
 	var data_regExp = new RegExp(pattren[index]);
 	var match = data_regExp.exec($(data).val());
+	console.log("mode" +mode);
 	if(match==null){
 		if(mode=='member'){		//특정 area에 메세지 뿌리기
 			$(printarea).html("입력값이 형식에 맞지 않습니다. 다시 입력해 주세요.");
 			$(data).val("");
 			return false;
 		}else if(mode=='admin'){	//alert로 정보 띄워주기
-			alert("입력값이 형식에 맞지 않습니다. 다시 입력해 주세요.");
+			console.log("admin");
+			alert(printarea + " 입력값이 형식에 맞지 않습니다. 다시 입력해 주세요.");
 			$(data).val('');
 			return false;
 		}
