@@ -124,19 +124,19 @@ var pattren = [
  * RegExp : 정규표현식을 판단하기위한 객체
  * 
 **/
-function inputVerify(index,data,printarea,mode) {
+function inputVerify(index,data,printarea,hint,mode) {
 	var data_regExp = new RegExp(pattren[index]);
 	var match = data_regExp.exec($(data).val());
 	console.log("data " + $(data).val());
 	console.log("mode" +mode);
 	if(match==null){
 		if(mode=='member'){		//특정 area에 메세지 뿌리기
-			$(printarea).html("입력값이 형식에 맞지 않습니다. 다시 입력해 주세요.");
+			$(printarea).html("입력값이 형식에 맞지 않습니다. 다시 입력해 주세요.\n"+hint);
 			$(data).val("");
 			return false;
 		}else if(mode=='admin'){	//alert로 정보 띄워주기
 			console.log(pattren[index]);
-			alert(printarea + " 입력값이 형식에 맞지 않습니다. 다시 입력해 주세요.");
+			alert(printarea + " 입력값이 형식에 맞지 않습니다. 다시 입력해 주세요.\n"+hint);
 			return false;
 		}
 	}else{
