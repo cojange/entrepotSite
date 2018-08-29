@@ -229,10 +229,17 @@
 		
 			<script type="text/javascript">
 				$(function(){
+					/* 취소버튼 이벤트 */
 					$("#magExit").click(function(){
 						//등록버튼 누를 시 실행 : window.opener.location.reload();
 	    				self.close();
 	    			});
+					
+					/* 등록버튼 이벤트 */
+					$("#magSubmit").click(function(){
+						
+					});
+					
 				})
 			</script>  
 		
