@@ -121,13 +121,19 @@ var pattren = [
  * RegExp : 정규표현식을 판단하기위한 객체
  * 
 **/
-function inputVerify(index,data,printarea) {
+function inputVerify(index,data,printarea,mode) {
 	var data_regExp = new RegExp(pattren[index]);
 	var match = data_regExp.exec($(data).val());
 	if(match==null){
-		$(printarea).html("입력값이 형식에 맞지 않습니다. 다시 입력해 주세요.");
-		$(data).val("");
-		return false;
+		if(mode=='member'){		//특정 area에 메세지 뿌리기
+			$(printarea).html("입력값이 형식에 맞지 않습니다. 다시 입력해 주세요.");
+			$(data).val("");
+			return false;
+		}else if(mode=='admin'){	//alert로 정보 띄워주기
+			alert("입력값이 형식에 맞지 않습니다. 다시 입력해 주세요.");
+			$(data).val('');
+			return false;
+		}
 	}else{
 		return true;
 		$(printarea).html("");
