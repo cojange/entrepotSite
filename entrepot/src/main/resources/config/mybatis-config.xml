@@ -17,8 +17,13 @@
 		<typeAlias type="com.site.admin.ctrl.adMember.vo.AdMbPersnalVO" alias="ampvo"/>
 		<typeAlias type="com.site.admin.ctrl.adMember.vo.AdMbGroupVO" alias="agmvo"/>
 		
+		
 		<!-- client -->
-		<typeAlias type="com.site.client.board.vo.ClImgbVO" alias="imgb" />
+		<typeAlias type="com.site.client.board.imgb.vo.ClImgbVO" alias="imgb" />
+		<typeAlias type="com.site.client.board.personal.vo.PersonalVO" alias="personal" />
+		
+		
+		
 		<typeAlias type="com.site.client.magazine.ditail.vo.MagazineVO" alias="mgvo"/>
 		<typeAlias type="com.site.client.magazine.plus.vo.PlusVO" alias="plvo"/>
 		<typeAlias type="com.site.client.member.individual.vo.ClMVO" alias="member"/>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.client.board.personal.dao.PersonalDao">
+	<select id="personalList" parameterType="personal" resultType="personal">
+		select pb_type, pb_title, pb_content, pb_pwd, pb_img1, pb_img2, pb_img3,
+        to_char(pb_date, 'YYYY-MM-DD')as pb_date
+        from personal_board
+        order by pb_no desc
+	</select>
+	
+	<!-- 입력쿼리문 -->
+	<insert id="personalInset" parameterType="personal">
+		<selectKey resultType="int" order="BEFORE" keyProperty="pb_no">
+			select personal_board_seq.nextval from dual
+		</selectKey>
+		INSERT INTO spring_board(pb_no, pb_type, pb_name, pb_title, pb_content, pb_pwd,pb_img1 
+		<if test="file_thumb != ''">,b_file</if>
+		)VALUES(#{pb_no}, #{pb_type}, #{pb_name}, #{pb_title}, #{pb_content},#{pb_img1} 
+		<if test="file_thumb != ''">, #{file_thumb}</if>
+		) 
+	</insert>
+	
+	<!-- 상세페이지 -->
+	<select id="parsonalDetail" parameterType="personal" resultType="personal">
+		 select pb_no,pb_type, pb_title, pb_content,
+		 to_char(pb_date, 'YYYY-MM-DD') as pb_date, pb_img1 from personal_board
+		 where pb_no=#;
+	</select>
+	
+	<!-- 비밀번호 -->
+	<select id="pwdConfirm" parameterType="personal" resultType="personal">
+		 select nvl((select 1 from personal_board where pb_no=#{pb_no}
+		 and pb_pwd=#{pb_pwd}),0) as state from dual
+	</select>
+	
+	<update id="personalUpdate" parameterType="personal">
+		update personal_board set pb_type=#{pb_type}, pb_title=#{pb_title},
+		pb_content=#{pb_content},pb_pwd=#{pb_pwd},pb_img1=#{pb_img1},pb_date= sysdate
+		where pb_no=#{pb_no}
+	</update>
+	
+</mapper>

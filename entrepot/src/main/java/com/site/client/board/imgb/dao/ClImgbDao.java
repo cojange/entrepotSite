@@ -1,5 +1,15 @@
 package com.site.client.board.imgb.dao;
 
-public interface ClImgbDao {
+import java.util.List;
 
+import com.site.client.board.imgb.vo.ClImgbVO;
+
+
+public interface ClImgbDao {
+	
+	public List<ClImgbVO> clImgbList(ClImgbVO cvo);
+	
+	public int imgbInsert(ClImgbVO cvo);
+	
+	public ClImgbVO imgbDetail(ClImgbVO cvo);
 }
