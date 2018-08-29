@@ -24,7 +24,10 @@ public class ListServiceImpl implements ListService {
 		
 		alist = listDao.magazineList(mvo);
 		for(MagazineVO ad : alist) {
+			ad.setPd_sale(ad.getPd_sale()*ad.getPd_cost());
 			ad.setPd_salecost((int)(ad.getPd_sale()-(ad.getPd_sale()*(ad.getPd_rate()*0.01))));
+			logger.info("pd_sale :" +ad.getPd_sale());
+			logger.info("pd_salecost :"+ad.getPd_salecost());
 		}
 		return alist;
 	}

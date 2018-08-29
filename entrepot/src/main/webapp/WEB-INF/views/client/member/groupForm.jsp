@@ -13,9 +13,20 @@
 		<script type="text/javascript" src="/springSite/resources/include/js/html5shiv.js"></script>
 		<![emdif] -->
 		<!--<script type="text/javascript" src="/springSite/resources/include/js/jquery-1.12.4.min.js"></script>-->
+		<style type="text/css">
+			#com_no1{
+				width: 30px;
+			}
+			#com_no2{
+				width: 20px;
+			}
+			#com_no3{
+				width: 50px;
+			}
+		</style>
 		<script type = "text/javascript" src="/resources/include/client/js/jquery-1.12.4.min.js"></script>
 		<script type = "text/javascript" src="/resources/include/common/js/common.js"></script>
-		<script type = "text/javascript" src="/resources/include/client/js/join.js"></script>
+		<script type = "text/javascript" src="/resources/include/client/js/gjoin.js"></script> 
 		<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 		<script type = "text/javascript">
 		
@@ -34,9 +45,8 @@
 			}
 			
 			$(function() {
-
-				$("#ans").hide();
-				$("#emailDirect").hide();
+				$("#emailDirect_c").hide();
+				$("#emailDirect_acc").hide();
 			    $("#m_zipcodeFind").click(function(){
 			    	new daum.Postcode({//다음 우편코드 프로그램 사용.
 			    		oncomplete: function(data) {
@@ -79,10 +89,11 @@
 			</div>
 			<div class="contentContainer">
    <div class="well">
-      <form id="memberForm" class="form-horizontal">
-         <input type="hidden" name="char_email" id="char_email" />
-         <input type="hidden" name="acc_email" id="acc_email" />
-         <img src="/resources/images/client/id.png"/>
+      <form id="groupMemberForm" class="form-horizontal">
+         <input type="hidden" name="char_email" id="char_email" value=""/>
+         <input type="hidden" name="acc_email" id="acc_email" value="" />
+         <input type="hidden" name="com_no" id="com_no" value="" />
+         <img src="/resources/images/client/id.png"/><!-- id정보 -->
          <div class="form-group form-group-sm">
             <label for="userId" class="col-sm-2 control-label">사용자 ID</label>
             <div class="col-sm-3">
@@ -90,7 +101,7 @@
             </div>
             <div class="col-sm-2">
                <input type="button" id="idConfirmBtn" value="아이디 중복체크" class="form-control btn-primary" />
-            </div> 
+            </div>
             <div class="col-sm-5">
                <p class="form-control-static error"></p>
             </div>
@@ -113,11 +124,13 @@
                <p class="form-control-static error"></p>
             </div>
          </div>
-         <img src="/resources/images/client/groupMember.png"/>
+         <img src="/resources/images/client/groupMember.png"/><!-- 업체정보 -->
          <div class="form-group form-group-sm">
             <label for="com_no" class="col-sm-2 control-label">사업자등록번호</label>
             <div class="col-sm-3">
-               <input type="text" id="com_no" name="com_no" maxlength="12" class="form-control" placeholder="사업자등록번호">   
+               <input type="text" id="com_no1" maxlength="3" class="form-control">-
+               <input type="text" id="com_no2" maxlength="2" class="form-control">-
+               <input type="text" id="com_no3" maxlength="5" class="form-control">   
             </div>
             <div class="col-sm-2">
                <input type="button" id="comNoConfirmBtn" value="중복검사" class="form-control btn-primary" />
@@ -193,7 +206,7 @@
                <p class="form-control-static error"></p>
             </div>
          </div>
-       	 <img src="/resources/images/client/char.png"/>
+       	 <img src="/resources/images/client/char.png"/><!-- 담당자정보 -->
        	 <div class="form-group form-group-sm">
             <label for="char_name" class="col-sm-2 control-label">담당자명</label>
             <div class="col-sm-3">
@@ -204,7 +217,7 @@
             </div>                  
          </div>
          <div class="form-group form-group-sm">
-            <label for="char_phone" class="col-sm-2 control-label">담당자 전화번호(핸드폰)</label>
+            <label for="char_phone" class="col-sm-2 control-label">담당자 전화번호</label>
             <div class="col-sm-3">
                <input type="text" id="char_phone" name="char_phone" maxlength="13" class="form-control" placeholder="Phone Number">   
             </div>
@@ -230,7 +243,7 @@
                <p class="form-control-static error"></p>
             </div>
          </div>        
-       	<img src="/resources/images/client/acc.png"/>
+       	<img src="/resources/images/client/acc.png"/><!-- 회계부정보 -->
        	 <div class="form-group form-group-sm">
             <label for="acc_name" class="col-sm-2 control-label">회계담당자명</label>
             <div class="col-sm-3">
@@ -241,14 +254,23 @@
             </div>                  
          </div>
          <div class="form-group form-group-sm">
-            <label for="acc_phone" class="col-sm-2 control-label">회계 담당자 전화번호(핸드폰)</label>
+            <label for="acc_phone" class="col-sm-2 control-label">회계 담당자 전화번호</label>
             <div class="col-sm-3">
                <input type="text" id="acc_phone" name="acc_phone" maxlength="13" class="form-control" placeholder="Phone Number">   
             </div>
             <div class="col-sm-5">
                <p class="form-control-static error"></p>
             </div>
-         </div> 
+         </div>
+          <div class="form-group form-group-sm">
+            <label for="fax" class="col-sm-2 control-label">팩스번호</label>
+            <div class="col-sm-3">
+               <input type="text" id="fax" name="fax" maxlength="13" class="form-control" placeholder="FAX Number">   
+            </div>
+            <div class="col-sm-5">
+               <p class="form-control-static error"></p>
+            </div>
+         </div>
          <div class="form-group form-group-sm">
             <label for="emailName_acc" class="col-sm-2 control-label">회계 담당자 이메일</label>
             <div class="col-sm-3">
@@ -269,9 +291,9 @@
          </div>        
          <div class="form-group">   
             <div class="col-sm-offset-2 col-sm-6">
-               <input type="button" value="확인" id="joinInsert" class="btn btn-default" /> 
-               <input type="button" value="재작성" id="joinReset" class="btn btn-default" />
-               <input type="button" value="취소" id="joinCancel" class="btn btn-default" />                  
+               <input type="button" value="확인" id="gjoinInsert" class="btn btn-default" /> 
+               <input type="button" value="재작성" id="gjoinReset" class="btn btn-default" />
+               <input type="button" value="취소" id="gjoinCancel" class="btn btn-default" />                  
             </div>   
          </div>                                                                              
       </form>

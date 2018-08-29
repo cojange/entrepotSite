@@ -5,17 +5,15 @@
 	  /* 사이드바 래퍼 스타일 */
   
   #page-wrapper {
-  	padding-top:10px;
-    padding-left:270px;
-    
- 	
+    padding-left:400px;
+    margin-left: 200px;
   }
   
   #sidebar-wrapper {
     width: 250px;
     height: 100%;
     margin-left: -250px;
-    background: #000;
+    background: #202020;
     overflow-x: hidden;
     overflow-y: auto;
     float: left;

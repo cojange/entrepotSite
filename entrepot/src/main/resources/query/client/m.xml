@@ -3,8 +3,11 @@
 <mapper namespace="com.site.client.member.individual.dao.ClMDao">
 	<select id="memberSelect" parameterType="String" resultType="member">
 		/* member - memberSelect */
-		select m_num,m_id,m_pwd,m_name,m_birth,m_email
-		from member where m_id=#{m_id}
+		<!-- select m_num,m_id,m_pwd,m_name,m_birth,m_email
+		from member where m_id=#{m_id} -->
+		SELECT m_id FROM 
+		(SELECT m_id FROM GROUP_MEMBER UNION ALL SELECT m_id FROM member ) 
+		GROUP BY m_id HAVING m_id=#{m_id}
 	</select>
 	
 	<insert id="memberInsert" parameterType="member">
@@ -17,6 +20,31 @@
 		values('p_'||#{m_num},#{m_id},#{m_pwd},#{m_name}
 		,#{m_birth},#{m_gender},#{m_email},#{m_phone}
 		,#{m_job},#{m_zipcode},#{m_address},sysdate,#{quiz},#{ans},'cart_'||member_seq.nextval,'whish_'||member_seq.nextval,'개인')
+	</insert>
+	<select id="groupMemberSelect" parameterType="String" resultType="groupMember">
+		/* groupMember - groupMemberSelect */
+		select m_num,m_id,m_pwd,m_name
+		from group_member where m_id=#{m_id}
+	</select>
+	
+	<select id="groupComMemberSelect" parameterType="String" resultType="groupMember">
+		/* groupMember - groupComMemberSelect */
+		select m_name,com_no
+		from group_member where com_no=#{com_no}
+	</select>
+	
+	
+	<insert id="groupMemberInsert" parameterType="groupMember">
+		/* groupMember - groupMemberInsert */
+		<selectKey keyProperty="m_num" resultType="int" order="BEFORE">
+			select  group_member_seq.nextval from dual
+		</selectKey>
+		insert into group_member(m_num,m_id,m_pwd,m_name,com_no,leader_name,leader_phone,
+		m_address,m_zipcode,char_name,char_phone,char_email,acc_name,acc_phone,acc_email,
+		m_job,m_date,fax,cart,whish,mt)
+		values('g_'||#{m_num},#{m_id},#{m_pwd},#{m_name},#{com_no},#{leader_name},#{leader_phone},
+		#{m_address},#{m_zipcode},#{char_name},#{char_phone},#{char_email},#{acc_name},#{acc_phone},#{acc_email},
+		#{m_job},sysdate,#{fax},'cart_'||group_member_seq.nextval||'g','whish_'||group_member_seq.nextval||'g','단체')
 	</insert>
 	
 	<select id="securitySelect" parameterType="String" resultType="security">

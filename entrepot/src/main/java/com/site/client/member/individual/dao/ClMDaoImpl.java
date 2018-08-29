@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.site.client.member.individual.controller.ClMController;
+import com.site.client.member.individual.vo.ClGmVO;
 import com.site.client.member.individual.vo.ClMSecurity;
 import com.site.client.member.individual.vo.ClMVO;
 
@@ -40,6 +41,25 @@ public class ClMDaoImpl implements ClMDao {
 	@Override
 	public ClMSecurity securitySelect(String m_id) {
 		return (ClMSecurity)session.selectOne("securitySelect",m_id);
+	}
+
+	@Override
+	public ClGmVO groupMemberSelect(String m_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int groupMemberInsert(ClGmVO cgmvo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+	@Override
+	public ClGmVO groupComMemberSelect(String com_no) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
