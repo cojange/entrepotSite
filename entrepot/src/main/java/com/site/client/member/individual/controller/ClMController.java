@@ -30,7 +30,7 @@ public class ClMController{
 	}
 	
 	/***********************************************
-	 * 사용자 아이디 중복 체크 메서드
+	 * 사용자/단체 아이디 중복 체크 메서드
 	 * ********************************************/
 	@ResponseBody
 	@RequestMapping(value="member/m_idConfirm.do",

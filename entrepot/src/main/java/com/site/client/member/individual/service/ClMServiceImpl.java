@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.site.client.member.individual.controller.ClMController;
 import com.site.client.member.individual.dao.ClMDao;
 import com.site.client.member.individual.vo.ClMSecurity;
 import com.site.client.member.individual.vo.ClMVO;
@@ -30,6 +29,7 @@ public class ClMServiceImpl implements ClMService {
 		}
 		return result;
 	}
+	
 	@Transactional
 	@Override
 	public int memberInsert(ClMVO cmvo) {
@@ -45,4 +45,5 @@ public class ClMServiceImpl implements ClMService {
 			return result;
 		}
 	}
+	
 }

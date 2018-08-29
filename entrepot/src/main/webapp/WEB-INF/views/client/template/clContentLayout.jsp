@@ -14,8 +14,11 @@
     <title>앙뜨흐뽀</title>
 
     <!-- Bootstrap core CSS -->
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900|Varela+Round" rel="stylesheet" />
   	<link href="/resources/include/client/css/default.css" rel="stylesheet" type="text/css" media="all" />
   	<link href="/resources/include/client/css/list.css" rel="stylesheet" type="text/css" media="all" />
+  	<link href="/resources/include/client/font/fonts.css" rel="stylesheet" type="text/css" media="all" />
+  	<link rel="styleSheet" href="/resources/include/client/css/normalize.css"/>
 
     <!-- Custom styles for this template -->
 	

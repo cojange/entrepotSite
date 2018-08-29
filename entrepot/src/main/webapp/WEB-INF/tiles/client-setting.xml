@@ -17,7 +17,7 @@
 	template="/WEB-INF/views/client/template/clContentLayout.jsp">
 	<put-attribute name="header"
 	value="/WEB-INF/views/client/template/header.jsp"/>
-	<put-attribute name="body" value=""/>
+<!-- 	<put-attribute name="body" value=""/> -->
 	<put-attribute name="footer"
 	value="/WEB-INF/views/client/template/footer.jsp"/>
 	<put-attribute name="sidebar"

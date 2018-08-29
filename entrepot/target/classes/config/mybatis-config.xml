@@ -24,7 +24,7 @@
 		<typeAlias type="com.site.client.member.individual.vo.ClMVO" alias="member"/>
 		<typeAlias type="com.site.client.member.individual.vo.ClMSecurity" alias="security"/>
 		<typeAlias type="com.site.client.member.login.vo.LoginVO" alias="login"/>
-
+		<typeAlias type="com.site.client.member.individual.vo.ClGmVO" alias="groupMember"/>
 		
 
 

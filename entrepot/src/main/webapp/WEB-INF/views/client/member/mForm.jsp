@@ -74,7 +74,7 @@
 		<div><a href="#" class="image image-full"><img src="/resources/images/client/member2.png"/></a></div>
 		<div class="column1">
 			<div class="title">
-				<h1>개인회원가입</h1>
+				<h2>개인회원가입</h2>
 				<!-- <span class="byline">Pellentesque lectus gravida blandit</span> -->
 			</div>
 			<div class="contentContainer">
@@ -236,9 +236,9 @@
 		</div>
          <div class="form-group">   
             <div class="col-sm-offset-2 col-sm-6">
-               <input type="button" value="확인" id="joinInsert" class="btn btn-default" /> 
-               <input type="button" value="재작성" id="joinReset" class="btn btn-default" />
-               <input type="button" value="취소" id="joinCancel" class="btn btn-default" />                  
+               <input type="button" class="button" value="확인" id="joinInsert" class="btn btn-default" /> 
+               <input type="button" class="button" value="재작성" id="joinReset" class="btn btn-default" />
+               <input type="button" class="button" value="취소" id="joinCancel" class="btn btn-default" />                  
             </div>   
          </div>                                                                              
       </form>

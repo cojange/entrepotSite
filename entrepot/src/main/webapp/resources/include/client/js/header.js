@@ -1,5 +1,10 @@
 
 $(function() {
+	/*$("#loging").hide();//로그인 메뉴 숨김
+	
+	$("#logingMenu").hover(function() {
+		$("#loging").show();//로그인후 메뉴 보임
+	});*/
 	//로그아웃 클릭시
 	$("#logout").click(function() {
 		//로그아웃 여부확인
