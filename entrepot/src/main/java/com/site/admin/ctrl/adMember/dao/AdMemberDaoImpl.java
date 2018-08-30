@@ -41,9 +41,21 @@ public class AdMemberDaoImpl implements AdMemberDao{
 	public AdminVO idCheck(AdminVO avo) {
 		return session.selectOne("idCheck",avo);
 	}
+	
+	@Override
+	public AdminVO tellCheck(AdminVO avo) {
+		return session.selectOne("tellCheck",avo);
+	}
+	
+	@Override
+	public AdminVO emailCheck(AdminVO avo) {
+		return session.selectOne("emailCheck",avo);
+	}
 
 	@Override
 	public int insertAdmin(AdminVO avo) {
 		return session.insert("isertAdmin",avo);
 	}
+
+	
 }

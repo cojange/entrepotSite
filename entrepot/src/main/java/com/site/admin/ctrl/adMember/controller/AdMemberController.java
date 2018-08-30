@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -91,11 +92,22 @@ public class AdMemberController {
 	   
 	   
    }
-   
+   //중복데이터 체크
    @ResponseBody
-   @RequestMapping(value="/idCheck.do")
-   public String idCheck(AdminVO avo) {
-	   String result = adMemberService.idCheck(avo);
+   @RequestMapping(value="/{hint}Check.do")
+   public String idCheck(AdminVO avo,@PathVariable String hint) {
+	   String result = "fails";
+	   switch(hint) {
+	   case "id":
+		   result = adMemberService.idCheck(avo);
+		   break;
+	   case "tell":
+		   result = adMemberService.tellCheck(avo);
+		   break;
+	   case "email":
+		   result = adMemberService.emailCheck(avo);
+		   break;
+	   }
 	   return result;
    }
    

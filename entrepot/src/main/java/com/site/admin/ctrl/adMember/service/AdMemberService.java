@@ -13,4 +13,6 @@ public interface AdMemberService {
 	public List<AdMbCommonVO> pmList(AdMbCommonVO ampvo);
 	public String idCheck(AdminVO avo);
 	public String insertAdmin(AdminVO avo);
+	public String tellCheck(AdminVO avo);
+	public String emailCheck(AdminVO avo);
 }
