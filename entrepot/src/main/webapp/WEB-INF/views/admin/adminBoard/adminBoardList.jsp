@@ -156,7 +156,6 @@
                  <div style="text-align: right;">
               		<input type="button" value="등록" id="addCou"/>
 					<input type="button" value="수정" id="upCou"/>
-					<input type="button" value="삭제" id="delCou"/>
                 </div>
               </div>
             </div>

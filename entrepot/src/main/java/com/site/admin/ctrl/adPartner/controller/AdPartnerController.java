@@ -41,14 +41,14 @@ public class AdPartnerController {
 	}
 	
 	/** 
-	 * 잡지 거래처 등록 불러오기
+	 * 잡지 거래처 등록 불러오기  --> 모달로 변경
 	 *  **/
-	@RequestMapping(value="/magazineForm.do")
+	/*@RequestMapping(value="/magazineForm.do")
 	public String magazineForm() {
 		logger.info("magazineForm 호출 성공");
 		
 		return "admin/writeForm/magazineForm";
-	}
+	}*/
 	
 	/** 
 	 * 잡지 거래처 등록 구현하기
@@ -66,7 +66,7 @@ public class AdPartnerController {
 			url = "/admin/ctrl/adPartner/adPartnerListCtrl.do";
 		}else {  //오류가 발생한 경우
 			model.addAttribute("code", 1);  //오류 내용
-			url = "/admin/ctrl/adPartner/manazineForm.do"; 
+			url = "/admin/ctrl/adPartner/magazineInsert.do"; 
 		}
 		return "redirect:"+url;
 	}
