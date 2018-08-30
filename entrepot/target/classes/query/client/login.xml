@@ -2,22 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.site.client.member.login.dao.ClLoginDao">
 	<select id="m_idSelect" parameterType="String" resultType="login">
-		select 
-		m_id,
-		m_pwd,
-		m_name
-		from member 
+		select m_id,m_pwd,m_name
+		FROM (SELECT m_id,m_pwd,m_name FROM GROUP_MEMBER
+   		 UNION ALL 
+      	select m_id,m_pwd,m_name FROM member)  
 		where m_id = #{m_id}
 	</select> 
 	
 	<select id="loginSelect" parameterType="login" resultType="login">
 	/* 로그인 처리 쿼리 */
-		select 
-		m_id,
-		m_pwd,
-		m_name,
-		mt
-		from member 
+		select m_num,m_id,m_pwd,m_name,mt,cart,whish,m_job
+		FROM (SELECT m_num,m_id,m_pwd,m_name,mt,cart,whish,m_job FROM GROUP_MEMBER
+   		 UNION ALL 
+      	select m_num,m_id,m_pwd,m_name,mt,cart,whish,m_job FROM member) 
 		where m_id = #{m_id} and m_pwd = #{m_pwd}
 	</select>
 	
