@@ -96,12 +96,6 @@
 	    	
 				ad_card();   		
 	    		
-	    		/* 약관추가 */
-	    		addRegulation();
-	    		
-	    		/* 쿠폰추가 */
-	    		addCoupon();
-	    		
 	    		//회원관리탭
 	    		if($(location).attr("href") == "http://localhost:8080/admin/ctrl/adMember/adMemberCtrl.do"){
 	    			$("#adminTable").dataTable();
@@ -308,7 +302,8 @@
 	    		//거래처 관리탭
 	    		if($(location).attr("href") == "http://localhost:8080/admin/ctrl/adPartner/adPartnerListCtrl.do"){
 	    			$("#adminTable").dataTable();
-	    			/* $("#addMagazine").click(function(){
+	    			/* 새창띄우기 할때 사용 
+	    			$("#addMagazine").click(function(){
 	    				window.open('/admin/ctrl/adPartner/magazineForm.do','_blank','width=500px, height=600px');
 	    			});    
 	    			$("#addCourier").click(function(){
@@ -348,11 +343,17 @@
 	    		//약관 관리탭
 	    		if($(location).attr("href") == "http://localhost:8080/admin/adBoard/regulations/regulationsList.do"){
 	    			$("#regBoard").dataTable();
+
+		    		/* 약관추가 */
+		    		addRegulation();
 	    		}
 	    		
 	    		//공지사항,이벤트,쿠폰 관리탭 
 	    		if($(location).attr("href") == "http://localhost:8080/admin/adBoard/adminBoard/adminBoardList.do"){
 	    			$("#couponTable").dataTable();
+	    			
+	    			/* 쿠폰추가 */
+		    		addCoupon();
 	    		}
 	    		
 	    		//통계탭
@@ -522,7 +523,54 @@
     			});	    		    		
     		}//비용 탭 일때 JS 
     		
-	    });
+    		
+    		
+    		
+    		if($(location).attr("href") == "http://localhost:8080/admin/adBoard/personalBoard/personalBoardList.do"){
+    			
+    			 var table = $('.table').DataTable( {
+    			        "order": [[1, 'asc']]
+    			    } );
+    			
+        		    // `d` is the original data object for the row
+        		   var addTable = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
+        		        '<tr>'+
+        		            '<td>Full name:</td>'+
+        		            '<td>뿌애애앵</td>'+
+        		        '</tr>'+
+        		        '<tr>'+
+        		            '<td>Extension number:</td>'+
+        		            '<td>뀨아아앙</td>'+
+        		        '</tr>'+
+        		        '<tr>'+
+        		            '<td>Extra info:</td>'+
+        		            '<td>And any further details here (images etc)...</td>'+
+        		        '</tr>'+
+        		    '</table>';
+        		
+    			// Add event listener for opening and closing details
+    	   	    $('.table tbody').on('click', 'td.details-control', function () {
+    	   	    	console.log("뜨어엉");
+    	   	        var tr = $(this).closest('tr');
+    	   	        var row = table.row( tr );
+	    	   	     if ( row.child.isShown() ) {
+	    	             // This row is already open - close it
+	    	             row.child.hide();
+	    	             if(tr.find('i').hasClass('fa-minus-circle green')){
+	    	            	 tr.find('i').removeClass('fa-minus-circle green');
+	    	            	 tr.find('i').addClass('fa-plus-circle red');	    	            	 
+	    	             }
+	    	             
+	    	         }
+	    	         else {
+	    	             // Open this row
+	    	             row.child(addTable).show();
+	    	             tr.find('i').removeClass('fa-plus-circle red');
+	    	             tr.find('i').addClass('fa-minus-circle green'); // FontAwesome 5
+	    	         }
+    	   	    } );
+    		}	   		
+   		} );	 
 	    </script>
   </body>
 
