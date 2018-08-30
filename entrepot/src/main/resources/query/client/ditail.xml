@@ -4,7 +4,7 @@
 <select id="magazineDetail" parameterType="mgvo" resultType="mgvo">
 	/*magazine - magazineDetail*/
 		
-	select mg_num,mg_name,com_name,dt_target,dt_keyword,mg_period,pdx`_date,pd_rate,pd_sale,pl_path,dt_detail,dt_contents
+	select mg_num,mg_name,com_name,dt_target,dt_keyword,mg_period,pd_date,pd_rate,pd_sale,pl_path,dt_detail,dt_contents,pd_cost
 		from ditail_view1
 		where mg_num=#{mg_num} 
 
@@ -13,13 +13,14 @@
 <select id="magazineDetailfree" parameterType="mgvo" resultType="mgvo">
 	/*magazine- magazineDetailfree*/
 	
-	select pl_path2 from free_view 
+	select pl_path from free_view 
 	where mg_num=#{mg_num} 
 </select>
 
 <select id="magazinesum" parameterType="mgvo" resultType="mgvo">
 	/*magazine - magazinesum*/
 	
-	select pl_path where mg_num=#{mg_num}
+	select pl_path from sum_view
+	 where mg_num=#{mg_num}
 </select>
 </mapper>
