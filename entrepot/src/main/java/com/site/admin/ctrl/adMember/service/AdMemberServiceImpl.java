@@ -60,6 +60,26 @@ public class AdMemberServiceImpl implements AdMemberService{
 		}
 		return result;
 	}
+	//연락처 중복체크
+	@Override
+	public String tellCheck(AdminVO avo) {
+		AdminVO resultVO = adMemberDao.tellCheck(avo);
+		String  result = "fail";
+		if(resultVO == null) {
+			result="success";
+		}
+		return result;
+	}
+	//이메일 중복체크
+	@Override
+	public String emailCheck(AdminVO avo) {
+		AdminVO resultVO = adMemberDao.emailCheck(avo);
+		String result = "fail";
+		if(resultVO == null) {
+			result="success";
+		}
+		return result;
+	}
 
 	//admin 등록
 	@Override
@@ -72,5 +92,9 @@ public class AdMemberServiceImpl implements AdMemberService{
 			return "fails";
 		}
 	}
+
+
+
+
 	
 }
