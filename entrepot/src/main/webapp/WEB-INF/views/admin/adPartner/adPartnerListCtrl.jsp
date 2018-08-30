@@ -172,15 +172,15 @@
 	              <div class="form-row">
 	                <div class="col-md-6">
 	                  <div class="form-label-group">
-	                    <input type="date" id="mocm_date" name="mocm_date" class="form-control" placeholder="거래처 정보 등록일" required="required" autofocus="autofocus">
-	                    <label for="mocm_date">거래처 정보 등록일</label>
+	                    <input type="date" id="mcom_date" name="mcom_date" class="form-control" placeholder="거래처 정보 등록일" required="required" autofocus="autofocus">
+	                    <label for="mcom_date">거래처 정보 등록일</label>
 	                  </div>
 	                </div>
 	                ~
 	                <div class="col-md-6">
 	                  <div class="form-label-group">
-	                    <input type="date" id="macm_update" name="macm_update" class="form-control" placeholder="거래처 정보 수정일" required="required" autofocus="autofocus">
-	                    <label for="macm_update">거래처 정보 수정일</label>
+	                    <input type="date" id="mcom_update" name="mcom_update" class="form-control" placeholder="거래처 정보 수정일" required="required" autofocus="autofocus">
+	                    <label for="mcom_update">거래처 정보 수정일</label>
 	                  </div>
 	                </div>
 	              </div>
@@ -231,8 +231,8 @@
 	            </div>
 	            <div class="form-group">
 	              <div class="form-label-group">
-	                <input type="text" id="mocm_add" name="mocm_add" class="form-control" placeholder="주소" required="required">
-	                <label for="mocm_add">주소</label>
+	                <input type="text" id="mcom_add" name="mcom_add" class="form-control" placeholder="주소" required="required">
+	                <label for="mcom_add">주소</label>
 	              </div>
 	            </div>
 	             <div class="form-group">
