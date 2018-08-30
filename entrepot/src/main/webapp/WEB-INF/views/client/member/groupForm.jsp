@@ -79,9 +79,18 @@
 			<div class="contentContainer">
    <div class="well">
       <form id="groupMemberForm" class="form-horizontal">
-         <input type="hidden" name="char_email" id="char_email" value=""/>
-         <input type="hidden" name="acc_email" id="acc_email" value="" />
-         <input type="hidden" name="com_no" id="com_no" value="" />
+      <span class="form-group hideSpan">
+		 <label for="char_email" class="col-sm-2 control-label">담당자 이메일</label>
+		 <input type="hidden" name="char_email" id="char_email" value=""/>
+	  </span>
+	  <span class="form-group hideSpan">
+		 <label for="acc_email" class="col-sm-2 control-label">회계 담당자 이메일</label>
+		 <input type="hidden" name="acc_email" id="acc_email" value="" />
+	  </span> 
+	  <span class="form-group hideSpan">
+		 <label for="com_no" class="col-sm-2 control-label">사업자등록번호</label>
+		 <input type="hidden" name="com_no" id="com_no" value="" />
+	  </span>        
          <img src="/resources/images/client/id.png"/><!-- id정보 -->
          <div class="form-group form-group-sm">
             <label for="m_id" class="col-sm-2 control-label">사용자 ID</label>
@@ -142,6 +151,15 @@
                <p class="form-control-static error"></p>
             </div>                  
          </div>
+         <div class="form-group form-group-sm">
+            <label for="leader_phone" class="col-sm-2 control-label">대표자 전화번호</label>
+            <div class="col-sm-3">
+               <input type="text" id="leader_phone" name="leader_phone" maxlength="13" class="form-control inputText" placeholder="Phone Number">   
+            </div>
+            <div class="col-sm-5">
+               <p class="form-control-static error"></p>
+            </div>
+         </div>     
            <div class="form-group form-group-sm">
 			 <label for="m_zipcode" class="col-sm-2 control-label"> 사업장 주소(사업자등록증의 주소) </label>
 			 <div class="col-sm-3">

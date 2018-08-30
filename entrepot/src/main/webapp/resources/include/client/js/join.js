@@ -77,6 +77,9 @@ function birthCheck() {
 
 var idConfirm = 1;
 $(function() {
+	
+	
+	$(".hideSpan").hide();
 	var direct = document.getElementById('direct');//체크박스 체크여부확인
 	errCodeCheck();//mForm.jsp 에 script함수
 	//사용자에게 요구사항에 대한 문자열로 배열 초기화.
@@ -94,9 +97,9 @@ $(function() {
 	});
 	//아이디중복체크
 	$("#idConfirmBtn").click(function() {
-		console.log("org : " + $("#m_id").val());
+		/*console.log("org : " + $("#m_id").val());
 		$("#m_id").val(getTrimStr($("#m_id").val()));
-		console.log("aft : " + $("#m_id").val());
+		console.log("aft : " + $("#m_id").val());*/
 		if(!formCheck($("#m_id"),$('.error:eq(0)'),"아이디를"))return;
 		else if(!inputVerify(0,$("#m_id"),".error:eq(0)","","member"))return;
 		else{
@@ -122,9 +125,12 @@ $(function() {
 	
 	/*확인 버튼 클릭 시 처리 이벤트*/
 	$("#joinInsert").click(function() {
-		console.log("org : " + $("#m_id").val());
+		/*console.log("org : " + $("#m_id").val());
 		$("#m_id").val(getTrimStr($("#m_id").val()));
-		console.log("aft : " + $("#m_id").val());
+		console.log("aft : " + $("#m_id").val());*/
+		if($(direct).is(":checked")==false){
+			$("#emailDirect").val("domain.com");
+		}
 		
 		//입력값 체크
 		if(!formCheck($("#m_id"),$('.error:eq(0)'),"아이디를"))return;
@@ -139,6 +145,7 @@ $(function() {
 		else if(!formCheck($("#m_phone"),$(".error:eq(3)"),"전화번호를"))return;
 		else if(!inputVerify(2,"#m_phone",".error:eq(3)","","member"))return;
 		else if(!formCheck($("#m_job"),$(".error:eq(4)"),"직업을"))return;
+		else if(!inputVerify(12,"#m_job",".error:eq(4)","","member"))return;
 		else if(!formCheck(($("#m_zipcode")&&$("#m_address")),$(".error:eq(5)"),"우편주소를"))return;
 		else if(!formCheck(($("#m_birth")&&$("#m_gender")),$(".error:eq(7)"),"생년월일 및 주민번호를"))return;
 		else if(!birthCheck())return;
@@ -149,6 +156,11 @@ $(function() {
 		//이메일형식체크
 		else if(!formCheck($("#emailName"),$(".error:eq(9)"),"이메일을 @를제거하고"))return;
 		else if(!inputVerify(5,"#emailName",".error:eq(9)","","member"))return;
+		/*else if($(direct).is(":checked")==true){
+			if(!formCheck($("#emailDirect"),$(".error:eq(9)"),"도메인을"))return;
+		}else if($(direct).is(":checked")==false){
+			$("#emailDirect").val("naver.com");
+		}*/
 		else if(!formCheck($("#emailDirect"),$(".error:eq(9)"),"도메인을"))return;
 		else if(!inputVerify(6,"#emailDirect",".error:eq(9)","","member"))return;
 		else if(!formCheck($("#ans"),$(".error:eq(11)"),"비밀번호 질문답을"))return;

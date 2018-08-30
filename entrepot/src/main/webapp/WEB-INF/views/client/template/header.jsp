@@ -114,9 +114,9 @@ function errorCodeCheck(){}
          </div>
          </c:if>
           <c:if test="${login.m_id == null or login.m_id == ''}">
-          <a href="/client/member/login.do">로그인</a>
+          <a href="/client/member/login.do" id="logingo">로그인</a>
           <span>/</span>
-          <a href="/client/member/mChoose.do">회원가입</a>
+          <a href="/client/member/mChoose.do" id="joingo">회원가입</a>
           </c:if>
          <!-- <a href="/client/member/login.do" onClick="popct(this.href, '300', '350');return false">로그인</a> -->
       </div>

@@ -24,9 +24,9 @@
 		<div class="contentContainer">
 			<div class="well">
 				<div class="tac">
-					앙뜨흐뽀 사이트에 회원 가입해 주셔서 감사합니다.<br />
-					<span id="text">아래의 로그인 버튼이나 상단에 로그인버튼을 눌러 로그인 해주세요.</span><br>
-					<a href="/client/member/login.do" class="btn btn-primary">로그인하기</a>
+					<strong>앙뜨흐뽀 사이트에 회원 가입해 주셔서 감사합니다.</strong><br />
+					<span id="text" class="byline">아래의 로그인 버튼이나 상단에 로그인버튼을 눌러 로그인 해주세요.</span><br>
+					<a href="/client/member/login.do" class="buttons">로그인하기</a>
 				</div>
 			</div>
 		</div>
