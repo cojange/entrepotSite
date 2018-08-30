@@ -7,6 +7,9 @@
 <script type="text/javascript" src="/resources/include/client/js/header.js"></script>
 <%-- <script type="text/javascript">
 </script>
+<<<<<<< HEAD
+
+=======
 <div id="header" class="container">
 	<div id="logo">
 		<h1><a href="#">앙뜨흐뽀</a></h1>

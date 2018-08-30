@@ -114,12 +114,13 @@ var pattren = [
 	   "^\\d{2,3}-\\d{3,4}-\\d{4}",
 	   "^([0-9]{3})-?([0-9]{2})-?([0-9]{5})",
 	   "^[가-힣]{2,4}$",
-	   "^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$"
+	   "^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$",
+	   
 	   ];
 
 /**입력 형식이 맞지않을때 발생하는메서드
  * 
- * if(!inputVerify(사용할pattren의index,참조할 id,비교할값))return;
+ * if(!inputVerify(사용할pattren의index,참조할 id,비교할값,힌트메세지,사용하는유저타입))return;
  * 
  * RegExp : 정규표현식을 판단하기위한 객체
  * 
@@ -131,7 +132,9 @@ function inputVerify(index,data,printarea,hint,mode) {
 	console.log("mode" +mode);
 	if(match==null){
 		if(mode=='member'){		//특정 area에 메세지 뿌리기
-			$(printarea).html("입력값이 형식에 맞지 않습니다. 다시 입력해 주세요.\n"+hint);
+			var label=$(data).parents(".form-group").find(".control-label").html();
+			console.log("레이블 : "+label);
+			$(printarea).html(label+" 의 입력값이 형식에 맞지 않습니다. 다시 입력해 주세요.\n"+hint);
 			$(data).val("");
 			return false;
 		}else if(mode=='admin'){	//alert로 정보 띄워주기
