@@ -29,8 +29,10 @@
 <script type="text/javascript">
 	$(function(){
 		$(".goDetail").click(function() {
-            var mg_num = $(this).parents("tr").attr("data-num");
+            var mg_num = $(this).parents("tr").attr("data-num");  
+        
             var listkey= $('#listkey').val();
+       
        		 $("#mg_num").val(mg_num);
        		 $("#liskkey").val(listkey);
             //상세 페이지로 이동하기위해  form추가(id:detailForm)
@@ -38,7 +40,7 @@
                "method":"get",
                "action":"/client/ditail/magazineDetail.do"
             });
-            $("#detailForm").submit();
+             $("#detailForm").submit();
          });
 	});
 	
@@ -51,12 +53,14 @@
 <body>
 <div>
 	<form id="detailForm" name="detailForm">
+		<input type="hidden" id="listkey" name="listkey" value="${mvo.listkey}" />
+		<input type="hidden" id="mg_num" name="mg_num"  />
 	<div>
 		<div class="container-fluid">
 		<h1>${mvo.home}
 			<small>>> ${mvo.key1}/${mvo.key2}/${mvo.key3}</small>
 		</h1>
-		<input type="hidden" id="listkey" name="listkey" value="${mvo.listkey}" />
+		
 		<table width="100%" border="0" cellpadding="0" cellspacing="10px"
 			align="center">
 			<c:choose>
@@ -64,7 +68,7 @@
 					<c:forEach var="list" items="${magazienlist}" varStatus="status">
 						
 						<tr height="100" bgcolor="#FFFFFF" style="margin-top: 50px;" class="tac" data-num="${list.mg_num}">
-							<input type="hidden" id="mg_num" name="mg_num" value="${list.mg_num}" />
+						
 							<td height="250" width="20" 
 								style="word-break: break-all; font: 9pt 나눔고딕; line-height: 180%;">
 								<!-- <td align=center width=50 style="word-break:break-all;font:9pt 나눔고딕;line-height:180%;"><b>1위</b>&nbsp;</td> -->
@@ -75,7 +79,7 @@
 									<img src="" border="0"> <br>
 								</p>
 							</td>
-							<td classwidth="200"
+							<td width="200"
 								style="word-break: break-all; font: 9pt 나눔고딕; line-height: 180%;" class="goDetail">
 									 <!-- 작은이미지만 보일 경우 
 			      <img src="../../data_book/2092-9625/s_2092-9625_2018_9_0_Y_20180817021056.jpg" width="200" height="270" border=0 /> -->
@@ -89,9 +93,9 @@
 								style="word-break: break-all; font: 9pt 나눔고딕; line-height: 180%;">
 								<table cellspacing="0" cellpadding="0" border="0" width="500">
 									<tbody>
-										<tr>
-											<td width="542" colspan="2"  class="goDetail" >
-												<p>
+										<tr  data-num="${list.mg_num}">
+											<td width="542" colspan="2" >
+												<p class="goDetail">
 													 <font size="3"
 														style="font: 맑은 고딕, 나눔고딕, 굴림, verdana; color: #3399CC; FONT-WEIGHT: bold; line-height: 20px;">
 															"${list.mg_name}"</font>

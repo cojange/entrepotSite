@@ -21,20 +21,22 @@ public class DitailController {
 	
 	@RequestMapping(value="/magazineDetail.do" ,method=RequestMethod.GET)
 	public String magazineDetail(MagazineVO mvo,Model model) {
-		MagazineVO magazine = new MagazineVO();
-		MagazineVO free = new MagazineVO();
+		logger.info(mvo.getMg_num());
 		
+		MagazineVO magazine = new MagazineVO();
+		logger.info(mvo.getMg_num());
+		logger.info(mvo.getListkey());
 		magazine = ditailService.magazineDetail(mvo);
 		List<MagazineVO> list= ditailService.magazinesum(magazine);
-		free = ditailService.magazineDetailfree(magazine);
+		List<MagazineVO> free = ditailService.magazineDetailfree(magazine);
 		
 		model.addAttribute("magazine",magazine);
 		model.addAttribute("sumlist",list);
 		model.addAttribute("free",free);
 		if(mvo.getListkey()==1) {
-			return "client/magazine/Overseas/magazineDetail";
+			return "client/magazine/Overseas/magazineDitail";
 		}else {		
-			return "client/magazine/bast/magazineDetail";
+			return "client/magazine/bast/magazineDitail";
 		}
 	
 		

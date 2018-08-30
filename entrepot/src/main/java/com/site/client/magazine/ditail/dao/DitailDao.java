@@ -10,6 +10,6 @@ public interface DitailDao {
 
 	public List<MagazineVO> magazinesum(MagazineVO magazine);
 
-	public MagazineVO magazineDetailfree(MagazineVO magazine);
+	public  List<MagazineVO> magazineDetailfree(MagazineVO magazine);
 
 }

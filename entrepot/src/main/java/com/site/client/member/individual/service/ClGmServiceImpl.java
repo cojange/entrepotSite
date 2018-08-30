@@ -3,10 +3,12 @@ package com.site.client.member.individual.service;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.site.client.member.individual.dao.ClMDao;
 import com.site.client.member.individual.vo.ClGmVO;
 import com.site.client.member.individual.vo.ClMSecurity;
+import com.site.client.member.individual.vo.ClMVO;
 import com.site.common.util.OpenCrypt;
 import com.site.common.util.Util;
 
@@ -28,6 +30,24 @@ public class ClGmServiceImpl implements ClGmService {
 			resultg =2;
 		}
 		return resultg;
+	}
+	
+	@Override
+	public ClGmVO groupMemberSelect(String m_id) {
+		ClGmVO cmvo = clMDao.groupMemberSelect(m_id);
+		return cmvo;
+	}
+	
+	@Transactional
+	@Override
+	public int groupMemberUpdate(ClGmVO cmvo){
+	if(!cmvo.getM_pwd().isEmpty()){
+	ClMSecurity sec = clMDao.securitySelect(cmvo.getM_id());
+	cmvo.setM_pwd(new String(OpenCrypt.getSHA256(cmvo.getM_pwd(),sec.getSalt())));
+	}
+	int result = clMDao.groupMemberUpdate(cmvo);
+
+	return result;     
 	}
 
 	@Override
