@@ -88,7 +88,7 @@ public class AdCostController {
 		List<CostExcelVO> ceList = new ArrayList<>();
 		try {
 			ceList = eru.readExcel(acvo.getCost_file(), request);
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			mav.addObject("status","fail");
 		}

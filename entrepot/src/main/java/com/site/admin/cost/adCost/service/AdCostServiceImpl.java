@@ -106,4 +106,11 @@ public class AdCostServiceImpl implements AdCostService{
 		return acList;
 	}
 
+	//통계에서 쓸 엑셀 리스트
+	@Override
+	public List<String> selectExcelList(int selectmonth) {
+		
+		return adCostDao.selectExcelList(selectmonth);
+	}
+
 }

@@ -1,0 +1,192 @@
+@charset "UTF-8";
+body, div, h1, form, fieldset, input, textarea {
+	margin: 0; padding: 0; border: 0; outline: none;
+}
+
+html {
+	height: 100%;
+}
+
+
+.joinform #contact {
+	width: 430px; margin: 60px auto; padding: 60px 30px;
+	background: #c9d0de; border: 1px solid #e1e1e1;
+	-moz-box-shadow: 0px 0px 8px #444;
+	-webkit-box-shadow: 0px 0px 8px #444;
+}
+
+
+.joinform h1 {
+	font-size: 35px; color: #445668; text-transform: uppercase;
+	text-align: center; margin: 0 0 35px 0; text-shadow: 0px 1px 0px #f2f2f2;
+}
+
+
+.joinform label {
+	float: left; clear: left; margin: 11px 20px 0 0; width: 120px;
+	text-align: right; font-size: 12px; color: #000000;
+	text-transform: uppercase; text-shadow: 0px 1px 0px #f2f2f2;
+	
+}
+
+.joinform .col-sm-5 {
+	font-size: 16px; color: #000000; font-weight : bold;
+	padding-left : 140px;
+	text-transform: uppercase; text-shadow: 0px 1px 0px #f2f2f2;
+}
+
+.joinform div .col-sm-3{
+	display: inline-block;
+	width: 800px;
+}
+
+.joinform .inputText{
+	width: 260px; height: 35px; padding: 5px 20px 0px 20px; margin: 0 0 20px 0; 
+	background: #5E768D;
+	background: -moz-linear-gradient(top, #546A7F 0%, #5E768D 20%); /* firefox */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#546A7F), color-stop(20%,#5E768D)); /* webkit */
+	border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;
+	-moz-box-shadow: 0px 1px 0px #f2f2f2;-webkit-box-shadow: 0px 1px 0px #f2f2f2;
+	/* font-family: sans-serif;  */font-size: 16px; color: #000000; /* text-transform: uppercase; */ text-shadow: 0px -1px 0px #334f71; 
+}
+	input::-webkit-input-placeholder  {
+    	color: #a1b2c3; text-shadow: 0px -1px 0px #38506b;  
+	}
+	input:-moz-placeholder {
+	    color: #a1b2c3; text-shadow: 0px -1px 0px #38506b; 
+	}
+
+
+.joinform textarea {
+	width: 260px; height: 170px; padding: 12px 20px 0px 20px; margin: 0 0 20px 0; 
+	background: #5E768D;
+	background: -moz-linear-gradient(top, #546A7F 0%, #5E768D 20%); /* firefox */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#546A7F), color-stop(20%,#5E768D)); /* webkit */
+	border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;
+	-moz-box-shadow: 0px 1px 0px #f2f2f2;-webkit-box-shadow: 0px 1px 0px #f2f2f2;
+	font-family: sans-serif; font-size: 16px; color: #f2f2f2; text-transform: uppercase; text-shadow: 0px -1px 0px #334f71; 
+}
+	textarea::-webkit-input-placeholder  {
+    	color: #a1b2c3; text-shadow: 0px -1px 0px #38506b;  
+	}
+	textarea:-moz-placeholder {
+	    color: #a1b2c3; text-shadow: 0px -1px 0px #38506b; 
+	}
+	
+
+.joinform .inputText:focus, textarea:focus {
+	background: #728eaa;
+	background: -moz-linear-gradient(top, #668099 0%, #728eaa 20%); /* firefox */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#668099), color-stop(20%,#728eaa)); /* webkit */
+}
+.joinform a {
+     -webkit-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+    -moz-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+    -ms-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+    -o-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+    transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+     text-decoration: none;
+    /*display: block;
+    margin: 20px auto;
+    max-width: 180px;
+    border-radius: 4px; */
+    padding: 20px 30px;
+    margin: 20px;
+}
+/* .wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -86px;
+    margin-left: -89px;
+    text-align: center;
+} */
+.joinform a.buttons {
+    color: rgba(30, 22, 54, 0.6);
+    box-shadow: rgba(30, 22, 54, 0.4) 0 0px 0px 2px inset;
+}
+.joinform a.buttons:hover {
+    color: rgba(255, 255, 255, 0.85);
+    box-shadow: rgba(30, 22, 54, 0.7) 0 0px 0px 40px inset;
+}
+
+.joinform .page {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  padding-left:210px; 
+}
+
+.joinform .fun-btn {
+  /* change bg color to get different hues    */
+  background-color: salmon;
+  color: white;
+  padding: 10px 10px;
+  border: none;
+  transition: all .3s ease;
+  border-radius: 5px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  outline: none;
+  align-self: center;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.joinform .fun-btn:hover {
+  background-color: #33FF99;
+  color: #000000;
+}
+
+.well{
+	padding-left: 250px;
+}
+.imgWell{
+	padding-left: 200px;
+}
+
+#wapper{
+	background-color: #99FFFF;
+}
+#com_no1{
+	width: 30px;
+}
+#com_no2{
+	width: 20px;
+}
+#com_no3{
+	width: 50px;
+}
+/* .joinwell{
+	width: 800px;
+	border: solid 3px;
+	border-radius: 10px;
+	padding: 30px 30px;
+	margin-left: 200px;
+	background-color: #ccFFFF;	
+} */
+/* .joinwell{
+	padding-top: 30px;
+	padding-left:30px;
+	padding-bottom:30px;
+	padding-right:-500px;
+	margin-left:155px;
+	border: solid 3px;
+	width: 1100px;
+	background-color: #ccFFFF;
+	border-radius: 10px;	
+	} */
+
+
+
+
+/* .joinform input[type=submit] {
+	width: 185px; height: 52px; float: right; padding: 10px 15px; margin: 0 15px 0 0;
+	-moz-box-shadow: 0px 0px 5px #999;-webkit-box-shadow: 0px 0px 5px #999;
+	border: 1px solid #556f8c;
+	background: -moz-linear-gradient(top, #718DA9 0%, #415D79 100%); firefox
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#718DA9), color-stop(100%,#415D79)); webkit
+	cursor: pointer;
+} */
+

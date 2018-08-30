@@ -8,7 +8,7 @@
 			<title>Insert title here</title>
 		</head>
 		<script type="text/javascript" src="/resources/include/client/js/jquery-1.12.4.min.js"></script>
-		<script type="text/javascript" src="/resources/include/client/js/common.js"></script>
+		<script type="text/javascript" src="/resources/include/common/js/common.js"></script>
 		
 		<link rel="stylesheet" type="text/css" href="/resources/include/client/css/common.css">
 		<link rel="stylesheet" type="text/css" href="/resources/include/client/css/board.css">

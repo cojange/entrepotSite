@@ -70,182 +70,173 @@
 		</script>
 	</head>
 <body>
-	<div id="page" class="container">
-		<div><a href="#" class="image image-full"><img src="/resources/images/client/member2.png"/></a></div>
-		<div class="column1">
+	<div id="page" class="container joinform">
+		<div class="imgWell"><img src="/resources/images/client/member2.png"/></div>
+		<div>
 			<div class="title">
 				<h1>개인회원가입</h1>
 				<!-- <span class="byline">Pellentesque lectus gravida blandit</span> -->
 			</div>
 			<div class="contentContainer">
-   <div class="well">
-      <form id="memberForm" class="form-horizontal">
-         <input type="hidden" name="m_email" id="m_email" />
-         <div class="form-group form-group-sm">
-            <label for="userId" class="col-sm-2 control-label">사용자 ID</label>
-            <div class="col-sm-3">
-               <input type="text" id="m_id" name="m_id"  maxlength="12" class="form-control" placeholder="User ID" />
-            </div>
-            <div class="col-sm-2">
-               <input type="button" id="idConfirmBtn" value="아이디 중복체크" class="form-control btn-primary" />
-            </div> 
-            <div class="col-sm-5">
-               <p class="form-control-static error"></p>
-            </div>
-         </div>
-         <div class="form-group form-group-sm">
-            <label for="m_pwd" class="col-sm-2 control-label">비밀 번호</label>
-            <div class="col-sm-3">
-               <input type="password" id="m_pwd" name="m_pwd" maxlength="15" class="form-control" placeholder="Password" >
-            </div>
-            <div class="col-sm-5">
-               <p class="form-control-static error"></p>
-            </div>
-         </div>
-         <div class="form-group form-group-sm">
-            <label for="userPwCheck" class="col-sm-2 control-label">비밀번호 확인</label>
-            <div class="col-sm-3">
-               <input type="password"  id="userPwCheck" name="userPwCheck" maxlength="15" class="form-control" placeholder="Password Confirm" >
-            </div>
-            <div class="col-sm-5">
-               <p class="form-control-static error"></p>
-            </div>
-         </div>
-         <div class="form-group form-group-sm">
-            <label for="phone" class="col-sm-2 control-label">핸드폰 번호</label>
-            <div class="col-sm-3">
-               <input type="text" id="m_phone" name="m_phone" maxlength="13" class="form-control" placeholder="Phone Number">   
-            </div>
-            <div class="col-sm-5">
-               <p class="form-control-static error"></p>
-            </div>
-         </div> 
-         <div class="form-group form-group-sm">
-            <label for="m_job" class="col-sm-2 control-label">직업</label>
-            <div class="col-sm-3">
-               <select id="m_job" name="m_job" class="form-control" class="form-control">
-                  <option></option>
-                  <option value="직장인">직장인</option>
-                  <option value="초등학생">초등학생</option>	
-                  <option value="중학생">중학생</option>
-                  <option value="고등학생">고등학생</option>
-                  <option value="대학생">대학생</option>
-                  <option value="운동선수">운동선수</option> 
-                  <option value="주부">주부</option> 
-                  <option value="프리랜서">프리랜서</option>
-                  <option value="디자이너">디자이너</option> 
-                  <option value="요리사">요리사</option>
-                  <option value="웹앱개발자">웹앱개발자</option> 
-                  <option value="정치인">정치인</option>
-                  <option value="건축가">건축가</option>                                            
-               </select>  
-            </div>
-            <div class="col-sm-5">
-               <p class="form-control-static error"></p>
-            </div>
-         </div>
-         <div class="form-group form-group-sm">
-			 <label for="m_zipcode" class="col-sm-2 control-label">우편번호</label>
-			 <div class="col-sm-3">
-			<input type="text" id="m_zipcode" name="m_zipcode" class="form-control" placeholder="우편번호" readonly="readonly">
+			   <div class="well joinwell">
+			      <form id="memberForm" class="form-horizontal">
+			         <input type="hidden" name="m_email" id="m_email" />
+			         <div class="form-group form-group-sm">
+			            <label for="m_id" class="col-sm-2 control-label">사용자 ID</label>
+			            <div class="col-sm-3">
+			               <input type="text" id="m_id" name="m_id"maxlength="12" class="form-control inputText" placeholder="User ID" />
+			               <input type="button" id="idConfirmBtn" class="fun-btn" value="아이디 중복체크" class="form-control btn-primary" />
+			            </div>
+			            <div class="col-sm-5">
+			               <p class="form-control-static error"></p>
+			            </div>
+			         </div>
+			         <div class="form-group form-group-sm">
+			            <label for="m_pwd" class="col-sm-2 control-label">비밀 번호</label>
+			            <div class="col-sm-3">
+			               <input type="password" id="m_pwd" name="m_pwd" maxlength="15" class="form-control inputText" placeholder="Password" >
+			            </div>
+			            <div class="col-sm-5">
+			               <p class="form-control-static error"></p>
+			            </div>
+			         </div>
+			         <div class="form-group form-group-sm">
+			            <label for="userPwCheck" class="col-sm-2 control-label">비밀번호 확인</label>
+			            <div class="col-sm-3">
+			               <input type="password"  id="userPwCheck" name="userPwCheck" maxlength="15" class="form-control  inputText" placeholder="Password Confirm" >
+			            </div>
+			            <div class="col-sm-5">
+			               <p class="form-control-static error"></p>
+			            </div>
+			         </div>
+			         <div class="form-group form-group-sm">
+			            <label for="phone" class="col-sm-2 control-label">핸드폰 번호</label>
+			            <div class="col-sm-3">
+			               <input type="text" id="m_phone" name="m_phone" maxlength="13" class="form-control  inputText" placeholder="Phone Number">   
+			            </div>
+			            <div class="col-sm-5">
+			               <p class="form-control-static error"></p>
+			            </div>
+			         </div> 
+			         <div class="form-group form-group-sm">
+			            <label for="m_job" class="col-sm-2 control-label">직업</label>
+			            <div class="col-sm-3">
+			               <select id="m_job" name="m_job" class="form-control" class="form-control">
+			                  <option></option>
+			                  <option value="직장인">직장인</option>
+			                  <option value="초등학생">초등학생</option>	
+			                  <option value="중학생">중학생</option>
+			                  <option value="고등학생">고등학생</option>
+			                  <option value="대학생">대학생</option>
+			                  <option value="운동선수">운동선수</option> 
+			                  <option value="주부">주부</option> 
+			                  <option value="프리랜서">프리랜서</option>
+			                  <option value="디자이너">디자이너</option> 
+			                  <option value="요리사">요리사</option>
+			                  <option value="웹앱개발자">웹앱개발자</option> 
+			                  <option value="정치인">정치인</option>
+			                  <option value="건축가">건축가</option>                                            
+			               </select>  
+			            </div>
+			            <div class="col-sm-5">
+			               <p class="form-control-static error"></p>
+			            </div>
+			         </div>
+			         <div class="form-group form-group-sm">
+						 <label for="m_zipcode" class="col-sm-2 control-label">우편번호</label>
+						 <div class="col-sm-3">
+						<input type="text" id="m_zipcode" name="m_zipcode"class="form-control inputText" placeholder="우편번호" readonly="readonly">
+						<input type="button" id="m_zipcodeFind" class="fun-btn" value="우편번호 찾기" >
+						</div>
+						<div id="wrap" style="display:none;border:1px solid;width:500px;height:300px;margin:5px 0;position:relative">
+						<img src="//t1.daumcdn.net/localimg/localimages/07/postcode/320/close.png" id="btnFoldWrap" style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" onclick="foldDaumPostcode()" alt="접기 버튼">
+						</div>
+						<div class="col-sm-5">
+			               <p class="form-control-static error"></p>
+			            </div>
+			         </div>
+			        <div class="form-group form-group-sm">
+			             <label for="m_address" class="col-sm-2 control-label"></label>
+			            <div class="col-sm-2">
+							<input type="text" id="m_address" name="m_address"class="form-control inputText" placeholder="주소" style="width:500px;" readonly="readonly" >
+						</div>
+						<div class="col-sm-5">
+			               <p class="form-control-static error"></p>
+			            </div>
+					</div>
+			         <div class="form-group form-group-sm">
+			            <label for="m_birth" class="col-sm-2 control-label">생년월일</label>
+			            <div class="col-sm-3">
+			               <input type="text" id="m_birth" name="m_birth" maxlength="6" class="form-control inputText" placeholder="생년월일  6자리">
+			               <input type="text" id="m_gender" name="m_gender" maxlength="1" class="form-control inputText" placeholder="주민번호뒷자리1번째">  
+			            </div>
+			            <div class="col-sm-5">
+			               <p class="form-control-static error"></p>
+			            </div>
+			         </div>                              
+			         <div class="form-group form-group-sm">
+			            <label for="m_name" class="col-sm-2 control-label">회원이름</label>
+			            <div class="col-sm-3">
+			               <input type="text" id="m_name" name="m_name" maxlength="10" class="form-control inputText" placeholder="NAME" >
+			            </div>
+			            <div class="col-sm-5">
+			               <p class="form-control-static error"></p>
+			            </div>                  
+			         </div>
+			         <div class="form-group form-group-sm">
+			            <label for="emailName" class="col-sm-2 control-label">회원 이메일</label>
+			            <div class="col-sm-3">
+			               <input type="text" id="emailName" name="emailName" maxlength="60" class="form-control inputText" placeholder="'@'를빼고 입력해주세요.">
+			               <input type="text" id="emailDirect" maxlength="60" class="form-control inputText" placeholder="EMAIL" style="width: 100px;"/>
+			               <select id="emailDomain" class="form-control" style="width: 100px;">
+			                  <option value="naver.com">naver.com</option>
+			                  <option value="daum.net">daum.net</option>
+			                  <option value="nate.com">nate.com</option>                                                 
+			               </select>
+						<input id="direct" type="checkbox" width="10px;" height="10px;" >직접입력	
+			            </div>
+						<div class="col-sm-3">
+			               <p class="form-control-static error"></p>
+			            </div>
+			         </div>        
+			         <div class="form-group form-group-sm">
+			            <label for="m_job" class="col-sm-2 control-label">비밀번호 질문</label>
+			            <div class="col-sm-3">
+			               <select id="quiz" name="quiz" class="form-control" >
+			                  <option value="없음">없음</option>
+			                  <option value="나의 별명은 무엇입니까?">나의 별명은 무엇입니까?</option>
+			                  <option value="나의 결혼기념일은 언제입니까?">나의 결혼기념일은 언제입니까?</option>	
+			                  <option value="나는 어떤사람입니까?">나는 어떤사람입니까?</option>
+			                  <option value="내가 좋아하는 장소는 어디입니까?">내가 좋아하는 장소는 어디입니까?</option>
+			                  <option value="내가 좋아하는 음식은 무엇입니까?">내가 좋아하는 음식은 무엇입니까?</option>
+			                  <option value="내가 싫어하는 장소는 어디입니까?">내가 싫어하는 장소는 어디입니까?</option> 
+			                  <option value="나는 어떠한 취미가있습니까?">나는 어떠한 취미가있습니까?</option>                                         
+			               </select>  
+			            </div>
+			            <div class="col-sm-5">
+			               <p class="form-control-static error"></p>
+			            </div>
+			         </div>
+			          <div class="form-group form-group-sm">
+			             <label for="ans" class="col-sm-2 control-label"></label>
+			            <div class="col-sm-2">
+							<input type="text" id="ans" name="ans" class="form-control inputText" placeholder="비밀번호질문답" style="width:300px;" value="없음">
+						</div>
+						<div class="col-sm-5">
+			               <p class="form-control-static error"></p>
+			            </div>
+					</div>
+			         <div class="form-group">   
+			            <div class="page col-sm-3">
+			               <input type="button" class="fun-btn" value="확인" id="joinInsert"/> 
+			               <input type="button" class="fun-btn" value="재작성" id="joinReset"/>
+			               <input type="button" class="fun-btn" value="취소" id="joinCancel"/>                  
+			            </div>   
+			         </div>                                                                              
+			      </form>
+			   </div>
 			</div>
-			<div class="col-sm-2">
-               <input type="button" id="m_zipcodeFind" value="우편번호 찾기" >
-            </div>
-			<div id="wrap" style="display:none;border:1px solid;width:500px;height:300px;margin:5px 0;position:relative">
-			<img src="//t1.daumcdn.net/localimg/localimages/07/postcode/320/close.png" id="btnFoldWrap" style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" onclick="foldDaumPostcode()" alt="접기 버튼">
-			</div>
-			<div class="col-sm-5">
-               <p class="form-control-static error"></p>
-            </div>
-         </div>
-        <div class="form-group form-group-sm">
-             <label for="m_address" class="col-sm-2 control-label"></label>
-            <div class="col-sm-2">
-				<input type="text" id="m_address" name="m_address"class="form-control" placeholder="주소" style="width:500px;" readonly="readonly" >
-			</div>
-			<div class="col-sm-5">
-               <p class="form-control-static error"></p>
-            </div>
-		</div>
-         <div class="form-group form-group-sm">
-            <label for="m_birth" class="col-sm-2 control-label">생년월일</label>
-            <div class="col-sm-3">
-               <input type="text" id="m_birth" name="m_birth" maxlength="6" class="form-control" placeholder="생년월일  6자리">   
-            </div>
-            <div class="col-sm-2">
-               <input type="text" id="m_gender" name="m_gender" maxlength="1" class="form-control" placeholder="주민번호뒷자리1번째">   
-            </div>
-            <div class="col-sm-5">
-               <p class="form-control-static error"></p>
-            </div>
-         </div>                              
-         <div class="form-group form-group-sm">
-            <label for="m_name" class="col-sm-2 control-label">회원이름</label>
-            <div class="col-sm-3">
-               <input type="text" id="m_name" name="m_name" maxlength="10" class="form-control" placeholder="NAME" >
-            </div>
-            <div class="col-sm-5">
-               <p class="form-control-static error"></p>
-            </div>                  
-         </div>
-         <div class="form-group form-group-sm">
-            <label for="emailName" class="col-sm-2 control-label">회원 이메일</label>
-            <div class="col-sm-3">
-               <input type="text" id="emailName" name="emailName" maxlength="60" class="form-control" placeholder="'@'를빼고 입력해주세요.">
-            </div>
-            <div class="col-sm-2">
-               <select id="emailDomain" class="form-control" style="width: 100px;">
-                  <option value="naver.com">naver.com</option>
-                  <option value="daum.net">daum.net</option>
-                  <option value="nate.com">nate.com</option>                                                 
-               </select>
-               <input type="text" id="emailDirect" maxlength="60" class="form-control" placeholder="EMAIL" style="width: 100px;"/>
-				<input id="direct" type="checkbox" width="10px;" height="10px;" >직접입력	
-			</div>
-			<div class="col-sm-3">
-               <p class="form-control-static error"></p>
-            </div>
-         </div>        
-         <div class="form-group form-group-sm">
-            <label for="m_job" class="col-sm-2 control-label">비밀번호 질문</label>
-            <div class="col-sm-3">
-               <select id="quiz" name="quiz" class="form-control" class="form-control" >
-                  <option value="없음">없음</option>
-                  <option value="나의 별명은 무엇입니까?">나의 별명은 무엇입니까?</option>
-                  <option value="나의 결혼기념일은 언제입니까?">나의 결혼기념일은 언제입니까?</option>	
-                  <option value="나는 어떤사람입니까?">나는 어떤사람입니까?</option>
-                  <option value="내가 좋아하는 장소는 어디입니까?">내가 좋아하는 장소는 어디입니까?</option>
-                  <option value="내가 좋아하는 음식은 무엇입니까?">내가 좋아하는 음식은 무엇입니까?</option>
-                  <option value="내가 싫어하는 장소는 어디입니까?">내가 싫어하는 장소는 어디입니까?</option> 
-                  <option value="나는 어떠한 취미가있습니까?">나는 어떠한 취미가있습니까?</option>                                         
-               </select>  
-            </div>
-            <div class="col-sm-5">
-               <p class="form-control-static error"></p>
-            </div>
-         </div>
-          <div class="form-group form-group-sm">
-             <label for="ans" class="col-sm-2 control-label"></label>
-            <div class="col-sm-2">
-				<input type="text" id="ans" name="ans" class="form-control" placeholder="비밀번호질문답" style="width:300px;" value="없음">
-			</div>
-			<div class="col-sm-5">
-               <p class="form-control-static error"></p>
-            </div>
-		</div>
-         <div class="form-group">   
-            <div class="col-sm-offset-2 col-sm-6">
-               <input type="button" value="확인" id="joinInsert" class="btn btn-default" /> 
-               <input type="button" value="재작성" id="joinReset" class="btn btn-default" />
-               <input type="button" value="취소" id="joinCancel" class="btn btn-default" />                  
-            </div>   
-         </div>                                                                              
-      </form>
-   </div>
-</div>
 		</div>
 	</div>
-
 </body>
 </html>

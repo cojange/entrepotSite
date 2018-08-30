@@ -7,7 +7,7 @@
 			<title>Insert title here</title>
 		</head>
 		<script type="text/javascript" src="/resources/include/client/js/jquery-1.12.4.min.js"></script>
-		<script type="text/javascript" src="/resources/include/client/js/common.js"></script>
+		<script type="text/javascript" src="/resources/include/common/js/common.js"></script>
 		<script type="text/javascript">
 			$(function(){
 				//저장버튼 클릭시 처리 이벤트
@@ -20,11 +20,11 @@
 					else if(!chkData($("#pb_name"),"게시글 작성자"))return;
 					else if(!chkData($("#pb_password"),"비밀번호를"))return;
 					else{
-						$("#f_writeForm").attr({
+						$("#f_wrtieForm").attr({
 							"method":"POST",
-							"action":"/board/personal/personalInsert.do"
+							"action":"/client/board/personal/personalInsert.do"
 						});
-						$("#f_writeForm").submit();
+						$("#f_wrtieForm").submit();
 					}
 				});
 				

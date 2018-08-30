@@ -54,8 +54,8 @@ public class PersonalController {
 	      logger.info("personalInsert 호출 성공");
 	      
 	      //확인 후 주석처리
-	      logger.info("fileName:" + pvo.getFile().getOriginalFilename());
-	      logger.info("file_thumb"+ pvo.getFile_thumb());
+	      /*logger.info("fileName:" + pvo.getFile().getOriginalFilename());
+	      logger.info("file_thumb"+ pvo.getFile_thumb());*/
 	      
 	      int result = 0;
 	      String url = "";
@@ -90,7 +90,7 @@ public class PersonalController {
 		return "client/board/personal/detailForm"; //jsp 리턴값
 	}
 	//비밀번호 확인,param pb_no, param pb_password
-	@RequestMapping(value="pwdConfirm.do",method=RequestMethod.POST,produces="text/plain;charset=UTF-8")
+	@RequestMapping(value="/board/personal/pwdConfirm.do",method=RequestMethod.POST,produces="text/plain;charset=UTF-8")
 	public String pwdConfirm(PersonalVO pvo) {
 		logger.info("pwdConfirm 호출 성공");
 		String value="";

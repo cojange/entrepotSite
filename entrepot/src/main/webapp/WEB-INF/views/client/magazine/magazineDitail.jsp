@@ -48,7 +48,7 @@
         								 	<tr>
 												<td valign="top">
             										<img src="썸네일 이미지" width="350" height="450" border="0">
-			
+				
 												  <br><br><br><br>
           										</td>
           										<td width="30"></td>
@@ -87,7 +87,7 @@
             												</tr>
             												<tr>
 												              <td height="20"><font face="나눔고딕" color="#696969">발행횟수</font></td>
-												              <td><font face="나눔고딕" color="#393107">:&nbsp;&nbsp;획수</font></td>
+												              <td><font face="나눔고딕" color="#393107">:&nbsp;&nbsp;횟수</font></td>
 												            </tr>
            													 <tr height="5"></tr>
            													 <tr>
@@ -149,19 +149,32 @@
 </tr>	
 </tbody>
 </table>
-<div>    
-<table>
-	<tr>
-		<td align="left">
-			<a href="#a"><img  src="/resources/images/ditail/dir_blue_01_over.gif" border="0"></a>
-			<a href="#b"><img  src="/resources/images/ditail/dir_blue_04.gif" border="0"></a>
-			<a href="#c"><img  src="/resources/images/ditail/dir_blue_03.gif" border="0"></a>
-			<a href="#d"><img  src="/resources/images/ditail/dir_blue_06.gif" border="0"></a> 	
-		</td>
-	</tr>
-</table>
-</div>
+<div >
+	<a name="a"></a>   
+	<div> 
+		<table>
+			<tr>
+				<td align="left">
+					<a href="#a"><img  src="/resources/images/ditail/dir_blue_01_over.gif" border="0"></a>
+					<a href="#b"><img  src="/resources/images/ditail/dir_blue_04.gif" border="0"></a>
+					<a href="#c"><img  src="/resources/images/ditail/dir_blue_03.gif" border="0"></a>
+					<a href="#d"><img  src="/resources/images/ditail/dir_blue_06.gif" border="0"></a> 	
+				</td>
+			</tr>
+		</table>
+	</div>
+	<br>
+	<img hspace="0" src="src/main/webapp/resources/images/ditail/dir_intro_bm.gif" border="0" width="600">
+	<br>
+	<br>
+	<p valign="top" height="50" width="590" style="word-break:break-all;font:10pt 나눔고딕 ;line-height:180%;">
+		${magazine.dt_detail}
+	</p>
+		
 
+	
+</div>
+<div></div>
 	
 </body>
 </html>

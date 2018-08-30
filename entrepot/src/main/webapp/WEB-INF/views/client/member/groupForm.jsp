@@ -15,7 +15,7 @@
 		<!--<script type="text/javascript" src="/springSite/resources/include/js/jquery-1.12.4.min.js"></script>-->
 		<script type = "text/javascript" src="/resources/include/client/js/jquery-1.12.4.min.js"></script>
 		<script type = "text/javascript" src="/resources/include/common/js/common.js"></script>
-		<script type = "text/javascript" src="/resources/include/client/js/join.js"></script>
+		<script type = "text/javascript" src="/resources/include/client/js/gjoin.js"></script> 
 		<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 		<script type = "text/javascript">
 		
@@ -34,9 +34,8 @@
 			}
 			
 			$(function() {
-
-				$("#ans").hide();
-				$("#emailDirect").hide();
+				$("#emailDirect_c").hide();
+				$("#emailDirect_acc").hide();
 			    $("#m_zipcodeFind").click(function(){
 			    	new daum.Postcode({//다음 우편코드 프로그램 사용.
 			    		oncomplete: function(data) {
@@ -70,27 +69,26 @@
 		</script>
 	</head>
 <body>
-	<div id="page" class="container">
-		<div><a href="#" class="image image-full"><img src="/resources/images/client/member2.png"/></a></div>
-		<div class="column1">
+	<div id="page" class="container joinform">
+		<div class="imgWell"><img src="/resources/images/client/member2.png"/></div>
+		<div>
 			<div class="title">
 				<h1>단체회원가입</h1>
 				<!-- <span class="byline">Pellentesque lectus gravida blandit</span> -->
 			</div>
 			<div class="contentContainer">
    <div class="well">
-      <form id="memberForm" class="form-horizontal">
-         <input type="hidden" name="char_email" id="char_email" />
-         <input type="hidden" name="acc_email" id="acc_email" />
-         <img src="/resources/images/client/id.png"/>
+      <form id="groupMemberForm" class="form-horizontal">
+         <input type="hidden" name="char_email" id="char_email" value=""/>
+         <input type="hidden" name="acc_email" id="acc_email" value="" />
+         <input type="hidden" name="com_no" id="com_no" value="" />
+         <img src="/resources/images/client/id.png"/><!-- id정보 -->
          <div class="form-group form-group-sm">
-            <label for="userId" class="col-sm-2 control-label">사용자 ID</label>
+            <label for="m_id" class="col-sm-2 control-label">사용자 ID</label>
             <div class="col-sm-3">
-               <input type="text" id="m_id" name="m_id"  maxlength="12" class="form-control" placeholder="User ID" />
+               <input type="text" id="m_id" name="m_id"  maxlength="12" class="form-control inputText" placeholder="User ID" />
+               <input type="button" id="idConfirmBtn" value="아이디 중복체크" class="fun-btn" />
             </div>
-            <div class="col-sm-2">
-               <input type="button" id="idConfirmBtn" value="아이디 중복체크" class="form-control btn-primary" />
-            </div> 
             <div class="col-sm-5">
                <p class="form-control-static error"></p>
             </div>
@@ -98,7 +96,7 @@
          <div class="form-group form-group-sm">
             <label for="m_pwd" class="col-sm-2 control-label">비밀 번호</label>
             <div class="col-sm-3">
-               <input type="password" id="m_pwd" name="m_pwd" maxlength="15" class="form-control" placeholder="Password" >
+               <input type="password" id="m_pwd" name="m_pwd" maxlength="15" class="form-control inputText" placeholder="Password" >
             </div>
             <div class="col-sm-5">
                <p class="form-control-static error"></p>
@@ -107,21 +105,21 @@
          <div class="form-group form-group-sm">
             <label for="userPwCheck" class="col-sm-2 control-label">비밀번호 확인</label>
             <div class="col-sm-3">
-               <input type="password"  id="userPwCheck" name="userPwCheck" maxlength="15" class="form-control" placeholder="Password Confirm" >
+               <input type="password"  id="userPwCheck" name="userPwCheck" maxlength="15" class="form-control inputText" placeholder="Password Confirm" >
             </div>
             <div class="col-sm-5">
                <p class="form-control-static error"></p>
             </div>
          </div>
-         <img src="/resources/images/client/groupMember.png"/>
+         <img src="/resources/images/client/groupMember.png"/><!-- 업체정보 -->
          <div class="form-group form-group-sm">
             <label for="com_no" class="col-sm-2 control-label">사업자등록번호</label>
             <div class="col-sm-3">
-               <input type="text" id="com_no" name="com_no" maxlength="12" class="form-control" placeholder="사업자등록번호">   
+               <input type="text" id="com_no1" maxlength="3" class="form-control inputText">-
+               <input type="text" id="com_no2" maxlength="2" class="form-control inputText">-
+               <input type="text" id="com_no3" maxlength="5" class="form-control inputText">
+               <input type="button" id="comNoConfirmBtn" value="중복검사" class="fun-btn" />  
             </div>
-            <div class="col-sm-2">
-               <input type="button" id="comNoConfirmBtn" value="중복검사" class="form-control btn-primary" />
-            </div> 
             <div class="col-sm-5">
                <p class="form-control-static error"></p>
             </div>
@@ -129,7 +127,7 @@
          <div class="form-group form-group-sm">
             <label for="m_name" class="col-sm-2 control-label">단체이름</label>
             <div class="col-sm-3">
-               <input type="text" id="m_name" name="m_name" maxlength="10" class="form-control" placeholder="NAME" >
+               <input type="text" id="m_name" name="m_name" maxlength="10" class="form-control inputText" placeholder="NAME" >
             </div>
             <div class="col-sm-5">
                <p class="form-control-static error"></p>
@@ -138,7 +136,7 @@
          <div class="form-group form-group-sm">
             <label for="leader_name" class="col-sm-2 control-label">대표자 성명</label>
             <div class="col-sm-3">
-               <input type="text" id="leader_name" name="leader_name" maxlength="10" class="form-control" placeholder="NAME" >
+               <input type="text" id="leader_name" name="leader_name" maxlength="10" class="form-control inputText" placeholder="NAME" >
             </div>
             <div class="col-sm-5">
                <p class="form-control-static error"></p>
@@ -147,11 +145,9 @@
            <div class="form-group form-group-sm">
 			 <label for="m_zipcode" class="col-sm-2 control-label"> 사업장 주소(사업자등록증의 주소) </label>
 			 <div class="col-sm-3">
-			<input type="text" id="m_zipcode" name="m_zipcode" class="form-control" placeholder="우편번호" readonly="readonly">
+			<input type="text" id="m_zipcode" name="m_zipcode" class="form-control inputText" placeholder="우편번호" readonly="readonly">
+			<input type="button" id="m_zipcodeFind" value="우편번호 찾기" class="fun-btn">
 			</div>
-			<div class="col-sm-2">
-               <input type="button" id="m_zipcodeFind" value="우편번호 찾기" >
-            </div>
 			<div id="wrap" style="display:none;border:1px solid;width:500px;height:300px;margin:5px 0;position:relative">
 			<img src="//t1.daumcdn.net/localimg/localimages/07/postcode/320/close.png" id="btnFoldWrap" style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" onclick="foldDaumPostcode()" alt="접기 버튼">
 			</div>
@@ -162,7 +158,7 @@
         <div class="form-group form-group-sm">
              <label for="m_address" class="col-sm-2 control-label"></label>
             <div class="col-sm-2">
-				<input type="text" id="m_address" name="m_address"class="form-control" placeholder="주소" style="width:500px;" readonly="readonly" >
+				<input type="text" id="m_address" name="m_address"class="form-control inputText" placeholder="주소" style="width:500px;" readonly="readonly" >
 			</div>
 			<div class="col-sm-5">
                <p class="form-control-static error"></p>
@@ -193,20 +189,20 @@
                <p class="form-control-static error"></p>
             </div>
          </div>
-       	 <img src="/resources/images/client/char.png"/>
+       	 <img src="/resources/images/client/char.png"/><!-- 담당자정보 -->
        	 <div class="form-group form-group-sm">
             <label for="char_name" class="col-sm-2 control-label">담당자명</label>
             <div class="col-sm-3">
-               <input type="text" id="char_name" name="char_name" maxlength="10" class="form-control" placeholder="NAME" >
+               <input type="text" id="char_name" name="char_name" maxlength="10" class="form-control inputText" placeholder="NAME" >
             </div>
             <div class="col-sm-5">
                <p class="form-control-static error"></p>
             </div>                  
          </div>
          <div class="form-group form-group-sm">
-            <label for="char_phone" class="col-sm-2 control-label">담당자 전화번호(핸드폰)</label>
+            <label for="char_phone" class="col-sm-2 control-label">담당자 전화번호</label>
             <div class="col-sm-3">
-               <input type="text" id="char_phone" name="char_phone" maxlength="13" class="form-control" placeholder="Phone Number">   
+               <input type="text" id="char_phone" name="char_phone" maxlength="13" class="form-control inputText" placeholder="Phone Number">   
             </div>
             <div class="col-sm-5">
                <p class="form-control-static error"></p>
@@ -215,63 +211,68 @@
          <div class="form-group form-group-sm">
             <label for="emailName_c" class="col-sm-2 control-label">담당자 이메일</label>
             <div class="col-sm-3">
-               <input type="text" id="emailName_c" name="emailName_c" maxlength="60" class="form-control" placeholder="'@'를빼고 입력해주세요.">
-            </div>
-            <div class="col-sm-2">
+               <input type="text" id="emailName_c" name="emailName_c" maxlength="60" class="form-control inputText" placeholder="'@'를빼고 입력해주세요.">
+           	   <input type="text" id="emailDirect_c" maxlength="60" class="form-control inputText" placeholder="EMAIL" style="width: 100px;"/>
                <select id="emailDomain_c" class="form-control" style="width: 100px;">
                   <option value="naver.com">naver.com</option>
                   <option value="daum.net">daum.net</option>
                   <option value="nate.com">nate.com</option>                                                 
                </select>
-               <input type="text" id="emailDirect_c" maxlength="60" class="form-control" placeholder="EMAIL" style="width: 100px;"/>
-				<input id="direct_c" type="checkbox" width="10px;" height="10px;" >직접입력	
-			</div>
+               <input id="direct_c" type="checkbox" width="10px;" height="10px;" >직접입력	
+            </div>
 			<div class="col-sm-3">
                <p class="form-control-static error"></p>
             </div>
          </div>        
-       	<img src="/resources/images/client/acc.png"/>
+       	<img src="/resources/images/client/acc.png"/><!-- 회계부정보 -->
        	 <div class="form-group form-group-sm">
             <label for="acc_name" class="col-sm-2 control-label">회계담당자명</label>
             <div class="col-sm-3">
-               <input type="text" id="acc_name" name="acc_name" maxlength="10" class="form-control" placeholder="NAME" >
+               <input type="text" id="acc_name" name="acc_name" maxlength="10" class="form-control inputText" placeholder="NAME" >
             </div>
             <div class="col-sm-5">
                <p class="form-control-static error"></p>
             </div>                  
          </div>
          <div class="form-group form-group-sm">
-            <label for="acc_phone" class="col-sm-2 control-label">회계 담당자 전화번호(핸드폰)</label>
+            <label for="acc_phone" class="col-sm-2 control-label">회계 담당자 전화번호</label>
             <div class="col-sm-3">
-               <input type="text" id="acc_phone" name="acc_phone" maxlength="13" class="form-control" placeholder="Phone Number">   
+               <input type="text" id="acc_phone" name="acc_phone" maxlength="13" class="form-control inputText" placeholder="Phone Number">   
             </div>
             <div class="col-sm-5">
                <p class="form-control-static error"></p>
             </div>
-         </div> 
+         </div>
+          <div class="form-group form-group-sm">
+            <label for="fax" class="col-sm-2 control-label">팩스번호</label>
+            <div class="col-sm-3">
+               <input type="text" id="fax" name="fax" maxlength="13" class="form-control inputText" placeholder="FAX Number">   
+            </div>
+            <div class="col-sm-5">
+               <p class="form-control-static error"></p>
+            </div>
+         </div>
          <div class="form-group form-group-sm">
             <label for="emailName_acc" class="col-sm-2 control-label">회계 담당자 이메일</label>
             <div class="col-sm-3">
-               <input type="text" id="emailName_acc" name="emailName_acc" maxlength="60" class="form-control" placeholder="'@'를빼고 입력해주세요.">
-            </div>
-            <div class="col-sm-2">
+               <input type="text" id="emailName_acc" name="emailName_acc" maxlength="60" class="form-control inputText" placeholder="'@'를빼고 입력해주세요.">
+           	   <input type="text" id="emailDirect_acc"maxlength="60" class="form-control" placeholder="EMAIL" style="width: 100px;"/>
                <select id="emailDomain_acc" class="form-control" style="width: 100px;">
                   <option value="naver.com">naver.com</option>
                   <option value="daum.net">daum.net</option>
-                  <option value="nate.com">nate.com</option>                                                 
+                  <option value="nate.com">nate.com</option>                                           
                </select>
-               <input type="text" id="emailDirect_acc"maxlength="60" class="form-control" placeholder="EMAIL" style="width: 100px;"/>
-				<input id="direct_acc" type="checkbox" width="10px;" height="10px;" >직접입력	
-			</div>
+               <input id="direct_acc" type="checkbox" width="10px;" height="10px;" >직접입력	 
+            </div>
 			<div class="col-sm-3">
                <p class="form-control-static error"></p>
             </div>
          </div>        
          <div class="form-group">   
-            <div class="col-sm-offset-2 col-sm-6">
-               <input type="button" value="확인" id="joinInsert" class="btn btn-default" /> 
-               <input type="button" value="재작성" id="joinReset" class="btn btn-default" />
-               <input type="button" value="취소" id="joinCancel" class="btn btn-default" />                  
+            <div class="page col-sm-3">
+               <input type="button" value="확인" id="gjoinInsert" class="fun-btn" /> 
+               <input type="button" value="재작성" id="gjoinReset" class="fun-btn"  />
+               <input type="button" value="취소" id="gjoinCancel" class="fun-btn" />                  
             </div>   
          </div>                                                                              
       </form>

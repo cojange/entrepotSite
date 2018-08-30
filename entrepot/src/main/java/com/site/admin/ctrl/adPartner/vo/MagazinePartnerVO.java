@@ -15,6 +15,7 @@ public class MagazinePartnerVO {
     private String acc_tel; 
     private String startdate;
     private String enddate;
+    private String mcom_date;
     private String mcom_update;
     private String raddress;
     private String rzip_code;
@@ -23,6 +24,13 @@ public class MagazinePartnerVO {
     private String com_name;
     private String bacc_name;
     
+    
+	public String getMcom_date() {
+		return mcom_date;
+	}
+	public void setMcom_date(String mcom_date) {
+		this.mcom_date = mcom_date;
+	}
 	public String getCom_no() {
 		return com_no;
 	}

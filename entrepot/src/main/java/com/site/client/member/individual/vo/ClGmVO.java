@@ -6,9 +6,9 @@ public class ClGmVO extends LoginVO{
 	
 	
 	private int 	m_num; //단체번호
-	private String	m_id; //단체아이디
+	/*private String	m_id; //단체아이디
 	private String	m_pwd; //단체비밀번호
-	private String	m_name; //단체이름
+	private String	m_name; //단체이름*/
 	private String	com_no; //사업자 등록번호
 	private String	leader_name; //대표자이름
 	private String	leader_phone; //대표자전화번호
@@ -36,24 +36,6 @@ public class ClGmVO extends LoginVO{
 	}
 	public void setM_num(int m_num) {
 		this.m_num = m_num;
-	}
-	public String getM_id() {
-		return m_id;
-	}
-	public void setM_id(String m_id) {
-		this.m_id = m_id;
-	}
-	public String getM_pwd() {
-		return m_pwd;
-	}
-	public void setM_pwd(String m_pwd) {
-		this.m_pwd = m_pwd;
-	}
-	public String getM_name() {
-		return m_name;
-	}
-	public void setM_name(String m_name) {
-		this.m_name = m_name;
 	}
 	public String getCom_no() {
 		return com_no;
