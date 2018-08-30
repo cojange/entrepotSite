@@ -58,3 +58,41 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 	  }
 	  return zero + num;
 }
+
+//sysdate용 (연도 2개짜리)
+var today;
+function nowTime(){
+	today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth()+1; //January is 0!
+	var yy = today.getFullYear().toString().substr(-2);
+	
+	if(dd<10) {
+	    dd='0'+dd
+	} 
+	
+	if(mm<10) {
+	    mm='0'+mm
+	} 
+	
+	return today = yy+'-'+mm+'-'+dd;
+}
+
+//sysdate용 (연도 4개짜리)
+var today1;
+function nowTime1(){
+	today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth()+1; //January is 0!
+	var yyyy = today.getFullYear()
+	
+	if(dd<10) {
+	    dd='0'+dd
+	} 
+	
+	if(mm<10) {
+	    mm='0'+mm
+	} 
+	
+	return today1 = yyyy+'-'+mm+'-'+dd;
+}

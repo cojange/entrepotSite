@@ -42,6 +42,8 @@
                       <th>담당자 email</th>
                       <th>거래시작일</th>
                       <th>거래종료일</th>
+                      <th>등록일</th>
+                      <th>수정일</th>
                     </tr>
                   </thead>
                   <tfoot>
@@ -52,6 +54,8 @@
                       <th>담당자 email</th>
                       <th>거래시작일</th>
                       <th>거래종료일</th>
+                      <th>등록일</th>
+                      <th>수정일</th>
                     </tr>
                   </tfoot>
                   <tbody>
@@ -65,6 +69,8 @@
 									<td>${magPartner.char_email}</td>
 									<td>${magPartner.startdate}</td>
 									<td>${magPartner.enddate}</td>
+									<td>${magPartner.mcom_date}</td>
+									<td>${magPartner.mcom_update}</td>
 								</tr>
 							</c:forEach>
 						</c:when>
@@ -110,6 +116,8 @@
                       <th>건수</th> 
                       <th>거래시작일</th>
                       <th>거래종료일</th>
+                      <th>등록일</th>
+                      <th>수정일</th>
                     </tr>
                   </thead>
                   <tfoot>
@@ -121,6 +129,8 @@
                       <th>건수</th> 
                       <th>거래시작일</th>
                       <th>거래종료일</th>
+                      <th>등록일</th>
+                      <th>수정일</th>
                     </tr>
                   </tfoot>
                   <tbody>
@@ -135,6 +145,8 @@
 									<td>${couPartner.couacc_cnt}</td>
 									<td>${couPartner.startdate}</td>
 									<td>${couPartner.enddate}</td>
+									<td>${couPartner.couacc_date}</td>
+									<td>${couPartner.couacc_update}</td>									
 								</tr>
 							</c:forEach>
 						</c:when>
@@ -172,14 +184,14 @@
 	              <div class="form-row">
 	                <div class="col-md-6">
 	                  <div class="form-label-group">
-	                    <input type="date" id="mcom_date" name="mcom_date" class="form-control" placeholder="거래처 정보 등록일" required="required" autofocus="autofocus">
+	                    <input type="text" id="mcom_date" name="mcom_date" class="form-control" placeholder="거래처 정보 등록일" required="required" autofocus="autofocus">
 	                    <label for="mcom_date">거래처 정보 등록일</label>
 	                  </div>
 	                </div>
 	                ~
 	                <div class="col-md-6">
 	                  <div class="form-label-group">
-	                    <input type="date" id="mcom_update" name="mcom_update" class="form-control" placeholder="거래처 정보 수정일" required="required" autofocus="autofocus">
+	                    <input type="date" id="mcom_update" name="mcom_update" class="form-control" placeholder="거래처 정보 수정일" required="required" autofocus="autofocus" disabled="disabled">
 	                    <label for="mcom_update">거래처 정보 수정일</label>
 	                  </div>
 	                </div>
@@ -189,22 +201,22 @@
 	              <div class="form-row">
 	                <div class="col-md-6">
 	                  <div class="form-label-group">
-	                    <input type="date" id="startdate" name="startdate" class="form-control" placeholder="거래 시작일" required="required" autofocus="autofocus">
-	                    <label for="startdate">거래 시작일</label>
+	                    <input type="date" id="mStartdate" name="startdate" class="form-control" placeholder="거래 시작일" required="required" autofocus="autofocus">
+	                    <label for="mStartdate">거래 시작일</label>
 	                  </div>
 	                </div>
 	                <div class="col-md-6">
 	                  <div class="form-label-group">
-	                    <input type="date" id="enddate" name="enddate" class="form-control" placeholder="거래 종료일" required="required" autofocus="autofocus">
-	                    <label for="enddate">거래 종료일</label>
+	                    <input type="date" id="mEnddate" name="enddate" class="form-control" placeholder="거래 종료일" required="required" autofocus="autofocus">
+	                    <label for="mEnddate">거래 종료일</label>
 	                  </div>
 	                </div>
 	              </div>
 	            </div>
 	            <div class="form-group">
 	              <div class="form-label-group">
-	               <input type="text" id="com_name" name="com_name" class="form-control" placeholder="회사명" required="required" autofocus="autofocus">
-	               <label for="com_name">회사명</label>
+	               <input type="text" id="mCom_name" name="com_name" class="form-control" placeholder="회사명" required="required" autofocus="autofocus">
+	               <label for="mCom_name">회사명</label>
 	              </div>
 	            </div>
 	            <div class="form-group">
@@ -245,8 +257,8 @@
 	                </div>
 	                <div class="col-md-6">
 	                  <div class="form-label-group">
-	                    <input type="text" id="char_tel" name="char_tel" class="form-control" placeholder="담당자 연락처" required="required" autofocus="autofocus">
-	                    <label for="char_tel">담당자 연락처</label>
+	                    <input type="text" id="mChar_tel" name="char_tel" class="form-control" placeholder="담당자 연락처" required="required" autofocus="autofocus">
+	                    <label for="mChar_tel">담당자 연락처</label>
 	                  </div>
 	                </div>
 	              </div>
@@ -340,7 +352,7 @@
 	             </form>
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+	        <button type="button" class="btn btn-default" data-dismiss="modal" id="magDel">닫기</button>
 	        <button type="button" class="btn btn-primary" id="magInsertBtn">등록</button>
 	      </div>
 	    </div>
@@ -361,14 +373,14 @@
 	              <div class="form-row">
 	                <div class="col-md-6">
 	                  <div class="form-label-group">
-	                    <input type="date" id=couacc_date" name="couacc_date" class="form-control" placeholder="거래처 정보 등록일" required="required" autofocus="autofocus">
+	                    <input type="text" id="couacc_date" name="couacc_date" class="form-control" placeholder="거래처 정보 등록일" required="required" autofocus="autofocus">
 	                    <label for="couacc_date">거래처 정보 등록일</label>
 	                  </div>
 	                </div>
 	                ~
 	                <div class="col-md-6">
 	                  <div class="form-label-group">
-	                    <input type="date" id="couacc_update" name="couacc_update" class="form-control" placeholder="거래처 정보 수정일" required="required" autofocus="autofocus">
+	                    <input type="date" id="couacc_update" name="couacc_update" class="form-control" placeholder="거래처 정보 수정일" required="required" autofocus="autofocus" disabled="disabled">
 	                    <label for="couacc_update">거래처 정보 수정일</label>
 	                  </div>
 	                </div>
@@ -378,14 +390,14 @@
 	              <div class="form-row">
 	                <div class="col-md-6">
 	                  <div class="form-label-group">
-	                    <input type="date" id="startdate" name="startdate" class="form-control" placeholder="거래 시작일" required="required" autofocus="autofocus">
-	                    <label for="startdate">거래 시작일</label>
+	                    <input type="date" id="cStartdate" name="startdate" class="form-control" placeholder="거래 시작일" required="required" autofocus="autofocus">
+	                    <label for="cSstartdate">거래 시작일</label>
 	                  </div>
 	                </div>
 	                <div class="col-md-6">
 	                  <div class="form-label-group">
-	                    <input type="date" id="enddate" name="enddate" class="form-control" placeholder="거래 종료일" required="required" autofocus="autofocus">
-	                    <label for="enddate">거래 종료일</label>
+	                    <input type="date" id="cEnddate" name="enddate" class="form-control" placeholder="거래 종료일" required="required" autofocus="autofocus">
+	                    <label for="cEnddate">거래 종료일</label>
 	                  </div>
 	                </div>
 	              </div>
@@ -413,6 +425,12 @@
 	               </div>
 	            </div>
 	            <div class="form-group">
+	              <div class="form-label-group">
+	                <input type="text" id="cCom_no" name="com_no" class="form-control" placeholder="사업자번호" required="required">
+	                <label for="cCom_no">사업자번호</label>
+	              </div>
+	            </div>
+	            <div class="form-group">
 	              <div class="form-row">
 	                <div class="col-md-6">
 	                  <div class="form-label-group">
@@ -433,37 +451,37 @@
 	                <div class="col-md-6">
 	                  <div class="form-label-group">
 	                    <input type="text" id="couacc_email" name="couacc_email" class="form-control" placeholder="회사 이메일" required="required">
-	                <label for="couacc_email">회사 이메일</label>
+	                    <label for="couacc_email">회사 이메일</label>
 	                  </div>
 	                </div>
 	                <div class="col-md-6">
 	                  <div class="form-label-group">
 	                    <input type="text" id="couacc_fax" name="couacc_fax" class="form-control" placeholder="회사 Fax" required="required">
-	                <label for="couacc_fax">회사 Fax</label>
+	                    <label for="couacc_fax">회사 Fax</label>
 	                  </div>
 	                </div>
 	              </div>
 	            </div>
-	             <div class="form-group">
+	            <div class="form-group">
 	              <div class="form-row">
 	                <div class="col-md-6">
 	                  <div class="form-label-group">
-	                    <input type="text" id="char_manager" name="char_manager" class="form-control" placeholder="담당자 이름" required="required" autofocus="autofocus">
-	                    <label for="char_manager">담당자 이름</label>
+	                    <input type="text" id="cChar_manager" name="char_manager" class="form-control" placeholder="담당자 이름" required="required">
+	                	<label for="cChar_manager">담당자 이름</label>
 	                  </div>
 	                </div>
 	                <div class="col-md-6">
 	                  <div class="form-label-group">
-	                    <input type="text" id="char_tel" name="char_tel" class="form-control" placeholder="담당자 연락처" required="required" autofocus="autofocus">
-	                    <label for="char_tel">담당자 연락처</label>
+	                    <input type="text" id="cChar_tel" name="char_tel" class="form-control" placeholder="담당자 연락처" required="required">
+	               		<label for="cChar_tel">담당자 연락처</label>
 	                  </div>
 	                </div>
 	              </div>
 	            </div>
-	             </form>
+	          </form>
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+	        <button type="button" class="btn btn-default" data-dismiss="modal" id="couDel">닫기</button>
 	        <button type="button" class="btn btn-primary" id="couInsertForm">등록</button>
 	      </div>
 	    </div>

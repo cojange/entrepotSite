@@ -301,6 +301,9 @@
 	    		//거래처 관리탭
 	    		if($(location).attr("href") == "http://localhost:8080/admin/ctrl/adPartner/adPartnerListCtrl.do"){
 	    			$("#adminTable").dataTable();
+	    			nowTime1();
+	    			$("#mcom_date").val(today1);
+	    			$("#couacc_date").val(today1);
 	    			/* 새창띄우기 할때 사용 
 	    			$("#addMagazine").click(function(){
 	    				window.open('/admin/ctrl/adPartner/magazineForm.do','_blank','width=500px, height=600px');
@@ -309,11 +312,18 @@
 	    				window.open('/admin/ctrl/adPartner/courierForm.do','_blank','width=500px, height=600px');
 	    			}); */
 					
+	    			$("#couDel").click(function(){
+	    				resetData2();
+	    			});
+	    			$("#magDel").click(function(){
+	    				resetData1();
+	    			});
+	    			
 	    			/* 잡지 거래처 등록 */
 	        		$("#magInsertBtn").click(function(){
-	        			console.log("가");
+	        			console.log("가");	        			
 	        			//입력값 체크
-	        			if(!chkData($('#com_name'),"회사명을")) return;
+	        			if(!chkData($('#mCom_name'),"회사명을")) return;
 	        			else{
 	        				$("#magazineInsertForm").ajaxForm({
 	        					url : "/admin/ctrl/adPartner/magazineInsert.do",
@@ -330,7 +340,7 @@
     									location.href="/admin/ctrl/adPartner/adPartnerListCtrl.do";
     								}else {
     									alert("관리자 등록에 실패하였습니다.");
-    									resetData();
+    									resetData1();
     								}
     							}
 	        				});
@@ -338,20 +348,20 @@
 	        			}
 	        		});
 	        		//모든 데이터 지우기
-	    			function resetData(){
+	    			function resetData1(){
 	    				$("#magazineInsertForm").each(function(){
 	    					this.reset();
 	    				});
 	    			}
 	        		
 	        		/* 택배 거래처 등록 */
-	    			$("#magInsertBtn").click(function(){
-	        			console.log("가");
+	    			$("#couInsertForm").click(function(){
+	        			console.log("나");	        			
 	        			//입력값 체크
-	        			if(!chkData($('#com_name'),"회사명을")) return;
+	        			if(!chkData($('#couacc_area'),"거래지역을")) return;
 	        			else{
-	        				$("#magazineInsertForm").ajaxForm({
-	        					url : "/admin/ctrl/adPartner/magazineInsert.do",
+	        				$("#courierInsertForm").ajaxForm({
+	        					url : "/admin/ctrl/adPartner/courierInsert.do",
 	        					type:"post",
     							dataType:"text",
     							error:function(){
@@ -361,20 +371,20 @@
     								
     								if(result='success'){
     									alert("새로운 관리자를 등록 하였습니다.");
-    									$("#magazineModel").modal("hide");
+    									$("#courierModel").modal("hide");
     									location.href="/admin/ctrl/adPartner/adPartnerListCtrl.do";
     								}else {
     									alert("관리자 등록에 실패하였습니다.");
-    									resetData();
+    									resetData2();
     								}
     							}
 	        				});
-	        				$("#magazineInsertForm").submit();
+	        				$("#courierInsertForm").submit();
 	        			}
 	        		});
 	        		//모든 데이터 지우기
-	    			function resetData(){
-	    				$("#magazineInsertForm").each(function(){
+	    			function resetData2(){
+	    				$("#courierInsertForm").each(function(){
 	    					this.reset();
 	    				});
 	    			}
