@@ -37,4 +37,22 @@
 	margin-left: 330px;
 	background-color: #ccFFFF;	
 }
+.loginMenu{
+	width:100px;
+	height:100px;
+	background-color: white;
+	border: solid 3px;
+	text-decoration: none;	
+}
 
+#menuDownUp, .loginMenu a{
+	text-decoration: none;	
+}
+
+#menuDownUp:hover{
+	text-decoration: underline;	
+}
+ .loginMenu a:hover{
+ 	background-color: black;
+ 	color: white;
+ }

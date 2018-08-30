@@ -22,13 +22,14 @@
   	<link href="/resources/include/client/font/fonts.css" rel="stylesheet" type="text/css" media="all" />
   	<link rel="styleSheet" href="/resources/include/client/css/normalize.css"  type="text/css" media="all"/>
   	<link rel="styleSheet" href="/resources/include/client/css/loginform.css"  type="text/css" media="all"/>
-
-    <!-- Custom styles for this template -->
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+  	<link rel="styleSheet" href="/resources/include/client/css/fontello-619e3562/css/animation.css"  type="text/css" media="all"/>
+	<link rel="stylesheet" href="/resources/include/client/css/fontello-619e3562/css/fontello-embedded.css">
+	<script type = "text/javascript" src="/resources/include/common/js/common.js"></script>
     <script src="/resources/include/client/js/jquery-1.12.4.min.js"></script>
-    <script src="/resources/include/client/dist/assets/js/ie-emulation-modes-warning.js"></script>
+    <script src="/resources/include/client/dist/assets/js/ie-emulation-modes-warning.js"></script> 
+    <script src="/resources/include/client//js/header.js"></script>
+    <script src="/resources/include/client//js/login.js"></script>
+    <script src="/resources/include/client/js/html5shiv.js"></script>
     
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->

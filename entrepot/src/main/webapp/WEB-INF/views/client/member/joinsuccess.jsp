@@ -10,7 +10,6 @@
 
 		<link rel="shortcut icon" href = "../image/icon.png"/>
 		<link rel="apple-touch-icon" href = "../image/icon.png"/>
-		<link rel="styleSheet" href="/resources/include/client/css/normalize.css"/>
 		<!-- [if lt IE 9]>
 		<script type="text/javascript" src="/springSite/resources/include/js/html5shiv.js"></script>
 		<![emdif] -->

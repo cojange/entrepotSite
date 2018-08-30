@@ -76,7 +76,7 @@ function birthCheck() {
 	});*/
 
 var idConfirm = 1;
-$(function() {	
+$(function() {
 	var direct = document.getElementById('direct');//체크박스 체크여부확인
 	errCodeCheck();//mForm.jsp 에 script함수
 	//사용자에게 요구사항에 대한 문자열로 배열 초기화.

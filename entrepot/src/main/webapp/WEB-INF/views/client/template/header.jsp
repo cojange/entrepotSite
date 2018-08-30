@@ -4,10 +4,8 @@
 
 
 <script type="text/javascript" src="/resources/include/client/js/jquery-1.12.4.min.js"></script>
-<script type="text/javascript" src="/resources/include/client/js/header.js"></script>
 <%-- <script type="text/javascript">
 </script>
-<<<<<<< HEAD
 
 =======
 <div id="header" class="container">
@@ -59,6 +57,7 @@
 	</div>
  --%>
 <script type="text/javascript">
+function errorCodeCheck(){}
 </script>
 <div id="header" class="container">
    <div id="logo">
@@ -91,13 +90,26 @@
       <div class="memberlogin" style="font-size: 10pt;">
          <!-- <a href="javascript:void(window.open('/client/login/login.do', '_blank','width=300px, height=350px',))">로그인</a> -->
          <c:if test="${login.m_id != null and login.m_id != ''}">
-         <div  style="font-size: 10pt;,display: inline-block;">
-         <span>[ ${login.m_name} ]님 환영합니다!!!</span>
-         <br>
-         <button id="menu" value="메뉴"></button><br>
-			  <input type="button" id="logout" value="로그아웃"><br>
+         <div class="menu"  style="font-size: 10pt;,display: inline-block;">
+         <span>[ ${login.m_name} ]님 환영합니다.</span>
+         <br><br>
+         <a id="menuDownUp" href="#"></a>
+         <span class="menuDown"><i class="icon-th-list">메뉴&nbsp;<span>▼</span><a id="menuDown" href="#"></a></i></span><br>
+         <span class="menuUp"><i class="icon-th-list">메뉴&nbsp;<span>▲</span><a id="menuUp" href="#"></a></i></span><br>
+         		<div class="loginMenu">
+         			<a id="logout" href="#">로그아웃</a><p></p>
+         			<c:if test="${login.mt == '개인'}">
+         			<a id="memberMyPage" href="#">마이페이지</a><p></p>
+         			<a id="memberModify" href="#">정보수정</a><br>
+         			</c:if>
+         			<c:if test="${login.mt == '단체'}">
+         			<a id="groupMyPage" href="#">마이페이지</a><p></p>
+         			<a id="groupModify" href="#">정보수정</a><br>
+         			</c:if>
+         		</div>
+			 <!--  <input type="button" id="logout" value="로그아웃"><br>
 		      <input type="button" id="myPage" value="마이페이지"><br>
-		      <input type="button" id="#" value="정보수정(비밀번호변경)">
+		      <input type="button" id="#" value="정보수정(비밀번호변경)"> -->
 
          </div>
          </c:if>

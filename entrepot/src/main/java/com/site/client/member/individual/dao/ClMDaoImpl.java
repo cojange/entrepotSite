@@ -22,7 +22,11 @@ public class ClMDaoImpl implements ClMDao {
 	public ClMVO memberSelect(String m_id) {
 		return (ClMVO)session.selectOne("memberSelect",m_id);
 	}
-
+	
+	@Override
+	public int memberUpdate(ClMVO  cvo) {
+	return session.update("memberUpdate", cvo);
+	}
 
 	@Override
 	public int memberInsert(ClMVO cmvo) {
@@ -43,6 +47,7 @@ public class ClMDaoImpl implements ClMDao {
 		return (ClMSecurity)session.selectOne("securitySelect",m_id);
 	}
 
+	/*****************인터페이스 공용사용으로인한재정의*******************/
 	@Override
 	public ClGmVO groupMemberSelect(String m_id) {
 		// TODO Auto-generated method stub
@@ -50,7 +55,7 @@ public class ClMDaoImpl implements ClMDao {
 	}
 
 	@Override
-	public int groupMemberInsert(ClGmVO cgmvo) {
+	public int groupMemberInsert(ClGmVO cmvo) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -60,6 +65,12 @@ public class ClMDaoImpl implements ClMDao {
 	public ClGmVO groupComMemberSelect(String com_no) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public int groupMemberUpdate(ClGmVO cmvo) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
