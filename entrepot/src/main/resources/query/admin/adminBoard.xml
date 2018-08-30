@@ -15,7 +15,7 @@
 		to_char(coupon_date,'yy-mm-dd') coupon_date,
 		to_char(coupon_update,'yy-mm-dd') coupon_update, coupon_memo, coupon_use
 		from coupon 
-		order by coupon_date desc, coupon_update desc
+		order by coupon_use desc, coupon_date desc, coupon_update desc
 	</select>
 	
 	<insert id="couponInsert" parameterType="coupon">

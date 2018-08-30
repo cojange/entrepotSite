@@ -79,6 +79,7 @@
 	    <script type="text/javascript" src="/resources/include/admin/js/couponList.js"></script>
 	    <script type="text/javascript" src="/resources/include/admin/js/regulationsList.js"></script>
 	    <script type="text/javascript" src="/resources/include/common/js/jquery.form.min.js"></script>
+	    <script type="text/javascript" src="/resources/include/admin/js/ad-partner.js"></script>
 	    <script type="text/javascript">
 	    /* input date에 현재 날짜 받아오기 */
 	    	$(function(){
@@ -129,12 +130,41 @@
 	    		//거래처 관리탭
 	    		if($(location).attr("href") == "http://localhost:8080/admin/ctrl/adPartner/adPartnerListCtrl.do"){
 	    			$("#adminTable").dataTable();
-	    			$("#addMagazine").click(function(){
+	    			/* $("#addMagazine").click(function(){
 	    				window.open('/admin/ctrl/adPartner/magazineForm.do','_blank','width=500px, height=600px');
 	    			});    
 	    			$("#addCourier").click(function(){
 	    				window.open('/admin/ctrl/adPartner/courierForm.do','_blank','width=500px, height=600px');
-	    			});
+	    			}); */
+
+	        		$("#magInsertBtn").click(function(){
+	        			console.log("가");
+	        			//입력값 체크
+	        			if(!chkData($('#com_name'),"회사명을")) return;
+	        			else{
+	        				$("#magazineInsertForm").ajaxForm({
+	        					url : "/admin/ctrl/adPartner/magazineInsert.do",
+	        					type : "post",
+	        					dataType : "text",
+	        					error : function(){
+	        						alert('시스템 오류 입니다. 관리자에게 문의 하세요');
+	        					},
+	        					success : function(data){
+	        						console.log(data);
+	        						//alert(data);
+	        						if(data=="성공"){
+	        							resetData();
+	        							$('#magazineModel').modal('hide');
+	        							
+	        						}else{
+	        							alert("["+data+"]\n등록에 문제가 있어 완료하지 못하였습니다. 잠시 후 다시 시도해 주세요.")
+	        							resetData();
+	        						}
+	        					}
+	        				});
+	        				$("#magazineInsertForm").submit();
+	        			}
+	        		});
 	    		}
 	    		
 	    		//약관 관리탭
@@ -313,6 +343,7 @@
 
     			});	    		    		
     		}//비용 탭 일때 JS 
+    		
 	    });
 	    </script>
   </body>
