@@ -37,6 +37,13 @@
 	value="/WEB-INF/views/client/member/{1}/{2}.jsp"/>
 	</definition>
 	
+	<!-- <definition name="client/member/myPage/*" extends="content">
+	<put-attribute name="body"
+	value="/WEB-INF/views/client/member/myPage/{1}.jsp"/>
+	<put-attribute name="sidebar"
+	value="/WEB-INF/views/client/member/myPageSide/sidebar.jsp"/>
+	</definition> -->
+	
 	
 	<!--  -->
 

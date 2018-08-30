@@ -9,6 +9,7 @@ import com.site.admin.ctrl.adMember.dao.AdMemberDao;
 import com.site.admin.ctrl.adMember.vo.AdManagerVO;
 import com.site.admin.ctrl.adMember.vo.AdMbCommonVO;
 import com.site.admin.ctrl.adMember.vo.AdMbPersnalVO;
+import com.site.admin.ctrl.adMember.vo.AdminVO;
 
 @Service
 public class AdMemberServiceImpl implements AdMemberService{
@@ -47,5 +48,53 @@ public class AdMemberServiceImpl implements AdMemberService{
 		//전체는 원래 메서드로
 		return pmList;
 	}
+
+	//id중복검사.
+	@Override
+	public String idCheck(AdminVO avo) {
+		AdminVO resultVO = adMemberDao.idCheck(avo);
+		String result="fail";
+		
+		if(resultVO == null) {
+			result = "success";
+		}
+		return result;
+	}
+	//연락처 중복체크
+	@Override
+	public String tellCheck(AdminVO avo) {
+		AdminVO resultVO = adMemberDao.tellCheck(avo);
+		String  result = "fail";
+		if(resultVO == null) {
+			result="success";
+		}
+		return result;
+	}
+	//이메일 중복체크
+	@Override
+	public String emailCheck(AdminVO avo) {
+		AdminVO resultVO = adMemberDao.emailCheck(avo);
+		String result = "fail";
+		if(resultVO == null) {
+			result="success";
+		}
+		return result;
+	}
+
+	//admin 등록
+	@Override
+	public String insertAdmin(AdminVO avo) {
+		
+		int result = adMemberDao.insertAdmin(avo);
+		if(result==1) {
+			return "success";
+		}else {
+			return "fails";
+		}
+	}
+
+
+
+
 	
 }

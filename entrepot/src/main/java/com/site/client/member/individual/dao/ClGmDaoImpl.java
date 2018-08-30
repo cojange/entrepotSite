@@ -24,16 +24,22 @@ public class ClGmDaoImpl implements ClMDao {
 	}
 	
 	@Override
+	public int groupMemberUpdate(ClGmVO  cmvo) {
+	return session.update("groupMemberUpdate", cmvo);
+	}
+	
+	@Override
 	public ClGmVO groupComMemberSelect(String com_no) {
 		return (ClGmVO)session.selectOne("groupComMemberSelect",com_no);
 	}
 	
 	@Override
-	public int groupMemberInsert(ClGmVO cgmvo) {
+	public int groupMemberInsert(ClGmVO cmvo) {
 		logger.info("groupMemberInsert 실행");
-		return session.insert("groupMemberInsert",cgmvo);
+		return session.insert("groupMemberInsert",cmvo);
 	}
-
+	
+	/*****************인터페이스 공용사용으로인한재정의*******************/
 	@Override
 	public ClMVO memberSelect(String m_id) {
 		// TODO Auto-generated method stub
@@ -56,6 +62,12 @@ public class ClGmDaoImpl implements ClMDao {
 	public ClMSecurity securitySelect(String m_Id) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public int memberUpdate(ClMVO mvo) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 

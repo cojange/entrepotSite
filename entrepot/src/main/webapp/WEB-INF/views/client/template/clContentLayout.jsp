@@ -11,11 +11,17 @@
     <meta name="author" content="">
     <link rel="icon" href="/resources/images/favicon.ico">
 
+
     <title>앙뜨흐뽀</title>
 
 	
 
     <!-- Bootstrap core CSS -->
+
+    <title>앙뜨흐뽀</title>
+
+    <link href="/resources/include/client/css/joinform.css" rel="stylesheet" type="text/css" media="all" />
+
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900|Varela+Round" rel="stylesheet" />
   	<link href="/resources/include/client/css/default.css" rel="stylesheet" type="text/css" media="all" />
   	<link href="/resources/include/client/css/list.css" rel="stylesheet" type="text/css" media="all" />
@@ -28,8 +34,18 @@
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+  	<link rel="styleSheet" href="/resources/include/client/css/normalize.css"  type="text/css" media="all"/>
+  	<link rel="styleSheet" href="/resources/include/client/css/loginform.css"  type="text/css" media="all"/>
+  	<link rel="styleSheet" href="/resources/include/client/css/fontello-619e3562/css/animation.css"  type="text/css" media="all"/>
+	<link rel="stylesheet" href="/resources/include/client/css/fontello-619e3562/css/fontello-embedded.css">
+	<script type = "text/javascript" src="/resources/include/common/js/common.js"></script>
+
     <script src="/resources/include/client/js/jquery-1.12.4.min.js"></script>
-    <script src="/resources/include/client/dist/assets/js/ie-emulation-modes-warning.js"></script>
+    <script src="/resources/include/client/dist/assets/js/ie-emulation-modes-warning.js"></script> 
+    <script src="/resources/include/client//js/header.js"></script>
+    <script src="/resources/include/client//js/login.js"></script>
+    <script src="/resources/include/client/js/html5shiv.js"></script>
     
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -68,12 +84,14 @@
 	  
 	</table>
 </div>
+
 	<div>
 		<tiles:insertAttribute name="quick"/>
 	</div>
 	 <div id="footer">
 			<tiles:insertAttribute name="footer"/>
 	</div>
+
     	
     <!-- Bootstrap core JavaScript
     ================================================== -->

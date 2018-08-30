@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>    
+
 <div class="sidebar">
-<div id="page-wrapper">
+<div id="page-wrapper" class="sideview">
 	<!-- 사이드바 -->
   <div id="sidebar-wrapper">
     <ul class="sidebar-nav">

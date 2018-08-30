@@ -6,6 +6,8 @@
 <meta http-equiv="X-UA-Compatible"content="IE=edge,chrome=1">
 <meta name = "viewport"content="width=device-width,initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=no"/>	
 <title>마이페이지</title>
+<script src="/resources/include/client/js/html5shiv.js"></script>
+<script type="text/javascript" src="/resources/include/client/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 
 function aa_open()
@@ -18,7 +20,6 @@ function aa_open()
  <link rel="stylesheet" href="../../nice_common/text.css" type="TEXT/CSS"><!--사이드메뉴css-->
  <!-- Custom fonts for this template-->
   <!-- <link href="/resources/include/client/css/all.min.css" rel="stylesheet" type="text/css"> -->
-  <link rel="stylesheet" href="/resources/include/client/css/fontello-619e3562/css/fontello-embedded.css">
 
 <body>
 <table cellpadding="0" cellspacing="0" border="0">

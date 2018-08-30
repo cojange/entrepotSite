@@ -25,4 +25,25 @@
 		select m_id, m_name, com_no, m_job, m_email, m_phone, to_char(m_date,'yy-mm-dd') m_date, nvl(to_char(m_update,'yy-mm-dd'),'.') m_update
 		from group_member
 	</select>
+	
+	<select id="idCheck" parameterType="avo" resultType="avo">
+		/*관리자 id 체크*/
+		select ad_id from admin where ad_id=#{ad_id}
+	</select>
+	
+	<select id="tellCheck" parameterType="avo" resultType="avo">
+		/*관리자 tell 체크 */
+		select ad_tell from admin where ad_tell=#{ad_tell}
+	</select>
+	
+	<select id="emailCheck" parameterType="avo" resultType="avo">
+		/*관리자 email 체크*/
+		select ad_email from admin where ad_email=#{ad_email}
+	</select>
+	
+	<insert id="insertAdmin" parameterType="avo">
+		/*관리자 등록*/
+		insert into admin(ad_id, ad_pw, ad_name, ad_tell, ad_email, ad_grade)
+		values(#{ad_id}, #{ad_pw}, #{ad_name}, #{ad_tell}, #{ad_email}, #{ad_grade})
+	</insert>
 </mapper>

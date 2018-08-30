@@ -5,6 +5,7 @@ public class LoginVO extends LoginHistory{
 	private String m_id ="";
 	private String m_pwd="";
 	private String m_name="";
+	private String mt="";
 	
 	public LoginVO() {}
 
@@ -38,6 +39,16 @@ public class LoginVO extends LoginHistory{
 	public void setM_name(String m_name) {
 		this.m_name = m_name;
 	}
+
+	public String getMt() {
+		return mt;
+	}
+
+	public void setMt(String mt) {
+		this.mt = mt;
+	}
+	
+	
 	
 	
 	
