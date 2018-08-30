@@ -1,16 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>    
-
+<div class="sidebar" style="width: 338px;height: 500px;">  
 <div id="page-wrapper">
-	<!-- 사이드바 -->
+	<!-- 사이드바 --> 
   <div id="sidebar-wrapper">
     <ul class="sidebar-nav">
       <li class="sidebar-brand">
         <a href="#">마이페이지</a>
       </li>
 	  <li>
-      	<a href="#" accesskey="1" title="">My 찜목록<i class="demo-icon icon-heart-filled"   style="width: 10px;" ></i></a>
+      	<a href="#" accesskey="1" title="">My 찜리스트<i class="demo-icon icon-heart-filled"   style="width: 10px;" ></i></a>
       </li>
       <li>
       	<a href="#" accesskey="1" title="">My 장바구니<i class="demo-icon icon-basket"  style="width: 10px;" ></i></a>
@@ -28,3 +28,4 @@
     </ul>
   </div>
 </div>  
+</div>

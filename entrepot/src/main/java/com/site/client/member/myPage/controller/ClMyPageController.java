@@ -24,7 +24,7 @@ public class ClMyPageController {
 	@RequestMapping(value="/member/myPage.do",method = RequestMethod.GET)
 	public String myPage(){
 		logger.info("myPage 메서드 호출 성공");
-		return "client/member/myPage/myPage";
+		return "client/member/myPage/body/myPage";
 	}
 
 }
