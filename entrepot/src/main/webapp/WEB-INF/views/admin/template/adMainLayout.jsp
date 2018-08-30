@@ -32,6 +32,11 @@
     <!-- 사용자 추가사항 -->
     <link href="/resources/include/admin/css/ad-add.css" rel="stylesheet">
     <link href="/resources/include/admin/css/card-slides.css" rel="stylesheet">
+    <style type="text/css">
+    	.adt{
+			background-color: #ababab;
+		}
+    </style>
   </head>
 
   <body id="page-top">
@@ -67,7 +72,7 @@
 		<script type="text/javascript" src="/resources/include/common/js/common.js"></script>
 	    <!-- Demo scripts for this page-->
 	    <script src="/resources/include/admin/js/demo/datatables-demo.js"></script>
-	    <script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
+	    <script src="/resources/include/admin/js/dataTable-select.min.js"></script>
 	    <script src="/resources/include/admin/js/demo/chart-area-demo.js"></script> 
 	    
 	    <!-- 사용자 정의 js -->
@@ -93,32 +98,205 @@
 	    		
 	    		//회원관리탭
 	    		if($(location).attr("href") == "http://localhost:8080/admin/ctrl/adMember/adMemberCtrl.do"){
-	    			$("#adminTable").DataTable({
-	    				columnDefs:[{
-	    					orderable: false,
-	    					className:'select-checkbox',
-	    					targets:0
-	    				}],
-	    				select:{
-	    					style: 'os',
-	    					selector:'td:first-child'
-	    				},
-	    				order:[[1,'asc']]
-	    			});
+	    			$("#adminTable").dataTable();
 	    			
 	    			$("#adminTable tbody").on("click","tr", function(){
-	    				console.log("aa");
-	    				$(this).toggleClass('selected');
+	    				$(this).toggleClass('adt');
+	    				$(this).parent().find("tr").not(this).removeClass("adt");
 	    			});
+					//admin 추가버튼
+
+	    			var c=0;
+					var h=0;
+					var e=0;
+					var c=0;
+					var k=1;
+					
+					var message = "아이디";
+	    				//아이디 중복 체크
+	    				$("#id").blur(function(){
+	    					spaceChange($(this));
+	    					
+	    					if(!inputVerify(11,"#id","아이디가","영문 숫자 혼합 6~10","admin")) return;
+	    					var id = $("#id").val();
+	    						$.ajax({
+	    							url:"/admin/ctrl/adMember/idCheck.do",
+	    							type:"post",
+	    							data:"ad_id=" + id,
+	    							dataType:"text",
+	    							error:function(){
+	    								alert("시스템 오류입니다. 관리자에게 문의하세요");
+	    							},
+	    							success: function(result){
+	    								console.log("result : " + result);
+	    								
+	    								if(result=='success'){
+	    									alert(id +'는 사용가능한 아이디입니다.');
+	    									c=1;
+	    									message="비밀번호"
+	    								}else if(result=='fail'){
+	    									alert(id + "는 중복 아이디 입니다. 다시 입력해 주세요.");
+	    									$("#id").val("");
+	    								}
+	    							}
+	    						})
+	    					
+	    				})//아이디 중복 체크
+	    				
+	    				//비밀번호 체크
+	    				$("#coPw").blur(function(){
+	    					spaceChange($("#pw"));
+	    					spaceChange($(this));
+	    					if(!inputVerify(1,"#pw","비밀번호가","영문 숫자, 특수문자 혼합 8~12","admin")) return;
+	    					else if($("#pw").val()!=$(this).val()){
+	    						alert("비밀번호 확인란과 비밀번호가 일치 하지 않습니다.");
+	    						$("#coPw").val("");
+	    					}else{
+	    						alert("비밀번호가 일치 합니다.");
+	    						h=1;
+	    						message="연락처"
+	    					}
+	    				});
+	    				$("#tell").focus(function(){
+	    					console.log("tell focus");
+	    				})
+	    				
+	    				//핸드폰 번호 체크
+	    				$("#tell").blur(function(){
+	    					spaceChange($("#tell"));
+	    					var tell = $("#tell").val();
+	    					if(!inputVerify(7,"#tell","연락처가","3-4-4","admin")) return;
+	    					else {
+	    						$.ajax({
+	    							url:"/admin/ctrl/adMember/tellCheck.do",
+	    							type:"post",
+	    							data:"ad_tell=" + tell,
+	    							dataType:"text",
+	    							error:function(){
+	    								alert("시스템 오류입니다. 관리자에게 문의하세요");
+	    							},
+	    							success: function(result){
+	    								console.log("result : " + result);
+	    								
+	    								if(result=='success'){
+	    									alert(tell +'은 중복되지 않은 연락처입니다.');
+	    									e=1;
+	    									message="이메일";
+	    								}else if(result=='fail'){
+	    									alert(tell + "은 중복 연락처 입니다. 다시 입력해 주세요.");
+	    									$("#tell").val("");
+	    								}
+	    							}
+	    						})
+	    					}
+	    				})//핸드폰 체크
+	    				
+	    				//이메일 체크
+	    				$("#email").click(function(e){  					
+	    					
+	    				})//이메일 체크
+	    				
+	    				//등록하기(ajaxForm)
+	    				$("#addAdmin").click(function(){
+	    					resetData();
+	    					console.log("click submit");
+	    					if(emailCheck()){
+	    						console.log("into if");
+	    						return;
+	    					}
+	    					var check = c+h+e+c+k;
+	    					if(check != 5){
+	    						alert(message+" 입력값 중복검사 해주세요.");
+		    					return;
+	    				}//중복체크 검사
+	    				
+	    				else {
+	    					$("input[type=text] ,input[type=password]").each(function(){
+	    						if($(this).val()!=""){
+	    							spaceChange($(this));
+	    						}
+	    					});
+	    					if(!inputVerify(11,"#id","아이디가","영문 숫자 혼합 6~10","admin")) return;
+	    					else if(!inputVerify(1,"#pw","비밀번호가","영문 숫자, 특수문자 혼합 8~12","admin")) return;
+	    					else if(!inputVerify(9,"#name","이름이","3~4자리","admin")) return;
+	    					else if(!chkData("#grade","직급을")) return;
+	    					else if(!inputVerify(7,"#tell","연락처가","3-2-5","admin")) return;
+	    					else if(!inputVerify(10,"#email","이메일이"," ","admin")) return;
+	    					
+	    					else{
+	    						$("#ad_addForm").ajaxForm({
+	    							url:"/admin/ctrl/adMember/insertAdmin.do",
+	    							type:"post",
+	    							dataType:"text",
+	    							error:function(){
+	    								alert("시스템 오류입니다. 관리자에게 문의하세요.");
+	    							},success:function(result){
+	    								console.log(result);
+	    								
+	    								if(result='success'){
+	    									alert("새로운 관리자를 등록 하였습니다.");
+	    									$("#adminModal").modal("hide");
+	    									location.href="/admin/ctrl/adMember/adMemberCtrl.do";
+	    								}else {
+	    									alert("관리자 등록에 실패하였습니다.");
+	    									resetData();
+	    								}
+	    							}
+	    						});//ajax 끝
+	    						$("#ad_addForm").submit();
+	    						
+	    					}
+	    				}
+	    				});//등록하기
+	    			//모든 데이터 지우기
+	    			function resetData(){
+	    				$("#ad-addForm").each(function(){
+	    					this.reset();
+	    				});
+	    			}
+	    			//공백제거
+	    			function spaceChange(target){
+	    				if(target.val()!=""){
+	    					target.val(getTrimStr(target.val()));
+	    				}
+	    			}
 	    			
+	    			//이메일 중복체크
+	    			function emailCheck(){
+	    				console.log("check email");
+	    				spaceChange($("#email"));
+    					var email = $("#email").val();
+    					if(!inputVerify(10,"#email","이메일이"," ","admin")) return true;
+    					else{
+    						$.ajax({
+    							url:"/admin/ctrl/adMember/emailCheck.do",
+    							type:"post",
+    							data:"ad_email=" + email,
+    							dataType:"text",
+    							error:function(){
+    								alert("시스템 오류입니다. 관리자에게 문의하세요");
+    							},
+    							success: function(result){
+    								console.log("result : " + result);
+    								
+    								if(result=='success'){
+    									alert(email +'은 중복되지 않은 이메일 입니다.');
+    									c=1;
+    								}else if(result=='fail'){
+    									alert(email + "은 중복 이메일 입니다. 다시 입력해 주세요.");
+    									$("#email").val("");
+    								}
+    							}
+    						})
+    						return false;
+    					}
+	    			}
+
 	    			
-	    			$("#ad-add").click(function(){
-	    				window.open('/admin/ctrl/adMember/adminRegit.do','_blank','width=500px, height=600px')
-	    			});
-	    			
-	    		/* 	$("#adminFire").click(function(){
-	    				$.ajax()
-	    			}) */
+					//admin 해고버튼
+	    		 	$("#adminFire").click(function(){
+	    				
+	    			})
 	    		}
 	    		
 	    		//거래처 관리탭

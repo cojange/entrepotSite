@@ -14,5 +14,8 @@ public interface AdMemberDao {
 	public List<AdMbCommonVO> pmList(AdMbCommonVO ambcvo);
 	public List<AdMbCommonVO> gpList(AdMbCommonVO ambcvo);
 	public AdminVO idCheck(AdminVO avo);
+	public AdminVO tellCheck(AdminVO avo);
+	public AdminVO emailCheck(AdminVO avo);
 	public int insertAdmin(AdminVO avo);
+	
 }

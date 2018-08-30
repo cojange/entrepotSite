@@ -21,7 +21,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="/admin/order/orderList/getSellList.do">
             <i class="fas fa-fw fas fa-shopping-cart"></i>
             <span>구매관리</span>
           </a>

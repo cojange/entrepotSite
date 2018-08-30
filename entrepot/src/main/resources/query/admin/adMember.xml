@@ -31,6 +31,16 @@
 		select ad_id from admin where ad_id=#{ad_id}
 	</select>
 	
+	<select id="tellCheck" parameterType="avo" resultType="avo">
+		/*관리자 tell 체크 */
+		select ad_tell from admin where ad_tell=#{ad_tell}
+	</select>
+	
+	<select id="emailCheck" parameterType="avo" resultType="avo">
+		/*관리자 email 체크*/
+		select ad_email from admin where ad_email=#{ad_email}
+	</select>
+	
 	<insert id="insertAdmin" parameterType="avo">
 		/*관리자 등록*/
 		insert into admin(ad_id, ad_pw, ad_name, ad_tell, ad_email, ad_grade)
