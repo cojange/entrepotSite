@@ -22,8 +22,8 @@ public class AdOrderListController {
 		
 		List<AdSellListVO> sellList = adOrderListService.getSellList();
 		
-		model.addAttribute("slvo",sellList);
+		model.addAttribute("sellList",sellList);
 		
-		return "/admin/adOrderList/orderList";
+		return "admin/order/adOrderList/sellList";
 	}
 }
