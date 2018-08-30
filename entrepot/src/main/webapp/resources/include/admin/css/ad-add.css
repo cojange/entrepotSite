@@ -37,3 +37,12 @@
 /* .fa {
 font: FontAwesome !important;
 } */
+
+.green{
+	color:green;
+	size:15px;
+}
+.red{
+	color:red;
+	size:15px;
+}
