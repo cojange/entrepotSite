@@ -11,20 +11,25 @@ public class CourierPartnerVO {
 	private String char_tel;
 	private String startdate;
 	private String enddate;
+	private String couacc_date;
 	private String couacc_update;
 	private String couacc_cost;
-	private String couacc_cnt;
-	
+	private String couacc_cnt;	
 	
 	@Override
 	public String toString() {
 		return "CourierPartnerVO [com_no=" + com_no + ", couacc_area=" + couacc_area + ", couacc_name=" + couacc_name
 				+ ", couacc_tel=" + couacc_tel + ", couacc_fax=" + couacc_fax + ", couacc_email=" + couacc_email
 				+ ", char_manager=" + char_manager + ", char_tel=" + char_tel + ", startdate=" + startdate
-				+ ", enddate=" + enddate + ", couacc_update=" + couacc_update + ", couacc_cost=" + couacc_cost
-				+ ", couacc_cnt=" + couacc_cnt + "]";
+				+ ", enddate=" + enddate + ", couacc_date=" + couacc_date + ", couacc_update=" + couacc_update
+				+ ", couacc_cost=" + couacc_cost + ", couacc_cnt=" + couacc_cnt + "]";
 	}
-	
+	public String getCouacc_date() {
+		return couacc_date;
+	}
+	public void setCouacc_date(String couacc_date) {
+		this.couacc_date = couacc_date;
+	}
 	public String getCom_no() {
 		return com_no;
 	}

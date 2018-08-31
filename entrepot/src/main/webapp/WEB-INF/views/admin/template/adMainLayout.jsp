@@ -85,6 +85,7 @@
 	    <script type="text/javascript" src="/resources/include/admin/js/regulationsList.js"></script>
 	    <script type="text/javascript" src="/resources/include/common/js/jquery.form.min.js"></script>
 	    <script type="text/javascript" src="/resources/include/admin/js/ad-partner.js"></script>
+	    <script type="text/javascript" src="/resources/include/admin/js/json2html/json2html.js"></script>
 	    <script type="text/javascript">
 	    /* input date에 현재 날짜 받아오기 */
 	    	$(function(){
@@ -100,12 +101,71 @@
 	    		if($(location).attr("href") == "http://localhost:8080/admin/ctrl/adMember/adMemberCtrl.do"){
 	    			$("#adminTable").dataTable();
 	    			
+	    			var gpTable = $(".switchTable").DataTable();
+	      			
+	      			//현재 회원관리 select 값 담기
+	      			$("#mbType").change(function(){
+	      				var mbType = $("#mbType").val();
+	      				var mbListURL = "/admin/ctrl/adMember/pmlist.do";
+	      				
+	      				var column;
+	      				if(mbType=='group'){
+	      					column=['아이디','이름','사업자번호','기관','이메일','전화번호','등록일','수정일'];
+	      				}else if(mbType=='personal'){
+	      					column=['아이디','이름','성별','이메일','연락처','등급','등록일','수정일']
+	      				}else {
+	      					column=['회원코드','아이디','이름','직업/기관','주소','연락처','이메일','등록일']
+	      				}
+	      				
+	      				
+	      				
+	      				$("#switchDiv").html("");
+	      				
+	      				$.getJSON(mbListURL,{
+	      					mt:mbType
+	      				},function(datavo){
+	      					console.log(datavo.length);
+	      					addNewDatatable(column,$("#switchDiv"));
+	      					if(mbType=='group'){
+	       					$(".switchTable").DataTable({
+	       						data:datavo,
+	       						columns:[
+	       							{data : "m_id"},
+	       							{data : "m_name"},
+	       							{data : "com_no"},
+	       							{data : "m_job"},
+	       							{data : "m_email"},
+	       							{data : "m_phone"},
+	       							{data : "m_date"},
+	       							{data : "m_update"}
+	       						]
+	       					})
+	      					} else if(mbType=='personal'){
+	       					$(".switchTable").DataTable({
+	       						data:datavo,
+	       						columns:[
+	       							{data : "m_id"},
+	       							{data : "m_name"},
+	       							{data : "m_gender"},
+	       							{data : "m_email"},
+	       							{data : "m_phone"},
+	       							{data : "grade"},
+	       							{data : "m_date"},
+	       							{data : "m_update"}
+	       						]
+	       					})
+	      					}
+	    				});
+	    			 });  		
+	    			
+	      			//admin 삭제시 선택하기
 	    			$("#adminTable tbody").on("click","tr", function(){
 	    				$(this).toggleClass('adt');
 	    				$(this).parent().find("tr").not(this).removeClass("adt");
 	    			});
-					//admin 추가버튼
-
+						
+	      			
+	      			//admin check 변수
 	    			var c=0;
 					var h=0;
 					var e=0;
@@ -302,6 +362,9 @@
 	    		//거래처 관리탭
 	    		if($(location).attr("href") == "http://localhost:8080/admin/ctrl/adPartner/adPartnerListCtrl.do"){
 	    			$("#adminTable").dataTable();
+	    			nowTime1();
+	    			$("#mcom_date").val(today1);
+	    			$("#couacc_date").val(today1);
 	    			/* 새창띄우기 할때 사용 
 	    			$("#addMagazine").click(function(){
 	    				window.open('/admin/ctrl/adPartner/magazineForm.do','_blank','width=500px, height=600px');
@@ -309,35 +372,83 @@
 	    			$("#addCourier").click(function(){
 	    				window.open('/admin/ctrl/adPartner/courierForm.do','_blank','width=500px, height=600px');
 	    			}); */
-
+					
+	    			$("#couDel").click(function(){
+	    				resetData2();
+	    			});
+	    			$("#magDel").click(function(){
+	    				resetData1();
+	    			});
+	    			
+	    			/* 잡지 거래처 등록 */
 	        		$("#magInsertBtn").click(function(){
-	        			console.log("가");
+	        			console.log("가");	        			
 	        			//입력값 체크
-	        			if(!chkData($('#com_name'),"회사명을")) return;
+	        			if(!chkData($('#mCom_name'),"회사명을")) return;
 	        			else{
 	        				$("#magazineInsertForm").ajaxForm({
 	        					url : "/admin/ctrl/adPartner/magazineInsert.do",
-	        					type : "post",
-	        					dataType : "text",
-	        					error : function(){
-	        						alert('시스템 오류 입니다. 관리자에게 문의 하세요');
-	        					},
-	        					success : function(data){
-	        						console.log(data);
-	        						//alert(data);
-	        						if(data=="성공"){
-	        							resetData();
-	        							$('#magazineModel').modal('hide');
-	        							
-	        						}else{
-	        							alert("["+data+"]\n등록에 문제가 있어 완료하지 못하였습니다. 잠시 후 다시 시도해 주세요.")
-	        							resetData();
-	        						}
-	        					}
+	        					type:"post",
+    							dataType:"text",
+    							error:function(){
+    								alert("시스템 오류입니다. 관리자에게 문의하세요.");
+    							},success:function(result){
+    								console.log(result);
+    								
+    								if(result='success'){
+    									alert("새로운 관리자를 등록 하였습니다.");
+    									$("#magazineModel").modal("hide");
+    									location.href="/admin/ctrl/adPartner/adPartnerListCtrl.do";
+    								}else {
+    									alert("관리자 등록에 실패하였습니다.");
+    									resetData1();
+    								}
+    							}
 	        				});
 	        				$("#magazineInsertForm").submit();
 	        			}
 	        		});
+	        		//모든 데이터 지우기
+	    			function resetData1(){
+	    				$("#magazineInsertForm").each(function(){
+	    					this.reset();
+	    				});
+	    			}
+	        		
+	        		/* 택배 거래처 등록 */
+	    			$("#couInsertForm").click(function(){
+	        			console.log("나");	        			
+	        			//입력값 체크
+	        			if(!chkData($('#couacc_area'),"거래지역을")) return;
+	        			else{
+	        				$("#courierInsertForm").ajaxForm({
+	        					url : "/admin/ctrl/adPartner/courierInsert.do",
+	        					type:"post",
+    							dataType:"text",
+    							error:function(){
+    								alert("시스템 오류입니다. 관리자에게 문의하세요.");
+    							},success:function(result){
+    								console.log(result);
+    								
+    								if(result='success'){
+    									alert("새로운 관리자를 등록 하였습니다.");
+    									$("#courierModel").modal("hide");
+    									location.href="/admin/ctrl/adPartner/adPartnerListCtrl.do";
+    								}else {
+    									alert("관리자 등록에 실패하였습니다.");
+    									resetData2();
+    								}
+    							}
+	        				});
+	        				$("#courierInsertForm").submit();
+	        			}
+	        		});
+	        		//모든 데이터 지우기
+	    			function resetData2(){
+	    				$("#courierInsertForm").each(function(){
+	    					this.reset();
+	    				});
+	    			}
 	    		}
 	    		
 	    		//약관 관리탭
@@ -421,62 +532,7 @@
 	    				});
 	    		}
 
-  			var gpTable = $(".switchTable").DataTable();
-  			
-  			//현재 회원관리 select 값 담기
-  			$("#mbType").change(function(){
-  				var mbType = $("#mbType").val();
-  				var mbListURL = "/admin/ctrl/adMember/pmlist.do";
-  				
-  				var column;
-  				if(mbType=='group'){
-  					column=['아이디','이름','사업자번호','기관','이메일','전화번호','등록일','수정일'];
-  				}else if(mbType=='personal'){
-  					column=['아이디','이름','성별','이메일','연락처','등급','등록일','수정일']
-  				}else {
-  					column=['회원코드','아이디','이름','직업/기관','주소','연락처','이메일','등록일']
-  				}
-  				
-  				
-  				
-  				$("#switchDiv").html("");
-  				
-  				$.getJSON(mbListURL,{
-  					mt:mbType
-  				},function(datavo){
-  					console.log(datavo.length);
-  					addNewDatatable(column,$("#switchDiv"));
-  					if(mbType=='group'){
-   					$(".switchTable").DataTable({
-   						data:datavo,
-   						columns:[
-   							{data : "m_id"},
-   							{data : "m_name"},
-   							{data : "com_no"},
-   							{data : "m_job"},
-   							{data : "m_email"},
-   							{data : "m_phone"},
-   							{data : "m_date"},
-   							{data : "m_update"}
-   						]
-   					})
-  					} else if(mbType=='personal'){
-   					$(".switchTable").DataTable({
-   						data:datavo,
-   						columns:[
-   							{data : "m_id"},
-   							{data : "m_name"},
-   							{data : "m_gender"},
-   							{data : "m_email"},
-   							{data : "m_phone"},
-   							{data : "grade"},
-   							{data : "m_date"},
-   							{data : "m_update"}
-   						]
-   					})
-  					}
-				});
-			 });  							
+  								
     		
 
     		//비용관리탭
@@ -523,9 +579,59 @@
     			});	    		    		
     		}//비용 탭 일때 JS 
     		
+    		//구매관리 탭
+    		if($(location).attr("href")=="http://localhost:8080/admin/order/orderList/getSellList.do"){
+    			var table = $("#orderList").DataTable({
+    				"order":[[1,'asc']]
+    			});
+    			
+    			
+    			// Add event listener for opening and closing details
+    	   	    $('#orderList tbody').on('click', 'td.details-control', function () {
+    	   	    	console.log("뜨어엉");
+    	   	    	
+    	   	    	
+    	   	    	var od_num = $(this).next().html();
+    	   	    	console.log("value : " + od_num);
+    	   	    	
+    	
+					var addTable;
+    	   	    	
+    	   	    	//subtable 요청
+    	   	    	var subTableURL = "/admin/order/orderList/getOrder.do";
+    	   	    	var sub_t = $("<table id='sub_t'>");
+    	   	    	$.getJSON(subTableURL,{
+    	   	    		order_num:od_num
+    	   	    	},function(subList){
+    	   	    		console.log("result: "+ subList);
+    	   	    		
+    	   	    		var addTable= json2html.table(subList);
+    	   	    	});
+    	   	    	
+    	   	    	
+    	   	    	console.log(addTable);
+    	   	        var tr = $(this).closest('tr');
+    	   	        var row = table.row( tr );
+	    	   	     if ( row.child.isShown() ) {
+	    	             // This row is already open - close it
+	    	             row.child.hide();
+	    	             if(tr.find('i').hasClass('fa-minus-circle green')){
+	    	            	 tr.find('i').removeClass('fa-minus-circle green');
+	    	            	 tr.find('i').addClass('fa-plus-circle red');	    	            	 
+	    	             }
+	    	             
+	    	         }
+	    	         else {
+	    	             // Open this row
+	    	             row.child(addTable).show();
+	    	             tr.find('i').removeClass('fa-plus-circle red');
+	    	             tr.find('i').addClass('fa-minus-circle green'); // FontAwesome 5
+	    	         }
+    	   	    } );
+    			
+    		}
     		
-    		
-    		
+    		//1대1게시판 탭
     		if($(location).attr("href") == "http://localhost:8080/admin/adBoard/personalBoard/personalBoardList.do"){
     			
     			 var table = $('.table').DataTable( {
@@ -533,18 +639,10 @@
     			    } );
     			
         		    // `d` is the original data object for the row
-        		   var addTable = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
+        		   var addTable = 
+        			   '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
         		        '<tr>'+
-        		            '<td>Full name:</td>'+
-        		            '<td>뿌애애앵</td>'+
-        		        '</tr>'+
-        		        '<tr>'+
-        		            '<td>Extension number:</td>'+
-        		            '<td>뀨아아앙</td>'+
-        		        '</tr>'+
-        		        '<tr>'+
-        		            '<td>Extra info:</td>'+
-        		            '<td>And any further details here (images etc)...</td>'+
+        		            '<div></div>'+
         		        '</tr>'+
         		    '</table>';
         		

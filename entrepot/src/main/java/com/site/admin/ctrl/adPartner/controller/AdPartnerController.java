@@ -72,12 +72,23 @@ public class AdPartnerController {
 	}
 	
 	/** 
-	 * 택배 거래처 등록 불러오기
+	 * 잡지 거래처 등록 구현하기
 	 *  **/
-	@RequestMapping(value="/courierForm.do")
-	public String courierForm() {
-		logger.info("courierForm 호출 성공");
+	@RequestMapping(value="/courierInsert.do", method=RequestMethod.POST)
+	public String courierInsert(CourierPartnerVO cpvo, Model model) {
+		logger.info("courierInsert 호출 성공");
+		 
+		int result = 0;
+		String url="";
 		
-		return "admin/writeForm/courierForm";
+		result = adPartnerService.courierInsert(cpvo);
+		
+		if(result == 1) {  //오류가 발생하지 않은 경우
+			url = "/admin/ctrl/adPartner/adPartnerListCtrl.do";
+		}else {  //오류가 발생한 경우
+			model.addAttribute("code", 1);  //오류 내용
+			url = "/admin/ctrl/adPartner/courierInsert.do"; 
+		}
+		return "redirect:"+url;
 	}
 }
