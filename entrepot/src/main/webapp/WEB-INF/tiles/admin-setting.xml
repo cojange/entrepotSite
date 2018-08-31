@@ -26,6 +26,11 @@
 	<definition name="admin/adBoard/*/*" extends="basic">
 		<put-attribute name="adContent" value="/WEB-INF/views/admin/{1}/{2}.jsp"/>
 	</definition>
+	
+<!-- 	거래내역 -->
+	<definition name="admin/order/*/*" extends="basic">
+		<put-attribute name="adContent" value="/WEB-INF/views/admin/{1}/{2}.jsp"/>
+	</definition>
 
 <!-- 	비용 -->
 	<definition name="admin/adcost/*" extends="basic">

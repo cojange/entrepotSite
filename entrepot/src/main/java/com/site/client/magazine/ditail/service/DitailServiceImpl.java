@@ -40,15 +40,9 @@ public class DitailServiceImpl implements DitailService {
 	}
 
 	@Override
-	public MagazineVO magazineDetailfree(MagazineVO magazine) {
-		MagazineVO free = null;
-		try {
-			free = ditailDao.magazineDetailfree(magazine);
-		}catch(Exception e) {
-			e.printStackTrace();
-			free=null;
-		}
+	public List<MagazineVO> magazineDetailfree(MagazineVO magazine) {
+		List<MagazineVO> free =null;
 		
-		return free;
+		return free = ditailDao.magazineDetailfree(magazine);
 	}
 }

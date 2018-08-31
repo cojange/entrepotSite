@@ -33,7 +33,19 @@
   font-size:15px;
   text-align:center;
 }
+.adt-selected{
+	color: "#efefef";
+}
 
 /* .fa {
 font: FontAwesome !important;
 } */
+
+.green{
+	color:green;
+	size:15px;
+}
+.red{
+	color:red;
+	size:15px;
+}

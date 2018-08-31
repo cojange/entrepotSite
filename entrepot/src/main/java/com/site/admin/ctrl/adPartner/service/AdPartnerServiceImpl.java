@@ -43,4 +43,17 @@ public class AdPartnerServiceImpl implements AdPartnerService {
 		}
 		return result;
 	}
+
+	//택배거래처 등록
+	@Override
+	public int courierInsert(CourierPartnerVO cpvo) {
+		int result = 0;
+		try {
+			result = adPartnerDao.courierInsert(cpvo);
+		}catch(Exception e) {
+			e.printStackTrace();
+			result = 0;
+		}
+		return result;
+	}
 }

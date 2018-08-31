@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.site.client.member.individual.dao.ClMDao">
+	<!--=======================개인회원시작==============================-->
 	<select id="memberSelect" parameterType="String" resultType="member">
 		/* member - memberSelect */
 		<!-- select m_num,m_id,m_pwd,m_name,m_birth,m_email
@@ -9,6 +10,16 @@
 		(SELECT m_id FROM GROUP_MEMBER UNION ALL SELECT m_id FROM member ) 
 		GROUP BY m_id HAVING m_id=#{m_id}
 	</select>
+	
+	<update id="memberUpdate" parameterType="member">
+		update member set 
+		<if test="m_pwd != null and m_pwd != ''">
+		m_pwd=#{m_pwd}, 
+		</if>
+		m_phone=#{m_phone}, 
+		m_email=#{m_email} 
+		where m_id=#{m_id}
+	</update> 
 	
 	<insert id="memberInsert" parameterType="member">
 		/*member - memberInsert*/
@@ -21,11 +32,24 @@
 		,#{m_birth},#{m_gender},#{m_email},#{m_phone}
 		,#{m_job},#{m_zipcode},#{m_address},sysdate,#{quiz},#{ans},'cart_'||member_seq.nextval,'whish_'||member_seq.nextval,'개인')
 	</insert>
+	<!--=======================개인회원끝==============================-->
+	
+	<!--=======================단체회원시작==============================-->
 	<select id="groupMemberSelect" parameterType="String" resultType="groupMember">
 		/* groupMember - groupMemberSelect */
 		select m_num,m_id,m_pwd,m_name
 		from group_member where m_id=#{m_id}
 	</select>
+	
+	<update id="groupMemberUpdate" parameterType="member">
+		update group_member set 
+		<if test="m_pwd != null and m_pwd != ''">
+		m_pwd=#{m_pwd}, 
+		</if>
+		m_phone=#{m_phone}, 
+		m_email=#{m_email} 
+		where m_id=#{m_id}
+	</update> 
 	
 	<select id="groupComMemberSelect" parameterType="String" resultType="groupMember">
 		/* groupMember - groupComMemberSelect */
@@ -46,7 +70,9 @@
 		#{m_address},#{m_zipcode},#{char_name},#{char_phone},#{char_email},#{acc_name},#{acc_phone},#{acc_email},
 		#{m_job},sysdate,#{fax},'cart_'||group_member_seq.nextval||'g','whish_'||group_member_seq.nextval||'g','단체')
 	</insert>
+	<!--=======================단체회원끝==============================-->
 	
+	<!--=======================암호화작업 및 비교시작==============================-->
 	<select id="securitySelect" parameterType="String" resultType="security">
 		/* security - securitySelect */
 		select m_id,salt from security where m_id=#{m_id}
@@ -57,5 +83,6 @@
 		insert into security(m_id,salt)
 		values(#{m_id},#{salt})
 	</insert>
+	<!--=======================암호화작업 및 비교끝==============================-->
 	
 </mapper>

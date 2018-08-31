@@ -27,10 +27,14 @@ public class AdPartnerDaoImpl implements AdPartnerDao {
 		return session.selectList("magPartnerList", mpvo);
 	}
 	
-	
 	//잡지 거래처 등록
 	@Override
 	public int magazineInsert(MagazinePartnerVO mpvo) {
 		return session.insert("magazineInsert", mpvo);
+	}
+
+	@Override
+	public int courierInsert(CourierPartnerVO cpvo) {
+		return session.insert("courierInsert", cpvo);
 	}
 }

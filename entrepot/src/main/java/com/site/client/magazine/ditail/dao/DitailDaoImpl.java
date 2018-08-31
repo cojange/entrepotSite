@@ -23,8 +23,8 @@ public class DitailDaoImpl implements DitailDao {
 	}
 
 	@Override
-	public MagazineVO magazineDetailfree(MagazineVO magazine) {
+	public  List<MagazineVO> magazineDetailfree(MagazineVO magazine) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne("magazineDetailfree",magazine);
+		return sqlSession.selectList("magazineDetailfree",magazine);
 	}
 }

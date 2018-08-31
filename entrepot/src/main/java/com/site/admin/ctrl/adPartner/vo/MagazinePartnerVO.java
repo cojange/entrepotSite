@@ -20,17 +20,10 @@ public class MagazinePartnerVO {
     private String raddress;
     private String rzip_code;
     private String bacc_bank;
-    private String bacc_accno;
+    private String bacc_accno; 
     private String com_name;
     private String bacc_name;
     
-    
-	public String getMcom_date() {
-		return mcom_date;
-	}
-	public void setMcom_date(String mcom_date) {
-		this.mcom_date = mcom_date;
-	}
 	public String getCom_no() {
 		return com_no;
 	}
@@ -114,6 +107,12 @@ public class MagazinePartnerVO {
 	}
 	public void setEnddate(String enddate) {
 		this.enddate = enddate;
+	}
+	public String getMcom_date() {
+		return mcom_date;
+	}
+	public void setMcom_date(String mcom_date) {
+		this.mcom_date = mcom_date;
 	}
 	public String getMcom_update() {
 		return mcom_update;

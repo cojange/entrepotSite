@@ -37,4 +37,28 @@
 	margin-left: 330px;
 	background-color: #ccFFFF;	
 }
+.loginMenu{
+	width:100px;
+	height:100px;
+	background-color: white;
+	border: solid 3px;
+	text-decoration: none;	
+}
 
+#menuDownUp, .loginMenu a ,#joingo,#logingo{
+	text-decoration: none;	
+}
+
+#menuDownUp:hover,#joingo:hover,#logingo:hover{
+	text-decoration: underline;	
+}
+ .loginMenu a:hover{
+ 	background-color: black;
+ 	color: white;
+ }
+ table .myPage{
+ 	border: solid black 0px;  
+ 	width: 868px;
+ 	padding-left: 0px; 
+ 	padding-right: 0px;
+ }
