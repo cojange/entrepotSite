@@ -114,6 +114,7 @@
                       <th>담당자 이름</th>
                       <th>담당자 연락처</th>
                       <th>건수</th> 
+                      <th>건당할인요금</th>
                       <th>거래시작일</th>
                       <th>거래종료일</th>
                       <th>등록일</th>
@@ -127,6 +128,7 @@
                       <th>담당자 이름</th>
                       <th>담당자 연락처</th>
                       <th>건수</th> 
+                      <th>건당할인요금</th>
                       <th>거래시작일</th>
                       <th>거래종료일</th>
                       <th>등록일</th>
@@ -143,6 +145,7 @@
 									<td>${couPartner.char_manager}</td>
 									<td>${couPartner.char_tel}</td>
 									<td>${couPartner.couacc_cnt}</td>
+									<td>${couPartner.couacc_cost}</td>
 									<td>${couPartner.startdate}</td>
 									<td>${couPartner.enddate}</td>
 									<td>${couPartner.couacc_date}</td>
