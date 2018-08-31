@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ include file="/WEB-INF/views/common/common.jspf" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -22,12 +23,12 @@ function aa_open()
   <!-- <link href="/resources/include/client/css/all.min.css" rel="stylesheet" type="text/css"> -->
 
 <body>
-<div>
+<div class="divss"> 
 	<form id="detailForm" name="detailForm">
 		<input type="hidden" id="listkey" name="listkey" value="${mvo.listkey}" />
 		<input type="hidden" id="mg_num" name="mg_num"  />
 		<div class="container-fluid">  
-		<table border="1" class="myPage"> 
+		<table border="0" class="myPage">
 			<tbody>
 				<tr>
 					<!-- <td width="130" valign="top" align="center">
@@ -168,15 +169,54 @@ function aa_open()
 										<tr height="35" bgcolor="#E8ECED">							
 											<td width="35" align="center"><a href="#" onclick="javascript:reverse(this.form)"><u>선택</u></a></td>
 											<td align="center"><b>No</b></td>
-											<td align="center"><b>정간물명<br>발행사</b></td>
-											<td align="center"><b>유형</b></td>
+											<td align="center"><b>상품코드<br>발행사</b></td>
+											<td align="center"><b>처리상태</b></td>
 											<td align="center"><b>개월수</b></td>
 											<td align="right"><b>정기구독가</b></td>
 											<td align="right"><b>권수</b>&nbsp;&nbsp;&nbsp;&nbsp;</td>
 											<td align="right"><b>합계</b></td>			
 										</tr>
 										<tr>
-											<td colspan="9" height="1" bgcolor="#c9c9c9"></td>
+											<!-- <td colspan="9" height="1" bgcolor="#c9c9c9"></td> -->
+											<table>
+											<tbody>
+												<c:choose>
+													<c:when test="${not empty list}">
+														<c:forEach var="vo" items="${list}">
+															<tr class="myList" width="807"><%-- <tr align="center" data-num="${vo.order_num}"> --%><!-- 체크박스넣을곳 -->
+															<!--data-num ->요소를 구별할때 쓰는 구문 -->
+																<td width="35" align="center" ><input type="checkbox"></td>
+																<td width="43" align="center">${vo.order_num}</td>
+																<td width="140" align="center">
+																<%-- <c:if test="${vo.repStep>0}">
+																	<c:forEach begin="1" end="${vo.repIndent}">
+																		&nbsp;&nbsp;&nbsp;
+																	</c:forEach>
+																	<img src="/siteProject/image/re.gif"/>
+																</c:if> --%>
+																${vo.pd_num}
+																<%-- <c:if test="${vo.rCount>0}"><span class="rCount">[${vo.rCount}]</span></c:if> --%>
+																</td>
+																<td width="140" align="center">${vo.order_ok}</td>
+																<td width="105" align="center">임시값...</td>
+																<td width="175" align="right">${vo.order_money}원</td>
+																<td width="98" align="right">
+																<input type="text"  value="${vo.order_ea}" maxlength="2" size="2">
+																<a href="#" onclick="javascript:send_count('this.form','${vo.order_ea}')">	
+																<img src="/resources/images/client/updatebtn.png" border="0"></a>			
+																</td>
+																<td width="71" align="right"><font color="red">원</font></td>
+															</tr>
+														</c:forEach>
+													</c:when>
+													<c:otherwise>
+													<tr>
+														<td colspan="5" align="center">등록된 게시물이 존재하지 않습니다.</td>
+													</tr>
+													</c:otherwise>
+												</c:choose>
+											</tbody>
+											</table>
 										</tr>
 										<tr>
 											<td colspan="9" bgcolor="#CDCDCD" height="2"></td>

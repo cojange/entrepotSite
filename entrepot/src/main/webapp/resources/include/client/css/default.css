@@ -20,9 +20,7 @@ h1, h2, h3 {
 	font-weight: 300;
 	color: #2D2D2D;
 }
-.sideview{
-	background-color: yellow;
-}
+
 h2 {
 	padding: 0px 0px 30px 0px;
 	font-size: 2.50em;
@@ -97,22 +95,46 @@ hr {
 }
 
 /** WRAPPER */
+/*마이페이지css*/
+.myList td {
+    font-family: 맑은고딕, 나눔고딕, 굴림;
+    font-size: 11pt;
+    line-height: 300%;
+    border:solid 1px;
+}
+.myList{
+	display: table-row;
+    vertical-align: inherit;
+
+}
+/*  */
 
 #wrapper {
 	background: #FFF;
-	margin: 0px 0px;
+/* 	margin: 0px 0px;
+	background-image: url(/resources/images/client/backimg.png); */
+	background-size:cover;
 
 }
 
 .container {
 	width: 1200px;
 	margin: 0px auto;
+	background-size: cover;
 }
-.sidebar{
-	width: 300px;
-	margin: 0px auto;
-	padding-left: 325px;
-	padding-right: auto;
+.containerTbody{
+	
+}
+.divss{
+	height:1000px;
+	padding-top:100px;
+}
+.containertd1{
+
+	padding-top:104px;
+	
+} 
+.sidebar{ 
 }
 
 .clearfix {

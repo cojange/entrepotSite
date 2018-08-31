@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.client.member.myPage.dao.ClMyPageDao">
+
+<select id="orderList" parameterType="orderList" resultType="orderList">
+	/*myPage - orderList*/
+	
+	select order_num,pd_num,order_date,order_ea,order_money,order_ok,transit_num from Order_List 
+<!-- 	<where>
+		<if test="listkey==1">
+			dt_keyword like '%'|| #{key1} ||'%'
+		 </if>
+		 <if test="listkey==2">
+		 	dt_keyword like '%'|| #{key1} ||'%' or dt_keyword like  '%'|| #{key2} ||'%'
+		 </if>
+		 <if test="listkey==3">
+		 	dt_keyword like '%'|| #{key1} ||'%' or dt_keyword like  '%'|| #{key2} ||'%' or  dt_keyword like  '%'|| #{key3} ||'%'
+		 </if>	 
+	</where>
+	 -->
+	
+</select>
+
+</mapper>
