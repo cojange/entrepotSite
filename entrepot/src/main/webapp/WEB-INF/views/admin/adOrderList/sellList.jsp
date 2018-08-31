@@ -6,13 +6,14 @@
      <!-- 회원 관리 -->
      <div class="card mb-3">
             <div class="card-header">
-              <i class="fas fa-users"></i>회원 관리
+              <i class="fas fa-users"></i>판매 관리
             </div>
             <div class="card-body" >
               <div class="table-responsive" id="switchDiv">
                 <table class="table table-bordered" id="orderList" width="100%" cellspacing="0">
                   <thead>
                     <tr>
+                      <th></th>
                       <th>주문번호</th>
                       <th>총 수량</th>
                       <th>총 금액</th>
@@ -24,6 +25,7 @@
                   </thead>
                   <tfoot>
                     <tr>
+                      <th></th>
                       <th>주문번호</th>
                       <th>총 수량</th>
                       <th>총 금액</th>
@@ -38,6 +40,7 @@
                        <c:when test="${not empty sellList }">
                           <c:forEach var="sellList" items="${sellList }" varStatus="status">
                              <tr class="tac" data-num="${status.count }">
+                             	<td class="details-control"><i class="fas fa-plus-circle red"></i></td>
                                 <td>${sellList.order_num}</td>
                                 <td>${sellList.sell_ea}</td>
                                 <td>${sellList.sell_money }</td>

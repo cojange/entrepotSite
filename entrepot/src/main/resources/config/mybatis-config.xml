@@ -19,6 +19,7 @@
 		<typeAlias type="com.site.admin.chart.adChart.vo.ColumnChartVO" alias="ccvo"/>
 		<typeAlias type="com.site.admin.ctrl.adMember.vo.AdminVO" alias="avo"/>
 		<typeAlias type="com.site.admin.order.orderList.vo.AdSellListVO" alias="slvo"/>
+		<typeAlias type="com.site.admin.order.orderList.vo.AdOrderListVO" alias="ovo"/>
 		
 		<!-- client -->
 		<typeAlias type="com.site.client.board.vo.ClImgbVO" alias="imgb" />
