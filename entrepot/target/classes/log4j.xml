@@ -62,6 +62,10 @@
    <logger name="com.site.admin.adBoard.personalBoard.dao">
 	  <level value="trace"/>
    </logger>
+   <logger name="com.site.admin.order.orderList.dao">
+	  <level value="trace"/>
+   </logger>
+   
    <logger name="com.site.common.file">
 		<level value="info"/>
    </logger>

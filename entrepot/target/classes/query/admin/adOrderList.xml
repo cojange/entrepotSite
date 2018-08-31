@@ -4,8 +4,31 @@
 	
 	<select id="getSellList" resultType="slvo">
 		/*판매 내역 전체 조회*/
-		select order_num, sell_ea, sell_date, sell_money, coupon_no, m_num, mt, enddate
+		 select order_num, sell_ea, to_char(sell_date,'yyyy-mm-dd hh24:mi:ss') sell_date, sell_money, 
+		 coupon_no, m_num, mt, to_char(enddate,'yyyy-dd-mm hh24:mi:ss') enddate
+		from sell order by sell_date desc, enddate desc
+	</select>
+	
+	<select id="getOrderList" parameterType="slvo" resultType="ovo">
+		/*판매 목록 내역 조회*/
+		select pd_num, order_ea, order_money, order_ok, transit_num
+		from order_list where order_num = #{order_num}
+	</select>
+	
+	<select id="getSearchDate" parameterType="mkvo" resultType="slvo">
+		/*판매 내역 날짜 조건 검색*/
+		 select order_num, sell_ea, to_char(sell_date,'yyyy-mm-dd hh24:mi:ss') sell_date, sell_money, 
+		 coupon_no, m_num, mt, to_char(enddate,'yyyy-dd-mm hh24:mi:ss') enddate
 		from sell
+		<where>
+			<if test="sDate!=''">
+				<![CDATA[sell_date>#{sDate} and sell_date<#{eDate}]]>
+			</if>
+			<if test="monthkey!=null">
+				<![CDATA[sell_date>sysdate-#{monthkey}]]>
+			</if>
+		</where>
+		order by sell_date desc, enddate desc
 	</select>
 	
 </mapper>

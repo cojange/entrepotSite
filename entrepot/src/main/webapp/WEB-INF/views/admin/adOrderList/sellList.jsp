@@ -6,13 +6,22 @@
      <!-- 회원 관리 -->
      <div class="card mb-3">
             <div class="card-header">
-              <i class="fas fa-users"></i>회원 관리
+              <i class="fas fa-users"></i>판매 관리
             </div>
             <div class="card-body" >
               <div class="table-responsive" id="switchDiv">
-                <table class="table table-bordered" id="orderList" width="100%" cellspacing="0">
+              <form id="searchDate" name="searchDate">
+	              	<input type="radio" value="3" id="recent3" name="monthkey"><label for="recent3">최근 3일</label>
+	              	<input type="radio" value="7" id="recent7" name="monthkey"><label for="recent7">최근 1주</label>
+	              	<input type="radio" value="30" id="recent30" name="monthkey"><label for="recent30">최근 1달</label>
+	              	<input type="radio" id="etcDate" value="anotherDate" name="monthkey"><label for="etcDate"> 기타</label>
+	              	<div><input type="date" class="anotherValue"/>&nbsp;~&nbsp;<input type="date"  class="anotherValue"/></div>
+	           </form>
+                <table class="table table-bordered orderList" width="100%" cellspacing="0">
+             
                   <thead>
                     <tr>
+                      <th></th>
                       <th>주문번호</th>
                       <th>총 수량</th>
                       <th>총 금액</th>
@@ -24,6 +33,7 @@
                   </thead>
                   <tfoot>
                     <tr>
+                      <th></th>
                       <th>주문번호</th>
                       <th>총 수량</th>
                       <th>총 금액</th>
@@ -33,11 +43,12 @@
                       <th>완료 일자</th>
                     </tr>
                   </tfoot>
-                  <tbody>
+        			<tbody>
                      <c:choose>
                        <c:when test="${not empty sellList }">
                           <c:forEach var="sellList" items="${sellList }" varStatus="status">
                              <tr class="tac" data-num="${status.count }">
+                             	<td class="details-control"><i class="fas fa-plus-circle red"></i></td>
                                 <td>${sellList.order_num}</td>
                                 <td>${sellList.sell_ea}</td>
                                 <td>${sellList.sell_money }</td>
