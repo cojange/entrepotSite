@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.site.admin.order.orderList.service.AdOrderListService;
+import com.site.admin.order.orderList.vo.AdMonthKeyVO;
 import com.site.admin.order.orderList.vo.AdOrderListVO;
 import com.site.admin.order.orderList.vo.AdSellListVO;
 
@@ -22,15 +23,28 @@ public class AdOrderListController {
 	@Autowired
 	private AdOrderListService adOrderListService;
 	
-	//전체 sellList 가져오기
-	@RequestMapping(value="/getSellList.do")
+	//주문 페이지열기 && sellList 가져오기
+	@RequestMapping(value="/getSell.do")
 	public String getSellList(Model model) {
-		
 		List<AdSellListVO> sellList = adOrderListService.getSellList();
-		
 		model.addAttribute("sellList",sellList);
-		
 		return "admin/order/adOrderList/sellList";
+	}
+	
+	//날짜 기 sellList 가져오기
+	@ResponseBody
+	@RequestMapping(value="/searchDate.do")
+	public String getSell(ObjectMapper mapper,AdMonthKeyVO mkvo) {
+		List<AdSellListVO> sellDList = adOrderListService.getSearchDate(mkvo);
+		
+		String sellListData="";
+		
+		try {
+			sellListData = mapper.writeValueAsString(sellDList);
+		}catch(JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		return sellListData;
 	}
 	
 	@ResponseBody

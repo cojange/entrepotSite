@@ -84,9 +84,10 @@
 	    <script type="text/javascript" src="/resources/include/admin/js/couponList.js"></script>
 	    <script type="text/javascript" src="/resources/include/admin/js/regulationsList.js"></script>
 	    <script type="text/javascript" src="/resources/include/common/js/jquery.form.min.js"></script>
-	    <script type="text/javascript" src="/resources/include/admin/js/ad-partner.js"></script>
-	    <script type="text/javascript" src="/resources/include/admin/js/json2html/json2html.js"></script>
+	    <script type="text/javascript" src="/resources/include/admin/js/json2html/subTable.js"></script>
 	    <script type="text/javascript">
+	    
+	    var addTable;
 	    /* input date에 현재 날짜 받아오기 */
 	    	$(function(){
 	    		
@@ -580,54 +581,92 @@
     		}//비용 탭 일때 JS 
     		
     		//구매관리 탭
-    		if($(location).attr("href")=="http://localhost:8080/admin/order/orderList/getSellList.do"){
-    			var table = $("#orderList").DataTable({
-    				"order":[[1,'asc']]
-    			});
+    		if($(location).attr("href")=="http://localhost:8080/admin/order/orderList/getSell.do"){
     			
+    			//input date toggle
+    			$("#searchDate input").click(function(){
+    				if (!$("#etcDate").is(":checked")==true){
+    					//다른 라디오
+    					$("#searchDate input[type='date']").prop('disabled',true);
+    					$(".anotherValue").removeAttr("name");
+    				}else {
+    					//etc 라디오
+    					$(".anotherValue").eq(0).attr("name", "sDate");
+    					$(".anotherValue").eq(1).attr("name", "eDate");
+    					$("#searchDate input[type='date']").prop('disabled',false);
+    				}
+    				
+    				//날짜별 search
+    				if($(this).val()!='anotherDate' && $(this).val()!=""){
+    					
+    						$("#searchDate").ajaxForm({
+	    							url:"/admin/order/orderList/searchDate.do",
+	    							type:"post",
+	    							dataType:"json",
+	    							error:function(){
+	    								alert("시스템 오류입니다. 관리자에게 문의하세요.");
+	    							},success:function(result){
+	    								console.log(result);
+	    								
+	    							}
+	    						});//ajax 끝
+    				
+    				$("#searchDate").attr({
+    					"method" : "post",
+    					"action" : "/admin/order/orderList/getDateSearch"
+    				}); 
+    				}
+    				
+    			})
     			
-    			// Add event listener for opening and closing details
-    	   	    $('#orderList tbody').on('click', 'td.details-control', function () {
+    			// Add event listener for opening and closing details    	   	    	
+    	   	    	 var table = $(".orderList").DataTable( {
+    			        "order": [[1, 'asc']]
+    			    } );
+    			
+    				//아이콘 클릭시 subtable 접기,펴기
+    	   	    	$('.table tbody').on('click', 'td.details-control', function () {
+    	   	    		
+        	   	    	var od_num = $(this).next().html();
+        	   	    	console.log("value : " + od_num);
     	   	    	console.log("뜨어엉");
     	   	    	
-    	   	    	
-    	   	    	var od_num = $(this).next().html();
-    	   	    	console.log("value : " + od_num);
-    	   	    	
-    	
-					var addTable;
-    	   	    	
+    				var targetTd = $(this);
     	   	    	//subtable 요청
     	   	    	var subTableURL = "/admin/order/orderList/getOrder.do";
-    	   	    	var sub_t = $("<table id='sub_t'>");
     	   	    	$.getJSON(subTableURL,{
     	   	    		order_num:od_num
-    	   	    	},function(subList){
-    	   	    		console.log("result: "+ subList);
-    	   	    		
-    	   	    		var addTable= json2html.table(subList);
+    	   	    	},function(subElements){
+    	   	    		console.log("result: "+ this);
+        	   	    	addTable= subtable(subElements);
+        	   	    	
+        	   	    	console.log(addTable);
+        	   	    	//클릭시 subtable 보여주기
+        	   	    	var tr = targetTd.closest('tr');
+        	   	        var row = table.row( tr );
+    	    	   	     if ( row.child.isShown() ) {
+    	    	             // This row is already open - close it
+    	    	             row.child.hide();
+    	    	             if(tr.find('i').hasClass('fa-minus-circle green')){
+    	    	            	 tr.find('i').removeClass('fa-minus-circle green');
+    	    	            	 tr.find('i').addClass('fa-plus-circle red');	    	            	 
+    	    	             }
+    	    	             
+    	    	         }
+    	    	         else {
+    	    	             // Open this row
+    	    	             
+    	    	             row.child(addTable).show();
+    	    	             tr.find('i').removeClass('fa-plus-circle red');
+    	    	             tr.find('i').addClass('fa-minus-circle green'); // FontAwesome 5
+    	    	         }
     	   	    	});
     	   	    	
-    	   	    	
-    	   	    	console.log(addTable);
-    	   	        var tr = $(this).closest('tr');
-    	   	        var row = table.row( tr );
-	    	   	     if ( row.child.isShown() ) {
-	    	             // This row is already open - close it
-	    	             row.child.hide();
-	    	             if(tr.find('i').hasClass('fa-minus-circle green')){
-	    	            	 tr.find('i').removeClass('fa-minus-circle green');
-	    	            	 tr.find('i').addClass('fa-plus-circle red');	    	            	 
-	    	             }
-	    	             
-	    	         }
-	    	         else {
-	    	             // Open this row
-	    	             row.child(addTable).show();
-	    	             tr.find('i').removeClass('fa-plus-circle red');
-	    	             tr.find('i').addClass('fa-minus-circle green'); // FontAwesome 5
-	    	         }
-    	   	    } );
+    	   	        
+    	   	    } );//아이콘 접기,펴기
+    	   	    
+    	   	    //날짜별 계산
+    	   	    
     			
     		}
     		
