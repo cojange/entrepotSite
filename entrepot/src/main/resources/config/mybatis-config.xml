@@ -17,6 +17,7 @@
 		<typeAlias type="com.site.admin.ctrl.adMember.vo.AdMbPersnalVO" alias="ampvo"/>
 		<typeAlias type="com.site.admin.ctrl.adMember.vo.AdMbGroupVO" alias="agmvo"/>
 		<typeAlias type="com.site.admin.chart.adChart.vo.ColumnChartVO" alias="ccvo"/>
+		<typeAlias type="com.site.admin.ctrl.adMember.vo.AdminVO" alias="avo"/>
 		
 		
 		<!-- client -->

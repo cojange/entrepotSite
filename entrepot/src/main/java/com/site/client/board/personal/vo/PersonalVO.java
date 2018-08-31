@@ -7,7 +7,7 @@ import com.site.common.vo.CommonVO;
 public class PersonalVO extends CommonVO {
 	//1대1 게시판
 		private int pb_no			=0;
-		private String pb_name		="";
+		private String m_name		="";
 		private String pb_type		="";
 		private String pb_title		="";
 		private String pb_password	="";
@@ -27,11 +27,11 @@ public class PersonalVO extends CommonVO {
 		public void setPb_no(int pb_no) {
 			this.pb_no = pb_no;
 		}
-		public String getPb_name() {
-			return pb_name;
+		public String getM_name() {
+			return m_name;
 		}
-		public void setPb_name(String pb_name) {
-			this.pb_name = pb_name;
+		public void setM_name(String m_name) {
+			this.m_name = m_name;
 		}
 		public String getPb_type() {
 			return pb_type;
@@ -99,8 +99,6 @@ public class PersonalVO extends CommonVO {
 		public void setPb_img3(String pb_img3) {
 			this.pb_img3 = pb_img3;
 		}
-	
-		
 		
 		
 		

@@ -47,14 +47,18 @@
 	<put-attribute name="body"
 	value="/WEB-INF/views/client/magazine/{1}.jsp"/>
 
-	
-	
-	
 	<put-attribute name="sidebar"
 	value="/WEB-INF/views/client/magazine/bast/sidebar.jsp"/>
+	
+	
+	<!-- 게시판 사이드바 -->
+	<put-attribute name="sidebar"
+	value="/WEB-INF/views/client/board/side/sidebar.jsp"/>
+	
  	</definition>
-
-
+ 	
+ 	
+ 	
 	<!-- 게시판  -->
 	<definition name="client/board/*/*" extends="content">
 	<put-attribute name="body"

@@ -6,6 +6,7 @@
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 			<title>Insert title here</title>
 		</head>
+		<script type="text/javascript" src="/resources/include/client/js/jquery-1.12.4.min.js"></script>
 		<script type="text/javascript">
 			$(function(){
 				var btnChk = 0;
@@ -18,7 +19,7 @@
 					$("#fileImage").attr({
 						src:"/client/board/uploadStorage/${detail.pb_thumb}",
 						width:"450px",
-						height:"200px";
+						height:"200px"
 					});
 				}
 				//목록버튼 클릭시 이벤트처리
@@ -33,9 +34,9 @@
 					btnChk = 1;
 				});
 				//삭제버튼클릭시 처리 이벤트
-				$("deleteFromBtn").click(function(){
+				$("#deleteFromBtn").click(function(){
 					$.ajax({
-						url:"/client/reply/replyCount.do",
+						url:"/client/board/personalreply/replyCount.do",
 						type:"get",
 						data:"pb_no="+$("#pb_no").val(),
 						dataType:"text",
@@ -62,7 +63,7 @@
 						return;
 					}else{
 						$.ajax({
-							url:"client/personal/pwdConfirm.do",
+							url:"client/board/personal/pwdConfirm.do",
 							type:"post",
 							//data:"pb_no="+$("#pb_no").val()+"&pb_password="+$("#pb_password").val(),//전달할 데이터값(파라미터값)  //$("#f_pwd").serialize()->폼전체 데이터 전송
 							data:$("#pb_password").serialize(),
@@ -103,7 +104,7 @@
 				<div id="passwordChk">
 					<form name="f_password" id="f_password">
 						<input type="hidden"name="pb_no" id="pb_no" value=${detalil.pb_no} />
-						<label for="pb_password" id="pb_passwrod">비밀번호:</label>
+						<label for="pb_password" id="pb_password">비밀번호:</label>
 						<input type="text" name="pb_password" id="pb_password" />
 						<input type="button" value="확인" id="pwdBtn" />
 						<span id="msg"></span>

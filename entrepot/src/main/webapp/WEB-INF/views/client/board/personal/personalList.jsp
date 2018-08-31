@@ -11,7 +11,8 @@
 		<script type="text/javascript" src="/resources/include/common/js/common.js"></script>
 		
 		<link rel="stylesheet" type="text/css" href="/resources/include/client/css/common.css">
-		<link rel="stylesheet" type="text/css" href="/resources/include/client/css/board.css">
+		<link rel="stylesheet" type="text/css" href="/resources/include/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="/resources/include/dist/assets/css/docs.min.css">
 		
 		<script type="text/javascript">
 			$(function(){
@@ -42,7 +43,7 @@
 					$("#pb_no").val(pb_no);
 					$("#detailForm").attr({
 						"method":"get",
-						"action":"/board/personal/detailForm.do"
+						"action":"/client/board/personal/detailForm.do"
 					});
 					$("#detailForm").submit();
 				});
@@ -121,9 +122,9 @@
 						<c:forEach var="pb" items="${personalList }">
 							<tr class="tac" data-num="${pb.pb_no }">
 								<td>${pb.pb_no }</td>
-								<td class="goDetail">${pb.pb_type }</td>
-								<td>${pb.pb_title }</td>
-								<td>${pb.pb_name }</td>
+								<td>${pb.pb_type }</td>
+								<td class="goDetail">${pb.pb_title }</td>
+								<td>${pb.m_name }</td>
 								<td>${pb.pb_date }</td>
 							</tr>
 						</c:forEach>

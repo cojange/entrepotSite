@@ -13,7 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.site.client.board.personal.service.PersonalService;
 import com.site.client.board.personal.vo.PersonalVO;
@@ -75,7 +75,8 @@ public class PersonalController {
 		return "redirect:" + url;
 	}
 	//글 자세히 보기
-	@RequestMapping(value="/board/personal/personalDetail.do", method=RequestMethod.GET)
+	@RequestMapping(value="/board/personal/detailForm.do", method=RequestMethod.GET)
+	//public String personalDetail(@RequestParam("pb_no")int pb_no , Model model) {
 	public String personalDetail(PersonalVO pvo, Model model) {
 		logger.info("personalDetail 호출 성공");
 		logger.info("pb_no="+pvo.getPb_no());
@@ -87,7 +88,7 @@ public class PersonalController {
 		}
 		model.addAttribute("detail", detail);
 		
-		return "client/board/personal/detailForm"; //jsp 리턴값
+		return "client/board/personal/detailForm"; //jsp 이동 리턴값
 	}
 	//비밀번호 확인,param pb_no, param pb_password
 	@RequestMapping(value="/board/personal/pwdConfirm.do",method=RequestMethod.POST,produces="text/plain;charset=UTF-8")

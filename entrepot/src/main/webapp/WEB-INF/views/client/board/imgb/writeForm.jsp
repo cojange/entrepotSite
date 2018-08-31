@@ -6,12 +6,63 @@
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 			<title>Insert title here</title>
 		</head>
+		<script type="text/javascript" src="/resources/include/client/js/jquery-1.12.4.min.js"></script>
+		<script type="text/javascript" src="/resources/include/common/js/common.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				//저장버튼 클릭시 처리 이벤트
+				$("#imgbBtn").click(function(){
+					//입력값 체크
+					if(!chkData($("#imgb_name"),"이름을"))return;
+					else if(!chkData($("#imgb_title"),"제목으"))return;
+					else if(!chkData($("#file_thumb"),"파일을"))return;
+					else if(!chkData($("#imgb_pwd"),"비밀번호를"))return;
+					else{
+						$("#f_writeForm").attr({
+							"method":"post",
+							"action":"/client/board/imgb/imgbInsert.do"
+						});
+						$("#f_writeForm").submit();
+					}
+				});
+				
+				//목록버튼 처리 이벤트
+				$("#imgbList").click(function(){
+					location.href="/client/board/imgb/clImgbList.do"
+				});
+			});//최상위 클래스
+		</script>
 	<body>
 		<div class="contentContainer">
 			<h3>게시판 글 작성</h3>
 			<form id="f_writeForm" method="post" enctype="multipart/form-data">
-				
+				<table border="1" style="border-collapse:collapse;">
+					<tr>
+						<td class="ac">작성자</td>
+						<td><input type="text" name="imgb_name" id="imgb_name" /></td>
+					</tr>
+					<tr>
+						<td class="ac">제목</td>
+						<td><input type="text" name="imgb_title" id="imgb_title" /></td>
+					</tr>
+					<tr>
+						<td class="ac">내용</td>
+						<td><input type="text" name="imgb_content" id="imgb_content" /></td>
+					</tr>
+					<tr>
+						<td class="ac">파일첨부</td>
+						<td><input type="file" name="file_thumb" id="file_thumb" /></td>
+					</tr>
+					<tr>
+						<td class="ac">비밀번호</td>
+						<td><input type="password" name="imgb_pwd" id="imgb_pwd" /></td>
+					</tr>
+				</table>
 			</form>
+		</div>
+		<div class="contentBtn">
+			<input type="button" value="저장" id="imgbBtn" />
+			<input type="button" value="목록" id="imgbList" />
 		</div>
 	</body>
 </html>
