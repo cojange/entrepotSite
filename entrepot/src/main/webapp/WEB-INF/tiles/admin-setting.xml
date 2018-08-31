@@ -42,5 +42,9 @@
 		<put-attribute name="adContent" value="/WEB-INF/views/admin/adChart/{1}.jsp"/>
 	</definition>
 
+<!--    상품 -->
+	<definition name="admin/magazine/adMagazine/*" extends="basic">
+		<put-attribute name="adContent" value="/WEB-INF/views/admin/adMagazine/{1}.jsp"/>
+	</definition>
 
 </tiles-definitions>
