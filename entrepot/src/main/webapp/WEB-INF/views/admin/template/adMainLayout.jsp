@@ -86,7 +86,6 @@
 	    <script type="text/javascript" src="/resources/include/common/js/jquery.form.min.js"></script>
 	    <script type="text/javascript" src="/resources/include/admin/js/ad-partner.js"></script>
 	    <script type="text/javascript" src="/resources/include/admin/js/json2html/json2html.js"></script>
-	    
 	    <script type="text/javascript">
 	    /* input date에 현재 날짜 받아오기 */
 	    	$(function(){
@@ -363,6 +362,9 @@
 	    		//거래처 관리탭
 	    		if($(location).attr("href") == "http://localhost:8080/admin/ctrl/adPartner/adPartnerListCtrl.do"){
 	    			$("#adminTable").dataTable();
+	    			nowTime1();
+	    			$("#mcom_date").val(today1);
+	    			$("#couacc_date").val(today1);
 	    			/* 새창띄우기 할때 사용 
 	    			$("#addMagazine").click(function(){
 	    				window.open('/admin/ctrl/adPartner/magazineForm.do','_blank','width=500px, height=600px');
@@ -370,35 +372,83 @@
 	    			$("#addCourier").click(function(){
 	    				window.open('/admin/ctrl/adPartner/courierForm.do','_blank','width=500px, height=600px');
 	    			}); */
-
+					
+	    			$("#couDel").click(function(){
+	    				resetData2();
+	    			});
+	    			$("#magDel").click(function(){
+	    				resetData1();
+	    			});
+	    			
+	    			/* 잡지 거래처 등록 */
 	        		$("#magInsertBtn").click(function(){
-	        			console.log("가");
+	        			console.log("가");	        			
 	        			//입력값 체크
-	        			if(!chkData($('#com_name'),"회사명을")) return;
+	        			if(!chkData($('#mCom_name'),"회사명을")) return;
 	        			else{
 	        				$("#magazineInsertForm").ajaxForm({
 	        					url : "/admin/ctrl/adPartner/magazineInsert.do",
-	        					type : "post",
-	        					dataType : "text",
-	        					error : function(){
-	        						alert('시스템 오류 입니다. 관리자에게 문의 하세요');
-	        					},
-	        					success : function(data){
-	        						console.log(data);
-	        						//alert(data);
-	        						if(data=="성공"){
-	        							resetData();
-	        							$('#magazineModel').modal('hide');
-	        							
-	        						}else{
-	        							alert("["+data+"]\n등록에 문제가 있어 완료하지 못하였습니다. 잠시 후 다시 시도해 주세요.")
-	        							resetData();
-	        						}
-	        					}
+	        					type:"post",
+    							dataType:"text",
+    							error:function(){
+    								alert("시스템 오류입니다. 관리자에게 문의하세요.");
+    							},success:function(result){
+    								console.log(result);
+    								
+    								if(result='success'){
+    									alert("새로운 관리자를 등록 하였습니다.");
+    									$("#magazineModel").modal("hide");
+    									location.href="/admin/ctrl/adPartner/adPartnerListCtrl.do";
+    								}else {
+    									alert("관리자 등록에 실패하였습니다.");
+    									resetData1();
+    								}
+    							}
 	        				});
 	        				$("#magazineInsertForm").submit();
 	        			}
 	        		});
+	        		//모든 데이터 지우기
+	    			function resetData1(){
+	    				$("#magazineInsertForm").each(function(){
+	    					this.reset();
+	    				});
+	    			}
+	        		
+	        		/* 택배 거래처 등록 */
+	    			$("#couInsertForm").click(function(){
+	        			console.log("나");	        			
+	        			//입력값 체크
+	        			if(!chkData($('#couacc_area'),"거래지역을")) return;
+	        			else{
+	        				$("#courierInsertForm").ajaxForm({
+	        					url : "/admin/ctrl/adPartner/courierInsert.do",
+	        					type:"post",
+    							dataType:"text",
+    							error:function(){
+    								alert("시스템 오류입니다. 관리자에게 문의하세요.");
+    							},success:function(result){
+    								console.log(result);
+    								
+    								if(result='success'){
+    									alert("새로운 관리자를 등록 하였습니다.");
+    									$("#courierModel").modal("hide");
+    									location.href="/admin/ctrl/adPartner/adPartnerListCtrl.do";
+    								}else {
+    									alert("관리자 등록에 실패하였습니다.");
+    									resetData2();
+    								}
+    							}
+	        				});
+	        				$("#courierInsertForm").submit();
+	        			}
+	        		});
+	        		//모든 데이터 지우기
+	    			function resetData2(){
+	    				$("#courierInsertForm").each(function(){
+	    					this.reset();
+	    				});
+	    			}
 	    		}
 	    		
 	    		//약관 관리탭
@@ -592,16 +642,7 @@
         		   var addTable = 
         			   '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
         		        '<tr>'+
-        		            '<td>Full name:</td>'+
-        		            '<td>뿌애애앵</td>'+
-        		        '</tr>'+
-        		        '<tr>'+
-        		            '<td>Extension number:</td>'+
-        		            '<td>뀨아아앙</td>'+
-        		        '</tr>'+
-        		        '<tr>'+
-        		            '<td>Extra info:</td>'+
-        		            '<td>And any further details here (images etc)...</td>'+
+        		            '<div></div>'+
         		        '</tr>'+
         		    '</table>';
         		

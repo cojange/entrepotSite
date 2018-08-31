@@ -39,6 +39,8 @@ function idPwdCheck() {
 var idConfirm = 1;
 var comNoConfirm =1;
 $(function() {
+	
+	$(".hideSpan").hide();
 	var direct_acc = document.getElementById('direct_acc');//회계사이메일 체크박스 체크여부확인
 	var direct_c = document.getElementById('direct_c');//담당자 이메일 체크박스 체크여부확인
 	errCodeCheck();//mForm.jsp 에 script함수
@@ -57,9 +59,9 @@ $(function() {
 	});
 	//아이디중복체크
 	$("#idConfirmBtn").click(function() {
-		console.log("org : " + $("#m_id").val());
+		/*console.log("org : " + $("#m_id").val());
 		$("#m_id").val(getTrimStr($("#m_id").val()));
-		console.log("aft : " + $("#m_id").val());
+		console.log("aft : " + $("#m_id").val());*/
 		if(!formCheck($("#m_id"),$('.error:eq(0)'),"아이디를"))return;
 		else if(!inputVerify(0,$("#m_id"),".error:eq(0)","","member"))return;
 		else{
@@ -118,6 +120,12 @@ $(function() {
 	
 	/*확인 버튼 클릭 시 처리 이벤트*/
 	$("#gjoinInsert").click(function() {
+		if($(direct_c).is(":checked")==false){
+			$("#emailDirect_c").val("domain.com");
+		}
+		if($(direct_acc).is(":checked")==false){
+			$("#emailDirect_acc").val("domain.com");
+		}
 		//입력값 체크
 		//아이디정보 체크
 		if(!formCheck($("#m_id"),$('.error:eq(0)'),"아이디를"))return;
@@ -134,28 +142,34 @@ $(function() {
 		else if(!formCheck($("#m_name"),$(".error:eq(4)"),"단체이름을"))return;
 		else if(!inputVerify(9,"#m_name",".error:eq(4)","","member"))return;
 		else if(!formCheck($("#leader_name"),$(".error:eq(5)"),"대표자명을"))return;
-		else if(!formCheck(($("#m_zipcode")&&$("#m_address")),$(".error:eq(6)"),"우편주소를"))return;
-		else if(!formCheck($("#m_job"),$(".error:eq(8)"),"업종을"))return;
+		else if(!inputVerify(9,"#leader_name",".error:eq(5)","","member"))return;
+		else if(!formCheck($("#leader_phone"),$(".error:eq(6)"),"대표자 전화번호를"))return;
+		else if(!inputVerify(7,"#leader_phone",".error:eq(6)","","member"))return;
+		else if(!formCheck(($("#m_zipcode")&&$("#m_address")),$(".error:eq(7)"),"우편주소를"))return;
+		else if(!formCheck($("#m_job"),$(".error:eq(9)"),"업종을"))return;
+		else if(!inputVerify(12,"#m_job",".error:eq(9)","","member"))return;
 		//담당자정보체크
-		else if(!formCheck($("#char_name"),$(".error:eq(9)"),"담당자명을"))return;
-		else if(!formCheck($("#char_phone"),$(".error:eq(10)"),"담당자전화번호를"))return;
-		else if(!inputVerify(7,"#char_phone",".error:eq(10)","","member"))return;
+		else if(!formCheck($("#char_name"),$(".error:eq(10)"),"담당자명을"))return;
+		else if(!inputVerify(9,"#char_name",".error:eq(10)","","member"))return;
+		else if(!formCheck($("#char_phone"),$(".error:eq(11)"),"담당자전화번호를"))return;
+		else if(!inputVerify(7,"#char_phone",".error:eq(11)","","member"))return;
 		//이메일형식체크
-		else if(!formCheck($("#emailName_c"),$(".error:eq(11)"),"이메일을 @를제거하고"))return;
-		else if(!inputVerify(5,"#emailName_c",".error:eq(11)","","member"))return;
-		else if(!formCheck($("#emailDirect_c"),$(".error:eq(11)"),"도메인을"))return;
-		else if(!inputVerify(6,"#emailDirect_c",".error:eq(11)","","member"))return;
+		else if(!formCheck($("#emailName_c"),$(".error:eq(12)"),"이메일을 @를제거하고"))return;
+		else if(!inputVerify(5,"#emailName_c",".error:eq(12)","","member"))return;
+		else if(!formCheck($("#emailDirect_c"),$(".error:eq(12)"),"도메인을"))return;
+		else if(!inputVerify(6,"#emailDirect_c",".error:eq(12)","","member"))return;
 		//회계정보체크
-		else if(!formCheck($("#acc_name"),$(".error:eq(12)"),"회계담당자명을"))return;
-		else if(!formCheck($("#acc_phone"),$(".error:eq(13)"),"회계담당자전화번호를"))return;
-		else if(!inputVerify(7,"#acc_phone",".error:eq(13)","","member"))return;
-		else if(!formCheck($("#fax"),$(".error:eq(14)"),"팩스번호를"))return;
-		else if(!inputVerify(7,"#fax",".error:eq(14)","","member"))return;
+		else if(!formCheck($("#acc_name"),$(".error:eq(13)"),"회계담당자명을"))return;
+		else if(!inputVerify(9,"#acc_name",".error:eq(13)","","member"))return;
+		else if(!formCheck($("#acc_phone"),$(".error:eq(14)"),"회계담당자전화번호를"))return;
+		else if(!inputVerify(7,"#acc_phone",".error:eq(14)","","member"))return;
+		else if(!formCheck($("#fax"),$(".error:eq(15)"),"팩스번호를"))return;
+		else if(!inputVerify(7,"#fax",".error:eq(15)","","member"))return;
 		//이메일형식체크
-		else if(!formCheck($("#emailName_acc"),$(".error:eq(14)"),"이메일을 @를제거하고"))return;
-		else if(!inputVerify(5,"#emailName_acc",".error:eq(14)","","member"))return;
-		else if(!formCheck($("#emailDirect_acc"),$(".error:eq(14)"),"도메인을"))return;
-		else if(!inputVerify(6,"#emailDirect_acc",".error:eq(14)","","member"))return;
+		else if(!formCheck($("#emailName_acc"),$(".error:eq(16)"),"이메일을 @를제거하고"))return;
+		else if(!inputVerify(5,"#emailName_acc",".error:eq(16)","","member"))return;
+		else if(!formCheck($("#emailDirect_acc"),$(".error:eq(16)"),"도메인을"))return;
+		else if(!inputVerify(6,"#emailDirect_acc",".error:eq(16)","","member"))return;
 		else if(idConfirm!=2){alert("아이디 중복 체크 진행해 주세요.");return;}
 		else if(comNoConfirm!=2){alert("사업자번호 중복 체크 진행해 주세요.");return;}
 		else{

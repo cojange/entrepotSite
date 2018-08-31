@@ -4,11 +4,6 @@ import com.site.client.member.login.vo.LoginVO;
 //개인회원
 public class ClGmVO extends LoginVO{
 	
-	
-	private int 	m_num; //단체번호
-	/*private String	m_id; //단체아이디
-	private String	m_pwd; //단체비밀번호
-	private String	m_name; //단체이름*/
 	private String	com_no; //사업자 등록번호
 	private String	leader_name; //대표자이름
 	private String	leader_phone; //대표자전화번호
@@ -20,23 +15,23 @@ public class ClGmVO extends LoginVO{
 	private String	acc_name; //회계 이름
 	private String	acc_phone; //회계 전화번호
 	private String	acc_email; //회계 이메일
-	private String	m_job; //업종
 	private String	m_date; //가입일
 	private String	m_update; //수정일
 	private String	fax; //팩스
-	private String	whish; //찜번호
-	private String	cart; //장바구니번호
+	
+		//private String m_num;//  	회원번호(loginVO 상속)
+		//private String m_id =""; //회원아이디
+		//private String m_pwd=""; //회원 비밀번호
+		//private String m_name="";// 회원이름
+		//private String whish;//	찜번호(loginVO 상속)
+		//private String cart;//	장바구니번호(loginVO 상속)
+		//private String mt;//		회원타입(loginVO 상속)
+		//private String m_job;	//	직업-(loginVO 상속)
 
 	
 	private int mt_num; //회원타입번호
-	private String mt; //회원타입
 	
-	public int getM_num() {
-		return m_num;
-	}
-	public void setM_num(int m_num) {
-		this.m_num = m_num;
-	}
+
 	public String getCom_no() {
 		return com_no;
 	}
@@ -103,12 +98,7 @@ public class ClGmVO extends LoginVO{
 	public void setAcc_email(String acc_email) {
 		this.acc_email = acc_email;
 	}
-	public String getM_job() {
-		return m_job;
-	}
-	public void setM_job(String m_job) {
-		this.m_job = m_job;
-	}
+	
 	public String getM_date() {
 		return m_date;
 	}
@@ -127,6 +117,49 @@ public class ClGmVO extends LoginVO{
 	public void setFax(String fax) {
 		this.fax = fax;
 	}
+
+	public int getMt_num() {
+		return mt_num;
+	}
+	public void setMt_num(int mt_num) {
+		this.mt_num = mt_num;
+	}
+	/*
+	public String getM_num() {
+		return m_num;
+	}
+	public void setM_num(String m_num) {
+		this.m_num = m_num;
+	}
+	public String getM_id() {
+		return m_id;
+	}
+
+	public void setM_id(String m_id) {
+		this.m_id = m_id;
+	}
+
+	public String getM_pwd() {
+		return m_pwd;
+	}
+
+	public void setM_pwd(String m_pwd) {
+		this.m_pwd = m_pwd;
+	}
+
+	public String getM_name() {
+		return m_name;
+	}
+	
+	public void setM_name(String m_name) {
+		this.m_name = m_name;
+	}
+	public String getMt() {
+		return mt;
+	}
+	public void setMt(String mt) {
+		this.mt = mt;
+	}
 	public String getWhish() {
 		return whish;
 	}
@@ -138,19 +171,13 @@ public class ClGmVO extends LoginVO{
 	}
 	public void setCart(String cart) {
 		this.cart = cart;
+	public String getM_job() {
+		return m_job;
 	}
-	public int getMt_num() {
-		return mt_num;
+	public void setM_job(String m_job) {
+		this.m_job = m_job;
 	}
-	public void setMt_num(int mt_num) {
-		this.mt_num = mt_num;
-	}
-	public String getMt() {
-		return mt;
-	}
-	public void setMt(String mt) {
-		this.mt = mt;
-	}
+	}*/
 	
 	
 	

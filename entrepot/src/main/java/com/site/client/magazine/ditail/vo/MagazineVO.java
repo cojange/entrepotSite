@@ -29,12 +29,7 @@ public class MagazineVO{
 	
 	private	String dt_target;					//대상
 	private	String dt_brief;					//간략소개
-	public String getPl_path2() {
-		return pl_path2;
-	}
-	public void setPl_path2(String pl_path2) {
-		this.pl_path2 = pl_path2;
-	}
+	
 	private String dt_detail;					//상품상세
 	private String dt_contents;					//목차
 	private String dt_keyword;					//키워드
@@ -49,6 +44,12 @@ public class MagazineVO{
 	private String key2;		//키워드2
 	private String key3;		//키워드3
 	
+	public String getPl_path2() {
+		return pl_path2;
+	}
+	public void setPl_path2(String pl_path2) {
+		this.pl_path2 = pl_path2;
+	}
 	public String getKey1() {
 		return key1;
 	}

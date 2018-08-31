@@ -45,5 +45,23 @@ public class ClMServiceImpl implements ClMService {
 			return result;
 		}
 	}
+
+	@Override
+	public ClMVO memberSelect(String m_id) {
+		ClMVO cvo = clMDao.memberSelect(m_id);
+		return cvo;
+	}
+	
+	@Transactional
+	@Override
+	public int memberUpdate(ClMVO cvo){
+	if(!cvo.getM_pwd().isEmpty()){
+	ClMSecurity sec = clMDao.securitySelect(cvo.getM_id());
+	cvo.setM_pwd(new String(OpenCrypt.getSHA256(cvo.getM_pwd(),sec.getSalt())));
+	}
+	int result = clMDao.memberUpdate(cvo);
+
+	return result;     
+	}
 	
 }

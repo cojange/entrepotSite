@@ -101,11 +101,18 @@ hr {
 #wrapper {
 	background: #FFF;
 	margin: 0px 0px;
+
 }
 
 .container {
 	width: 1200px;
 	margin: 0px auto;
+}
+.sidebar{
+	width: 300px;
+	margin: 0px auto;
+	padding-left: 325px;
+	padding-right: auto;
 }
 
 .clearfix {

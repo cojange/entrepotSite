@@ -80,7 +80,10 @@
 			<div class="contentContainer">
 			   <div class="well joinwell">
 			      <form id="memberForm" class="form-horizontal">
+			      <span class="form-group hideSpan">
+			      	 <label for="m_id" class="col-sm-2 control-label">회원 이메일</label>
 			         <input type="hidden" name="m_email" id="m_email" />
+			      </span>     	
 			         <div class="form-group form-group-sm">
 			            <label for="m_id" class="col-sm-2 control-label">사용자 ID</label>
 			            <div class="col-sm-3">
