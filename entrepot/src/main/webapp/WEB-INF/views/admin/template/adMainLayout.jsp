@@ -154,7 +154,21 @@
 	       							{data : "m_date"},
 	       							{data : "m_update"}
 	       						]
-	       					})
+	       					})column=['회원코드','아이디','이름','직업/기관','주소','연락처','이메일','등록일']
+	      					}else {
+	      						$(".switchTable").DataTable({
+		       						data:datavo,
+		       						columns:[
+		       							{data : "m_num"},
+		       							{data : "m_id"},
+		       							{data : "m_name"},
+		       							{data : "m_job"},
+		       							{data : "m_address"},
+		       							{data : "m_phone"},
+		       							{data : "m_email"},
+		       							{data : "m_date"}
+		       						]
+		       					})
 	      					}
 	    				});
 	    			 });  		
