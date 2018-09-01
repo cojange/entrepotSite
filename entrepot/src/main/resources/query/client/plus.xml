@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.client.magazine.plus.dao.PlusDao">
+<select id="pluslist" parameterType="mgvo" resultType="mgvo">
+	select pd_num,pl_star,pl_date,pl_pwd,pl_product,pl_parcel,m_num
+	from plus
+	where pd_num=#{pd_num}
+	order by pl_num desc
+</select>
+
+
+
+
+</mapper>

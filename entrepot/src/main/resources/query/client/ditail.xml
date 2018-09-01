@@ -4,7 +4,7 @@
 <select id="magazineDetail" parameterType="mgvo" resultType="mgvo">
 	/*magazine - magazineDetail*/
 		
-	select mg_num,mg_name,com_name,dt_target,dt_keyword,mg_period,pd_date,pd_rate,pd_sale,pl_path,dt_detail,dt_contents,pd_cost
+	select pd_num,mg_num,mg_name,com_name,dt_target,dt_keyword,mg_period,pd_date,pd_rate,pd_sale,pl_path,dt_detail,dt_contents,pd_cost
 		from ditail_view1
 		where mg_num=#{mg_num} 
 

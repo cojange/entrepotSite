@@ -25,7 +25,13 @@
 <!-- [endif] -->
 
 <!--   <link href="/resources/include/client/css/ditail-1-col-portfolio.css" rel="stylesheet"> -->
+<style type="text/css">
+			#paging{text-align:center;}
+			a.paging-item,a.paging-side{margin:0 .25em;}
+			a.paging-item.selected{font-weight:bold;}
+</style>
  <script type="text/javascript" src="/resources/include/client/js/jquery-1.12.4.min.js"></script>   
+<script type="text/javascript" src="/resources/include/client/js/jquery.paging.js"></script>
 <script type="text/javascript">
 	$(function(){
 		$(".goDetail").click(function() {
@@ -42,6 +48,12 @@
             });
              $("#detailForm").submit();
          });
+		$('#paging').paging({
+			current:1,max:2,
+			onclick:function(e,page){
+				alert('going to page '+page);
+			}
+		});
 	});
 	
 </script>
@@ -60,7 +72,6 @@
 		<h1>${mvo.home}
 			<small>>> ${mvo.key1}/${mvo.key2}/${mvo.key3}</small>
 		</h1>
-		
 		<table width="100%" border="0" cellpadding="0" cellspacing="10px"
 			align="center">
 			<c:choose>
@@ -190,7 +201,8 @@
 				</c:when>
 			</c:choose>
 		</table>
-		
+		<div id="paging">
+		</div>
 		</div>
 	</div>
 	</form>

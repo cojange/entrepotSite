@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.client.magazine.plus.dao.PlusDao">
+<select id="pluslist" parameterType="plvo" resultType="plvo">
+	select pd_num,pl_star,pl_date,pl_pwd,pl_product,pl_parcel,m_name,m_num,pl_num
+	from plus_view
+	where pd_num=#{pd_num}
+	order by pl_num desc
+</select>
+<select id="plus	" parameterType="plvo" resultType="int">
+	select count(cm_choice)as pl_choice from recommendation 
+	where m_num=#{m_num} and pl_num=#{pl_num}
+</select>
+</mapper>

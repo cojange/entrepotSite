@@ -22,6 +22,25 @@
       <!-- <script src="../js/html5shiv.js"</script> -->
       <!-- [endif] -->
  <script type="text/javascript" src="/resources/include/client/js/jquery-1.12.4.min.js"></script>   
+ <script>
+ 	$(function(){
+ 		//수량 증가 수량 하락
+ 		$("#plus2").click(function() {
+			var num = $("#su").val();
+ 			num++;
+ 			$("#su").val(num);
+		});
+ 		$("#manus").click(function() {
+			var num = $("#su").val();
+ 			if(num>0){
+				num--;
+ 			}
+ 			$("#su").val(num);
+		});
+ 	})
+ 	
+
+ </script>
 </head>
 
 <body>
@@ -111,6 +130,16 @@
 													              </td>
 													        </tr>
 															<tr height="8"><td> </td></tr>
+															<tr>
+																 <td height="20"><font face="나눔고딕" color="#696969"><b>수량</b></font></td>
+													                <td> <font face="나눔고딕" color="#393107">: 
+																						&nbsp;<font color="#6B6B6B"><input type="text" width="20px" style="height: 26px; width: 40px; text-align: right; padding-right: 5px; font-weight: bold;
+																						background-color: gray;" id="su" name="su" value="1"/></font>
+																		</font>
+																		<button type="button" id="plus2"><img src="/resources/images/ditail/btn_plus.gif"></button>
+																		<button type="button" id="manus"><img src="/resources/images/ditail/btn_minus.gif"></button>
+													             	 </td>
+															</tr>
 															<tr>
 																<td colspan="2"> </td>
 															</tr>													
@@ -305,6 +334,24 @@
 	</div>
 	<br>
 	<img src="/resources/images/ditail/notice_paper_g.gif" width="700" border="0">
+</div>
+<div>
+	<a name="d"></a>
+	<div>
+		<div>
+			<table>
+				<tr>
+					<td align="left">
+						<a href="#a"><img  src="/resources/images/ditail/dir_blue_01.gif" border="0"></a>
+						<a href="#b"><img  src="/resources/images/ditail/dir_blue_03.gif" border="0"></a>
+						<a href="#c"><img  src="/resources/images/ditail/dir_blue_06_over.gif" border="0"></a>
+						<a href="#d"><img  src="/resources/images/ditail/dir_blue_04.gif" border="0"></a>					 	
+					</td>
+				</tr>
+			</table>
+		</div>
+		<jsp:include page="plus.jsp"/>
+	</div>
 </div>
 </div>	
 </body>

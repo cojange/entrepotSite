@@ -1,0 +1,57 @@
+@charset "UTF-8";
+.starR{
+  background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat right 0;
+  background-size: auto 90%;
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  text-indent: -9999px;
+  cursor: pointer;
+}
+.starR.on{background-position:0 0;}
+
+.box {
+    padding: 10px;
+    border: #000040 solid 1px;
+    background: #FCFCFC;
+    
+}
+.tt {
+    font-weight: bold;
+    position: relative;
+}
+
+.tt .iconbox {
+    float: right;
+    padding: 0 0 7px 0;
+}
+.tt span {
+    font-weight: normal;
+    font-size: 11px;
+    font-family: dotum;
+    color: #000040;
+    padding: 0 0 0 5px;
+}
+.inputbox {
+    padding: 8px 0 0 0;
+}
+.inputbox div {
+    padding: 5px 0 0 0;
+}
+.inputbox .input1 {
+    border: #000040 solid 1px;
+    padding: 2px 0 0 5px;
+    height: 18px;
+    width: 150px;
+}
+.inputbox div span {
+    position: relative;
+    top: 3px;
+    font-size: 11px;
+    font-family: dotum;
+    color: #000040;
+    padding: 0 10px 0 0;
+}
+.inputbox2{
+	float: right;
+}
