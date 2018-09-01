@@ -6,6 +6,6 @@ import com.site.client.magazine.ditail.vo.MagazineVO;
 
 public interface AdMagazineService {
 
-	public List<MagazineVO> adMagazineList(MagazineVO mvo);
+	public List<MagazineVO> adMagazineList(MagazineVO mgvo);
 
 }
