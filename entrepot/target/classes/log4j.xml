@@ -68,10 +68,17 @@
    
    <logger name="com.site.common.file">
 		<level value="info"/>
+
 	</logger>
    <logger name="com.site.client.board.personal.dao">
 	  <level value="trace"/>
    </logger>
+
+   <logger name="com.site.admin.magazine.adMagazine.dao">
+		<level value="trace"/>
+   </logger>
+   
+
    <!-- 3rdparty Loggers -->
    <logger name="org.springframework.core">
       <level value="info" />

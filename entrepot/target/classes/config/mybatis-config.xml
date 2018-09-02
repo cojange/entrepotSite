@@ -20,6 +20,8 @@
 		<typeAlias type="com.site.admin.ctrl.adMember.vo.AdminVO" alias="avo"/>
 		<typeAlias type="com.site.admin.order.orderList.vo.AdSellListVO" alias="slvo"/>
 		<typeAlias type="com.site.admin.order.orderList.vo.AdOrderListVO" alias="ovo"/>
+		<typeAlias type="com.site.admin.order.orderList.vo.AdMonthKeyVO" alias="mkvo"/>
+		<typeAlias type="com.site.admin.order.orderList.vo.AdOrderProductVO" alias="aopvo"/>
 		
 		<!-- client -->
 		<typeAlias type="com.site.client.board.imgb.vo.ClImgbVO" alias="imgb" />
