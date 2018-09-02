@@ -15,7 +15,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="/admin/magazine/adMagazine/adMagazineList.do">
             <i class="fas fa-fw fa-book"></i>
             <span>상품관리</span>
           </a>

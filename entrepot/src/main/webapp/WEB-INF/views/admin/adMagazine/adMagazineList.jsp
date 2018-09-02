@@ -34,8 +34,7 @@
 				<td>
 					<c:choose>
 				         <c:when test="${not empty adMagazineList}">
-				            <c:forEach var="room" items="${adMagazineList}" varStatus="status">
-				            
+				            <c:forEach var="mgvo" items="${adMagazineList}" varStatus="status">
 				               <div class="imagePreview" data-num="${mgvo.mg_num}">
 				                  <label>잡지명 : ${mgvo.mg_name}</label>
 				                  <label>원가 : ${mgvo.pd_cost}</label>

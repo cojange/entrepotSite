@@ -18,10 +18,10 @@ public class AdMagazineServiceImpl implements AdMagazineService {
 	
 	//상품 리스트 구현
 	@Override
-	public List<MagazineVO> adMagazineList(MagazineVO mvo) {
+	public List<MagazineVO> adMagazineList(MagazineVO mgvo) {
 		List<MagazineVO> adMagazineList = null;
 		
-		adMagazineList = adMagazineDao.adMagazineList(mvo);
+		adMagazineList = adMagazineDao.adMagazineList(mgvo);
 		return adMagazineList;
 	}
 }
