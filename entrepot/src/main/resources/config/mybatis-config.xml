@@ -21,7 +21,11 @@
 		<typeAlias type="com.site.admin.order.orderList.vo.AdSellListVO" alias="slvo"/>
 		<typeAlias type="com.site.admin.order.orderList.vo.AdOrderListVO" alias="ovo"/>
 		<typeAlias type="com.site.admin.order.orderList.vo.AdMonthKeyVO" alias="mkvo"/>
+<<<<<<< HEAD
 		<typeAlias type="com.site.admin.magazine.adMagazine.vo.MagazineSearchVO" alias="msvo"/>
+=======
+		<typeAlias type="com.site.admin.order.orderList.vo.AdOrderProductVO" alias="aopvo"/>
+>>>>>>> branch 'master' of https://github.com/cojange/entrepotSite.git
 		
 		<!-- client -->
 		<typeAlias type="com.site.client.board.vo.ClImgbVO" alias="imgb" />

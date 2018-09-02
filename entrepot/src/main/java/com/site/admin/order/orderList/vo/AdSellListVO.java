@@ -1,6 +1,5 @@
 package com.site.admin.order.orderList.vo;
 
-import java.sql.Date;
 
 public class AdSellListVO {
 	
