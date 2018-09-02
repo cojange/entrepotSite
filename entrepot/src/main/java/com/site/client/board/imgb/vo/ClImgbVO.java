@@ -7,7 +7,7 @@ import com.site.common.vo.CommonVO;
 public class ClImgbVO extends CommonVO {
 	//포토게시판
 		private int imgb_no			=0; 	//이미지번호
-		private String imgb_name	="";	//작성자
+		private String m_num		="";	//작성자
 		private String imgb_title	="";	//이미지제목
 		private String imgb_content	="";	//이미지내용
 		private String imgb_pwd		="";	//비밀번호
@@ -27,11 +27,11 @@ public class ClImgbVO extends CommonVO {
 		public void setImgb_no(int imgb_no) {
 			this.imgb_no = imgb_no;
 		}
-		public String getImgb_name() {
-			return imgb_name;
+		public String getM_num() {
+			return m_num;
 		}
-		public void setImgb_name(String imgb_name) {
-			this.imgb_name = imgb_name;
+		public void setM_num(String m_num) {
+			this.m_num = m_num;
 		}
 		public String getImgb_title() {
 			return imgb_title;
@@ -57,11 +57,11 @@ public class ClImgbVO extends CommonVO {
 		public void setImgb_update(String imgb_update) {
 			this.imgb_update = imgb_update;
 		}
-		public String getPb_date() {
+		public String getImgb_date() {
 			return imgb_date;
 		}
-		public void setPb_date(String pb_date) {
-			this.imgb_date = pb_date;
+		public void setImgb_date(String imgb_date) {
+			this.imgb_date = imgb_date;
 		}
 		public MultipartFile getFile() {
 			return file;

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+   <%@ include file="/WEB-INF/views/common/common.jspf" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 		<head>
@@ -16,15 +17,14 @@
 					if(!chkData($("#pb_type"),"게시글 유형을"))return;
 					else if(!chkData($("#pb_title"),"게시글 제목을"))return;
 					else if(!chkData($("#pb_content"),"게시글 내용을"))return;
-					else if(!chkData($("#pb_thumb"),"게시글 파일을"))return;
-					else if(!chkData($("#pb_name"),"게시글 작성자"))return;
-					else if(!chkData($("#pb_password"),"비밀번호를"))return;
+					else if(!chkData($("#file"),"게시글 파일을"))return;
+					else if(!chkData($("#pb_pwd"),"비밀번호를"))return;
 					else{
-						$("#f_wrtieForm").attr({
+						$("#f_writeForm").attr({
 							"method":"POST",
 							"action":"/client/board/personal/personalInsert.do"
 						});
-						$("#f_wrtieForm").submit();
+						$("#f_writeForm").submit();
 					}
 				});
 				
@@ -37,7 +37,7 @@
 	<body>
 	<div class="contentContainer">
 		<h3>게시판 글 작성</h3>
-		<form id="f_wrtieForm" method="post" enctype="multpart/form-data">
+		<form id="f_writeForm" enctype="multipart/form-data">
 			<table border="1" style="border-collapse:collapse;">
 				<tr>
 					<td class="ac">글유형</td>
@@ -53,15 +53,15 @@
 				</tr>
 				<tr>
 					<td class="ac">파일첨부</td>
-					<td><input type="file" name="pb_thumb" id="pb_thumb" /></td>
+					<td><input type="file" name="file" id="file" /></td>
 				</tr>
 				<tr>
 					<td class="ac">작성자</td>
-					<td><input type="text" name="pb_name" id="pb_name" /></td>
+					<td>${login.m_name}</td>
 				</tr>
 				<tr>
 					<td class="ac">비밀번호</td>
-					<td><input type="password" name="pb_password" id="pb_password" /></td>
+					<td><input type="password" name="pb_pwd" id="pb_pwd" /></td>
 				</tr>
 			</table>
 		</form>

@@ -12,7 +12,7 @@
 		
 		<link rel="stylesheet" type="text/css" href="/resources/include/client/css/common.css">
 		<link rel="stylesheet" type="text/css" href="/resources/include/dist/css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="/resources/include/dist/assets/css/docs.min.css">
+		
 		
 		<script type="text/javascript">
 			$(function(){
@@ -43,7 +43,7 @@
 					$("#pb_no").val(pb_no);
 					$("#detailForm").attr({
 						"method":"get",
-						"action":"/client/board/personal/detailForm.do"
+						"action":"/client/board/personal/personalDetail.do"
 					});
 					$("#detailForm").submit();
 				});
@@ -83,60 +83,65 @@
 			}
 		</script>
 	<body>
-		<form id="detailForm" name="detailForm">
-		</form>
-		<div class="contentContainer">
-			<h3>게시판 목록</h3>
-			<form id="f_search" name="f_search">
-				<table summary="검색">
-					<colgroup>
-					<tr>
-						<td id="tac"><span>검색조건</span>
-						<select id="search" name="search">
-							<option value="all">전체</option>
-							<option value="all">제목</option>
-							<option value="all">비밀번호</option>
-							<option value="all">내용</option>
-						</select>
-						<input type="text" name="keyword" id="keyword"/>
-						<input type="button" value="검색" id="searchData"/></td>
-					</tr>
-				</table>
-			</form>
-		</div>
-		<form id="detailForm" name="detailForm">
-			<input type="hidden" name="pb_no" id="pb_no"/>
-		</form>
-		<table border="1" class="table table-hover">
-			<tr>
-				<th>글번호</th>
-				<th>글유형</th>
-				<th>글제목</th>
-				<th>작성자</th>
-				<th>등록일</th>
-			</tr>
-			<tbody id="list">
-				<!-- 데이터 출력 -->
-				<c:choose>
-					<c:when test="${not empty personalList }">
-						<c:forEach var="pb" items="${personalList }">
-							<tr class="tac" data-num="${pb.pb_no }">
-								<td>${pb.pb_no }</td>
-								<td>${pb.pb_type }</td>
-								<td class="goDetail">${pb.pb_title }</td>
-								<td>${pb.m_name }</td>
-								<td>${pb.pb_date }</td>
+		<div class="container-fluid">
+			 <c:if test="${login.m_id != null and login.m_id != ''}">
+		         <form id="detailForm" name="detailForm">
+					<input type="hidden" name="pb_no" id="pb_no"/>
+				</form>
+				<h3>게시판 목록</h3>
+					<form id="f_search" name="f_search">
+						<table summary="검색">
+							<colgroup>
+							<tr>
+								<td id="tac"><span>검색조건</span>
+								<select id="search" name="search">
+									<option value="all">전체</option>
+									<option value="all">제목</option>
+									<option value="all">비밀번호</option>
+									<option value="all">내용</option>
+								</select>
+								<input type="text" name="keyword" id="keyword"/>
+								<input type="button" value="검색" id="searchData"/></td>
 							</tr>
-						</c:forEach>
-					</c:when>
-					<c:otherwise>
-						<tr>
-							<td colspan="4" class="tac">등록된 게시물이 존재하지않습니다</td>
-						</tr>
-					</c:otherwise>
-				</c:choose>
-			</tbody>
-		</table>
-		<input type="button" value="글쓰기" id="insertBtn"/>
+						</table>
+						<table border="1" class="table table-hover">
+					<tr>
+						<th>글번호</th>
+						<th>글유형</th>
+						<th>글제목</th>
+						<th>작성자</th>
+						<th>등록일</th>
+					</tr>
+					<tbody id="list">
+						<!-- 데이터 출력 -->
+						<c:choose>
+							<c:when test="${not empty personalList }">
+								<c:forEach var="pb" items="${personalList }">
+									<tr class="tac" data-num="${pb.pb_no }">
+										<td>${pb.pb_no }</td>
+										<td>${pb.pb_type }</td>
+										<td class="goDetail">${pb.pb_title }</td>
+										<td>${pb.m_name }</td>
+										<td>${pb.pb_date }</td>
+									</tr>
+								</c:forEach>
+							</c:when>
+							<c:otherwise>
+								<tr>
+									<td colspan="4" class="tac">등록된 게시물이 존재하지않습니다</td>
+								</tr>
+							</c:otherwise>
+						</c:choose>
+					</tbody>
+				</table>
+					</form>
+				<input type="button" value="글쓰기" id="insertBtn"/>
+		         </c:if>
+		          <c:if test="${login.m_id == null or login.m_id == ''}">
+		          <p>로그인 해주세요</p>
+		          </c:if>
+			
+		</div>
+		
 	</body>
 </html>

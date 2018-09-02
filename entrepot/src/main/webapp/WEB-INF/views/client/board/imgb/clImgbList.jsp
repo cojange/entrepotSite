@@ -39,7 +39,7 @@
      	 						//:contains는 특정 텍스트를 포함한 요소 반환
      	 						if($("#search").val()=="imgb_title"){
      	 							value="#list tr td.goDetail";
-     	 						}else if($("#search").val()=="imgb_name"){
+     	 						}else if($("#search").val()=="m_name"){
      	 							value="#list tr td.name";
      	 						}
      	 						$(value+":contains('"+word+"')").each(function(){
@@ -131,7 +131,7 @@
 							<tr class="tac" data-num="${imgb.imgb_no }">
 								<td>${imgb.imgb_no }</td>
 								<td class="goDeatil">${imgb.imgb_title }</td>
-								<td>${imgb.imgb_name }</td>
+								<td>${imgb.m_name }</td>
 								<td>${imgb.imgb_date }</td>
 							</tr>
 						</c:forEach>

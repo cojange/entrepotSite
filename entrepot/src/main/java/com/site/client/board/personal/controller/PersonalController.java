@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +14,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.site.client.board.personal.service.PersonalService;
 import com.site.client.board.personal.vo.PersonalVO;
+import com.site.client.member.login.vo.LoginVO;
 import com.site.common.file.FileUploadUtil;
 
 
@@ -48,23 +49,21 @@ public class PersonalController {
 		
 		return "client/board/personal/writeForm";//글쓰는 jsp로 이동 
 	}
-	
+	//글 입력 구현 
 	@RequestMapping(value="/board/personal/personalInsert.do",method=RequestMethod.POST)
-	public String personalInsert(PersonalVO pvo,Model model, HttpServletRequest req)throws IllegalStateException, IOException {
+	public String personalInsert(PersonalVO pvo,Model model, HttpServletRequest req,
+			HttpSession session)throws IllegalStateException, IOException {
 	      logger.info("personalInsert 호출 성공");
 	      
-	      //확인 후 주석처리
-	      /*logger.info("fileName:" + pvo.getFile().getOriginalFilename());
-	      logger.info("file_thumb"+ pvo.getFile_thumb());*/
-	      
+	    
 	      int result = 0;
 	      String url = "";
 	      
 	      if(!pvo.getFile().isEmpty()) {// 비어있지 않으면
 	    	  String file_thumb = FileUploadUtil.fileUpload(pvo.getFile(), "personal", req, "personal", "personal");
-	    	  pvo.setFile_thumb(file_thumb);
+	    	  pvo.setPb_img1(file_thumb);
 	      }else {
-	    	  pvo.setFile_thumb("");
+	    	  pvo.setPb_img1("");
 	      }
 	      result = personalService.personalInsert(pvo);
 	      if(result ==1) { //오류가 발생하지 안을 경우
@@ -75,7 +74,7 @@ public class PersonalController {
 		return "redirect:" + url;
 	}
 	//글 자세히 보기
-	@RequestMapping(value="/board/personal/detailForm.do", method=RequestMethod.GET)
+	@RequestMapping(value="/board/personal/personalDetail.do", method=RequestMethod.GET)
 	//public String personalDetail(@RequestParam("pb_no")int pb_no , Model model) {
 	public String personalDetail(PersonalVO pvo, Model model) {
 		logger.info("personalDetail 호출 성공");
@@ -88,7 +87,7 @@ public class PersonalController {
 		}
 		model.addAttribute("detail", detail);
 		
-		return "client/board/personal/detailForm"; //jsp 이동 리턴값
+		return "client/board/personal/personalDetail"; //jsp 이동 리턴값
 	}
 	//비밀번호 확인,param pb_no, param pb_password
 	@RequestMapping(value="/board/personal/pwdConfirm.do",method=RequestMethod.POST,produces="text/plain;charset=UTF-8")

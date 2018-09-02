@@ -2,15 +2,16 @@ package com.site.client.board.personal.vo;
 
 import org.springframework.web.multipart.MultipartFile;
 
+/*import com.site.client.member.login.vo.LoginVO;*/
 import com.site.common.vo.CommonVO;
 
-public class PersonalVO extends CommonVO {
+public class PersonalVO extends CommonVO  {
 	//1대1 게시판
 		private int pb_no			=0;
 		private String m_name		="";
 		private String pb_type		="";
 		private String pb_title		="";
-		private String pb_password	="";
+		private String pb_pwd		="";
 		private String pb_content	="";
 		private String update		="";
 		private String pb_date		="";
@@ -45,11 +46,11 @@ public class PersonalVO extends CommonVO {
 		public void setPb_title(String pb_title) {
 			this.pb_title = pb_title;
 		}
-		public String getPb_password() {
-			return pb_password;
+		public String getPb_pwd() {
+			return pb_pwd;
 		}
-		public void setPb_password(String pb_password) {
-			this.pb_password = pb_password;
+		public void setPb_pwd(String pb_pwd) {
+			this.pb_pwd = pb_pwd;
 		}
 		public String getPb_content() {
 			return pb_content;
@@ -99,8 +100,5 @@ public class PersonalVO extends CommonVO {
 		public void setPb_img3(String pb_img3) {
 			this.pb_img3 = pb_img3;
 		}
-		
-		
-		
 		
 }

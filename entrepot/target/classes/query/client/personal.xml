@@ -13,15 +13,16 @@
 		<selectKey resultType="int" order="BEFORE" keyProperty="pb_no">
 			select personal_board_seq.nextval from dual
 		</selectKey>
-		INSERT INTO spring_board(pb_no, pb_type, pb_name, pb_title, pb_content, pb_pwd,pb_img1 
-		<if test="file_thumb != ''">,b_file</if>
-		)VALUES(#{pb_no}, #{pb_type}, #{pb_name}, #{pb_title}, #{pb_content},#{pb_img1} 
-		<if test="file_thumb != ''">, #{file_thumb}</if>
+		insert into personal_board(pb_no, pb_type, pb_title, pb_pwd,
+		board_no, m_num, pb_content, pb_date,
+		<if test="pb_img1 != ''">pb_img1)</if>
+		VALUES(#{pb_no},#{pb_type},#{pb_title},#{pb_pwd},#{board_no},#{m_num},#{pb_content},#{pb_date},
+		<if test="pb_img1 != ''">#{pb_img1}</if>
 		) 
 	</insert>
 	
 	<!-- 상세페이지 -->
-	<select id="parsonalDetail" parameterType="personal" resultType="personal">
+	<select id="detailForm" parameterType="personal" resultType="personal">
 		 select pb_no,pb_type, pb_title, pb_content,
 		 to_char(pb_date, 'YYYY-MM-DD') as pb_date, pb_img1 from personal_board
 		 where pb_no=#;
