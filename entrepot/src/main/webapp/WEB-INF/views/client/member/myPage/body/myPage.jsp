@@ -166,58 +166,154 @@ function aa_open()
 										<tr>
 											<td colspan="9" bgcolor="#CDCDCD" height="2"></td>
 										</tr>
-										<tr height="35" bgcolor="#E8ECED">							
-											<td width="35" align="center"><a href="#" onclick="javascript:reverse(this.form)"><u>선택</u></a></td>
-											<td align="center"><b>No</b></td>
-											<td align="center"><b>상품코드<br>발행사</b></td>
-											<td align="center"><b>처리상태</b></td>
-											<td align="center"><b>개월수</b></td>
-											<td align="right"><b>정기구독가</b></td>
-											<td align="right"><b>권수</b>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-											<td align="right"><b>합계</b></td>			
-										</tr>
-										<tr>
-											<!-- <td colspan="9" height="1" bgcolor="#c9c9c9"></td> -->
-											<table>
-											<tbody>
-												<c:choose>
-													<c:when test="${not empty list}">
-														<c:forEach var="vo" items="${list}">
-															<tr class="myList" width="807"><%-- <tr align="center" data-num="${vo.order_num}"> --%><!-- 체크박스넣을곳 -->
-															<!--data-num ->요소를 구별할때 쓰는 구문 -->
-																<td width="35" align="center" ><input type="checkbox"></td>
-																<td width="43" align="center">${vo.order_num}</td>
-																<td width="140" align="center">
-																<%-- <c:if test="${vo.repStep>0}">
-																	<c:forEach begin="1" end="${vo.repIndent}">
-																		&nbsp;&nbsp;&nbsp;
-																	</c:forEach>
-																	<img src="/siteProject/image/re.gif"/>
-																</c:if> --%>
-																${vo.pd_num}
-																<%-- <c:if test="${vo.rCount>0}"><span class="rCount">[${vo.rCount}]</span></c:if> --%>
-																</td>
-																<td width="140" align="center">${vo.order_ok}</td>
-																<td width="105" align="center">임시값...</td>
-																<td width="175" align="right">${vo.order_money}원</td>
-																<td width="98" align="right">
-																<input type="text"  value="${vo.order_ea}" maxlength="2" size="2">
-																<a href="#" onclick="javascript:send_count('this.form','${vo.order_ea}')">	
-																<img src="/resources/images/client/updatebtn.png" border="0"></a>			
-																</td>
-																<td width="71" align="right"><font color="red">원</font></td>
-															</tr>
-														</c:forEach>
-													</c:when>
-													<c:otherwise>
-													<tr>
-														<td colspan="5" align="center">등록된 게시물이 존재하지 않습니다.</td>
-													</tr>
-													</c:otherwise>
-												</c:choose>
-											</tbody>
-											</table>
-										</tr>
+										<c:choose>
+											<c:when test="${not empty whishList}">	
+												<tr height="35" bgcolor="#E8ECED">							
+													<td width="35" align="center"><a href="#" onclick="javascript:reverse(this.form)"><u>선택</u></a></td>
+													<td align="center"><b>No</b></td>
+													<td align="center"><b>상품이미지<br>발행사</b></td>
+													<td align="center"><b>잡지명</b></td>
+													<td align="center"><b>잡지주기(개월수)</b></td>
+													<td align="center"><b>정기구독가</b></td>
+													<td align="center"><b>권수</b>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+													<td align="center"><b>합계</b></td>			
+												</tr>
+												<c:forEach var="vo" items="${whishList}">
+												<tr>
+													<!-- <td colspan="9" height="1" bgcolor="#c9c9c9"></td> -->
+													<table>
+													<tbody>
+														<tr class="myList" width="807"><%-- <tr align="center" data-num="${vo.order_num}"> --%><!-- 체크박스넣을곳 -->
+														<!--data-num ->요소를 구별할때 쓰는 구문 -->
+															<td width="35" align="center" ><input type="checkbox"></td>
+															<td width="37" align="center">인덱스</td>
+															<td width="150" align="center">
+															<%-- <c:if test="${vo.repStep>0}">
+																<c:forEach begin="1" end="${vo.repIndent}">
+																	&nbsp;&nbsp;&nbsp;
+																</c:forEach>
+																<img src="/siteProject/image/re.gif"/>
+															</c:if> --%>
+															<img src="${vo.pl_path}"/>
+															<%-- <c:if test="${vo.rCount>0}"><span class="rCount">[${vo.rCount}]</span></c:if> --%>
+															</td>
+															<td width="90" align="center">${vo.mg_name}</td> 
+															<td width="232" align="center">${vo.mg_period}원</td>
+															<td width="150" align="center">${vo.pd_sale}</td>
+															<td width="85" align="center">
+															<input type="number"  value="${vo.ea}" min="1" maxlength="2" size="2">
+															<a href="#" onclick="javascript:send_count('this.form','${vo.ea}')">	
+															<img src="/resources/images/client/updatebtn.png" border="0"></a>
+															<input type="hidden" name="pd_num" value="${vo.pd_num}">		
+															</td>
+															<td width="61" align="center"><font color="red">합계</font></td>
+															<%-- <td><a href="/client/member/memberModify.do?whish="${vo.whish}">삭제</a></td> --%> 
+														</tr>
+													</tbody>
+													</table>
+												</tr>
+												</c:forEach>
+											</c:when>
+											<c:when test="${not empty cartList}">										
+												<tr height="35" bgcolor="#E8ECED">							
+													<td width="35" align="center"><a href="#" onclick="javascript:reverse(this.form)"><u>선택</u></a></td>
+													<td align="center"><b>No</b></td>
+													<td align="center"><b>상품이미지
+													<br>발행사</b></td>
+													<td align="center"><b>잡지명</b></td>
+													<td align="center"><b>잡지주기(개월수)</b></td>
+													<td align="center"><b>정기구독가</b></td>
+													<td align="center"><b>권수</b>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+													<td align="center"><b>합계</b></td>			
+												</tr>
+												<c:forEach var="vo" items="${cartList}">
+												<tr>
+													<!-- <td colspan="9" height="1" bgcolor="#c9c9c9"></td> -->
+													<table>
+													<tbody>
+														<tr class="myList" width="807"><%-- <tr align="center" data-num="${vo.order_num}"> --%><!-- 체크박스넣을곳 -->
+														<!--data-num ->요소를 구별할때 쓰는 구문 -->
+															<td width="35" align="center" ><input type="checkbox"></td>
+															<td width="37" align="center">인덱스</td>
+															<td width="150" align="center">
+															<%-- <c:if test="${vo.repStep>0}">
+																<c:forEach begin="1" end="${vo.repIndent}">
+																	&nbsp;&nbsp;&nbsp;
+																</c:forEach>
+																<img src="/siteProject/image/re.gif"/>
+															</c:if> --%>
+															<img src="${vo.pl_path}"/>
+															<%-- <c:if test="${vo.rCount>0}"><span class="rCount">[${vo.rCount}]</span></c:if> --%>
+															</td>
+															<td width="90" align="center">${vo.mg_name}</td>
+															<td width="232" align="center">${vo.mg_period}</td>
+															<td width="150" align="center">${vo.pd_sale}원</td>
+															<td width="85" align="center">
+															<input type="text"  value="${vo.ea}" maxlength="2" size="2">
+															<a href="#" onclick="javascript:send_count('this.form','${vo.ea}')">	
+															<img src="/resources/images/client/updatebtn.png" border="0"></a>			
+															</td>
+															<td width="61" align="center"><font color="red">합계</font></td>
+														</tr>
+													</tbody>
+													</table>
+												</tr>
+												</c:forEach>
+											</c:when>
+											<c:when test="${not empty orderList}">											
+												<tr height="35" bgcolor="#E8ECED">							
+													<td width="35" align="center"><a href="#" onclick="javascript:reverse(this.form)"><u>선택</u></a></td>
+													<td align="center"><b>No</b></td>
+													<td align="center"><b>상품코드<br>발행사</b></td>
+													<td align="center"><b>처리상태</b></td>
+													<td align="center"><b>개월수</b></td>
+													<td align="center"><b>정기구독가</b></td>
+													<td align="center"><b>권수</b>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+													<td align="center"><b>합계</b></td>			
+												</tr>
+												<c:forEach var="vo" items="${orderList}">
+												<tr>
+													<!-- <td colspan="9" height="1" bgcolor="#c9c9c9"></td> -->
+													<table>
+													<tbody>
+														<tr class="myList" width="807"><%-- <tr align="center" data-num="${vo.order_num}"> --%><!-- 체크박스넣을곳 -->
+														<!--data-num ->요소를 구별할때 쓰는 구문 -->
+															<td width="35" align="center" ><input type="checkbox"></td>
+															<td width="43" align="center">${vo.order_num}</td>
+															<td width="140" align="center">
+															<%-- <c:if test="${vo.repStep>0}">
+																<c:forEach begin="1" end="${vo.repIndent}">
+																	&nbsp;&nbsp;&nbsp;
+																</c:forEach>
+																<img src="/siteProject/image/re.gif"/>
+															</c:if> --%>
+															${vo.pd_num}
+															<%-- <c:if test="${vo.rCount>0}"><span class="rCount">[${vo.rCount}]</span></c:if> --%>
+															</td>
+															<td width="140" align="center">${vo.order_ok}</td>
+															<td width="105" align="center">임시값...</td>
+															<td width="175" align="right">${vo.order_money}원</td>
+															<td width="98" align="right">
+															<input type="text"  value="${vo.order_ea}" maxlength="2" size="2">
+															<a href="#" onclick="javascript:send_count('this.form','${vo.order_ea}')">	
+															<img src="/resources/images/client/updatebtn.png" border="0"></a>			
+															</td>
+															<td width="71" align="right"><font color="red">원</font></td>
+														</tr>
+													</tbody>
+													</table>
+												</tr>
+												</c:forEach>
+											</c:when>
+											<c:otherwise>
+												<tr></tr>
+												<tr>
+													<td colspan="5" align="center">기록정보가 존재하지 않습니다.</td>
+												</tr>
+											</c:otherwise>
+										</c:choose>
+										
+												
 										<tr>
 											<td colspan="9" bgcolor="#CDCDCD" height="2"></td>
 										</tr>

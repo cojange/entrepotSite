@@ -10,13 +10,13 @@
         <a href="#">마이페이지</a>
       </li>
 	  <li>
-      	<a href="#" accesskey="1" title="">My 찜리스트<i class="demo-icon icon-heart-filled"   style="width: 10px;" ></i></a>
+      	<a href="/client/member/myPageWhish.do" accesskey="1" title="">My 찜리스트<i class="demo-icon icon-heart-filled"   style="width: 10px;" ></i></a>
       </li>
       <li>
-      	<a href="#" accesskey="1" title="">My 장바구니<i class="demo-icon icon-basket"  style="width: 10px;" ></i></a>
+      	<a href="/client/member/myPageCart.do" accesskey="1" title="">My 장바구니<i class="demo-icon icon-basket"  style="width: 10px;" ></i></a>
       </li>
       <li>
-      	<a href="#" accesskey="1" title="">My 주문내역<i class="demo-icon icon-calendar-inv"  style="width: 10px;" ></i></a>
+      	<a href="/client/member/myPageOrderList.do" accesskey="1" title="">My 주문내역<i class="demo-icon icon-calendar-inv"  style="width: 10px;" ></i></a>
       </li>
       <li>
       	<a href="#" accesskey="1" title="">My 배송정보<i class="demo-icon icon-truck" style="width: 10px;" ></i></a>

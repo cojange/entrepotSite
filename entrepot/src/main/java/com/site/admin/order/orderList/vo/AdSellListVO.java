@@ -1,5 +1,7 @@
 package com.site.admin.order.orderList.vo;
 
+import java.sql.Date;
+
 public class AdSellListVO {
 	
 	  private String order_num;
@@ -10,6 +12,7 @@ public class AdSellListVO {
 	  private String coupon_no;
 	  private String m_num;
 	  private String mt;
+	  
 	public String getOrder_num() {
 		return order_num;
 	}

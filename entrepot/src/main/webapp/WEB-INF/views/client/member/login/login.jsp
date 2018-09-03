@@ -35,7 +35,7 @@
 
   <body>
   	<div id="page" class="container joinform">
-  	<div><img src="/resources/images/pic03.jpg"alt="" /></div>
+  	<!-- <div><img src="/resources/images/pic03.jpg"alt="" /></div> -->
 	  <div>
 	  	<div class="title"> 
 			<h1>로그인창</h1>
