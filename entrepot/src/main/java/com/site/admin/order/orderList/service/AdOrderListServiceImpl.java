@@ -10,6 +10,7 @@ import com.site.admin.order.orderList.vo.AdMonthKeyVO;
 import com.site.admin.order.orderList.vo.AdOrderListVO;
 import com.site.admin.order.orderList.vo.AdOrderProductVO;
 import com.site.admin.order.orderList.vo.AdSellListVO;
+import com.site.common.vo.CommonVO;
 
 @Service
 public class AdOrderListServiceImpl implements AdOrderListService {
@@ -42,8 +43,16 @@ public class AdOrderListServiceImpl implements AdOrderListService {
 	
 	//발주 목록
 	@Override
-	public List<AdOrderProductVO> getOrderProduct(){
-		List<AdOrderProductVO> orderPList = adOrderListDao.getOrderProduct();
+	public List<AdOrderProductVO> getOrderProduct(CommonVO cvo){
+		List<AdOrderProductVO> orderPList = adOrderListDao.getOrderProduct(cvo);
 		return orderPList;
 	}
+	
+/*	//상태 발주목록
+	@Override
+	public List<AdOrderProductVO> getKindOrder(String selectkey) {
+
+		return null;
+	}*/
+
 }

@@ -86,6 +86,7 @@
 	    <script type="text/javascript" src="/resources/include/common/js/jquery.form.min.js"></script>
 	    <script type="text/javascript" src="/resources/include/admin/js/json2html/subTable.js"></script>
 	    <script type="text/javascript" src="/resources/include/admin/js/json2html/mainDt.js"></script>
+	    <script type="text/javascript" src="/resources/include/admin/js/json2html/json2table.js"></script>
 	    <script type="text/javascript" src="/resources/include/common/js/paging.js"></script>
 	    <script type="text/javascript">
 	    var addTable;
@@ -863,8 +864,31 @@
     	   	    	
     	   	        
     	   	    } );//아이콘 접기,펴기
+			
+    	   	    //판매 현황
+    	   	    var columns = ['품번','품명','거래처','담당자','연락처','email','총 수량','총 금액','비 고'];
     	   	    
-    	   	    //날짜별 계산
+    	   	    var productTableURL = "/admin/order/orderList/getKindOrder.do";
+    	   	    $("#selectkey").change(function(){
+    	   	    	$("#kindOrder").ajaxForm({
+    	   	    		url:productTableURL,
+    	   	    		type:'post',
+    	   	    		dataType:'json',
+    	   	    		error:function(){
+    	   	    			alert("시스템 오류입니다. 관리자에게 문의하세요.");
+    	   	    		},
+    	   	    		success:function(jsonElements){
+    	   	    			var j2t = json2Table(jsonElements,columns,"table-striped","orderProductTable");
+    	   	    			$("#switchDiv2").html("");
+    	   	    			$("#switchDiv2").html(j2t);
+    	   	    			paging($("#orderProductTable"), $("#orderProductTable tbody tr"));
+    	   	    		}
+    	   	    	})
+    	   	    	$("#kindOrder").submit();
+    	   	    })
+    	   	    
+    	   	    
+    	   	    //paging    
     			paging($("#orderProductTable"), $("#orderProductTable tbody tr"));
 
     		}

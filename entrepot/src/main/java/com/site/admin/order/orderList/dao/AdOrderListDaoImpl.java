@@ -10,6 +10,7 @@ import com.site.admin.order.orderList.vo.AdMonthKeyVO;
 import com.site.admin.order.orderList.vo.AdOrderListVO;
 import com.site.admin.order.orderList.vo.AdOrderProductVO;
 import com.site.admin.order.orderList.vo.AdSellListVO;
+import com.site.common.vo.CommonVO;
 
 @Repository
 public class AdOrderListDaoImpl implements AdOrderListDao {
@@ -35,7 +36,7 @@ public class AdOrderListDaoImpl implements AdOrderListDao {
 	}
 	
 	@Override
-	public List<AdOrderProductVO> getOrderProduct(){
-		return session.selectList("getOrderProduct");
+	public List<AdOrderProductVO> getOrderProduct(CommonVO cvo){
+		return session.selectList("getOrderProduct", cvo);
 	}
 }

@@ -86,7 +86,16 @@
        		<div class="card-header">
               <i class="fas fa-users"></i>발주 관리
          	</div>
-        <div class="table-responsive">
+         	<form id="kindOrder" name="kindOrder">
+		         <select id="selectkey" name="keyword">
+		         	<option value="all">전체</option>
+		         	<option value="주문">주문</option>
+		         	<option value="판매">판매</option>
+		         	<option value="교환">교환</option>
+		         	<option value="환불">환불</option>
+		         </select>
+         	</form>
+        <div class="table-responsive" id="switchDiv2">
             <table class="table table-striped" id="orderProductTable">
               <thead>
               	<tr>
@@ -107,11 +116,11 @@
                           <c:forEach var="orderP" items="${orderProduct }" varStatus="status">
                              <tr class="tac" data-num="${status.count }">
                                 <td>${orderP.pd_num}</td>
-                                <td>${orderP.pd_name}</td>
+                                <td>${orderP.mg_name}</td>
                                 <td>${orderP.mcom_name }</td>
-                                <td>${orderP.acc_manager }</td>
-                                <td>${orderP.acc_tell }</td>
-                                <td>${orderP.acc_email }</td>
+                                <td>${orderP.char_manager }</td>
+                                <td>${orderP.char_tel }</td>
+                                <td>${orderP.char_email }</td>
                                 <td>${orderP.total_ea}</td>
                                 <td>${orderP.total_cost}</td>
                                 <td>${orderP.memo }</td>

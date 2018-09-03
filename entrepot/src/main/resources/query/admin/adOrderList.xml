@@ -31,10 +31,15 @@
 		order by sell_date desc, enddate desc
 	</select>
 	
-	<select id="getOrderProduct" resultType="aopvo">
+	<select id="getOrderProduct" parameterType="cvo" resultType="aopvo">
 		/*발주 확인 뷰*/
-		select pd_num, mg_name, mcom_name, acc_manager, acc_tel, acc_email, total_ea, total_cost, memo
+		select pd_num, mg_name, mcom_name, char_manager, char_tel, char_email, total_ea, total_cost, memo
 		from orderProduct
+		<where>
+			<if test="keyword != 'all'">
+				memo = #{keyword}
+			</if>
+		</where>
 	</select>
 	
 </mapper>

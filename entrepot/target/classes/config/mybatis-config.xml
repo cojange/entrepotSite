@@ -32,7 +32,8 @@
 		<typeAlias type="com.site.client.member.login.vo.LoginVO" alias="login"/>
 		<typeAlias type="com.site.client.member.individual.vo.ClGmVO" alias="groupMember"/>
 		
-
+		<!-- common -->
+		<typeAlias type="com.site.common.vo.CommonVO" alias="cvo"/>
 
 	</typeAliases>
 </configuration>
