@@ -21,6 +21,7 @@
 		<typeAlias type="com.site.admin.order.orderList.vo.AdSellListVO" alias="slvo"/>
 		<typeAlias type="com.site.admin.order.orderList.vo.AdOrderListVO" alias="ovo"/>
 		<typeAlias type="com.site.admin.order.orderList.vo.AdMonthKeyVO" alias="mkvo"/>
+		<typeAlias type="com.site.admin.order.orderList.vo.AdOrderProductVO" alias="aopvo"/>
 		
 		<!-- client -->
 		<typeAlias type="com.site.client.board.vo.ClImgbVO" alias="imgb" />
@@ -33,7 +34,8 @@
 		<typeAlias type="com.site.client.member.myPage.vo.ClMyPageVO" alias="whishAndCart"/>
 		<typeAlias type="com.site.client.member.myPage.vo.ClOrderListVO" alias="orderList"/>
 		
-
+		<!-- common -->
+		<typeAlias type="com.site.common.vo.CommonVO" alias="cvo"/>
 
 	</typeAliases>
 </configuration>

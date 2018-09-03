@@ -4,7 +4,7 @@
 <mapper namespace="com.site.admin.magazine.adMagazine.dao.AdMagazineDao">
 	<select id="adMagazineList" parameterType="mgvo" resultType="mgvo">
 		/*상품 리스트*/
-		select pd_cost, mg_name, pl_path, file_date, mg_num
+		select pd_cost, mg_name, pl_path, mg_num
 		from magazine_list_view
 		order by SUBSTR(reverse(substr(reverse(pl_path), 1, instr(reverse(pl_path), '_') - 1)),1,instr(reverse(substr(reverse(pl_path), 1, instr(reverse(pl_path), '_') - 1)),'.')-1) desc
 	</select>

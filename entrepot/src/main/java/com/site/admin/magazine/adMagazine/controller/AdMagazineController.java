@@ -24,11 +24,13 @@ public class AdMagazineController {
 	 * 상품 리스트 구현하기
 	 * **/	
 	@RequestMapping(value="adMagazineList.do", method=RequestMethod.GET)
-	public String adMagazineList(MagazineVO mvo, Model model) {
-		logger.info("adMagazineList 호출 성공");
+	public String adMagazineList(MagazineVO mgvo, Model model) {
+		logger.info("adMagazineList 호출 성공");		
 		
-		List<MagazineVO> adMagazineList = adMagazineService.adMagazineList(mvo);
+		List<MagazineVO> adMagazineList = adMagazineService.adMagazineList(mgvo);
 		model.addAttribute("adMagazineList", adMagazineList);
+		
+		System.out.println(adMagazineList.toString());
 		
 		return "admin/magazine/adMagazine/adMagazineList";
 	}

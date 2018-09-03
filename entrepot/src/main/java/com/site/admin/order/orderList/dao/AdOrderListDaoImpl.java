@@ -8,7 +8,9 @@ import org.springframework.stereotype.Repository;
 
 import com.site.admin.order.orderList.vo.AdMonthKeyVO;
 import com.site.admin.order.orderList.vo.AdOrderListVO;
+import com.site.admin.order.orderList.vo.AdOrderProductVO;
 import com.site.admin.order.orderList.vo.AdSellListVO;
+import com.site.common.vo.CommonVO;
 
 @Repository
 public class AdOrderListDaoImpl implements AdOrderListDao {
@@ -31,5 +33,10 @@ public class AdOrderListDaoImpl implements AdOrderListDao {
 	@Override
 	public List<AdSellListVO> getSearchDate(AdMonthKeyVO mkvo) {
 		return session.selectList("getSearchDate",mkvo);
+	}
+	
+	@Override
+	public List<AdOrderProductVO> getOrderProduct(CommonVO cvo){
+		return session.selectList("getOrderProduct", cvo);
 	}
 }
