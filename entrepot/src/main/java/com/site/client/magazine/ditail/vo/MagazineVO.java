@@ -32,7 +32,7 @@ public class MagazineVO extends PageVO{
    private String dt_keyword;               //키워드
    
    //필요 필드
-   private int pd_salecost;     //활인가
+   private int pd_salecost;     //할인가
    private String com_name;          //출판사
    private int listkey;      // 키워드 개수 판별
    private String home;         //리스트 제목

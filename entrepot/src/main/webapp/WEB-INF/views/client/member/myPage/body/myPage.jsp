@@ -198,15 +198,15 @@ function aa_open()
 															<%-- <c:if test="${vo.rCount>0}"><span class="rCount">[${vo.rCount}]</span></c:if> --%>
 															</td>
 															<td width="90" align="center">${vo.mg_name}</td> 
-															<td width="232" align="center">${vo.mg_period}원</td>
-															<td width="150" align="center">${vo.pd_sale}</td>
+															<td width="232" align="center">${vo.mg_period}</td>
+															<td width="150" align="center">${vo.pd_sale}원</td> 
 															<td width="85" align="center">
 															<input type="number"  value="${vo.ea}" min="1" maxlength="2" size="2">
 															<a href="#" onclick="javascript:send_count('this.form','${vo.ea}')">	
 															<img src="/resources/images/client/updatebtn.png" border="0"></a>
 															<input type="hidden" name="pd_num" value="${vo.pd_num}">		
 															</td>
-															<td width="61" align="center"><font color="red">합계</font></td>
+															<td width="61" align="center"><font color="red">${vo.pd_salecost}원</font></td>
 															<%-- <td><a href="/client/member/memberModify.do?whish="${vo.whish}">삭제</a></td> --%> 
 														</tr>
 													</tbody>

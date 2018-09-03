@@ -38,7 +38,12 @@ public class ClMyPageVO extends MagazineVO{
 		this.ea = ea;
 	}
 	
-	
+	public int getSum() {
+		return sum;
+	}
+	public void setSum(int sum) {
+		this.sum = sum;
+	}
 	
 	
 	

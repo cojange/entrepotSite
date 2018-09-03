@@ -5,7 +5,9 @@
 <!--찜목록-->
 <select id="whishList" parameterType="whishAndCart" resultType="whishAndCart">
 	/*myPage - whishList*/
-	select d.PL_PATH,a.mg_name,a.mg_period,c.PD_SALE ,b.ea ,b.RECORD_NUM 
+	select d.PL_PATH,a.mg_name,a.mg_period,c.PD_SALE 
+	,SUBSTR(A.MG_PERIOD,INSTR(A.MG_PERIOD,'(')+1,INSTR(A.MG_PERIOD,'회')-INSTR(A.MG_PERIOD,'(')-1)as pd_cost
+	,b.ea ,b.RECORD_NUM 
 	from magazine a join record b 
 	on a.mg_num=b.mg_num 
 	join PRODUCT c 
@@ -19,7 +21,9 @@
 <!-- 장바구니 -->
 <select id="cartList" parameterType="whishAndCart" resultType="whishAndCart">
 	/*myPage - cartList*/
-	select d.PL_PATH,a.mg_name,a.mg_period,c.PD_SALE ,b.ea ,b.RECORD_NUM 
+	select d.PL_PATH,a.mg_name,a.mg_period,c.PD_SALE 
+	,SUBSTR(A.MG_PERIOD,INSTR(A.MG_PERIOD,'(')+1,INSTR(A.MG_PERIOD,'회')-INSTR(A.MG_PERIOD,'(')-1)as pd_cost
+	,b.ea ,b.RECORD_NUM 
 	from magazine a join record b 
 	on a.mg_num=b.mg_num 
 	join PRODUCT c 
