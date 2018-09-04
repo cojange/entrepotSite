@@ -1,4 +1,4 @@
-function json2Table(jsonElements, columns, tClass,tableId){
+function json2Table(jsonElements, columns, tClass,trClass,tableId){
 	
 	var ret = "";
 	if(jsonElements.length<=0){
@@ -18,7 +18,10 @@ function json2Table(jsonElements, columns, tClass,tableId){
 	ret+=clist+"</thead><tbody>";
 	var dlist="";
 	for(var i=0; i<jsonElements.length;i++){
-		dlist+="<tr>";
+		dlist+="<tr class='"+trClass+"'>";
+		if(columns[0]=='check'){
+			dlist+="<td><input type='checkbox' class='chkbox'></td>";
+		}
 			$.each(jsonElements[i],function(k,v){
 				dlist+="<td>"+v+"</td>";
 			})

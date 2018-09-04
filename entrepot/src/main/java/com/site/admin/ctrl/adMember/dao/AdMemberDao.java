@@ -17,5 +17,5 @@ public interface AdMemberDao {
 	public AdminVO tellCheck(AdminVO avo);
 	public AdminVO emailCheck(AdminVO avo);
 	public int insertAdmin(AdminVO avo);
-	
+	public int delAdmin(String ad_id);
 }

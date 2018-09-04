@@ -22,6 +22,8 @@
 		<typeAlias type="com.site.admin.order.orderList.vo.AdOrderListVO" alias="ovo"/>
 		<typeAlias type="com.site.admin.order.orderList.vo.AdMonthKeyVO" alias="mkvo"/>
 		<typeAlias type="com.site.admin.order.orderList.vo.AdOrderProductVO" alias="aopvo"/>
+		<typeAlias type="com.site.admin.order.orderList.vo.AdRefundVO" alias="rfvo"/>
+		<typeAlias type="com.site.admin.order.orderList.vo.AdChangeVO" alias="cgvo"/>
 		
 		<!-- client -->
 		<typeAlias type="com.site.client.board.vo.ClImgbVO" alias="imgb" />
