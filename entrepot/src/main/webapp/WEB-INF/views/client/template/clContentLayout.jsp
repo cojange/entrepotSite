@@ -60,8 +60,9 @@
 		     		<tiles:insertAttribute name="header"/>
 		</div>
    		<table  class="container">
-   		<tr id="tr1">
-   			<td >	
+   		<tbody class="containerTbody">
+   		<tr id="tr1"> 
+   			<td class="containertd1">	
 		     	<div >
 		    		<tiles:insertAttribute name="sidebar"/>
 		    	</div>
@@ -75,7 +76,8 @@
 		     		<tiles:insertAttribute name="body"/>
 		    	 </div>
 		    </td>
-		 </tr>	    	 
+		 </tr>
+		 </tbody>	    	 
 	  
 	</table>
 
@@ -83,9 +85,11 @@
 	<div>
 		<tiles:insertAttribute name="quick"/>
 	</div>
+	<div id="footer">
 	 <footer >
 			<tiles:insertAttribute name="footer"/>
 	</footer>
+	</div>
 </div>
     	
     <!-- Bootstrap core JavaScript

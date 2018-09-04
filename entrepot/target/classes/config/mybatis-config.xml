@@ -20,9 +20,16 @@
 		<typeAlias type="com.site.admin.ctrl.adMember.vo.AdminVO" alias="avo"/>
 		<typeAlias type="com.site.admin.order.orderList.vo.AdSellListVO" alias="slvo"/>
 		<typeAlias type="com.site.admin.order.orderList.vo.AdOrderListVO" alias="ovo"/>
+<<<<<<< HEAD
 		<typeAlias type="com.site.admin.order.orderList.vo.AdMonthKeyVO" alias="mkvo"/>
 		<typeAlias type="com.site.admin.magazine.adMagazine.vo.MagazineSearchVO" alias="msvo"/>
 		<typeAlias type="com.site.admin.order.orderList.vo.AdOrderProductVO" alias="aopvo"/>
+=======
+		<typeAlias type="com.site.admin.order.orderList.vo.AdMonthKeyVO" alias="mkvo"/>
+		<typeAlias type="com.site.admin.order.orderList.vo.AdOrderProductVO" alias="aopvo"/>
+		<typeAlias type="com.site.admin.order.orderList.vo.AdRefundVO" alias="rfvo"/>
+		<typeAlias type="com.site.admin.order.orderList.vo.AdChangeVO" alias="cgvo"/>
+>>>>>>> branch 'master' of https://github.com/cojange/entrepotSite.git
 		
 		<!-- client -->
 		<typeAlias type="com.site.client.board.vo.ClImgbVO" alias="imgb" />
@@ -32,8 +39,11 @@
 		<typeAlias type="com.site.client.member.individual.vo.ClMSecurity" alias="security"/>
 		<typeAlias type="com.site.client.member.login.vo.LoginVO" alias="login"/>
 		<typeAlias type="com.site.client.member.individual.vo.ClGmVO" alias="groupMember"/>
+		<typeAlias type="com.site.client.member.myPage.vo.ClMyPageVO" alias="whishAndCart"/>
+		<typeAlias type="com.site.client.member.myPage.vo.ClOrderListVO" alias="orderList"/>
 		
-
+		<!-- common -->
+		<typeAlias type="com.site.common.vo.CommonVO" alias="cvo"/>
 
 	</typeAliases>
 </configuration>

@@ -86,7 +86,16 @@
        		<div class="card-header">
               <i class="fas fa-users"></i>발주 관리
          	</div>
-        <div class="table-responsive">
+         	<form id="kindOrder" name="kindOrder">
+		         <select id="selectkey" name="keyword">
+		         	<option value="all">전체</option>
+		         	<option value="주문">주문</option>
+		         	<option value="판매">판매</option>
+		         	<option value="교환">교환</option>
+		         	<option value="환불">환불</option>
+		         </select>
+         	</form>
+        <div class="table-responsive" id="switchDiv2">
             <table class="table table-striped" id="orderProductTable">
               <thead>
               	<tr>
@@ -105,13 +114,13 @@
               	<c:choose>
                        <c:when test="${not empty orderProduct }">
                           <c:forEach var="orderP" items="${orderProduct }" varStatus="status">
-                             <tr class="tac" data-num="${status.count }">
+                             <tr class="tac deteilOrder" data-num="${status.count }">
                                 <td>${orderP.pd_num}</td>
-                                <td>${orderP.pd_name}</td>
+                                <td>${orderP.mg_name}</td>
                                 <td>${orderP.mcom_name }</td>
-                                <td>${orderP.acc_manager }</td>
-                                <td>${orderP.acc_tell }</td>
-                                <td>${orderP.acc_email }</td>
+                                <td>${orderP.char_manager }</td>
+                                <td>${orderP.char_tel }</td>
+                                <td>${orderP.char_email }</td>
                                 <td>${orderP.total_ea}</td>
                                 <td>${orderP.total_cost}</td>
                                 <td>${orderP.memo }</td>
@@ -127,7 +136,61 @@
               </tbody>
              </table>
         </div>
-         
+         <button type="button" id="refundChangeBtn" class="btn btn-primary btn-sm" disabled="disabled" data-toggle="modal" data-target="#orderWaitModal">교환 환불처리</button>
+         <button type="button" id="orderConfirmBtn" class="btn btn-primary btn-sm" disabled="disabled" data-toggle="modal" data-target="#orderConfirmModal">발주 확인처리</button>
+         <button type="button" id="orderChangeBtn" class="btn btn-primary btn-sm" disabled="disabled" data-toggle="modal" data-target=".bs-orderChange-modal-sm">상태 변경</button>
        </div>
      </div>
+     
+     <!-- 교환 환불 모달 -->
+     <div class="modal fade bs-orderWaitModal-modal-lg" id="orderWaitModal" tabindex="-1" role="dialog" aria-labelledby="orderWaitModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-lg">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h4 class="modal-title" id="orderWaitModalLabel">교환/환불 처리</h4>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		      </div>
+		      <div class="modal-body">
+		      	<div id="refundChangeDiv">
+		      	</div>
+		      	<button type="button" class="cancelReq" disabled="disabled">요청 삭제</button>
+		      	<button type="button" class="submitRC">일괄 처리</button>
+		      </div>
+		     </div>
+		    </div>
+		   </div>
+		<!-- 주문 모달 -->
+		<div class="modal fade bs-orderConfirm-modal-lg" id="orderConfirmModal" tabindex="-1" role="dialog" aria-labelledby="orderConfirmModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-lg">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h6 class="modal-title" id="orderConfirmModalLabel">발주 처리</h6>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		      </div>
+		      <div class="modal-body">
+		      	<div id="orderConfirmDiv">
+		      	</div>
+		      	<button type="button" class="submitToghter">일괄 처리</button>
+		      </div>
+		     </div>
+		    </div>
+		   </div>
+		  <!-- 주문상태변경 -->
+		<div class="modal fade bs-orderChange-modal-sm" tabindex="-1" role="dialog" aria-labelledby="orderChangeModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-sm">
+		    <div class="modal-content">
+		    <div class="modal-header">
+		        <h5 class="modal-title" id="orderChangeModalLabel">사용자정의 처리</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		      </div>
+		      <div style="text-align: center; margin-top: 13px; margin-bottom: 5px;">
+		    	<form id="orderChangeFrm" name="orderChangeFrm">
+		    		<input type="text" maxlength="4" id="orderkey" name="keyword">
+		    		<input type="button" value="수정" id="submitUserOrder">
+		    	</form>
+		    	</div>
+		    </div>
+		    
+		  </div>
+		</div>
  </div>

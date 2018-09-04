@@ -115,5 +115,13 @@ public class ClLoginController{
 	sessionStatus.setComplete();
 	return "redirect:/";
 	}
+	
+	/**************************************************************
+	* 아이디 비밀번호 찾기메서드
+	**************************************************************/
+	@RequestMapping(value="/member/findUser.do", method=RequestMethod.GET)
+	public String findUser(){
+	return "client/member/login/findUser";
+	}
 
 }

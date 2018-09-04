@@ -26,7 +26,7 @@
 	value="/WEB-INF/views/client/template/quick.jsp"/>
 	</definition>
 	
-	<definition name="client/member/*" extends="content">
+	<definition name="client/member/*">
 	<put-attribute name="body"
 	value="/WEB-INF/views/client/member/{1}.jsp"/>
 	</definition>

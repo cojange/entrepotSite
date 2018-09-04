@@ -5,10 +5,11 @@
 	  /* 사이드바 래퍼 스타일 */
   
   
-  #sidebar-wrapper {
-    width: 250px;
+    #sidebar-wrapper {
+    width: 271px;
     height: 100%;
-    margin-left: 10px;
+    margin: 0px 0px;
+    padding : 0px 0px;
     background: #202020;
     overflow-x: hidden;
     overflow-y: auto;
@@ -24,8 +25,8 @@
   
   .sidebar-nav {
     width: 250px;
-    margin: 0;
-    padding: 0;
+    margin: 0px 0px;
+    padding: 0px 0px;
     list-style: none;
   }
   

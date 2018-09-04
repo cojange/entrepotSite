@@ -86,6 +86,7 @@
 	    <script type="text/javascript" src="/resources/include/common/js/jquery.form.min.js"></script>
 	    <script type="text/javascript" src="/resources/include/admin/js/json2html/subTable.js"></script>
 	    <script type="text/javascript" src="/resources/include/admin/js/json2html/mainDt.js"></script>
+	    <script type="text/javascript" src="/resources/include/admin/js/json2html/json2table.js"></script>
 	    <script type="text/javascript" src="/resources/include/common/js/paging.js"></script>
 	    <script type="text/javascript">
 	    var addTable;
@@ -175,11 +176,7 @@
 	    				});
 	    			 });  		
 	    			
-	      			//admin 삭제시 선택하기
-	    			$("#adminTable tbody").on("click","tr", function(){
-	    				$(this).toggleClass('adt');
-	    				$(this).parent().find("tr").not(this).removeClass("adt");
-	    			});
+	      			
 						
 	      			
 	      			//admin check 변수
@@ -368,10 +365,34 @@
     						return false;
     					}
 	    			}
-
+	    			//admin 삭제시 선택하기
+	    			$("#adminTable tbody").on("click","tr", function(){
+	    				$(this).toggleClass('adt');
+	    				$(this).parent().find("tr").not(this).removeClass("adt");
+	    			});
 	    			
 					//admin 해고버튼
 	    		 	$("#adminFire").click(function(){
+	    				var adminNo = $("#adminTable").find("tr.adt").children().eq(2).html();
+	    				console.log("admin no : " + adminNo)
+	
+	    				$.ajax({
+	    					url:"/admin/ctrl/adMember/delAdmin.do",
+	    					type:'post',
+	    					data:'ad_id='+adminNo,
+	    					dataType:"text",
+	    					error:function(){
+	    						alert("시스템 오류 입니다. 관리자에게 문의 하세요.");	
+	    					},
+	    					success: function(result){
+	    						if(result == "success"){
+	    							alert("직원 정보를 삭제 하였습니다.");
+	    							location.href = "/admin/ctrl/adMember/adMemberCtrl.do";
+	    						}else{
+	    							alert("직원 정보를 삭제하는데 오류가 생겼습니다.");
+	    						}
+	    					}	
+	    				})
 	    				
 	    			})
 	    		}
@@ -795,6 +816,7 @@
 		    	    	             row.child(addTable).show();
 		    	    	             tr.find('i').removeClass('fa-plus-circle red');
 		    	    	             tr.find('i').addClass('fa-minus-circle green'); // FontAwesome 5
+		    	    	             
 		    	    	         }
 		    	   	    	});
 		    	   	    	
@@ -809,7 +831,7 @@
     			$("#etcDate").click(function(){
     				$("#anotherDate").fadeIn();
     			})
-    			
+    			//날짜 지정 search
     			$("#submitAnother").click(function(){
     				console.log("test");
     				if(!chkDate($(".anotherValue").eq(0),$(".anotherValue").eq(1))){
@@ -875,89 +897,6 @@
     				$("#anotherDate").submit();
     			})
     			
-    			
-    			
-    			
-    			//input date toggle
-    		//	$("#searchDate input").not($("input[type='date'], #etcDate")).click(function(){
-    				/* if (!$("#etcDate").is(":checked")==true){
-    					//다른 라디오
-    					$("#searchDate input[type='date']").prop('disabled',true);
-    					$("#submitAnother").prop('disabled',true);
-    					$(".anotherValue").removeAttr("name");
-    				}else { */
-    					//etc 라디오
-    					/* $(".anotherValue").eq(0).attr("name", "sDate");
-    					$(".anotherValue").eq(1).attr("name", "eDate"); */
-    					
-    			/* 		$("#searchDate input[type='date']").prop('disabled',false);
-    					$("#submitAnother").prop('disabled',false);
-    				} */
-    				
-    				//날짜별 search
-    				//if($(this).val()!='anotherDate' && $(this).val()!=""){
-    						/* $("#searchDate").ajaxForm({
-	    							url:"/admin/order/orderList/searchDate.do",
-	    							type:"post",
-	    							dataType:"json",
-	    							error:function(){
-	    								alert("시스템 오류입니다. 관리자에게 문의하세요.");
-	    							},success:function(mainElements){
-	    								
-	    								var newDt= mainDt(mainElements);
-	    								$("#switchDiv").html("");
-	    								$("#switchDiv").html(newDt);
-	    								
-	    								table =$(".orderList").DataTable( {
-	    			    			        "order": [[1, 'asc']]
-	    			    			    } );
-	    								
-	    								$('.table tbody').on('click', 'td.details-control', function () {
-	    			        	   	    	var od_num = $(this).next().html();
-	    			        	   	    	console.log("value : " + od_num);
-	    			    	   	    		console.log("뜨어엉");
-	    			    	   	    	
-	    			    				var targetTd = $(this);
-	    			    	   	    	//subtable 요청
-	    			    	   	    	var subTableURL = "/admin/order/orderList/getOrder.do";
-	    			    	   	    	$.getJSON(subTableURL,{
-	    			    	   	    		order_num:od_num
-	    			    	   	    	},function(subElements){
-	    			    	   	    		console.log("result: "+ this);
-	    			        	   	    	addTable= subtable(subElements);
-	    			        	   	    	
-	    			        	   	    	console.log(addTable);
-	    			        	   	    	//클릭시 subtable 보여주기
-	    			        	   	    	var tr = targetTd.closest('tr');
-	    			        	   	        var row = table.row( tr );
-	    			    	    	   	     if ( row.child.isShown() ) {
-	    			    	    	             // This row is already open - close it
-	    			    	    	             row.child.hide();
-	    			    	    	             if(tr.find('i').hasClass('fa-minus-circle green')){
-	    			    	    	            	 tr.find('i').removeClass('fa-minus-circle green');
-	    			    	    	            	 tr.find('i').addClass('fa-plus-circle red');	    	            	 
-	    			    	    	             }
-	    			    	    	             
-	    			    	    	         }
-	    			    	    	         else {
-	    			    	    	             // Open this row
-	    			    	    	             
-	    			    	    	             row.child(addTable).show();
-	    			    	    	             tr.find('i').removeClass('fa-plus-circle red');
-	    			    	    	             tr.find('i').addClass('fa-minus-circle green'); // FontAwesome 5
-	    			    	    	         }
-	    			    	   	    	});
-	    			    	   	    	
-	    			    	   	        
-	    			    	   	    } );//아이콘 접기,펴기
-	    							}
-	    						});//ajax 끝
-    				$("#searchDate").submit();*/
-    				//} 
-    				
-    		//	})
-    			
-    			
     			// 전체 테이블 데이터 테이블즈    	   	    	
     	   	    	 table = $(".orderList").DataTable( {
     			        "order": [[1, 'asc']]
@@ -1004,9 +943,261 @@
     	   	    	
     	   	        
     	   	    } );//아이콘 접기,펴기
+			
+    	   	    //판매 현황
+    	   	    var columns = ['품번','품명','거래처','담당자','연락처','email','총 수량','총 금액','비 고'];
     	   	    
-    	   	    //날짜별 계산
+    	   	    var productTableURL = "/admin/order/orderList/getKindOrder.do";
+    	   	    $("#selectkey").change(function(){
+    	   	    	//모달이 숨겨저 ㅇ잇으면
+    	   	    	$("#orderWaitModal:hidden").find("#refundChangeDiv").html("");
+    	   	    	$("#refundChangeBtn").prop("disabled",true);
+    	   	    	$("#orderConfirmBtn").prop("disabled",true);
+    	   	    	$("#orderChangeBtn").prop("disabled",true);
+    	   	    	$("#kindOrder").ajaxForm({
+    	   	    		url:productTableURL,
+    	   	    		type:'post',
+    	   	    		dataType:'json',
+    	   	    		error:function(){
+    	   	    			alert("시스템 오류입니다. 관리자에게 문의하세요.");
+    	   	    		},
+    	   	    		success:function(jsonElements){
+    	   	    			var j2t = json2Table(jsonElements,columns,"table-striped","deteilOrder","orderProductTable");
+    	   	    			$("#switchDiv2").html("");
+    	   	    			$("#switchDiv2").html(j2t);
+    	   	    			paging($("#orderProductTable"), $("#orderProductTable tbody tr"));
+    	   	    		}
+    	   	    	})
+    	   	    	$("#kindOrder").submit();
+    	   	    })
+    	   	    
+    	   	    //paging    
     			paging($("#orderProductTable"), $("#orderProductTable tbody tr"));
+    	   	    
+    	   	    
+    	   	    var kind;
+    	   	    var magazine;
+    	   	//교환 환불 처리 클릭
+    	   	    $(document).on("click","#orderProductTable tr.deteilOrder",function(){
+    	   	    	
+    	   	    	kind = $(this).children().eq(8).html()
+    	   	    	magazine=$(this).children().eq(0).html();
+    	   	    	var fkind = kind.substr(0,2);
+    	   	    	var bkind = kind.substr(2,2);
+    	   	    	
+    	   	    	
+    	   	    	if((fkind == '교환' || fkind =='환불') && bkind == "대기"){
+    	   	    		console.log("subtable : " + kind);
+    	   	    		$("#refundChangeBtn").prop("disabled",false);
+    	   	    		var columns = [];
+    	   	    		
+    	   	    		if(fkind =='교환'){
+    	   	    			columns=['check','교환번호','요청자','사유','수량','일자'];
+    	   	    			$.ajax({
+    	   	    				url:"/admin/order/orderList/getChange.do",
+    	   	    				type:"post",
+    	   	    				data:"keyword="+kind+"&search="+magazine,
+    	   	    				dataType:'json',
+    	   	    				error:function(){
+    	   	    					alert("시스템 오류 입니다. 관리자에게 문의하세요.");
+    	   	    				},
+    	   	    				success:function(jsonElements){
+    	   	    					var tableHTML = json2Table(jsonElements,columns,"table-bordered","changeColumn","changeTable");
+    	   	    					$("#refundChangeDiv td:eq(3)").css("width","66%");
+    	   	    					$("#refundChangeDiv").html(tableHTML);
+    	   	    					//행선택시 표시
+        	   	    				$("#refundChangeDiv").on("click","table input.chkbox",function(){
+        	   	    					$(this).parent().parent().toggleClass("adt");
+        	   	    					
+        	   	    				});  	
+    	   	    				}
+    	   	    			})
+    	   	    			
+    	   	    		
+    	   	    		}else if(fkind='환불'){
+    	   	    			 columns = ['check','환불번호','요청자','사유','은행명','계좌번호','주문번호'];
+    	   	    			$.ajax({
+        	   	    			url:"/admin/order/orderList/getRefund.do",
+        	   	    			type:"post",
+        	   	    			data:"keyword="+kind+"&search="+magazine,
+        	   	    			dataType:'json',
+        	   	    			error:function(){
+        	   	    				alert("시스템 오류입니다. 관리자에게 문의하세요.");
+        	   	    			},
+        	   	    			success:function(jsonElements){
+        	   	    				var tableHTML = json2Table(jsonElements,columns,"table-bordered","refundColumn","refundTable");
+        	   	    				$("#refundChangeDiv").html(tableHTML);
+        	   	    				//사유 td 만 width 값제어하기
+        	   	    				 $("#refundChangeDiv td:eq(3)").css("width","66%");
+        	   	    				
+        	   	    				//행선택시 표시
+        	   	    				$("#refundChangeDiv").on("click","table input.chkbox",function(){
+        	   	    					$(this).parent().parent().toggleClass("adt");
+        	   	    					
+        	   	    				});  				
+        	   	    			}
+        	   	    		})
+    	   	    		}		
+    	   	    	}else{
+    	   	    		$("#refundChangeBtn").prop("disabled",true);
+    	   	    	} 
+    	   	    	if(kind=='주문대기'){
+    	   	    			$("#refundChangeBtn").prop("disabled",true);
+    	   	    			$("#orderChangeBtn").prop("disabled",true);
+    	   	    			$("#orderConfirmBtn").prop("disabled",false);			
+    	   	    	}else {
+    	   	    		$("#orderConfirmBtn").prop("disabled",true);	
+    	   	    	}
+    	   	    	if(fkind!='교환'&&fkind!='환불'&&fkind!='주문'){
+    	   	    		$("#orderChangeBtn").prop("disabled",false);
+    	   	    		
+    	   	    		
+    	   	    		
+    	   	    	}else{
+    	   	    		$("#orderChangeBtn").prop("disabled",true);
+    	   	    	}
+    	   	    		
+    	   	    	
+    	   	    })
+    	   	    
+    	   	    $("#submitUserOrder").click(function(event){
+    	   	    			if(!confirm("정말 " + $(this).prev().val()+"로 수정 하시겠습니까.")){
+    	   	    				return;
+    	   	    			}
+    	   	    			$("#orderChangeFrm").attr({
+        	    	   	    	"action" : "/admin/order/orderList/userChangeOrder.do",
+        	    	   	    	"method" : "get"
+        	    	   	    });
+    	   	    			$("#orderChangeFrm").submit();
+    	   	    		})
+    	   	    
+    	   	    //주문 대기 물품 발주
+    	   	    $("#orderConfirmBtn").click(function(){ 
+    	   	    	location.href="/admin/order/orderList/confirmOrder.do?keyword="+kind+"&search="+magazine;
+    	   	    })
+    	    	   	    
+    	   	    //check box 클릭시
+    	   	    $("#refundChangeDiv").one("click","input.chkbox",function(){
+    	   	    	$(".cancelReq").prop("disabled",false);
+    	   	    	console.log("click");
+    	   	    });
+    	   	    //부여한 adt 클래스 tr은 환불 취소
+    				$(".cancelReq").click(function(){
+    					var refList = $("#refundChangeDiv table tr.adt");
+    					if(refList.length >0){
+   	    					var dataList = [];
+   	    					for(var i=0; i<refList.length; i++){
+   	    						dataList.push(refList.eq(i).children().eq(1).html());
+   	    					}
+   	    					console.log(dataList);
+   	    					//환불 거절 요청
+   	    					$.ajaxSettings.traditional = true;
+   	    					var removeTr = $(this).prev().find("tr.adt");
+   	    					
+   	    					if(refList.parents("table.table-bordered").attr("id")=="refundTable"){
+   	    						$.ajax({
+   	   	    						url:"/admin/order/orderList/cancelRefund.do",
+   	   	    						type:"post",
+   	   	    						data: {refundNum : dataList},
+   	   	    						dataType:"text",
+   	   	    						error:function(){
+   	   	    							alert("시스템 오류입니다. 관리자에게 문의하세요.");
+   	   	    						},
+   	   	    						success: function(result){
+   	   	    							if(result == 'success'){
+   	   	    								alert("해당 요청 건에 대하여 승인 거절 하였습니다.");
+   	   	    								//처리된 행 지우기;
+   	   	    								removeTr.hide();
+   	   	    								removeTr.removeClass("adt");
+   	   	    								
+   	   	    							}else{
+   	   	    								alert("해당 요청 건을 수행하지 못하였습니다.");
+   	   	    							}
+   	   	    						}
+   	   	    					})
+   	    					}else if(refList.parents("table.table-bordered").attr("id")=="changeTable"){
+   	    						$.ajax({
+   	   	    						url:"/admin/order/orderList/cancelChange.do",
+   	   	    						type:"post",
+   	   	    						data: {changeNum : dataList},
+   	   	    						dataType:"text",
+   	   	    						error:function(){
+   	   	    							alert("시스템 오류입니다. 관리자에게 문의하세요.");
+   	   	    						},
+   	   	    						success: function(result){
+   	   	    							if(result == 'success'){
+   	   	    								alert("해당 요청 건에 대하여 승인 거절 하였습니다.");
+   	   	    							}else{
+   	   	    								alert("해당 요청 건을 수행하지 못하였습니다.");
+   	   	    							}
+   	   	    						}
+   	   	    					})
+   	    					}
+   	    					
+   	    					
+   	    				}else {
+   	    					alert("선택된 데이터가 없습니다.");
+   	    					return;
+   	    				}
+    				})
+    				
+    				//교환 환불 일괄 처리
+    				$(".submitRC").click(function(){
+    					$(".cancelReq").prop("disabled",true);
+    					var refList = $("#refundChangeDiv table tr:visible");
+    					if(confirm("해당 요청을 일괄 처리 하시겠습니까?")){
+    						if(refList.length >0){
+       	    					var dataList = [];
+       	    					for(var i=1; i<refList.length; i++){
+       	    						dataList.push(refList.eq(i).children().eq(1).html());
+       	    					}
+       	    					console.log(dataList);
+       	    					//환불 승인 요청
+       	    					$.ajaxSettings.traditional = true;
+       	    					
+       	    					 if(refList.parents("table.table-bordered").attr("id")=="refundTable"){
+       	    						$.ajax({
+       	   	    						url:"/admin/order/orderList/confirmRefund.do",
+       	   	    						type:"post",
+       	   	    						data: {refundNum : dataList},
+       	   	    						dataType:"text",
+       	   	    						error:function(){
+       	   	    							alert("시스템 오류입니다. 관리자에게 문의하세요.");
+       	   	    						},
+       	   	    						success: function(result){
+       	   	    							if(result == 'success'){
+       	   	    								alert("해당 요청 건에 대하여 승인 하였습니다.");
+       	   	    								
+       	   	    							}else{
+       	   	    								alert("해당 요청 건을 수행하지 못하였습니다.");
+       	   	    							}
+       	   	    						}
+       	   	    					})
+       	    					}else if(refList.parents("table.table-bordered").attr("id")=="changeTable"){
+       	    						$.ajax({
+       	   	    						url:"/admin/order/orderList/confirmChange.do",
+       	   	    						type:"post",
+       	   	    						data: {changeNum : dataList},
+       	   	    						dataType:"text",
+       	   	    						error:function(){
+       	   	    							alert("시스템 오류입니다. 관리자에게 문의하세요.");
+       	   	    						},
+       	   	    						success: function(result){
+       	   	    							if(result == 'success'){
+       	   	    								alert("해당 요청 건에 대하여 승인 하였습니다.");
+       	   	    								
+       	   	    							}else{
+       	   	    								alert("해당 요청 건을 수행하지 못하였습니다.");
+       	   	    							}
+       	   	    						}
+       	   	    					})
+    					}
+       	    					 //저장후 다시 로딩
+    										$("#orderWaitModalLabel").next().click();
+	    									location.hre="/admin/order/orderList/getSell.do";
+    					}
+    					}
+    				})
 
     		}
     		
