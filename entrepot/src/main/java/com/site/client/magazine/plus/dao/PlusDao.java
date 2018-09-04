@@ -7,8 +7,10 @@ import com.site.client.magazine.plus.vo.PlusVO;
 
 public interface PlusDao {
 
-	public List<PlusVO> plusList(Integer pd_num);
+	public List<PlusVO> plusList(String pd_num);
 
 	public int pluschoice(PlusVO av);
+
+	public int pluschoice2(PlusVO av);
 
 }

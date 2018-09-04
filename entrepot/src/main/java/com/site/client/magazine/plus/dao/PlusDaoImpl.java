@@ -15,7 +15,7 @@ public class PlusDaoImpl implements PlusDao {
 	 private SqlSession sqlSession;
 
 	@Override
-	public List<PlusVO> plusList(Integer pd_num) {
+	public List<PlusVO> plusList(String pd_num) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("plusList",pd_num);
 	}
@@ -24,5 +24,11 @@ public class PlusDaoImpl implements PlusDao {
 	public int pluschoice(PlusVO av) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("pluschoice",av);
+	}
+
+	@Override
+	public int pluschoice2(PlusVO av) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("pluschoice2",av);
 	}
 }

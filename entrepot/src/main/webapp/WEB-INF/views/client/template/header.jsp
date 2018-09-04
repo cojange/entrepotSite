@@ -128,7 +128,7 @@ function errorCodeCheck(){}
          <li  class="san"><a href="#" accesskey="1" title="">베스트게시판</a>
          	<ul>
          		<li>
-         		  <a href="/client/list/magazinelist.do?key1=패션&key2=뷰티&key3=헤어&listkey=3&home=베스트" accesskey="1" title="">패션/뷰티/헤어 </a>
+         		  <a href="/client/list/magazinelist.do?key1=패션&key2=뷰티&key3=헤어&listkey=3&home=베스트&page=1" accesskey="1" title="">패션/뷰티/헤어 </a>
          		 </li>
          		<li>
          		  <a href="/client/list/magazinelist.do?key1=경제&key2=경영&key3=마케팅&listkey=3&home=베스트" accesskey="1" title="">경제/경영/마케팅</a>

@@ -18,11 +18,12 @@ public class PlusServiceImpl implements PlusService {
 	private PlusDao plusDao;
 
 	@Override
-	public List<PlusVO> plusList(Integer pd_num) {
+	public List<PlusVO> plusList(String pd_num) {
 		List<PlusVO>mylist=null;
 		mylist= plusDao.plusList(pd_num);
 		for(PlusVO av:mylist) {
 			av.setCm_choice(plusDao.pluschoice(av));
+			av.setCm_choice2(plusDao.pluschoice2(av));
 		}
 		return mylist;
 	}

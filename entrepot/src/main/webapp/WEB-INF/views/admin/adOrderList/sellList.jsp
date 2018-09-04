@@ -10,7 +10,15 @@
             </div>
             <div class="card-body" >
               <div class="table-responsive" id="switchDiv">
-                <table class="table table-bordered" id="orderList" width="100%" cellspacing="0">
+              <form id="searchDate" name="searchDate">
+	              	<input type="radio" value="3" id="recent3" name="monthkey"><label for="recent3">최근 3일</label>
+	              	<input type="radio" value="7" id="recent7" name="monthkey"><label for="recent7">최근 1주</label>
+	              	<input type="radio" value="30" id="recent30" name="monthkey"><label for="recent30">최근 1달</label>
+	              	<input type="radio" id="etcDate" value="anotherDate" name="monthkey"><label for="etcDate"> 기타</label>
+	              	<div><input type="date" class="anotherValue"/>&nbsp;~&nbsp;<input type="date"  class="anotherValue"/></div>
+	           </form>
+                <table class="table table-bordered orderList" width="100%" cellspacing="0">
+             
                   <thead>
                     <tr>
                       <th></th>
@@ -35,7 +43,7 @@
                       <th>완료 일자</th>
                     </tr>
                   </tfoot>
-                  <tbody>
+        			<tbody>
                      <c:choose>
                        <c:when test="${not empty sellList }">
                           <c:forEach var="sellList" items="${sellList }" varStatus="status">

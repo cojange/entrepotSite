@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ include file="/WEB-INF/views/common/common.jspf" %>  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -21,10 +22,11 @@
       <!-- <script src="../js/html5shiv.js"</script> -->
       <!-- [endif] -->
 <link href="/resources/include/client/css/plus.css" rel="stylesheet" type="text/css" media="all" />
-
+ <script type="text/javascript" src="/resources/include/client/js/jquery-1.12.4.min.js"></script>   
 <script type="text/javascript">
 $(function() {
-	var pd_num =${magazine.pd_num};
+	var pd_num = "cos-201808";
+	listAll(pd_num);
 	$('.starRev span').click(function(){
 	  $(this).parent().children('span').removeClass('on');
 	  $(this).addClass('on').prevAll('span').addClass('on');
@@ -33,21 +35,76 @@ $(function() {
 	
 	
 });
-function listAll(){
+function listAll(pd_num){
 	 $("#comment_list").html("");
-	 var url="/plus/all/"+pb_num+".do";
+	 var url="/plus/all/"+pd_num+".do";
 	 $.getJSON(url,function(data){
 		console.log(data.length);
 		$(data).each(function () {
-			var pl_star 
-		})
-	 })
-}	
+			var pl_num =this.pl_num;
+			var pl_star = this.pl_star;
+			var pl_date = this.pl_date;
+			var pl_product=this.pl_product;
+			var pl_parcel = this.pl_product;
+			var m_name = this.m_name;
+			 addNewItem(pl_num,pl_star,pl_date,pl_product,pl_parcel,m_name);	
+		});
+	 });
+	 
+}
+function addNewItem(pl_num,pl_star,pl_date,pl_product,pl_parcel,m_name){
+    //새로운 글이 추가될 li 태그 객체
+    var new_li = $("<li>");
+    new_li.attr("data-num",pl_num);
+    new_li.addClass("comment_item");
+    
+    //
+    var writer_p =$("<p>");
+    writer_p.addClass("writer");
+    
+    
+    //작성자 정보가 지정될 <p> 태그
+    var name_span = $("<span>");
+    name_span.addClass("name");
+    name_span.html(m_name + "님");
+    //작성일시
+    var date_span = $("<span>");
+    date_span.html(" / "+pl_date + " ");
+    //별점
+    var star_span = $("<span>");
+    name_span.addClass("star");
+    name_span.html(pl_star + "점");
+    
+    //수정하기
+    var up_input = $("<input>");
+    up_input.attr({"type":"button" , "value":"수정하기"});
+    up_input.addClass("update_form");
+    
+    //삭제하기
+    var del_input = $("<input>");
+    del_input.attr({"type":"button" , "value":"삭제하기"});
+    del_input.addClass("delete_btn");
+    
+    //내용1
+    var product_p =$("<p>");
+    product_p.addClass("product");
+    product_p.html("상품:"+pl_product);
+    //내용2
+    var parcel_p =$("<p>");
+    parcel_p .addClass(" parcel");
+    parcel_p.html("택배:"+pl_parcel);
+    
+    //조립하기
+    writer_p.append(name_span).append(date_span).append(star_span).append(up_input).append(del_input);
+    new_li.append(writer_p).append(product_p).append(parcel_p);
+    $("#comment_list").append(new_li);
+ }
 </script>
 
 </head>
 
 <body>
+	<c:if test="${login.m_id != null}">
 	<div class="box">
 		<div class="tt">
 			<div class="iconbox"></div>
@@ -92,12 +149,13 @@ function listAll(){
 						</div>
 					</td>
 				</tr>
-				<ul id="comment_list">
-         			<!-- 여기에 동적 생성 요소가 들어갑니다 -->
-         		</ul>
 			</tbody>
 		</table>
 	</div>
+	</c:if>
+	<ul id="comment_list">
+	    			<!-- 여기에 동적 생성 요소가 들어갑니다 -->
+     </ul>
 </body>
 
 </html>

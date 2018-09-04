@@ -20,9 +20,11 @@
 		<typeAlias type="com.site.admin.ctrl.adMember.vo.AdminVO" alias="avo"/>
 		<typeAlias type="com.site.admin.order.orderList.vo.AdSellListVO" alias="slvo"/>
 		<typeAlias type="com.site.admin.order.orderList.vo.AdOrderListVO" alias="ovo"/>
-	
+		<typeAlias type="com.site.admin.order.orderList.vo.AdMonthKeyVO" alias="mkvo"/>
+		
+
 		<!-- client -->
-		<typeAlias type="com.site.client.board.vo.ClImgbVO" alias="imgb" />
+		<typeAlias type="com.site.client.board.imgb.vo.ClImgbVO" alias="imgb" />
 		<typeAlias type="com.site.client.magazine.ditail.vo.MagazineVO" alias="mgvo"/>
 		<typeAlias type="com.site.client.magazine.plus.vo.PlusVO" alias="plvo"/>
 		<typeAlias type="com.site.client.member.individual.vo.ClMVO" alias="member"/>

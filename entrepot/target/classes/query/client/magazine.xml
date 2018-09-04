@@ -5,7 +5,27 @@
 	/*magazine - magazineList*/
 	
 	select mg_num,mg_name,com_name,pd_sale,pd_rate,pd_date,dt_target,dt_keyword,dt_brief,pl_path,pd_cost
-	from bast_view8 
+	from (select ROWNUM AS RNUM ,mg_num,mg_name,com_name,pd_sale,pd_rate,pd_date,dt_target,dt_keyword,dt_brief,pl_path,pd_cost
+	from bast_view8  
+	<where>
+		<if test="listkey==1">
+			dt_keyword like '%'|| #{key1} ||'%'
+		 </if>
+		 <if test="listkey==2">
+		 	dt_keyword like '%'|| #{key1} ||'%' or dt_keyword like  '%'|| #{key2} ||'%'
+		 </if>
+		 <if test="listkey==3">
+		 	dt_keyword like '%'|| #{key1} ||'%' or dt_keyword like  '%'|| #{key2} ||'%' or  dt_keyword like  '%'|| #{key3} ||'%'
+		 </if>	 
+	</where>)
+	where RNUM between #{start} and #{end}
+	
+	
+</select>
+<select id="listcount" parameterType="mgvo" resultType="int">
+	/*magazine - listcount*/
+
+	select count(*) from bast_view8
 	<where>
 		<if test="listkey==1">
 			dt_keyword like '%'|| #{key1} ||'%'
@@ -17,11 +37,20 @@
 		 	dt_keyword like '%'|| #{key1} ||'%' or dt_keyword like  '%'|| #{key2} ||'%' or  dt_keyword like  '%'|| #{key3} ||'%'
 		 </if>	 
 	</where>
-	
-	
+</select>
+<select id="bastlist" parameterType="mgvo" resultType="mgvo">
+select mg_num,mg_name,pd_sale,pd_rate,pd_date,dt_target,dt_keyword,dt_brief,pl_path,pd_cost
+	from (select ROWNUM AS RNUM ,mg_num,mg_name,pd_sale,pd_rate,pd_date,dt_target,dt_keyword,dt_brief,pl_path,pd_cost
+	from bast_view8 )
+	where RNUM between 1 and 10
+
 </select>
 
-
+<select id="jlist" parameterType="mgvo" resultType="mgvo">
+	select ab_type,ab_no,ab_title from admin_board
+	where ab_type ='공지사항'
+	order by ab_no desc 
+</select>
 
 
 </mapper>

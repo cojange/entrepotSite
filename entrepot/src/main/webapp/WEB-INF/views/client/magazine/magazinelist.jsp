@@ -34,11 +34,58 @@
 <script type="text/javascript" src="/resources/include/client/js/jquery.paging.js"></script>
 <script type="text/javascript">
 	$(function(){
+		var listkey= $('#listkey').val();
+   		var key1 =$('#key1').val();
+   		var key2 =$('#key2').val();
+   		var key3 =$('#key3').val();
+   		var home =$('#home').val();
+   		
+   		console.log(listkey);
+   		$(".cartbtn").click(function(){
+   			var id= $('#id').val();
+   			
+			if (id == null || id=="") {
+				alert('로그인이 안되어 있습니다. 로그인 후 다시 시도해주세요');
+			}else{
+				var insert = "/cliunt/list/card.do";
+				
+				$.ajax({
+					url:insert,
+					type: "post",
+					headers : {
+						"content-type":"application/json",
+						"x-HTTP-Method-Dverride":"POST"
+					}
+					dataType:"text",
+					data:JSON.stringify({
+						recode_num:$('#cart').val(),
+						mg_num:$(this).parents("tr").attr("data-num"),
+						ea:1	
+					}),
+					error: function() {
+						alert('시스템 오류입니다. 잠시후 다시 시도해주세요')
+					},
+					success : function(resultData) {
+						if(resiltData=="SUCCESS"){
+							alert("장바구니에 추가 됬습니다.");
+							
+						}
+					}
+				})
+				
+			}
+   			
+			
+   			
+   			
+   		});
+   		
+   		
 		$(".goDetail").click(function() {
-            var mg_num = $(this).parents("tr").attr("data-num");  
-        
-            var listkey= $('#listkey').val();
-       
+            
+			var mg_num = $(this).parents("tr").attr("data-num");  
+        	
+            
        		 $("#mg_num").val(mg_num);
        		 $("#liskkey").val(listkey);
             //상세 페이지로 이동하기위해  form추가(id:detailForm)
@@ -49,13 +96,19 @@
              $("#detailForm").submit();
          });
 		$('#paging').paging({
-			current:1,max:2,
+			current:$('#current').val(),max:$('#max').val(),
 			onclick:function(e,page){
-				alert('going to page '+page);
+				 if(listkey == 1){
+					location.href="/client/list/magazinelist.do?key1="+key1+"&listkey="+listkey+"&home="+home+"&page="+page;
+				}else if(listkey == 2){
+					location.href="/client/list/magazinelist.do?key1="+key1+"&key2="+key2+"&listkey="+listkey+"&home="+home+"&page="+page;
+				}else{
+					location.href="/client/list/magazinelist.do?key1="+key1+"&key2="+key2+"&key3="+key3+"&listkey="+listkey+"&home="+home+"&page="+page;
+				}
 			}
 		});
 	});
-	
+
 </script>
 
 
@@ -65,8 +118,19 @@
 <body>
 <div>
 	<form id="detailForm" name="detailForm">
+		<input type="hidden" id="key1" name="key1" value="${mvo.key1}" />
+		<input type="hidden" id="key2" name="key2" value="${mvo.key2}" />
+		<input type="hidden" id="key3" name="key3" value="${mvo.key3}" />
+		<input type="hidden" id="home" name="home" value="${mvo.home }"/>
 		<input type="hidden" id="listkey" name="listkey" value="${mvo.listkey}" />
 		<input type="hidden" id="mg_num" name="mg_num"  />
+		<input type="hidden" id="current" name="current" value="${mvo.page}" />
+		<input type="hidden" id="max" name="max" value="${mvo.totalpage}"/>
+		<input type="hidden" id="id" name="id" value="${login.m_id}" />
+		<input type="hidden" id="cart" name="cart" value="${login.cart }"/>
+		<input type="hidden" id="whish" name="whish" value="${login.whish}"/>
+		<input type="hidden" id="ea" name="ea" value=1/>
+		
 	<div>
 		<div class="container-fluid">
 		<h1>${mvo.home}
@@ -118,8 +182,7 @@
 										</tr>
 
 										<tr height="40">
-											<td colspan="2" width="542">"${list.com_name}" &nbsp;<font
-												color="#CDCDCD">|</font>&nbsp; 국가 <font color="#CDCDCD">|</font>&nbsp;${list.mg_period}
+											<td colspan="2" width="542">"${list.com_name}" &nbsp;&nbsp;${list.mg_period}
 												&nbsp;<font color="#CDCDCD">|</font>&nbsp;<br> <br>정기구독가
 												<font color="#3399CC">[12개월]</font>&nbsp;&nbsp; <font
 												color="#6B6B6B"><strike> ${list.pd_sale } 원</strike>
@@ -167,7 +230,7 @@
 												<table width="60" cellspacing="0"
 													style="border-collapse: collapse;">
 													<tbody>
-														<tr valign="top">
+														<tr valign="top" data-num="${list.mg_num}">
 															<td width="80"
 																style="border-width: 1; border-color: black; border-style: none;">
 																<!-- <td width="80" style="border-width:1; border-color:black; border-style:none;"> -->
@@ -178,9 +241,9 @@
 							 --> <!--<A HREF="sub05_01_writeOk.php?p_idx=13649"><img src="../../images/sub/subscrib_confirm.gif" border=0 alt="구독신청"></A>-->
 
 
-																<input type="button" value="장바구니" id="btnjang" /> <br>
-																<input type="button" value="찜 버튼" id="btnjim" /> <input
-																type="button" value="구매하기" id="btnsale" /> <!-- <A HREF="javascript:go_zzim('13649');"><img src="../../images/btn_mybook.gif" border=0></A> -->
+																<a class="cartbtn" href="#"><img src="/resources/images/produt/subscrib_cart.gif" ></a> <br>
+																<input type="button" value="찜 버튼" id="btnjim" /> 
+																<a class="salebtn" href="#"><img src="/resources/images/produt/subscrib_confirm.gif" ></a> <!-- <A HREF="javascript:go_zzim('13649');"><img src="../../images/btn_mybook.gif" border=0></A> -->
 
 															</td>
 														</tr>

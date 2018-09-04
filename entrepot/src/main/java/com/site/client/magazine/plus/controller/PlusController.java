@@ -31,7 +31,7 @@ public class PlusController {
 	 * ?b_num=게시판글번호 
 	 ******************************************************************/
 		@RequestMapping(value="/all/{pd_num}.do",method=RequestMethod.GET)
-		public ResponseEntity<List<PlusVO>> list(@PathVariable("pd_num")Integer pd_num){
+		public ResponseEntity<List<PlusVO>> list(@PathVariable("pd_num")String pd_num){
 			ResponseEntity<List<PlusVO>> entity =null;
 			try {
 				entity = new ResponseEntity<>(plusService.plusList(pd_num),HttpStatus.OK);
