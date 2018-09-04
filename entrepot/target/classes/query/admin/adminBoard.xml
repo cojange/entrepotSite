@@ -9,7 +9,8 @@
 		from admin_board
 		order by decode(ab_pre, '상단고정', 1, '팝업', 2, 3), ab_date desc, ab_update desc
 	</select>
-	<select id="couponList" parameterType="cvo" resultType="cvo">
+	
+	<select id="couponList" parameterType="cpvo" resultType="cpvo">
 		/*쿠폰 리스트*/
 		select coupon_no, coupon_type, coupon_discount,
 		to_char(coupon_date,'yy-mm-dd') coupon_date,
@@ -18,7 +19,7 @@
 		order by coupon_use desc, coupon_date desc, coupon_update desc
 	</select>
 	
-	<insert id="couponInsert" parameterType="cvo">
+	<insert id="couponInsert" parameterType="cpvo">
 		/*쿠폰 등록*/
 		<selectKey keyProperty="coupon_no" resultType="String" order="BEFORE">
 			select CONCAT('cp_event_',coupon_seq.nextval) from dual
@@ -30,7 +31,7 @@
 		<!-- 체크박스 체크시에 비활성화 값 입력 -->
 	</insert>
 	
-	<update id="couponUpdate" parameterType="cvo">
+	<update id="couponUpdate" parameterType="cpvo">
 		/*쿠폰 수정*/
 		UPDATE coupon
 		SET coupon_discount = #{coupon_discount}, coupon_memo = #{coupon_memo}, coupon_update = sysdate,
