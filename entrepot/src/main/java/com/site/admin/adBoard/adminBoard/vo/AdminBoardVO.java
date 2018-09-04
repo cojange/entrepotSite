@@ -1,5 +1,9 @@
 package com.site.admin.adBoard.adminBoard.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
+import com.site.common.vo.CommonVO;
+
 public class AdminBoardVO {
 	private int ab_no;
 	private String ab_type;
@@ -8,10 +12,26 @@ public class AdminBoardVO {
 	private String file_thumb;
 	private String ab_file;
 	private String ab_date;
-	private String ab_update;
+	private String ab_update; 
 	private int board_no;
 	private String ad_id;
 	private String ab_pre;
+	
+	private MultipartFile file1;
+	private MultipartFile file2;
+	
+	public MultipartFile getFile1() {
+		return file1;
+	}
+	public void setFile1(MultipartFile file1) {
+		this.file1 = file1;
+	}
+	public MultipartFile getFile2() {
+		return file2;
+	}
+	public void setFile2(MultipartFile file2) {
+		this.file2 = file2;
+	}
 	
 	public int getAb_no() {
 		return ab_no;

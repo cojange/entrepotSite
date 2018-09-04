@@ -9,8 +9,8 @@
 		<typeAlias type="com.site.admin.ctrl.adPartner.vo.MagazinePartnerVO" alias="magPartner"/>
 		<typeAlias type="com.site.admin.adBoard.regulations.vo.RegAgreeVO" alias="regAgree"/>
 		<typeAlias type="com.site.admin.adBoard.regulations.vo.RegulationsVO" alias="reg"/>
-		<typeAlias type="com.site.admin.adBoard.adminBoard.vo.AdminBoardVO" alias="adminBo"/>
-		<typeAlias type="com.site.admin.adBoard.adminBoard.vo.CouponVO" alias="coupon"/>
+		<typeAlias type="com.site.admin.adBoard.adminBoard.vo.AdminBoardVO" alias="advo"/>
+		<typeAlias type="com.site.admin.adBoard.adminBoard.vo.CouponVO" alias="cvo"/>
 		<typeAlias type="com.site.admin.adBoard.personalBoard.vo.PersonalBoardVO" alias="personalBo"/>
 		<typeAlias type="com.site.admin.cost.adCost.vo.AdCostVO" alias="acvo"/>
 		<typeAlias type="com.site.admin.ctrl.adMember.vo.AdMbCommonVO" alias="ambcvo"/>
@@ -21,11 +21,8 @@
 		<typeAlias type="com.site.admin.order.orderList.vo.AdSellListVO" alias="slvo"/>
 		<typeAlias type="com.site.admin.order.orderList.vo.AdOrderListVO" alias="ovo"/>
 		<typeAlias type="com.site.admin.order.orderList.vo.AdMonthKeyVO" alias="mkvo"/>
-<<<<<<< HEAD
 		<typeAlias type="com.site.admin.magazine.adMagazine.vo.MagazineSearchVO" alias="msvo"/>
-=======
 		<typeAlias type="com.site.admin.order.orderList.vo.AdOrderProductVO" alias="aopvo"/>
->>>>>>> branch 'master' of https://github.com/cojange/entrepotSite.git
 		
 		<!-- client -->
 		<typeAlias type="com.site.client.board.vo.ClImgbVO" alias="imgb" />

@@ -1,6 +1,9 @@
 package com.site.admin.adBoard.adminBoard.controller;
 
+import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.site.admin.adBoard.adminBoard.Service.AdminBoardService;
 import com.site.admin.adBoard.adminBoard.vo.AdminBoardVO;
 import com.site.admin.adBoard.adminBoard.vo.CouponVO;
+import com.site.common.file.FileUploadUtil;
 
 @Controller
 @RequestMapping(value="/admin/adBoard/adminBoard")
@@ -77,5 +81,43 @@ public class AdminBoardController {
 		}else {
 			return "FALSE";
 		}
+	}
+	
+	/*****************************************************************
+	 * 글쓰기 구현하기(첨부파일을 포함한 입력작업)
+	 *****************************************************************/
+	//첨부파일 받기위해 POST	
+	@ResponseBody
+	@RequestMapping(value="/adboardInsert.do", method=RequestMethod.POST)
+	public String adboardInsert(AdminBoardVO advo, Model model, HttpServletRequest request) throws IllegalStateException, IOException {
+		logger.info("adboardInsert 호출 성공");
+		
+		//확인 후 주석 처리
+		/*logger.info("fileName : " + advo.getFile1().getOriginalFilename());
+		logger.info("fileName : " + advo.getFile2().getOriginalFilename());*/
+		
+		int result = 0;
+		String resultData = "";
+		
+		if(!advo.getFile1().isEmpty()) {  //비어있지 않으면
+			String file_thumb = FileUploadUtil.fileUpload(advo.getFile1(), "adminBoardPopup", request,"abPop", "adminBoard");
+			advo.setFile_thumb(file_thumb);
+		}else {
+			advo.setFile_thumb("");
+		}
+		if(!advo.getFile2().isEmpty()) {  //비어있지 않으면
+			String ab_file = FileUploadUtil.fileUpload(advo.getFile2(), "adminBoardImg", request,"abImg", "adminBoard");
+			advo.setAb_file(ab_file);
+		}else {
+			advo.setAb_file("");
+		}
+		
+		result = adminBoardService.adboardInsert(advo);
+		if(result == 1) {  //오류가 발생하지 않은 경우
+			resultData = "SUCCESS";
+		}else {  //오류가 발생한 경우
+			resultData = "FALSE";
+		}
+		return resultData;
 	}
 }

@@ -14,6 +14,11 @@
 				</th>
 			</tr>
 			<tr>
+				<th>
+					<input type="button" value="등록" id="mgInsert">
+				</th>
+			</tr>
+			<tr>
 				<th>All</th>
 				<th>ㄱ</th>
 				<th>ㄴ</th>

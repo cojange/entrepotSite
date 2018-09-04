@@ -1,25 +1,105 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-	<head>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-     	<!-- 브라우저의 호환성 보기 모드를 막고, 해당 브러우저에서 지원하는 가장 최신 버전의 방식으로 HTML 보여주도록 설정. -->
-      
-     	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
-     	<!-- viewport : 화면에 보이는 영역을 제어하는 기술. width는 device-width로 설정. initial-scale는 초기비율 -->
-      
-      	<!-- 모바일 웹 페이지 설정 -->
-      	<link rel="shortcut icon" href="/resources/images/common/icon.png" />
-      	<link rel="apple-touch-icon" href="/resources/images/common/icon.png" />
-      	<!-- 모바일 웹 페이지 설정 종료 -->
-      
-      	<!-- IE8이하 브라우저에서 HTML5를 인식하기 위해서는 아래의 패스필터를 적용하면 된다. -->
-      	<!-- [if lt IE 9] -->
-      	<!-- <script src="/resources/include/js/html5shiv.js"</script> -->
-      	<!-- [endif] -->
-	</head>
-	<body>
-		
-	</body>
-</html>
+<%@ page trimDirectiveWhitespaces="true" %>
+<%@ include file="/WEB-INF/views/common/common.jspf" %>
+<style>
+	#preview img {
+	    width: 170px;
+	    height: 100px;
+	}
+	#preview p {
+	    text-overflow: ellipsis;
+	    overflow: hidden;
+	}
+	.preview-box {
+	    border: 1px dotted skyblue;
+	    padding: 5px;
+	    border-radius: 2px;
+	    margin-bottom: 10px;
+	    width:50%;
+	}
+</style>
+<div class="container-fluid">
+	<table>
+		<tr>
+			<td>
+				<select></select>
+				<select></select>
+				<select></select>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				대상
+			</td>
+			<td>
+				<input type="checkbox" name="mgTarget">기타<input type="text">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				키워드
+			</td>
+			<td>
+				<input type="checkbox" name="mgKeyword">기타<input type="text">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				간략소개
+			</td>
+			<td>
+				<textarea cols="50" rows="5"></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				목차
+			</td>
+			<td>
+				<textarea cols="50" rows="5"></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				제품상세
+			</td>
+			<td>
+				<textarea cols="50" rows="5"></textarea>
+			</td>
+		</tr>
+		<tr>	
+			<td>
+				썸네일용
+			</td>
+			<td>
+				<input type="file">
+			</td>
+		</tr>
+		<tr>	
+			<td>
+				프리뷰용
+			</td>
+			<td>
+				<div class="wrapper">
+			        <div class="body">
+			            <!-- 첨부 버튼 -->
+			            <div id="attach">
+			                <label class="waves-effect waves-teal btn-flat" for="uploadInputBox">사진 추가</label>
+			                <input id="uploadInputBox" style="display: none" type="file" name="file" id="mulFile" multiple/>
+			            </div>
+			            
+			            <!-- 미리보기 영역 -->
+			            <div id="preview" class="content"></div>
+			            
+			            <!-- multipart 업로드시 영역 -->
+			            <form id="uploadForm" style="display: none;"></form>
+			        </div>
+			        <div class="footer">
+			            <button class="submit">등록</button>
+			        </div>
+			    </div>
+			</td>
+		</tr>
+	</table>
+</div>
