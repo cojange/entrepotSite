@@ -16,20 +16,8 @@ $(function() {
 				return false;
 			}
 		});
-		//마이페이지 클릭시
-		$("#memberMyPage").click(function() {
-			location.href="/client/member/myPage.do";
-		});
-		$("#groupMyPage").click(function() {
-			location.href="/client/member/myPage.do";
-		});
-		//정보수정버튼
-		$("#memberModify").click(function() {
-			location.href="/client/member/memberModify.do";
-		});
-		$("#groupModify").click(function() {
-			location.href="/client/member/groupModify.do";
-		});
+
+
 		//메뉴보이기,숨기기버튼
 		$("#menuDownUp").click(function() {
 			/*if($(this).children()==$(".menuUp")){*/

@@ -33,6 +33,8 @@
 		<typeAlias type="com.site.client.member.individual.vo.ClMSecurity" alias="security"/>
 		<typeAlias type="com.site.client.member.login.vo.LoginVO" alias="login"/>
 		<typeAlias type="com.site.client.member.individual.vo.ClGmVO" alias="groupMember"/>
+		<typeAlias type="com.site.client.member.myPage.vo.ClMyPageVO" alias="whishAndCart"/>
+		<typeAlias type="com.site.client.member.myPage.vo.ClOrderListVO" alias="orderList"/>
 		
 		<!-- common -->
 		<typeAlias type="com.site.common.vo.CommonVO" alias="cvo"/>

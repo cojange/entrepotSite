@@ -53,12 +53,6 @@
 	text-decoration: underline;	
 }
  .loginMenu a:hover{
- 	background-color: black;
+ 	background-color: black; 
  	color: white;
- }
- table .myPage{
- 	border: solid black 0px;  
- 	width: 868px;
- 	padding-left: 0px; 
- 	padding-right: 0px;
  }
