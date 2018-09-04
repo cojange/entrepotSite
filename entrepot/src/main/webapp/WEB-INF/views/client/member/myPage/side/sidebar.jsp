@@ -22,7 +22,7 @@
       	<a href="#" accesskey="1" title="">My 배송정보<i class="demo-icon icon-truck" style="width: 10px;" ></i></a>
       </li>
       <li>
-      	<a href="#" accesskey="1" title="">My 정보변경<i class="demo-icon  icon-adult"  style="width: 10px;" ></i></a>
+      	<a href="/client/member/myPageMy.do" accesskey="1" title="">My 정보변경<i class="demo-icon  icon-adult"  style="width: 10px;" ></i></a>
       </li>
          			      
     </ul>

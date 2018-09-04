@@ -11,5 +11,6 @@ public interface ClMyPageService {
 	public List<ClMyPageVO> cartList(ClMyPageVO myPageVo);//장바구니
 	public List<ClOrderListVO> orderList(ClOrderListVO orderVo);//주문내역
 	
+	
 
 }

@@ -9,7 +9,6 @@ public class ClMyPageVO extends MagazineVO{
 	private String	mg_num;		//잡지코드
 	private String	record_date;		//등록일
 	private int	ea;		//찜&장바구니수량
-	private int sum; //장바구니 합계
 	
 	
 	
@@ -37,13 +36,12 @@ public class ClMyPageVO extends MagazineVO{
 	public void setEa(int ea) {
 		this.ea = ea;
 	}
+	@Override
+	public String toString() {
+		return "ClMyPageVO [record_num=" + record_num + ", mg_num=" + mg_num + ", record_date=" + record_date + ", ea="
+				+ ea + "]";
+	}
 	
-	public int getSum() {
-		return sum;
-	}
-	public void setSum(int sum) {
-		this.sum = sum;
-	}
 	
 	
 	

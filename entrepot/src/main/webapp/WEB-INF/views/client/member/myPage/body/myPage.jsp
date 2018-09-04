@@ -9,6 +9,7 @@
 <title>마이페이지</title>
 <script src="/resources/include/client/js/html5shiv.js"></script>
 <script type="text/javascript" src="/resources/include/client/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="/resources/include/client/js/myPage.js"></script>
 <script type="text/javascript">
 
 function aa_open() 
@@ -27,8 +28,8 @@ function aa_open()
 	<form id="detailForm" name="detailForm">
 		<input type="hidden" id="listkey" name="listkey" value="${mvo.listkey}" />
 		<input type="hidden" id="mg_num" name="mg_num"  />
-		<div class="container-fluid">  
-		<table border="0" class="myPage">
+		<div class="container-fluid" style="width: 810px;">  
+		<table border="0" class="myPage" style="width: 810px;">
 			<tbody>
 				<tr>
 					<!-- <td width="130" valign="top" align="center">
@@ -159,9 +160,9 @@ function aa_open()
 											</td>
 										</tr>
 									</tbody>
-									</table>
+									</table>  
 			
-									<table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
+									<table style="width: 809px ;" border="0" cellpadding="0" cellspacing="0" >
 									<tbody>
 										<tr>
 											<td colspan="9" bgcolor="#CDCDCD" height="2"></td>
@@ -186,7 +187,9 @@ function aa_open()
 														<tr class="myList" width="807"><%-- <tr align="center" data-num="${vo.order_num}"> --%><!-- 체크박스넣을곳 -->
 														<!--data-num ->요소를 구별할때 쓰는 구문 -->
 															<td width="35" align="center" ><input type="checkbox"></td>
-															<td width="37" align="center">인덱스</td>
+															<td width="37" align="center">
+																<input type="text" class="index" readonly="readonly" size="2" value="">
+															</td>
 															<td width="150" align="center">
 															<%-- <c:if test="${vo.repStep>0}">
 																<c:forEach begin="1" end="${vo.repIndent}">
@@ -199,14 +202,22 @@ function aa_open()
 															</td>
 															<td width="90" align="center">${vo.mg_name}</td> 
 															<td width="232" align="center">${vo.mg_period}</td>
-															<td width="150" align="center">${vo.pd_sale}원</td> 
-															<td width="85" align="center">
-															<input type="number"  value="${vo.ea}" min="1" maxlength="2" size="2">
-															<a href="#" onclick="javascript:send_count('this.form','${vo.ea}')">	
+															<td width="150" align="center">
+															<input type="text" class="money" readonly="readonly" size="8" value="${vo.pd_sale}원">
+															
+															
+															</td> 
+															<td width="85" align="center" class="eaTd">
+															<input type="text"  class="ea" value="${vo.ea}" min="1" maxlength="2" size="2">
+															<a href="#" class="eaUpdate">
 															<img src="/resources/images/client/updatebtn.png" border="0"></a>
-															<input type="hidden" name="pd_num" value="${vo.pd_num}">		
+															<%-- <input type="hidden" name="pd_num" value="${vo.pd_num}"> --%>		
 															</td>
-															<td width="61" align="center"><font color="red">${vo.pd_salecost}원</font></td>
+															<td width="61" align="center">
+																<font color="red">
+																<input type="text" class="sum" readonly="readonly" size="8" value="">				
+																</font>
+															</td>
 															<%-- <td><a href="/client/member/memberModify.do?whish="${vo.whish}">삭제</a></td> --%> 
 														</tr>
 													</tbody>
@@ -234,7 +245,9 @@ function aa_open()
 														<tr class="myList" width="807"><%-- <tr align="center" data-num="${vo.order_num}"> --%><!-- 체크박스넣을곳 -->
 														<!--data-num ->요소를 구별할때 쓰는 구문 -->
 															<td width="35" align="center" ><input type="checkbox"></td>
-															<td width="37" align="center">인덱스</td>
+															<td width="37" align="center">
+																<input type="text" class="index" readonly="readonly" size="2" value="">
+															</td>
 															<td width="150" align="center">
 															<%-- <c:if test="${vo.repStep>0}">
 																<c:forEach begin="1" end="${vo.repIndent}">
@@ -247,13 +260,20 @@ function aa_open()
 															</td>
 															<td width="90" align="center">${vo.mg_name}</td>
 															<td width="232" align="center">${vo.mg_period}</td>
-															<td width="150" align="center">${vo.pd_sale}원</td>
-															<td width="85" align="center">
-															<input type="text"  value="${vo.ea}" maxlength="2" size="2">
-															<a href="#" onclick="javascript:send_count('this.form','${vo.ea}')">	
-															<img src="/resources/images/client/updatebtn.png" border="0"></a>			
+															
+															<td width="150" align="center">
+																<input type="text" class="money" readonly="readonly" size="8" value="${vo.pd_sale}원">
 															</td>
-															<td width="61" align="center"><font color="red">합계</font></td>
+															<td width="85" align="center" class="eaTd">
+															<input type="text" class="ea" value="${vo.ea}" maxlength="2" size="2">
+															<a href="#"  class="eaUpdate">	
+															<img src="/resources/images/client/updatebtn.png" border="0"></a>
+															</td>
+															<td width="61" align="center">
+																<font color="red">
+																	<input type="text" class="sum" readonly="readonly" size="8" value="">
+																</font>
+															</td>
 														</tr>
 													</tbody>
 													</table>
@@ -292,13 +312,19 @@ function aa_open()
 															</td>
 															<td width="140" align="center">${vo.order_ok}</td>
 															<td width="105" align="center">임시값...</td>
-															<td width="175" align="right">${vo.order_money}원</td>
-															<td width="98" align="right">
-															<input type="text"  value="${vo.order_ea}" maxlength="2" size="2">
-															<a href="#" onclick="javascript:send_count('this.form','${vo.order_ea}')">	
+															<td width="175" align="right" id="money">
+															<input type="text" class="money" readonly="readonly" size="8" value="${vo.order_money}원">
+															</td>
+															<td width="98" align="right" class="eaTd">
+															<input type="text" class="ea"  value="${vo.order_ea}" maxlength="2" size="2">
+															<a href="#"  class="eaUpdate">	
 															<img src="/resources/images/client/updatebtn.png" border="0"></a>			
 															</td>
-															<td width="71" align="right"><font color="red">원</font></td>
+															<td width="71" align="right">
+																<font color="red">
+																	<input type="text" class="sum" readonly="readonly" size="8" value="">
+																</font>
+															</td>
 														</tr>
 													</tbody>
 													</table>
@@ -311,39 +337,50 @@ function aa_open()
 													<td colspan="5" align="center">기록정보가 존재하지 않습니다.</td>
 												</tr>
 											</c:otherwise>
-										</c:choose>
-										
-												
+										</c:choose>			
 										<tr>
 											<td colspan="9" bgcolor="#CDCDCD" height="2"></td>
 										</tr>
+										<c:if test="${not empty cartList or not empty whishList}">
+										<tr >
+											<table>
+											<tbody>
+												<tr height="35" >							
+													<td width="100"></td>
+													<td width="100"></td>
+													<td width="100"></td>
+													<td width="100"></td>
+													<td width="100"></td>
+													<td width="100"></td>
+													<td width="100"></td>
+													<td width="100"></td>			
+												</tr>
+												<tr width="807">
+													<td align="left" colspan="8">
+														<a href="#"><img src="/resources/images/client/WhishANDCartdelete.png"></a>
+													</td>
+													<td align="right" colspan="2">
+														<a href="##"><img src="/resources/images/client/order.png"></a>
+													</td>
+												</tr>
+											</tbody>
+											</table>												
+																		
+										</tr>
+										</c:if>
 									</tbody>
 									</table><br>
-			
+<!-- 			
 									<table align="center" cellspacing="0" cellpadding="0" width="100%" border="0">
 									<tbody>
 										<tr>
-											<td width="100%">
+											<td width="100%" align="left">
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-												<table align="left" cellspacing="0" cellpadding="0" border="0" width="100%">
-												<tbody>
-													<tr>
-														<td width="90%" align="left">
-															<a href="#" onclick="javascript:send_sel('this.form','del','58','','')">
-															<img src="../../images/common/btn_delete.gif" border="0"></a>
-															<a href="#" onclick="javascript:window.open('./sub06_02_add_modify.php?mem_id=nomember20180823060226','post','width=450, height=500, scrollbars=yes');">
-															<img src="../../images/common/btn_add_new.gif" border="0"></a>
-														</td>							  
-													</tr>
-													<tr height="30">
-														<td> </td> 
-													</tr>	
-												</tbody>
-												</table>
+												
 											</td>
 										</tr>
 									</tbody>
-									</table><br>
+									</table> --><br>
 			</form>
 			
 			

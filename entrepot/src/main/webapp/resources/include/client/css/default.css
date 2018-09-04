@@ -122,16 +122,19 @@ hr {
 	margin: 0px auto;
 	background-size: cover;
 }
-.containerTbody{
-	
+.container-fluid{
+	   width: 810px;
+    border: solid 1px;
+    padding: 30px;
+    border-radius: 50px;
 }
 .divss{
 	height:1000px;
-	padding-top:100px;
+	 /* padding-top:100px; */ 
 }
 .containertd1{
 
-	padding-top:104px;
+	/* padding-top:104px; */
 	
 } 
 .sidebar{ 

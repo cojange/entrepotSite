@@ -1,7 +1,5 @@
 package com.site.client.magazine.ditail.vo;
 
-import com.site.client.member.login.vo.LoginVO;
-
 public class PageVO{
    private int page = 1; //현재 페이지
    private int totalpage;   //총 패이지 개수

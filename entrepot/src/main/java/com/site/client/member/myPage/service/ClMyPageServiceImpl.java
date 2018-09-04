@@ -22,8 +22,11 @@ public class ClMyPageServiceImpl implements ClMyPageService {
 	@Override
 	//찜리스트
 	public List<ClMyPageVO> whishList(ClMyPageVO myPageVo) { 	
+		//logger.info("whishList");
+		//logger.info(myPageVo.getRecord_num());
 		List<ClMyPageVO> myWhishlist = clMyPageDao.whishList(myPageVo);
-		int saleval=0;
+		//int saleval=0;
+		
 		//할인가격을계산하기위한 
 		/*for(ClMyPageVO whishlistVo : myWhishlist) {
 			whishlistVo.setPd_sale(whishlistVo.getPd_sale()*whishlistVo.getPd_cost());

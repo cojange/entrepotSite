@@ -6,8 +6,11 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -28,7 +31,7 @@ public class ClMyPageController {
 	private ClMyPageService clMyPageService;
 	
 	/**************************************************************
-	* 
+	* 마이페이지
 	**************************************************************/
 	@RequestMapping(value="/member/myPage{m_idx}.do",method = RequestMethod.GET)
 	public ModelAndView myPage(@PathVariable String m_idx,ModelAndView mav,ClMyPageVO myPageVo,ClOrderListVO orderVo,HttpSession session){
@@ -37,8 +40,7 @@ public class ClMyPageController {
 		
 		LoginVO login = (LoginVO)session.getAttribute("login");
         
-		
-			 
+				 
 			switch(m_idx) {
 			   case "Whish": 
 				   logger.info("찜리스트  호출 성공");
@@ -62,5 +64,7 @@ public class ClMyPageController {
 		mav.setViewName("client/member/myPage/body/myPage");
 		return mav;
 	}
+	
+	
 	
 }
