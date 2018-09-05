@@ -86,7 +86,7 @@
 			            <!-- 첨부 버튼 -->
 			            <div id="attach">
 			                <label class="waves-effect waves-teal btn-flat" for="uploadInputBox">사진 추가</label>
-			                <input id="uploadInputBox" style="display: none" type="file" name="file" id="mulFile" multiple/>
+			                <input id="uploadInputBox" style="display: none" type="file" name="file" multiple/>
 			            </div>
 			            
 			            <!-- 미리보기 영역 -->

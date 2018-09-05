@@ -4,13 +4,19 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ include file="/WEB-INF/views/common/common.jspf" %>
 
-
-
+<!-- chart.js -->
+		<script type="text/javascript" src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+		<script type="text/javascript" src="https://www.amcharts.com/lib/3/serial.js"></script>
+		<script type="text/javascript" src="https://www.amcharts.com/lib/3/themes/dark.js"></script>
+<!-- chart.js -->
         <div class="container-fluid">
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="#">Dashboard</a>
+              <a href="/admin/kakaopayImpl">kakaopay</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="/admin/kakaoexample">kakaopay2</a>
             </li>
             <li class="breadcrumb-item active">Overview</li>
           </ol>
@@ -130,9 +136,9 @@
           <div class="card mb-3">
             <div class="card-header">
               <i class="fas fa-chart-area"></i>
-              Area Chart Example</div>
+              지난 7일 통계</div>
             <div class="card-body">
-              <canvas id="myAreaChart" width="100%" height="30"></canvas>
+              <div id="odSellRC" style="width: 100%; height: 400px; background-color: #282828;" ></div>
             </div>
             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
           </div>
