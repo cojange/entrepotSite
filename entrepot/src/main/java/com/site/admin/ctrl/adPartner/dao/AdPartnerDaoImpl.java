@@ -37,4 +37,19 @@ public class AdPartnerDaoImpl implements AdPartnerDao {
 	public int courierInsert(CourierPartnerVO cpvo) {
 		return session.insert("courierInsert", cpvo);
 	}
+
+	@Override
+	public int magUpdate(MagazinePartnerVO mpvo) {
+		return session.update("magUpdate", mpvo);
+	}
+
+	@Override
+	public int closedMagInsert(MagazinePartnerVO mpvo) {
+		return session.insert("magUpdate", mpvo);
+	}
+
+	@Override
+	public int magPartnerData(MagazinePartnerVO mpvo) {
+		return session.selectOne("magPartnerData", mpvo);
+	}
 }
