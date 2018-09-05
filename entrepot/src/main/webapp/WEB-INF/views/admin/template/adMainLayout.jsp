@@ -517,7 +517,7 @@
 	    			$(document).on('click', ".mgUpdateSave", function(){
 	    				console.log("다람쥐");
 	    				/* if(!chkData($('#upMgDate'),"거래종료일을")) return;
-	      				else  */if(!chkData($('#upCharName'),"담당자 이름을")) return;
+	      				else */if(!chkData($('#upCharName'),"담당자 이름을")) return;	    				
 	      				else if(!chkData($('#upCharTel'),"담당자 연락처를")) return;
 	      				else if(!chkData($('#upCharEmail'),"담당자 이메일을")) return;
 	      				else if(!chkData($('#upCharFax'),"담당자 팩스를")) return;
