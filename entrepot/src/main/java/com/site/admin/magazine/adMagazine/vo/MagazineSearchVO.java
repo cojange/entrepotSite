@@ -16,14 +16,16 @@ public class MagazineSearchVO {
 		private	String pd_appendix;					//부록여부
 		private	String pd_date;						//출간일
 
+		
 		//잡지별 테이블(Magzine)
 		private String mg_num;						//잡지코드
 		private String mg_period;					//출간주기
 		private String mg_name;						//잡지명
 		private String com_no;						//사업자번호
-		private List<String> pl_path;
+		private String pl_path;
 		//상품이미지 테이블(product_image)
-		private List<MultipartFile> file;						//파일경로
+		private MultipartFile mainFile;
+		private List<MultipartFile> prevFile;						//파일경로
 		private String pl_type;						//파일유형	
 		
 		private String pl_path2;					//프리뷰
@@ -118,17 +120,24 @@ public class MagazineSearchVO {
 		public void setCom_no(String com_no) {
 			this.com_no = com_no;
 		}
-		public List<String> getPl_path() {
+		public String getPl_path() {
 			return pl_path;
 		}
-		public void setPl_path(List<String> pl_path) {
+		public void setPl_path(String pl_path) {
 			this.pl_path = pl_path;
 		}
-		public List<MultipartFile> getFile() {
-			return file;
+		public MultipartFile getMainFile() {
+			return mainFile;
 		}
-		public void setFile(List<MultipartFile> file) {
-			this.file = file;
+		public void setMainFile(MultipartFile mainFile) {
+			this.mainFile = mainFile;
+		}
+
+		public List<MultipartFile> getPrevFile() {
+			return prevFile;
+		}
+		public void setPrevFile(List<MultipartFile> prevFile) {
+			this.prevFile = prevFile;
 		}
 		public String getPl_type() {
 			return pl_type;
@@ -214,4 +223,23 @@ public class MagazineSearchVO {
 		public void setKey3(String key3) {
 			this.key3 = key3;
 		}
+		@Override
+		public String toString() {
+			return "MagazineSearchVO [mainFile=" + mainFile + ", prevFile=" + prevFile + ", getStartUnicode()="
+					+ getStartUnicode() + ", getEndUnicode()=" + getEndUnicode() + ", getPd_num()=" + getPd_num()
+					+ ", getPd_rate()=" + getPd_rate() + ", getPd_sale()=" + getPd_sale() + ", getPd_cost()="
+					+ getPd_cost() + ", getPd_appendix()=" + getPd_appendix() + ", getPd_date()=" + getPd_date()
+					+ ", getMg_num()=" + getMg_num() + ", getMg_period()=" + getMg_period() + ", getMg_name()="
+					+ getMg_name() + ", getCom_no()=" + getCom_no() + ", getPl_path()=" + getPl_path()
+					+ ", getMainFile()=" + getMainFile() + ", getPrevFile()=" + getPrevFile() + ", getPl_type()="
+					+ getPl_type() + ", getPl_path2()=" + getPl_path2() + ", getDt_target()=" + getDt_target()
+					+ ", getDt_brief()=" + getDt_brief() + ", getDt_detail()=" + getDt_detail() + ", getDt_contents()="
+					+ getDt_contents() + ", getDt_keyword()=" + getDt_keyword() + ", getPd_salecost()="
+					+ getPd_salecost() + ", getCom_name()=" + getCom_name() + ", getListkey()=" + getListkey()
+					+ ", getHome()=" + getHome() + ", getKey1()=" + getKey1() + ", getKey2()=" + getKey2()
+					+ ", getKey3()=" + getKey3() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+					+ ", toString()=" + super.toString() + "]";
+		}
+		
+		
 }

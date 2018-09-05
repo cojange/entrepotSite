@@ -1,6 +1,9 @@
 package com.site.admin.ctrl.adPartner.controller;
 
+import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,7 +75,7 @@ public class AdPartnerController {
 	}
 	
 	/** 
-	 * 잡지 거래처 등록 구현하기
+	 * 택배 거래처 등록 구현하기
 	 *  **/
 	@RequestMapping(value="/courierInsert.do", method=RequestMethod.POST)
 	public String courierInsert(CourierPartnerVO cpvo, Model model) {
@@ -91,4 +94,31 @@ public class AdPartnerController {
 		}
 		return "redirect:"+url;
 	}
+	
+	/** 
+	 * 잡지 거래처 수정 구현하기
+	 *  **/
+	@RequestMapping(value="/magUpdate.do", method=RequestMethod.POST)
+	public String magUpdate(MagazinePartnerVO mpvo, Model model, HttpServletRequest request) throws IOException {
+		logger.info("magUpdate 호출 성공");
+		
+		String resultData;
+		int result = 0;
+		result = adPartnerService.magUpdate(mpvo);
+		if(mpvo.getChecked() != null) {
+			if(result==3) {
+				resultData="SUCCES";
+			}else {
+				resultData="FALSE";
+			}
+		}else {
+			if(result==1) {
+				resultData="SUCCES";
+			}else {
+				resultData="FALSE";
+			}
+		}
+		
+		return resultData;
+	} 
 }

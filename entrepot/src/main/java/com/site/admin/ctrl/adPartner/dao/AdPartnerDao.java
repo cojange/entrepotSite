@@ -11,5 +11,8 @@ public interface AdPartnerDao {
 	public List<MagazinePartnerVO> magPartnerList(MagazinePartnerVO mpvo);
 	public int magazineInsert(MagazinePartnerVO mpvo);
 	public int courierInsert(CourierPartnerVO cpvo);
+	public int magUpdate(MagazinePartnerVO mpvo);
+	public int closedMagInsert(MagazinePartnerVO mpvo);
+	public int magPartnerData(MagazinePartnerVO mpvo);
 
 }

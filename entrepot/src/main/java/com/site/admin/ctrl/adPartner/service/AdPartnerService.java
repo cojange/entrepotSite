@@ -11,5 +11,6 @@ public interface AdPartnerService {
 	public List<MagazinePartnerVO> magPartnerList(MagazinePartnerVO mpvo);
 	public int magazineInsert(MagazinePartnerVO mpvo);
 	public int courierInsert(CourierPartnerVO cpvo);
+	public int magUpdate(MagazinePartnerVO mpvo);
  
 }
