@@ -47,8 +47,17 @@ public class ListDaoImpl implements ListDao {
 	@Override
 	public int cardcheck(ClMyPageVO pvo) {
 		// TODO Auto-generated method stub
-		sqlSession.selectOne("cardcheck", pvo);
-		return 0;
+		return sqlSession.selectOne("cardcheck", pvo);
+	}
+	@Override
+	public int cardinsert(ClMyPageVO pvo) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("cardinsert",pvo);
+	}
+	@Override
+	public int cardupdate(ClMyPageVO pvo) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("cardupdate",pvo);
 	}
 	
 	

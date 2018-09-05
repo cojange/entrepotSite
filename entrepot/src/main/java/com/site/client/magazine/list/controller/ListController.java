@@ -34,6 +34,7 @@ public class ListController {
 		
 		int mylist = listService.listcount(mvo); //총 리스트 개수
 		
+		logger.info("listkey : "+mvo.getListkey());
 		mvo.setCountList(10);
 		mvo.setTotalpage(mylist/mvo.getCountList());
 		
@@ -63,6 +64,9 @@ public class ListController {
 	@RequestMapping(value="/card.do")
 	public ResponseEntity<String> card(@RequestBody ClMyPageVO pvo){
 		logger.info("card 호출성공");
+		logger.info("pvo:" +pvo.getRecord_num());
+		logger.info("pvo:" +pvo.getMg_num());
+		logger.info("pvo:" +pvo.getEa());
 		ResponseEntity<String> entity = null;
 		int result;
 		try {

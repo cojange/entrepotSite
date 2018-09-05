@@ -20,7 +20,9 @@
 <select id="magazinesum" parameterType="mgvo" resultType="mgvo">
 	/*magazine - magazinesum*/
 	
-	select pl_path from sum_view
-	 where mg_num=#{mg_num}
+	select mg_num,PL_PATH,pl_type from product_image 
+	 where mg_num= #{mg_num} and rownum <![CDATA[ < ]]>= 6
+ 	and pl_type='thum'
 </select>
+
 </mapper>

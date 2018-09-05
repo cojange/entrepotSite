@@ -31,7 +31,7 @@ public class ClGmController {
 	@RequestMapping(value="member/groupForm.do",method = RequestMethod.GET)
 	public String groupMemberForm(){
 		logger.info("groupForm.do get 방식에 의한 메서드 호출 성공");
-		return "client/member/groupForm";
+		return "client/member/member/groupForm";
 	}
 	
 	/***********************************************
@@ -54,7 +54,7 @@ public class ClGmController {
 		logger.info("groupForm.do post 방식에 의한 메서드 호출 성공");
 		
 		clGmService.groupMemberInsert(cgmvo);
-		mav.setViewName("client/member/joinsuccess");
+		mav.setViewName("client/member/member/joinsuccess");
 		return mav;
 	}
 	
@@ -71,13 +71,13 @@ public class ClGmController {
 	 // 추후 아래 부분에 대한 제어는 한곳에서 설정되도록 변경해 주면 된다 
 	// 혹 로그인되어 있지 않으면 로그인 화면으로 이동.
 	 if(login==null){
-	 mav.setViewName("client/member/login"); 
+	 mav.setViewName("client/member/login/login"); 
 	 return mav;
 	 }
 	  // 세션에서 로그인 정보 중 아이디만 가지고 해당 아이디에 대한 상세내역  DB에서 조회
 	  ClGmVO cmvo = clGmService.groupMemberSelect(login.getM_id());
 	  mav.addObject("member", cmvo);
-	  mav.setViewName("client/member/groupModify"); 
+	  mav.setViewName("client/member/member/groupModify"); 
 	  return mav;
 	 } 
 }

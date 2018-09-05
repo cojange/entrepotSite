@@ -91,6 +91,25 @@ function getDateFormat(dateValue){
    var result = year+"-"+month+"-"+day;
    return result;
 }
+
+/* 함수명 : chkDate(sDate, eDate)
+ * 설명 : 날짜 유효성 검사 오늘 날이후와 시작날짜 vs 종료날짜의 크기값 비교
+ */
+function chkDate(sDate,eDate){
+	var date = nowTime1().replace("/-/g","");
+	var target1 = sDate.val().replace("/-/g","");
+	var target2 = eDate.val().replace("/-/g","");
+	if(eval(target1>date)){
+		alert("시작 일자는 오늘 날 이후 일 수 없습니다.");
+		sDate.focus();
+		return false;
+	}else if(eval(target1>target2)){
+		alert("시작 일자가 종료 일자 이후 일 수 없습니다.");
+		sDate.focus();
+		return false;
+	}else return true;
+}
+
 /*******/
 function getTrimStr (item){
    /*var str = item.replace(/s\g/,"")*/

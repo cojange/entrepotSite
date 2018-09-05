@@ -21,6 +21,10 @@ public interface ListDao {
 
 	public int cardcheck(ClMyPageVO pvo);
 
+	public int cardinsert(ClMyPageVO pvo);
+
+	public int cardupdate(ClMyPageVO pvo);
+
 	
 
 

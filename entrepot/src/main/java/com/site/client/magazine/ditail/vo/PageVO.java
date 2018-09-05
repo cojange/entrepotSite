@@ -1,6 +1,8 @@
 package com.site.client.magazine.ditail.vo;
 
-public class PageVO {
+import com.site.common.vo.CommonVO;
+
+public class PageVO extends CommonVO {
 	private int page = 1; //현재 페이지
 	private int totalpage;   //총 패이지 개수
 	private int countList;	 //한페이지에 존재할 게시물 개수

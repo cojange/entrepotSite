@@ -40,46 +40,79 @@
    		var key3 =$('#key3').val();
    		var home =$('#home').val();
    		
-   		console.log(listkey);
+   	
    		$(".cartbtn").click(function(){
    			var id= $('#id').val();
-   			
 			if (id == null || id=="") {
+
 				alert('로그인이 안되어 있습니다. 로그인 후 다시 시도해주세요');
 			}else{
-				var insert = "/cliunt/list/card.do";
-				
+				var insert = "/client/list/card.do";
+	
 				$.ajax({
 					url:insert,
 					type: "post",
 					headers : {
 						"content-type":"application/json",
 						"x-HTTP-Method-Dverride":"POST"
-					}
+					},
 					dataType:"text",
 					data:JSON.stringify({
-						recode_num:$('#cart').val(),
+						record_num:$("#cart").val(),
 						mg_num:$(this).parents("tr").attr("data-num"),
 						ea:1	
 					}),
 					error: function() {
-						alert('시스템 오류입니다. 잠시후 다시 시도해주세요')
+						alert("시스템 오류입니다. 잠시후 다시 시도해주세요")
 					},
 					success : function(resultData) {
-						if(resiltData=="SUCCESS"){
+						if(resultData == "SUCCESS"){
 							alert("장바구니에 추가 됬습니다.");
 							
+						}else{
+							alert(resultData);
 						}
 					}
-				})
+				}); 
 				
 			}
-   			
-			
-   			
-   			
    		});
-   		
+   		$(".jtbtn").click(function(){
+   			var id= $('#id').val();
+			if (id == null || id=="") {
+
+				alert('로그인이 안되어 있습니다. 로그인 후 다시 시도해주세요');
+			}else{
+				var insert = "/client/list/card.do";
+	
+				$.ajax({
+					url:insert,
+					type: "post",
+					headers : {
+						"content-type":"application/json",
+						"x-HTTP-Method-Dverride":"POST"
+					},
+					dataType:"text",
+					data:JSON.stringify({
+						record_num:$("#whish").val(),
+						mg_num:$(this).parents("tr").attr("data-num"),
+						ea:1	
+					}),
+					error: function() {
+						alert("시스템 오류입니다. 잠시후 다시 시도해주세요")
+					},
+					success : function(resultData) {
+						if(resultData == "SUCCESS"){
+							alert("찜에 추가 됬습니다.");
+							
+						}else{
+							alert(resultData);
+						}
+					}
+				}); 
+				
+			}
+   		});
    		
 		$(".goDetail").click(function() {
             
@@ -87,7 +120,7 @@
         	
             
        		 $("#mg_num").val(mg_num);
-       		 $("#liskkey").val(listkey);
+       		 $("#listkey").val(listkey);
             //상세 페이지로 이동하기위해  form추가(id:detailForm)
             $("#detailForm").attr({
                "method":"get",
@@ -127,15 +160,22 @@
 		<input type="hidden" id="current" name="current" value="${mvo.page}" />
 		<input type="hidden" id="max" name="max" value="${mvo.totalpage}"/>
 		<input type="hidden" id="id" name="id" value="${login.m_id}" />
-		<input type="hidden" id="cart" name="cart" value="${login.cart }"/>
+		<input type="hidden" id="cart" name="cart" value="${login.cart}"/>
 		<input type="hidden" id="whish" name="whish" value="${login.whish}"/>
 		<input type="hidden" id="ea" name="ea" value=1/>
 		
 	<div>
 		<div class="container-fluid">
-		<h1>${mvo.home}
-			<small>>> ${mvo.key1}/${mvo.key2}/${mvo.key3}</small>
-		</h1>
+		<c:choose>
+			<c:when test="${not empty mvo.home}">
+			<h1>${mvo.home}
+				<small>>> ${mvo.key1}/${mvo.key2}/${mvo.key3}</small>
+			</h1>
+			</c:when>
+			<c:when test="${mvo.listkey eq 4 }">
+				<h1>검색 결과 입니다.</h1>
+			</c:when>
+		</c:choose> 
 		<table width="100%" border="0" cellpadding="0" cellspacing="10px"
 			align="center">
 			<c:choose>
@@ -242,7 +282,7 @@
 
 
 																<a class="cartbtn" href="#"><img src="/resources/images/produt/subscrib_cart.gif" ></a> <br>
-																<input type="button" value="찜 버튼" id="btnjim" /> 
+																<a class="jtbtn" href="#"><img src="/resources/images/produt/subscrib_confirm3.jpg" ></a> 
 																<a class="salebtn" href="#"><img src="/resources/images/produt/subscrib_confirm.gif" ></a> <!-- <A HREF="javascript:go_zzim('13649');"><img src="../../images/btn_mybook.gif" border=0></A> -->
 
 															</td>
@@ -262,6 +302,13 @@
 						</tr>
 					</c:forEach>
 				</c:when>
+				<c:otherwise>
+					<tr>
+						<td>
+							<h1>목록이 없습니다</h1>
+						</td>
+					</tr>
+				</c:otherwise>
 			</c:choose>
 		</table>
 		<div id="paging">
@@ -269,6 +316,7 @@
 		</div>
 	</div>
 	</form>
+
 </div>	
 </body>
 </html>

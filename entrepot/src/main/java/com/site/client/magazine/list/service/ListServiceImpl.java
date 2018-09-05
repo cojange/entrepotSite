@@ -94,12 +94,16 @@ public class ListServiceImpl implements ListService {
 		int result =0;
 		try {
 			result =listDao.cardcheck(pvo);
-				
+			if(result ==1) {
+				result = listDao.cardinsert(pvo);
+			}else {
+				result = listDao.cardupdate(pvo);
+			}
 		}catch(Exception e) {
 			e.printStackTrace();
 			result =0;
 		}
-		return result=0;
+		return result;
 	}
 	
 

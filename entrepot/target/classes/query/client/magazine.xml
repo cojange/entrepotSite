@@ -16,6 +16,9 @@
 		 </if>
 		 <if test="listkey==3">
 		 	dt_keyword like '%'|| #{key1} ||'%' or dt_keyword like  '%'|| #{key2} ||'%' or  dt_keyword like  '%'|| #{key3} ||'%'
+		 </if>
+		 <if test="listkey==4">
+		 	mg_name like  '%'|| #{search} ||'%' or com_name like  '%'|| #{search} ||'%' 
 		 </if>	 
 	</where>)
 	where RNUM between #{start} and #{end}
@@ -35,7 +38,10 @@
 		 </if>
 		 <if test="listkey==3">
 		 	dt_keyword like '%'|| #{key1} ||'%' or dt_keyword like  '%'|| #{key2} ||'%' or  dt_keyword like  '%'|| #{key3} ||'%'
-		 </if>	 
+		 </if>
+		 <if test="listkey==4">
+		 	mg_name like  '%'|| #{search} ||'%' or com_name like  '%'|| #{search} ||'%' 
+		 </if>	 	 
 	</where>
 </select>
 <select id="bastlist" parameterType="mgvo" resultType="mgvo">
@@ -47,10 +53,50 @@ select mg_num,mg_name,pd_sale,pd_rate,pd_date,dt_target,dt_keyword,dt_brief,pl_p
 </select>
 
 <select id="jlist" parameterType="mgvo" resultType="mgvo">
-	select ab_type,ab_no,ab_title from admin_board
-	where ab_type ='공지사항'
-	order by ab_no desc 
+	select ab_type,ab_no,ab_title FROm
+(
+select rownum as rnum ,ab_type,ab_no,ab_title from admin_board
+where ab_type ='공지사항'
+order by ab_no desc
+)
+where RNUM between 1 and 5
 </select>
 
+<select id="elist" parameterType="mgvo" resultType="mgvo">
+	select ab_type,ab_no,ab_title FROm
+(
+select rownum as rnum ,ab_type,ab_no,ab_title from admin_board
+where ab_type ='이벤트'
+order by ab_no desc
+)
+where RNUM between 1 and 5
+</select>
+<select id="aplist" parameterType="mgvo" resultType="mgvo">
+	select mg_num,mg_name,pd_sale,pd_cost,pd_rate,pd_Appendix,pl_path,dt_target
+from(select rownum as rnum,mg_num,mg_name,pd_sale,pd_cost,pd_rate,pd_Appendix,pl_path,dt_target from bast_view8 where PD_APPENDIX IS NOT NULL)
+where rnum between 1 and 9
+</select>
+
+<select id="cardcheck" parameterType="whishAndCart" resultType="int">
+	/*magazine - cardcheck*/
+	
+	SELECT NVL((
+  		SELECT 0 FROM record
+  		where Record_num= #{record_num}  AND mg_num = #{mg_num}),1) as state
+  		From dual
+</select>
+<insert id="cardinsert" parameterType="whishAndCart">
+	/*magazine - cardinsert */
+	
+	insert into record (record_num,mg_num,ea,record_date)
+	values(#{record_num},#{mg_num},#{ea},sysdate)
+</insert>
+<update id="cardupdate" parameterType="whishAndCart">
+	/*magazine - cardupdate */
+	
+	update record set ea= ea+#{ea}
+	where 	record_num = #{record_num}
+	and mg_num = #{mg_num}
+</update>
 
 </mapper>

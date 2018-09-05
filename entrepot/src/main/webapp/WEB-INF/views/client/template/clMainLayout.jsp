@@ -158,7 +158,7 @@ function plusSlides(n) {
 			<br>
 			<br>
 			<img src="/resources/images/produt/index_title_bestchice.png"  style="width: 500px;"> 
-		  <div align="center" style="border:1px solid; padding:10px;">	 
+		  <div align="center" style="border:1px solid; padding:10px; border-radius: 10px;">	 
           <table border="0" cellpadding="5" cellspacing="0" style="width:1000px">
           	<tbody>
           		<c:choose>
@@ -230,8 +230,9 @@ function plusSlides(n) {
 						
 	</div>
 				<br> <br> <br> <br>
-				
-	<div>
+					
+	<div style="border:1px solid; padding:10px; border-radius: 10px;">
+	<h1 style=" font-family: 'Nanum Pen Script', cursive;">이달의 부록 잡지! </h1>	
 		<span></span>
 		<table>
 			<tr>
@@ -287,8 +288,9 @@ function plusSlides(n) {
 			</tr>
 		</table>
 	</div>			
-				
-	<div>
+		<br> <br> <br> <br>		
+	<div style="border:1px solid; padding:10px; border-radius: 10px;">
+	<h1 style=" font-family: 'Nanum Pen Script', cursive;">확인해주세요 ! </h1>
 		<table align="center">
 			<tbody>
 				<tr height="5"><td>&nbsp;</td></tr>
@@ -360,7 +362,7 @@ function plusSlides(n) {
 			</tbody>
 		</table>
 	</div>	
-		
+		<br> <br> <br> <br>
 	 <div>
 	 	<img src="/resources/images/produt/titlebar_nice_tip.gif" style="width: 1100px; height: 70px">
 				<div class="slideshow-container">

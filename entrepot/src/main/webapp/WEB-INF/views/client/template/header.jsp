@@ -58,14 +58,36 @@
  --%>
 <script type="text/javascript">
 function errorCodeCheck(){}
+	function surchlist() {
+		var surch = $("#url").val(); 
+    	
+        
+  		 $("#search").val(surch);
+  		 $("#listkey").val(4);
+       //상세 페이지로 이동하기위해  form추가(id:detailForm)
+       $("#az").attr({
+          "method":"get",
+          "action":"/client/list/magazinelist.do"
+       });
+        $("#az").submit();
+	}
+	$(function() {
+		$(".surchbtn").click(function() {
+            
+			surchlist()
+         });
+	});
 </script>
+
 <div id="header" class="container">
    <div id="logo">
       <h1><a href="/">앙뜨흐뽀</a></h1>
       <p>Design by <a href="/" rel="nofollow">TEMPLATED</a></p>
    </div>
 
-   <form action="#" autocomplete="off" class="az">
+   <form action="surchlist()" autocomplete="off" class="az" id="az" name="az">
+   	<input type="hidden" id="listkey" name ="listkey">
+   	<input type="hidden" id="search" name ="search"> 
       <fieldset class="url">
          <input id="url" type="text" name="url" required> <label
             for="url"><i class="fa fa-search" aria-hidden="true"></i>
@@ -73,7 +95,7 @@ function errorCodeCheck(){}
          <div class="after"></div>
       </fieldset>
       <fieldset class="enter">
-         <button value="검색"></button>
+         <button  class="surchbtn" value="검색"></button>
       </fieldset>
    </form>
       <!-- <div id="social">
@@ -88,23 +110,26 @@ function errorCodeCheck(){}
 
    <div class="container" id="social">
       <div class="memberlogin" style="font-size: 10pt;">
-         <!-- <a href="javascript:void(window.open('/client/login/login.do', '_blank','width=300px, height=350px',))">로그인</a> -->
+         <!-- <a href="javascript:void(window.open('/client/login/login.do','_blank','width=300px, height=350px',))">로그인</a> -->
          <c:if test="${login.m_id != null and login.m_id != ''}">
          <div class="menu"  style="font-size: 10pt;,display: inline-block;">
          <span>[ ${login.m_name} ]님 환영합니다.</span>
+         <form class="m_idxForm">
+         	<!-- <input type="hidden" value="찜리스트" id="m_idx" name="m_idx"> -->
+         </form>
          <br><br>
          <a id="menuDownUp" href="#"></a>
          <span class="menuDown"><i class="icon-th-list">메뉴&nbsp;<span>▼</span><a id="menuDown" href="#"></a></i></span><br>
          <span class="menuUp"><i class="icon-th-list">메뉴&nbsp;<span>▲</span><a id="menuUp" href="#"></a></i></span><br>
          		<div class="loginMenu">
-         			<a id="logout" href="#">로그아웃</a><p></p>
+         			<a id="logout" href="#">로그아웃</a><br>
          			<c:if test="${login.mt == '개인'}">
-         			<a id="memberMyPage" href="#">마이페이지</a><p></p>
-         			<a id="memberModify" href="#">정보수정</a><br>
+         			<a href="/client/member/myPageWhish.do">마이페이지</a><br>
+         			<a href="/client/member/memberModify.do">정보수정</a><br>
          			</c:if>
          			<c:if test="${login.mt == '단체'}">
-         			<a id="groupMyPage" href="#">마이페이지</a><p></p>
-         			<a id="groupModify" href="#">정보수정</a><br>
+         			<a href="/client/member/myPageWhish.do">마이페이지</a><p></p>
+         			<a href="/client/member/memberModify.do">정보수정</a><br>
          			</c:if>
          		</div>
 			 <!--  <input type="button" id="logout" value="로그아웃"><br>
