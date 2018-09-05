@@ -184,7 +184,7 @@ $(function() {
 					"method":"post",
 					"action":"/client/member/mForm.do"
 				});
-			$("#memberForm").submit();
+				$("#memberForm").submit();
 		}
 	});
 	//이메일 직접입력 체크시
