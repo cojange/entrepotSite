@@ -15,4 +15,5 @@ public interface AdMemberService {
 	public String insertAdmin(AdminVO avo);
 	public String tellCheck(AdminVO avo);
 	public String emailCheck(AdminVO avo);
+	public String delAdmin(String ad_id);
 }

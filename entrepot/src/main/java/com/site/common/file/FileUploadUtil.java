@@ -44,6 +44,12 @@ public class FileUploadUtil {
 			}else if(mode.equals("reg")) {
 				GetDateUtil gdu =GetDateUtil.getInstance();
 				code=gdu.getYear()+gdu.getMonth()+gdu.getDay();
+			}else if(mode.equals("adminBoard")) {
+				GetDateUtil gdu =GetDateUtil.getInstance();
+				code=gdu.getYear()+gdu.getMonth()+gdu.getDay();
+			}else if(mode.equals("mgPrev")) {
+				GetDateUtil gdu =GetDateUtil.getInstance();
+				code=gdu.getYear()+gdu.getMonth()+gdu.getDay();
 			}
 			real_name = fileName + "_" + code +"_" +org_name;
 			

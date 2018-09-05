@@ -15,4 +15,6 @@ public interface AdminBoardDao {
 
 	public int couponUpdate(CouponVO cvo);
 
+	public int adboardInsert(AdminBoardVO advo);
+
 }

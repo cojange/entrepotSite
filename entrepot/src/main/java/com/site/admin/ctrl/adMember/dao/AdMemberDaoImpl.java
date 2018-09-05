@@ -54,8 +54,12 @@ public class AdMemberDaoImpl implements AdMemberDao{
 
 	@Override
 	public int insertAdmin(AdminVO avo) {
-		return session.insert("isertAdmin",avo);
+		return session.insert("insertAdmin",avo);
 	}
 
+	@Override
+	public int delAdmin(String ad_id) {
+		return session.delete("delAdmin", ad_id);
+	}
 	
 }

@@ -93,6 +93,15 @@ public class AdMemberServiceImpl implements AdMemberService{
 		}
 	}
 
+	@Override
+	public String delAdmin(String ad_id) {
+		int result = adMemberDao.delAdmin(ad_id);
+		if(result==1) {
+			return "success";
+		}else {
+			return "fails";
+		}
+	}
 
 
 
