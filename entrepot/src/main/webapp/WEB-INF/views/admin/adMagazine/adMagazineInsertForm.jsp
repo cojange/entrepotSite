@@ -20,12 +20,14 @@
 	}
 </style>
 <div class="container-fluid">
-<form>
+<form id="addmagine" name ="addmagine">
 	<table style="width:100%">
 		<tr>
 			<td>
-				<select name="mg_num" id="stMg_num"></select>
-				<select id="stMcom_name"></select>
+				<select name="mg_num" id="stMg_num">
+				</select>
+				<select id="stMcom_name" name="mcom_name">
+				</select>
 				<input type="text" name="term" id="mgTerm">		
 			</td>
 		</tr>
@@ -52,7 +54,7 @@
 	</table>
 </form>
 <hr style="width:98%; text-align: center;"/>
-<form id="detailSubmit" name="detailSubmit">
+<form id="adddetail" name="adddetail">
 	<table>
 	
 		<tr>
