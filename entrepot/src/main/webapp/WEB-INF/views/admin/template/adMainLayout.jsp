@@ -88,6 +88,7 @@
 	    <script type="text/javascript" src="/resources/include/admin/js/json2html/mainDt.js"></script>
 	    <script type="text/javascript" src="/resources/include/admin/js/json2html/json2table.js"></script>
 	    <script type="text/javascript" src="/resources/include/common/js/paging.js"></script>
+	    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 	    <script type="text/javascript">
 	    var addTable;
 	    var table;
@@ -99,7 +100,85 @@
 	    		/* main 상단 시계 */
 	    		printClock();	    	
 	    	
-				ad_card();   		
+				ad_card();
+				
+				if($(location).attr("href")== "http://localhost:8080/admin"){
+					var chartURL = "/admin/adChart/odSellRC.do"
+	    				 $.getJSON(chartURL,function(columnchart){
+	    					console.log(columnchart);
+							/* "categoryField": "date",
+							"dataDateFormat": "MM-DD",
+							"categoryAxis": {
+								"parseDates": true
+							}, */
+	    					AmCharts.makeChart("odSellRC",
+	    							{
+	    								"type": "serial",
+	    								"categoryField": "date",
+	    								"dataDateFormat": "YY-MM-DD",
+	    								"autoMarginOffset": 40,
+	    								"marginRight": 60,
+	    								"marginTop": 60,
+	    								"fontSize": 13,
+	    								"theme": "dark",
+	    								
+	    								"chartCursor": {
+	    									"enabled": true
+	    								},
+	    								"chartScrollbar": {
+	    									"enabled": true
+	    								},
+	    								"trendLines": [],
+	    								"graphs": [
+	    									{
+	    										"columnWidth": 0.44,
+	    										"cornerRadiusTop": 8,
+	    										"dashLength": 4,
+	    										"fillAlphas": 0.51,
+	    										"id": "AmGraph-1",
+	    										"lineAlpha": 0.44,
+	    										"title": "총 판매",
+	    										"type": "column",
+	    										"valueField": "od"
+	    									},
+	    									{
+	    										"bullet": "square",
+	    										"bulletBorderAlpha": 1,
+	    										"bulletBorderThickness": 1,
+	    										"bulletSize": 16,
+	    										"id": "AmGraph-2",
+	    										"lineThickness": 3,
+	    										"title": "주문 물량",
+	    										"valueField": "sell"
+	    									},
+	    									{
+	    										"id": "AmGraph-3",
+	    										"title": "환불 물량",
+	    										"valueField": "refund"
+	    									},
+	    									{
+	    										"id": "AmGraph-4",
+	    										"title": "교환 물량",
+	    										"valueField": "chg"
+	    									}
+	    								],
+	    								"guides": [],
+	    								"valueAxes": [
+	    									{
+	    										"id": "ValueAxis-1",
+	    										"title": ""
+	    									}
+	    								],
+	    								"allLabels": [],
+	    								"balloon": {},
+	    								"titles": [],
+	    								"dataProvider": columnchart
+	    							}
+	    						);
+	    				})
+	    					 
+					
+				}
 	    		
 	    		//회원관리탭
 	    		if($(location).attr("href") == "http://localhost:8080/admin/ctrl/adMember/adMemberCtrl.do"){
@@ -264,11 +343,7 @@
 	    						})
 	    					}
 	    				})//핸드폰 체크
-	    				
-	    				//이메일 체크
-	    				$("#email").click(function(e){  					
-	    					
-	    				})//이메일 체크
+	    			
 	    				
 	    				//등록하기(ajaxForm)
 	    				$("#addAdmin").click(function(){

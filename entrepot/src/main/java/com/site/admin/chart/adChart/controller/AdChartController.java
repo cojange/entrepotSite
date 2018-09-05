@@ -17,6 +17,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.site.admin.chart.adChart.service.AdChartService;
 import com.site.admin.chart.adChart.vo.ColumnChartVO;
+import com.site.admin.chart.adChart.vo.OdSellRCChartVO;
 import com.site.admin.cost.adCost.service.AdCostService;
 import com.site.admin.cost.adCost.vo.AdCostVO;
 import com.site.common.file.ExcelReadUtil;
@@ -36,6 +37,22 @@ public class AdChartController {
 		return "admin/adChart/adChart";
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="/odSellRC.do")
+	public String getOdSellRCChart(ObjectMapper mapper) {
+		List<OdSellRCChartVO> osrcList = adChartService.getOdSellRCChart();
+		
+		String chartData ="";
+		try {
+			chartData = mapper.writeValueAsString(osrcList);
+		}catch(JsonProcessingException e){
+			e.printStackTrace();
+		}
+		
+		return chartData;
+	}
+	
+	//원자재 부자재
 	@ResponseBody
 	@RequestMapping(value="/rowAndacc.do")
 	public String getRowandAccChart(@ModelAttribute ColumnChartVO ccvo,HttpServletRequest request, ObjectMapper mapper) {
