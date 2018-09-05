@@ -53,3 +53,6 @@ font: FontAwesome !important;
 	width:150px;
 	height:195px;;
 }
+.hidden{
+	display: none;
+}

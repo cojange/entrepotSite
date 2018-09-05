@@ -1285,15 +1285,6 @@
     			  table = $('.table').DataTable( {
     			        "order": [[1, 'asc']]
     			    } );
-    			
-        		    // `d` is the original data object for the row
-        		   /*  addTable = 
-        			   '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
-        		        '<tr>'+
-        		            '<div><textarea></textarea><img></img><img></img><img></img></div>'+
-        		            '<div><table><div>'
-        		        '</tr>'+
-        		    '</table>'; */
         		
     			// Add event listener for opening and closing details
     	   	    $('.table tbody').on('click', 'td.details-control', function () {
@@ -1306,16 +1297,30 @@
     	   	    	var img2 = tr.children().eq(10);
     	   	    	var img3 = tr.children().eq(11);
     	   	    	console.log(img1.html()+" / "+img2.html());
-    	   	    	addTable = 
-         			   '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
-         		        '<tr>'+
-         		            '<div><div style="border:#0830534a solid 1px; width:500px; height:200px; background-color:#cce3f730; padding:30px;">'+content.html()+'</div>'+
-         		            '<br/><div><img style="margin:5px; width:150px; height:150px;" src="/uploadStorage/personalBoard/img1/'+img1.html()+'"></img><img style="margin:5px; width:150px; height:150px;" src="/uploadStorage/personalBoard/img2/'+img2.html()+'"></img>'+
-         		            '<img style="margin:5px; width:150px; height:150px;" src="/uploadStorage/personalBoard/img3/'+img3.html()+'"></img></div></div>'+
-         		            '<div><table><div>'
-         		        '</tr>'+
-         		    '</table>';
-    	   	       
+    	   	    	addTable = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
+		    	   	      	  	'<tr><td>'+
+		    	   	          '<div class="bigContent">'+
+		    	   	          '<div class="middle1">'+
+		    	   	          '<div class="smallContent" style="border:#0830534a solid 1px; width:500px; height:200px; background-color:#cce3f730; padding:30px;">'+content.html()+'</div>'+
+		    	   	          '<br/><div class="smallImg"><img style="background-color:lightgray; margin:5px; width:150px; height:150px;" src="/uploadStorage/personalBoard/img1/'+img1.html()+'"></img>'+
+		    	   	          '<img style="background-color:lightgray; margin:5px; width:150px; height:150px;" src="/uploadStorage/personalBoard/img2/'+img2.html()+'"></img>'+
+		    	   	          '<img style="background-color:lightgray; margin:5px; width:150px; height:150px;" src="/uploadStorage/personalBoard/img3/'+img3.html()+'"></img>'+
+		    	   	          '</div><input type="button" value="댓글 확인" id="replyBtn"></div>'+
+		    	   	          '<div class="middle2 hidden">가나다라마바사</div>'+
+		    	   	          '</div>'+
+		    	   	     		 '</td></tr>'+
+		    	   	  		 '</table>';
+		    	   	 
+		    	   	 //댓글보기 버튼 클릭
+    	   	       	 $(document).on('click', '#replyBtn', function(){
+    	   	       		 if($(".middle2").hasClass("hidden")){
+    	   	       			$(".middle2").removeClass("hidden");
+    	   	       		 }else{
+    	   	       			$(".middle2").addClass("hidden");
+    	   	       		 }
+    	   	       		 
+    	   	       	 });
+		    	   	  		 
 	    	   	     if ( row.child.isShown() ) {
 	    	             // This row is already open - close it
 	    	             row.child.hide();
