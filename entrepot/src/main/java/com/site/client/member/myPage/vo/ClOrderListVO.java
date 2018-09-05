@@ -11,6 +11,8 @@ public class ClOrderListVO extends ClSellVO{
 		private String	order_money;		//	결제액
 		private String	order_ok;		//	처리상태
 		private String	transit_num;		//	운송번호
+		private String  pd_cost;//잡지 개월수
+		private String  mg_name;//잡지명
 		
 		public String getPd_num() {
 			return pd_num;
@@ -48,6 +50,19 @@ public class ClOrderListVO extends ClSellVO{
 		public void setTransit_num(String transit_num) {
 			this.transit_num = transit_num;
 		}
+		public String getPd_cost() {
+			return pd_cost;
+		}
+		public void setPd_cost(String pd_cost) {
+			this.pd_cost = pd_cost;
+		}
+		public String getMg_name() {
+			return mg_name;
+		}
+		public void setMg_name(String mg_name) {
+			this.mg_name = mg_name;
+		}
+		
 		
 	
 

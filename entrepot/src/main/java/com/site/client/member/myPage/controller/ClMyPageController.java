@@ -6,13 +6,11 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.site.client.member.login.controller.ClLoginController;
@@ -64,7 +62,33 @@ public class ClMyPageController {
 		mav.setViewName("client/member/myPage/body/myPage");
 		return mav;
 	}
-	
-	
-	
+	 /**************************************************************
+	  *장바구니&찜리스트삭제 처리
+	  **************************************************************/
+	 @RequestMapping(value="/member/delete{m_idx}.do",method = RequestMethod.POST)
+	 public String memberDelete(@PathVariable String m_idx,@RequestParam("mg_num") String mg_num,HttpSession session){
+	 logger.info("delete.do{m_idx} post방식에 의한 메서드 호출 성공");
+	 
+	 LoginVO login = (LoginVO)session.getAttribute("login");
+	 ClMyPageVO myPageVo = new ClMyPageVO();
+	 
+	 
+	 switch(m_idx) {
+	   case "Whish": 
+		   logger.info("찜리스트삭제  호출 성공");
+		   myPageVo.setRecord_num(login.getWhish());
+		   myPageVo.setMg_num(mg_num);
+		   clMyPageService.listDelete(myPageVo);
+		   break;
+	   case "Cart": 
+		   logger.info("장바구니삭제  호출 성공");
+		   myPageVo.setRecord_num(login.getCart());
+		   myPageVo.setMg_num(mg_num);
+		   clMyPageService.listDelete(myPageVo);
+		   break;
+	 }
+ 
+	 return "redirect:/client/member/myPage"+m_idx+".do"; 
+	}
+		
 }
