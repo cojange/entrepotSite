@@ -29,7 +29,7 @@ public class ClMController{
 	@RequestMapping(value="member/mForm.do",method = RequestMethod.GET)
 	public String memberForm(){
 		logger.info("mForm.do get 방식에 의한 메서드 호출 성공");
-		return "client/member/mForm";
+		return "client/member/member/mForm";
 	}
 	
 	/***********************************************
@@ -53,7 +53,7 @@ public class ClMController{
 		logger.info("mForm.do post 방식에 의한 메서드 호출 성공");
 		
 		clMService.memberInsert(cmvo);
-		mav.setViewName("client/member/joinsuccess");
+		mav.setViewName("client/member/member/joinsuccess");
 		return mav;
 	}
 	
@@ -63,7 +63,7 @@ public class ClMController{
 	@RequestMapping(value="member/mChoose.do",method = RequestMethod.GET)
 	public String mChoose(){
 		logger.info("mChoose.do  메서드 호출 성공");
-		return "client/member/memberChoose";
+		return "client/member/member/memberChoose";
 	}
 	
 	/**************************************************************
@@ -79,13 +79,13 @@ public class ClMController{
 	 // 추후 아래 부분에 대한 제어는 한곳에서 설정되도록 변경해 주면 된다 
 	// 혹 로그인되어 있지 않으면 로그인 화면으로 이동.
 	 if(login==null){
-	 mav.setViewName("client/member/login"); 
+	 mav.setViewName("client/member/login/login"); 
 	 return mav;
 	 }
 	  // 세션에서 로그인 정보 중 아이디만 가지고 해당 아이디에 대한 상세내역  DB에서 조회
 	  ClMVO cvo = clMService.memberSelect(login.getM_id());
 	  mav.addObject("member", cvo);
-	  mav.setViewName("client/member/memberModify"); 
+	  mav.setViewName("client/member/member/memberModify"); 
 	  return mav;
 	 } 
 	
@@ -95,7 +95,7 @@ public class ClMController{
 	@RequestMapping(value="member/guardian.do",method = RequestMethod.GET)
 	public String guardianForm(){
 		logger.info("guardian.do  메서드 호출 성공");
-		return "client/member/guardianForm";
+		return "client/member/member/guardianForm";
 	}
 
 }

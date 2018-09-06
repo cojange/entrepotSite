@@ -46,4 +46,9 @@
 		insert into admin(ad_id, ad_pw, ad_name, ad_tell, ad_email, ad_grade)
 		values(#{ad_id}, #{ad_pw}, #{ad_name}, #{ad_tell}, #{ad_email}, #{ad_grade})
 	</insert>
+	
+	<delete id="delAdmin" parameterType="java.lang.String">
+		/*관리자 해고*/
+		delete admin where ad_id=#{ad_id}
+	</delete>
 </mapper>

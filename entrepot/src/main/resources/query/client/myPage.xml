@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.client.member.myPage.dao.ClMyPageDao">
+
+<!--찜목록-->
+<select id="whishList" parameterType="whishAndCart" resultType="whishAndCart">
+	/*myPage - whishList*/
+	<!-- select d.PL_PATH,a.mg_name,a.mg_period,c.PD_SALE 
+	,SUBSTR(A.MG_PERIOD,INSTR(A.MG_PERIOD,'(')+1,INSTR(A.MG_PERIOD,'회')-INSTR(A.MG_PERIOD,'(')-1)as pd_cost
+	,b.ea ,b.RECORD_NUM ,c.pd_num
+	from magazine a join record b 
+	on a.mg_num=b.mg_num 
+	join PRODUCT c 
+	on  a.mg_num=c.mg_num 
+	join product_image d 
+	on c.pd_num = d.pd_num 
+	where  b.RECORD_NUM 
+	in (select whish from (SELECT whish FROM member union all select whish from group_member)
+	 where whish=#{record_num} and pl_type='썸네일') -->
+	 select d.PL_PATH,a.mg_name,a.mg_period,c.PD_SALE 
+	,SUBSTR(A.MG_PERIOD,INSTR(A.MG_PERIOD,'(')+1,INSTR(A.MG_PERIOD,'회')-INSTR(A.MG_PERIOD,'(')-1)as pd_cost
+	,b.ea ,b.RECORD_NUM ,c.pd_num,a.mg_num
+	from magazine a join record b 
+	on a.mg_num=b.mg_num 
+	join PRODUCT c 
+	on  a.mg_num=c.mg_num 
+	join product_image d 
+	on c.pd_num = d.pd_num 
+	where  b.RECORD_NUM 
+	in (select whish from (SELECT whish FROM member union all select whish from group_member)
+	 where whish=#{record_num} and pl_type='썸네일')
+</select>
+<!-- 장바구니 -->
+<select id="cartList" parameterType="whishAndCart" resultType="whishAndCart">
+	/*myPage - cartList*/
+	select d.PL_PATH,a.mg_name,a.mg_period,c.PD_SALE 
+	,SUBSTR(A.MG_PERIOD,INSTR(A.MG_PERIOD,'(')+1,INSTR(A.MG_PERIOD,'회')-INSTR(A.MG_PERIOD,'(')-1)as pd_cost
+	,b.ea ,b.RECORD_NUM ,c.pd_num,a.mg_num
+	from magazine a join record b 
+	on a.mg_num=b.mg_num 
+	join PRODUCT c 
+	on  a.mg_num=c.mg_num 
+	join product_image d 
+	on c.pd_num = d.pd_num 
+	where  b.RECORD_NUM 
+	in (select cart from (SELECT cart FROM member union all select cart from group_member)
+	 where cart=#{record_num} and pl_type='썸네일')
+</select>
+<!--주문내역-->
+<select id="orderList" parameterType="orderList" resultType="orderList">
+	/*myPage - orderList*/
+	
+	select b.ORDER_NUM, b.PD_NUM, b.ORDER_DATE, b.ORDER_EA, b.ORDER_MONEY, b.ORDER_OK,b.transit_num ,
+	SUBSTR(a.MG_PERIOD,INSTR(a.MG_PERIOD,'(')+1,INSTR(a.MG_PERIOD,'회')-INSTR(a.MG_PERIOD,'(')-1)as pd_cost,
+	a.MG_NAME
+from order_list b join  product c on b.pd_num = c.pd_num 
+    join magazine a  on a.mg_num=c.mg_num
+	where b.order_num in (SELECT DISTINCT order_num FROM 
+	sell d where d.m_num=#{m_num})
+</select>
+
+<delete id="listDelete" parameterType="whishAndCart">
+delete from record where record_num=#{record_num} and mg_num=#{mg_num}
+</delete> 
+
+</mapper>

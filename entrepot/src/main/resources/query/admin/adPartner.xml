@@ -6,7 +6,8 @@
 		/*택배 거래처 리스트*/
 		select couacc_name, couacc_area, char_manager, char_tel, couacc_cnt, couacc_cost,
 		to_char(startdate,'yy-mm-dd') startdate, to_char(enddate,'yy-mm-dd') enddate,
-		to_char(couacc_date,'yy-mm-dd') couacc_date, to_char(couacc_update,'yy-mm-dd') couacc_update
+		to_char(couacc_date,'yy-mm-dd') couacc_date, NVL2(couacc_update, to_char(couacc_update,'yy-mm-dd'), '-') couacc_update,
+		com_no, couacc_tel, couacc_fax, couacc_email
 		from courier
 		order by couacc_date desc, startdate desc, enddate
 	</select>
@@ -15,7 +16,9 @@
 		/*잡지 거래처 리스트*/
 		select com_name, char_manager, char_tel, char_email,
 		to_char(startdate,'yy-mm-dd') startdate, to_char(enddate,'yy-mm-dd') enddate,
-		to_char(mcom_date,'yy-mm-dd') mcom_date, to_char(mcom_update,'yy-mm-dd') mcom_update
+		to_char(mcom_date,'yy-mm-dd') mcom_date, NVL2(mcom_update, to_char(mcom_update,'yy-mm-dd'), '-') mcom_update,
+		com_no, mcom_name, mcom_tel, mcom_add, char_fax, acc_manager, acc_tel, acc_email, acc_fax,
+		bacc_bank, bacc_name, bacc_accno, rzip_code, raddress
 		from magazine_company 
 		order by mcom_date desc, startdate desc, enddate
 	</select>
@@ -38,5 +41,28 @@
 		<if test="couacc_fax != null and couacc_fax != ''"> couacc_fax,</if> couacc_email, char_manager, char_tel, couacc_cost)
 		values(#{com_no}, #{couacc_area}, #{couacc_name}, #{couacc_tel}, #{couacc_cnt}, #{startdate}, #{enddate},
 		<if test="couacc_fax != null and couacc_fax != ''"> #{couacc_fax},</if> #{couacc_email}, #{char_manager}, #{char_tel}, #{couacc_cost})		
+	</insert>
+	
+	<update id="magUpdate" parameterType="magPartner">
+		/*잡지 거래처 수정*/
+		UPDATE magazine_company
+		SET enddate = #{enddate}, couacc_update = sysdate, char_tel = #{char_tel}, char_manager = #{char_manager},
+			char_email = #{char_email},	<if test="char_fax != null and char_fax != ''">char_fax = #{char_fax},</if>
+			acc_manager = #{acc_manager}, acc_email = #{acc_email},
+			<if test="acc_fax != null and acc_fax != ''">acc_fax = #{acc_fax},</if> acc_tel = {acc_tel}
+		WHERE com_no = #{com_no}
+	</update>
+	
+	<select id="magPartnerData" parameterType="magPartner" resultType="magPartner">
+		/*구 잡지 거래처 정보*/
+		select com_no, to_char(startdate,'yy-mm-dd') startdate, to_char(enddate,'yy-mm-dd') enddate
+		from magazine_company 
+		where com_no = #{com_no}
+	</select>
+	
+	<insert id="closedMagInsert" parameterType="magPartner">
+		/*재계약 전 거래 정보 등록*/
+		insert into closed_trade(closed_no, startdate, enddate, com_no)
+		values(#{closed_no}, #{startdate}, #{enddate}, #{com_no})		
 	</insert>
 </mapper>

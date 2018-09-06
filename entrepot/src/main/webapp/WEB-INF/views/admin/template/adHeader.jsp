@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
-  
+<%@ include file="/WEB-INF/views/common/common.jspf" %>
 
       <a class="navbar-brand mr-1" href="/admin"><span id="adLogo">Entrepot</span> 관리자 페이지</a>
 
@@ -35,11 +35,15 @@
           </div>
         </li> -->
         <!-- 로그아웃 버튼 -->
+	        <c:if test="${adlogin != null}">
+	        	<li><label class="adf-cl">현재 접속 중인 아이디 : ${adlogin.ad_id }</label></li>
+	        </c:if>
         <li>
         	<div id="clock"></div>
         </li>
         <li class="nav-item no-arrow mx-1">
-          <a class="nav-link" href="#" id="adLogout" role="button" aria-haspopup="true" title="로그아웃" aria-expanded="false">
+        
+          <a class="nav-link" href="/adLogin/login.do" id="adLogout" role="button" aria-haspopup="true" title="로그아웃" aria-expanded="false">
             <i class="fas fa-sign-out-alt fa-fw"></i>
           </a>
         </li>

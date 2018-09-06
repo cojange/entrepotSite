@@ -85,6 +85,7 @@ public class AdMemberServiceImpl implements AdMemberService{
 	@Override
 	public String insertAdmin(AdminVO avo) {
 		
+		//추후 암호화 등록 추가
 		int result = adMemberDao.insertAdmin(avo);
 		if(result==1) {
 			return "success";
@@ -93,6 +94,15 @@ public class AdMemberServiceImpl implements AdMemberService{
 		}
 	}
 
+	@Override
+	public String delAdmin(String ad_id) {
+		int result = adMemberDao.delAdmin(ad_id);
+		if(result==1) {
+			return "success";
+		}else {
+			return "fails";
+		}
+	}
 
 
 

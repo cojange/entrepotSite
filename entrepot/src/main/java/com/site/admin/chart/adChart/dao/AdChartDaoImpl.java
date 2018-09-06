@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.site.admin.chart.adChart.vo.ColumnChartVO;
+import com.site.admin.chart.adChart.vo.OdSellRCChartVO;
 
 @Repository
 public class AdChartDaoImpl implements AdChartDao {
@@ -17,5 +18,10 @@ public class AdChartDaoImpl implements AdChartDao {
 	@Override
 	public List<ColumnChartVO> getRowandAccChart(int selectmonth) {
 		return session.selectList("getRowandAccChart",selectmonth);
+	}
+	
+	@Override
+	public List<OdSellRCChartVO> getOdSellRCChart(){
+		return session.selectList("getOdSellRCChart");
 	}
 }

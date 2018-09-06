@@ -23,12 +23,12 @@
 	
 	<insert id="memberInsert" parameterType="member">
 		/*member - memberInsert*/
-		<selectKey keyProperty="m_num" resultType="int" order="BEFORE">
-			select  member_seq.nextval from dual
-		</selectKey>
+		 <selectKey keyProperty="m_num" resultType="java.lang.String" order="BEFORE">
+			select 'p_'||member_seq.nextval from dual
+		</selectKey> 
 		insert into member(m_num,m_id,m_pwd,m_name,m_birth,m_gender,m_email
 		,m_phone,m_job,m_zipcode,m_address,m_date,quiz,ans,cart,whish,mt)
-		values('p_'||#{m_num},#{m_id},#{m_pwd},#{m_name}
+		values(#{m_num},#{m_id},#{m_pwd},#{m_name}
 		,#{m_birth},#{m_gender},#{m_email},#{m_phone}
 		,#{m_job},#{m_zipcode},#{m_address},sysdate,#{quiz},#{ans},'cart_'||member_seq.nextval,'whish_'||member_seq.nextval,'개인')
 	</insert>

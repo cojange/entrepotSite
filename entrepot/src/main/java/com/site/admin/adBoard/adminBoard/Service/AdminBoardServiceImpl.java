@@ -54,5 +54,18 @@ public class AdminBoardServiceImpl implements AdminBoardService{
 		int result = adminBoardDao.couponUpdate(cvo);
 		return result;
 	}
+	
+	//게시글 등록
+	@Override
+	public int adboardInsert(AdminBoardVO advo) {
+		int result = 0;
+		try {
+			result = adminBoardDao.adboardInsert(advo);
+		}catch(Exception e) {
+			e.printStackTrace();
+			result = 0;
+		}
+		return result;
+	}
 
 }

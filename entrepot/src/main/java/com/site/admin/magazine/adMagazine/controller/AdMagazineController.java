@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.site.admin.magazine.adMagazine.service.AdMagazineService;
+import com.site.admin.magazine.adMagazine.vo.MagazineSearchVO;
 import com.site.client.magazine.ditail.vo.MagazineVO;
 
 @Controller
@@ -24,14 +25,35 @@ public class AdMagazineController {
 	 * 상품 리스트 구현하기
 	 * **/	
 	@RequestMapping(value="adMagazineList.do", method=RequestMethod.GET)
-	public String adMagazineList(MagazineVO mgvo, Model model) {
+	public String adMagazineList(MagazineVO msvo, Model model) {
 		logger.info("adMagazineList 호출 성공");		
 		
-		List<MagazineVO> adMagazineList = adMagazineService.adMagazineList(mgvo);
+		List<MagazineVO> adMagazineList = adMagazineService.adMagazineList(msvo);
 		model.addAttribute("adMagazineList", adMagazineList);
 		
 		System.out.println(adMagazineList.toString());
 		
 		return "admin/magazine/adMagazine/adMagazineList";
 	}
+	
+	/**
+	 * 상품 입력페이지 가기
+	 * **/
+	@RequestMapping(value="/adMagazineInsertForm.do")
+	public String adMagazineInsertForm() {
+		logger.info("writeForm 호출 성공");
+		
+		return "admin/magazine/adMagazine/adMagazineInsertForm";
+	}
+	
+	/*@RequestMapping(value="/adDetailInsert.do")
+	public String adDetailInsert( MagazineSearchVO msvo) {	
+		logger.info("detail 입력하기 ");
+		logger.info("list all : " + msvo.toString());
+		return "admin/magazine/adMagazine/adMagazineInsertForm";
+	}*/
+	
+	
+	
+	
 }

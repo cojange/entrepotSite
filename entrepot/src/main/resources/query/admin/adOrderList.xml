@@ -31,10 +31,69 @@
 		order by sell_date desc, enddate desc
 	</select>
 	
-	<select id="getOrderProduct" resultType="aopvo">
+	<select id="getOrderProduct" parameterType="cvo" resultType="aopvo">
 		/*발주 확인 뷰*/
-		select pd_num, mg_name, mcom_name, acc_manager, acc_tel, acc_email, total_ea, total_cost, memo
+		select pd_num, mg_name, mcom_name, char_manager, char_tel, char_email, total_ea, total_cost, memo
 		from orderProduct
+		<where>
+			<if test="keyword != 'all'">
+				memo like #{keyword}||'%'
+			</if>
+		</where>
 	</select>
+	
+	<select id="getRefundList" parameterType="cvo" resultType="rfvo">
+		/*환불 리스트 */
+		select r_num, m_num, refund.order_num,r_ieu,refund.bank,refund.bank_num
+		from refund join sell on refund.order_num = sell.order_num 
+		where r_ok like #{keyword}||'%' and pd_num = #{search}
+	</select>
+	<select id="getChangeList" parameterType="cvo" resultType="cgvo">
+		/*교환 리스트*/
+		select chg_num, m_num,chg_ieu, chg_ea, to_char(chg_date,'yy/mm/dd hh24:mi:ss') chg_date
+		from change join sell on change.order_num = sell.order_num 
+		where chg_ok like #{keyword}||'%' and pd_num = #{search}
+	</select>
+	
+	<update id="cancelRefund" parameterType="java.util.List">
+		/*환불 신청 거절*/
+		update refund set r_ok = ('환불불가'||to_char(sysdate,'_yymmdd_hh24miss')) 
+		where r_num in
+		<foreach collection="list" item="r_num" open="(" close=")" separator=",">
+			#{r_num}
+		</foreach>
+	</update>
+	
+	<update id="cancelChange" parameterType="java.util.List">
+		/*교환 신청 거절*/
+		update change set chg_ok = ('교환불가'||to_char(sysdate,'_yymmdd_hh24miss))
+		where chg_num in
+		<foreach collection="list" item="chg_num" open="(" close=")" separator=",">
+			#{chg_num}
+		</foreach>
+	</update>
+	
+	<update id="confirmRefund" parameterType="java.util.List">
+		/*환불 승인*/
+		update refund set r_ok = ('환불승인'||to_char(sysdate,'_yymmdd_hh24miss')) 
+		where r_num in
+		<foreach collection="list" item="r_num" open="(" close=")" separator=",">
+			#{r_num}
+		</foreach>
+	</update>
+	
+	<update id="confirmChange" parameterType="java.util.List">
+		/*교환 승인*/
+		update change set chg_ok = ('교환승인'||to_char(sysdate,'_yymmdd_hh24miss))
+		where chg_num in
+		<foreach collection="list" item="chg_num" open="(" close=")" separator=",">
+			#{chg_num}
+		</foreach>
+	</update>
+	
+	<update id="confirmOrder" parameterType="cvo">
+		update order_list set order_ok = ('출고준비'||to_char(sysdate,'_yymmdd_hh24miss'))
+		where order_ok like #{keyword}||'%' and pd_num = #{search}
+	</update>
 	
 </mapper>

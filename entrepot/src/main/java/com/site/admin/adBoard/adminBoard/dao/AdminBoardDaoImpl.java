@@ -38,5 +38,10 @@ public class AdminBoardDaoImpl implements AdminBoardDao {
 	public int couponUpdate(CouponVO cvo) {
 		return session.update("couponUpdate", cvo);
 	}
-
+	
+	//게시글 등록
+	@Override
+	public int adboardInsert(AdminBoardVO advo) {
+		return session.insert("adboardInsert", advo);
+	}
 }

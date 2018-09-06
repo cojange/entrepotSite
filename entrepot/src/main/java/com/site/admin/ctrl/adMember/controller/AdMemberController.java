@@ -111,6 +111,7 @@ public class AdMemberController {
 	   return result;
    }
    
+   //관리자 등록
    @ResponseBody
   @RequestMapping(value="/insertAdmin.do")
    public String insertAdmin(AdminVO avo) {
@@ -119,4 +120,13 @@ public class AdMemberController {
 	
    }
    
+   //관리자 해고
+   @ResponseBody
+   @RequestMapping(value="/delAdmin.do")
+   public String delAdmin(String ad_id) {
+	   String result = adMemberService.delAdmin(ad_id);
+	   return result;
+   }
+   
+ 
 }

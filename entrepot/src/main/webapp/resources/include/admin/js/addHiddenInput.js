@@ -1,0 +1,3 @@
+function addHiddenInput(name, value){
+	
+}

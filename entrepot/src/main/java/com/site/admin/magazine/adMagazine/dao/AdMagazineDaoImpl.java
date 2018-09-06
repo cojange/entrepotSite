@@ -15,7 +15,7 @@ public class AdMagazineDaoImpl implements AdMagazineDao {
 	
 	//상품 리스트 구현
 	@Override
-	public List<MagazineVO> adMagazineList(MagazineVO mgvo) {
-		return session.selectList("adMagazineList", mgvo);
+	public List<MagazineVO> adMagazineList(MagazineVO msvo) {
+		return session.selectList("adMagazineList", msvo);
 	}
 }

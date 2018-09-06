@@ -18,4 +18,8 @@ errorCodeCheck();
 			$("#loginForm").submit();
 		}
 	});
+	$("#loginFind").click(function() {
+		/*location.href="javascript:void(window.open('/client/member/findUser.do', '아이디/비밀번호찾기','_blank','width=300px, height=300px'))"*/
+		location.href="/client/member/findUser.do";
+	});
 });

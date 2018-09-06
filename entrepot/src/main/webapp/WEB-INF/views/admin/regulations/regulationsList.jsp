@@ -128,7 +128,7 @@
 	                     <c:choose>
 							<c:when test="${not empty regList}">
 								<c:forEach var="reg" items="${regList}" varStatus="status">
-									<tr class="tac" data-num="${status.count}">
+									<tr class="tac" data-num="${reg.reg_no}">
 										<td>${status.count}</td>
 										<td>${reg.reg_type}</td>
 										<td>${reg.reg_date}</td>
@@ -150,7 +150,7 @@
                 </form>
                 <div style="text-align: right;">
               		<input type="button" value="등록" id="addReg"/>
-					<input type="button" value="수정"/>
+					<input type="button" value="수정" id="upReg"/>
                 </div>
               </div>
             </div>
