@@ -52,7 +52,7 @@
 					<c:choose>
 				         <c:when test="${not empty adMagazineList}">
 				            <c:forEach var="msvo" items="${adMagazineList}" varStatus="status">
-				               <div class="imagePreview" data-num="${msvo.mg_num}" style="display: inline-block; padding: 20px;">
+				               <div class="imagePreview" data-num="${msvo.mg_num}" style="display: inline-block; padding: 5px; margin:10px;">
 				               		<p class="magText">
 					                  ${msvo.mg_name} / ${msvo.pd_cost}
 				                  	</p>

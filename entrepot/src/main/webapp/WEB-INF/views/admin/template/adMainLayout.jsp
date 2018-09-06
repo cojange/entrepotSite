@@ -88,6 +88,7 @@
 	    <script type="text/javascript" src="/resources/include/admin/js/json2html/mainDt.js"></script>
 	    <script type="text/javascript" src="/resources/include/admin/js/json2html/json2table.js"></script>
 	    <script type="text/javascript" src="/resources/include/common/js/paging.js"></script>
+	    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 	    <script type="text/javascript">
 	    var addTable;
 	    var table;
@@ -99,7 +100,85 @@
 	    		/* main 상단 시계 */
 	    		printClock();	    	
 	    	
-				ad_card();   		
+				ad_card();
+				
+				if($(location).attr("href")== "http://localhost:8080/admin"){
+					var chartURL = "/admin/adChart/odSellRC.do"
+	    				 $.getJSON(chartURL,function(columnchart){
+	    					console.log(columnchart);
+							/* "categoryField": "date",
+							"dataDateFormat": "MM-DD",
+							"categoryAxis": {
+								"parseDates": true
+							}, */
+	    					AmCharts.makeChart("odSellRC",
+	    							{
+	    								"type": "serial",
+	    								"categoryField": "date",
+	    								"dataDateFormat": "YY-MM-DD",
+	    								"autoMarginOffset": 40,
+	    								"marginRight": 60,
+	    								"marginTop": 60,
+	    								"fontSize": 13,
+	    								"theme": "dark",
+	    								
+	    								"chartCursor": {
+	    									"enabled": true
+	    								},
+	    								"chartScrollbar": {
+	    									"enabled": true
+	    								},
+	    								"trendLines": [],
+	    								"graphs": [
+	    									{
+	    										"columnWidth": 0.44,
+	    										"cornerRadiusTop": 8,
+	    										"dashLength": 4,
+	    										"fillAlphas": 0.51,
+	    										"id": "AmGraph-1",
+	    										"lineAlpha": 0.44,
+	    										"title": "총 판매",
+	    										"type": "column",
+	    										"valueField": "od"
+	    									},
+	    									{
+	    										"bullet": "square",
+	    										"bulletBorderAlpha": 1,
+	    										"bulletBorderThickness": 1,
+	    										"bulletSize": 16,
+	    										"id": "AmGraph-2",
+	    										"lineThickness": 3,
+	    										"title": "주문 물량",
+	    										"valueField": "sell"
+	    									},
+	    									{
+	    										"id": "AmGraph-3",
+	    										"title": "환불 물량",
+	    										"valueField": "refund"
+	    									},
+	    									{
+	    										"id": "AmGraph-4",
+	    										"title": "교환 물량",
+	    										"valueField": "chg"
+	    									}
+	    								],
+	    								"guides": [],
+	    								"valueAxes": [
+	    									{
+	    										"id": "ValueAxis-1",
+	    										"title": ""
+	    									}
+	    								],
+	    								"allLabels": [],
+	    								"balloon": {},
+	    								"titles": [],
+	    								"dataProvider": columnchart
+	    							}
+	    						);
+	    				})
+	    					 
+					
+				}
 	    		
 	    		//회원관리탭
 	    		if($(location).attr("href") == "http://localhost:8080/admin/ctrl/adMember/adMemberCtrl.do"){
@@ -264,11 +343,7 @@
 	    						})
 	    					}
 	    				})//핸드폰 체크
-	    				
-	    				//이메일 체크
-	    				$("#email").click(function(e){  					
-	    					
-	    				})//이메일 체크
+	    			
 	    				
 	    				//등록하기(ajaxForm)
 	    				$("#addAdmin").click(function(){
@@ -515,8 +590,9 @@
 	    			});
 	    			/* 잡지거래처 수정창에서 수정버튼 클릭 */
 	    			$(document).on('click', ".mgUpdateSave", function(){
-	    				if(!chkData($('#upMgDate'),"거래종료일을")) return;
-	      				else if(!chkData($('#upCharName'),"담당자 이름을")) return;
+	    				console.log("다람쥐");
+	    				/* if(!chkData($('#upMgDate'),"거래종료일을")) return;
+	      				else  */if(!chkData($('#upCharName'),"담당자 이름을")) return;
 	      				else if(!chkData($('#upCharTel'),"담당자 연락처를")) return;
 	      				else if(!chkData($('#upCharEmail'),"담당자 이메일을")) return;
 	      				else if(!chkData($('#upCharFax'),"담당자 팩스를")) return;
@@ -525,13 +601,15 @@
 	      				else if(!chkData($('#upAccEmail'),"회계부 담당자 이메일을")) return;
 	      				else if(!chkData($('#upAccFax'),"회계부 담당자 팩스를")) return;
 	      				else{
-	      					//해야될것
-	      					$("#magUpdateSaveForm").attr({
+	      					if($("#checked").is(":checked")){
+		    					$("#checked").attr("name","checked");
+	      					}		    				
+	      					$(".magUpdateSaveForm").attr({
 	      						"method":"POST",
-	      						"action":"/board/boardUpdate.do"
+	      						"action":"/admin/ctrl/adPartner/magUpdate.do"
 	      					});
-	      					$("#magUpdateSaveForm").submit();
-	      				}
+		    			}
+	      				$(".magUpdateSaveForm").submit();
 	    			});
 	    			
 	        		
@@ -1207,21 +1285,42 @@
     			  table = $('.table').DataTable( {
     			        "order": [[1, 'asc']]
     			    } );
-    			
-        		    // `d` is the original data object for the row
-        		    addTable = 
-        			   '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
-        		        '<tr>'+
-        		            '<div><textarea></textarea><img></img><img></img><img></img></div>'+
-        		            '<div><table><div>'
-        		        '</tr>'+
-        		    '</table>';
         		
     			// Add event listener for opening and closing details
     	   	    $('.table tbody').on('click', 'td.details-control', function () {
-    	   	    	console.log("뜨어엉");
-    	   	        var tr = $(this).closest('tr');
-    	   	        var row = table.row( tr );
+    	   	    	console.log(tr);
+    	   	     	var tr = $(this).closest('tr');
+ 	   	        	var row = table.row( tr );
+    	   	    	
+    	   	    	var content = tr.children().eq(8);
+    	   	    	var img1 = tr.children().eq(9);
+    	   	    	var img2 = tr.children().eq(10);
+    	   	    	var img3 = tr.children().eq(11);
+    	   	    	console.log(img1.html()+" / "+img2.html());
+    	   	    	addTable = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
+		    	   	      	  	'<tr><td>'+
+		    	   	          '<div class="bigContent">'+
+		    	   	          '<div class="middle1">'+
+		    	   	          '<div class="smallContent" style="border:#0830534a solid 1px; width:500px; height:200px; background-color:#cce3f730; padding:30px;">'+content.html()+'</div>'+
+		    	   	          '<br/><div class="smallImg"><img style="background-color:lightgray; margin:5px; width:150px; height:150px;" src="/uploadStorage/personalBoard/img1/'+img1.html()+'"></img>'+
+		    	   	          '<img style="background-color:lightgray; margin:5px; width:150px; height:150px;" src="/uploadStorage/personalBoard/img2/'+img2.html()+'"></img>'+
+		    	   	          '<img style="background-color:lightgray; margin:5px; width:150px; height:150px;" src="/uploadStorage/personalBoard/img3/'+img3.html()+'"></img>'+
+		    	   	          '</div><input type="button" value="댓글 확인" id="replyBtn"></div>'+
+		    	   	          '<div class="middle2 hidden">가나다라마바사</div>'+
+		    	   	          '</div>'+
+		    	   	     		 '</td></tr>'+
+		    	   	  		 '</table>';
+		    	   	 
+		    	   	 //댓글보기 버튼 클릭
+    	   	       	 $(document).on('click', '#replyBtn', function(){
+    	   	       		 if($(".middle2").hasClass("hidden")){
+    	   	       			$(".middle2").removeClass("hidden");
+    	   	       		 }else{
+    	   	       			$(".middle2").addClass("hidden");
+    	   	       		 }
+    	   	       		 
+    	   	       	 });
+		    	   	  		 
 	    	   	     if ( row.child.isShown() ) {
 	    	             // This row is already open - close it
 	    	             row.child.hide();
@@ -1296,6 +1395,13 @@
                 });
     		}
     		
+    		//잡지 등록 폼
+    		if($(location).attr("href") == "http://localhost:8080/admin/magazine/adMagazine/adMagazineInsertForm.do"){
+				$("#resultBtn").click(function(){
+					//console.log($("#pd_sale").val()*(100-$("#pd_rate").val())/100);
+					$("#pd_result").attr("value",($("#pd_sale").val()*(100-$("#pd_rate").val())/100));
+				});
+    		}
    		} );//최상위종료///////////////////////////////////////////////////////////////////
 	    
 	    	var files = {};
@@ -1518,8 +1624,8 @@
             	nowTime();
          	
            		rowUp = "<form class='magUpdateSaveForm'><table><tr><td>등록일 : "+mcomDate.html()+" | 수정일 : "+today+"</td></tr>";
-           		rowUp += "<tr><td>사업자 번호 : "+comNo.html()+"</td><td>거래시작일 : "+startdate.html()+" | 거래종료일 : ";
-           		rowUp += "<input type='date' id='upMgDate' name='enddate' value='20"+enddate.html()+"'><input type='checkbox' id='mgEndCheck' name='mgEndCheck'></td></tr>";
+           		rowUp += "<tr><td>사업자 번호 : "+comNo.html()+"</td><td>거래시작일 : <input type='date' id='upMgStartdate' name='startdate' value='20"+startdate.html()+"'> | 거래종료일 : ";
+           		rowUp += "<input type='date' id='upMgEnddate' name='enddate' value='20"+enddate.html()+"'><input type='checkbox' id='checked' value='true'></td></tr>";
            		rowUp += "<tr><td>회사명 : "+comName.html()+"</td></tr><tr><td>대표 이름 : "+mcomName.html()+"</td><td>대표 연락처 : "+mcomTel.html()+"</td></tr>";
            		rowUp += "<tr><td colspan='2'>회사 주소 : "+mcomAdd.html()+"</td></tr><tr><td><label>담당자</label></td></tr>";
            		rowUp += "<tr><td width='50%'>이름 : <input type='text' id='upCharName' name='char_manager' value='"+charManager.html()+"'></td>";

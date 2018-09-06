@@ -4,7 +4,7 @@
 <select id="magazineDetail" parameterType="mgvo" resultType="mgvo">
 	/*magazine - magazineDetail*/
 		
-	select mg_num,mg_name,com_name,dt_target,dt_keyword,mg_period,pd_date,pd_rate,pd_sale,pl_path,dt_detail,dt_contents,pd_cost
+	select pd_num,mg_num,mg_name,com_name,dt_target,dt_keyword,mg_period,pd_date,pd_rate,pd_sale,pl_path,dt_detail,dt_contents,pd_cost
 		from ditail_view1
 		where mg_num=#{mg_num} 
 
@@ -20,7 +20,9 @@
 <select id="magazinesum" parameterType="mgvo" resultType="mgvo">
 	/*magazine - magazinesum*/
 	
-	select pl_path from sum_view
-	 where mg_num=#{mg_num}
+	select mg_num,PL_PATH,pl_type from product_image 
+	 where mg_num= #{mg_num} and rownum <![CDATA[ < ]]>= 6
+ 	and pl_type='thum'
 </select>
+
 </mapper>

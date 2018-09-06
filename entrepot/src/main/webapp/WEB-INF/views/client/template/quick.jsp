@@ -1,5 +1,7 @@
+<%@page import="java.net.URLDecoder"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/views/common/common.jspf" %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -20,21 +22,47 @@
       <!-- [if lt IE 9] -->
       <!-- <script src="../js/html5shiv.js"</script> -->
       <!-- [endif] -->
-
+      
+<%--  <%
+ 	String cp=request.getContextPath();
+ 	request.setCharacterEncoding("UTF-8");
+ 	
+ 	
+ 	Cookie[] ck=request.getCookies();
+ %>      --%>
+<script type="text/javascript" link="/resources/include/client/js/jquery-1.12.4.min.js"></script>
 
 
 </head>
 <body class="sideview">
 
 		<div class="floating">
-			<div>다음뷰 추천위젯코드 삽입</div>
-			<div>트위터 공유코드 삽입</div>
-			<div id="right_zzim">
-			</div>
+			<div><a href="/client/board/adminboard/adminboardList.do"><img src="/resources/images/produt/images.png"  width="120"></a></div>
+			<div><a href="/client/board/personal/personalList.do"><img src="/resources/images/produt/images2.png" width="120"></a></div>
+			<%-- <div >
+
+				<div  class="recTit">최근본상품 <span id=recentCnt></span></div>
+			
+			<ul style="border-right:1px solid #d0d7e9; border-left:1px solid #d0d7e9; border-top:1px solid #d0d7e9; border-bottom:1px solid #d0d7e9; margin:0px; padding:0px"">
+			<%if(ck != null){
+				for( int i=0 ; i<3; i++){
+					if(URLDecoder.decode(ck[i].getName(), "UTF-8").indexOf("상품") != -1){%>
+						<li style=" margin:0;list-style:none;"><small style="width: 110px"><%= URLDecoder.decode(ck[i].getName(), "UTF-8")%></small><br>
+							<img src="<%=ck[i].getValue()%>" width="30px">
+						</li>
+							
+							
+				<%	}
+				}
+			}	%>
+			</ul>    <!-- 본 상품이 뿌려질 부분  -->
+
+		</div> --%>
+
 		</div>
 
 
 
 	
 </body>
-</html>
+</html>			
