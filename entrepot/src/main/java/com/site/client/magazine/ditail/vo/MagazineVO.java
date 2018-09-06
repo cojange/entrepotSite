@@ -1,5 +1,6 @@
 package com.site.client.magazine.ditail.vo;
 
+
 public class MagazineVO extends PageVO{
    
 	//상품테이블 (product)
@@ -28,7 +29,7 @@ public class MagazineVO extends PageVO{
    private String dt_detail;               //상품상세
    private String dt_contents;               //목차
    private String dt_keyword;               //키워드
-   
+
    //필요 필드
    private int pd_salecost;     //할인가
    private String com_name;          //출판사
@@ -39,28 +40,22 @@ public class MagazineVO extends PageVO{
    private String key2;      //키워드2
    private String key3;      //키워드3
    
+
+   
+   
    @Override
-   public String toString() {
-      return "MagazineVO [pd_num=" + pd_num + ", pd_rate=" + pd_rate + ", pd_sale=" + pd_sale + ", pd_cost=" + pd_cost
-            + ", pd_appendix=" + pd_appendix + ", pd_date=" + pd_date + ", mg_num=" + mg_num + ", mg_period="
-            + mg_period + ", mg_name=" + mg_name + ", com_no=" + com_no + ", pl_path=" + pl_path + ", pl_type="
-            + pl_type + ", pl_path2=" + pl_path2 + ", dt_target=" + dt_target + ", dt_brief=" + dt_brief
-            + ", dt_detail=" + dt_detail + ", dt_contents=" + dt_contents + ", dt_keyword=" + dt_keyword
-            + ", pd_salecost=" + pd_salecost + ", com_name=" + com_name + ", listkey=" + listkey + ", home=" + home
-            + ", key1=" + key1 + ", key2=" + key2 + ", key3=" + key3 + ", getPl_path2()=" + getPl_path2()
-            + ", getKey1()=" + getKey1() + ", getKey2()=" + getKey2() + ", getKey3()=" + getKey3() + ", getHome()="
-            + getHome() + ", getListkey()=" + getListkey() + ", getPd_salecost()=" + getPd_salecost()
-            + ", getDt_target()=" + getDt_target() + ", getCom_name()=" + getCom_name() + ", getPd_num()="
-            + getPd_num() + ", getPd_rate()=" + getPd_rate() + ", getPd_sale()=" + getPd_sale() + ", getPd_cost()="
-            + getPd_cost() + ", getPd_appendix()=" + getPd_appendix() + ", getPd_date()=" + getPd_date()
-            + ", getMg_num()=" + getMg_num() + ", getMg_period()=" + getMg_period() + ", getMg_name()="
-            + getMg_name() + ", getCom_no()=" + getCom_no() + ", getPl_path()=" + getPl_path() + ", getPl_type()="
-            + getPl_type() + ", getDt_terget()=" + getDt_terget() + ", getDt_brief()=" + getDt_brief()
-            + ", getDt_detail()=" + getDt_detail() + ", getDt_contents()=" + getDt_contents() + ", getDt_keyword()="
-            + getDt_keyword() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
-            + super.toString() + "]";
-   }
-   public String getPl_path2() {
+public String toString() {
+	return "MagazineVO [pd_num=" + pd_num + ", pd_rate=" + pd_rate + ", pd_sale=" + pd_sale + ", pd_cost=" + pd_cost
+			+ ", pd_appendix=" + pd_appendix + ", pd_date=" + pd_date + ", mg_num=" + mg_num + ", mg_period="
+			+ mg_period + ", mg_name=" + mg_name + ", com_no=" + com_no + ", pl_path=" + pl_path + ", pl_type="
+			+ pl_type + ", pl_path2=" + pl_path2 + ", dt_target=" + dt_target + ", dt_brief=" + dt_brief
+			+ ", dt_detail=" + dt_detail + ", dt_contents=" + dt_contents + ", dt_keyword=" + dt_keyword
+			+ ", dt_keyword_submit="  + ", dt_target_submit="
+			+ ", pd_salecost=" + pd_salecost + ", com_name=" + com_name
+			+ ", listkey=" + listkey + ", home=" + home + ", key1=" + key1 + ", key2=" + key2 + ", key3=" + key3 + "]";
+}
+
+public String getPl_path2() {
       return pl_path2;
    }
    public void setPl_path2(String pl_path2) {

@@ -32,28 +32,47 @@ public class FileUploadUtil {
 		String real_name=null;
 		String org_name = file.getOriginalFilename();
 		logger.info("org_name = " + org_name);
+		String extenser = org_name.substring(org_name.lastIndexOf("."));
+		GetDateUtil gdu =GetDateUtil.getInstance();
 		
 		//저장할 파일이름
 		if(org_name !=null &&(!org_name.equals(""))) {
 			String code="";
-			if(!mode.equals("cost")) {
-				code = System.currentTimeMillis()+"";
-			}else if(mode.equals("cost")){
-				GetDateUtil gdu =GetDateUtil.getInstance();
+			if(mode.equals("cost")){
+				//비용 코드
 				code=gdu.getMonth()+gdu.getDay();
 			}else if(mode.equals("reg")) {
-				GetDateUtil gdu =GetDateUtil.getInstance();
+				//약관 코드
 				code=gdu.getYear()+gdu.getMonth()+gdu.getDay();
 			}else if(mode.equals("adminBoard")) {
-				GetDateUtil gdu =GetDateUtil.getInstance();
+				//공지사항&이벤트 코드
 				code=gdu.getYear()+gdu.getMonth()+gdu.getDay();
-			}else if(mode.equals("mgPrev")) {
-				GetDateUtil gdu =GetDateUtil.getInstance();
-				code=gdu.getYear()+gdu.getMonth()+gdu.getDay();
+			}else if(mode.equals("main") || mode.equals("prev")) {
+				//상품등록 코드(main)
+				code=gdu.getHalfYear()+gdu.getMonth()+gdu.getDay();
+			}else {
+				//그 외
+				code = System.currentTimeMillis()+"";
 			}
-			real_name = fileName + "_" + code +"_" +org_name;
 			
-			String docRoot = request.getSession().getServletContext().getRealPath("/uploadStorage/"+folder+"/"+fileName);
+			
+			if(mode.equals("main")) {
+				//product main
+				real_name = fileName + "-" + code + "_" + mode + "_" + code + extenser;
+			}else if(mode.equals("prev")){
+				//product prev
+				real_name = fileName+"-" + code + "_" + mode + "_" +gdu.getTime().replaceAll(" : ", "") + extenser;
+			}else {
+				real_name = fileName + "_" + code +"_" +org_name;
+			}
+			
+			String docRoot = "";
+			if(folder.equals("magazineImage")) {
+				docRoot= request.getSession().getServletContext().getRealPath("/uploadStorage/"+folder+"/"+mode);
+			}else {
+				docRoot= request.getSession().getServletContext().getRealPath("/uploadStorage/"+folder+"/"+fileName);
+			}
+			
 			
 			makeDir(docRoot);
 			
@@ -66,11 +85,17 @@ public class FileUploadUtil {
 	}
 	
 	/*파일 삭제 메서드*/
-	public static void fileDelete(String fileName,String folder, HttpServletRequest request) throws IOException{
+	public static void fileDelete(String fileName,String folder,String mode, HttpServletRequest request) throws IOException{
 		logger.info("fileDelete 호출 성공");
 		
 		boolean result = false;
-		String dirName = fileName.substring(0, fileName.indexOf("_"));
+		String dirName="";
+		if(mode.equals("code")) {
+			dirName = fileName.substring(0, fileName.indexOf("_"));
+		}else if(mode.equals("product")) {
+			dirName = fileName.substring(fileName.indexOf("_")+1,fileName.lastIndexOf("_"));
+		}
+		
 		String docRoot = request.getSession().getServletContext().getRealPath("/uploadStorage/"+folder+"/"+dirName);
 		
 		File fileDelete = new File(docRoot + "/" + fileName);
@@ -86,7 +111,11 @@ public class FileUploadUtil {
 	public static String makeThumbnail(String fileName, HttpServletRequest request) throws IOException{
 		   logger.info("makeThumbnail 호출 성공");
 		   
-		   String dirName = fileName.substring(0, fileName.indexOf("_"));
+		   String dirName = "";
+		   
+		   //magazine product thum
+		   dirName = "magazineImage/main";
+		   
 		   //이미지가 존재하는 폴더 추출
 		   String imgPath = request.getSession().getServletContext().getRealPath("/uploadStorage/"+dirName);
 		   //추출된 폴더의 실제 경로 (물리적 위치: c:\...)
@@ -97,11 +126,14 @@ public class FileUploadUtil {
 		   
 		   BufferedImage sourceImg = ImageIO.read(fileAdd);
 		   //이미지 읽어오기
-		   BufferedImage destImg = Scalr.resize(sourceImg, Scalr.Method.AUTOMATIC, Scalr.Mode.FIT_TO_HEIGHT,133);
+		   BufferedImage destImg = Scalr.resize(sourceImg, Scalr.Method.AUTOMATIC, Scalr.Mode.FIT_TO_HEIGHT,220);
 		   //resize(대상[BufferedImage 타입], 원본비율, 높이 또는 너비, 크기)
 		   
-		   String thumbnailName = "thumbnail_"  + fileName;
-		   String docRoot = imgPath + "/thumbnail";
+		   //기존 파일 이름에서 main -> thum으로
+		   String thumbnailName = fileName.replace("main", "thum");
+		   //기존 경로에서 main -> thum으로
+		   dirName = dirName.replace("main", "thum");
+		   String docRoot = request.getSession().getServletContext().getRealPath("/uploadStorage/"+dirName);
 		   makeDir(docRoot);
 		   
 		   File newFile = new File(docRoot, thumbnailName);

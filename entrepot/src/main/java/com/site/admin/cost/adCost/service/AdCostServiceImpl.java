@@ -51,7 +51,7 @@ public class AdCostServiceImpl implements AdCostService{
 						idx = indexName.lastIndexOf("_")+1;
 						if(indexName.substring(idx, idx+3).
 								equals(cost_file.substring(idx,idx+3))) {
-							FileUploadUtil.fileDelete(indexName,"cost", request);
+							FileUploadUtil.fileDelete(indexName,"cost","cost", request);
 							acvo.setLastFile(indexName);
 						}
 					}

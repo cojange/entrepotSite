@@ -1368,6 +1368,8 @@
     		//상품폼
     		if($(location).attr("href") == "http://localhost:8080/admin/magazine/adMagazine/adMagazineList.do"){
     		
+ 
+    			
 				$("#mgInsert").click(function(){
 					location.href="/admin/magazine/adMagazine/adMagazineInsertForm.do"
 				});
@@ -1375,7 +1377,93 @@
     		
     		//상품 입력폼
     		if($(location).attr("href") == "http://localhost:8080/admin/magazine/adMagazine/adMagazineInsertForm.do"){
-    			$('.submit').on('click',function() {        
+    			
+    			//잡지회사 가져오기
+    			var magazineURL = "";
+    			magazineURL = "/admin/magazine/adMagazine/callMgPartner.do";
+   				 $.getJSON(magazineURL,function(mginfo){
+   					 var apOption = "";
+   					 $.each(mginfo,function(k,v){
+   						 apOption = "<option val='"+v+"'>"+v+"</option>";
+   						 $("#stMcom_name").append(apOption);
+   					 });
+   					 
+   					magazineURL = "/admin/magazine/adMagazine/callMgCode.do?com_name="+mginfo[0];
+   				 	$.getJSON(magazineURL,function(mgcode){
+   				 		apOption = "";
+   				 		
+   				 		$.each(mgcode,function(p,r){
+   				 	 	apOption = "<option val='"+r+"'>"+r+"</option>";
+   				 		$("#stMg_name").append(apOption);
+   				 		})
+   				 	$("#mg_name").val(mgcode[0]);
+   				 	})
+   				 })
+   				 
+   				 //잡지명 가져오기
+   				 $("#stMcom_name").change(function(){
+   					var key= $("#stMcom_name").val();
+   					console.log("key : " + key);
+   					magazineURL = "/admin/magazine/adMagazine/callMgCode.do?com_name=" + key;
+   					$.getJSON(magazineURL,function(mgcode){
+      					 var apOption = "";
+      					 $("#stMg_name").html("");
+      					 $.each(mgcode,function(k,v){
+      						 apOption = "<option val='"+v+"'>"+v+"</option>";
+      						 $("#stMg_name").append(apOption);
+      					 });
+      					 $("#mg_name").val(mgcode[0]);
+      				 })
+   				 })
+   				 
+   				 $("#stMg_name").change(function(){
+   					 var mg_nameValue = $(this).val();
+   					 $("#mg_name").val(mg_nameValue);
+   				 })
+   				 
+   				 //클릭하면 폼에 name 추가(미구현)
+   				 $("input._chk").click(function(){
+   					 if($(this).next().is("disabled")){
+   						$(this).next().prop("disabled",true);
+   					 }else {
+   						$(this).next().prop("disabled",false);
+   					 }
+   					 
+   				 });
+   				 
+   				 
+   				 
+   				 //product 등록하기
+   				  $("#magazineSubmitBtn").click(function(){
+   				 $("#addmagine").ajaxForm({
+	    							url:"/admin/magazine/adMagazine/insertMagazine.do",
+	    							type:"post",
+	    							dataType:"text",
+	    							error:function(){
+	    								alert("시스템 오류입니다. 관리자에게 문의하세요.");
+	    							},success:function(result){
+	    								console.log(result);
+	    								if(result='success'){
+	    									alert("새로운 잡지를 등록 하였습니다.");
+	    								}else {
+	    									alert("잡지 등록에 실패하였습니다.");
+	    							
+	    								}
+	    							}
+	    						});//ajax 끝				 
+   					$("#addmagine").submit();
+   				 })
+    				
+   				 //상세 페이지 등록
+   				 $("#detailSubmitBtn").click(function(){
+   					 $("#adddetail").attr({
+   						 "method":"post",
+   						 "enctype":"multipart/form-data",
+   						 "action":"/admin/magazine/adMagazine/adDetailInsert.do"
+   					 })
+   				 })
+    			
+    			/* $('.submit').on('click',function() {        
     				console.log("aa"+$("#mulFile").eq[0].val());
                     var form = $('#uploadForm')[0];
                     var formData = new FormData(form);
@@ -1413,8 +1501,8 @@
                             }
                         }
                         //전송실패에대한 핸들링은 고려하지 않음
-                    });
-                });
+                    }); 
+                });*/
                 // <input type=file> 태그 기능 구현
                 $('#attach input[type=file]').change(function() {
                     addPreview($(this)); //preview form 추가하기

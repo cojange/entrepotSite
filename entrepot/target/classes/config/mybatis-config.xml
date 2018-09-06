@@ -25,8 +25,13 @@
 		<typeAlias type="com.site.admin.order.orderList.vo.AdOrderProductVO" alias="aopvo"/>
 		<typeAlias type="com.site.admin.order.orderList.vo.AdRefundVO" alias="rfvo"/>
 		<typeAlias type="com.site.admin.order.orderList.vo.AdChangeVO" alias="cgvo"/>
+<<<<<<< HEAD
 		<typeAlias type="com.site.admin.chart.adChart.vo.OdSellRCChartVO" alias="adrcvo"/>
 		<typeAlias type="com.site.admin.adBoard.personalBoard.vo.PbReplyVO" alias="pbrvo"/>
+=======
+		<typeAlias type="com.site.admin.chart.adChart.vo.OdSellRCChartVO" alias="adrcvo"/>
+		<typeAlias type="com.site.admin.magazine.adMagazine.vo.MagazineImgVO" alias="mivo"/>
+>>>>>>> branch 'master' of https://github.com/cojange/entrepotSite.git
 		
 
 		<!-- client -->

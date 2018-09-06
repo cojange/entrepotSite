@@ -191,7 +191,7 @@ function plusSlides(n) {
 								  			<tr data-num="${list.mg_num}" data-key ="${list.listkey}">								  			
 												<td align="center" bgcolor="#FFFFFF" class="goDetail" >
 													<font color="blue">
-														<img src="${list.pl_path}" width="100" height="120" border="0" >
+														<img src="/uploadStorage/magazineImage/thum/${list.pl_path}" width="100" height="120" border="0" >
 													</font>
 												</td>
 								  			</tr>
@@ -268,7 +268,7 @@ function plusSlides(n) {
 													<table>
 														<tr data-num="${list.mg_num}" data-key ="${list.listkey}">
 															<td class="goDetail">
-																<img src="${list.pl_path}" width="80px" height="100px">  
+																<img src="/uploadStorage/magazineImage/thum/ ${list.pl_path}" width="80px" height="100px">  
 															</td>
 															<td>
 																<div>
@@ -393,7 +393,7 @@ function plusSlides(n) {
 								</c:if>
 							<ul style="margin: 15px 0px 0px; padding: 0px; position: relative; left: 0px;">
 								<li style="margin: 0px; padding: 0px; list-style: none; float: left; width: 250px; height: 300px; text-align: left;">
-									 <img src="${foto.imgb_img1}"  style="margin: 0px; padding: 0px; width: 240px; height: 230px; border: 0px;">
+									 <img src="/uploadStorage/board/imgb/${foto.imgb_thumb}"  style="margin: 0px; padding: 0px; width: 240px; height: 230px; border: 0px;">
 							
 									<br>
 									<table border="0" cellpadding="0" cellspacing="0" width="97%" align="center">
