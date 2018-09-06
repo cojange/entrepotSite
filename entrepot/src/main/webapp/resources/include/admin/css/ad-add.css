@@ -69,3 +69,9 @@ font: FontAwesome !important;
 	padding:15px;
 	margin-right:60px;
 }
+#magCodeForm input{
+	width:150px;
+}
+#magCodeListBtn{
+	margin-bottom:10px;
+}

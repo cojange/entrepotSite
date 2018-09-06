@@ -34,8 +34,8 @@
             <div class="card-body">
               <div class="table-responsive">
               <div style="text-align: right;">
-              	 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#magazineCodeModal">
-				  등록
+              	 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" id="magCodeListBtn" data-target="#magazineCodeModal">
+				  잡지코드 등록
 				 </button>
               </div>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -632,14 +632,14 @@
                   <tbody>
                      <c:choose>
 						<c:when test="${not empty couPartnerList}">
-							<c:forEach var="magCode" items="${magCodeList}" varStatus="status">
-								<tr class="tac" data-num="${status.com_no}">
+							<c:forEach var="msvo" items="${magCodeList}" varStatus="status">
+								<tr class="tac" data-num="${msvo.com_no}">
 									<td>${status.count}</td>
-									<td>${magCode.couacc_area}</td>
-									<td>${magCode.char_manager}</td>
-									<td>${magCode.char_tel}</td>
-									<td>${magCode.mcom_name}</td>	
-									<th style="display: none;">${magCode.com_no}</th>						
+									<td>${msvo.mg_num}</td>
+									<td>${msvo.mg_name}</td>
+									<td>${msvo.mg_period}</td>
+									<td>${msvo.com_name}</td>	
+									<th style="display: none;">${msvo.com_no}</th>						
 								</tr>
 							</c:forEach>
 						</c:when>
@@ -655,7 +655,7 @@
 	        </form>
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-primary" id="magInsertBtn">등록</button>
+	        <button type="button" class="btn btn-primary magCodeAddForm" id="magCodeBtn">등록</button>
 	        <button type="button" class="btn btn-default" data-dismiss="modal" id="magDel">닫기</button>
 	      </div>
 	    </div>

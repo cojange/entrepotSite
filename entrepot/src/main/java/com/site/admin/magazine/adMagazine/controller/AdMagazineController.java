@@ -163,8 +163,5 @@ public class AdMagazineController {
 		MagazineSearchVO newmvo = new MagazineSearchVO();
 		
 		return adMagazineList(newmvo,model);
-	}*/
-	
-	
-	
+	}*/	
 }

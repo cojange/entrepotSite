@@ -65,4 +65,18 @@
 		insert into closed_trade(closed_no, startdate, enddate, com_no)
 		values(1, #{startdate}, #{enddate}, #{com_no})		
 	</insert>
+	
+	<select id="magCodeList" parameterType="msvo" resultType="msvo">
+		/*잡지 코드 리스트*/
+		select mg_num, mg_period, mg_name, magazine.com_no, com_name
+		from magazine join magazine_company
+		on magazine.com_no = magazine_company.com_no
+		order by mg_num
+	</select>
+	
+	<insert id="magCodeInsert" parameterType="msvo">
+		/*잡지 코드 등록*/
+		insert into magazine(mg_num, mg_name, mg_period, com_no)
+		values(#{mg_num}, #{mg_name}, #{mg_period}, #{com_no})		
+	</insert>
 </mapper>

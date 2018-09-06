@@ -476,6 +476,7 @@
 	    		//거래처 관리탭
 	    		if($(location).attr("href") == "http://localhost:8080/admin/ctrl/adPartner/adPartnerListCtrl.do"){
 	    			$("#adminTable").dataTable();
+	    			$("#magCodeTable").dataTable();
 	    			nowTime1();
 	    			$("#mcom_date").val(today1);
 	    			$("#couacc_date").val(today1);
@@ -493,6 +494,29 @@
 	    			$("#magDel").click(function(){
 	    				resetData1();
 	    			});
+	    			
+	    			/* $("#magCodeListBtn").click(function(){
+	    				console.log("클릭됨");
+	    				리스트 요청 함수 
+	    		    	function listAll(){
+	    		    		$("#comment_list").html("");
+	    		    		var url = "/replies/all/"+b_num+".do";
+	    		    		$.getJSON(url, function(data){
+	    		    			console.log(data.length);
+	    		    			
+	    		    			$(data).each(function(){
+	    		    				var r_num = this.r_num;
+	    		    				var r_name = this.r_name;
+	    		    				var r_content = this.r_content;
+	    		    				var r_date = this.r_date;
+	    		    				r_content = r_content.replace(/(\r\n|\r|\n)/g, "<br />");
+	    		    				addNewItem(r_num, r_name, r_content, r_date);
+	    		    			});
+	    		    		}).fail(function(){
+	    		    			alert("덧글 목록을 불러오는데 실패하였습니다. 잠시후에 다시 시도해 주세요.");
+	    		    		});
+	    		    	}	    				
+	    			}); */
 	    			
 	    			/* 잡지 거래처 등록 */
 	        		$("#magInsertBtn").click(function(){
@@ -568,7 +592,7 @@
 	    			var currLiMg;
 	    			/* 테이블 선택행 블록처리 */
 	    			$("#dataTable").on("click","tr",function(){
-	    				console.log("this:"+$(this).html());
+	    				//console.log("this:"+$(this).html());
 	    				if ( $(this).hasClass('selected') ) {
 	    		            $(this).removeClass('selected');
 	    		            currLiMg="";
@@ -632,7 +656,34 @@
 	    			$("#couDetailBtn").click(function(){
 	    				couDetail(currLi);
 	    			});
-	    		}
+	    			
+	    			/* 잡지코드 리스트창에서 등록버튼 클릭 */
+	    			$(document).on('click', ".magCodeAddForm", function(){
+	    				console.log("가");
+	    				var rowItem = "<tr><td>-</td><td><input type='text' id='mgnum' name='mg_num' placeholder='잡지코드'></td>";
+	    				rowItem += "<td><input type='text' id='mgname' name='mg_name' placeholder='잡지이름'></td><td><input type='text' id='mgperiod' name='mg_period' placeholder='출간주기'></td>";
+	    				rowItem += "<td><input type='text' id='comno' name='com_no' placeholder='사업자등록번호'></td></tr>";
+	    				
+	    				$("#magCodeTable").append(rowItem);
+	    				$("#magCodeBtn").removeClass("magCodeAddForm");
+	    				$("#magCodeBtn").addClass("mgCodeSave");
+	    			});
+	    			/* 잡지코드 등록창에서 등록버튼 클릭 */
+	    			$(document).on('click', ".mgCodeSave", function(){
+	    				console.log("다람쥐");
+	    				if(!chkData($('#mgnum'),"잡지 코드를")) return;	    				
+	      				else if(!chkData($('#mgname'),"잡지 이름을")) return;
+	      				else if(!chkData($('#mgperiod'),"출간주기를")) return;
+	      				else if(!chkData($('#comno'),"사업자등록번호를")) return;
+	      				else{ 	      				
+	      					$("#magCodeForm").attr({
+	      						"method":"POST",
+	      						"action":"/admin/ctrl/adPartner/magCodeInsert.do"
+	      					});
+		    			}
+	      				$("#magCodeForm").submit();
+	    			});
+	    		} 
 	    		
 	    		//약관 관리탭
 	    		if($(location).attr("href") == "http://localhost:8080/admin/adBoard/regulations/regulationsList.do"){

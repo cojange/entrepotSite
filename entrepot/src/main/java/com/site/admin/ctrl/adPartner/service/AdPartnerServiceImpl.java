@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.site.admin.ctrl.adPartner.dao.AdPartnerDao;
 import com.site.admin.ctrl.adPartner.vo.CourierPartnerVO;
 import com.site.admin.ctrl.adPartner.vo.MagazinePartnerVO;
+import com.site.admin.magazine.adMagazine.vo.MagazineSearchVO;
 
 @Service
 public class AdPartnerServiceImpl implements AdPartnerService {
@@ -81,5 +82,26 @@ public class AdPartnerServiceImpl implements AdPartnerService {
 			return newDao+oldDao;
 		}
 	
+	}
+	
+	//잡지 코드 리스트
+	@Override
+	public List<MagazineSearchVO> magCodeList(MagazineSearchVO msvo) {
+		List<MagazineSearchVO> magCodeList = null;
+		magCodeList = adPartnerDao.magCodeList(msvo);
+		return magCodeList;
+	}
+	
+	//잡지 코드 등록
+	@Override
+	public int magCodeInsert(MagazineSearchVO msvo) {
+		int result = 0;
+		try {
+			result = adPartnerDao.magCodeInsert(msvo);
+		}catch(Exception e) {
+			e.printStackTrace();
+			result = 0;
+		}
+		return result;
 	}
 }

@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.site.admin.ctrl.adPartner.service.AdPartnerService;
 import com.site.admin.ctrl.adPartner.vo.CourierPartnerVO;
 import com.site.admin.ctrl.adPartner.vo.MagazinePartnerVO;
+import com.site.admin.magazine.adMagazine.vo.MagazineSearchVO;
 
 @Controller
 @RequestMapping(value="/admin/ctrl/adPartner")
@@ -26,10 +27,10 @@ public class AdPartnerController {
 	private AdPartnerService adPartnerService;
 	
 	/** 
-	 * 거래처 리스트 구현하기
+	 * 거래처 리스트, 잡지코드 리스트 구현하기
 	 *  **/
 	@RequestMapping(value="/adPartnerListCtrl.do", method=RequestMethod.GET)
-	public ModelAndView adPartnerList(CourierPartnerVO cpvo, MagazinePartnerVO mpvo) {
+	public ModelAndView adPartnerList(CourierPartnerVO cpvo, MagazinePartnerVO mpvo, MagazineSearchVO msvo) {
 		logger.info("adPartnerList 호출 성공");
 		ModelAndView mav = new ModelAndView();
 		
@@ -38,8 +39,12 @@ public class AdPartnerController {
 
 		List<MagazinePartnerVO> magPartnerList = adPartnerService.magPartnerList(mpvo);
 		mav.addObject("magPartnerList", magPartnerList);
-		mav.setViewName("admin/ctrl/adPartner/adPartnerListCtrl");
 		
+		List<MagazineSearchVO> magCodeList = adPartnerService.magCodeList(msvo);
+		mav.addObject("magCodeList", magCodeList);
+		
+		mav.setViewName("admin/ctrl/adPartner/adPartnerListCtrl");
+		 
 		return mav;
 	}
 	
@@ -113,4 +118,25 @@ public class AdPartnerController {
 		}
 		return "redirect:" + url;
 	} 
+	
+	/**
+	 * 잡지코드 등록 하기
+	 * **/
+	@RequestMapping(value="/magCodeInsert.do", method=RequestMethod.POST)
+	public String magCodeInsert(MagazineSearchVO msvo, Model model) {
+		logger.info("magCodeInsert 호출 성공");
+		
+		int result = 0;
+		String url="";
+		
+		result = adPartnerService.magCodeInsert(msvo);
+		
+		if(result == 1) {  //오류가 발생하지 않은 경우
+			url = "/admin/ctrl/adPartner/adPartnerListCtrl.do";
+		}else {  //오류가 발생한 경우
+			model.addAttribute("code", 1);  //오류 내용
+			url = "/admin/ctrl/adPartner/magazineInsert.do"; 
+		}
+		return "redirect:"+url;
+	}
 }
