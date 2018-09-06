@@ -20,4 +20,8 @@ public interface ClMDao {
 	public int securityInsert(ClMSecurity set);
 	public ClMSecurity securitySelect(String m_Id);
 	
+	//구매페이지회원검색
+	public ClMVO memberSellSelect(String m_num);
+	public ClGmVO groupMemberSellSelect(String m_num);
+	
 }
