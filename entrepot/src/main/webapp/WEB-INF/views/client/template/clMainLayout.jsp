@@ -393,7 +393,7 @@ function plusSlides(n) {
 								</c:if>
 							<ul style="margin: 15px 0px 0px; padding: 0px; position: relative; left: 0px;">
 								<li style="margin: 0px; padding: 0px; list-style: none; float: left; width: 250px; height: 300px; text-align: left;">
-									 <img src="/uploadStorage/product/imgb/${foto.imgb_img1}"  style="margin: 0px; padding: 0px; width: 240px; height: 230px; border: 0px;">
+									 <img src="/uploadStorage/board/imgb/${foto.imgb_thumb}"  style="margin: 0px; padding: 0px; width: 240px; height: 230px; border: 0px;">
 							
 									<br>
 									<table border="0" cellpadding="0" cellspacing="0" width="97%" align="center">
