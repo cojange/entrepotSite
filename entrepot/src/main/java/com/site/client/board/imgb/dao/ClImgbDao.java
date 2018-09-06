@@ -6,6 +6,7 @@ import com.site.client.board.imgb.vo.ClImgbVO;
 
 
 public interface ClImgbDao {
+
 	
 	public List<ClImgbVO> clImgbList(ClImgbVO cvo);
 	
@@ -18,4 +19,8 @@ public interface ClImgbDao {
 	public int clImgbUpdate(ClImgbVO cvo);
 	
 	public int clImgbDelete(int imgb_no);
+	
+	public List<ClImgbVO> fotolist(ClImgbVO cvo);
 }
+
+

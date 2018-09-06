@@ -17,13 +17,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.site.client.board.imgb.service.ClImgbService;
 import com.site.client.board.imgb.vo.ClImgbVO;
+
 import com.site.client.board.personal.vo.PersonalVO;
+
+
 import com.site.common.file.FileUploadUtil;
 
 
 @Controller
-@RequestMapping(value="/client")
+@RequestMapping(value="client")
 public class ClImgbController {
+
 	Logger logger = Logger.getLogger(ClImgbController.class);
 	
 	@Autowired

@@ -68,14 +68,36 @@
 
 <script type="text/javascript">
 function errorCodeCheck(){}
+	function surchlist() {
+		var surch = $("#url").val(); 
+    	
+        
+  		 $("#search").val(surch);
+  		 $("#listkey").val(4);
+       //상세 페이지로 이동하기위해  form추가(id:detailForm)
+       $("#az").attr({
+          "method":"get",
+          "action":"/client/list/magazinelist.do"
+       });
+        $("#az").submit();
+	}
+	$(function() {
+		$(".surchbtn").click(function() {
+            
+			surchlist()
+         });
+	});
 </script>
+
 <div id="header" class="container">
    <div id="logo">
       <h1><a href="/">앙뜨흐뽀</a></h1>
       <p>Design by <a href="/" rel="nofollow">TEMPLATED</a></p>
    </div>
 
-   <form action="#" autocomplete="off" class="az">
+   <form action="surchlist()" autocomplete="off" class="az" id="az" name="az">
+   	<input type="hidden" id="listkey" name ="listkey">
+   	<input type="hidden" id="search" name ="search"> 
       <fieldset class="url">
          <input id="url" type="text" name="url" required> <label
             for="url"><i class="fa fa-search" aria-hidden="true"></i>
@@ -83,7 +105,7 @@ function errorCodeCheck(){}
          <div class="after"></div>
       </fieldset>
       <fieldset class="enter">
-         <button value="검색"></button>
+         <button  class="surchbtn" value="검색"></button>
       </fieldset>
    </form>
       <!-- <div id="social">
@@ -141,7 +163,7 @@ function errorCodeCheck(){}
          <li  class="san"><a href="#" accesskey="1" title="">베스트게시판</a>
          	<ul>
          		<li>
-         		  <a href="/client/list/magazinelist.do?key1=패션&key2=뷰티&key3=헤어&listkey=3&home=베스트" accesskey="1" title="">패션/뷰티/헤어 </a>
+         		  <a href="/client/list/magazinelist.do?key1=패션&key2=뷰티&key3=헤어&listkey=3&home=베스트&page=1" accesskey="1" title="">패션/뷰티/헤어 </a>
          		 </li>
          		<li>
          		  <a href="/client/list/magazinelist.do?key1=경제&key2=경영&key3=마케팅&listkey=3&home=베스트" accesskey="1" title="">경제/경영/마케팅</a>
@@ -206,7 +228,8 @@ function errorCodeCheck(){}
          		</li>    
          	</ul>
          </li>
-         <li  class="san"><a href="#" accesskey="3" title="">게시판</a>
+         <li  class="san"><a href="/client/list/magazinelist.do?listkey=5" accesskey="3" title="">이달의부록</a></li>
+         <li  class="san"><a href="#" accesskey="4" title="">게시판</a>
          	<ul>
          		<li>
          			 <a href="/client/board/personal/personalList.do?board_no=1" accesskey="1" title="">1대1문의 게시판</a>
@@ -222,6 +245,5 @@ function errorCodeCheck(){}
          		 </li>
          	</ul>
          </li>
-         <li  class="san"><a href="#" accesskey="4" title="">고객센터</a></li>
       </ul>
    </div>

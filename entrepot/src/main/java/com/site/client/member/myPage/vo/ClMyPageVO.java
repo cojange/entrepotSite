@@ -1,6 +1,8 @@
+
 package com.site.client.member.myPage.vo;
 
 import com.site.client.magazine.ditail.vo.MagazineVO;
+
 
 public class ClMyPageVO extends MagazineVO{
 	
@@ -46,6 +48,4 @@ public class ClMyPageVO extends MagazineVO{
 	
 	
 	
-	
-
 }

@@ -12,6 +12,7 @@ import com.site.client.board.imgb.vo.ClImgbVO;
 @Service
 public class ClImgbServiceImpl implements ClImgbService{
 
+
 	@Autowired
 	private ClImgbDao clImgbDao;
 
@@ -71,6 +72,12 @@ public class ClImgbServiceImpl implements ClImgbService{
 		}
 		return result;
 	}
-	
-	
+   @Override
+   public List<ClImgbVO> fotolist(ClImgbVO cvo){
+	   List<ClImgbVO> fotolist =null;
+	   fotolist = clImgbDao.fotolist(cvo);
+	   return fotolist;
+   }
+   
 }
+

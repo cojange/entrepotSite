@@ -5,6 +5,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.site.common.vo.CommonVO;
 
 public class ClImgbVO extends CommonVO {
+
 	//포토게시판
 		private int imgb_no			=0; 	//이미지번호
 		private String m_num		="";	//작성자

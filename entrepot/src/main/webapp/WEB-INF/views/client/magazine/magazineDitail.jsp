@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@ include file="/WEB-INF/views/common/common.jspf" %>     
+ <%@ include file="/WEB-INF/views/common/common.jspf" %>   
+   
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -21,10 +22,143 @@
       <!-- [if lt IE 9] -->
       <!-- <script src="../js/html5shiv.js"</script> -->
       <!-- [endif] -->
- <script type="text/javascript" src="/resources/include/client/js/jquery-1.12.4.min.js"></script>   
+ <script type="text/javascript" src="/resources/include/client/js/jquery-1.12.4.min.js"></script>  
+ <script>
+ 	$(function(){
+ 	 
+ 		//수량 증가 수량 하락
+ 		$("#plus2").click(function() {
+			var num = $("#su").val();
+ 			num++;
+ 			$("#su").val(num);
+		});
+ 		$("#manus").click(function() {
+			var num = $("#su").val();
+ 			if(num>0){
+				num--;
+ 			}
+ 			$("#su").val(num);
+		});
+ 		
+ 		$(".cartbtn").click(function(){
+   			var id= $('#id').val();
+   			var can=$("#su").val();
+   			
+			if (id == null || id=="") {
+				alert('로그인이 안되어 있습니다. 로그인 후 다시 시도해주세요');
+			}else{
+				var message = confirm("장바구니에 추가하시겠습니까?");
+		         if(message == true){   
+		        	 var insert = "/client/list/card.do";
+		 			
+		 			$.ajax({
+		 				url:insert,
+		 				type: "post",
+		 				headers : {
+		 					"content-type":"application/json",
+		 					"x-HTTP-Method-Dverride":"POST"
+		 				},
+		 				dataType:"text",
+		 				data:JSON.stringify({
+		 					record_num:$("#cart").val(),
+		 					mg_num:$("#mg_num").val(),
+		 					ea:	$("#su").val()
+		 				}),
+		 				error: function() {
+		 					alert("시스템 오류입니다. 잠시후 다시 시도해주세요")
+		 				},
+		 				success : function(resultData) {
+		 					if(resultData == "SUCCESS"){
+		 						alert("장바구니에 추가 됬습니다.");
+		 						
+		 					}else{
+		 						alert(resultData);
+		 					}
+		 				}
+		 			});   
+		         }else{
+		            return false;
+		         }	
+				
+				
+			}
+			
+   		});
+ 		$(".jtbtn").click(function(){
+   			var id= $('#id').val();
+			if (id == null || id=="") {
+
+				alert('로그인이 안되어 있습니다. 로그인 후 다시 시도해주세요');
+				conesol.log($("#mg_num").val());
+			}else{
+				var message = confirm("찜에 추가하시겠습니까?");
+		         if(message == true){   
+		        	 var insert = "/client/list/card.do";
+		     		
+		     		$.ajax({
+		     			url:insert,
+		     			type: "post",
+		     			headers : {
+		     				"content-type":"application/json",
+		     				"x-HTTP-Method-Dverride":"POST"
+		     			},
+		     			dataType:"text",
+		     			data:JSON.stringify({
+		     				record_num:$("#whish").val(),
+		     				mg_num:$("#mg_num").val(),
+		     				ea:$("#su").val()	
+		     			}),
+		     			error: function() {
+		     				alert("시스템 오류입니다. 잠시후 다시 시도해주세요")
+		     			},
+		     			success : function(resultData) {
+		     				if(resultData == "SUCCESS"){
+		     					alert("찜에 추가 됬습니다.");
+		     					
+		     				}else{
+		     					alert(resultData);
+		     				}
+		     			}
+		     		}); 
+		         }else{
+		            return false;
+		         }	
+				
+			}
+   		});
+ 		
+ 	})
+ function fn_press(event, type) {
+        if(type == "numbers") {
+            if(event.keyCode < 48 || event.keyCode > 57) return false;
+            //onKeyDown일 경우 좌, 우, tab, backspace, delete키 허용 정의 필요
+        }
+    }
+
+ 	function fn_press_han(obj)
+    {
+        //좌우 방향키, 백스페이스, 딜리트, 탭키에 대한 예외
+        if(event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 37 || event.keyCode == 39
+        || event.keyCode == 46 ) return;
+        //obj.value = obj.value.replace(/[\a-zㄱ-ㅎㅏ-ㅣ가-힣]/g, '');
+        obj.value = obj.value.replace(/[\ㄱ-ㅎㅏ-ㅣ가-힣]/g, '');
+    }
+
+
+ 
+		
+
+		
+	</script>
 </head>
 
 <body>
+	<input type="hidden" id="id" name="id" value="${login.m_id}">
+	<input type="hidden" id="cart" name="cart" value="${login.cart}"/>
+	<input type="hidden" id="whish" name="whish" value="${login.whish}"/>
+	<input type="hidden" id="mg_num" name="mg_num" value="${mvo.mg_num}"/>
+	<input type="hidden" id="mg_name" name="mg_name" value="${mvo.mg_num}"/>
+	<input type="hidden" id="pl_path" name="pl_path" value="${magazine.pl_path}"/>
 	<div class="container-fluid">
 	<table  border="0" cellpadding="0" cellspacing="0">
 		<tbody>
@@ -106,11 +240,21 @@
 													                <td height="20"><font face="나눔고딕" color="#696969"><b>정기구독가</b></font><b><font color="#3399CC"> <b>(12개월)</b></font>	</b></td>
 													                <td> <font face="나눔고딕" color="#393107">: 
 																						&nbsp;<font color="#6B6B6B"><strike>${magazine.pd_sale}</strike></font>→<font color="#DE590A"><b>${magazine.pd_salecost }</b></font> 원
-																		<font color="#0066CC">(${magazine.pd_rate} }%↓)</font>
+																		<font color="#0066CC">(${magazine.pd_rate}%↓)</font>
 																		</font>
 													              </td>
 													        </tr>
 															<tr height="8"><td> </td></tr>
+															<tr>
+																 <td height="20"><font face="나눔고딕" color="#696969"><b>수량</b></font></td>
+													                <td> <font face="나눔고딕" color="#393107">: 
+																						&nbsp;<input type="text" maxlength="3" onkeypress="return fn_press(event, 'numbers');" onkeydown="fn_press_han(this);" style="height: 26px; width: 40px; text-align: right; padding-right: 5px; font-weight: bold;
+																						background-color: gray; ime-mode:disabled; " id="su" name="su" value="1" />
+																		</font>
+																		<button type="button" id="plus2"><img src="/resources/images/ditail/btn_plus.gif"></button>
+																		<button type="button" id="manus"><img src="/resources/images/ditail/btn_minus.gif"></button>
+													             	 </td>
+															</tr>
 															<tr>
 																<td colspan="2"> </td>
 															</tr>													
@@ -120,16 +264,16 @@
                														 <table>
                  														<tbody>
                  															<tr>
-                 																<a href="#">
+                 																<a href="#" >
                  																	<img src="/resources/images/ditail/btn_purchase_co.gif">
                  																</a>
                  															 </tr> 
 																	  	    <tr> 
 																	  	    	<td>
-																		 			<a href="#">
+																		 			<a href="#" class="cartbtn">
                  																	<img src="/resources/images/ditail/btn_cart_co.gif">
                  																	</a>
-                 																	<a href="#">
+                 																	<a href="#" class="jtbtn">
                  																	<img src="/resources/images/ditail/btn_zzim_co.gif">
                  																	</a>	 
 																		   		</td>
@@ -305,6 +449,24 @@
 	</div>
 	<br>
 	<img src="/resources/images/ditail/notice_paper_g.gif" width="700" border="0">
+</div>
+<div>
+	<a name="d"></a>
+	<div>
+		<div>
+			<table>
+				<tr>
+					<td align="left">
+						<a href="#a"><img  src="/resources/images/ditail/dir_blue_01.gif" border="0"></a>
+						<a href="#b"><img  src="/resources/images/ditail/dir_blue_03.gif" border="0"></a>
+						<a href="#c"><img  src="/resources/images/ditail/dir_blue_06_over.gif" border="0"></a>
+						<a href="#d"><img  src="/resources/images/ditail/dir_blue_04.gif" border="0"></a>					 	
+					</td>
+				</tr>
+			</table>
+		</div>
+		<%-- <jsp:include page="plus.jsp"/> --%>
+	</div>
 </div>
 </div>	
 </body>

@@ -2,13 +2,13 @@ package com.site.client.magazine.ditail.vo;
 
 public class MagazineVO extends PageVO{
    
-   //상품테이블 (product)
-   private String pd_num;                     //상품코드
-   private int pd_rate;                  //할인율
-   private   int pd_sale;                  //정가
-   private   int pd_cost;                       //원가                  
-   private   String pd_appendix;               //부록여부
-   private   String pd_date;                  //출간일
+	//상품테이블 (product)
+	private String pd_num;                  	//상품코드
+	private int pd_rate;						//할인율
+	private	int pd_sale;						//정가
+	private	int pd_cost;                    	//원가	               
+	private	String pd_appendix;					//부록여부
+	private	String pd_date;						//출간일
 
    //잡지별 테이블(Magzine)
    private String mg_num;                  //잡지코드
@@ -18,15 +18,13 @@ public class MagazineVO extends PageVO{
    
    //상품이미지 테이블(product_image)
    private String pl_path;                  //파일경로
-   private String pl_type;                  //파일유형   
-   
+   private String pl_type;                  //파일유형     
    private String pl_path2;               //프리뷰
    
    //상품상세 테이블(details)
    
    private   String dt_target;               //대상
    private   String dt_brief;               //간략소개
-   
    private String dt_detail;               //상품상세
    private String dt_contents;               //목차
    private String dt_keyword;               //키워드
