@@ -16,6 +16,7 @@ public class ClImgbVO extends CommonVO {
 		private String imgb_date	="";	//등록일
 		private String m_name		="";	//회원번호
 		private int board_no		=0;
+		private int imgb_cnt		=0;
 		
 		private MultipartFile file; //파일을 가져올 수 있는 자르 파일을 만들어서 파일을 가져오도록 하자
 		private String file_thumb;
@@ -120,6 +121,12 @@ public class ClImgbVO extends CommonVO {
 		}
 		public void setBoard_no(int board_no) {
 			this.board_no = board_no;
+		}
+		public int getImgb_cnt() {
+			return imgb_cnt;
+		}
+		public void setImgb_cnt(int imgb_cnt) {
+			this.imgb_cnt = imgb_cnt;
 		}
 		
 }
