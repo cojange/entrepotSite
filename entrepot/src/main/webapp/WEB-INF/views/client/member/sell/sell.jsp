@@ -86,8 +86,8 @@
 		    <br>
 		    <form>
 		    <div>	   
-		    	<input type="button" value="결제하기">
-		    	<input type="button" value="결제취소"><br><br>
+		    	<input type="button" value="결제하기" id="paymentBtn">
+		    	<input type="button" value="결제취소" id="cancelBtn"><br><br>
 		    	<div>
 		    		<span style="background-color: #dddddd;font-size: 12pt; color: red;">
 		    			<strong>총수량&nbsp;:&nbsp;<input type="text" id="sumEa" size="5"> </strong> 
