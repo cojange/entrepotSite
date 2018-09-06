@@ -24,6 +24,24 @@ public class MagazinePartnerVO {
     private String com_name;
     private String bacc_name;
     
+    private String checked;
+    
+    private int closed_no;
+    
+	public int getClosed_no() {
+		return closed_no;
+	}
+	public void setClosed_no(int closed_no) {
+		this.closed_no = closed_no;
+	}
+	       
+	public String getChecked() {
+		return checked;
+	}
+	public void setChecked(String checked) {
+		this.checked = checked;
+	}
+	
 	public String getCom_no() {
 		return com_no;
 	}

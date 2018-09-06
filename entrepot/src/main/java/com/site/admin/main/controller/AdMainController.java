@@ -22,5 +22,14 @@ public class AdMainController {
 		return "admin/adHome";
 	}
 	
+	@RequestMapping(value="/admin/kakaopayImpl")
+	public String payment() {
+		return "admin/kakaopay/kakaopayImpl";
+	}
+	@RequestMapping(value="/admin/kakaoexample")
+	public String kakaoexample() {
+		return "admin/kakaopay/kakaoexample";
+	}
+	
 
 }
