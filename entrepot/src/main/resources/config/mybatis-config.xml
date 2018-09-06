@@ -38,7 +38,7 @@
 		<typeAlias type="com.site.client.member.individual.vo.ClGmVO" alias="groupMember"/>
 		<typeAlias type="com.site.client.member.myPage.vo.ClMyPageVO" alias="whishAndCart"/>
 		<typeAlias type="com.site.client.member.myPage.vo.ClOrderListVO" alias="orderList"/>
-		
+		<typeAlias type="com.site.client.member.sell.vo.ClSellVO" alias="sell"/>
 		<!-- common -->
 		<typeAlias type="com.site.common.vo.CommonVO" alias="cvo"/>
 

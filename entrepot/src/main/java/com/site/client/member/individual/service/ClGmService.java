@@ -8,5 +8,6 @@ public interface ClGmService {
 	public int groupMemberInsert(ClGmVO cmvo);
 	public ClGmVO groupMemberSelect(String m_id);
 	public int groupMemberUpdate(ClGmVO cmvo);
+	public ClGmVO groupMemberSellSelect(String m_num);
 	
 }

@@ -6,6 +6,7 @@ $(function() {
 	var arr=[];
 	//불러오는 값만큼 반복
 	for (var i = 0; i < $(".trSize").size(); i++) {
+		console.log($(".trSize").size());
 		//인덱스
 		$(".index:eq("+i+")").val(i+1);
 		//수량
