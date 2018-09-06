@@ -33,6 +33,11 @@
             </div>   
             <div class="card-body">
               <div class="table-responsive">
+              <div style="text-align: right;">
+              	 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#magazineCodeModal">
+				  등록
+				 </button>
+              </div>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
@@ -571,6 +576,7 @@
 	</div>
 	</body>
 </html>
+
 <!-- couUpdate Modal --------------------------------------------------------->
 	<div class="modal fade bs-example-modal-lg" id="courierDetailModal" tabindex="-1" role="dialog" aria-labelledby="couDetailModalLabel" aria-hidden="true">
 	  <div class="modal-dialog modal-lg">
@@ -590,3 +596,68 @@
 	</div>
 	</body>
 </html>
+
+<!-- magazine code Modal --------------------------------------------------------->
+	<div class="modal fade bs-example-modal-lg" id="magazineCodeModal" tabindex="-1" role="dialog" aria-labelledby="magazineCodeModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-lg">
+	    <div class="modal-content">
+	      <div class="modal-header">	       	
+	        <h4 class="modal-title" id="magazineCodeModalLabel">잡지 거래처 등록</h4>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	      </div>
+	      <div class="modal-body">
+	        <form id="magCodeForm" name="magCodeForm">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="magCodeTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>번호</th>
+                      <th>잡지코드</th>                     
+                      <th>잡지명</th>
+                      <th>출간주기</th>
+                      <th>잡지사명</th> 
+                      <th style="display: none;">잡지거래처사업자번호</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>번호</th>
+                      <th>잡지코드</th>                     
+                      <th>잡지명</th>
+                      <th>출간주기</th>
+                      <th>잡지사명</th>
+                      <th style="display: none;">잡지거래처사업자번호</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                     <c:choose>
+						<c:when test="${not empty couPartnerList}">
+							<c:forEach var="magCode" items="${magCodeList}" varStatus="status">
+								<tr class="tac" data-num="${status.com_no}">
+									<td>${status.count}</td>
+									<td>${magCode.couacc_area}</td>
+									<td>${magCode.char_manager}</td>
+									<td>${magCode.char_tel}</td>
+									<td>${magCode.mcom_name}</td>	
+									<th style="display: none;">${magCode.com_no}</th>						
+								</tr>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<tr>
+								<td colspan="4" class="tac">등록된 게시물이 존재하지 않습니다.</td>
+							</tr>
+						</c:otherwise>
+					</c:choose>
+                  </tbody>
+                </table>
+               </div>
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-primary" id="magInsertBtn">등록</button>
+	        <button type="button" class="btn btn-default" data-dismiss="modal" id="magDel">닫기</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>

@@ -26,4 +26,9 @@ public class PersonalBoardDaoImpl implements PersonalBoardDao {
 	public List<AdOrderListVO> pbReplyList(PbReplyVO pbrvo) {
 		return session.selectList("pbReplyList", pbrvo);
 	}
+
+	@Override
+	public int pbReInsert(PbReplyVO pbrvo) {
+		return session.insert("boardInsert", pbrvo);
+	}
 }

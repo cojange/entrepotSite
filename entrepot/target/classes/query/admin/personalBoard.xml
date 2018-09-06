@@ -12,8 +12,15 @@
 	
 	<select id="pbReplyList" parameterType="pbrvo" resultType="pbrvo">
 		/*댓글 리스트 조회*/
-		select pb_no, re_no, pbre_content, writer, pbre_date, pbre_update
+		select pb_no, re_no, pbre_content, writer, to_char(pbre_date,'yy-mm-dd') pbre_date, 
+		NVL2(pbre_update, to_char(pbre_update,'yy-mm-dd'), '-')  pbre_update
 		from pb_reply where pb_no = #{pb_no}
 		order by pbre_date desc
 	</select>
+	
+	<insert id="pbReInsert" parameterType="pbrvo"> 
+		/*댓글 입력*/
+		INSERT INTO pb_reply (re_no, pbre_content, pb_no, writer)
+		VALUES(pb_reply_seq.nextval, #{pbre_content}, #{pb_no}, #{writer})
+	</insert>
 </mapper>

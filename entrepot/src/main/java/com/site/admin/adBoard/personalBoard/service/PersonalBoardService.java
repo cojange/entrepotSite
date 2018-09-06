@@ -12,4 +12,6 @@ public interface PersonalBoardService {
 
 	public List<AdOrderListVO> pbReplyList(PbReplyVO pbrvo);
 
+	public int pbReInsert(PbReplyVO pbrvo);
+
 }

@@ -33,4 +33,17 @@ public class PersonalBoardServiceImpl implements PersonalBoardService{
 		List<AdOrderListVO> pbReplyList = personalBoardDao.pbReplyList(pbrvo);
 		return pbReplyList;
 	}
+	
+	//댓글 입력
+	@Override
+	public int pbReInsert(PbReplyVO pbrvo) {
+		int result = 0;
+		try {
+			result = personalBoardDao.pbReInsert(pbrvo);
+		}catch(Exception e) {
+			e.printStackTrace();
+			result = 0;
+		}
+		return result;
+	}
 }

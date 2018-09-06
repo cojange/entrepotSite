@@ -56,7 +56,28 @@ public class PersonalBoardController {
 		}catch(JsonProcessingException e) {
 			e.printStackTrace();
 		}
-		return pbReplyListData;
+		return pbReplyListData;		
+	}
+	
+	/*****************************************************************
+	 * 댓글쓰기 
+	 ******************************************************************/
+	@RequestMapping(value="/pbReInsert.do", method=RequestMethod.POST)
+	public String pbReInsert(PbReplyVO pbrvo, Model model) {
+		logger.info("pbReInsert 호출 성공");
 		
+		//result == 0 을 제어하는 경우 사용
+		int result = 0;
+		String url="";
+		
+		result = personalBoardService.pbReInsert(pbrvo);
+		
+		if(result == 1) {  //오류가 발생하지 않은 경우
+			url = "/admin/adBoard/personalBoard/personalBoardList.do";
+		}else {  //오류가 발생한 경우
+		    model.addAttribute("code", 1);  //오류 내용
+			url = "/admin/adBoard/personalBoard/personalBoardList.do";
+		}
+		return "redirect:"+url;
 	}
 }

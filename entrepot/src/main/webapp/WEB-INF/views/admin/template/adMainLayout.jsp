@@ -1308,7 +1308,7 @@
 		    	   	          '<img style="background-color:lightgray; margin:5px; width:150px; height:150px;" src="/uploadStorage/personalBoard/img2/'+img2.html()+'"></img>'+
 		    	   	          '<img style="background-color:lightgray; margin:5px; width:150px; height:150px;" src="/uploadStorage/personalBoard/img3/'+img3.html()+'"></img>'+
 		    	   	          '</div><input type="button" value="댓글 확인" class="replyBtn"></div>'+
-		    	   	          '<div class="middle2 hidden">가나다라마바사</div>'+
+		    	   	          '<div class="middle2 hidden"><form id="inputPbReply"><input type="number" value='+pdNo.html()+' name="pb_no" style="display:none;"></form></div>'+
 		    	   	          '</div>'+
 		    	   	     		 '</td></tr>'+
 		    	   	  		 '</table></td>';
@@ -1325,14 +1325,27 @@
     	   	       				pb_no:pb_no
     	   	       			}, function(subElements){
     	   	       				console.log(pbReply(subElements));
-    	   	       				console.log(thisValue.parent().next().html());
-    	   	       				thisValue.parent().next().html(pbReply(subElements));
+    	   	       				//console.log(thisValue.parent().next().children().html());
+    	   	       				thisValue.parent().next().children().append(pbReply(subElements));
     	   	       			});
     	   	       		 }else{
     	   	       			$(".middle2").addClass("hidden");
-    	   	       		 }
-    	   	       		 
+    	   	       		 }    	   	       		 
     	   	       	 });
+		    	   	 
+		    	   	 //관리자 댓글 입력
+		    	   	 $(document).on('click', '#savePbReply', function(){
+		    	   		console.log("값확인 "+$(".pbre_content").val()); 
+		    	   		if(!chkData($('.pbre_content'),"내용을")) return;
+	      				else if(!chkData($('.writer'),"아이디를")) return;
+	      				else{
+	      					$("#inputPbReply").attr({      				
+		      					"method":"POST",
+		      					"action":"/admin/adBoard/personalBoard/pbReInsert.do"
+		      				});
+		      				$("#inputPbReply").submit();
+	      				}
+		    	   	 });
 		    	   	  		 
 	    	   	     if ( row.child.isShown() ) {
 	    	             // This row is already open - close it
