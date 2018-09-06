@@ -102,23 +102,15 @@ public class AdPartnerController {
 	public String magUpdate(MagazinePartnerVO mpvo, Model model, HttpServletRequest request) throws IOException {
 		logger.info("magUpdate 호출 성공");
 		
-		String resultData;
 		int result = 0;
 		result = adPartnerService.magUpdate(mpvo);
-		if(mpvo.getChecked() != null) {
-			if(result==3) {
-				resultData="SUCCES";
-			}else {
-				resultData="FALSE";
-			}
-		}else {
-			if(result==1) {
-				resultData="SUCCES";
-			}else {
-				resultData="FALSE";
-			}
-		}
+		String url ="";
 		
-		return resultData;
+		if(result ==2) {
+			url = "/admin/ctrl/adPartner/adPartnerListCtrl.do";
+		}else {
+			url = "/admin/ctrl/adPartner/magazineInsert.do";
+		}
+		return "redirect:" + url;
 	} 
 }

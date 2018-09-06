@@ -13,6 +13,6 @@ public interface AdPartnerDao {
 	public int courierInsert(CourierPartnerVO cpvo);
 	public int magUpdate(MagazinePartnerVO mpvo);
 	public int closedMagInsert(MagazinePartnerVO mpvo);
-	public int magPartnerData(MagazinePartnerVO mpvo);
+	public MagazinePartnerVO magPartnerData(MagazinePartnerVO mpvo);
 
 }

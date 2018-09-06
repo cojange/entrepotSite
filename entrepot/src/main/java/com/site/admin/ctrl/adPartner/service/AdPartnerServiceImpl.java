@@ -62,21 +62,24 @@ public class AdPartnerServiceImpl implements AdPartnerService {
 	//잡지거래처 수정
 	@Override
 	public int magUpdate(MagazinePartnerVO mpvo) {
+		if(mpvo.getChecked() != null)
 		logger.info("checked : " + mpvo.getChecked());
+		logger.info("com_no : " + mpvo.getCom_no());
 		
 		int newDao = 0;
 		int oldDao = 0;
-		try {
-			newDao = adPartnerDao.magUpdate(mpvo);
-			if(mpvo.getChecked() != null)
-				oldDao = adPartnerDao.magPartnerData(mpvo);
-				oldDao = adPartnerDao.closedMagInsert(mpvo);
-		}catch(Exception e) {
-			e.printStackTrace();
-			newDao = 0;
-			oldDao = 0;
-		}
 		
-		return newDao + oldDao;
+		
+		if(mpvo.getChecked() != null){
+			newDao = adPartnerDao.magUpdate(mpvo);
+			return newDao +1;
+		}else {
+			MagazinePartnerVO newMpvo = new MagazinePartnerVO();
+			newMpvo = adPartnerDao.magPartnerData(mpvo);
+			newDao = adPartnerDao.magUpdate(mpvo);
+			oldDao = adPartnerDao.closedMagInsert(newMpvo);
+			return newDao+oldDao;
+		}
+	
 	}
 }

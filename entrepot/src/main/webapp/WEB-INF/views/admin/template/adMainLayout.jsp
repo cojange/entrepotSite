@@ -1615,11 +1615,31 @@
             	var rzipCode = currLiMg.children().eq(20);
             	var raddress = currLiMg.children().eq(21);
             	
+            	var secDate = 20+startdate.html()  /// 문자열 or  숫자 데이터
+            	var year = secDate.substr(0,4);
+            	var month = secDate.substr(5,2);
+            	var day = secDate.substr(8,2);
+            	var date = new Date(year, month, day);  // date로 변경
+            	console.log(secDate);
+            	console.log(year);
+            	console.log(month);
+            	console.log(day);
+            	console.log(date);
+            	function formatDate(date) {
+            		var d = new Date(date), month = '' + (d.getMonth() + 1), day = '' + d.getDate(), year = d.getFullYear();
+            		if (month.length < 2)
+            			month = '0' + month;
+            		if (day.length < 2) day = '0' + day;
+            		return [year, month, day].join('-');
+            	}
+            	formatDate(date);
+            	console.log(formatDate(date));
+            	
             	var rowUp;
             	nowTime();
          	
            		rowUp = "<form class='magUpdateSaveForm'><table><tr><td>등록일 : "+mcomDate.html()+" | 수정일 : "+today+"</td></tr>";
-           		rowUp += "<tr><td>사업자 번호 : "+comNo.html()+"</td><td>거래시작일 : <input type='date' id='upMgStartdate' name='startdate' value='20"+startdate.html()+"'> | 거래종료일 : ";
+           		rowUp += "<tr><td>사업자 번호 : "+comNo.html()+"</td><td>거래시작일 : <input type='date' id='upMgStartdate' name='startdate' value='"+formatDate(date)+"'> | 거래종료일 : ";
            		rowUp += "<input type='date' id='upMgEnddate' name='enddate' value='20"+enddate.html()+"'><input type='checkbox' id='checked' value='true'></td></tr>";
            		rowUp += "<tr><td>회사명 : "+comName.html()+"</td></tr><tr><td>대표 이름 : "+mcomName.html()+"</td><td>대표 연락처 : "+mcomTel.html()+"</td></tr>";
            		rowUp += "<tr><td colspan='2'>회사 주소 : "+mcomAdd.html()+"</td></tr><tr><td><label>담당자</label></td></tr>";
@@ -1631,7 +1651,9 @@
            		rowUp += "<td width='50%'>연락처 : <input type='text' id='upAccTel' name='acc_tel' value='"+accTel.html()+"'></td></tr>";
            		rowUp += "<tr><td width='50%'>e-mail : <input type='text' id='upAccEmail' name='acc_email' value='"+accEmail.html()+"'></td>";
            		rowUp += "<td width='50%'>fax : <input type='text' id='upAccFax' name='acc_fax' value='"+accFax.html()+"'></td></tr><tr><td>계좌 : ["+baccBank.html()+" / "+baccName.html()+"] "+baccAccno.html()+"</td></tr>";
-           		rowUp += "<tr><td colspan='2'>환불주소 : ["+rzipCode.html()+"] "+raddress.html()+"</td></tr></table></form>";   		
+           		rowUp += "<tr><td colspan='2'>환불주소 : ["+rzipCode.html()+"] "+raddress.html()+"</td></tr></table><input type='hidden' name='com_no' value='"+comNo+"'></form>";   		
+           		
+           		console.log($("#upMagStartdate").val());
            		
             	$("#mgContent").html(rowUp);
             }

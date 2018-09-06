@@ -46,10 +46,10 @@
 	<update id="magUpdate" parameterType="magPartner">
 		/*잡지 거래처 수정*/
 		UPDATE magazine_company
-		SET enddate = #{enddate}, couacc_update = sysdate, char_tel = #{char_tel}, char_manager = #{char_manager},
+		SET enddate = #{enddate}, mcom_update = sysdate, char_tel = #{char_tel}, char_manager = #{char_manager},
 			char_email = #{char_email},	<if test="char_fax != null and char_fax != ''">char_fax = #{char_fax},</if>
 			acc_manager = #{acc_manager}, acc_email = #{acc_email},
-			<if test="acc_fax != null and acc_fax != ''">acc_fax = #{acc_fax},</if> acc_tel = {acc_tel}
+			<if test="acc_fax != null and acc_fax != ''">acc_fax = #{acc_fax},</if> acc_tel = #{acc_tel}
 		WHERE com_no = #{com_no}
 	</update>
 	
@@ -63,6 +63,6 @@
 	<insert id="closedMagInsert" parameterType="magPartner">
 		/*재계약 전 거래 정보 등록*/
 		insert into closed_trade(closed_no, startdate, enddate, com_no)
-		values(#{closed_no}, #{startdate}, #{enddate}, #{com_no})		
+		values(1, #{startdate}, #{enddate}, #{com_no})		
 	</insert>
 </mapper>

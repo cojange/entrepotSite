@@ -49,7 +49,7 @@ public class AdPartnerDaoImpl implements AdPartnerDao {
 	}
 
 	@Override
-	public int magPartnerData(MagazinePartnerVO mpvo) {
-		return session.selectOne("magPartnerData", mpvo);
+	public MagazinePartnerVO magPartnerData(MagazinePartnerVO mpvo) {
+		return (MagazinePartnerVO)session.selectOne("magPartnerData", mpvo);
 	}
 }
