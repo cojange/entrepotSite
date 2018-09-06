@@ -1,7 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.site.client.board.dao.ClImgbDao">
-	
+<mapper namespace="com.site.client.board.imgb.dao.ClImgbDao">
+	   <select id="clImgbList" parameterType="imgb" resultType="imgb">
+      select a.imgb_no imgb_no,imgb_title,m_name,
+        to_char(imgb_date, 'YYYY-MM-DD') as imgb_date from img_board a inner join member b
+        on a.m_num = b.m_num
+        order by imgb_no desc
+   </select>
+   
+   <!-- 글 입력 -->
+   <!-- <insert id="imgbInsert" parameterType="imgb">
+      <selectKey  resultType="int" order="BEFORE" keyProperty="imgb_no">
+      select imgb_board_seq.nextval from dual
+      </selectKey>
+      insert into imgb_board(imgb_no, imgb_title, imgb_content, imgb_pwd,
+      imgb_img1, imgb_img2, imgb_img3, imgb_img4, imgb_img5)
+      vak
+   </insert> -->
+   
+   <select id="fotolist" parameterType="imgb" resultType="imgb">
+   SELECT imgb_no,imgb_title,m_name,IMGB_IMG1,IMGB_CNT
+        FROM(
+        select ROWNUM as RNUM,imgb_no,imgb_title,m_name,IMGB_IMG1,IMGB_CNT
+        from foto_view
+        )WHERE RNUM between 1 and 12
+   </select>
 </mapper>
 <!-- mybatis xml mapper파일 -->

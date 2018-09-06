@@ -87,7 +87,7 @@ $(function() {
 							 $(".checkForm:eq("+i+")").attr({
 									"method":"post",
 									"action":"/client/member/deleteCart.do"
-							});
+						      });
 							$(".checkForm:eq("+i+")").submit();
 						 }
 						 alert("You Picked Sound");						 
@@ -106,6 +106,7 @@ $(function() {
 	
 	/*var allCheck = document.getElementsByClassName('deleteCheck'); */
 	/*$(allCheck).ready(function() {*/
+		//all체크 클릭이벤트
 		$(".allCheck").click(function() {		
 			var deleteCheck = document.getElementsByClassName('deleteCheck');
 			//아무것도 체크되어있지않을때
@@ -114,6 +115,14 @@ $(function() {
 			}else{
 				$("input[class=deleteCheck]").prop("checked",false);
 			} 
+		});
+		//구매버튼 클릭시
+		$(".sell").click(function() {
+			if($(".listType").val()=="Whish"){
+				location.href="/client/member/sellWhish.do";
+			}else if($(".listType").val()=="Cart"){
+				location.href="/client/member/sellCart.do";
+			}		
 		});
 	/*});*/
 	
