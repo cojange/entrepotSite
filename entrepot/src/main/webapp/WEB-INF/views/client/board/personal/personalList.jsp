@@ -26,7 +26,7 @@
 					if($("#search").val()!="pb_content"){
 						if($("#search").val()=="pb_title"){
 							value="#list tr td.goDetail";
-						}else if($("#search").val()=="pb_name"){
+						}else if($("#search").val()=="m_name"){
 							value="#list tr td.name";
 						}
 						 $(value+":contains('"+word+"')").each(function(){
@@ -50,7 +50,7 @@
 				
 				//글쓰기버튼 처리 이벤트
 				$("#insertBtn").click(function(){
-					location.href="/client/boarad/personal/writeForm.do"
+					location.href="/client/boarad/personal/writeForm.do?board_no=1"
 				});
 				
 				//검색 대상 변경 될 때마다 처리 이벤트
@@ -77,7 +77,7 @@
 				}
 				$("#f_search").attr({
 					"method":"get",
-					"action":"/board/personal/personalList.do"
+					"action":"/client/board/personal/personalList.do"
 				});
 				$("#f_search").submit();
 			}
@@ -87,6 +87,7 @@
 			 <c:if test="${login.m_id != null and login.m_id != ''}">
 		         <form id="detailForm" name="detailForm">
 					<input type="hidden" name="pb_no" id="pb_no"/>
+					<input type="hidden" name="board_no" id="board_no"  value="${param.board_no }"/>
 				</form>
 				<h3>게시판 목록</h3>
 					<form id="f_search" name="f_search">
@@ -101,7 +102,7 @@
 									<option value="all">내용</option>
 								</select>
 								<input type="text" name="keyword" id="keyword"/>
-								<input type="button" value="검색" id="searchData"/></td>
+								<input type="button" value="검색" id="searchData" /></td>
 							</tr>
 						</table>
 						<table border="1" class="table table-hover">
@@ -139,9 +140,7 @@
 		         </c:if>
 		          <c:if test="${login.m_id == null or login.m_id == ''}">
 		          <p>로그인 해주세요</p>
-		          </c:if>
-			
+		          </c:if>	
 		</div>
-		
 	</body>
 </html>

@@ -12,4 +12,10 @@ public interface ClImgbService {
 	public int imgbInsert(ClImgbVO cvo);
 	
 	public ClImgbVO imgbDetail(ClImgbVO cvo);
+	
+	public int pwdConfirm(ClImgbVO cvo);
+	
+	public int clImgbUpdate(ClImgbVO cvo);
+	
+	public int clImgbDelete(int imgb_no);
 }

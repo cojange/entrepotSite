@@ -206,19 +206,16 @@ function errorCodeCheck(){}
          <li  class="san"><a href="#" accesskey="3" title="">게시판</a>
          	<ul>
          		<li>
-         			 <a href="/client/board/personal/personalList.do" accesskey="1" title="">1대1문의 게시판</a>
+         			 <a href="/client/board/personal/personalList.do?board_no=1" accesskey="1" title="">1대1문의 게시판</a>
          		</li>
          		<li>
-         			 <a href="/client/board/imgb/clImgbList.do" accesskey="1" title="">포토 게시판</a>
+         			 <a href="/client/board/imgb/clImgbList.do?board_no=3" accesskey="1" title="">포토 게시판</a>
          		</li>
          		<li>
-         			<a href="/client/board/adminListboard.do" accesskey="1" title="">공지게시판</a>
+         			<a href="/client/board/adminboard/adminboardList.do?board_no=5" accesskey="1" title="">공지및 이벤트게시판</a>
          		</li>
          		<li>
-         			  <a href="/client/board/event/eventListboard.do" accesskey="1" title="">이벤트 게시판</a>
-         		</li>
-         		<li>
-         		 <a href="/client/board/userful/userfulListboard.do" accesskey="1" title="">자주묻는 게시판</a>
+         		 <a href="/client/board/useful/usefulList.do?board_no=6" accesskey="1" title="">자주묻는 게시판</a>
          		 </li>
          	</ul>
          </li>

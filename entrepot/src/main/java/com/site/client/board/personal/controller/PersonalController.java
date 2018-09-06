@@ -14,6 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.site.client.board.personal.service.PersonalService;
 import com.site.client.board.personal.vo.PersonalVO;
@@ -51,17 +53,20 @@ public class PersonalController {
 	}
 	//글 입력 구현 
 	@RequestMapping(value="/board/personal/personalInsert.do",method=RequestMethod.POST)
-	public String personalInsert(PersonalVO pvo,Model model, HttpServletRequest req,
+	public String personalInsert(PersonalVO pvo,Model model, HttpServletRequest req, 
 			HttpSession session)throws IllegalStateException, IOException {
 	      logger.info("personalInsert 호출 성공");
 	      
-	    
+	      
+	      LoginVO login = (LoginVO)session.getAttribute("login");
+	      pvo.setM_num(login.getM_num());
+	      
 	      int result = 0;
 	      String url = "";
 	      
 	      if(!pvo.getFile().isEmpty()) {// 비어있지 않으면
-	    	  String file_thumb = FileUploadUtil.fileUpload(pvo.getFile(), "personal", req, "personal", "personal");
-	    	  pvo.setPb_img1(file_thumb);
+	    	  String pb_img1 = FileUploadUtil.fileUpload(pvo.getFile(), "personal", req, "personal", "personal");
+	    	  pvo.setPb_img1(pb_img1);
 	      }else {
 	    	  pvo.setPb_img1("");
 	      }
@@ -109,38 +114,38 @@ public class PersonalController {
 	}
 	
 	//수정 페이지 불러오기
-	@RequestMapping(value="/board/personal/personalUpdate.do")
-	public String personalUpdate(PersonalVO pvo, Model model) {
-		logger.info("personalUpdate 호출 성공");
+	@RequestMapping(value="/board/personal/updateForm.do")
+	public String updateForm(PersonalVO pvo, Model model) {
+		logger.info("updateForm 호출 성공");
 		logger.info("pb_no=" + pvo.getPb_no());
 		
 		PersonalVO updateData = new PersonalVO();
 		updateData = personalService.personalDetail(pvo);
-		model.addAttribute("updateData", updateData);
-		return "client/board/personal/update.do"; //jsp 리턴값
+		model.addAttribute("update", updateData);
+		return "client/board/personal/updateForm"; //jsp 리턴값
 	}
 	
 	//글 수정하기
 		@RequestMapping(value="/board/personal/personalUpdate.do",method=RequestMethod.POST)
-		public String updateForm(PersonalVO pvo, Model model, HttpServletRequest req)throws IOException {
+		public String personalUpdate(PersonalVO pvo, Model model, HttpServletRequest req)throws IOException {
 		      logger.info("personalUpdate 호출 성공");
 		      
 		      int result = 0;
 		      String url ="";
-		      String file_thumb="";
+		      String pb_img1="";
 		      
 		      if(!pvo.getFile().isEmpty()) {
 		    	  logger.info("======== file="+pvo.getFile().getOriginalFilename());
 		    	  //기존 파일 삭제처리
-		    	  if(!pvo.getFile_thumb().isEmpty()) {
-		    		FileUploadUtil.fileDelete(pvo.getFile_thumb(), "personal", req);
+		    	  if(!pvo.getPb_img1().isEmpty()) {
+		    		FileUploadUtil.fileDelete(pvo.getPb_img1(), "personal", req);
 		    	  }
 		    	  //다시 파일업로드
-		    	  file_thumb = FileUploadUtil.fileUpload(pvo.getFile(), "personal", req, "personal", "personal");
-		    	 pvo.setFile_thumb(file_thumb); 
+		    	 pb_img1 = FileUploadUtil.fileUpload(pvo.getFile(), "personal", req, "personal", "personal");
+		    	 pvo.setPb_img1(pb_img1); 
 		      }else {
 		    	  logger.info("파일첨부가 없음");
-		    	  pvo.setFile_thumb("");
+		    	  pvo.setPb_img1("");
 		      }
 		      result = personalService.personalUpdate(pvo);
 		      
@@ -149,9 +154,9 @@ public class PersonalController {
 		    	  //아래 url은 수정 후 상세 페이지로 이동
 		    	  url="/client/board/personal/personalDetail.do?pb_no="+pvo.getPb_no();
 		      }else {
-		    	  url="/client/board/personal/personalUpdate.do?pb_no="+pvo.getPb_no();
+		    	  url="/client/board/personal/updateForm.do?pb_no="+pvo.getPb_no();
 		      }
-		      return "redirect:" + url;
+		      return "redirect:" + url; //값을 가지고 페이지 이동 
 		}
 		//글 삭제하기
 		@RequestMapping(value="/board/personal/personalDelete.do",method=RequestMethod.POST)
@@ -162,8 +167,8 @@ public class PersonalController {
 			String url ="";
 			
 			//파일이 존재하면
-			if(!pvo.getFile_thumb().isEmpty()) {
-				FileUploadUtil.fileDelete(pvo.getFile_thumb(), "personal", req);
+			if(!pvo.getFile().isEmpty()) {
+				FileUploadUtil.fileDelete(pvo.getPb_img1(), "personal", req);
 			}
 			result = personalService.personalDelete(pvo.getPb_no());
 			
@@ -174,4 +179,14 @@ public class PersonalController {
 			}
 			return "redirect:"+url;
 		}
+		
+	/*	@ResponseBody
+		@RequestMapping(value="board/reply/personalreply/replyList.do")
+		public String replyList(@RequestParam("re_no")int re_no) {
+			logger.info("replyList 호출 성공");
+			
+			int result = 0;
+			result= personalService.replyList(re_no);
+			return result+"";
+		}*/
 }

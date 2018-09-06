@@ -17,4 +17,6 @@ public interface PersonalService {
 	public int personalUpdate(PersonalVO pvo);
 	
 	public int personalDelete(int pb_no);
+	
+	/*public int replyList(int re_no);*/
 }

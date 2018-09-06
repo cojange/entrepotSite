@@ -13,19 +13,19 @@
 		<selectKey resultType="int" order="BEFORE" keyProperty="pb_no">
 			select personal_board_seq.nextval from dual
 		</selectKey>
-		insert into personal_board(pb_no, pb_type, pb_title, pb_pwd,
-		board_no, m_num, pb_content, pb_date,
-		<if test="pb_img1 != ''">pb_img1)</if>
-		VALUES(#{pb_no},#{pb_type},#{pb_title},#{pb_pwd},#{board_no},#{m_num},#{pb_content},#{pb_date},
-		<if test="pb_img1 != ''">#{pb_img1}</if>
-		) 
+		insert into personal_board(pb_no,pb_type,pb_title,pb_content, 
+		pb_pwd,board_no,m_num <if test="pb_img1 != ''">,pb_img1</if>)
+		values(#{pb_no},#{pb_type},#{pb_title},
+		#{pb_content},#{pb_pwd},#{board_no},#{m_num}<if test="pb_img1 != ''">,#{pb_img1}</if>) 
 	</insert>
 	
 	<!-- 상세페이지 -->
-	<select id="detailForm" parameterType="personal" resultType="personal">
-		 select pb_no,pb_type, pb_title, pb_content,
-		 to_char(pb_date, 'YYYY-MM-DD') as pb_date, pb_img1 from personal_board
-		 where pb_no=#;
+	<select id="personalDetail" parameterType="personal" resultType="personal">
+		select a.pb_no pb_no, pb_type, pb_title, pb_content, m_name, 
+        to_char(pb_date, 'YYYY-MM-DD') as pb_date from personal_board a inner join member b
+        on a.m_num = b.m_num
+        where pb_no = #{pb_no}
+        order by pb_no desc
 	</select>
 	
 	<!-- 비밀번호 -->
@@ -35,9 +35,20 @@
 	</select>
 	
 	<update id="personalUpdate" parameterType="personal">
-		update personal_board set pb_type=#{pb_type}, pb_title=#{pb_title},
-		pb_content=#{pb_content},pb_pwd=#{pb_pwd},pb_img1=#{pb_img1},pb_date= sysdate
-		where pb_no=#{pb_no}
+		update personal_board set 
+		pb_title=#{pb_title},
+		pb_content=#{pb_content},
+		<if test="pb_img1 !=''">
+		pb_img1 = #{pb_img1},
+		</if>
+		<if test="pb_pwd !=''">
+		pb_pwd=#{pb_pwd},
+		</if>
+		pb_date =sysdate
+		where pb_no = #{pb_no}
 	</update>
 	
+	<delete id="personalDelete" parameterType="personal">
+		delete from personal_board where pb_no=#{pb_no}
+	</delete>
 </mapper>

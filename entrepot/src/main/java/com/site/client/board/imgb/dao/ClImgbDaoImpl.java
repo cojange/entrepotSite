@@ -32,6 +32,24 @@ public class ClImgbDaoImpl implements ClImgbDao {
 		// TODO Auto-generated method stub
 		return session.selectOne("imgbDetail", cvo);
 	}
+
+	@Override
+	public int pwdConfirm(ClImgbVO cvo) {
+		// TODO Auto-generated method stub
+		return (Integer)session.selectOne("pwdConfirm", cvo);
+	}
+
+	@Override
+	public int clImgbUpdate(ClImgbVO cvo) {
+		// TODO Auto-generated method stub
+		return (Integer)session.update("clImgbUpdate", cvo);
+	}
+
+	@Override
+	public int clImgbDelete(int imgb_no) {
+		// TODO Auto-generated method stub
+		return (Integer)session.delete("clImgbDelete", imgb_no);
+	}
 	
 	
 }

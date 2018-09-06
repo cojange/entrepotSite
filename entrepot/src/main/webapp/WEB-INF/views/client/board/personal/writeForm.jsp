@@ -9,6 +9,9 @@
 		</head>
 		<script type="text/javascript" src="/resources/include/client/js/jquery-1.12.4.min.js"></script>
 		<script type="text/javascript" src="/resources/include/common/js/common.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="/resources/include/client/css/common.css">
+		<link rel="stylesheet" type="text/css" href="/resources/include/dist/css/bootstrap.min.css">
 		<script type="text/javascript">
 			$(function(){
 				//저장버튼 클릭시 처리 이벤트
@@ -38,6 +41,7 @@
 	<div class="contentContainer">
 		<h3>게시판 글 작성</h3>
 		<form id="f_writeForm" enctype="multipart/form-data">
+		<input type="hidden" name="board_no" id="board_no"  value="${param.board_no }"/>
 			<table border="1" style="border-collapse:collapse;">
 				<tr>
 					<td class="ac">글유형</td>

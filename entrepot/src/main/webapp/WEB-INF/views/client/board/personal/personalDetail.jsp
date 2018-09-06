@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 		<head>
@@ -7,6 +9,10 @@
 			<title>Insert title here</title>
 		</head>
 		<script type="text/javascript" src="/resources/include/client/js/jquery-1.12.4.min.js"></script>
+		<script type="text/javascript" src="/resources/include/common/js/common.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="/resources/include/client/css/common.css">
+		<link rel="stylesheet" type="text/css" href="/resources/include/dist/css/bootstrap.min.css">
 		<script type="text/javascript">
 			$(function(){
 				var btnChk = 0;
@@ -14,10 +20,10 @@
 				$("#passwordChk").hide();
 				
 				//첨부파일 이미지 보여주기
-				var file="<c:out value='${detail.file_thumb}'/>";
+				var file="<c:out value='${detail.pb_img1}'/>";
 				if(file!=""){
 					$("#fileImage").attr({
-						src:"/client/board/uploadStorage/${detail.pb_thumb}",
+						src:"/client/board/uploadStorage/${detail.pb_img1}",
 						width:"450px",
 						height:"200px"
 					});
@@ -29,8 +35,13 @@
 				
 				//수정버튼 클릭시 이벤트 처리
 				$("#updateFormBtn").click(function(){
-					$("#passwordChk").show();
-					$("#msg").text("작성시 입력한 비밀번호를 입력해주세요").css("color","#000099");
+					//$("#passwordChk").show();
+					//$("#msg").text("작성시 입력한 비밀번호를 입력해주세요").css("color","#000099");
+					//location.href="/client/board/personal/updateForm.do"
+					goUrl="/client/board/personal/updateForm.do"
+					
+					$("#f_data").attr("action",goUrl);
+					$("#f_data").submit();
 					btnChk = 1;
 				});
 				//삭제버튼클릭시 처리 이벤트
@@ -121,19 +132,23 @@
 		<table border="1" style="border-collapse:collapse;">
 			<tbody>
 				<tr>
-					<td class="ac">게시글 유형</td>
+					<th class="ac">게시글 유형</th>
 					<td>${detail.pb_type }</td>
-					<td class="ac">글제목</td>
-					<td colspan="3">${detail.pb_title }</td>
-					<td class="ac">글내용</td>
+				</tr>
+				<tr>
+					<th class="ac">글제목</th>
+					<td>${detail.pb_title }</td>
+				</tr>
+				<tr>
+					<th class="ac">글내용</th>
 					<td>${detail.pb_content }</td>
-					<td class="ac">파일첨부</td>
+				</tr>
+				<tr>
+					<th class="ac">파일 첨부</th>
 					<td colspan="3"><img id="fileImage"></td>
-					<td class="ac">비밀번호</td>
-					<td>${detail.pb_password }</td>
-				</tr>	
+				</tr>
 			</tbody>
 		</table>
-		<%-- <jsp:include page="reply.jsp" /> --%>
+		<%-- <jsp:include page="replyList.jsp" /> --%>
 	</body>
 </html>

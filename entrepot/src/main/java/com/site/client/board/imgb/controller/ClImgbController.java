@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.site.client.board.imgb.service.ClImgbService;
 import com.site.client.board.imgb.vo.ClImgbVO;
+import com.site.client.board.personal.vo.PersonalVO;
 import com.site.common.file.FileUploadUtil;
 
 
@@ -49,7 +50,8 @@ public class ClImgbController {
 	
 	//글쓰기 구현(첨부파일 제외 할때)
 	@RequestMapping(value="/board/imgb/clImgbInsert.do",method=RequestMethod.POST)
-	public String clImgbInsert(ClImgbVO cvo, Model model, HttpServletRequest req) throws IllegalStateException,IOException {
+	public String clImgbInsert(ClImgbVO cvo, Model model, HttpServletRequest req) 
+			throws IllegalStateException,IOException {
 		logger.info("climgbInsert 호출 성공"); 
 		/*result == 0 을 제와하는 경우*/
 		int result = 0;
@@ -57,9 +59,8 @@ public class ClImgbController {
 		
 		logger.info("getFile = " +cvo.getFile());
 		if(!cvo.getFile().isEmpty()) {
-			String file_thumb = FileUploadUtil.fileUpload(cvo.getFile(), "imgb_img", req, "woo", "imgb_img");
-														//vo안에File,    파일이름		요청	이름		폴더명
-			cvo.setFile_thumb(file_thumb);
+			String imgb_img1 = FileUploadUtil.fileUpload(cvo.getFile(), "imgb_img1", req, "imgb_img1", "imgb_img");
+			cvo.setImgb_img1(imgb_img1);
 		}
 		result  = clImgbService.imgbInsert(cvo);
 		
@@ -86,5 +87,86 @@ public class ClImgbController {
 		
 		return "client/board/imgb/imgbDetail"; //jsp로 이동하는 return 값
 	}
-
+	
+	//비밀번호 확인,param pb_no, param pb_password
+		@RequestMapping(value="/board/imgb/pwdConfirm.do",method=RequestMethod.POST,produces="text/plain;charset=UTF-8")
+		public String pwdConfirm(ClImgbVO cvo) {
+			logger.info("pwdConfirm 호출 성공");
+			String value="";
+			
+			//아래변수에는 입력 성공에 대한 상태값 저장(1 or 0)
+			int result = clImgbService.pwdConfirm(cvo);
+			//return result+"" //정수값으로 반환핡경우 String으로
+			
+			if(result ==1) {
+				value="성공";
+			}else {
+				value="실패";
+			}
+			logger.info("result="+result+"value=" +value);
+			return value;
+		}
+		@RequestMapping(value="/board/imgb/updateForm.do")
+		public String updateForm(ClImgbVO cvo, Model model) {
+			logger.info("updateForm 호출성공");
+			logger.info("imgb_no="+cvo.getImgb_no());
+			
+			ClImgbVO updateData = new ClImgbVO();
+			updateData = clImgbService.imgbDetail(cvo);
+			model.addAttribute("update", updateData);
+			return "client/board/imgb/updateForm";
+		}
+		
+		
+		//수정하기
+		@RequestMapping(value="/board/imgb/clImgbUpdate.do",method=RequestMethod.POST)
+		public String clImgbUpdate(ClImgbVO cvo, Model model,HttpServletRequest req)throws IOException{
+			logger.info("clImgbUpdate 호출 성공");
+			
+			int result =0;
+			String url="";
+			String imgb_img1="";
+			
+			if(!cvo.getFile().isEmpty()) {
+				logger.info("=====file="+cvo.getFile().getOriginalFilename());
+				if(!cvo.getImgb_img1().isEmpty()) {
+					imgb_img1 = FileUploadUtil.fileUpload(cvo.getFile(), "imgb_img1", req, "imgb_img1", "imgb_img1");
+					cvo.setImgb_img1(imgb_img1);
+				}else {
+					logger.info("파일첨부가 없음");
+					cvo.setImgb_img1("");
+				}
+				result =clImgbService.clImgbUpdate(cvo);
+				
+				if(result ==1) {
+					url="/client/board/imgb/imgbDetail.do?imgb_no="+cvo.getImgb_no();
+				}else {
+					url="/client/board/imgb/updateForm.do?imgb_no="+cvo.getImgb_no();
+				}
+				
+			}
+			return "redirect:"+url;
+		}
+		
+		//글 삭제하기
+		@RequestMapping(value="/boarad/imgb/clImgbDelete.do",method=RequestMethod.POST)
+		public String clImgbDelete(ClImgbVO cvo, HttpServletRequest req)throws IOException{
+			logger.info("clImgbDelete 호출성공");
+			
+			int result =0;
+			String url="";
+			
+			//파일이 존재하면
+			if(!cvo.getFile().isEmpty()) {
+				FileUploadUtil.fileDelete(cvo.getImgb_img1(), "imgb_img1", req);
+			}
+			result= clImgbService.clImgbDelete(cvo.getImgb_no());
+			
+			if(result==1) {
+				url="/client/board/imgb/clImgbList.do";
+			}else {
+				url="/client/board/imgb/imgbDetail.do?imgb_no="+cvo.getImgb_no();
+			}
+			return "redirect:"+url;
+		}
 }

@@ -13,6 +13,8 @@ public class ClImgbVO extends CommonVO {
 		private String imgb_pwd		="";	//비밀번호
 		private String imgb_update	="";	//수정일
 		private String imgb_date	="";	//등록일
+		private String m_name		="";	//회원번호
+		private int board_no		=0;
 		
 		private MultipartFile file; //파일을 가져올 수 있는 자르 파일을 만들어서 파일을 가져오도록 하자
 		private String file_thumb;
@@ -21,6 +23,7 @@ public class ClImgbVO extends CommonVO {
 		private String imgb_img3		="";
 		private String imgb_img4		="";
 		private String imgb_img5		="";
+		
 		public int getImgb_no() {
 			return imgb_no;
 		}
@@ -62,6 +65,12 @@ public class ClImgbVO extends CommonVO {
 		}
 		public void setImgb_date(String imgb_date) {
 			this.imgb_date = imgb_date;
+		}
+		public String getM_name() {
+			return m_name;
+		}
+		public void setM_name(String m_name) {
+			this.m_name = m_name;
 		}
 		public MultipartFile getFile() {
 			return file;
@@ -105,6 +114,11 @@ public class ClImgbVO extends CommonVO {
 		public void setImgb_img5(String imgb_img5) {
 			this.imgb_img5 = imgb_img5;
 		}
-		
+		public int getBoard_no() {
+			return board_no;
+		}
+		public void setBoard_no(int board_no) {
+			this.board_no = board_no;
+		}
 		
 }

@@ -15,7 +15,8 @@ public class PersonalVO extends CommonVO  {
 		private String pb_content	="";
 		private String update		="";
 		private String pb_date		="";
-		
+		private String board_no		="";
+		private String m_num		="";
 		
 		private MultipartFile file;
 		private String file_thumb;
@@ -70,6 +71,18 @@ public class PersonalVO extends CommonVO  {
 		public void setPb_date(String pb_date) {
 			this.pb_date = pb_date;
 		}
+		public String getBoard_no() {
+			return board_no;
+		}
+		public void setBoard_no(String board_no) {
+			this.board_no = board_no;
+		}
+		public String getM_num() {
+			return m_num;
+		}
+		public void setM_num(String m_num) {
+			this.m_num = m_num;
+		}
 		public MultipartFile getFile() {
 			return file;
 		}
@@ -100,5 +113,6 @@ public class PersonalVO extends CommonVO  {
 		public void setPb_img3(String pb_img3) {
 			this.pb_img3 = pb_img3;
 		}
+		
 		
 }

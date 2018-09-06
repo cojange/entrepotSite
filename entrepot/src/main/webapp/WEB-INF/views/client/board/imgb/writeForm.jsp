@@ -12,19 +12,18 @@
 			$(function(){
 				//저장버튼 클릭시 처리 이벤트
 				$("#imgbBtn").click(function(){
-					//입력값 체크
-					if(!chkData($("#imgb_name"),"이름을"))return;
-					else if(!chkData($("#imgb_title"),"제목으"))return;
-					else if(!chkData($("#file_thumb"),"파일을"))return;
-					else if(!chkData($("#imgb_pwd"),"비밀번호를"))return;
+					//입력값체크
+					if(!chkData($("#imgb_title"),"제목을"))return;
+					else if(!chkData($("#imgb_content"),"내용을"))return;
 					else{
 						$("#f_writeForm").attr({
 							"method":"post",
-							"action":"/client/board/imgb/imgbInsert.do"
+							"action":"/client/board/imgb/clImgbInsert.do"
 						});
 						$("#f_writeForm").submit();
 					}
 				});
+				
 				
 				//목록버튼 처리 이벤트
 				$("#imgbList").click(function(){
@@ -38,10 +37,6 @@
 			<form id="f_writeForm" method="post" enctype="multipart/form-data">
 				<table border="1" style="border-collapse:collapse;">
 					<tr>
-						<td class="ac">작성자</td>
-						<td><input type="text" name="imgb_name" id="imgb_name" /></td>
-					</tr>
-					<tr>
 						<td class="ac">제목</td>
 						<td><input type="text" name="imgb_title" id="imgb_title" /></td>
 					</tr>
@@ -51,7 +46,11 @@
 					</tr>
 					<tr>
 						<td class="ac">파일첨부</td>
-						<td><input type="file" name="file_thumb" id="file_thumb" /></td>
+						<td><input type="file" name="file" id="file" /></td>
+					</tr>
+					<tr>
+						<td class="ac">작성자</td>
+						<td>${login.m_name}</td>
 					</tr>
 					<tr>
 						<td class="ac">비밀번호</td>

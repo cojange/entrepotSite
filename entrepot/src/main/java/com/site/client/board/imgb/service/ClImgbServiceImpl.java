@@ -44,6 +44,33 @@ public class ClImgbServiceImpl implements ClImgbService{
 		
 		return clidetail;
 	}
+	@Override
+	public int pwdConfirm(ClImgbVO cvo) {
+		int pwd = 0;
+		pwd=clImgbDao.pwdConfirm(cvo);
+		return pwd;
+	}
+	@Override
+	public int clImgbUpdate(ClImgbVO cvo) {
+		int result =0;
+		try {
+			result =clImgbDao.clImgbUpdate(cvo);
+		}catch(Exception e) {
+			System.out.println("수정하는데 오류가 발생했습니다. 괸리자에게문의하세요");
+			e.printStackTrace();
+		}
+		return result;
+	}
+	@Override
+	public int clImgbDelete(int imgb_no) {
+		int result = 0;
+		try {
+			result = clImgbDao.clImgbDelete(imgb_no);
+		}catch(Exception e) {
+			System.out.println("삭제하는데 오류가 있습니다 관리자에게 문의 하세요");
+		}
+		return result;
+	}
 	
 	
 }
