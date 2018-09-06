@@ -137,10 +137,10 @@ $(function() {
 		else if(!inputVerify(1,"#userPwCheck",".error:eq(2)","","member"))return;
 		else if(!passwordCheck())return;
 		//업체정보체크
-		else if(!formCheck($("#com_no"),$(".error:eq(3)"),"사업자등록번호를"))return;
+		else if(!formCheck($("#com_no"),$(".error:eq(3)"),"사업자등록번호가 입력되어있지 않습니다"))return;
 		else if(!inputVerify(8,"#com_no",".error:eq(3)","","member"))return;
 		else if(!formCheck($("#m_name"),$(".error:eq(4)"),"단체이름을"))return;
-		else if(!inputVerify(9,"#m_name",".error:eq(4)","","member"))return;
+		else if(!inputVerify(12,"#m_name",".error:eq(4)","","member"))return;
 		else if(!formCheck($("#leader_name"),$(".error:eq(5)"),"대표자명을"))return;
 		else if(!inputVerify(9,"#leader_name",".error:eq(5)","","member"))return;
 		else if(!formCheck($("#leader_phone"),$(".error:eq(6)"),"대표자 전화번호를"))return;
@@ -175,17 +175,21 @@ $(function() {
 		else{
 				//****************************이메일 조합
 				if($(direct_c).is(":checked")==true){// 직접입력 체크되어있을시
-					$("#char_email").val($("#emailName_c").val()+"@"+$("#emailDirect_c").val());		
+					$("#char_email").val($("#emailName_c").val()+"@"+$("#emailDirect_c").val());
+					if(!inputVerify(10,"#char_email",".error:eq(12)","","member"))return;
 					console.log("체크입력C"+$("#char_email").val());		
 				}else if($(direct_c).is(":checked")==false){// 직접입력 체크안되있을때
-					$("#char_email").val($("#emailName_c").val()+"@"+$("#emailDomain_c").val());				
+					$("#char_email").val($("#emailName_c").val()+"@"+$("#emailDomain_c").val());
+					if(!inputVerify(10,"#char_email",".error:eq(12)","","member"))return;
 					console.log("직접입력C"+$("#char_email").val());				
 				}
 				if($(direct_c).is(":checked")==true){// 직접입력 체크되어있을시
 					$("#acc_email").val($("#emailName_acc").val()+"@"+$("#emailDirect_acc").val());
+					if(!inputVerify(10,"#acc_email",".error:eq(16)","","member"))return;
 					console.log("체크입력ACC"+$("#acc_email").val());		
 				}else if($(direct_c).is(":checked")==false){// 직접입력 체크안되있을때
 					$("#acc_email").val($("#emailName_acc").val()+"@"+$("#emailDomain_acc").val());
+					if(!inputVerify(10,"#acc_email",".error:eq(16)","","member"))return;
 					console.log("직접입력ACC"+$("#acc_email").val());				
 				}				
 				//*************************주민번호 앞자리를 토대로 성별

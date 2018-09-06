@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.site.client.member.login.controller.ClLoginController;
 import com.site.client.member.myPage.dao.ClMyPageDao;
@@ -49,6 +50,17 @@ public class ClMyPageServiceImpl implements ClMyPageService {
 	public List<ClOrderListVO> orderList(ClOrderListVO orderVo) {
 		List<ClOrderListVO> orderlist = clMyPageDao.orderList(orderVo);
 		return orderlist;
+	}
+
+	@Transactional
+	@Override
+	public int listDelete(ClMyPageVO myPageVo) {
+		logger.info("찜,장바구니삭제 서비스  호출 성공");
+		logger.info("mg_num"+myPageVo.getMg_num());
+		logger.info("레코드"+myPageVo.getRecord_num());
+		int result = clMyPageDao.listDelete(myPageVo);
+		logger.info("dao"+result);
+		return result;
 	}
 
 

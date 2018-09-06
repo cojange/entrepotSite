@@ -2,6 +2,7 @@ package com.site.admin.ctrl.adPartner.service;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +12,7 @@ import com.site.admin.ctrl.adPartner.vo.MagazinePartnerVO;
 
 @Service
 public class AdPartnerServiceImpl implements AdPartnerService {
+	Logger logger = Logger.getLogger(AdPartnerServiceImpl.class);
 	
 	@Autowired
 	private AdPartnerDao adPartnerDao; 
@@ -55,5 +57,26 @@ public class AdPartnerServiceImpl implements AdPartnerService {
 			result = 0;
 		}
 		return result;
+	}
+	
+	//잡지거래처 수정
+	@Override
+	public int magUpdate(MagazinePartnerVO mpvo) {
+		logger.info("checked : " + mpvo.getChecked());
+		
+		int newDao = 0;
+		int oldDao = 0;
+		try {
+			newDao = adPartnerDao.magUpdate(mpvo);
+			if(mpvo.getChecked() != null)
+				oldDao = adPartnerDao.magPartnerData(mpvo);
+				oldDao = adPartnerDao.closedMagInsert(mpvo);
+		}catch(Exception e) {
+			e.printStackTrace();
+			newDao = 0;
+			oldDao = 0;
+		}
+		
+		return newDao + oldDao;
 	}
 }

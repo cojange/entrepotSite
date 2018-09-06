@@ -15,9 +15,15 @@ public class PlusVO  {
 	
 	//추천.비추천 테이블(recommendation)
 	private String cm_num; 				//추천번호
-	private String cm_choice;			//추/비추
+	private int cm_choice;			//추천 개수
+	private int cm_choice2;			//비추천 개수
 	
-	
+	public int getCm_choice2() {
+		return cm_choice2;
+	}
+	public void setCm_choice2(int cm_choice2) {
+		this.cm_choice2 = cm_choice2;
+	}
 	public String getPl_num() {
 		return pl_num;
 	}
@@ -84,10 +90,10 @@ public class PlusVO  {
 	public void setCm_num(String cm_num) {
 		this.cm_num = cm_num;
 	}
-	public String getCm_choice() {
+	public int getCm_choice() {
 		return cm_choice;
 	}
-	public void setCm_choice(String cm_choice) {
+	public void setCm_choice(int cm_choice) {
 		this.cm_choice = cm_choice;
 	}
 	

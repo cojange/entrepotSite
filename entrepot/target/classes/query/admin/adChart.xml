@@ -8,7 +8,13 @@
 		to_char(sell_date,'yyyy') = to_char(sysdate,'yyyy')
 		group by to_char(sell_date,'mm')
 	</select>
-	
+	<select id="getOdSellRCChart" resultType="adrcvo"> 
+	/*일주일 물량 유동 차트*/
+		select to_char(sum( sell)) sell, sum(refund) refund, sum(chg) chg, to_char(sum(sell)+sum(refund)+sum(chg)) od, to_char(order_date,'yyyy-mm-dd') as "date" from 
+		(select decode(substr(order_ok,0,2),'주문',order_ea,0) sell, decode(substr(order_ok,0,2),'교환',order_ea,0) chg, decode(substr(order_ok,0,2),'환불',order_ea,0) refund
+		, order_date from order_list)
+		group by to_char(order_date,'yyyy-mm-dd')
+	</select>
 	
 	
 </mapper>

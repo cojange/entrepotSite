@@ -25,16 +25,117 @@
 <!-- [endif] -->
 
 <!--   <link href="/resources/include/client/css/ditail-1-col-portfolio.css" rel="stylesheet"> -->
+<style type="text/css">
+			#paging{text-align:center;}
+			a.paging-item,a.paging-side{margin:0 .25em;}
+			a.paging-item.selected{font-weight:bold;}
+</style>
  <script type="text/javascript" src="/resources/include/client/js/jquery-1.12.4.min.js"></script>   
+<script type="text/javascript" src="/resources/include/client/js/jquery.paging.js"></script>
 <script type="text/javascript">
 	$(function(){
+		var listkey= $('#listkey').val();
+   		var key1 =$('#key1').val();
+   		var key2 =$('#key2').val();
+   		var key3 =$('#key3').val();
+   		var home =$('#home').val();
+   		
+   	
+   		$(".cartbtn").click(function(){
+   			var id= $('#id').val();
+   			
+			if (id == null || id=="") {
+
+				alert('로그인이 안되어 있습니다. 로그인 후 다시 시도해주세요');
+			}else{
+				var message = confirm("장바구니에 추가하시겠습니까?");
+		         if(message == true){   
+		        		var insert = "/client/list/card.do";	        		
+						$.ajax({
+							url:insert,
+							type: "post",
+							headers : {
+								"content-type":"application/json",
+								"x-HTTP-Method-Dverride":"POST"
+							},
+							dataType:"text",
+							data:JSON.stringify({
+								record_num:$("#cart").val(),
+								mg_num:$(this).parents("tr").attr("data-num"),
+								ea:1	
+							}),
+							error: function() {
+								alert("시스템 오류입니다. 잠시후 다시 시도해주세요")
+							},
+							success : function(resultData) {
+								if(resultData == "SUCCESS"){
+									alert("장바구니에 추가 됬습니다.");
+							
+									
+								}else{
+									alert(resultData);
+								}
+							}
+						});   
+		         }else{
+		            return false;
+		         }
+
+			}
+   		});
+   		$(".jtbtn").click(function(){
+			
+   			
+   			var id= $('#id').val();
+			if (id == null || id=="") {
+
+				alert('로그인이 안되어 있습니다. 로그인 후 다시 시도해주세요');
+			}else{
+				var message = confirm("찜에 추가하시겠습니까?");
+		         if(message == true){   
+
+		 			var insert = "/client/list/card.do";
+		 			
+		 			$.ajax({
+		 				url:insert,
+		 				type: "post",
+		 				headers : {
+		 					"content-type":"application/json",
+		 					"x-HTTP-Method-Dverride":"POST"
+		 				},
+		 				dataType:"text",
+		 				data:JSON.stringify({
+		 					record_num:$("#whish").val(),
+		 					mg_num:$(this).parents("tr").attr("data-num"),
+		 					ea:1	
+		 				}),
+		 				error: function() {
+		 					alert("시스템 오류입니다. 잠시후 다시 시도해주세요")
+		 				},
+		 				success : function(resultData) {
+		 					if(resultData == "SUCCESS"){
+		 						alert("찜에 추가 됬습니다.");
+		 						
+		 					}else{
+		 						alert(resultData);
+		 					}
+		 				}
+		 			}); 
+		         }else{
+		            return false;
+		         }
+				
+			}
+			
+   		});
+   		
 		$(".goDetail").click(function() {
-            var mg_num = $(this).parents("tr").attr("data-num");  
-        
-            var listkey= $('#listkey').val();
-       
+            
+			var mg_num = $(this).parents("tr").attr("data-num");  
+        	
+            
        		 $("#mg_num").val(mg_num);
-       		 $("#liskkey").val(listkey);
+       		 $("#listkey").val(listkey);
             //상세 페이지로 이동하기위해  form추가(id:detailForm)
             $("#detailForm").attr({
                "method":"get",
@@ -42,8 +143,20 @@
             });
              $("#detailForm").submit();
          });
+		$('#paging').paging({
+			current:$('#current').val(),max:$('#max').val(),
+			onclick:function(e,page){
+				 if(listkey == 1){
+					location.href="/client/list/magazinelist.do?key1="+key1+"&listkey="+listkey+"&home="+home+"&page="+page;
+				}else if(listkey == 2){
+					location.href="/client/list/magazinelist.do?key1="+key1+"&key2="+key2+"&listkey="+listkey+"&home="+home+"&page="+page;
+				}else{
+					location.href="/client/list/magazinelist.do?key1="+key1+"&key2="+key2+"&key3="+key3+"&listkey="+listkey+"&home="+home+"&page="+page;
+				}
+			}
+		});
 	});
-	
+
 </script>
 
 
@@ -53,14 +166,34 @@
 <body>
 <div>
 	<form id="detailForm" name="detailForm">
+		<input type="hidden" id="key1" name="key1" value="${mvo.key1}" />
+		<input type="hidden" id="key2" name="key2" value="${mvo.key2}" />
+		<input type="hidden" id="key3" name="key3" value="${mvo.key3}" />
+		<input type="hidden" id="home" name="home" value="${mvo.home }"/>
 		<input type="hidden" id="listkey" name="listkey" value="${mvo.listkey}" />
 		<input type="hidden" id="mg_num" name="mg_num"  />
+		<input type="hidden" id="current" name="current" value="${mvo.page}" />
+		<input type="hidden" id="max" name="max" value="${mvo.totalpage}"/>
+		<input type="hidden" id="id" name="id" value="${login.m_id}" />
+		<input type="hidden" id="cart" name="cart" value="${login.cart}"/>
+		<input type="hidden" id="whish" name="whish" value="${login.whish}"/>
+		<input type="hidden" id="ea" name="ea" value=1/>
+		
 	<div>
 		<div class="container-fluid">
-		<h1>${mvo.home}
-			<small>>> ${mvo.key1}/${mvo.key2}/${mvo.key3}</small>
-		</h1>
-		
+		<c:choose>
+			<c:when test="${not empty mvo.home}">
+			<h1>${mvo.home}
+				<small>>> ${mvo.key1}/${mvo.key2}/${mvo.key3}</small>
+			</h1>
+			</c:when>
+			<c:when test="${mvo.listkey eq 4 }">
+				<h1>검색 결과 입니다.</h1>
+			</c:when>
+			<c:when test= "${mvo.listkey eq 5}">
+				<h1>부록  판매 베스트 !</h1>
+			</c:when>
+		</c:choose> 
 		<table width="100%" border="0" cellpadding="0" cellspacing="10px"
 			align="center">
 			<c:choose>
@@ -84,7 +217,7 @@
 									 <!-- 작은이미지만 보일 경우 
 			      <img src="../../data_book/2092-9625/s_2092-9625_2018_9_0_Y_20180817021056.jpg" width="200" height="270" border=0 /> -->
 									<!-- 먼저 작은이미지를 보이고, 없으면 큰 이미지를 보이게 할 경우 --> <img
-									src="${list.pl_path}" width="200" height="270" border="0">
+									src="/uploadStorage/product/thum/${list.pl_path}" width="200" height="270" border="0">
 							
 							</td>
 							<td width="5"></td>
@@ -107,8 +240,7 @@
 										</tr>
 
 										<tr height="40">
-											<td colspan="2" width="542">"${list.com_name}" &nbsp;<font
-												color="#CDCDCD">|</font>&nbsp; 국가 <font color="#CDCDCD">|</font>&nbsp;${list.mg_period}
+											<td colspan="2" width="542">"${list.com_name}" &nbsp;&nbsp;${list.mg_period}
 												&nbsp;<font color="#CDCDCD">|</font>&nbsp;<br> <br>정기구독가
 												<font color="#3399CC">[12개월]</font>&nbsp;&nbsp; <font
 												color="#6B6B6B"><strike> ${list.pd_sale } 원</strike>
@@ -156,7 +288,7 @@
 												<table width="60" cellspacing="0"
 													style="border-collapse: collapse;">
 													<tbody>
-														<tr valign="top">
+														<tr valign="top" data-num="${list.mg_num}">
 															<td width="80"
 																style="border-width: 1; border-color: black; border-style: none;">
 																<!-- <td width="80" style="border-width:1; border-color:black; border-style:none;"> -->
@@ -167,9 +299,9 @@
 							 --> <!--<A HREF="sub05_01_writeOk.php?p_idx=13649"><img src="../../images/sub/subscrib_confirm.gif" border=0 alt="구독신청"></A>-->
 
 
-																<input type="button" value="장바구니" id="btnjang" /> <br>
-																<input type="button" value="찜 버튼" id="btnjim" /> <input
-																type="button" value="구매하기" id="btnsale" /> <!-- <A HREF="javascript:go_zzim('13649');"><img src="../../images/btn_mybook.gif" border=0></A> -->
+																<a class="cartbtn" href="#"><img src="/resources/images/produt/subscrib_cart.gif" ></a> <br>
+																<a class="jtbtn" href="#"><img src="/resources/images/produt/subscrib_confirm3.jpg" ></a> 
+																<a class="salebtn" href="#"><img src="/resources/images/produt/subscrib_confirm.gif" ></a> <!-- <A HREF="javascript:go_zzim('13649');"><img src="../../images/btn_mybook.gif" border=0></A> -->
 
 															</td>
 														</tr>
@@ -188,12 +320,21 @@
 						</tr>
 					</c:forEach>
 				</c:when>
+				<c:otherwise>
+					<tr>
+						<td>
+							<h1>목록이 없습니다</h1>
+						</td>
+					</tr>
+				</c:otherwise>
 			</c:choose>
 		</table>
-		
+		<div id="paging">
+		</div>
 		</div>
 	</div>
 	</form>
+
 </div>	
 </body>
 </html>

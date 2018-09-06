@@ -23,7 +23,7 @@
   }
 }
 
-#clock{
+#clock, .adf-cl{
   margin-top:4px;
   margin-left:10px;
   padding-top:4px;
@@ -48,4 +48,11 @@ font: FontAwesome !important;
 .red{
 	color:red;
 	size:15px;
+}
+.rimagePreview{
+	width:150px;
+	height:195px;;
+}
+.hidden{
+	display: none;
 }

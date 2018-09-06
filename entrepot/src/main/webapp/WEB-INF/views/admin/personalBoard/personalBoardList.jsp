@@ -22,6 +22,10 @@
                       <th>작성자 이름</th>
                       <th>등록일</th>
                       <th>수정일</th>
+                      <th style="display: none;">내용</th>
+                      <th style="display: none;">사진1</th>
+                      <th style="display: none;">사진2</th>
+                      <th style="display: none;">사진3</th>
                     </tr>
                   </thead>
                   <tfoot>
@@ -34,6 +38,10 @@
                       <th>작성자 이름</th>
                       <th>등록일</th>
                       <th>수정일</th>
+                      <th style="display: none;">내용</th>
+                      <th style="display: none;">사진1</th>
+                      <th style="display: none;">사진2</th>
+                      <th style="display: none;">사진3</th>
                     </tr>
                   </tfoot>
                   <tbody>
@@ -49,6 +57,10 @@
 									<td>${PersonalBo.m_name}</td>
 							 		<td>${PersonalBo.pb_date}</td>
 									<td>${PersonalBo.pb_date}</td>
+									<td style="display: none;">${PersonalBo.pb_content}</td>
+									<td style="display: none;">${PersonalBo.pb_img1}</td>
+									<td style="display: none;">${PersonalBo.pb_img2}</td>
+									<td style="display: none;">${PersonalBo.pb_img3}</td>
 								</tr>
 							</c:forEach>
 						</c:when> 

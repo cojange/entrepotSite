@@ -168,9 +168,11 @@ $(function() {
 		else{
 				if($(direct).is(":checked")==true){// 직접입력 체크되어있을시
 					$("#m_email").val($("#emailName").val()+"@"+$("#emailDirect").val());
+					if(!inputVerify(10,"#m_email",".error:eq(9)","","member"))return;
 					console.log("체크입력"+$("#m_email").val());
 				}else if($(direct).is(":checked")==false){// 직접입력 체크안되있을때
 					$("#m_email").val($("#emailName").val()+"@"+$("#emailDomain").val());
+					if(!inputVerify(10,"#m_email",".error:eq(9)","","member"))return;
 					console.log("직접입력"+$("#m_email").val());
 				}
 				
@@ -184,7 +186,7 @@ $(function() {
 					"method":"post",
 					"action":"/client/member/mForm.do"
 				});
-			$("#memberForm").submit();
+				$("#memberForm").submit();
 		}
 	});
 	//이메일 직접입력 체크시
