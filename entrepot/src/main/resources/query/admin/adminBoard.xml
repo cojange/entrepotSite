@@ -2,14 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.site.admin.adBoard.adminBoard.dao.AdminBoardDao">
-	<select id="adminBoardList" parameterType="adminBo" resultType="adminBo">
+	<select id="adminBoardList" parameterType="advo" resultType="advo">
 		/*공지사항, 이벤트 게시판 리스트*/
-		select ab_no, ab_pre, ab_type, ab_title, to_char(ab_date,'yy-mm-dd') ab_date,
-		to_char(ab_update,'yy-mm-dd') ab_update, ad_id
+		select ab_no, ab_pre, ab_type, ab_title, to_char(ab_date,'yy-mm-dd') ab_date, ab_content,
+		to_char(ab_update,'yy-mm-dd') ab_update, ad_id, file_thumb, ab_file
 		from admin_board
 		order by decode(ab_pre, '상단고정', 1, '팝업', 2, 3), ab_date desc, ab_update desc
 	</select>
-	<select id="couponList" parameterType="coupon" resultType="coupon">
+	
+	<select id="couponList" parameterType="cpvo" resultType="cpvo">
 		/*쿠폰 리스트*/
 		select coupon_no, coupon_type, coupon_discount,
 		to_char(coupon_date,'yy-mm-dd') coupon_date,
@@ -18,7 +19,7 @@
 		order by coupon_use desc, coupon_date desc, coupon_update desc
 	</select>
 	
-	<insert id="couponInsert" parameterType="coupon">
+	<insert id="couponInsert" parameterType="cpvo">
 		/*쿠폰 등록*/
 		<selectKey keyProperty="coupon_no" resultType="String" order="BEFORE">
 			select CONCAT('cp_event_',coupon_seq.nextval) from dual
@@ -30,11 +31,24 @@
 		<!-- 체크박스 체크시에 비활성화 값 입력 -->
 	</insert>
 	
-	<update id="couponUpdate" parameterType="coupon">
+	<update id="couponUpdate" parameterType="cpvo">
 		/*쿠폰 수정*/
 		UPDATE coupon
 		SET coupon_discount = #{coupon_discount}, coupon_memo = #{coupon_memo}, coupon_update = sysdate,
 		coupon_use = #{coupon_use}
 		WHERE coupon_no = #{coupon_no}
 	</update>
+	
+	<insert id="adboardInsert" parameterType="advo">
+		/*게시글 등록*/
+		<selectKey keyProperty="ab_no" resultType="int" order="BEFORE">
+			select adboard_seq.nextval from dual
+		</selectKey>
+		insert into admin_board(ab_no, ab_type, ab_title, ab_content,
+		<if test="file_thumb != null and file_thumb != ''">file_thumb,</if>
+		<if test="ab_file != null and ab_file != ''">ab_file,</if> ad_id, ab_pre)
+		values(#{ab_no}, #{ab_type}, #{ab_title}, #{ab_content},
+		<if test="file_thumb != null and file_thumb != ''">#{file_thumb},</if>
+		<if test="ab_file != null and ab_file != ''">#{ab_file},</if> #{ad_id}, #{ab_pre})
+	</insert>
 </mapper>

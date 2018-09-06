@@ -44,6 +44,20 @@
                       <th>거래종료일</th>
                       <th>등록일</th>
                       <th>수정일</th>
+                      <th style="display: none;">사업자번호</th>
+                      <th style="display: none;">대표이름</th>
+                      <th style="display: none;">대표번호</th>
+                      <th style="display: none;">거래처주소</th>
+                      <th style="display: none;">담당자fax</th>
+                      <th style="display: none;">회계부이름</th>
+                      <th style="display: none;">회계부번호</th>
+                      <th style="display: none;">회계부이메일</th>
+                      <th style="display: none;">회계부fax</th>
+                      <th style="display: none;">입금은행</th>
+                      <th style="display: none;">예금주</th>
+                      <th style="display: none;">계좌번호</th>
+                      <th style="display: none;">환불주소우편번호</th>
+                      <th style="display: none;">환불주소</th>
                     </tr>
                   </thead>
                   <tfoot>
@@ -56,6 +70,20 @@
                       <th>거래종료일</th>
                       <th>등록일</th>
                       <th>수정일</th>
+                      <th style="display: none;">사업자번호</th>
+                      <th style="display: none;">대표이름</th>
+                      <th style="display: none;">대표번호</th>
+                      <th style="display: none;">거래처주소</th>
+                      <th style="display: none;">담당자fax</th>
+                      <th style="display: none;">회계부이름</th>
+                      <th style="display: none;">회계부번호</th>
+                      <th style="display: none;">회계부이메일</th>
+                      <th style="display: none;">회계부fax</th>
+                      <th style="display: none;">입금은행</th>
+                      <th style="display: none;">예금주</th>
+                      <th style="display: none;">계좌번호</th>
+                      <th style="display: none;">환불주소우편번호</th>
+                      <th style="display: none;">환불주소</th>
                     </tr>
                   </tfoot>
                   <tbody>
@@ -71,6 +99,20 @@
 									<td>${magPartner.enddate}</td>
 									<td>${magPartner.mcom_date}</td>
 									<td>${magPartner.mcom_update}</td>
+									<td style="display: none;">${magPartner.com_no}</td>
+			                        <td style="display: none;">${magPartner.mcom_name}</td>
+			                        <td style="display: none;">${magPartner.mcom_tel}</td>
+			                        <td style="display: none;">${magPartner.mcom_add}</td>
+			                        <td style="display: none;">${magPartner.char_fax}</td>
+			                        <td style="display: none;">${magPartner.acc_manager}</td>
+			                        <td style="display: none;">${magPartner.acc_tel}</td>
+			                        <td style="display: none;">${magPartner.acc_email}</td>
+			                        <td style="display: none;">${magPartner.acc_fax}</td>
+			                        <td style="display: none;">${magPartner.bacc_bank}</td>
+			                        <td style="display: none;">${magPartner.bacc_name}</td>
+			                        <td style="display: none;">${magPartner.bacc_accno}</td>
+			                        <td style="display: none;">${magPartner.rzip_code}</td>
+			                        <td style="display: none;">${magPartner.raddress}</td>
 								</tr>
 							</c:forEach>
 						</c:when>
@@ -86,6 +128,9 @@
 	                 <!-- Button trigger modal -->
 					 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#magazineModal">
 					  등록
+					 </button>
+					 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#magazineDetailModal" id="mgDetailBtn">
+					  상세보기
 					 </button>
 				</div>
               </div>
@@ -119,6 +164,10 @@
                       <th>거래종료일</th>
                       <th>등록일</th>
                       <th>수정일</th>
+                      <th style="display: none;">사업자번호</th>
+	                  <th style="display: none;">회사연락처</th>
+	                  <th style="display: none;">회사fax</th>
+	                  <th style="display: none;">회사email</th>
                     </tr>
                   </thead>
                   <tfoot>
@@ -133,6 +182,10 @@
                       <th>거래종료일</th>
                       <th>등록일</th>
                       <th>수정일</th>
+                      <th style="display: none;">사업자번호</th>
+	                  <th style="display: none;">회사연락처</th>
+	                  <th style="display: none;">회사fax</th>
+	                  <th style="display: none;">회사email</th>
                     </tr>
                   </tfoot>
                   <tbody>
@@ -149,7 +202,11 @@
 									<td>${couPartner.startdate}</td>
 									<td>${couPartner.enddate}</td>
 									<td>${couPartner.couacc_date}</td>
-									<td>${couPartner.couacc_update}</td>									
+									<td>${couPartner.couacc_update}</td>	
+									<td style="display: none;">${couPartner.com_no}</td>
+			                        <td style="display: none;">${couPartner.couacc_tel}</td>
+			                        <td style="display: none;">${couPartner.couacc_fax}</td>
+			                        <td style="display: none;">${couPartner.couacc_email}</td>								
 								</tr>
 							</c:forEach>
 						</c:when>
@@ -165,6 +222,9 @@
 	                <!-- Button trigger modal -->
 					<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#courierModal">
 					  등록
+					</button>
+					<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#courierDetailModal" id="couDetailBtn">
+					  상세보기
 					</button>
 				</div>
               </div>
@@ -355,8 +415,8 @@
 	             </form>
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal" id="magDel">닫기</button>
 	        <button type="button" class="btn btn-primary" id="magInsertBtn">등록</button>
+	        <button type="button" class="btn btn-default" data-dismiss="modal" id="magDel">닫기</button>
 	      </div>
 	    </div>
 	  </div>
@@ -484,8 +544,46 @@
 	          </form>
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal" id="couDel">닫기</button>
-	        <button type="button" class="btn btn-primary" id="couInsertForm">등록</button>
+	 	    <button type="button" class="btn btn-primary" id="couInsertForm">등록</button>
+	        <button type="button" class="btn btn-default" data-dismiss="modal" id="couDel">닫기</button>    
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+<!-- magUpdate Modal --------------------------------------------------------->
+	<div class="modal fade bs-example-modal-lg" id="magazineDetailModal" tabindex="-1" role="dialog" aria-labelledby="magDetailModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-lg">
+	    <div class="modal-content">
+	      <div class="modal-header">	       	
+	        <h4 class="modal-title" id="magDetailModalLabel">잡지 거래처 정보 및 수정</h4>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	      </div>
+	      <div class="modal-body" id="mgContent">
+	    		
+	      </div>
+	      <div class="modal-footer">
+	     	<button type="button" class="btn btn-primary mgUpdateForm magazineUpBtn">수정</button>
+	        <button type="button" class="btn btn-default" data-dismiss="modal" id="couDel">닫기</button>	        
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	</body>
+</html>
+<!-- couUpdate Modal --------------------------------------------------------->
+	<div class="modal fade bs-example-modal-lg" id="courierDetailModal" tabindex="-1" role="dialog" aria-labelledby="couDetailModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-lg">
+	    <div class="modal-content">
+	      <div class="modal-header">	       	
+	        <h4 class="modal-title" id="couDetailModalLabel">택배 거래처 정보</h4>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	      </div>
+	      <div class="modal-body" id="couContent">
+	    		
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal" id="couDel">닫기</button>	        
 	      </div>
 	    </div>
 	  </div>

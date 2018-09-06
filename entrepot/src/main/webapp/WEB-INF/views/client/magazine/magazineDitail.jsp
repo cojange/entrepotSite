@@ -42,39 +42,47 @@
  		
  		$(".cartbtn").click(function(){
    			var id= $('#id').val();
+   			var can=$("#su").val();
+   			
 			if (id == null || id=="") {
 				alert('로그인이 안되어 있습니다. 로그인 후 다시 시도해주세요');
 			}else{
-					
-				var insert = "/client/list/card.do";
-	
-				$.ajax({
-					url:insert,
-					type: "post",
-					headers : {
-						"content-type":"application/json",
-						"x-HTTP-Method-Dverride":"POST"
-					},
-					dataType:"text",
-					data:JSON.stringify({
-						record_num:$("#cart").val(),
-						mg_num:$("#mg_num").val(),
-						ea:	$("#su").val()
-					}),
-					error: function() {
-						alert("시스템 오류입니다. 잠시후 다시 시도해주세요")
-					},
-					success : function(resultData) {
-						if(resultData == "SUCCESS"){
-							alert("장바구니에 추가 됬습니다.");
-							
-						}else{
-							alert(resultData);
-						}
-					}
-				}); 
+				var message = confirm("장바구니에 추가하시겠습니까?");
+		         if(message == true){   
+		        	 var insert = "/client/list/card.do";
+		 			
+		 			$.ajax({
+		 				url:insert,
+		 				type: "post",
+		 				headers : {
+		 					"content-type":"application/json",
+		 					"x-HTTP-Method-Dverride":"POST"
+		 				},
+		 				dataType:"text",
+		 				data:JSON.stringify({
+		 					record_num:$("#cart").val(),
+		 					mg_num:$("#mg_num").val(),
+		 					ea:	$("#su").val()
+		 				}),
+		 				error: function() {
+		 					alert("시스템 오류입니다. 잠시후 다시 시도해주세요")
+		 				},
+		 				success : function(resultData) {
+		 					if(resultData == "SUCCESS"){
+		 						alert("장바구니에 추가 됬습니다.");
+		 						
+		 					}else{
+		 						alert(resultData);
+		 					}
+		 				}
+		 			});   
+		         }else{
+		            return false;
+		         }	
+				
 				
 			}
+			
    		});
  		$(".jtbtn").click(function(){
    			var id= $('#id').val();
@@ -83,49 +91,60 @@
 				alert('로그인이 안되어 있습니다. 로그인 후 다시 시도해주세요');
 				conesol.log($("#mg_num").val());
 			}else{
-				var insert = "/client/list/card.do";
-				
-				$.ajax({
-					url:insert,
-					type: "post",
-					headers : {
-						"content-type":"application/json",
-						"x-HTTP-Method-Dverride":"POST"
-					},
-					dataType:"text",
-					data:JSON.stringify({
-						record_num:$("#whish").val(),
-						mg_num:$("#mg_num").val(),
-						ea:$("#su").val()	
-					}),
-					error: function() {
-						alert("시스템 오류입니다. 잠시후 다시 시도해주세요")
-					},
-					success : function(resultData) {
-						if(resultData == "SUCCESS"){
-							alert("찜에 추가 됬습니다.");
-							
-						}else{
-							alert(resultData);
-						}
-					}
-				}); 
+				var message = confirm("찜에 추가하시겠습니까?");
+		         if(message == true){   
+		        	 var insert = "/client/list/card.do";
+		     		
+		     		$.ajax({
+		     			url:insert,
+		     			type: "post",
+		     			headers : {
+		     				"content-type":"application/json",
+		     				"x-HTTP-Method-Dverride":"POST"
+		     			},
+		     			dataType:"text",
+		     			data:JSON.stringify({
+		     				record_num:$("#whish").val(),
+		     				mg_num:$("#mg_num").val(),
+		     				ea:$("#su").val()	
+		     			}),
+		     			error: function() {
+		     				alert("시스템 오류입니다. 잠시후 다시 시도해주세요")
+		     			},
+		     			success : function(resultData) {
+		     				if(resultData == "SUCCESS"){
+		     					alert("찜에 추가 됬습니다.");
+		     					
+		     				}else{
+		     					alert(resultData);
+		     				}
+		     			}
+		     		}); 
+		         }else{
+		            return false;
+		         }	
 				
 			}
    		});
+ 		
  	})
- 	function showKeyCode(event) {
-			event = event || window.event;
-			var keyID = (event.which) ? event.which : event.keyCode;
-			if( ( keyID >=48 && keyID <= 57 ) || ( keyID >=96 && keyID <= 105 ) )
-			{
-				return;
-			}
-			else
-			{
-				return false;
-			}
-		}
+ function fn_press(event, type) {
+        if(type == "numbers") {
+            if(event.keyCode < 48 || event.keyCode > 57) return false;
+            //onKeyDown일 경우 좌, 우, tab, backspace, delete키 허용 정의 필요
+        }
+    }
+
+ 	function fn_press_han(obj)
+    {
+        //좌우 방향키, 백스페이스, 딜리트, 탭키에 대한 예외
+        if(event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 37 || event.keyCode == 39
+        || event.keyCode == 46 ) return;
+        //obj.value = obj.value.replace(/[\a-zㄱ-ㅎㅏ-ㅣ가-힣]/g, '');
+        obj.value = obj.value.replace(/[\ㄱ-ㅎㅏ-ㅣ가-힣]/g, '');
+    }
+
+
  
 		
 
@@ -221,7 +240,7 @@
 													                <td height="20"><font face="나눔고딕" color="#696969"><b>정기구독가</b></font><b><font color="#3399CC"> <b>(12개월)</b></font>	</b></td>
 													                <td> <font face="나눔고딕" color="#393107">: 
 																						&nbsp;<font color="#6B6B6B"><strike>${magazine.pd_sale}</strike></font>→<font color="#DE590A"><b>${magazine.pd_salecost }</b></font> 원
-																		<font color="#0066CC">(${magazine.pd_rate} }%↓)</font>
+																		<font color="#0066CC">(${magazine.pd_rate}%↓)</font>
 																		</font>
 													              </td>
 													        </tr>
@@ -229,8 +248,8 @@
 															<tr>
 																 <td height="20"><font face="나눔고딕" color="#696969"><b>수량</b></font></td>
 													                <td> <font face="나눔고딕" color="#393107">: 
-																						&nbsp;<input type="text" width="20px" style="height: 26px; width: 40px; text-align: right; padding-right: 5px; font-weight: bold;
-																						background-color: gray;" id="su" name="su" value="1" onkeydown="return showKeyCode(event)"/>
+																						&nbsp;<input type="text" maxlength="3" onkeypress="return fn_press(event, 'numbers');" onkeydown="fn_press_han(this);" style="height: 26px; width: 40px; text-align: right; padding-right: 5px; font-weight: bold;
+																						background-color: gray; ime-mode:disabled; " id="su" name="su" value="1" />
 																		</font>
 																		<button type="button" id="plus2"><img src="/resources/images/ditail/btn_plus.gif"></button>
 																		<button type="button" id="manus"><img src="/resources/images/ditail/btn_minus.gif"></button>

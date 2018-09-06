@@ -51,8 +51,20 @@ $(function() {
             });
              $("#detailForm").submit(); 
          });
-
-
+		$(".abgoditail").click(function() {
+            
+			var ab_no = $(this).parents("tr").attr("data-num");  
+        	
+		
+       		 $("#ab_no").val(ab_no);			
+            //상세 페이지로 이동하기위해  form추가(id:detailForm)
+             $("#detailForm").attr({
+               "method":"get",
+               "action":"/board/adminboard/adminboardDetail.do "
+            });
+             $("#detailForm").submit(); 
+         });
+		
 });
 function plusSlides(n) {
 	  showSlides(slideIndex += n);
@@ -132,6 +144,7 @@ function plusSlides(n) {
 			<form id="detailForm">
 			<input type="hidden" id="mg_num" name="mg_num">
 			<input type="hidden" id="listkey" name="listkey"> 
+			<input type="hidden" id="ab_no" name="ab_no">
 			<div class="slideshow-container">
 				<div class="mySlides2 fade">
 					<div class="numbertext">1 / 3</div>
@@ -235,7 +248,7 @@ function plusSlides(n) {
 	<h1 style=" font-family: 'Nanum Pen Script', cursive;">이달의 부록 잡지! </h1>	
 		<span></span>
 		<table>
-			<tr>
+			<tr >
 				<c:choose>
 					<c:when test="${not empty aplist }">
 							<c:forEach var="list" items="${aplist}" varStatus="can">
@@ -245,13 +258,13 @@ function plusSlides(n) {
 									</c:if>	
 									<c:if test="${can.count eq 4 }">
 										<td>
-											<ul style="list-style:none;">
+											<ul style="list-style:none;"  >
 									</c:if>
 									<c:if test="${can.count eq 7 }">
 										<td>
 											<ul style="list-style:none;">
 									</c:if>
-												<li>
+												<lili style=" margin:0;">
 													<table>
 														<tr data-num="${list.mg_num}" data-key ="${list.listkey}">
 															<td class="goDetail">
@@ -264,7 +277,7 @@ function plusSlides(n) {
 																 	<span>${list.pd_appendix }</span><br>
 																 	 <font	color="#6B6B6B"><strike> ${list.pd_sale } 원</strike>-></font>
 																 	 <font color="#FF6633"><b> ${list.pd_salecost}</b></font>
-																 	 <font color="#0066CC"> (${list.pd_rate}% 할인) </font>	 	
+																 	 <font color="#0066CC">(${list.pd_rate}%할인)	</font>	 	
 																 </div>
 															</td>
 														</tr>
@@ -312,11 +325,11 @@ function plusSlides(n) {
 													<c:choose>
 														<c:when test="${not empty jlist }">
 															<c:forEach  var="list" items="${jlist}" varStatus="can">
-													<tr data-num="${list.ab_no }">
-														<td>
-															<span>[${list.ab_type}] ${list.ab_title } </span>
-														</td>
-													</tr>										
+																	<tr data-num="${list.ab_no}">
+																		<td class="abgoditail">
+																			<span>[${list.ab_type}] ${list.ab_title }</span>
+																		</td>
+																	</tr>								
 															</c:forEach>
 														</c:when>
 													</c:choose>		
@@ -339,7 +352,7 @@ function plusSlides(n) {
 															<c:when test="${not empty elist }">
 																<c:forEach var="list" items="${elist}" varStatus="can">
 																	<tr data-num="${list.ab_no}">
-																		<td>
+																		<td class="abgoditail">
 																			<span>[${list.ab_type}] ${list.ab_title }</span>
 																		</td>
 																	</tr>
@@ -421,9 +434,6 @@ function plusSlides(n) {
 	</div>			
 	</form>
 </div>
-		<div id="portfolio-wrapper">
-		
-	</div>
 </div>
 <div>
 	<tiles:insertAttribute name="quick"/>

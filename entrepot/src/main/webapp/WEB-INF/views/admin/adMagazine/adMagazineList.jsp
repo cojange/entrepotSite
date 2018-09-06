@@ -6,48 +6,68 @@
 	<table>
 		<thead>
 			<tr>
-				<th>
-					<ul>
-						<li>All</li>
-						<li>ㄱ</li>
-						<li>ㄴ</li>
-						<li>ㄷ</li>
-						<li>ㄹ</li>
-						<li>ㅁ</li>
-						<li>ㅂ</li>
-						<li>ㅅ</li>
-						<li>ㅇ</li>
-						<li>ㅈ</li>
-						<li>ㅊ</li>
-						<li>ㅋ</li>
-						<li>ㅌ</li>
-						<li>ㅍ</li>
-						<li>ㅎ</li>
-						<li>a-z</li>
-						<li>0-9</li>
-					</ul>
+				<th colspan="17">
+					<div>
+						<input type="text" id="magSearchText" name="magSearch">
+						<input type="button" id="magSearch" value="검색">
+					</div>
 				</th>
+			</tr>
+			<tr>
+				<th>
+					<input type="button" value="등록" id="mgInsert">
+				</th>
+			</tr>
+			<tr>
+				<th>All</th>
+				<th>ㄱ</th>
+				<th>ㄴ</th>
+				<th>ㄷ</th>
+				<th>ㄹ</th>
+				<th>ㅁ</th>
+				<th>ㅂ</th>
+				<th>ㅅ</th>
+				<th>ㅇ</th>
+				<th>ㅈ</th>
+				<th>ㅊ</th>
+				<th>ㅋ</th>
+				<th>ㅌ</th>
+				<th>ㅍ</th>
+				<th>ㅎ</th>
+				<th>a-z</th>
+				<th>0-9</th>
 			</tr>
 		</thead>
 		<tbody>
+		 	<tr>
+		 		<td colspan="17">
+			 		<form>
+				 		<input type="radio" name="searchType" checked="checked"/>최신순&nbsp;
+				 		<input type="radio" name="searchType" />이름순
+			 		</form>
+			 	</td>
+		 	</tr>
 			<tr>
-				<td>
+				<td colspan="17">
 					<c:choose>
 				         <c:when test="${not empty adMagazineList}">
-				            <c:forEach var="mgvo" items="${adMagazineList}" varStatus="status">
-				               <div class="imagePreview" data-num="${mgvo.mg_num}">
-				                  <label>잡지명 : ${mgvo.mg_name}</label>
-				                  <label>원가 : ${mgvo.pd_cost}</label>
+				            <c:forEach var="msvo" items="${adMagazineList}" varStatus="status">
+				               <div class="imagePreview" data-num="${msvo.mg_num}" style="display: inline-block; padding: 20px;">
+				               		<p class="magText">
+					                  ${msvo.mg_name} / ${msvo.pd_cost}
+				                  	</p>
 				                  <a  class="goDetail">
-				                     <img class="rimagePreview" src="/uploadStorage/thum/${mgvo.pl_path}"/>
-				                     ${mgvo.pl_path}
+				                     <img class="rimagePreview" src="/uploadStorage/magazineImage/thum/${msvo.pl_path}"/>
 				                  </a>
 				               </div>
 				            </c:forEach>
 				         </c:when>
-				      </c:choose>
+				     </c:choose>
 				<td>
 			</tr>
 		</tbody>
+		<tfoot>
+		
+		</tfoot>
 	</table>
 </div>

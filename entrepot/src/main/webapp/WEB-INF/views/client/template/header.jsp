@@ -218,7 +218,8 @@ function errorCodeCheck(){}
          		</li>    
          	</ul>
          </li>
-         <li  class="san"><a href="#" accesskey="3" title="">게시판</a>
+         <li  class="san"><a href="/client/list/magazinelist.do?listkey=5" accesskey="3" title="">이달의부록</a></li>
+         <li  class="san"><a href="#" accesskey="4" title="">게시판</a>
          	<ul>
          		<li>
          			 <a href="/client/board/personalListboard.do" accesskey="1" title="">1대1문의 게시판</a>
@@ -237,6 +238,5 @@ function errorCodeCheck(){}
          		 </li>
          	</ul>
          </li>
-         <li  class="san"><a href="#" accesskey="4" title="">고객센터</a></li>
       </ul>
    </div>

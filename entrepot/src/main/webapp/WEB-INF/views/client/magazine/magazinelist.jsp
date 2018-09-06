@@ -43,75 +43,90 @@
    	
    		$(".cartbtn").click(function(){
    			var id= $('#id').val();
+   			
 			if (id == null || id=="") {
 
 				alert('로그인이 안되어 있습니다. 로그인 후 다시 시도해주세요');
 			}else{
-				var insert = "/client/list/card.do";
-	
-				$.ajax({
-					url:insert,
-					type: "post",
-					headers : {
-						"content-type":"application/json",
-						"x-HTTP-Method-Dverride":"POST"
-					},
-					dataType:"text",
-					data:JSON.stringify({
-						record_num:$("#cart").val(),
-						mg_num:$(this).parents("tr").attr("data-num"),
-						ea:1	
-					}),
-					error: function() {
-						alert("시스템 오류입니다. 잠시후 다시 시도해주세요")
-					},
-					success : function(resultData) {
-						if(resultData == "SUCCESS"){
-							alert("장바구니에 추가 됬습니다.");
+				var message = confirm("장바구니에 추가하시겠습니까?");
+		         if(message == true){   
+		        		var insert = "/client/list/card.do";	        		
+						$.ajax({
+							url:insert,
+							type: "post",
+							headers : {
+								"content-type":"application/json",
+								"x-HTTP-Method-Dverride":"POST"
+							},
+							dataType:"text",
+							data:JSON.stringify({
+								record_num:$("#cart").val(),
+								mg_num:$(this).parents("tr").attr("data-num"),
+								ea:1	
+							}),
+							error: function() {
+								alert("시스템 오류입니다. 잠시후 다시 시도해주세요")
+							},
+							success : function(resultData) {
+								if(resultData == "SUCCESS"){
+									alert("장바구니에 추가 됬습니다.");
 							
-						}else{
-							alert(resultData);
-						}
-					}
-				}); 
-				
+									
+								}else{
+									alert(resultData);
+								}
+							}
+						});   
+		         }else{
+		            return false;
+		         }
+
 			}
    		});
    		$(".jtbtn").click(function(){
+			
+   			
    			var id= $('#id').val();
 			if (id == null || id=="") {
 
 				alert('로그인이 안되어 있습니다. 로그인 후 다시 시도해주세요');
 			}else{
-				var insert = "/client/list/card.do";
-	
-				$.ajax({
-					url:insert,
-					type: "post",
-					headers : {
-						"content-type":"application/json",
-						"x-HTTP-Method-Dverride":"POST"
-					},
-					dataType:"text",
-					data:JSON.stringify({
-						record_num:$("#whish").val(),
-						mg_num:$(this).parents("tr").attr("data-num"),
-						ea:1	
-					}),
-					error: function() {
-						alert("시스템 오류입니다. 잠시후 다시 시도해주세요")
-					},
-					success : function(resultData) {
-						if(resultData == "SUCCESS"){
-							alert("찜에 추가 됬습니다.");
-							
-						}else{
-							alert(resultData);
-						}
-					}
-				}); 
+				var message = confirm("찜에 추가하시겠습니까?");
+		         if(message == true){   
+
+		 			var insert = "/client/list/card.do";
+		 			
+		 			$.ajax({
+		 				url:insert,
+		 				type: "post",
+		 				headers : {
+		 					"content-type":"application/json",
+		 					"x-HTTP-Method-Dverride":"POST"
+		 				},
+		 				dataType:"text",
+		 				data:JSON.stringify({
+		 					record_num:$("#whish").val(),
+		 					mg_num:$(this).parents("tr").attr("data-num"),
+		 					ea:1	
+		 				}),
+		 				error: function() {
+		 					alert("시스템 오류입니다. 잠시후 다시 시도해주세요")
+		 				},
+		 				success : function(resultData) {
+		 					if(resultData == "SUCCESS"){
+		 						alert("찜에 추가 됬습니다.");
+		 						
+		 					}else{
+		 						alert(resultData);
+		 					}
+		 				}
+		 			}); 
+		         }else{
+		            return false;
+		         }
 				
 			}
+			
    		});
    		
 		$(".goDetail").click(function() {
@@ -174,6 +189,9 @@
 			</c:when>
 			<c:when test="${mvo.listkey eq 4 }">
 				<h1>검색 결과 입니다.</h1>
+			</c:when>
+			<c:when test= "${mvo.listkey eq 5}">
+				<h1>부록  판매 베스트 !</h1>
 			</c:when>
 		</c:choose> 
 		<table width="100%" border="0" cellpadding="0" cellspacing="10px"

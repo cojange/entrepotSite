@@ -19,7 +19,10 @@
 		 </if>
 		 <if test="listkey==4">
 		 	mg_name like  '%'|| #{search} ||'%' or com_name like  '%'|| #{search} ||'%' 
-		 </if>	 
+		 </if>	
+		 <if test="listkey==5">
+		 	 PD_APPENDIX IS NOT NULL
+		 </if> 
 	</where>)
 	where RNUM between #{start} and #{end}
 	
