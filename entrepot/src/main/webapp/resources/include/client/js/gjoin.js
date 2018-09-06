@@ -175,17 +175,21 @@ $(function() {
 		else{
 				//****************************이메일 조합
 				if($(direct_c).is(":checked")==true){// 직접입력 체크되어있을시
-					$("#char_email").val($("#emailName_c").val()+"@"+$("#emailDirect_c").val());		
+					$("#char_email").val($("#emailName_c").val()+"@"+$("#emailDirect_c").val());
+					if(!inputVerify(10,"#char_email",".error:eq(12)","","member"))return;
 					console.log("체크입력C"+$("#char_email").val());		
 				}else if($(direct_c).is(":checked")==false){// 직접입력 체크안되있을때
-					$("#char_email").val($("#emailName_c").val()+"@"+$("#emailDomain_c").val());				
+					$("#char_email").val($("#emailName_c").val()+"@"+$("#emailDomain_c").val());
+					if(!inputVerify(10,"#char_email",".error:eq(12)","","member"))return;
 					console.log("직접입력C"+$("#char_email").val());				
 				}
 				if($(direct_c).is(":checked")==true){// 직접입력 체크되어있을시
 					$("#acc_email").val($("#emailName_acc").val()+"@"+$("#emailDirect_acc").val());
+					if(!inputVerify(10,"#acc_email",".error:eq(16)","","member"))return;
 					console.log("체크입력ACC"+$("#acc_email").val());		
 				}else if($(direct_c).is(":checked")==false){// 직접입력 체크안되있을때
 					$("#acc_email").val($("#emailName_acc").val()+"@"+$("#emailDomain_acc").val());
+					if(!inputVerify(10,"#acc_email",".error:eq(16)","","member"))return;
 					console.log("직접입력ACC"+$("#acc_email").val());				
 				}				
 				//*************************주민번호 앞자리를 토대로 성별
