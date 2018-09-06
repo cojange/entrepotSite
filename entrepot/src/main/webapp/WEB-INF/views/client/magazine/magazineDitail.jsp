@@ -184,7 +184,7 @@
         								 <tbody>
         								 	<tr>
 												<td valign="top">
-            										<img src="/uploadStorage/product/thum/${magazine.pl_path}" width="350" height="450" border="0">
+            										<img src="/uploadStorage/magazineImage/thum/ ${magazine.pl_path}" width="350" height="450" border="0">
 				
 												  <br><br><br><br>
           										</td>
@@ -321,7 +321,7 @@
 		<c:when test="${not empty free}">
 			<c:forEach var="free" items="${free}" varStatus="status">
 				<div>
-					<img src="/uploadStorage/product/prev/${free.pl_path}" width="700" border="0" >
+					<img src="/uploadStorage/magazineImage/prev/ ${free.pl_path}" width="700" border="0" >
 				</div>
 			</c:forEach>
 		</c:when>
@@ -375,7 +375,7 @@
 								  			<tr>
 												<td align="center" bgcolor="#FFFFFF">
 													<font color="blue">
-														<img src="/uploadStorage/product/thum/${list.pl_path}" width="240" height="325" border="0">
+														<img src="/uploadStorage/magazineImage/thum/ ${list.pl_path}" width="240" height="325" border="0">
 													</font>
 												</td>
 								  			</tr>
@@ -424,7 +424,7 @@
           	<c:forEach  var="list" items="${sumlist}" varStatus="san">
 				<tr>
 					<td>
-						<img src="/uploadStorage/product/thum/${list.pl_path}" width="500" border="0" >
+						<img src="/uploadStorage/magazineImage/thum/ ${list.pl_path}" width="500" border="0" >
 					</td>
 				</tr>
 			</c:forEach>
