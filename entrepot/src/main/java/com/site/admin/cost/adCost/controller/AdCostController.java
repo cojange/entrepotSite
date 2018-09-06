@@ -68,8 +68,8 @@ public class AdCostController {
 	public ModelAndView costExcel() {
 		
 		GetDateUtil gdu = GetDateUtil.getInstance();
-		
-		String month = gdu.getMonth() +"월 비용, 지출 리스트";
+		//추후 한글 인코딩 후 등록
+		String month = gdu.getMonth() +"월 지출 리스트";
 		
 		ModelAndView mav = new ModelAndView(new ListExcelView());
 		mav.addObject("month", month);

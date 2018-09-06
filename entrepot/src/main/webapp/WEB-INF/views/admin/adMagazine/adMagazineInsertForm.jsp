@@ -21,14 +21,15 @@
 </style>
 <div class="container-fluid">
 <form id="addmagine" name ="addmagine">
-	<table style="width:100%">
-		<tr>
+	<table class="table table-striped table-bordered" style="width:100%">
+		
+			<thead><tr><td>잡지 등록</td></tr></thead>
+			<tr>
 			<td>
-				<select name="mg_num" id="stMg_num">
+				<select id="stMcom_name" name="com_name">
 				</select>
-				<select id="stMcom_name" name="mcom_name">
-				</select>
-				<input type="text" name="term" id="mgTerm">		
+				<select name="mg_name" id="stMg_name">
+				</select>	
 			</td>
 		</tr>
 		<tr>
@@ -52,25 +53,26 @@
 			</td>
 		</tr>
 	</table>
+	<input type="button" id="magazineSubmitBtn" value="잡지등록">
 </form>
 <hr style="width:98%; text-align: center;"/>
 <form id="adddetail" name="adddetail">
+<input type="hidden" name="mg_name" id="mg_name"/>
 	<table>
-	
-		<tr>
-			<td>
-				<select name="mg_num" id="stMg_num"></select>
-				<select id="stMcom_name"></select>
-				<select name="term" id="mgTerm">		
-				</select>
-			</td>
-		</tr>
+		<thead><tr><td>상세페이지</td></tr></thead>
 		<tr>
 			<td>
 				대상
 			</td>
 			<td>
-				<input type="checkbox" name="dt_target" value="기타">기타<input type="text">
+				<c:choose>
+					<c:when test="${not empty dt_target }">
+						<c:forEach var="target" items="${dt_target }" varStatus="status">
+							<input type="checkbox" name="dt_target_submit" value="${target }/">${target }
+						</c:forEach>
+					</c:when>
+				</c:choose>
+				<input type="checkbox" class="_chk">기타<input type="text" disabled>
 			</td>
 		</tr>
 		<tr>
@@ -78,7 +80,14 @@
 				키워드
 			</td>
 			<td>
-				<input type="checkbox" name="dt_keyword">기타<input type="text">
+				<c:choose>
+					<c:when test="${not empty dt_keyword }">
+						<c:forEach var="keyword" items="${dt_keyword }" varStatus="status">
+							<input type="checkbox" name="dt_keyword_submit" value="${keyword }/">${keyword }
+						</c:forEach>
+					</c:when>
+				</c:choose>
+				<input type="checkbox" class="_chk">기타<input type="text" disabled>
 			</td>
 		</tr>
 		<tr>
@@ -110,10 +119,10 @@
 				원본용
 			</td>
 			<td>
-				<input type="file" name="mainFile">
+				<input type="file" name="mainfile">
 			</td>
 		</tr>
-		<tr>	
+		<tr>
 			<td>
 				프리뷰용
 			</td>
@@ -123,7 +132,7 @@
 			            <!-- 첨부 버튼 -->
 			            <div id="attach">
 			                <label class="waves-effect waves-teal btn-flat" for="uploadInputBox">사진 추가</label>
-			                <input id="uploadInputBox" style="display: none" type="file" name="prevFile" id="mulFile" multiple/>
+			                <input id="uploadInputBox" style="display: none" type="file" name="prevfile" id="mulFile" multiple/>
 			            </div>
 			            <!-- 미리보기 영역 -->
 			            <div id="preview" class="content"></div>

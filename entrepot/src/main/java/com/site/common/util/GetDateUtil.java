@@ -18,7 +18,7 @@ public class GetDateUtil {
 	private Calendar cal = Calendar.getInstance();
 	//날짜+시간 반환
 	public String getDate() {
-		String yy = getYear();
+		String yy = getHalfYear();
 		String mm = getMonth();
 		String dd = getDay();
 		
@@ -27,9 +27,14 @@ public class GetDateUtil {
 		
 		return yy+"-"+mm+"-"+dd+" / "+time +" "+ today;
 	}
-	//년도 반환
+	//full년도 반환
 	public String getYear() {
-		String yy = String.valueOf(cal.get(Calendar.YEAR));
+		String yyyy = String.valueOf(cal.get(Calendar.YEAR));
+		return yyyy;
+	}
+	//half년도 반환
+	public String getHalfYear() {
+		String yy = String.valueOf(cal.get(Calendar.YEAR)).substring(2, 4);
 		return yy;
 	}
 	//월수 반환
@@ -43,6 +48,9 @@ public class GetDateUtil {
 	//일수 반환
 	public String getDay() {
 		String dd = String.valueOf(cal.get(Calendar.DAY_OF_MONTH));
+		if(dd.length()==1) {
+			return "0"+dd;
+		}
 		return dd;
 	}
 	//시간반환
@@ -50,7 +58,15 @@ public class GetDateUtil {
 		String hh = String.valueOf(cal.get(Calendar.HOUR_OF_DAY));
 		String mi = String.valueOf(cal.get(Calendar.MINUTE));
 		String ss = String.valueOf(cal.get(Calendar.SECOND));
-		
+		if(hh.length()==1) {
+			hh= "0"+hh;
+		}
+		if(mi.length()==1) {
+			mi= "0"+mi;
+		}
+		if(ss.length()==1) {
+			ss= "0"+ss;
+		}
 		return hh+" : "+mi+" : "+ss;
 	}
 	//요일반환

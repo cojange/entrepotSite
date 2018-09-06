@@ -46,6 +46,12 @@ public class ClMDaoImpl implements ClMDao {
 	public ClMSecurity securitySelect(String m_id) {
 		return (ClMSecurity)session.selectOne("securitySelect",m_id);
 	}
+	
+	//구매페이지 회원리스트
+	@Override
+	public ClMVO memberSellSelect(String m_num) {
+		return (ClMVO)session.selectOne("memberSellSelect",m_num);
+	}
 
 	/*****************인터페이스 공용사용으로인한재정의*******************/
 	@Override
@@ -72,5 +78,12 @@ public class ClMDaoImpl implements ClMDao {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	@Override
+	public ClGmVO groupMemberSellSelect(String m_num) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }

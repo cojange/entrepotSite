@@ -30,7 +30,7 @@ public class ClMVO extends LoginVO{
 	//private String m_job;	//	직업-(loginVO 상속)
 	
 	
-	
+
 	
 	
 	public String getM_birth() {
