@@ -89,6 +89,7 @@
 	    <script type="text/javascript" src="/resources/include/admin/js/json2html/json2table.js"></script>
 	    <script type="text/javascript" src="/resources/include/common/js/paging.js"></script>
 	    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+	    <script src="/resources/include/admin/js/pbReply.js"></script>
 	    <script type="text/javascript">
 	    var addTable;
 	    var table;
@@ -1292,12 +1293,13 @@
     	   	     	var tr = $(this).closest('tr');
  	   	        	var row = table.row( tr );
     	   	    	
+ 	   	        	var pdNo = tr.children().eq(12);
     	   	    	var content = tr.children().eq(8);
     	   	    	var img1 = tr.children().eq(9);
     	   	    	var img2 = tr.children().eq(10);
     	   	    	var img3 = tr.children().eq(11);
     	   	    	console.log(img1.html()+" / "+img2.html());
-    	   	    	addTable = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
+    	   	    	addTable = '<td><table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
 		    	   	      	  	'<tr><td>'+
 		    	   	          '<div class="bigContent">'+
 		    	   	          '<div class="middle1">'+
@@ -1305,16 +1307,27 @@
 		    	   	          '<br/><div class="smallImg"><img style="background-color:lightgray; margin:5px; width:150px; height:150px;" src="/uploadStorage/personalBoard/img1/'+img1.html()+'"></img>'+
 		    	   	          '<img style="background-color:lightgray; margin:5px; width:150px; height:150px;" src="/uploadStorage/personalBoard/img2/'+img2.html()+'"></img>'+
 		    	   	          '<img style="background-color:lightgray; margin:5px; width:150px; height:150px;" src="/uploadStorage/personalBoard/img3/'+img3.html()+'"></img>'+
-		    	   	          '</div><input type="button" value="댓글 확인" id="replyBtn"></div>'+
+		    	   	          '</div><input type="button" value="댓글 확인" class="replyBtn"></div>'+
 		    	   	          '<div class="middle2 hidden">가나다라마바사</div>'+
 		    	   	          '</div>'+
 		    	   	     		 '</td></tr>'+
-		    	   	  		 '</table>';
+		    	   	  		 '</table></td>';
 		    	   	 
 		    	   	 //댓글보기 버튼 클릭
-    	   	       	 $(document).on('click', '#replyBtn', function(){
+    	   	       	 $(document).on('click', '.replyBtn', function(){    	   	       		 
     	   	       		 if($(".middle2").hasClass("hidden")){
     	   	       			$(".middle2").removeClass("hidden");
+    	   	       				var pb_no = pdNo.html();
+    	   	       				console.log(pb_no);
+    	   	       				var thisValue = $(this);
+    	   	       			var replyURL = "/admin/adBoard/personalBoard/pbReply.do";
+    	   	       			$.getJSON(replyURL,{
+    	   	       				pb_no:pb_no
+    	   	       			}, function(subElements){
+    	   	       				console.log(pbReply(subElements));
+    	   	       				console.log(thisValue.parent().next().html());
+    	   	       				thisValue.parent().next().html(pbReply(subElements));
+    	   	       			});
     	   	       		 }else{
     	   	       			$(".middle2").addClass("hidden");
     	   	       		 }

@@ -3,7 +3,7 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ include file="/WEB-INF/views/common/common.jspf" %>
 <div class="container-fluid">
-	<table>
+	<table id="magListTable">
 		<thead>
 			<tr>
 				<th colspan="17">
@@ -19,30 +19,30 @@
 				</th>
 			</tr>
 			<tr>
-				<th>All</th>
-				<th>ㄱ</th>
-				<th>ㄴ</th>
-				<th>ㄷ</th>
-				<th>ㄹ</th>
-				<th>ㅁ</th>
-				<th>ㅂ</th>
-				<th>ㅅ</th>
-				<th>ㅇ</th>
-				<th>ㅈ</th>
-				<th>ㅊ</th>
-				<th>ㅋ</th>
-				<th>ㅌ</th>
-				<th>ㅍ</th>
-				<th>ㅎ</th>
-				<th>a-z</th>
-				<th>0-9</th>
+				<th class="uniBtn">All</th>
+				<th class="uniBtn">ㄱ</th>
+				<th class="uniBtn">ㄴ</th>
+				<th class="uniBtn">ㄷ</th>
+				<th class="uniBtn">ㄹ</th>
+				<th class="uniBtn">ㅁ</th>
+				<th class="uniBtn">ㅂ</th>
+				<th class="uniBtn">ㅅ</th>
+				<th class="uniBtn">ㅇ</th>
+				<th class="uniBtn">ㅈ</th>
+				<th class="uniBtn">ㅊ</th>
+				<th class="uniBtn">ㅋ</th>
+				<th class="uniBtn">ㅌ</th>
+				<th class="uniBtn">ㅍ</th>
+				<th class="uniBtn">ㅎ</th>
+				<th class="uniBtn">a-z</th>
+				<th class="uniBtn">0-9</th>
 			</tr>
 		</thead>
 		<tbody>
 		 	<tr>
 		 		<td colspan="17">
-			 		<form>
-				 		<input type="radio" name="searchType" checked="checked"/>최신순&nbsp;
+			 		<form class="toggleBtn">
+				 		<input type="radio" name="searchType" checked="checked"/>최신순&nbsp;&nbsp;&nbsp;
 				 		<input type="radio" name="searchType" />이름순
 			 		</form>
 			 	</td>
@@ -53,12 +53,13 @@
 				         <c:when test="${not empty adMagazineList}">
 				            <c:forEach var="msvo" items="${adMagazineList}" varStatus="status">
 				               <div class="imagePreview" data-num="${msvo.mg_num}" style="display: inline-block; padding: 5px; margin:10px;">
-				               		<p class="magText">
-					                  ${msvo.mg_name} / ${msvo.pd_cost}
-				                  	</p>
 				                  <a  class="goDetail">
 				                     <img class="rimagePreview" src="/uploadStorage/magazineImage/thum/${msvo.pl_path}"/>
 				                  </a>
+				                  <p class="magText">
+					                  ${msvo.mg_name} <br/>
+					                  ${msvo.pd_cost}
+				                  	</p>
 				               </div>
 				            </c:forEach>
 				         </c:when>

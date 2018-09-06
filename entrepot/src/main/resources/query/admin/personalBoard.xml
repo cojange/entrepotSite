@@ -3,10 +3,17 @@
 
 <mapper namespace="com.site.admin.adBoard.personalBoard.dao.PersonalBoardDao">
 	<select id="personalBoardList" parameterType="PersonalBo" resultType="PersonalBo">
-		/*1:1 게시판 리스트*/
+		/*1:1 게시판 리스트 조회*/
 		select pb_no, pb_type, pb_title, pb_content, m_num, m_name, pb_img1, pb_img2, pb_img3,
 		to_char(pb_date,'yy-mm-dd') pb_date, to_char(pb_update,'yy-mm-dd') pb_update
 		from personal_view
 		order by pb_date desc, pb_update desc
+	</select>
+	
+	<select id="pbReplyList" parameterType="pbrvo" resultType="pbrvo">
+		/*댓글 리스트 조회*/
+		select pb_no, re_no, pbre_content, writer, pbre_date, pbre_update
+		from pb_reply where pb_no = #{pb_no}
+		order by pbre_date desc
 	</select>
 </mapper>
