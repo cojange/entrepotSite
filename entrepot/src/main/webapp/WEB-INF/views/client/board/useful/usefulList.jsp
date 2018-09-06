@@ -100,7 +100,7 @@
 					<tr>
 						<th>글번호</th>
 						<th>글유형</th>
-						<th>글제목</th>
+						<th>글질문</th>
 						<th>작성자</th>
 						<th>등록일</th>
 					</tr>
@@ -112,7 +112,7 @@
 									<tr class="tac" data-num="${ub.ub_no }">
 										<td>${ub.ub_no }</td>
 										<td>${ub.ub_type }</td>
-										<td class="goDetail">${ub.ub_title }</td>
+										<td class="goDetail">${ub.ub_query }</td>
 										<td>${ub.ad_id }</td>
 										<td>${ub.ub_date }</td>
 									</tr>

@@ -82,9 +82,4 @@ public class PersonalServiceImpl implements PersonalService {
 		return result;
 	}
 
-	/*@Override
-	public int replyList(int re_no) {
-		int list = personalDao.replyList(re_no);
-		return list;
-	}*/
 }

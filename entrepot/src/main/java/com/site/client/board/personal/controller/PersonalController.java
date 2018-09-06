@@ -161,7 +161,7 @@ public class PersonalController {
 		//글 삭제하기
 		@RequestMapping(value="/board/personal/personalDelete.do",method=RequestMethod.POST)
 		public String personalDelete(PersonalVO pvo, HttpServletRequest req)throws IOException{
-			logger.info("personalUpdate 호출 성공");
+			logger.info("personalDelete 호출 성공");
 			//아래변수에 입력 성공에 대한 상태값을 담습니다.(1 or 0)
 			int result = 0;
 			String url ="";
@@ -170,7 +170,7 @@ public class PersonalController {
 			if(!pvo.getFile().isEmpty()) {
 				FileUploadUtil.fileDelete(pvo.getPb_img1(), "personal", req);
 			}
-			result = personalService.personalDelete(pvo.getPb_no());
+			result = personalService.personalDelete(pvo.getPb_no());//파일까지 삭제 처리
 			
 			if(result ==1) {
 				url="/client/board/personal/personalList.do";
@@ -180,13 +180,5 @@ public class PersonalController {
 			return "redirect:"+url;
 		}
 		
-	/*	@ResponseBody
-		@RequestMapping(value="board/reply/personalreply/replyList.do")
-		public String replyList(@RequestParam("re_no")int re_no) {
-			logger.info("replyList 호출 성공");
-			
-			int result = 0;
-			result= personalService.replyList(re_no);
-			return result+"";
-		}*/
+	
 }

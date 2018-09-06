@@ -28,7 +28,15 @@
 			<script type="text/javascript" src="/resources/include/common/js/common.js"></script>
 		
 			<link rel="stylesheet" type="text/css" href="/resources/include/client/css/common.css">
-			<link rel="stylesheet" type="text/css" href="/resources/include/dist/css/bootstrap.min.css">
+			<!-- 합쳐지고 최소화된 최신 CSS -->
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+			
+			<!-- 부가적인 테마 -->
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+			
+			<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+			<!-- <a href="javascript:void(window.open('/client/login/login.do', '_blank','width=300px, height=350px',))">이미지 파업창</a> -->
 		
      	 		<script type="text/javascript">
      	 			$(function(){
@@ -129,6 +137,7 @@
 						<th>글제목</th>
 						<th>작성자</th>
 						<th>등록일</th>
+						<th>조회수</th>
 					</tr>
 					<tbody id="list">
 						<!-- 데이터 출력 -->
@@ -140,6 +149,7 @@
 										<td class="goDetail">${imgb.imgb_title }</td>
 										<td>${imgb.m_name }</td>
 										<td>${imgb.imgb_date }</td>
+										<td>${imgb.imgb_cnt }</td>
 									</tr>
 								</c:forEach>
 							</c:when>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.client.board.useful.dao.UseFulDao">
+		<select id="usefulList" parameterType="useful" resultType="useful">
+		select a.ub_no,a.ub_type,a.ub_query, b.ad_id,
+        to_char(ub_date, 'YYYY-MM-DD') as ub_date from useful_board a inner join admin b
+        on a.ad_id = b.ad_id
+        order by ub_no desc
+		</select>
+		
+		<select id="usefulDetail" parameterType="useful" resultType="useful">
+			 select a.ub_no,a.ub_type,a.ub_query,a.ub_ans, b.ad_id,
+        	 to_char(ub_date, 'YYYY-MM-DD') as ub_date from useful_board a inner join admin b
+        	 on a.ad_id = b.ad_id
+        	 order by ub_no desc
+		</select>
+</mapper>

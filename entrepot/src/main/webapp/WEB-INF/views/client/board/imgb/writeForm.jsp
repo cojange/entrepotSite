@@ -5,9 +5,20 @@
 		<head>
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 			<title>Insert title here</title>
+			 <!--사용자 js-->
+     		 <script type="text/javascript" src="/resources/include/client/js/jquery-1.12.4.min.js"></script>
+			<script type="text/javascript" src="/resources/include/common/js/common.js"></script>
+		
+			<link rel="stylesheet" type="text/css" href="/resources/include/client/css/common.css">
+			<!-- 합쳐지고 최소화된 최신 CSS -->
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+			
+			<!-- 부가적인 테마 -->
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+			
+			<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 		</head>
-		<script type="text/javascript" src="/resources/include/client/js/jquery-1.12.4.min.js"></script>
-		<script type="text/javascript" src="/resources/include/common/js/common.js"></script>
 		<script type="text/javascript">
 			$(function(){
 				//저장버튼 클릭시 처리 이벤트

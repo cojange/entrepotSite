@@ -4,23 +4,20 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.Mapping;
+
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.site.client.board.imgb.service.ClImgbService;
 import com.site.client.board.imgb.vo.ClImgbVO;
-
-import com.site.client.board.personal.vo.PersonalVO;
-
-
+import com.site.client.member.login.vo.LoginVO;
 import com.site.common.file.FileUploadUtil;
 
 
@@ -54,22 +51,29 @@ public class ClImgbController {
 	
 	//글쓰기 구현(첨부파일 제외 할때)
 	@RequestMapping(value="/board/imgb/clImgbInsert.do",method=RequestMethod.POST)
-	public String clImgbInsert(ClImgbVO cvo, Model model, HttpServletRequest req) 
+	public String clImgbInsert(ClImgbVO cvo, Model model, HttpServletRequest req,
+			HttpSession session) 
 			throws IllegalStateException,IOException {
 		logger.info("climgbInsert 호출 성공"); 
+		
+		LoginVO login = (LoginVO)session.getAttribute("login");
+	      cvo.setM_num(login.getM_num());
+		
 		/*result == 0 을 제와하는 경우*/
 		int result = 0;
 		String url ="";
 		
 		logger.info("getFile = " +cvo.getFile());
 		if(!cvo.getFile().isEmpty()) {
-			String imgb_img1 = FileUploadUtil.fileUpload(cvo.getFile(), "imgb_img1", req, "imgb_img1", "imgb_img");
+			String imgb_img1 = FileUploadUtil.fileUpload(cvo.getFile(), "imgb", req, "imgb", "imgb");
 			cvo.setImgb_img1(imgb_img1);
-		}
+		}else {
+	    	  cvo.setImgb_img1("");
+	      }
 		result  = clImgbService.imgbInsert(cvo);
 		
 		if(result ==1) {
-			url ="/client/board/imgb/clImgbInsert.do";
+			url ="/client/board/imgb/clImgbList.do";
 		}else {
 			model.addAttribute("code", 1);
 			url ="/client/board/imgb/writeForm.do";
@@ -81,6 +85,7 @@ public class ClImgbController {
 	public String imgbDetail(ClImgbVO cvo, Model model) {
 		logger.info("imgbDetail 호출 성공");
 		logger.info("imgb_no="+cvo.getImgb_no());
+		
 		ClImgbVO clidetail = new ClImgbVO();
 		clidetail = clImgbService.imgbDetail(cvo);
 		
@@ -110,6 +115,7 @@ public class ClImgbController {
 			logger.info("result="+result+"value=" +value);
 			return value;
 		}
+		//수정 페이지 불러오기
 		@RequestMapping(value="/board/imgb/updateForm.do")
 		public String updateForm(ClImgbVO cvo, Model model) {
 			logger.info("updateForm 호출성공");
@@ -118,7 +124,7 @@ public class ClImgbController {
 			ClImgbVO updateData = new ClImgbVO();
 			updateData = clImgbService.imgbDetail(cvo);
 			model.addAttribute("update", updateData);
-			return "client/board/imgb/updateForm";
+			return "client/board/imgb/updateForm";//jsp로 이동
 		}
 		
 		
@@ -134,21 +140,23 @@ public class ClImgbController {
 			if(!cvo.getFile().isEmpty()) {
 				logger.info("=====file="+cvo.getFile().getOriginalFilename());
 				if(!cvo.getImgb_img1().isEmpty()) {
-					imgb_img1 = FileUploadUtil.fileUpload(cvo.getFile(), "imgb_img1", req, "imgb_img1", "imgb_img1");
+					FileUploadUtil.fileDelete(cvo.getImgb_img1(), "imgb", req);
+		    	  }
+					//다시 파일 업로드
+					imgb_img1 = FileUploadUtil.fileUpload(cvo.getFile(), "imgb", req, "imgb", "imgb");
 					cvo.setImgb_img1(imgb_img1);
-				}else {
-					logger.info("파일첨부가 없음");
-					cvo.setImgb_img1("");
-				}
-				result =clImgbService.clImgbUpdate(cvo);
-				
-				if(result ==1) {
-					url="/client/board/imgb/imgbDetail.do?imgb_no="+cvo.getImgb_no();
-				}else {
-					url="/client/board/imgb/updateForm.do?imgb_no="+cvo.getImgb_no();
-				}
-				
+			}else {
+				logger.info("파일첨부가 없음");
+				cvo.setImgb_img1("");
 			}
+			result =clImgbService.clImgbUpdate(cvo);
+				
+			if(result ==1) {
+				url="/client/board/imgb/imgbDetail.do?imgb_no="+cvo.getImgb_no()+"&board_no="+cvo.getBoard_no();
+			}else {
+				url="/client/board/imgb/updateForm.do?imgb_no="+cvo.getImgb_no()+"&board_no="+cvo.getBoard_no();
+			}
+			
 			return "redirect:"+url;
 		}
 		

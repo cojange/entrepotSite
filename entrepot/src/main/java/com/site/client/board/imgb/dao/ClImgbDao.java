@@ -21,6 +21,8 @@ public interface ClImgbDao {
 	public int clImgbDelete(int imgb_no);
 	
 	public List<ClImgbVO> fotolist(ClImgbVO cvo);
+	
+	public int clImgbCntUpdate(int imgb_no);
 }
 
 

@@ -89,7 +89,7 @@
 					<input type="hidden" name="pb_no" id="pb_no"/>
 					<input type="hidden" name="board_no" id="board_no"  value="${param.board_no }"/>
 				</form>
-				<h3>게시판 목록</h3>
+				<h3>목록</h3>
 					<form id="f_search" name="f_search">
 						<table summary="검색">
 							<colgroup>
@@ -98,7 +98,6 @@
 								<select id="search" name="search">
 									<option value="all">전체</option>
 									<option value="all">제목</option>
-									<option value="all">비밀번호</option>
 									<option value="all">내용</option>
 								</select>
 								<input type="text" name="keyword" id="keyword"/>

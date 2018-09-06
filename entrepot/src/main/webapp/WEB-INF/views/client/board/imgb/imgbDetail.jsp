@@ -5,12 +5,21 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Insert title here</title>
-	</head>
-		<script type="text/javascript" src="/resources/include/client/js/jquery-1.12.4.min.js"></script>
-		<script type="text/javascript" src="/resources/include/common/js/common.js"></script>
 		
-		<link rel="stylesheet" type="text/css" href="/resources/include/client/css/common.css">
-		<link rel="stylesheet" type="text/css" href="/resources/include/dist/css/bootstrap.min.css">
+		 <!--사용자 js-->
+     		 <script type="text/javascript" src="/resources/include/client/js/jquery-1.12.4.min.js"></script>
+			<script type="text/javascript" src="/resources/include/common/js/common.js"></script>
+		
+			<link rel="stylesheet" type="text/css" href="/resources/include/client/css/common.css">
+			<!-- 합쳐지고 최소화된 최신 CSS -->
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+			
+			<!-- 부가적인 테마 -->
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+			
+			<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	</head>
 		<script type="text/javascript">
 			$(function(){
 				var btnChk=0;
@@ -21,14 +30,14 @@
 				var file="<c:out value='${detail.imgb_img1}'/>";
 				if(file!=""){
 					$("#fileImage").attr({
-						src:"/client/board/uploadStorage/${detail.imgb_img1}",
+						src:"/uploadStorage/imgb/imgb/${detail.pb_img1}",
 						width:"450px",
 						height:"200px"
 					});
 				}
 				//목록버튼 클릭시 처리 이벤트
 				$("#clImgbList").click(function(){
-					location.href="/client/board/imgb/clImgbList.do?board_no="+${param.board_no }
+					location.href="/client/board/imgb/clImgbList.do?board_no=3"
 				});
 				
 				//수정버튼 클릭시 처리이벤트
@@ -99,16 +108,17 @@
 		</script>
 		<body>
 			<form id="f_data" name="f_data" method="post">
-			<input type="hidden" id="imgb_no" name="imgb_no" value="${detail.imgb_no }" />
+			<input type="hidden" id="imgb_no" name="imgb_no" value="${clidetail.imgb_no }" />
+			<input type="hidden" name="board_no" id="board_no"  value="${param.board_no }"/>
 			</form>
-				<h3>게시판 상세보기</h3>
+				<h3> 상세보기</h3>
 					<!-- 비밀번호 확인버튼  및 버튼 추가 -->
 					<table id="climgbBut">
 						<tr>
 							<td id="pt1">
 								<div id="climgbChk">
 									<form name="f_pwd" id="f_pwd">
-									<input type="hidden" name="imgb_no" id="imgb_no"value=${detalil.imgb_no } /> 
+									<input type="hidden" name="imgb_no" id="imgb_no"value=${clidetail.imgb_no } /> 
 									<label for="img_pwd"id="img_pwd">비밀번호:</label> 
 									<input type="text"name="imgb_pwd" id="imgb_pwd" /> 
 									<input type="button"value="확인" id="pwdBtn" />

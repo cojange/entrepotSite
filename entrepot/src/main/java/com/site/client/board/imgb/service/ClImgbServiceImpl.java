@@ -41,6 +41,8 @@ public class ClImgbServiceImpl implements ClImgbService{
 	@Override
 	public ClImgbVO imgbDetail(ClImgbVO cvo) {
 		ClImgbVO clidetail = null;
+		clImgbDao.clImgbCntUpdate(cvo.getImgb_no());
+		
 		clidetail = clImgbDao.imgbDetail(cvo);
 		
 		return clidetail;

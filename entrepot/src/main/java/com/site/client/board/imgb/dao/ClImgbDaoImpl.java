@@ -29,7 +29,7 @@ public class ClImgbDaoImpl implements ClImgbDao {
    @Override
    public ClImgbVO imgbDetail(ClImgbVO cvo) {
       // TODO Auto-generated method stub
-      return session.selectOne("imgbDetail", cvo);
+      return (ClImgbVO)session.selectOne("imgbDetail", cvo);
    }
    
    @Override
@@ -40,19 +40,25 @@ public class ClImgbDaoImpl implements ClImgbDao {
 @Override
 public int pwdConfirm(ClImgbVO cvo) {
 	// TODO Auto-generated method stub
-	return 0;
+	return (Integer)session.selectOne("pwdConfirm", cvo);
 }
 
 @Override
 public int clImgbUpdate(ClImgbVO cvo) {
 	// TODO Auto-generated method stub
-	return 0;
+	return session.update("clImgbUpdate", cvo);
 }
 
 @Override
 public int clImgbDelete(int imgb_no) {
 	// TODO Auto-generated method stub
-	return 0;
+	return session.delete("clImgbDelete", imgb_no);
 	}
+
+@Override
+public int clImgbCntUpdate(int imgb_no) {
+	return session.update("clImgbCntUpdate", imgb_no);
+	
+}
 }
 

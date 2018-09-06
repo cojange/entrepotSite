@@ -23,7 +23,7 @@
 				var file="<c:out value='${detail.pb_img1}'/>";
 				if(file!=""){
 					$("#fileImage").attr({
-						src:"/client/board/uploadStorage/${detail.pb_img1}",
+						src:"/uploadStorage/personal/personal/${detail.pb_img1}",
 						width:"450px",
 						height:"200px"
 					});
@@ -47,7 +47,7 @@
 				//삭제버튼클릭시 처리 이벤트
 				$("#deleteFromBtn").click(function(){
 					$.ajax({
-						url:"/client/board/personalreply/replyCount.do",
+						url:"/client/board/personal/personalLists.do",
 						type:"get",
 						data:"pb_no="+$("#pb_no").val(),
 						dataType:"text",
@@ -107,7 +107,7 @@
 		<form id="f_data" name="f_data" method="post">
 			<input type="hidden" id="pb_no" name="pb_no" value="${detail.pb_no }" />
 		</form>
-		<h3>게시판 상세보기</h3>
+		<h3>상세보기</h3>
 		<!-- 비밀번호 확인버튼  및 버튼 추가 -->
 		<table id="personalBut">
 			<tr>

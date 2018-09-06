@@ -30,7 +30,7 @@ public class PersonalDaoImpl implements PersonalDao{
 	@Override
 	public PersonalVO personalDetail(PersonalVO pvo) {
 		// TODO Auto-generated method stub
-		return session.selectOne("personalDetail", pvo);
+		return (PersonalVO)session.selectOne("personalDetail", pvo);
 	}
 
 	@Override
@@ -42,13 +42,13 @@ public class PersonalDaoImpl implements PersonalDao{
 	@Override
 	public int personalUpdate(PersonalVO pvo) {
 		// TODO Auto-generated method stub
-		return (Integer)session.update("personalUpdate", pvo);
+		return session.update("personalUpdate", pvo);
 	}
 
 	@Override
 	public int personalDelete(int pb_no) {
 		// TODO Auto-generated method stub
-		return (Integer)session.delete("personalDelete", pb_no);
+		return session.delete("personalDelete", pb_no);
 	}
 
 }
