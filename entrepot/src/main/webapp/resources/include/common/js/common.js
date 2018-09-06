@@ -169,3 +169,29 @@ function inputVerify(index,data,printarea,hint,mode) {
       return true;
    }
 }
+
+/***********************************
+ * 받아온 숫자를 콤마가들어가있는 형태로 변환시키는 메서드
+ * len : num 문자열의 길이
+ * point : num의 길이를 3등분한 나머지
+ * *********************************
+ * @param num : 변환할 숫자
+ * @returns str : 변환한 값을 담은 변수 
+ ***********************************/
+function comma(num){
+    var len, point, str; 
+       
+    num = num + ""; 
+    point = num.length % 3 ;
+    len = num.length; 
+   
+    str = num.substring(0, point).trim();
+    while (point < len) { 
+        if (str != "") str += ","; 
+        str += num.substring(point, point + 3); 
+        point += 3; 
+    } 
+     
+    return str;
+ 
+}

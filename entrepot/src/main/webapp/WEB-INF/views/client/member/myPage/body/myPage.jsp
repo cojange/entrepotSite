@@ -212,19 +212,21 @@ function aa_open()
 													<td align="center" width="170"><b>합계</b></td>			
 												</tr>
 												<c:forEach var="vo" items="${whishList}">
+												
 												<tr class="trSize">
 													<!-- <td colspan="9" height="1" bgcolor="#c9c9c9"></td> -->
 													<table> 
 													<tbody>
+														<form class="checkForm">
 														<tr class="myList" width="807" height="140"><%-- <tr align="center" data-num="${vo.order_num}"> --%><!-- 체크박스넣을곳 -->
 														<!--data-num ->요소를 구별할때 쓰는 구문 -->
 															<td width="33" align="center" class="checkP">
-															<form class="checkForm">
+															
 																<input type="checkbox" class="deleteCheck">
 																<input type="hidden" class="mg_num" value="${vo.mg_num}">
 																<input type="hidden" class="deleteCheckVal" name="mg_num" value="">
 																<input type="hidden" class="listType" value="Whish">
-															</form>
+															
 															</td>
 															<td width="36" align="center">
 																<input type="text" class="index" readonly="readonly" size="2" value="">
@@ -258,6 +260,7 @@ function aa_open()
 															</td>
 															<%-- <td><a href="/client/member/memberModify.do?whish="${vo.whish}">삭제</a></td> --%> 
 														</tr>
+														</form>
 													</tbody>
 													</table>
 												</tr>
@@ -282,15 +285,15 @@ function aa_open()
 													<!-- <td colspan="9" height="1" bgcolor="#c9c9c9"></td> -->
 													<table>
 													<tbody>
+														<form class="checkForm">
 														<tr class="myList" width="807" height="140"><%-- <tr align="center" data-num="${vo.order_num}"> --%><!-- 체크박스넣을곳 -->
 														<!--data-num ->요소를 구별할때 쓰는 구문 -->
 															<td width="33" align="center" class="checkP">
-																<form class="checkForm">
+																
 																<input type="checkbox" class="deleteCheck">
 																<input type="hidden" class="mg_num" value="${vo.mg_num}">
 																<input type="hidden" class="deleteCheckVal"  name="mg_num" value="">
 																<input type="hidden" class="listType" value="Cart">
-																</form>
 															</td>
 															<td width="36" align="center">
 																<input type="text" class="index" readonly="readonly" size="2" value="">
@@ -323,6 +326,7 @@ function aa_open()
 																</font>
 															</td>
 														</tr>
+														</form>
 													</tbody>
 													</table>
 												</tr>
@@ -331,7 +335,6 @@ function aa_open()
 											<c:when test="${not empty orderList}">											
 												<tr height="35" bgcolor="#E8ECED">							
 													<td width="33" align="center">
-														<a href="#" class="allCheck"><u>ALL</u></a>
 													</td>
 													<td align="center" width="36"><b>No</b></td>
 													<td align="center" width="155"><b>상품코드<br>발행사</b></td>
@@ -346,15 +349,11 @@ function aa_open()
 													<!-- <td colspan="9" height="1" bgcolor="#c9c9c9"></td> -->
 													<table>
 													<tbody>
+														
 														<tr class="myList" width="807"><%-- <tr align="center" data-num="${vo.order_num}"> --%><!-- 체크박스넣을곳 -->
 														<!--data-num ->요소를 구별할때 쓰는 구문 -->
 															
 															<td width="33" align="center"  class="checkP">
-															<form class="checkForm">
-																<input type="checkbox" class="deleteCheck">
-																<input type="hidden" class="mg_num" value="${vo.mg_num}">
-																<input type="hidden" class="deleteCheckVal"  name="mg_num" value="">
-															</form>
 															</td>
 															<td width="36" align="center">
 															${vo.order_num}
@@ -420,7 +419,7 @@ function aa_open()
 														<a href="#" class="deleteCheckBtn"><img src="/resources/images/client/WhishANDCartdelete.png"></a>
 													</td>
 													<td align="right" colspan="2">
-														<a href="##"><img src="/resources/images/client/order.png"></a>
+														<a href="#" class="sell"><img src="/resources/images/client/order.png"></a>
 													</td>
 												</tr>
 											</tbody>

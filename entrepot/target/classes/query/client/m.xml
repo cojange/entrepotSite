@@ -23,10 +23,9 @@
 	
 	<insert id="memberInsert" parameterType="member">
 		/*member - memberInsert*/
-		<selectKey keyProperty="m_num" resultType="java.lang.String" order="BEFORE">
-			select  'p_'|| member_seq.nextval from dual
-		</selectKey>
-	 
+		 <selectKey keyProperty="m_num" resultType="java.lang.String" order="BEFORE">
+			select 'p_'||member_seq.nextval from dual
+		</selectKey> 
 		insert into member(m_num,m_id,m_pwd,m_name,m_birth,m_gender,m_email
 		,m_phone,m_job,m_zipcode,m_address,m_date,quiz,ans,cart,whish,mt)
 		values(#{m_num},#{m_id},#{m_pwd},#{m_name}
@@ -61,13 +60,13 @@
 	
 	<insert id="groupMemberInsert" parameterType="groupMember">
 		/* groupMember - groupMemberInsert */
-		<selectKey keyProperty="m_num" resultType="int" order="BEFORE">
-			select  group_member_seq.nextval from dual
+		<selectKey keyProperty="m_num" resultType="java.lang.String" order="BEFORE">
+			select 'g_'||group_member_seq.nextval from dual
 		</selectKey>
 		insert into group_member(m_num,m_id,m_pwd,m_name,com_no,leader_name,leader_phone,
 		m_address,m_zipcode,char_name,char_phone,char_email,acc_name,acc_phone,acc_email,
 		m_job,m_date,fax,cart,whish,mt)
-		values('g_'||#{m_num},#{m_id},#{m_pwd},#{m_name},#{com_no},#{leader_name},#{leader_phone},
+		values(#{m_num},#{m_id},#{m_pwd},#{m_name},#{com_no},#{leader_name},#{leader_phone},
 		#{m_address},#{m_zipcode},#{char_name},#{char_phone},#{char_email},#{acc_name},#{acc_phone},#{acc_email},
 		#{m_job},sysdate,#{fax},'cart_'||group_member_seq.nextval||'g','whish_'||group_member_seq.nextval||'g','단체')
 	</insert>

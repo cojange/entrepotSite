@@ -137,10 +137,10 @@ $(function() {
 		else if(!inputVerify(1,"#userPwCheck",".error:eq(2)","","member"))return;
 		else if(!passwordCheck())return;
 		//업체정보체크
-		else if(!formCheck($("#com_no"),$(".error:eq(3)"),"사업자등록번호를"))return;
+		else if(!formCheck($("#com_no"),$(".error:eq(3)"),"사업자등록번호가 입력되어있지 않습니다"))return;
 		else if(!inputVerify(8,"#com_no",".error:eq(3)","","member"))return;
 		else if(!formCheck($("#m_name"),$(".error:eq(4)"),"단체이름을"))return;
-		else if(!inputVerify(9,"#m_name",".error:eq(4)","","member"))return;
+		else if(!inputVerify(12,"#m_name",".error:eq(4)","","member"))return;
 		else if(!formCheck($("#leader_name"),$(".error:eq(5)"),"대표자명을"))return;
 		else if(!inputVerify(9,"#leader_name",".error:eq(5)","","member"))return;
 		else if(!formCheck($("#leader_phone"),$(".error:eq(6)"),"대표자 전화번호를"))return;
