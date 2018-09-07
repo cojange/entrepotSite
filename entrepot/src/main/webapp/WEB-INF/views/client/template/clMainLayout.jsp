@@ -32,7 +32,7 @@
 <link href="default_ie6.css" rel="stylesheet" type="text/css" />
 <![endif]-->
 <script type="text/javascript">
-var slideIndex = 1;
+var slideIndex = 2;
 var slideIndexsim = 1;
 $(function() {	
 		showSlides(slideIndex);
@@ -41,16 +41,17 @@ $(function() {
             
 			var mg_num = $(this).parents("tr").attr("data-num");  
         	var listkey= $(this).parents("tr").attr("data-key");
-		
+			console.log(mg_num +":"+listkey);
        		 $("#mg_num").val(mg_num);
-			 $("#listkey").val(listkey);			
+			 $("input[name='listkey']").val(listkey);			
             //상세 페이지로 이동하기위해  form추가(id:detailForm)
-             $("#detailForm").attr({
-               "method":"get",
+               $("#detailForm").attr({
+               "method":"GET",
                "action":"/client/ditail/magazineDetail.do"
-            });
-             $("#detailForm").submit(); 
+            });  
+            $("#detailForm").submit();  
          });
+		
 		$(".abgoditail").click(function() {
             
 			var ab_no = $(this).parents("tr").attr("data-num");  
@@ -59,7 +60,7 @@ $(function() {
        		 $("#ab_no").val(ab_no);			
             //상세 페이지로 이동하기위해  form추가(id:detailForm)
              $("#detailForm").attr({
-               "method":"get",
+               "method":"GET",
                "action":"/board/adminboard/adminboardDetail.do "
             });
              $("#detailForm").submit(); 
@@ -137,114 +138,117 @@ function plusSlides(n) {
 </head>
 <body>
 <div id="wrapper">
+		
 		<div id="header-wrapper" style="position:relative;z-index:2;">
 			<tiles:insertAttribute name="header" />
 		</div>
-		<div id="page" class="container" style="position:relative;z-index:1;">
-			<form id="detailForm">
-			<input type="hidden" id="mg_num" name="mg_num">
-			<input type="hidden" id="listkey" name="listkey"> 
-			<input type="hidden" id="ab_no" name="ab_no">
-			<div class="slideshow-container">
-				<div class="mySlides2 fade">
-					<div class="numbertext">1 / 3</div>
-					<img src="/resources/images/produt/banner_big_ng_traveller_201805.jpg"  style="width: 100%">
-					<div class="text"></div>
-				</div>
-
-				<div class="mySlides2 fade">
-					<div class="numbertext">2 / 3</div>
-					<img src="/resources/images/produt/banner_maxq_201805.jpg" style="width: 100%">
-					<div class="text"></div>
-				</div>
-
-				<div class="mySlides2 fade">
-					<div class="numbertext">3 / 3</div>
-					<img src="/resources/images/produt/banner_onestop_designhouse_2018.jpg" style="width: 100%">
-					<div class="text"></div>
-				</div>
-			</div>
+		<form id="detailForm">
+			<input type="hidden" id="mg_num" name="mg_num" value=""> 
+			<input type="hidden" name="listkey"> 
+			
+				<div id="page" class="container" style="position:relative;z-index:1;">	
+					
+		
+					<div class="slideshow-container">
+						<div class="mySlides2 fade">
+							<div class="numbertext">1 / 3</div>
+							<img src="/resources/images/produt/banner_big_ng_traveller_201805.jpg"  style="width: 100%">
+							<div class="text"></div>
+						</div>
+		
+						<div class="mySlides2 fade">
+							<div class="numbertext">2 / 3</div>
+							<img src="/resources/images/produt/banner_maxq_201805.jpg" style="width: 100%">
+							<div class="text"></div>
+						</div>
+		
+						<div class="mySlides2 fade">
+							<div class="numbertext">3 / 3</div>
+							<img src="/resources/images/produt/banner_onestop_designhouse_2018.jpg" style="width: 100%">
+							<div class="text"></div>
+						</div>
+					</div>
 	
 			
-			<br>
-			<br>
-			<br>
-			<br>
-			<img src="/resources/images/produt/index_title_bestchice.png"  style="width: 500px;"> 
-		  <div align="center" style="border:1px solid; padding:10px; border-radius: 10px;">	 
-          <table border="0" cellpadding="5" cellspacing="0" style="width:1000px">
-          	<tbody>
-          		<c:choose>
-          			<c:when test="${not empty bastlist}">
-          				<c:forEach  var="list" items="${bastlist}" varStatus="san">
-          					<c:if test="${san.count eq 1 }">
-          					 	<tr>
-          					</c:if>
-          					<c:if test="${san.count eq 6} ">
-          						<tr>           	
-          					</c:if>
-          							
-				                    <td valign="top" align="center" width="200px">
-									<!-- 표지이미지 -->
-									  <table border="0" cellspacing="0" cellpadding="3" class="table" bordercolor="#EBEBEB" bordercolordark="#FFFFFF">
-								  		<tbody>
-								  			<tr data-num="${list.mg_num}" data-key ="${list.listkey}">								  			
-												<td align="center" bgcolor="#FFFFFF" class="goDetail" >
-													<font color="blue">
-														<img src="/uploadStorage/magazineImage/thum/${list.pl_path}" width="100" height="120" border="0" >
-													</font>
-												</td>
-								  			</tr>
-								  			
-								  		</tbody>
-								  	</table>
-								  	<label ><font size="5"
-														style="font: 맑은 고딕, 나눔고딕, 굴림, verdana; color: #3399CC; FONT-WEIGHT: bold; line-height: 20px;">
-															${list.mg_name}</font> </label>
-									  <!-- 년월일 -->
-									<table border="0" cellspacing="0" cellpadding="0">
-									 	 <tbody>
-									 	 	<tr>
-									 	 		<td rowspan="3">
-									 	 			<img src="/resources/images/produt/best_circle${san.count}.gif" >
-									 	 		</td>
-									 	 		<td height="20px"><label><font size="1" style="font: 맑은 고딕, 나눔고딕, 굴림, verdana; color:#FE9A2E ; FONT-WEIGHT: bold; line-height: 20px;">${list.dt_keyword}</font></label></td>
-									 	 	</tr>
-									 	 	<tr>
-									 	 		<td style="vertical-align:top;"><label><font>${list.pd_salecost}</font></label></td>
-									 	 	</tr>
-									 	 	
-									  	</tbody>
-									  </table>
-					            	</td>
-							<c:if test="${san.count eq 5 }">
-								</tr>
-								<tr>            
-            						<td height="5"></td>	
-            					</tr>
-							</c:if>
-							<c:if test="${san.end }">
-								</tr>
-								<tr>            
-            						<td height="5"></td>	
-            					</tr>
-							</c:if>
-							                  	
-            	
-            				
-            		</c:forEach>
-            	</c:when>
-           	</c:choose>
-            	
-            	
-          	</tbody>
-          
-          </table>
-						
-	</div>
-				<br> <br> <br> <br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<img src="/resources/images/produt/index_title_bestchice.png"  style="width: 500px;"> 
+					 <div align="center" style="border:1px solid; padding:10px; border-radius: 10px;">	 
+				          <table border="0" cellpadding="5" cellspacing="0" style="width:1000px">
+				          	<tbody>
+				          		<c:choose>
+				          			<c:when test="${not empty bastlist}">
+				          				<c:forEach  var="list" items="${bastlist}" varStatus="san">
+				          					<c:if test="${san.count eq 1 }">
+				          					 	<tr>
+				          					</c:if>
+				          					<c:if test="${san.count eq 6} ">
+				          						<tr>           	
+				          					</c:if>
+				          							
+								                    <td valign="top" align="center" width="200px">
+													<!-- 표지이미지 -->
+													  <table border="0" cellspacing="0" cellpadding="3" class="table" bordercolor="#EBEBEB" bordercolordark="#FFFFFF">
+												  		<tbody>
+												  			<tr data-num="${list.mg_num}" data-key =${list.listkey}>								  			
+																<td align="center" bgcolor="#FFFFFF" class="goDetail" >
+																	<font color="blue">
+																		<img src="/uploadStorage/magazineImage/thum/${list.pl_path}" width="100" height="120" border="0" >
+																	</font>
+																</td>
+												  			</tr>
+												  			
+												  		</tbody>
+												  	</table>
+												  	<label ><font size="5"
+																		style="font: 맑은 고딕, 나눔고딕, 굴림, verdana; color: #3399CC; FONT-WEIGHT: bold; line-height: 20px;">
+																			${list.mg_name}</font> </label>
+													  <!-- 년월일 -->
+													<table border="0" cellspacing="0" cellpadding="0">
+													 	 <tbody>
+													 	 	<tr>
+													 	 		<td rowspan="3">
+													 	 			<img src="/resources/images/produt/best_circle${san.count}.gif" >
+													 	 		</td>
+													 	 		<td height="20px"><label><font size="1" style="font: 맑은 고딕, 나눔고딕, 굴림, verdana; color:#FE9A2E ; FONT-WEIGHT: bold; line-height: 20px;">${list.dt_keyword}</font></label></td>
+													 	 	</tr>
+													 	 	<tr>
+													 	 		<td style="vertical-align:top;"><label><font>${list.pd_salecost}</font></label></td>
+													 	 	</tr>
+													 	 	
+													  	</tbody>
+													  </table>
+									            	</td>
+											<c:if test="${san.count eq 5 }">
+												</tr>
+												<tr>            
+				            						<td height="5"></td>	
+				            					</tr>
+											</c:if>
+											<c:if test="${san.end }">
+												</tr>
+												<tr>            
+				            						<td height="5"></td>	
+				            					</tr>
+											</c:if>
+											                  	
+				            	
+				            				
+				            		</c:forEach>
+				            	</c:when>
+				           	</c:choose>
+				            	
+				            	
+				          	</tbody>
+				          
+				          </table>
+										
+					</div>
+					<br> <br> <br> <br>
 					
-	<div style="border:1px solid; padding:10px; border-radius: 10px;">
+					<div style="border:1px solid; padding:10px; border-radius: 10px;">
 	<h1 style=" font-family: 'Nanum Pen Script', cursive;">이달의 부록 잡지! </h1>	
 		<span></span>
 		<table>
@@ -264,7 +268,7 @@ function plusSlides(n) {
 										<td>
 											<ul style="list-style:none;">
 									</c:if>
-												<lili style=" margin:0;">
+												<li style=" margin:0;">
 													<table>
 														<tr data-num="${list.mg_num}" data-key ="${list.listkey}">
 															<td class="goDetail">
@@ -301,8 +305,9 @@ function plusSlides(n) {
 			</tr>
 		</table>
 	</div>			
-		<br> <br> <br> <br>		
-	<div style="border:1px solid; padding:10px; border-radius: 10px;">
+
+					<br> <br> <br> <br>		
+					<div style="border:1px solid; padding:10px; border-radius: 10px;">
 	<h1 style=" font-family: 'Nanum Pen Script', cursive;">확인해주세요 ! </h1>
 		<table align="center">
 			<tbody>
@@ -375,22 +380,17 @@ function plusSlides(n) {
 			</tbody>
 		</table>
 	</div>	
-		<br> <br> <br> <br>
+					<br> <br> <br> <br>
 	 <div>
 	 	<img src="/resources/images/produt/titlebar_nice_tip.gif" style="width: 1100px; height: 70px">
 				<div class="slideshow-container">
 					<c:choose>
           				<c:when test="${not empty fotolist}">
           					<c:forEach  var="foto" items="${fotolist}" varStatus="san">
-								<c:if test="${san.count eq 1}">
+								<c:if test="${san.count eq 1 or san.count eq 5 or san.count eq 9 }">
 									<div class="mySlides fade">	
 								</c:if>
-								<c:if test="${san.count eq 5 }">
-									<div class="mySlides fade">	
-								</c:if>
-								<c:if test="${san.count eq 9 }">
-									<div class="mySlides fade">	
-								</c:if>
+								
 							<ul style="margin: 15px 0px 0px; padding: 0px; position: relative; left: 0px;">
 								<li style="margin: 0px; padding: 0px; list-style: none; float: left; width: 250px; height: 300px; text-align: left;">
 									 <img src="/uploadStorage/board/imgb/${foto.imgb_thumb}"  style="margin: 0px; padding: 0px; width: 240px; height: 230px; border: 0px;">
@@ -411,30 +411,25 @@ function plusSlides(n) {
 									</table>
 								</li>
 							</ul>	
-					<c:if test="${san.count eq 12}">
+					<c:if test="${san.count eq 12 or san.count eq 4 or san.count eq 8}">
 						</div>
-					</c:if>	
-					<c:if test="${san.count eq 4 }">
-						</div>
-					</c:if>
-					<c:if test= "${san.count eq 8 }">
-						</div>
-					</c:if>	
+					</c:if>			
 						</c:forEach>
 					</c:when>
 				</c:choose>		
 					<a class="next" onclick="plusSlides(1)">&#10095;</a>
 					<a class="prev" onclick="plusSlides(-1)">&#10094;</a> 
-				</div>
+		</div>
 				<div style="text-align: center; vertical-align:top;">
 					<span class="dot" onclick="currentSlide(1)"></span> 
 					<span class="dot" onclick="currentSlide(2)"></span>
 				    <span class="dot" onclick="currentSlide(3)"></span>
 				</div>
-	</div>			
-	</form>
+			
+		</div>	
+		</form>		
 </div>
-</div>
+
 <div>
 	<tiles:insertAttribute name="quick"/>
 </div> 

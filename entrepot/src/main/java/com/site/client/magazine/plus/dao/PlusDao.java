@@ -12,5 +12,8 @@ public interface PlusDao {
 	public int pluschoice(PlusVO av);
 
 	public int pluschoice2(PlusVO av);
+	
+	public PlusVO pd_numSelect(String mg_num);
+	
 
 }

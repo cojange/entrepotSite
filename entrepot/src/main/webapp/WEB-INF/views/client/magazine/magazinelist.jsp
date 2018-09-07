@@ -34,7 +34,8 @@
 <script type="text/javascript" src="/resources/include/client/js/jquery.paging.js"></script>
 <script type="text/javascript">
 	$(function(){
-		var listkey= $('#listkey').val();
+		
+		var listkey= $("#am").val();
    		var key1 =$('#key1').val();
    		var key2 =$('#key2').val();
    		var key3 =$('#key3').val();
@@ -135,7 +136,7 @@
         	
             
        		 $("#mg_num").val(mg_num);
-       		 $("#listkey").val(listkey);
+       		 $("#am").val(listkey);
             //상세 페이지로 이동하기위해  form추가(id:detailForm)
             $("#detailForm").attr({
                "method":"get",
@@ -170,7 +171,7 @@
 		<input type="hidden" id="key2" name="key2" value="${mvo.key2}" />
 		<input type="hidden" id="key3" name="key3" value="${mvo.key3}" />
 		<input type="hidden" id="home" name="home" value="${mvo.home }"/>
-		<input type="hidden" id="listkey" name="listkey" value="${mvo.listkey}" />
+		<input type="hidden" id="am" name="listkey" value="${mvo.listkey}" />
 		<input type="hidden" id="mg_num" name="mg_num"  />
 		<input type="hidden" id="current" name="current" value="${mvo.page}" />
 		<input type="hidden" id="max" name="max" value="${mvo.totalpage}"/>

@@ -14,4 +14,9 @@
 	select count(cm_choice)as pl_choice2 from recommendation 
 	where  pl_num=#{pl_num} and cm_choice=2
 </select>
+
+ <select id="pd_numSelect" parameterType="String" resultType="mgvo">
+	select pd_num from product p join ( select mg_num, max(SUBSTR(PD_NUM,INSTR(PD_NUM,'-')+1,7)) maxdate from product group by mg_num) tarp
+	on p.mg_num = tarp.mg_num and substr(p.pd_num,instr(pd_num,'-')+1,7) = tarp.maxdate and p.mg_num =#{mg_num}
+</select>
 </mapper>
