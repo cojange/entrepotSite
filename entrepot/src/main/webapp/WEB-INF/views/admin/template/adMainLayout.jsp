@@ -73,7 +73,7 @@
 	    <!-- Demo scripts for this page-->
 	    <script src="/resources/include/admin/js/demo/datatables-demo.js"></script>
 	    <script src="/resources/include/admin/js/dataTable-select.min.js"></script>
-	    <script src="/resources/include/admin/js/demo/chart-area-demo.js"></script> 
+	    <!-- <script src="/resources/include/admin/js/demo/chart-area-demo.js"></script>  -->
 	    
 	    <!-- 사용자 정의 js -->
 	    <script type="text/javascript" src="/resources/include/admin/js/ad-clock.js"></script>
