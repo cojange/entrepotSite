@@ -28,7 +28,7 @@
                var img = $("<br /><img>");  /* 동적 태그 생성 */
                $('#imgView').hover(function(){  /* hover는 매개변수(function) 두개를 가지고 있음 */
                   img.attr({
-                     src:"/client/board/uploadStorage/${update.pb_img1}",
+                     src:"/uploadStorage/personal/personal/${update.pb_img1}",
                      width:"400px",
                      height:"180px"
                   });
@@ -108,7 +108,7 @@
 						</tr>
 						<tr>
 							<th class="ac">첨부파일</th>
-							<td colspan="3"><input type="file" name="file" id="file" /><img alt="/resources/images/client/베컴.JPG" src=""><span id="imgView">기존 이미지 파일명:${update.pb_img1 }<span id="imgArea"></span></span></td>
+							<td colspan="3"><input type="file" name="file" id="file" /><span id="imgView">기존 이미지 파일명:${update.pb_img1 }<span id="imgArea"></span></span></td>
 						</tr>
 						<tr>
 							<th class="ac">비밀번호</th>
