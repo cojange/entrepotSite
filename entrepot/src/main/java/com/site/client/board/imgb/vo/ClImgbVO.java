@@ -13,6 +13,7 @@ public class ClImgbVO extends CommonVO {
 		private String imgb_content	="";	//이미지내용
 		private String imgb_pwd		="";	//비밀번호
 		private String imgb_thumb	="";	//썸네일
+		
 		private String imgb_update	="";	//수정일
 		private String imgb_date	="";	//등록일
 		private String m_name		="";	//회원번호
