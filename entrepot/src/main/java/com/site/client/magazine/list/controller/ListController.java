@@ -35,7 +35,7 @@ public class ListController {
 		int mylist = listService.listcount(mvo); //총 리스트 개수
 		
 		logger.info("listkey : "+mvo.getListkey());
-		mvo.setCountList(10);
+		mvo.setCountList(7);
 		mvo.setTotalpage(mylist/mvo.getCountList());
 		
 		if(mylist % mvo.getCountList()>0) {
