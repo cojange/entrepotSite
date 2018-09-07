@@ -28,7 +28,7 @@
 	on c.pd_num = d.pd_num 
 	where  b.RECORD_NUM 
 	in (select whish from (SELECT whish FROM member union all select whish from group_member)
-	 where whish=#{record_num} and pl_type='썸네일')
+	 where whish=#{record_num} and pl_type='thum')
 </select>
 <!-- 장바구니 -->
 <select id="cartList" parameterType="whishAndCart" resultType="whishAndCart">
@@ -44,7 +44,7 @@
 	on c.pd_num = d.pd_num 
 	where  b.RECORD_NUM 
 	in (select cart from (SELECT cart FROM member union all select cart from group_member)
-	 where cart=#{record_num} and pl_type='썸네일')
+	 where cart=#{record_num} and pl_type='thum')
 </select>
 <!--주문내역-->
 <select id="orderList" parameterType="orderList" resultType="orderList">
