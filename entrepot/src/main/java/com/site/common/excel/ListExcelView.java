@@ -33,7 +33,6 @@ public class ListExcelView extends AbstractView {
       //file_name의 값은 board(AdminBoardController에서 확인)
       //board_20180810.xlsx의 형태로 출력
 	   
-	   GetDateUtil gdu = GetDateUtil.getInstance();
 	   response.setContentType("application/x-msexcel; charset=UTF-8");
       response.setHeader("Content-Disposition", "attachment;fileName=\""+model.get("file_name")+".xlsx\"");
       

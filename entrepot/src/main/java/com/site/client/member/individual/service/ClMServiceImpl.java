@@ -63,5 +63,11 @@ public class ClMServiceImpl implements ClMService {
 
 	return result;     
 	}
+
+	@Override 
+	public ClMVO memberSellSelect(String m_num) {
+		ClMVO cvo = clMDao.memberSellSelect(m_num);
+		return cvo;
+	}
 	
 }

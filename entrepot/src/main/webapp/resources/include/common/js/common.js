@@ -128,7 +128,7 @@ var pattren = [
       "^\\d{3}-\\d{3,4}-\\d{4}",
       "^(?=.*[0-9]).{6}$",
       "^[1-4]$",
-      "((?=.*[a-zA-Z])(?=.*[0-9]).{3,20})",
+      "^[0-9a-zA-Z].{3,20}$",
       "((([a-z\d](([a-z\d-]*[a-z\d])|([ㄱ-힣]))*)\.)+[a-z]{2,})",
       "^\\d{2,3}-\\d{3,4}-\\d{4}",
       "^([0-9]{3})-?([0-9]{2})-?([0-9]{5})",
@@ -168,4 +168,30 @@ function inputVerify(index,data,printarea,hint,mode) {
       }
       return true;
    }
+}
+
+/***********************************
+ * 받아온 숫자를 콤마가들어가있는 형태로 변환시키는 메서드
+ * len : num 문자열의 길이
+ * point : num의 길이를 3등분한 나머지
+ * *********************************
+ * @param num : 변환할 숫자
+ * @returns str : 변환한 값을 담은 변수 
+ ***********************************/
+function comma(num){
+    var len, point, str; 
+       
+    num = num + ""; 
+    point = num.length % 3 ;
+    len = num.length; 
+   
+    str = num.substring(0, point).trim();
+    while (point < len) { 
+        if (str != "") str += ","; 
+        str += num.substring(point, point + 3); 
+        point += 3; 
+    } 
+     
+    return str;
+ 
 }

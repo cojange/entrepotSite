@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.client.member.sell.dao.ClSellDAO">
+
+<insert id="paymentInsert" parameterType="sell">
+		/*member - memberInsert*/
+		 <selectKey keyProperty="enddate" resultType="String" order="BEFORE">
+			<!-- SELECT last_day((SELECT to_char(trunc(add_months(sysdate, 11), 'dd'),'YYYY/MM/DD') FROM dual)) FROM dual -->
+			SELECT to_char(trunc(add_months(sysdate, 12), 'dd'),'yyyy/mm/dd') FROM dual
+		</selectKey> 
+		Insert into SELL (ORDER_NUM,SELL_EA,SELL_DATE,
+		SELL_MONEY,BANK_NAME,BANK,
+		COUPON_NO,M_NUM,MT,ENDDATE) 
+		values (TO_CHAR(SYSDATE, 'YYYY/MM/DD')||'_'||sell_seq.nextval,#{sell_ea},sysdate,
+		#{sell_money},#{bank_name},#{bank},
+		#{coupon_no},#{m_num},#{mt},#{enddate})
+	</insert>
+
+
+</mapper>
