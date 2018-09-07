@@ -14,7 +14,7 @@ public class ClImgbVO extends CommonVO {
       private String imgb_update   ="";   //수정일
       private String imgb_date   ="";   //등록일
       private String imgb_cnt    ="";  //조회수
-      private String imgb_thumb;
+      private String imgb_thumb ;
   
 	
 	private MultipartFile file; //파일을 가져올 수 있는 자르 파일을 만들어서 파일을 가져오도록 하자
