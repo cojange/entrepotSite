@@ -61,6 +61,19 @@ from order_list b join  product c on b.pd_num = c.pd_num
 
 <delete id="listDelete" parameterType="whishAndCart">
 delete from record where record_num=#{record_num} and mg_num=#{mg_num}
-</delete> 
+</delete>
+
+<insert id="orderListInsert" parameterType="whishAndCart">
+		
+		Insert into ORDER_LIST 
+		(ORDER_NUM,PD_NUM,ORDER_DATE,ORDER_EA,ORDER_MONEY,ORDER_OK,TRANSIT_NUM) 
+		values (#{order_num},#{pd_num},sysdate,#{order_ea},#{order_money},#{order_ok},#{transit_num});
+
+</insert>
+
+
+<delete id="listAllDelete" parameterType="whishAndCart">
+delete from record
+</delete>
 
 </mapper>

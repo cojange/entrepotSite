@@ -37,13 +37,13 @@ public class HomeController {
 		logger.info("main호출성공");
 		
 		List<MagazineVO> alist = listservice.bastlist(mvo);
-		List<ClImgbVO> fotolist= climgbservice.fotolist(cvo);
+		/*List<ClImgbVO> fotolist= climgbservice.fotolist(cvo);*/
 		List<MagazineVO> jlist = listservice.jlist(mvo);
 		List<MagazineVO> elist = listservice.elist(mvo);
 		List<MagazineVO> aplist= listservice.aplist(mvo);
 		
 		model.addAttribute("bastlist",alist);
-		model.addAttribute("fotolist",fotolist);
+		/*model.addAttribute("fotolist",fotolist);*/
 		model.addAttribute("jlist", jlist);
 		model.addAttribute("elist", elist);
 		model.addAttribute("aplist", aplist);
