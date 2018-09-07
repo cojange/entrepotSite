@@ -1,5 +1,6 @@
 package com.site.client.board.imgb.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.site.client.board.imgb.dao.ClImgbDao;
 import com.site.client.board.imgb.vo.ClImgbVO;
+import com.site.common.file.FileUploadUtil;
 
 
 @Service
@@ -30,6 +32,8 @@ public class ClImgbServiceImpl implements ClImgbService{
 	public int imgbInsert(ClImgbVO cvo) {
 		int result = 0;
 		try {
+			
+			
 			result = clImgbDao.imgbInsert(cvo);
 		}catch(Exception e) {
 			System.out.println("글 입력 오류입니다 관리자에게문의 하세요");
@@ -80,6 +84,12 @@ public class ClImgbServiceImpl implements ClImgbService{
 	   fotolist = clImgbDao.fotolist(cvo);
 	   return fotolist;
    }
+@Override
+public List<String> getMg_num(String m_num) {
+	List<String> resultData = new ArrayList<>();
+	resultData = clImgbDao.getMg_num(m_num);
+	return resultData;
+}
    
 }
 

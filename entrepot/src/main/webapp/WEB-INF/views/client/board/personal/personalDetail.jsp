@@ -56,7 +56,7 @@
 				});
 				//삭제버튼클릭시 처리 이벤트
 				$("#deleteFromBtn").click(function(){
-					$.ajax({
+					/* $.ajax({
 						url:"/client/board/personal/personalLists.do",
 						type:"get",
 						data:"pb_no="+$("#pb_no").val(),
@@ -73,7 +73,13 @@
 								alert("댓글 존재시 게시물 삭제를 할 수 없습니다.");
 							}
 						}
-					});
+					}); */
+					if(confirm("선택하신 게시글을  삭제하시겠습니까?")){
+					goUrl="/client/board/personal/personalDelete.do"
+						
+						$("#f_data").attr("action",goUrl);
+						$("#f_data").submit();
+					}
 				});
 				
 				//비밀번호 확인 버튼 클릭시 처리 이벤트
@@ -116,6 +122,7 @@
 	<body>
 		<form id="f_data" name="f_data" method="post">
 			<input type="hidden" id="pb_no" name="pb_no" value="${detail.pb_no }" />
+			<input type="hidden" id=pb_img1 name="pb_img1" value="${detail.pb_img1 }" >
 		</form>
 		<h3>상세보기</h3>
 		<!-- 비밀번호 확인버튼  및 버튼 추가 -->

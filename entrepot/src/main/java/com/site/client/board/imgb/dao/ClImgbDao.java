@@ -23,6 +23,8 @@ public interface ClImgbDao {
 	public List<ClImgbVO> fotolist(ClImgbVO cvo);
 	
 	public int clImgbCntUpdate(int imgb_no);
+	
+	public List<String> getMg_num(String m_num);
 }
 
 

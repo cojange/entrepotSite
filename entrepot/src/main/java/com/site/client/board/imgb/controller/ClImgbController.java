@@ -1,6 +1,7 @@
 package com.site.client.board.imgb.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +15,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.site.client.board.imgb.service.ClImgbService;
 import com.site.client.board.imgb.vo.ClImgbVO;
 import com.site.client.member.login.vo.LoginVO;
@@ -58,6 +63,7 @@ public class ClImgbController {
 		
 		LoginVO login = (LoginVO)session.getAttribute("login");
 	      cvo.setM_num(login.getM_num());
+	     
 		
 		/*result == 0 을 제와하는 경우*/
 		int result = 0;
@@ -65,8 +71,10 @@ public class ClImgbController {
 		
 		logger.info("getFile = " +cvo.getFile());
 		if(!cvo.getFile().isEmpty()) {
-			String imgb_img1 = FileUploadUtil.fileUpload(cvo.getFile(), "imgb", req, "imgb", "imgb");
+			String imgb_img1 = FileUploadUtil.fileUpload(cvo.getFile(), "board", req, "imgb", "imgb");
+			String thumbFile = FileUploadUtil.makeThumbnail(imgb_img1, "imgb", req);
 			cvo.setImgb_img1(imgb_img1);
+			cvo.setImgb_thumb(thumbFile);
 		}else {
 	    	  cvo.setImgb_img1("");
 	      }
@@ -140,7 +148,7 @@ public class ClImgbController {
 			if(!cvo.getFile().isEmpty()) {
 				logger.info("=====file="+cvo.getFile().getOriginalFilename());
 				if(!cvo.getImgb_img1().isEmpty()) {
-					FileUploadUtil.fileDelete(cvo.getImgb_img1(), "imgb", req);
+					FileUploadUtil.fileDelete(cvo.getImgb_img1(), "imgb","imgb", req);
 		    	  }
 					//다시 파일 업로드
 					imgb_img1 = FileUploadUtil.fileUpload(cvo.getFile(), "imgb", req, "imgb", "imgb");
@@ -169,8 +177,8 @@ public class ClImgbController {
 			String url="";
 			
 			//파일이 존재하면
-			if(!cvo.getFile().isEmpty()) {
-				FileUploadUtil.fileDelete(cvo.getImgb_img1(), "imgb_img1", req);
+			if(!cvo.getImgb_img1().isEmpty()) {
+				FileUploadUtil.fileDelete(cvo.getImgb_img1(), "imgb","imgb", req);
 			}
 			result= clImgbService.clImgbDelete(cvo.getImgb_no());
 			
@@ -180,5 +188,25 @@ public class ClImgbController {
 				url="/client/board/imgb/imgbDetail.do?imgb_no="+cvo.getImgb_no();
 			}
 			return "redirect:"+url;
+		}
+		
+		//mg_num select 가져오기
+		@ResponseBody
+		@RequestMapping(value="/board/imgb/getMg_num.do")
+		public String getMg_num(ObjectMapper mapper, HttpSession session) {
+			
+			LoginVO login = (LoginVO) session.getAttribute("login");
+			List<String> resultData=new ArrayList<>();
+			resultData = clImgbService.getMg_num(login.getM_num());
+			String jsonData ="";
+			
+			
+			try {
+				jsonData = mapper.writeValueAsString(resultData);
+			}catch(JsonProcessingException e) {
+				e.printStackTrace();
+			}
+			
+			return jsonData;
 		}
 }

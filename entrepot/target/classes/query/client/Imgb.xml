@@ -11,13 +11,13 @@
 	
 	<!-- 글 입력 -->
 	<insert id="imgbInsert" parameterType="imgb">
-		<selectKey  resultType="int" order="BEFORE" keyProperty="imgb_no">
-		select img_board_seq.nextval from dual
+		<selectKey  resultType="java.lang.String" order="BEFORE" keyProperty="pd_num">
+		select pd_num from order_list where order_num = (select max(order_num) from sell where m_num = #{m_num}) and substr(pd_num,0,3) = #{mg_num}
 		</selectKey>
-		insert into img_board(imgb_no,m_num,imgb_title,imgb_date,
+		insert into img_board(imgb_no,m_num,imgb_title,pd_num,imgb_thumb,
 		imgb_content,imgb_pwd,board_no<if test="imgb_img1!=''">,imgb_img1</if>)
-		values(#{imgb_no},#{m_num},#{imgb_title},#{imgb_date},#{imgb_content},#{imgb_pwd},#{board_no},
-		<if test="imgb_img1!=''">#{imgb_img1}</if>)
+		values(img_board_seq.nextval,#{m_num},#{imgb_title},#{pd_num},#{imgb_thumb},
+		#{imgb_content},#{imgb_pwd},#{board_no}<if test="imgb_img1!=''">,#{imgb_img1}</if>)
 	</insert>
 	
 	<!-- 상세페이지 -->
@@ -25,6 +25,7 @@
 	 	select a.imgb_no, a.imgb_title, a.imgb_content, a.imgb_img1, b.m_name, c.pd_num,
         to_char(imgb_date, 'YYYY-MM-DD') as imgb_date from img_board a inner join member b 
         on a.m_num = b.m_num inner join product c on a.pd_num = c.pd_num
+        where imgb_no=#{imgb_no}
         order by imgb_no desc
 	</select>
 	
@@ -58,7 +59,7 @@
 	</update>
 	
 	<delete id="clImgbDelete" parameterType="imgb">
-	delete from img_board whre imgb_no =#{imgb_no}
+	delete from img_board where imgb_no =#{imgb_no}
 	</delete>
 	
 	<!-- 진우형 쿼리 -->
@@ -69,5 +70,11 @@
         from foto_view
         )WHERE RNUM between 1 and 12
    </select>
+   
+   <select id="getMg_num" resultType="java.lang.String">
+   		select substr(pd_num,0,3) mg_num from order_list join sell on order_list.order_num = sell.order_num
+        where m_num = #{m_num}
+   </select>
+   
 </mapper>
 <!-- mybatis xml mapper파일 -->

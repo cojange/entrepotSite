@@ -60,5 +60,10 @@ public int clImgbCntUpdate(int imgb_no) {
 	return session.update("clImgbCntUpdate", imgb_no);
 	
 }
+
+@Override
+public List<String> getMg_num(String m_num) {
+	return session.selectList("getMg_num", m_num);
+}
 }
 

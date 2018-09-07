@@ -74,6 +74,7 @@ public class PersonalController {
 	      if(result ==1) { //오류가 발생하지 안을 경우
 	    	  url="/client/board/personal/personalList.do";
 	      }else { //오류가 발생한 경우
+	    	  model.addAttribute("code", 1);
 	    	  url ="/client/board/personal/writeForm.do";
 	      }
 		return "redirect:" + url;
@@ -138,7 +139,7 @@ public class PersonalController {
 		    	  logger.info("======== file="+pvo.getFile().getOriginalFilename());
 		    	  //기존 파일 삭제처리
 		    	  if(!pvo.getPb_img1().isEmpty()) {
-		    		FileUploadUtil.fileDelete(pvo.getPb_img1(), "personal", req);
+		    		FileUploadUtil.fileDelete(pvo.getPb_img1(), "personal", "personal",req);
 		    	  }
 		    	  //다시 파일업로드
 		    	 pb_img1 = FileUploadUtil.fileUpload(pvo.getFile(), "personal", req, "personal", "personal");
@@ -167,8 +168,8 @@ public class PersonalController {
 			String url ="";
 			
 			//파일이 존재하면
-			if(!pvo.getFile().isEmpty()) {
-				FileUploadUtil.fileDelete(pvo.getPb_img1(), "personal", req);
+			if(!pvo.getPb_img1().isEmpty()) {
+				FileUploadUtil.fileDelete(pvo.getPb_img1(), "personal", "personal",req);
 			}
 			result = personalService.personalDelete(pvo.getPb_no());//파일까지 삭제 처리
 			

@@ -108,13 +108,18 @@ public class FileUploadUtil {
 	}
 	
 	/* 썸네일 파일 업로드 */
-	public static String makeThumbnail(String fileName, HttpServletRequest request) throws IOException{
+	public static String makeThumbnail(String fileName,String mode, HttpServletRequest request) throws IOException{
 		   logger.info("makeThumbnail 호출 성공");
 		   
 		   String dirName = "";
 		   
 		   //magazine product thum
-		   dirName = "magazineImage/main";
+		   if(mode.equals("details")) {
+			   dirName = "magazineImage/main";
+		   }else if(mode.equals("imgb")) {
+			   dirName="board/imgb";
+		   }
+		   
 		   
 		   //이미지가 존재하는 폴더 추출
 		   String imgPath = request.getSession().getServletContext().getRealPath("/uploadStorage/"+dirName);

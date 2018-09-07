@@ -21,5 +21,7 @@ public interface ClImgbService {
 	public int clImgbDelete(int imgb_no);
 
     public List<ClImgbVO> fotolist(ClImgbVO cvo);
+    
+    public List<String> getMg_num(String m_num);
 }
 

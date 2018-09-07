@@ -12,6 +12,8 @@
 			 select a.ub_no,a.ub_type,a.ub_query,a.ub_ans, b.ad_id,
         	 to_char(ub_date, 'YYYY-MM-DD') as ub_date from useful_board a inner join admin b
         	 on a.ad_id = b.ad_id
+        	 where ub_no=#{ub_no}
         	 order by ub_no desc
+        	 
 		</select>
 </mapper>

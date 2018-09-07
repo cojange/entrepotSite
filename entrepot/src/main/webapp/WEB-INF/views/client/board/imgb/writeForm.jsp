@@ -21,6 +21,18 @@
 		</head>
 		<script type="text/javascript">
 			$(function(){
+				
+				$.getJSON("/client/board/imgb/getMg_num.do",function(resultData){
+					var optionData;
+					$.each(resultData,function(k,v){
+						optionData = "<option value='"+v+"'>"+v+"</option>";
+						$("#mg_numList").append(optionData);
+					})
+					
+				
+					
+				})
+				
 				//저장버튼 클릭시 처리 이벤트
 				$("#imgbBtn").click(function(){
 					//입력값체크
@@ -47,6 +59,12 @@
 			<h3>게시판 글 작성</h3>
 			<form id="f_writeForm" method="post" enctype="multipart/form-data">
 				<table border="1" style="border-collapse:collapse;">
+					<tr>
+					<td colspan="2">
+						<select id="mg_numList" name="mg_num">
+							
+						</select>
+					</tr>
 					<tr>
 						<td class="ac">제목</td>
 						<td><input type="text" name="imgb_title" id="imgb_title" /></td>

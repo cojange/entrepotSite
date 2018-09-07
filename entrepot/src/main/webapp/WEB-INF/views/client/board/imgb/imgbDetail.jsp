@@ -30,7 +30,7 @@
 				var file="<c:out value='${detail.imgb_img1}'/>";
 				if(file!=""){
 					$("#fileImage").attr({
-						src:"/uploadStorage/imgb/imgb/${detail.pb_img1}",
+						src:"/uploadStorage/imgb/imgb/${detail.imgb_img1}",
 						width:"450px",
 						height:"200px"
 					});
@@ -50,7 +50,7 @@
 				});
 				//삭제버튼 클릭시 처리 이벤트
 				$("#deleteFromBtn").click(function(){
-					$.ajax({
+					/* $.ajax({
 						url:"/client/board/imgb/imgreply/replyCount.do",
 						type:"get",
 						data:"imgb_no="+$("#imgb_no").val(),
@@ -67,7 +67,13 @@
 								alert("댓글이 존재시 게시물을 삭제 할 수 없습니다.");
 							}
 						}
-					});
+					}); */
+					if(confirm("선택하신 게시글을  삭제하시겠습니까?")){
+						goUrl="/client/board/imgb/clImgbDelete.do"
+							
+							$("#f_data").attr("action",goUrl);
+							$("#f_data").submit();
+						}
 				});
 				
 				//비밀번호 확인 버튼 클릭시 처리 이벤트
@@ -109,7 +115,7 @@
 		<body>
 			<form id="f_data" name="f_data" method="post">
 			<input type="hidden" id="imgb_no" name="imgb_no" value="${clidetail.imgb_no }" />
-			<input type="hidden" name="board_no" id="board_no"  value="${param.board_no }"/>
+			<input type="hidden" id="imgb_img1" name="imgb_img1" value="${detail.imgb_img1 }" >
 			</form>
 				<h3> 상세보기</h3>
 					<!-- 비밀번호 확인버튼  및 버튼 추가 -->
@@ -153,6 +159,5 @@
 						</tr>
 					</tbody>
 				</table>
-				<%-- <jsp:include page="replyList.jsp" /> --%>
 		</body>
 </html>
