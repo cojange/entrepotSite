@@ -8,11 +8,11 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.site.client.magazine.plus.service.PlusService;
 import com.site.client.member.individual.service.ClGmService;
 import com.site.client.member.individual.service.ClMService;
 import com.site.client.member.individual.vo.ClGmVO;
@@ -20,6 +20,7 @@ import com.site.client.member.individual.vo.ClMVO;
 import com.site.client.member.login.vo.LoginVO;
 import com.site.client.member.myPage.service.ClMyPageService;
 import com.site.client.member.myPage.vo.ClMyPageVO;
+import com.site.client.member.myPage.vo.ClOrderListVO;
 import com.site.client.member.sell.service.ClSellService;
 import com.site.client.member.sell.vo.ClSellVO;
 
@@ -37,6 +38,8 @@ public class ClSellController {
 	private ClMService clMService;
 	@Autowired
 	private ClGmService clGmService;
+/*	@Autowired
+	private PlusService PlusService;*/
 	
 	/***********************************************
 	 * 결제페이지
@@ -86,12 +89,15 @@ public class ClSellController {
 	 * 결제 정보입력후
 	 * ********************************************/
 	@RequestMapping(value="/member/payment.do",method = RequestMethod.POST)
-	public ModelAndView paymentInsert(ClSellVO csvo,ModelAndView mav) {
+	public ModelAndView paymentInsert(ClSellVO csvo,ClOrderListVO ordervo,ModelAndView mav) {
 		logger.info("payment.do post 방식에 의한 메서드 호출 성공");
 		int result;
 		result = clSellService.paymentInsert(csvo);
-		if(result==1) {
+		if(result==1 || result > 0) {
+					
 			
+			logger.info("");
+			clMyPageService.orderListInsert(ordervo);
 			mav.setViewName("client/member/member/paymentSuccess");
 		}	
 		return mav;

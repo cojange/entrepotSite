@@ -120,6 +120,7 @@ $(function() {
 		//구매버튼 클릭시
 		$(".sell").click(function() {
 			if($(".listType").val()=="Whish"){
+				
 				location.href="/client/member/sellWhish.do";
 			}else if($(".listType").val()=="Cart"){
 				location.href="/client/member/sellCart.do";

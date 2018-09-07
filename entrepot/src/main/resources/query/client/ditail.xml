@@ -24,7 +24,7 @@
 	(select rownum as rnum, pl_path,mg_num from product_image 
 	where pl_type='thum'and mg_num=#{mg_num}
 	order by SUBSTR(PL_PATH,INSTR(PL_PATH,'-')+1,7) desc)
-	where rnum <![CDATA[<=]]>6
+	<![CDATA[where rnum <= 6]]>
 
 </select>
 

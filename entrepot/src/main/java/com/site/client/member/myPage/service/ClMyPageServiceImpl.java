@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.site.client.magazine.plus.dao.PlusDao;
+import com.site.client.magazine.plus.vo.PlusVO;
 import com.site.client.member.login.controller.ClLoginController;
 import com.site.client.member.myPage.dao.ClMyPageDao;
 import com.site.client.member.myPage.vo.ClMyPageVO;
@@ -19,6 +21,8 @@ public class ClMyPageServiceImpl implements ClMyPageService {
 	private Logger logger = Logger.getLogger(ClLoginController.class);
 	@Autowired
 	private ClMyPageDao clMyPageDao;
+	@Autowired
+	private PlusDao plusDao;
 	
 	@Override
 	//찜리스트
@@ -60,6 +64,20 @@ public class ClMyPageServiceImpl implements ClMyPageService {
 		logger.info("레코드"+myPageVo.getRecord_num());
 		int result = clMyPageDao.listDelete(myPageVo);
 		logger.info("dao"+result);
+		return result;
+	}
+
+	@Override
+	public int orderListInsert(ClOrderListVO ordervo) {
+		int result = 0;
+		try {		
+			/*PlusVO pd_num = plusDao.pd_numSelect(ordervo.getM_num());*/
+			/*ordervo.setPd_num(ordervo.getPd_num());*/
+			result = clMyPageDao.orderListInsert(ordervo);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return result;
 	}
 
