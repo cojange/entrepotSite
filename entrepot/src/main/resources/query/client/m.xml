@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.site.client.member.individual.dao.ClMDao">
+
+<!--=======================구매페이지회원검색==============================-->
+<select id="memberSellSelect" parameterType="String" resultType="member">
+	/*sell - memberSelect*/
+	 select M_NUM,M_ID,M_NAME,M_BIRTH,M_GENDER,M_JOB,M_ADDRESS,M_ZIPCODE,M_PHONE,M_EMAIL,M_DATE,M_UPDATE,PWDCHECK,QUIZ,ANS,CART,WHISH,GRADE,MT
+	 from member
+		where m_num=#{m_num}
+</select>
+<select id="groupMemberSellSelect" parameterType="String" resultType="groupMember">
+	/*sell - memberSelect*/
+	 select M_NUM,M_ID,M_NAME,COM_NO,LEADER_NAME,M_ADDRESS,M_ZIPCODE,CHAR_NAME,CHAR_PHONE,CHAR_EMAIL,ACC_NAME,ACC_PHONE,ACC_EMAIL,M_JOB,LEADER_PHONE,M_DATE,M_UPDATE,FAX,CART,WHISH,MT
+	 from group_member
+		where m_num=#{m_num}
+</select>
 	<!--=======================개인회원시작==============================-->
 	<select id="memberSelect" parameterType="String" resultType="member">
 		/* member - memberSelect */

@@ -16,7 +16,7 @@
 
 	
 
-    <!-- Bootstrap core CSS -->
+    <!-- Bootstrap core CSS --> 
 	
 
  	<link href="/resources/include/client/css/joinform.css" rel="stylesheet" type="text/css" media="all" /> 	

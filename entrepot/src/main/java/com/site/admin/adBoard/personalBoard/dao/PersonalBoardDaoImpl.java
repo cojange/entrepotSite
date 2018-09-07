@@ -6,7 +6,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.site.admin.adBoard.personalBoard.vo.PbReplyVO;
 import com.site.admin.adBoard.personalBoard.vo.PersonalBoardVO;
+import com.site.admin.order.orderList.vo.AdOrderListVO;
 
 @Repository
 public class PersonalBoardDaoImpl implements PersonalBoardDao {
@@ -18,5 +20,15 @@ public class PersonalBoardDaoImpl implements PersonalBoardDao {
 	@Override
 	public List<PersonalBoardVO> personalBoardList(PersonalBoardVO pbvo) {
 		return session.selectList("personalBoardList", pbvo);
+	}
+
+	@Override
+	public List<AdOrderListVO> pbReplyList(PbReplyVO pbrvo) {
+		return session.selectList("pbReplyList", pbrvo);
+	}
+
+	@Override
+	public int pbReInsert(PbReplyVO pbrvo) {
+		return session.insert("boardInsert", pbrvo);
 	}
 }

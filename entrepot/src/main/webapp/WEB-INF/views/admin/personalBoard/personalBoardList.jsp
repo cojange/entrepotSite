@@ -26,6 +26,7 @@
                       <th style="display: none;">사진1</th>
                       <th style="display: none;">사진2</th>
                       <th style="display: none;">사진3</th>
+                      <th style="display: none;">글번호</th>
                     </tr>
                   </thead>
                   <tfoot>
@@ -42,13 +43,14 @@
                       <th style="display: none;">사진1</th>
                       <th style="display: none;">사진2</th>
                       <th style="display: none;">사진3</th>
+                      <th style="display: none;">글번호</th>
                     </tr>
                   </tfoot>
                   <tbody>
                      <c:choose>
 						<c:when test="${not empty personalBoardList}">
 							<c:forEach var="PersonalBo" items="${personalBoardList}" varStatus="status">
-								<tr role = "row" class="tac" data-num="${status.count}">
+								<tr role = "row" class="tac" data-num="${PersonalBo.pb_no}">
 									<td class="details-control"><i class="fas fa-plus-circle red"></i></td>
 									<td>${status.count}</td>
 									<td>${PersonalBo.pb_type}</td>
@@ -61,6 +63,7 @@
 									<td style="display: none;">${PersonalBo.pb_img1}</td>
 									<td style="display: none;">${PersonalBo.pb_img2}</td>
 									<td style="display: none;">${PersonalBo.pb_img3}</td>
+									<td style="display: none;">${PersonalBo.pb_no}</td>
 								</tr>
 							</c:forEach>
 						</c:when> 

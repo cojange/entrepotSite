@@ -8,4 +8,53 @@
 		from magazine_list_view
 		order by SUBSTR(reverse(substr(reverse(pl_path), 1, instr(reverse(pl_path), '_') - 1)),1,instr(reverse(substr(reverse(pl_path), 1, instr(reverse(pl_path), '_') - 1)),'.')-1) desc
 	</select>
+	
+	<select id="callMgPartner" resultType="java.lang.String">
+		/*잡지 정보(회사명)*/
+		select com_name from magazine_company   
+	</select>
+	<select id="callMgNum" parameterType="java.lang.String" resultType="java.lang.String">
+		/*잡지 정보 (이름)*/
+		select mg_name from magazine m join magazine_company mc 
+		on m.com_no = mc.com_no where com_name = #{com_name}
+	</select>
+	
+	<insert id="insertMagazine" parameterType="msvo">
+	
+		<selectKey keyProperty="mg_num" resultType="String" order="BEFORE">select mg_num from magazine where mg_name = #{mg_name}</selectKey>
+		/*잡지 등록*/
+		insert into product (pd_num, pd_cost, pd_rate, pd_sale, pd_appendix, mg_num, pd_date)
+		values(#{mg_num}||'-'||to_char(sysdate,'yymmdd'),#{pd_cost},#{pd_rate},#{pd_sale},#{pd_appendix},#{mg_num},#{pd_date})
+	</insert>
+	
+	<select id="callDtKeyword" resultType="msvo">
+		/*키워드 checkbox*/
+		select dt_keyword, dt_target  from details
+	</select>
+	
+	<select id="getMgNum" parameterType="msvo" resultType="java.lang.String">
+		/*잡지 코드 가져오기*/
+		select mg_num from magazine where mg_name=#{mg_name}
+	</select>
+	
+	<select id="getPdNum" parameterType="msvo" resultType="java.lang.String">
+		/*상품 코드 가져오기*/
+		select pd_num from product
+		where mg_num=#{mg_num} 
+		and subStr(pd_num,instr(pd_num,'-')+1,6) = 
+		(select max(subStr(pd_num,instr(pd_num,'-')+1,6)) maxdate from product where mg_num = #{mg_num} )
+	</select>
+	
+	<insert id="insertDetailContent" parameterType="msvo">
+		/*details content 등록*/
+		insert into details (mg_num, dt_target, dt_brief, dt_detail, dt_contents, dt_keyword)
+		values(#{mg_num}, #{dt_target}, #{dt_brief}, #{dt_detail}, #{dt_contents}, #{dt_keyword})
+	</insert>
+	
+	<insert id="insertImgContent" parameterType="mivo">
+		/*details image 등록*/
+		insert into product_image(pl_path, pd_num, pl_type, mg_num)
+		values(#{pl_path}, #{pd_num}, #{pl_type}, #{mg_num})
+	</insert>
+	
 </mapper>

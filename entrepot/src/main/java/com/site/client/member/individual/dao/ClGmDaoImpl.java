@@ -18,6 +18,8 @@ public class ClGmDaoImpl implements ClMDao {
 	@Autowired
 	private SqlSession session;
 	
+	
+	
 	@Override
 	public ClGmVO groupMemberSelect(String m_id) {
 		return (ClGmVO)session.selectOne("groupMemberSelect",m_id);
@@ -37,6 +39,12 @@ public class ClGmDaoImpl implements ClMDao {
 	public int groupMemberInsert(ClGmVO cmvo) {
 		logger.info("groupMemberInsert 실행");
 		return session.insert("groupMemberInsert",cmvo);
+	}
+		
+
+	@Override
+	public ClGmVO groupMemberSellSelect(String m_num) {
+		return (ClGmVO)session.selectOne("groupMemberSellSelect",m_num);
 	}
 	
 	/*****************인터페이스 공용사용으로인한재정의*******************/
@@ -69,6 +77,13 @@ public class ClGmDaoImpl implements ClMDao {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public ClMVO memberSellSelect(String m_num) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 
 	
