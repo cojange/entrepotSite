@@ -12,12 +12,6 @@
         <div class="container-fluid">
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-              <a href="/admin/kakaopayImpl">kakaopay</a>
-            </li>
-            <li class="breadcrumb-item">
-              <a href="/admin/kakaoexample">kakaopay2</a>
-            </li>
             <li class="breadcrumb-item active">Overview</li>
           </ol>
           
@@ -151,9 +145,56 @@
             <div class="card-body">
               <div class="table-responsive">
               	<p>잡지검색기능추가</p>
-                  <table id ="magazineDataTable" class="table table-bordered" width="100%" cellspacing="0">
-                  	
-                  </table>
+                  	<table class="table table-bordered" id="magazineDataTable" width="100%" cellspacing="0">
+             
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>주문번호</th>
+                      <th>총 수량</th>
+                      <th>총 금액</th>
+                      <th>주문 회원</th>
+                      <th>회원 타입</th>
+                      <th>판매 일자</th>
+                      <th>완료 일자</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th></th>
+                      <th>주문번호</th>
+                      <th>총 수량</th>
+                      <th>총 금액</th>
+                      <th>주문 회원</th>
+                      <th>회원 타입</th>
+                      <th>판매 일자</th>
+                      <th>완료 일자</th>
+                    </tr>
+                  </tfoot>
+        			<tbody>
+                     <c:choose>
+                       <c:when test="${not empty sellDt }">
+                          <c:forEach var="sellList" items="${sellDt }" varStatus="status">
+                             <tr class="tac" data-num="${status.count }">
+                             	<td class="details-control"><i class="fas fa-plus-circle red"></i></td>
+                                <td>${sellList.order_num}</td>
+                                <td>${sellList.sell_ea}</td>
+                                <td>${sellList.sell_money }</td>
+                                <td>${sellList.m_num }</td>
+                                <td>${sellList.mt }</td>
+                                <td>${sellList.sell_date }</td>
+                                <td>${sellList.enddate}</td>
+                             </tr>
+                          </c:forEach>
+                       </c:when>
+                       <c:otherwise>
+                          <tr>
+                             <td colspan="4" class="tac"> 거래 내역이 없습니다.</td>
+                          </tr>
+                       </c:otherwise>
+                    </c:choose>
+                  </tbody>
+                </table>
               </div>
             </div>
             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>

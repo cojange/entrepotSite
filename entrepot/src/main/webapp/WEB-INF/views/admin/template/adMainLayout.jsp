@@ -104,6 +104,45 @@
 				ad_card();
 				
 				if($(location).attr("href")== "http://localhost:8080/admin"){
+					var table=$("#magazineDataTable").DataTable( {
+    			        "order": [[1, 'asc']]
+    			    } );
+					$('.table tbody').on('click', 'td.details-control', function () {
+        	   	    	var od_num = $(this).next().html();
+    	   	    		
+    				var targetTd = $(this);
+    	   	    	//subtable 요청
+    	   	    	var subTableURL = "/admin/order/orderList/getOrder.do";
+    	   	    	$.getJSON(subTableURL,{
+    	   	    		order_num:od_num
+    	   	    	},function(subElements){
+        	   	    	addTable= subtable(subElements);
+        	   	    	
+        	   	    	//클릭시 subtable 보여주기
+        	   	    	var tr = targetTd.closest('tr');
+        	   	        var row = table.row( tr );
+    	    	   	     if ( row.child.isShown() ) {
+    	    	             // This row is already open - close it
+    	    	             row.child.hide();
+    	    	             if(tr.find('i').hasClass('fa-minus-circle green')){
+    	    	            	 tr.find('i').removeClass('fa-minus-circle green');
+    	    	            	 tr.find('i').addClass('fa-plus-circle red');	    	            	 
+    	    	             }
+    	    	             
+    	    	         }
+    	    	         else {
+    	    	             // Open this row
+    	    	             
+    	    	             row.child(addTable).show();
+    	    	             tr.find('i').removeClass('fa-plus-circle red');
+    	    	             tr.find('i').addClass('fa-minus-circle green'); // FontAwesome 5
+    	    	             
+    	    	         }
+    	   	    	});
+    	   	    	
+    	   	        
+    	   	    } );//아이콘 접기,펴기
+					
 					var chartURL = "/admin/adChart/odSellRC.do"
 	    				 $.getJSON(chartURL,function(columnchart){
 	    					console.log(columnchart);
