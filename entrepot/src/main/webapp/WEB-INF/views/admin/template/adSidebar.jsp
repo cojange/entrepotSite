@@ -49,10 +49,10 @@
             <i class="fas fa-fw fa-won-sign"></i>
             <span>비용</span></a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" href="#">
             <i class="fas fa-fw fa-calendar-alt"></i>
             <span>달력</span>
           </a>
-        </li>
+        </li> -->
       </ul>

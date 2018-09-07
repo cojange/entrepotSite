@@ -9,13 +9,14 @@ public class MagazineSearchVO {
 	private int startUnicode;
 	private int endUnicode;
 	
+	
 	//상품테이블 (product)
 		private String pd_num;                  	//상품코드
 		private int pd_rate;						//할인율
 		private	int pd_sale;						//정가
 		private	int pd_cost;                    	//원가	               
 		private	String pd_appendix;					//부록여부
-		private	String pd_date;						//출간일
+		private	String pd_date;						//출간일 
 
 		
 		//잡지별 테이블(Magzine)
@@ -51,7 +52,6 @@ public class MagazineSearchVO {
 		private String key1;       //키워드1
 		private String key2;		//키워드2
 		private String key3;		//키워드3
-		
 		
 		public String[] getDt_keyword_submit() {
 			return dt_keyword_submit;

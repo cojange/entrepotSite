@@ -13,9 +13,11 @@ public class AdMainController {
 	@RequestMapping(value="/admin")
 	public String main(Model mav) {
 		
+		//스크래퍼
 		WebCrawler scraper = new WebCrawler();
 		GetDateUtil gdu = GetDateUtil.getInstance();
 		
+		//데이터 테이블
 		mav.addAttribute("booklist",scraper.getBook());
 		mav.addAttribute("bookimg",scraper.getImg());
 		mav.addAttribute("update" , gdu.getDate());

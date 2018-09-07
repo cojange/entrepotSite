@@ -94,7 +94,7 @@ public class AdMagazineServiceImpl implements AdMagazineService {
 				}
 			
 			//thum파일 생성 및 업로드
-				String thumImg = FileUploadUtil.makeThumbnail(mainImg, request);
+				String thumImg = FileUploadUtil.makeThumbnail(mainImg,"details", request);
 				imgList.add(thumImg);
 			
 		}catch(IOException e) {

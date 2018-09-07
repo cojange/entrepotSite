@@ -1,12 +1,19 @@
 package com.site.admin.adBoard.personalBoard.vo;
 
 public class PbReplyVO {
+	private int pb_no;
 	private int re_no;
     private String pbre_content;
     private String writer;
     private String pbre_date;
     private String pbre_update;
     
+	public int getPb_no() {
+		return pb_no;
+	}
+	public void setPb_no(int pb_no) {
+		this.pb_no = pb_no;
+	}
 	public int getRe_no() {
 		return re_no;
 	}

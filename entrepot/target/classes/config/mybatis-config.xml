@@ -26,8 +26,9 @@
 		<typeAlias type="com.site.admin.order.orderList.vo.AdRefundVO" alias="rfvo"/>
 		<typeAlias type="com.site.admin.order.orderList.vo.AdChangeVO" alias="cgvo"/>
 		<typeAlias type="com.site.admin.chart.adChart.vo.OdSellRCChartVO" alias="adrcvo"/>
+		<typeAlias type="com.site.admin.adBoard.personalBoard.vo.PbReplyVO" alias="pbrvo"/>
+		<typeAlias type="com.site.admin.chart.adChart.vo.OdSellRCChartVO" alias="adrcvo"/>
 		<typeAlias type="com.site.admin.magazine.adMagazine.vo.MagazineImgVO" alias="mivo"/>
-		
 
 		<!-- client -->
 		<typeAlias type="com.site.client.board.imgb.vo.ClImgbVO" alias="imgb" />

@@ -56,3 +56,22 @@ font: FontAwesome !important;
 .hidden{
 	display: none;
 }
+#magListTable{
+	width:100%
+}
+.magText{
+	text-align:right;
+}
+.magText, .toggleBtn{
+	text-align:right;
+}
+.toggleBtn{
+	padding:15px;
+	margin-right:60px;
+}
+#magCodeForm input{
+	width:150px;
+}
+#magCodeListBtn{
+	margin-bottom:10px;
+}
