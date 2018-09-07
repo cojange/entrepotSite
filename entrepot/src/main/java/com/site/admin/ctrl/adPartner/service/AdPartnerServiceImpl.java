@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.site.admin.ctrl.adPartner.dao.AdPartnerDao;
 import com.site.admin.ctrl.adPartner.vo.CourierPartnerVO;
 import com.site.admin.ctrl.adPartner.vo.MagazinePartnerVO;
+import com.site.admin.magazine.adMagazine.vo.MagazineSearchVO;
 
 @Service
 public class AdPartnerServiceImpl implements AdPartnerService {
@@ -62,21 +63,45 @@ public class AdPartnerServiceImpl implements AdPartnerService {
 	//잡지거래처 수정
 	@Override
 	public int magUpdate(MagazinePartnerVO mpvo) {
+		if(mpvo.getChecked() != null)
 		logger.info("checked : " + mpvo.getChecked());
+		logger.info("com_no : " + mpvo.getCom_no());
 		
 		int newDao = 0;
 		int oldDao = 0;
-		try {
+		
+		
+		if(mpvo.getChecked() != null){
 			newDao = adPartnerDao.magUpdate(mpvo);
-			if(mpvo.getChecked() != null)
-				oldDao = adPartnerDao.magPartnerData(mpvo);
-				oldDao = adPartnerDao.closedMagInsert(mpvo);
+			return newDao +1;
+		}else {
+			MagazinePartnerVO newMpvo = new MagazinePartnerVO();
+			newMpvo = adPartnerDao.magPartnerData(mpvo);
+			newDao = adPartnerDao.magUpdate(mpvo);
+			oldDao = adPartnerDao.closedMagInsert(newMpvo);
+			return newDao+oldDao;
+		}
+	
+	}
+	
+	//잡지 코드 리스트
+	@Override
+	public List<MagazineSearchVO> magCodeList(MagazineSearchVO msvo) {
+		List<MagazineSearchVO> magCodeList = null;
+		magCodeList = adPartnerDao.magCodeList(msvo);
+		return magCodeList;
+	}
+	
+	//잡지 코드 등록
+	@Override
+	public int magCodeInsert(MagazineSearchVO msvo) {
+		int result = 0;
+		try {
+			result = adPartnerDao.magCodeInsert(msvo);
 		}catch(Exception e) {
 			e.printStackTrace();
-			newDao = 0;
-			oldDao = 0;
+			result = 0;
 		}
-		
-		return newDao + oldDao;
+		return result;
 	}
 }

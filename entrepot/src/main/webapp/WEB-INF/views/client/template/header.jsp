@@ -86,7 +86,7 @@ function errorCodeCheck(){}
    </div>
 
    <form action="surchlist()" autocomplete="off" class="az" id="az" name="az">
-   	<input type="hidden" id="listkey" name ="listkey">
+   	<input type="hidden" id="listkey" >
    	<input type="hidden" id="search" name ="search"> 
       <fieldset class="url">
          <input id="url" type="text" name="url" required> <label

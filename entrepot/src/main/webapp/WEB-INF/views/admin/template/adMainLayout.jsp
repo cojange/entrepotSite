@@ -89,6 +89,7 @@
 	    <script type="text/javascript" src="/resources/include/admin/js/json2html/json2table.js"></script>
 	    <script type="text/javascript" src="/resources/include/common/js/paging.js"></script>
 	    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+	    <script src="/resources/include/admin/js/pbReply.js"></script>
 	    <script type="text/javascript">
 	    var addTable;
 	    var table;
@@ -475,6 +476,7 @@
 	    		//거래처 관리탭
 	    		if($(location).attr("href") == "http://localhost:8080/admin/ctrl/adPartner/adPartnerListCtrl.do"){
 	    			$("#adminTable").dataTable();
+	    			$("#magCodeTable").dataTable();
 	    			nowTime1();
 	    			$("#mcom_date").val(today1);
 	    			$("#couacc_date").val(today1);
@@ -492,6 +494,29 @@
 	    			$("#magDel").click(function(){
 	    				resetData1();
 	    			});
+	    			
+	    			/* $("#magCodeListBtn").click(function(){
+	    				console.log("클릭됨");
+	    				리스트 요청 함수 
+	    		    	function listAll(){
+	    		    		$("#comment_list").html("");
+	    		    		var url = "/replies/all/"+b_num+".do";
+	    		    		$.getJSON(url, function(data){
+	    		    			console.log(data.length);
+	    		    			
+	    		    			$(data).each(function(){
+	    		    				var r_num = this.r_num;
+	    		    				var r_name = this.r_name;
+	    		    				var r_content = this.r_content;
+	    		    				var r_date = this.r_date;
+	    		    				r_content = r_content.replace(/(\r\n|\r|\n)/g, "<br />");
+	    		    				addNewItem(r_num, r_name, r_content, r_date);
+	    		    			});
+	    		    		}).fail(function(){
+	    		    			alert("덧글 목록을 불러오는데 실패하였습니다. 잠시후에 다시 시도해 주세요.");
+	    		    		});
+	    		    	}	    				
+	    			}); */
 	    			
 	    			/* 잡지 거래처 등록 */
 	        		$("#magInsertBtn").click(function(){
@@ -567,7 +592,7 @@
 	    			var currLiMg;
 	    			/* 테이블 선택행 블록처리 */
 	    			$("#dataTable").on("click","tr",function(){
-	    				console.log("this:"+$(this).html());
+	    				//console.log("this:"+$(this).html());
 	    				if ( $(this).hasClass('selected') ) {
 	    		            $(this).removeClass('selected');
 	    		            currLiMg="";
@@ -592,7 +617,7 @@
 	    			$(document).on('click', ".mgUpdateSave", function(){
 	    				console.log("다람쥐");
 	    				/* if(!chkData($('#upMgDate'),"거래종료일을")) return;
-	      				else  */if(!chkData($('#upCharName'),"담당자 이름을")) return;
+	      				else */if(!chkData($('#upCharName'),"담당자 이름을")) return;	    				
 	      				else if(!chkData($('#upCharTel'),"담당자 연락처를")) return;
 	      				else if(!chkData($('#upCharEmail'),"담당자 이메일을")) return;
 	      				else if(!chkData($('#upCharFax'),"담당자 팩스를")) return;
@@ -631,7 +656,34 @@
 	    			$("#couDetailBtn").click(function(){
 	    				couDetail(currLi);
 	    			});
-	    		}
+	    			
+	    			/* 잡지코드 리스트창에서 등록버튼 클릭 */
+	    			$(document).on('click', ".magCodeAddForm", function(){
+	    				console.log("가");
+	    				var rowItem = "<tr><td>-</td><td><input type='text' id='mgnum' name='mg_num' placeholder='잡지코드'></td>";
+	    				rowItem += "<td><input type='text' id='mgname' name='mg_name' placeholder='잡지이름'></td><td><input type='text' id='mgperiod' name='mg_period' placeholder='출간주기'></td>";
+	    				rowItem += "<td><input type='text' id='comno' name='com_no' placeholder='사업자등록번호'></td></tr>";
+	    				
+	    				$("#magCodeTable").append(rowItem);
+	    				$("#magCodeBtn").removeClass("magCodeAddForm");
+	    				$("#magCodeBtn").addClass("mgCodeSave");
+	    			});
+	    			/* 잡지코드 등록창에서 등록버튼 클릭 */
+	    			$(document).on('click', ".mgCodeSave", function(){
+	    				console.log("다람쥐");
+	    				if(!chkData($('#mgnum'),"잡지 코드를")) return;	    				
+	      				else if(!chkData($('#mgname'),"잡지 이름을")) return;
+	      				else if(!chkData($('#mgperiod'),"출간주기를")) return;
+	      				else if(!chkData($('#comno'),"사업자등록번호를")) return;
+	      				else{ 	      				
+	      					$("#magCodeForm").attr({
+	      						"method":"POST",
+	      						"action":"/admin/ctrl/adPartner/magCodeInsert.do"
+	      					});
+		    			}
+	      				$("#magCodeForm").submit();
+	    			});
+	    		} 
 	    		
 	    		//약관 관리탭
 	    		if($(location).attr("href") == "http://localhost:8080/admin/adBoard/regulations/regulationsList.do"){
@@ -1292,12 +1344,13 @@
     	   	     	var tr = $(this).closest('tr');
  	   	        	var row = table.row( tr );
     	   	    	
+ 	   	        	var pdNo = tr.children().eq(12);
     	   	    	var content = tr.children().eq(8);
     	   	    	var img1 = tr.children().eq(9);
     	   	    	var img2 = tr.children().eq(10);
     	   	    	var img3 = tr.children().eq(11);
     	   	    	console.log(img1.html()+" / "+img2.html());
-    	   	    	addTable = '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
+    	   	    	addTable = '<td><table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
 		    	   	      	  	'<tr><td>'+
 		    	   	          '<div class="bigContent">'+
 		    	   	          '<div class="middle1">'+
@@ -1305,21 +1358,45 @@
 		    	   	          '<br/><div class="smallImg"><img style="background-color:lightgray; margin:5px; width:150px; height:150px;" src="/uploadStorage/personalBoard/img1/'+img1.html()+'"></img>'+
 		    	   	          '<img style="background-color:lightgray; margin:5px; width:150px; height:150px;" src="/uploadStorage/personalBoard/img2/'+img2.html()+'"></img>'+
 		    	   	          '<img style="background-color:lightgray; margin:5px; width:150px; height:150px;" src="/uploadStorage/personalBoard/img3/'+img3.html()+'"></img>'+
-		    	   	          '</div><input type="button" value="댓글 확인" id="replyBtn"></div>'+
-		    	   	          '<div class="middle2 hidden">가나다라마바사</div>'+
+		    	   	          '</div><input type="button" value="댓글 확인" class="replyBtn"></div>'+
+		    	   	          '<div class="middle2 hidden"><form id="inputPbReply"><input type="number" value='+pdNo.html()+' name="pb_no" style="display:none;"></form></div>'+
 		    	   	          '</div>'+
 		    	   	     		 '</td></tr>'+
-		    	   	  		 '</table>';
+		    	   	  		 '</table></td>';
 		    	   	 
 		    	   	 //댓글보기 버튼 클릭
-    	   	       	 $(document).on('click', '#replyBtn', function(){
+    	   	       	 $(document).on('click', '.replyBtn', function(){    	   	       		 
     	   	       		 if($(".middle2").hasClass("hidden")){
     	   	       			$(".middle2").removeClass("hidden");
+    	   	       				var pb_no = pdNo.html();
+    	   	       				console.log(pb_no);
+    	   	       				var thisValue = $(this);
+    	   	       			var replyURL = "/admin/adBoard/personalBoard/pbReply.do";
+    	   	       			$.getJSON(replyURL,{
+    	   	       				pb_no:pb_no
+    	   	       			}, function(subElements){
+    	   	       				console.log(pbReply(subElements));
+    	   	       				//console.log(thisValue.parent().next().children().html());
+    	   	       				thisValue.parent().next().children().append(pbReply(subElements));
+    	   	       			});
     	   	       		 }else{
     	   	       			$(".middle2").addClass("hidden");
-    	   	       		 }
-    	   	       		 
+    	   	       		 }    	   	       		 
     	   	       	 });
+		    	   	 
+		    	   	 //관리자 댓글 입력
+		    	   	 $(document).on('click', '#savePbReply', function(){
+		    	   		console.log("값확인 "+$(".pbre_content").val()); 
+		    	   		if(!chkData($('.pbre_content'),"내용을")) return;
+	      				else if(!chkData($('.writer'),"아이디를")) return;
+	      				else{
+	      					$("#inputPbReply").attr({      				
+		      					"method":"POST",
+		      					"action":"/admin/adBoard/personalBoard/pbReInsert.do"
+		      				});
+		      				$("#inputPbReply").submit();
+	      				}
+		    	   	 });
 		    	   	  		 
 	    	   	     if ( row.child.isShown() ) {
 	    	             // This row is already open - close it
@@ -1708,11 +1785,31 @@
             	var rzipCode = currLiMg.children().eq(20);
             	var raddress = currLiMg.children().eq(21);
             	
+            	var secDate = 20+startdate.html()  /// 문자열 or  숫자 데이터
+            	var year = secDate.substr(0,4);
+            	var month = secDate.substr(5,2);
+            	var day = secDate.substr(8,2);
+            	var date = new Date(year, month, day);  // date로 변경
+            	console.log(secDate);
+            	console.log(year);
+            	console.log(month);
+            	console.log(day);
+            	console.log(date);
+            	function formatDate(date) {
+            		var d = new Date(date), month = '' + (d.getMonth() + 1), day = '' + d.getDate(), year = d.getFullYear();
+            		if (month.length < 2)
+            			month = '0' + month;
+            		if (day.length < 2) day = '0' + day;
+            		return [year, month, day].join('-');
+            	}
+            	formatDate(date);
+            	console.log(formatDate(date));
+            	
             	var rowUp;
             	nowTime();
          	
            		rowUp = "<form class='magUpdateSaveForm'><table><tr><td>등록일 : "+mcomDate.html()+" | 수정일 : "+today+"</td></tr>";
-           		rowUp += "<tr><td>사업자 번호 : "+comNo.html()+"</td><td>거래시작일 : <input type='date' id='upMgStartdate' name='startdate' value='20"+startdate.html()+"'> | 거래종료일 : ";
+           		rowUp += "<tr><td>사업자 번호 : "+comNo.html()+"</td><td>거래시작일 : <input type='date' id='upMgStartdate' name='startdate' value='"+formatDate(date)+"'> | 거래종료일 : ";
            		rowUp += "<input type='date' id='upMgEnddate' name='enddate' value='20"+enddate.html()+"'><input type='checkbox' id='checked' value='true'></td></tr>";
            		rowUp += "<tr><td>회사명 : "+comName.html()+"</td></tr><tr><td>대표 이름 : "+mcomName.html()+"</td><td>대표 연락처 : "+mcomTel.html()+"</td></tr>";
            		rowUp += "<tr><td colspan='2'>회사 주소 : "+mcomAdd.html()+"</td></tr><tr><td><label>담당자</label></td></tr>";
@@ -1724,7 +1821,9 @@
            		rowUp += "<td width='50%'>연락처 : <input type='text' id='upAccTel' name='acc_tel' value='"+accTel.html()+"'></td></tr>";
            		rowUp += "<tr><td width='50%'>e-mail : <input type='text' id='upAccEmail' name='acc_email' value='"+accEmail.html()+"'></td>";
            		rowUp += "<td width='50%'>fax : <input type='text' id='upAccFax' name='acc_fax' value='"+accFax.html()+"'></td></tr><tr><td>계좌 : ["+baccBank.html()+" / "+baccName.html()+"] "+baccAccno.html()+"</td></tr>";
-           		rowUp += "<tr><td colspan='2'>환불주소 : ["+rzipCode.html()+"] "+raddress.html()+"</td></tr></table></form>";   		
+           		rowUp += "<tr><td colspan='2'>환불주소 : ["+rzipCode.html()+"] "+raddress.html()+"</td></tr></table><input type='hidden' name='com_no' value='"+comNo+"'></form>";   		
+           		
+           		console.log($("#upMagStartdate").val());
            		
             	$("#mgContent").html(rowUp);
             }

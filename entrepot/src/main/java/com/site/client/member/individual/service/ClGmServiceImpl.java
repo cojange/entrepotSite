@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.site.client.member.individual.dao.ClMDao;
 import com.site.client.member.individual.vo.ClGmVO;
 import com.site.client.member.individual.vo.ClMSecurity;
-import com.site.client.member.individual.vo.ClMVO;
 import com.site.common.util.OpenCrypt;
 import com.site.common.util.Util;
 
@@ -63,6 +62,12 @@ public class ClGmServiceImpl implements ClGmService {
 			int result = clMDao.groupMemberInsert(cgmvo);
 			return result;
 		}
+	}
+
+	@Override
+	public ClGmVO groupMemberSellSelect(String m_num) {
+		ClGmVO cgvo = clMDao.groupMemberSellSelect(m_num);
+		return cgvo;
 	}
 
 
