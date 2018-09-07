@@ -20,16 +20,12 @@
 <select id="magazinesum" parameterType="mgvo" resultType="mgvo">
 	/*magazine - magazinesum*/
 	
-<<<<<<< HEAD
 		select pl_path, mg_num from
 	(select rownum as rnum, pl_path,mg_num from product_image 
 	where pl_type='thum'and mg_num=#{mg_num}
 	order by SUBSTR(PL_PATH,INSTR(PL_PATH,'-')+1,7) desc)
 	where rnum <![CDATA[<=]]>6
 
-=======
-	select pl_path from sum_view
-	 where mg_num=#{mg_num}
->>>>>>> branch 'master' of https://github.com/cojange/entrepotSite
 </select>
+
 </mapper>
