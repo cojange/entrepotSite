@@ -44,33 +44,35 @@
 			</tr>
 		</table>
 		<!-- =========================상세보기============================== -->
-		<div class="contentTB">
-		<form id="f_writeForm" name="f_wrtieForm">
-			<table border="1" style="border-collapse:collapse;">
-				<colgroup>
-					<col width="25%" />
-					<col width="25%"/>
-					<col width="25"/>
-				</colgroup>
-			<tbody>
-				<tr>
-					<th class="ac">공지글 유형</th>
-					<td>${detail.ab_type }</td>
-				</tr>
-				<tr>
-					<th class="ac">제목</th>
-					<td>${detail.ab_title }</td>
-				</tr>
-				<tr>
-					<th class="ac">내용</th>
-					<td>${detail.ab_content }</td>
-				</tr>
-				<tr>
-					<th class="ac">날짜</th>
-					<td>${detail.ab_date }</td>
-				</tr>
-			</tbody>
-		</table>
-		</form>
+				<div class="contentTB">
+				<form id="f_writeForm" name="f_wrtieForm">
+					<table border="1" style="border-collapse:collapse;">
+						<colgroup>
+							<col width="25%" />
+							<col width="25%"/>
+							<col width="25"/>
+						</colgroup>
+					<tbody>
+						<tr>
+							<th class="ac">공지글 유형</th>
+							<td>${detail.ab_type }</td>
+						</tr>
+						<tr>
+							<th class="ac">제목</th>
+							<td>${detail.ab_title }</td>
+						</tr>
+						<tr>
+							<th class="ac">내용</th>
+							<td>${detail.ab_content }</td>
+						</tr>
+						<tr>
+							<th class="ac">날짜</th>
+							<td>${detail.ab_date }</td>
+						</tr>
+					</tbody>
+				</table>
+				</form>
+			</div>
+		</div>	
 	</body>
 </html>
