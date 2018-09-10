@@ -37,12 +37,17 @@
 		    		<td align="center">구매권수</td>
 		    		<td align="center">합계</td>
 		    	</tr>
+		    	
 		    	<c:choose>
 					<c:when test="${not empty whishList}">
 						<c:forEach var="vo" items="${whishList}">
 							<tr class="tableSize">
 								<td width="36" align="center">
 									<input type="text" class="index" readonly="readonly" size="2" value="">
+									<input type="hidden" id="mg_num" name="mg_num" value="${vo.mg_num}">
+									<input type="hidden" id="pd_num" name="pd_num" value="${vo.pd_num}">
+									<input type="hidden" id="record_num" name="record_num" value="${vo.record_num}">
+									
 								</td>
 					    		<td>${vo.mg_name}</td>
 					    		<td>${vo.mg_period}</td>
@@ -62,9 +67,14 @@
 					<c:when test="${not empty cartList}">
 						<c:forEach var="vo" items="${cartList}">
 							<tr class="tableSize">
+								<form class="listForm">
 								<td width="36" align="center">
 									<input type="text" class="index" readonly="readonly" size="2" value="">
+									<input type="hidden" id="mg_num" name="mg_num" value="${vo.mg_num}">
+									<input type="hidden" id="pd_num" name="pd_num" value="${vo.pd_num}">
+									<input type="hidden" id="record_num" name="record_num" value="${vo.record_num}">
 								</td>
+								</form>
 					    		<td>${vo.mg_name}</td>
 					    		<td>${vo.mg_period}</td>
 					    		<td>

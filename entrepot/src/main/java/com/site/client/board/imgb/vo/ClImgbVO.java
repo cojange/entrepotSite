@@ -21,129 +21,66 @@ public class ClImgbVO extends CommonVO {
       private String mg_num;
       private String pd_num;
       
-      
-  
-	
-      public String getPd_num() {
-		return pd_num;
-	}
-	public void setPd_num(String pd_num) {
-		this.pd_num = pd_num;
-	}
-	public String getMg_num() {
-		return mg_num;
-	}
-	public void setMg_num(String mg_num) {
-		this.mg_num = mg_num;
-	}
-	private MultipartFile file; //파일을 가져올 수 있는 자르 파일을 만들어서 파일을 가져오도록 하자
       private String file_thumb;
       private String imgb_img1      ="";
       private String imgb_img2      ="";
       private String imgb_img3      ="";
       private String imgb_img4      ="";
       private String imgb_img5      ="";
-      public int getImgb_no() {
-         return imgb_no;
-      }
-      public void setImgb_no(int imgb_no) {
-         this.imgb_no = imgb_no;
-      }
-      public String getM_num() {
-         return m_num;
-      }
-      public void setM_num(String m_num) {
-         this.m_num = m_num;
-      }
-      public String getImgb_title() {
-         return imgb_title;
-      }
-      public void setImgb_title(String imgb_title) {
-         this.imgb_title = imgb_title;
-      }
-      public String getImgb_content() {
-         return imgb_content;
-      }
-      public void setImgb_content(String imgb_content) {
-         this.imgb_content = imgb_content;
-      }
-      public String getImgb_pwd() {
-         return imgb_pwd;
-      }
-      public void setImgb_pwd(String imgb_pwd) {
-         this.imgb_pwd = imgb_pwd;
-      }
-      public String getImgb_update() {
-         return imgb_update;
-      }
-      public void setImgb_update(String imgb_update) {
-         this.imgb_update = imgb_update;
-      }
-      public String getImgb_date() {
-         return imgb_date;
-      }
-      public void setImgb_date(String imgb_date) {
-         this.imgb_date = imgb_date;
-      }
-      public MultipartFile getFile() {
-         return file;
-      }
-      public void setFile(MultipartFile file) {
-         this.file = file;
-      }
-      public String getFile_thumb() {
-         return file_thumb;
-      }
-      public void setFile_thumb(String file_thumb) {
-         this.file_thumb = file_thumb;
-      }
-      public String getImgb_img1() {
-         return imgb_img1;
-      }
-      public void setImgb_img1(String imgb_img1) {
-         this.imgb_img1 = imgb_img1;
-      }
-      public String getImgb_img2() {
-         return imgb_img2;
-      }
-      public void setImgb_img2(String imgb_img2) {
-         this.imgb_img2 = imgb_img2;
-      }
-      public String getImgb_img3() {
-         return imgb_img3;
-      }
-      public void setImgb_img3(String imgb_img3) {
-         this.imgb_img3 = imgb_img3;
-      }
-      public String getImgb_img4() {
-         return imgb_img4;
-      }
-      public void setImgb_img4(String imgb_img4) {
-         this.imgb_img4 = imgb_img4;
-      }
-      public String getImgb_img5() {
-         return imgb_img5;
-      }
-      public void setImgb_img5(String imgb_img5) {
-         this.imgb_img5 = imgb_img5;
-      }
-      public String getImgb_cnt() {
-  		return imgb_cnt;
-      }
-  	  public void setImgb_cnt(String imgb_cnt) {
-  			this.imgb_cnt = imgb_cnt;
-  	  }
-  	public String getImgb_thumb() {
+      private MultipartFile file;
+	public int getImgb_no() {
+		return imgb_no;
+	}
+	public void setImgb_no(int imgb_no) {
+		this.imgb_no = imgb_no;
+	}
+	public String getM_num() {
+		return m_num;
+	}
+	public void setM_num(String m_num) {
+		this.m_num = m_num;
+	}
+	public String getImgb_title() {
+		return imgb_title;
+	}
+	public void setImgb_title(String imgb_title) {
+		this.imgb_title = imgb_title;
+	}
+	public String getImgb_content() {
+		return imgb_content;
+	}
+	public void setImgb_content(String imgb_content) {
+		this.imgb_content = imgb_content;
+	}
+	public String getImgb_pwd() {
+		return imgb_pwd;
+	}
+	public void setImgb_pwd(String imgb_pwd) {
+		this.imgb_pwd = imgb_pwd;
+	}
+	public String getImgb_update() {
+		return imgb_update;
+	}
+	public void setImgb_update(String imgb_update) {
+		this.imgb_update = imgb_update;
+	}
+	public String getImgb_date() {
+		return imgb_date;
+	}
+	public void setImgb_date(String imgb_date) {
+		this.imgb_date = imgb_date;
+	}
+	public String getImgb_cnt() {
+		return imgb_cnt;
+	}
+	public void setImgb_cnt(String imgb_cnt) {
+		this.imgb_cnt = imgb_cnt;
+	}
+	public String getImgb_thumb() {
 		return imgb_thumb;
 	}
 	public void setImgb_thumb(String imgb_thumb) {
 		this.imgb_thumb = imgb_thumb;
-	}
-	public int getBoard_no() {
-		return board_no;
-	}
-	public void setBoard_no(int board_no) {
-		this.board_no = board_no;
 	}
 	public String getM_name() {
 		return m_name;
@@ -151,6 +88,66 @@ public class ClImgbVO extends CommonVO {
 	public void setM_name(String m_name) {
 		this.m_name = m_name;
 	}
-	
-	
-}	
+	public int getBoard_no() {
+		return board_no;
+	}
+	public void setBoard_no(int board_no) {
+		this.board_no = board_no;
+	}
+	public String getMg_num() {
+		return mg_num;
+	}
+	public void setMg_num(String mg_num) {
+		this.mg_num = mg_num;
+	}
+	public String getPd_num() {
+		return pd_num;
+	}
+	public void setPd_num(String pd_num) {
+		this.pd_num = pd_num;
+	}
+	public String getFile_thumb() {
+		return file_thumb;
+	}
+	public void setFile_thumb(String file_thumb) {
+		this.file_thumb = file_thumb;
+	}
+	public String getImgb_img1() {
+		return imgb_img1;
+	}
+	public void setImgb_img1(String imgb_img1) {
+		this.imgb_img1 = imgb_img1;
+	}
+	public String getImgb_img2() {
+		return imgb_img2;
+	}
+	public void setImgb_img2(String imgb_img2) {
+		this.imgb_img2 = imgb_img2;
+	}
+	public String getImgb_img3() {
+		return imgb_img3;
+	}
+	public void setImgb_img3(String imgb_img3) {
+		this.imgb_img3 = imgb_img3;
+	}
+	public String getImgb_img4() {
+		return imgb_img4;
+	}
+	public void setImgb_img4(String imgb_img4) {
+		this.imgb_img4 = imgb_img4;
+	}
+	public String getImgb_img5() {
+		return imgb_img5;
+	}
+	public void setImgb_img5(String imgb_img5) {
+		this.imgb_img5 = imgb_img5;
+	}
+	public MultipartFile getFile() {
+		return file;
+	}
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
+      
+      
+}

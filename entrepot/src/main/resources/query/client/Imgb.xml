@@ -70,11 +70,9 @@
         from foto_view
         )WHERE RNUM between 1 and 12
    </select>
-   
    <select id="getMg_num" resultType="java.lang.String">
    		select substr(pd_num,0,3) mg_num from order_list join sell on order_list.order_num = sell.order_num
         where m_num = #{m_num}
    </select>
-   
 </mapper>
 <!-- mybatis xml mapper파일 -->

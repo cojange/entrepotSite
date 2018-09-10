@@ -29,11 +29,13 @@
 			});
 		</script>
 	<body>
+	<div class="contentContainer">
+		<div class="contentTit"><h3>게시판 상세보기</h3></div>
 		<form id="f_data" name="f_data" method="post">
 			<input type="hidden" id="ab_no" name="ab_no" value="${detail.ab_no }" />
 			<input type="hidden" name="board_no" id="board_no"  value="${param.board_no }"/>
 		</form>
-		<h3>게시판 상세보기</h3>
+		<!-- ============================비밀번호 확인버튼 및 버튼 추가============================== -->
 		<table id="cladminboardBtn">
 			<tr>
 				<td id="ab1">
@@ -41,7 +43,15 @@
 				</td>
 			</tr>
 		</table>
-		<table border="1" style="border-collapse:collapse;">
+		<!-- =========================상세보기============================== -->
+		<div class="contentTB">
+		<form id="f_writeForm" name="f_wrtieForm">
+			<table border="1" style="border-collapse:collapse;">
+				<colgroup>
+					<col width="25%" />
+					<col width="25%"/>
+					<col width="25"/>
+				</colgroup>
 			<tbody>
 				<tr>
 					<th class="ac">공지글 유형</th>
@@ -61,5 +71,6 @@
 				</tr>
 			</tbody>
 		</table>
+		</form>
 	</body>
 </html>

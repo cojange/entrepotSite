@@ -31,4 +31,9 @@ public class PlusDaoImpl implements PlusDao {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("pluschoice2",av);
 	}
+
+	@Override
+	public PlusVO pd_numSelect(String mg_num) {
+		return sqlSession.selectOne("pd_numSelect",mg_num);
+	}
 }

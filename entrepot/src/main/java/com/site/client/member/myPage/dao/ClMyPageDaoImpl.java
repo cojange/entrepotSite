@@ -37,6 +37,18 @@ public class ClMyPageDaoImpl implements ClMyPageDao {
 		return session.delete("listDelete",myPageVo);
 	}
 
+	@Override
+	public int listAllDelete() {
+		return session.delete("listAllDelete");
+	}
+
+	@Override
+	public int orderListInsert(ClOrderListVO ordervo) {
+		return session.delete("orderListInsert",ordervo);
+	}
+
+	
+
 
 	
 

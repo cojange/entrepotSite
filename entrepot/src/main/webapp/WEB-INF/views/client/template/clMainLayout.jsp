@@ -32,7 +32,7 @@
 <link href="default_ie6.css" rel="stylesheet" type="text/css" />
 <![endif]-->
 <script type="text/javascript">
-var slideIndex = 1;
+var slideIndex = 2;
 var slideIndexsim = 1;
 $(function() {	
 		showSlides(slideIndex);

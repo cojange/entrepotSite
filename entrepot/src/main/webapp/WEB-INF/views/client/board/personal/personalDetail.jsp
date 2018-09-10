@@ -7,11 +7,10 @@
 		<head>
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 			<title>Insert title here</title>
-		</head>
-		<script type="text/javascript" src="/resources/include/client/js/jquery-1.12.4.min.js"></script>
-		<script type="text/javascript" src="/resources/include/common/js/common.js"></script>
+			
 		
-		<link rel="stylesheet" type="text/css" href="/resources/include/client/css/common.css">
+			<!--사용자 js-->
+     		 <script type="text/javascript" src="/resources/include/client/js/jquery-1.12.4.min.js"></script>
 			<script type="text/javascript" src="/resources/include/common/js/common.js"></script>
 		
 			<link rel="stylesheet" type="text/css" href="/resources/include/client/css/common.css">
@@ -23,6 +22,9 @@
 			
 			<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+			
+			<link rel="stylesheet"  type="text/css" href="/resources/include/client/css/board.css">
+			
 		<script type="text/javascript">
 			$(function(){
 				var btnChk = 0;
@@ -119,25 +121,28 @@
 				});
 			});
 		</script>
+	</head>	
 	<body>
-		<form id="f_data" name="f_data" method="post">
-			<input type="hidden" id="pb_no" name="pb_no" value="${detail.pb_no }" />
-			<input type="hidden" id=pb_img1 name="pb_img1" value="${detail.pb_img1 }" >
-		</form>
-		<h3>상세보기</h3>
-		<!-- 비밀번호 확인버튼  및 버튼 추가 -->
+	<div class="contentContainer">
+		<div class="contentTit"><h3>상세보기</h3></div>
+			<form id="f_data" name="f_data" method="post">
+				<input type="hidden" id="pb_no" name="pb_no" value="${detail.pb_no }" />
+				<input type="hidden" id=pb_img1 name="pb_img1" value="${detail.pb_img1 }" >
+			</form>
+		
+		<!--================== 비밀번호 확인버튼  및 버튼 추가======================= -->
 		<table id="personalBut">
 			<tr>
 				<td id="pt1">
-				<div id="passwordChk">
-					<form name="f_password" id="f_password">
-						<input type="hidden"name="pb_no" id="pb_no" value=${detalil.pb_no} />
-						<label for="pb_password" id="pb_password">비밀번호:</label>
-						<input type="text" name="pb_password" id="pb_password" />
-						<input type="button" value="확인" id="pwdBtn" />
-						<span id="msg"></span>
-					</form>
-				</div>
+					<div id="passwordChk">
+						<form name="f_password" id="f_password">
+							<input type="hidden"name="pb_no" id="pb_no" value=${detalil.pb_no} />
+							<label for="pb_password" id="pb_password">비밀번호:</label>
+							<input type="password" name="pb_password" id="pb_password" />
+							<input type="button" value="확인" id="pwdBtn" />
+							<span id="msg"></span>
+						</form>
+					</div>
 				</td>
 				<td id="pt2">
 					<input type="button" value="수정" id="updateFormBtn" />
@@ -146,26 +151,38 @@
 				</td>
 			</tr>	
 		</table>
-		<table border="1" style="border-collapse:collapse;">
-			<tbody>
-				<tr>
-					<th class="ac">게시글 유형</th>
-					<td>${detail.pb_type }</td>
-				</tr>
-				<tr>
-					<th class="ac">글제목</th>
-					<td>${detail.pb_title }</td>
-				</tr>
-				<tr>
-					<th class="ac">글내용</th>
-					<td>${detail.pb_content }</td>
-				</tr>
-				<tr>
-					<th class="ac">파일 첨부</th>
-					<td colspan="3"><img id="fileImage"></td>
-				</tr>
-			</tbody>
-		</table>
-		<%-- <jsp:include page="replyList.jsp" /> --%>
+		<!-- =====================상세보기===================== -->
+			<div class="contentTB">
+				<form id="f_writeForm" name="f_writeForm">
+					<table border="1" style="border-collapse:collapse;">
+						<colgroup>
+							<col width:25%"/>
+							<col width:25%"/>
+							<col width:25%"/>
+						</colgroup>
+						<tbody>
+							<tr>
+								<th class="ac">게시글 유형</th>
+								<td>${detail.pb_type }</td>
+							</tr>
+							<tr>
+								<th class="ac">글제목</th>
+								<td>${detail.pb_title }</td>
+							</tr>
+							<tr>
+									<th class="ac">글내용</th>
+									<td>${detail.pb_content }</td>
+							</tr>
+							<c:if test="${detail.pb_img1 !='' }">
+							 <tr>
+									<th class="ac">파일 첨부</th>
+									<td colspan="3"><img id="fileImage"></td>
+							</tr>
+							</c:if>
+						</tbody>
+					</table>
+				</form>
+			</div>
+		</div>
 	</body>
 </html>

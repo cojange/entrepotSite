@@ -26,14 +26,14 @@
 	.paginate a.on{color:#FF3300;}
 	
 	/********** 게시판 상세 화면 **********/
-	#boardPwdBut{width:96%; margin-top:10px;}
-	#boardPwdBut #btd1{width:70%; text-align:left; vertical-align:bottom;}
-	#boardPwdBut #btd2{width:30%; text-align:right;vertical-align:bottom;}
-	#boardPwdBut input{margin-bottom:0px; margin-left:5px;}
+	#personalBut{width:96%; margin-top:10px;}
+	#personalBut #pt1{width:70%; text-align:left; vertical-align:bottom;}
+	#personalBut #pt2{width:30%; text-align:right;vertical-align:bottom;}
+	#personalBut input{margin-bottom:0px; margin-left:5px;}
 	
 	#msg{padding-left:4px; vertical-align:middle; font-weight:bold;}	
-	#pwdChk #l_pwd{vertical-align:bottom;}
-	#pwdChk #b_pwd{border:1px dotted #000066;}	
+	#passwordChk #l_pwd{vertical-align:bottom;}
+	#passwordChk #pb_password{border:1px dotted #000066;}	
 		
 	/*********** 게시판 입력 화면 **********/
 	#title{width:480px}		

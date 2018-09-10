@@ -17,12 +17,6 @@
      	 	<link rel="apple-touch-icon" href="/resources/image/icon.png" />
     		  <!-- 모바일 웹 페이지 설정 종료 -->
 
-    		 <!-- IE8이하 브라우저에서 HTML5를 인식하기 위해서는 아래의 패스필터를 적용하면 된다. -->
-    		 <!-- [if lt IE 9] -->
-        	 <!-- <script src="/resources/include/js/html5shiv.js"</script> -->
-     		 <!-- [endif] -->
-     		 <!-- 사용자 cSS-->
-     	 
      		 <!--사용자 js-->
      		 <script type="text/javascript" src="/resources/include/client/js/jquery-1.12.4.min.js"></script>
 			<script type="text/javascript" src="/resources/include/common/js/common.js"></script>
