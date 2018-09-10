@@ -46,7 +46,8 @@ public class AdMagazineServiceImpl implements AdMagazineService {
 		return mginfoList;
 				
 	}
-
+	
+	//상품등록하기
 	@Override
 	public String insertMagazine(MagazineSearchVO msvo) {
 		String result="";
@@ -81,7 +82,7 @@ public class AdMagazineServiceImpl implements AdMagazineService {
 		mivo.setMg_num(msvo.getMg_num());
 		try {
 			
-			//main 업로드 및 DB 저장
+			//main 업로드
 				String mainImg = FileUploadUtil.fileUpload(msvo.getMainfile(), "magazineImage", request, msvo.getMg_num(), "main");
 				
 				imgList.add(mainImg);
@@ -127,9 +128,17 @@ public class AdMagazineServiceImpl implements AdMagazineService {
 		}
 		msvo.setDt_target(target);
 		
-
+		
+		int contentInsert =0;
+		
+		if(adMagazineDao.selectPrevContent(msvo)!= null) {
+			//contents update
+			contentInsert = adMagazineDao.updateDetailContent(msvo);
+		}else {
 			//contents insert
-			int contentInsert = adMagazineDao.insertDetailContent(msvo);
+			contentInsert = adMagazineDao.insertDetailContent(msvo);
+		}
+			
 			//image insert
 			String imgFileName="";
 			int imgInsert = 0;

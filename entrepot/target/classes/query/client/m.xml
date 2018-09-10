@@ -5,8 +5,9 @@
 <!--=======================구매페이지회원검색==============================-->
 <select id="memberSellSelect" parameterType="String" resultType="member">
 	/*sell - memberSelect*/
-	 select M_NUM,M_ID,M_NAME,M_BIRTH,M_GENDER,M_JOB,M_ADDRESS,M_ZIPCODE,M_PHONE,M_EMAIL,M_DATE,M_UPDATE,PWDCHECK,QUIZ,ANS,CART,WHISH,GRADE,MT
-	 from member
+	  select M_NUM,M_ID,M_NAME,M_BIRTH,M_GENDER,M_JOB,M_ADDRESS,M_ZIPCODE,M_PHONE,M_EMAIL,M_DATE,M_UPDATE,PWDCHECK,QUIZ,ANS,CART,WHISH,GRADE,MT,
+ coupon_no, coupon_discount
+ from member inner join coupon on coupon_memo like member.grade ||'%'
 		where m_num=#{m_num}
 </select>
 <select id="groupMemberSellSelect" parameterType="String" resultType="groupMember">

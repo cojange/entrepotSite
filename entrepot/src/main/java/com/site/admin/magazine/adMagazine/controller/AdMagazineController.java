@@ -156,22 +156,4 @@ public class AdMagazineController {
 		return result;
 
 	}
-	
-
-	//examThum
-	@RequestMapping(value="/exampleThum.do")
-	public String exampleThum(ThumListVO tlvo, HttpServletRequest request)  {
-		logger.info("exampleThum 호출 성공");
-		
-		for(int i=0; i<tlvo.getThumList().size(); i++) {
-			try {
-				FileUploadUtil.makeThumbnail(tlvo.getThumList().get(i).getOriginalFilename(), "details", request);	
-			}catch(IOException e) {
-				e.printStackTrace();
-			}
-			
-		}
-		
-		return "/common/thumFileUpload";
-	}
 }

@@ -58,10 +58,7 @@ public class AdCostServiceImpl implements AdCostService{
 					}
 				}
 			}
-				//당일 파일 업댓은 파일만 업데이트하고 db는 건너뛴다.
-				if(acvo.getLastFile()!="") {
-					return 1;
-				}
+				
 			acvo.setCost_file(cost_file);
 			//db에 존재하면 insert 생략
 			if(adCostDao.excelSelect(cost_file.substring(idx,idx+3))!=null) {

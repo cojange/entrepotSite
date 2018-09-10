@@ -9,8 +9,7 @@
 			SELECT to_char(trunc(add_months(sysdate, 12), 'dd'),'yyyy/mm/dd') FROM dual
 		</selectKey> 
 		Insert into SELL (ORDER_NUM,SELL_EA,SELL_DATE,
-		SELL_MONEY,BANK_NAME,BANK,
-		COUPON_NO,M_NUM,MT,ENDDATE) 
+		SELL_MONEY,BANK_NAME,BANK,COUPON_NO,M_NUM,MT,ENDDATE) 
 		values (TO_CHAR(SYSDATE, 'YYYY/MM/DD')||'_'||sell_seq.nextval,#{sell_ea},sysdate,
 		#{sell_money},#{bank_name},#{bank},
 		#{coupon_no},#{m_num},#{mt},#{enddate})

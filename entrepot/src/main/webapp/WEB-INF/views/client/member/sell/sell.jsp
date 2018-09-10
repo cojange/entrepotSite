@@ -124,6 +124,22 @@
 			    			<td>이메일</td>
 			    			<td>${member.m_email}</td>
 			    		</tr>
+			    		<tr>
+			    			<td><span style="background-color: #dddddd;font-size: 12pt; color: blue;">입금자명</span></td>
+			    			<td><input type="text" placeholder="입금자명을입력해주세요" id="bank_name" name="bank_name"></td>
+			    		</tr>
+			    		<tr>
+			    			<td><span style="background-color: #dddddd;font-size: 12pt; color: blue;">입금은행</span></td>
+			    			<td><input type="text" placeholder="입금은행을입력해주세요" id="bank" name="bank"></td>
+			    		</tr>
+			    		<tr>
+			    			<td><span style="background-color: #dddddd;font-size: 12pt; color: blue;">쿠폰여부</span></td>
+			    			<td>
+			    				<select id="coupon_no" name="coupon_no">
+			    					<option value=${member.coupon_no } data-discount=${member.coupon_discount }>${member.coupon_no }</option>
+			    				</select>
+			    			</td>
+			    		</tr>
 
 			    		
 			    	</tbody>
