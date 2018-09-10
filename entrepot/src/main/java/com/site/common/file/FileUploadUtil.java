@@ -26,7 +26,7 @@ public class FileUploadUtil {
 	}
 	
 	/*파일 업로드 메서드*/
-	public static String fileUpload(MultipartFile file,String folder, HttpServletRequest request,String fileName, String mode) 
+	public static String fileUpload(MultipartFile file,String folder, HttpServletRequest request,String fileName, String mode)
 		throws IOException{
 		logger.info("fileUpload 호출 성공");
 		String real_name=null;
@@ -116,6 +116,8 @@ public class FileUploadUtil {
 		   //magazine product thum
 		   if(mode.equals("details")) {
 			   dirName = "magazineImage/main";
+		   }else if(mode.equals("imgb")) {
+			   dirName="board/imgb";
 		   }
 		   
 		   

@@ -56,7 +56,7 @@
 	
   <body>
  <div id="wrapper">
-		<div id="header-wrapper">
+		<div id="header-wrapper"  style="position:relative;z-index:2;">
 		     		<tiles:insertAttribute name="header"/>
 		</div>
    		<table  class="container">
@@ -82,9 +82,9 @@
 	</table>
 
 
-	<div>
+<%-- 	<div>
 		<tiles:insertAttribute name="quick"/>
-	</div>
+	</div> --%>
 	<div id="footer">
 	 <footer >
 			<tiles:insertAttribute name="footer"/>

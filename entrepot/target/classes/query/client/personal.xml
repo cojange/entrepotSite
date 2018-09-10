@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.client.board.personal.dao.PersonalDao">
+	<select id="personalList" parameterType="personal" resultType="personal">
+		 select a.pb_no pb_no, pb_type, pb_title, m_name, 
+        to_char(pb_date, 'YYYY-MM-DD') as pb_date from personal_board a inner join member b
+        on a.m_num = b.m_num
+        order by pb_no desc
+	</select>
+	
+	<!-- 입력쿼리문 -->
+	<insert id="personalInsert" parameterType="personal">
+		<selectKey resultType="int" order="BEFORE" keyProperty="pb_no">
+			select personal_board_seq.nextval from dual
+		</selectKey>
+		insert into personal_board(pb_no,pb_type,pb_title,pb_content, 
+		pb_pwd,board_no,m_num <if test="pb_img1 != ''">,pb_img1</if>)
+		values(#{pb_no},#{pb_type},#{pb_title},
+		#{pb_content},#{pb_pwd},#{board_no},#{m_num}<if test="pb_img1 != ''">,#{pb_img1}</if>) 
+	</insert>
+	
+	<!-- 상세페이지 -->
+	<select id="personalDetail" parameterType="personal" resultType="personal">
+		select a.pb_no pb_no, pb_type, pb_title, pb_content, m_name, pb_img1,
+        to_char(pb_date, 'YYYY-MM-DD') as pb_date from personal_board a inner join member b
+        on a.m_num = b.m_num
+        where pb_no = #{pb_no}
+        order by pb_no desc
+	</select>
+	
+	<!-- 비밀번호 -->
+	<select id="pwdConfirm" parameterType="personal" resultType="personal">
+		 select nvl((select 1 from personal_board where pb_no=#{pb_no}
+		 and pb_pwd=#{pb_pwd}),0) as state from dual
+	</select>
+	
+	<update id="personalUpdate" parameterType="personal">
+		update personal_board set 
+		pb_title=#{pb_title},
+		pb_content=#{pb_content},
+		<if test="pb_img1 !=''">
+		pb_img1 = #{pb_img1},
+		</if>
+		<if test="pb_pwd !=''">
+		pb_pwd=#{pb_pwd},
+		</if>
+		pb_date =sysdate
+		where pb_no = #{pb_no}
+	</update>
+	
+	<delete id="personalDelete" parameterType="personal">
+		delete from personal_board where pb_no=#{pb_no}
+	</delete>
+</mapper>
