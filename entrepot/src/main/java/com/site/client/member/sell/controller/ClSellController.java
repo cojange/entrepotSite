@@ -22,6 +22,7 @@ import com.site.client.member.myPage.service.ClMyPageService;
 import com.site.client.member.myPage.vo.ClMyPageVO;
 import com.site.client.member.myPage.vo.ClOrderListVO;
 import com.site.client.member.sell.service.ClSellService;
+import com.site.client.member.sell.vo.ClMultiOrderListVO;
 import com.site.client.member.sell.vo.ClSellVO;
 
 @Controller
@@ -83,10 +84,10 @@ public class ClSellController {
 	 * 결제 정보입력후
 	 * ********************************************/
 	@RequestMapping(value="/member/payment.do",method = RequestMethod.POST)
-	public ModelAndView paymentInsert(ClSellVO csvo,ClOrderListVO ordervo,ModelAndView mav) {
+	public ModelAndView paymentInsert(ClMultiOrderListVO cmovo,ModelAndView mav) {
 		logger.info("payment.do post 방식에 의한 메서드 호출 성공");
 		int result;
-		result = clSellService.paymentInsert(csvo);
+		result = clSellService.paymentInsert(cmovo);
 		
 					
 			

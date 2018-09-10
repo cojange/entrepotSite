@@ -74,7 +74,7 @@
 	/*myPage - orderList*/
 	
 	select b.ORDER_NUM, b.PD_NUM, b.ORDER_DATE, b.ORDER_EA, b.ORDER_MONEY, b.ORDER_OK,b.transit_num ,
-	SUBSTR(a.MG_PERIOD,INSTR(a.MG_PERIOD,'(')+1,INSTR(a.MG_PERIOD,'회')-INSTR(a.MG_PERIOD,'(')-1)as pd_cost,
+	SUBSTR(a.MG_PERIOD,INSTR(a.MG_PERIOD,'(')+1,INSTR(a.MG_PERIOD,'회')-INSTR(a.MG_PERIOD,'(')-1) pd_cost,
 	a.MG_NAME
 from order_list b join  product c on b.pd_num = c.pd_num 
     join magazine a  on a.mg_num=c.mg_num

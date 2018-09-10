@@ -15,5 +15,14 @@
 		#{coupon_no},#{m_num},#{mt},#{enddate})
 	</insert>
 
+	<select id="getOrder_Money" parameterType="orderList" resultType="int">
+	/*단품 단가 주입조회*/
+		select pd_cost from product where pd_num = #{pd_num}
+	</select>
 
+	<insert id="orderListInsert" parameterType="orderList">
+		<selectKey keyProperty="order_num" resultType="String" order="BEFORE">
+			select order_num from sell where (select count())aaaaaaaaaaaaaaaaaaaaaaaaaaaa
+		</selectKey>
+	</insert>
 </mapper>
