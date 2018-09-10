@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
- <%@ include file="/WEB-INF/views/common/common.jspf" %>   
+<%@ include file="/WEB-INF/views/common/common.jspf" %>   
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -429,7 +429,6 @@ function plusSlides(n) {
 		</div>	
 		</form>		
 </div>
-
 <%-- <div>
 	<tiles:insertAttribute name="quick"/>
 </div>  --%>

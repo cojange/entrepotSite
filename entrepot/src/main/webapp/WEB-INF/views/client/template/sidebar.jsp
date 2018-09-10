@@ -10,11 +10,11 @@
       <li class="sidebar-brand">
         <a href="#">Zeta</a>
       </li>
-      <li><a href="#">메뉴 1</a></li>
-      <li><a href="#">메뉴 2</a></li>
-      <li><a href="#">메뉴 3</a></li>
-      <li><a href="#">메뉴 4</a></li>
-      <li><a href="#">메뉴 5</a></li>
+      <li><a href="/client/boarad/personal/personalList.do">1대1 게시판</a></li>
+      <li><a href="#">포토게시판</a></li>
+      <li><a href="#">공지게시판</a></li>
+      <li><a href="#">이벤트게시판</a></li>
+      <li><a href="#">자주묻는 게시판</a></li>
       <li><a href="#">메뉴 6</a></li>
       <li><a href="#">메뉴 7</a></li>
       <li><a href="#">메뉴 8</a></li>

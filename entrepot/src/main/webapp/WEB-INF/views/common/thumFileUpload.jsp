@@ -23,9 +23,11 @@
      		 <!-- 사용자 cSS-->
      	 
      		 <!--사용자 js-->
+     		 	 <script src="/resources/include/admin/vendor/jquery/jquery.min.js"></script>
      	 		<script type="text/javascript">
      	 			$(function(){
      	 				$("#submitThum").click(function(){
+     	 					console.log("aa");
      	 					$("#uploadInputBox").attr({
      	 						"method" : "post",
      	 						"action" : "/admin/magazine/adMagazine/exampleThum.do"
