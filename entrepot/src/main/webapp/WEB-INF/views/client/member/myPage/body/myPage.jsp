@@ -152,7 +152,7 @@ function aa_open()
 												<tr height="35" bgcolor="#E8ECED">							
 													<td width="33" align="center"><a href="#" class="allCheck"><u>ALL</u></a></td>
 													<td align="center" width="36"><b>No</b></td>
-													<td align="center" width="155"><b>상품이미지<br>발행사</b></td>
+													<td align="center" width="155"><b>상품코드<br>발행사</b></td>
 													<td align="center" width="110"><b>잡지명</b></td>
 													<td align="center" width="130"><b>잡지주기(개월수)</b></td>
 													<td align="center" width="170"><b>정기구독가</b></td>
@@ -169,7 +169,7 @@ function aa_open()
 																<input type="hidden" class="listType" value="Whish">	
 															</td>
 															<td width="36" align="center"><input type="text" class="index" readonly="readonly" size="2" value=""></td>
-															<td width="155" align="center"><img src="${vo.pl_path}"/></td>
+															<td width="155" align="center"><img src="${vo.mg_num}"/></td>
 															<td width="110" align="center">${vo.mg_name}</td> 
 															<td width="130" align="center">${vo.mg_period}</td>
 															<td width="170" align="right">
@@ -198,7 +198,7 @@ function aa_open()
 														<a href="#" class="allCheck"><u>ALL</u></a>
 													</td>
 													<td align="center" width="36"><b>No</b></td>
-													<td align="center" width="155"><b>상품이미지<br>발행사</b></td>
+													<td align="center" width="155"><b>상품코드<br>발행사</b></td>
 													<td align="center" width="110"><b>잡지명</b></td>
 													<td align="center" width="130"><b>잡지주기(개월수)</b></td>
 													<td align="center" width="170"><b>정기구독가</b></td>
@@ -215,7 +215,7 @@ function aa_open()
 																<input type="hidden" class="listType" value="Cart">
 															</td>
 															<td width="36" align="center"><input type="text" class="index" readonly="readonly" size="2" value=""></td>
-															<td width="155" align="center"><img src="${vo.pl_path}"/></td>
+															<td width="155" align="center"><img src="${vo.mg_num}"/></td>
 															<td width="110" align="center">${vo.mg_name}</td>
 															<td width="130" align="center">${vo.mg_period}</td>
 															

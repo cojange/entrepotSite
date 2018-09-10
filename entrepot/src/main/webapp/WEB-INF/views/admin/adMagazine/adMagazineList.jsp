@@ -9,16 +9,16 @@
 	</c:if>
 		<thead>
 			<tr>
-				<th colspan="17">
-					<div>
+				<th>
+					<input type="button" value="등록" id="mgInsert">
+				</th>
+				<th colspan="15">
+				</th>
+				<th>
+					<div style="text-align: right;">
 						<input type="text" id="magSearchText" name="magSearch">
 						<input type="button" id="magSearch" value="검색">
 					</div>
-				</th>
-			</tr>
-			<tr>
-				<th>
-					<input type="button" value="등록" id="mgInsert">
 				</th>
 			</tr>
 			<tr>
