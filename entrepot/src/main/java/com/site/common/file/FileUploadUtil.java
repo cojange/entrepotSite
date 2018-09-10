@@ -90,7 +90,7 @@ public class FileUploadUtil {
 		
 		boolean result = false;
 		String dirName="";
-		if(mode.equals("code")) {
+		if(mode.equals("cost")) {
 			dirName = fileName.substring(0, fileName.indexOf("_"));
 		}else if(mode.equals("product")) {
 			dirName = fileName.substring(fileName.indexOf("_")+1,fileName.lastIndexOf("_"));

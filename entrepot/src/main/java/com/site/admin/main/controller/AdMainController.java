@@ -35,14 +35,20 @@ public class AdMainController {
 		return "admin/adHome";
 	}
 	
-	@RequestMapping(value="/admin/kakaopayImpl")
+	@RequestMapping(value="/admin/common/thumFileUpload")
+	public String thumFileUpload() {
+		return "/common/thumFileUpload";
+	}
+	
+	/*@RequestMapping(value="/admin/kakaopayImpl")
 	public String payment() {
 		return "admin/kakaopay/kakaopayImpl";
 	}
 	@RequestMapping(value="/admin/kakaoexample")
 	public String kakaoexample() {
 		return "admin/kakaopay/kakaoexample";
-	}
+	}*/
+	
 	
 
 }

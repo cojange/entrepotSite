@@ -22,7 +22,7 @@
    <select id="fotolist" parameterType="imgb" resultType="imgb">
    SELECT imgb_no,imgb_title,m_name,IMGB_THUMB,IMGB_CNT
         FROM(
-        select ROWNUM as RNUM,imgb_no,imgb_title,m_name,IMGB_IMG1,IMGB_CNT,IMGB_THUMB
+        select ROWNUM as RNUM,imgb_no,imgb_title,m_name,IMGB_CNT,IMGB_THUMB
         from foto_view
         )WHERE RNUM between 1 and 12
    </select>

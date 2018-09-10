@@ -2,16 +2,16 @@
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ include file="/WEB-INF/views/common/common.jspf" %>
-<div class="container-fluid">
-<<<<<<< HEAD
-	<table id="magListTable">
-=======
+
+
+
+
 	<c:if test="${detailInsertResult != null }">
 		<h1 id="showResult">결과 : ${detailInsertResult }</h1>
 	</c:if>
 	
-	<table>
->>>>>>> branch 'master' of https://github.com/cojange/entrepotSite.git
+		<table id="magListTable">
+
 		<thead>
 			<tr>
 				<th colspan="17">

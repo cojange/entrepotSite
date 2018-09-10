@@ -104,6 +104,11 @@
 				ad_card();
 				
 				if($(location).attr("href")== "http://localhost:8080/admin"){
+					
+					
+					
+					
+					
 					var table=$("#magazineDataTable").DataTable( {
     			        "order": [[1, 'asc']]
     			    } );
