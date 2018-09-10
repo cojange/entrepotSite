@@ -153,6 +153,7 @@ function aa_open()
 													<td width="33" align="center"><a href="#" class="allCheck"><u>ALL</u></a></td>
 													<td align="center" width="36"><b>No</b></td>
 													<td align="center" width="155"><b>잡지코드<br>발행사</b></td>
+													<td align="center" width="155"><b>상품코드<br>발행사</b></td>
 													<td align="center" width="110"><b>잡지명</b></td>
 													<td align="center" width="130"><b>잡지주기(개월수)</b></td>
 													<td align="center" width="170"><b>정기구독가</b></td>
@@ -199,6 +200,7 @@ function aa_open()
 													</td>
 													<td align="center" width="36"><b>No</b></td>
 													<td align="center" width="155"><b>잡지코드<br>발행사</b></td>
+													<td align="center" width="155"><b>상품코드<br>발행사</b></td>
 													<td align="center" width="110"><b>잡지명</b></td>
 													<td align="center" width="130"><b>잡지주기(개월수)</b></td>
 													<td align="center" width="170"><b>정기구독가</b></td>
