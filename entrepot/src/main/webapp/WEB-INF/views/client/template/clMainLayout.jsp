@@ -195,7 +195,7 @@ function plusSlides(n) {
 												  			<tr data-num="${list.mg_num}" data-key =${list.listkey}>								  			
 																<td align="center" bgcolor="#FFFFFF" class="goDetail" >
 																	<font color="blue">
-																		<img src="/uploadStorage/magazineImage/thum/${list.pl_path}" width="100" height="120" border="0" >
+																		<img src="/uploadStorage/magazineImage/main/${list.pl_path}" width="100" height="120" border="0" >
 																	</font>
 																</td>
 												  			</tr>
@@ -272,7 +272,7 @@ function plusSlides(n) {
 													<table>
 														<tr data-num="${list.mg_num}" data-key ="${list.listkey}">
 															<td class="goDetail">
-																<img src="/uploadStorage/magazineImage/thum/ ${list.pl_path}" width="80px" height="100px">  
+																<img src="/uploadStorage/magazineImage/main/ ${list.pl_path}" width="80px" height="100px">  
 															</td>
 															<td>
 																<div>
