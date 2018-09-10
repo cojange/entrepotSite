@@ -5,13 +5,7 @@
 
 
 <script type="text/javascript" src="/resources/include/client/js/jquery-1.12.4.min.js"></script>
-<script type="text/javascript" src="/resources/include/client/js/header.js"></script>
 
-<script type="text/javascript">
-</script>
-
-
-<script type="text/javascript" src="/resources/include/client/js/jquery-1.12.4.min.js"></script>
 
 <%-- <script type="text/javascript">
 </script>
