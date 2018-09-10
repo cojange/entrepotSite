@@ -14,9 +14,9 @@
 			select personal_board_seq.nextval from dual
 		</selectKey>
 		insert into personal_board(pb_no,pb_type,pb_title,pb_content, 
-		pb_pwd,board_no,m_num <if test="pb_img1 != ''">,pb_img1</if>)
+		pb_pwd,board_no,m_num,pb_date <if test="pb_img1 != ''">,pb_img1</if>)
 		values(#{pb_no},#{pb_type},#{pb_title},
-		#{pb_content},#{pb_pwd},#{board_no},#{m_num}<if test="pb_img1 != ''">,#{pb_img1}</if>) 
+		#{pb_content},#{pb_pwd},#{board_no},#{m_num},sysdate<if test="pb_img1 != ''">,#{pb_img1}</if>) 
 	</insert>
 	
 	<!-- 상세페이지 -->

@@ -45,7 +45,7 @@ public class PersonalController {
 		return "client/board/personal/personalList"; //jsp로 이동하는 리턴 값
 	}
 	//글 쓰기 폼  출력하기
-	@RequestMapping(value="/boarad/personal/writeForm.do")
+	@RequestMapping(value="/board/personal/writeForm.do")
 	public String writeForm() {
 		logger.info("writeForm 호출 성공");
 		
@@ -59,6 +59,7 @@ public class PersonalController {
 	      
 	      
 	      LoginVO login = (LoginVO)session.getAttribute("login");
+	      
 	      pvo.setM_num(login.getM_num());
 	      
 	      int result = 0;

@@ -55,7 +55,13 @@
 				<table border="1" style="border-collapse:collapse;">
 					<tr>
 						<th class="ac">글유형</th>
-						<td><input type="text" name="pb_type" id="pb_type" /></td>
+						<td>
+							<select name="pb_type" id="pb_type">
+								<option value="회원정보문의">회원정보문의</option>
+								<option value="교환환불">교환환불</option>
+								<option value="기타">기타</option>
+							</select>
+						</td>
 					</tr>
 					<tr>
 						<th class="ac">글제목</th>
