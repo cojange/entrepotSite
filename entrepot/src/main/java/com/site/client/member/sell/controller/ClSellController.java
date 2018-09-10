@@ -93,13 +93,13 @@ public class ClSellController {
 		logger.info("payment.do post 방식에 의한 메서드 호출 성공");
 		int result;
 		result = clSellService.paymentInsert(csvo);
-		if(result==1 || result > 0) {
+		
 					
 			
-			logger.info("");
-			clMyPageService.orderListInsert(ordervo);
+			/*logger.info("");
+			clMyPageService.orderListInsert(ordervo);*/
 			mav.setViewName("client/member/member/paymentSuccess");
-		}	
+		
 		return mav;
 	}
 }

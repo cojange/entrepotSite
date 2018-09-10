@@ -4,9 +4,12 @@
 <mapper namespace="com.site.admin.magazine.adMagazine.dao.AdMagazineDao">
 	<select id="adMagazineList" parameterType="msvo" resultType="msvo">
 		/*상품 리스트*/
-		select pd_cost, mg_name, pl_path, mg_num
-		from magazine_list_view
-		order by SUBSTR(reverse(substr(reverse(pl_path), 1, instr(reverse(pl_path), '_') - 1)),1,instr(reverse(substr(reverse(pl_path), 1, instr(reverse(pl_path), '_') - 1)),'.')-1) desc
+		select pd_cost, mg_name, pl_path, pi.mg_num
+	    from magazine m join product p on m.mg_num = p.mg_num join
+	    product_image pi on p.pd_num = pi.pd_num join 
+	    (select mg_num, max(substr(pl_path,instr(pl_path,'-')+1,6)) maxdate from product_image group by mg_num) tart
+	    on pi.mg_num = tart.mg_num
+	    where substr(pi.pl_path,instr(pi.pl_path,'-')+1,6) = tart.maxdate and pl_path like '%thum%'
 	</select>
 	
 	<select id="callMgPartner" resultType="java.lang.String">

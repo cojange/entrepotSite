@@ -168,7 +168,7 @@
                       <th>거래시작일</th>
                       <th>거래종료일</th>
                       <th>등록일</th>
-                      <th>수정일</th>
+                      <th style="display: none;">수정일</th>
                       <th style="display: none;">사업자번호</th>
 	                  <th style="display: none;">회사연락처</th>
 	                  <th style="display: none;">회사fax</th>
@@ -186,7 +186,7 @@
                       <th>거래시작일</th>
                       <th>거래종료일</th>
                       <th>등록일</th>
-                      <th>수정일</th>
+                      <th style="display: none;">수정일</th>
                       <th style="display: none;">사업자번호</th>
 	                  <th style="display: none;">회사연락처</th>
 	                  <th style="display: none;">회사fax</th>
@@ -207,7 +207,7 @@
 									<td>${couPartner.startdate}</td>
 									<td>${couPartner.enddate}</td>
 									<td>${couPartner.couacc_date}</td>
-									<td>${couPartner.couacc_update}</td>	
+									<td style="display: none;">${couPartner.couacc_update}</td>	
 									<td style="display: none;">${couPartner.com_no}</td>
 			                        <td style="display: none;">${couPartner.couacc_tel}</td>
 			                        <td style="display: none;">${couPartner.couacc_fax}</td>

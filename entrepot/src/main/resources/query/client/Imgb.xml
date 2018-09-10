@@ -25,6 +25,6 @@
         select ROWNUM as RNUM,imgb_no,imgb_title,m_name,IMGB_CNT,IMGB_THUMB
         from foto_view
         )WHERE RNUM between 1 and 12
-   </select>
+   </select>	
 </mapper>
 <!-- mybatis xml mapper파일 -->

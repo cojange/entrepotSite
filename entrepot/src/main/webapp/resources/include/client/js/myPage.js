@@ -91,9 +91,9 @@ $(function() {
 						      });
 							$(".checkForm:eq("+i+")").submit();
 						 }
-						 alert("You Picked Sound");						 
+						 /*alert("You Picked Sound");*/						 
 					 }else{
-						 alert("none");
+						 /*alert("none");*/
 					 }
 				 }				 
 				//alert("삭제되었습니다");
