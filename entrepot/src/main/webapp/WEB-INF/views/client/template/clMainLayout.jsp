@@ -429,10 +429,9 @@ function plusSlides(n) {
 		</div>	
 		</form>		
 </div>
-
-<div>
-	<tiles:insertAttribute name="quick"/> 
-</div> 
+<%-- <div>
+	<tiles:insertAttribute name="quick"/>
+</div>  --%>
 <div id="footer">
 	<tiles:insertAttribute name="footer"/>
 </div>

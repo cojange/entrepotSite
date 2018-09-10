@@ -13,8 +13,12 @@
     <script type="text/javascript" src="/resources/include/client/js/jquery-1.12.4.min.js"></script>
 	<script type="text/javascript" src="/resources/include/common/js/common.js"></script>
 	<script type="text/javascript" src="/resources/include/client/js/login.js"></script>
+	 <link href="/resources/include/client/css/slide.css" rel="stylesheet" type="text/css" media="all" />
     <script type="text/javascript">
-
+    var slideIndexsim = 1;
+    $(function () {
+    	showSlides2();	
+	})
     function errorCodeCheck(){
     	var status = '<c:out value="${status}" />';
     	if(status != ""){
@@ -29,13 +33,48 @@
     		}
     	}
     }
+    function showSlides2() {
+	    var i;
+	    var slides = document.getElementsByClassName("mySlides2");
+	    for (i = 0; i < slides.length; i++) {
+	       slides[i].style.display = "none";  
+	    }
+	    slideIndexsim++;
+	    if (slideIndexsim > slides.length) {slideIndexsim = 1}    
+	   
+	    slides[slideIndexsim-1].style.display = "block";  
+	    setTimeout(showSlides2, 2000); // Change image every 2 seconds
+	}
     
     </script>
   </head>
 
   <body>
-  	<div id="page" class="container joinform">
+  	<div id="page" class="container joinform"  style="position:relative;z-index:1;">
   	<!-- <div><img src="/resources/images/pic03.jpg"alt="" /></div> -->
+  					<div class="slideshow-container">
+						<div class="mySlides2 fade">
+							<div class="numbertext">1 / 3</div>
+							<img src="/resources/images/produt/banner_big_ng_traveller_201805.jpg"  style="width: 100%">
+							<div class="text"></div>
+						</div>
+		
+						<div class="mySlides2 fade">
+							<div class="numbertext">2 / 3</div>
+							<img src="/resources/images/produt/banner_maxq_201805.jpg" style="width: 100%">
+							<div class="text"></div>
+						</div>
+		
+						<div class="mySlides2 fade">
+							<div class="numbertext">3 / 3</div>
+							<img src="/resources/images/produt/banner_onestop_designhouse_2018.jpg" style="width: 100%">
+							<div class="text"></div>
+						</div>
+					</div>
+		
+  	
+  	<div style="height: 50px">
+  	</div>
 	  <div>
 	  	<div class="title"> 
 			<h1>로그인창</h1>
