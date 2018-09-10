@@ -3,8 +3,7 @@
 <mapper namespace="com.site.client.member.myPage.dao.ClMyPageDao">
 
 <!--찜목록-->
-<select id="whishList" parameterType="whishAndCart" resultType="whishAndCart">
-	/*myPage - whishList*/
+<select id="whishList" parameterType="whishAndCart" resultType="whishAndCart">	
 	<!-- select d.PL_PATH,a.mg_name,a.mg_period,c.PD_SALE 
 	,SUBSTR(A.MG_PERIOD,INSTR(A.MG_PERIOD,'(')+1,INSTR(A.MG_PERIOD,'회')-INSTR(A.MG_PERIOD,'(')-1)as pd_cost
 	,b.ea ,b.RECORD_NUM ,c.pd_num
@@ -12,39 +11,63 @@
 	on a.mg_num=b.mg_num 
 	join PRODUCT c 
 	on  a.mg_num=c.mg_num 
-	join product_image d 
+	join product_image d cartarat
 	on c.pd_num = d.pd_num 
 	where  b.RECORD_NUM 
 	in (select whish from (SELECT whish FROM member union all select whish from group_member)
 	 where whish=#{record_num} and pl_type='썸네일') -->
-	 select d.PL_PATH,a.mg_name,a.mg_period,c.PD_SALE 
+	<!--  /*myPage - whishList*/ -->
+	<!-- select distinct  a.mg_name,a.mg_period,c.PD_SALE 
 	,SUBSTR(A.MG_PERIOD,INSTR(A.MG_PERIOD,'(')+1,INSTR(A.MG_PERIOD,'회')-INSTR(A.MG_PERIOD,'(')-1)as pd_cost
-	,b.ea ,b.RECORD_NUM ,c.pd_num,a.mg_num
-	from magazine a join record b 
+	,b.ea ,b.RECORD_NUM ,a.mg_num
+	from magazine a join record b
 	on a.mg_num=b.mg_num 
 	join PRODUCT c 
 	on  a.mg_num=c.mg_num 
-	join product_image d 
-	on c.pd_num = d.pd_num 
 	where  b.RECORD_NUM 
-	in (select whish from (SELECT whish FROM member union all select whish from group_member)
-	 where whish=#{record_num} and pl_type='썸네일')
+	in (select whish from (SELECT whish FROM member union all select whish from group_member group by whish)where whish=#{record_num}) -->
+	/*myPage - whishList*/
+	select distinct  d.pl_path,a.mg_name,a.mg_period,c.PD_SALE 
+	,SUBSTR(A.MG_PERIOD,INSTR(A.MG_PERIOD,'(')+1,INSTR(A.MG_PERIOD,'회')-INSTR(A.MG_PERIOD,'(')-1)as pd_cost
+	,b.ea ,b.RECORD_NUM ,a.mg_num
+	from magazine a join record b
+	on a.mg_num=b.mg_num 
+	join PRODUCT c 
+	on  a.mg_num=c.mg_num
+    join product_image d
+    on c.pd_num=d.pd_num
+    ,(select MG_NUM, max(substr(pl_path,instr(pl_path,'-')+1,7)) maxdate from product_image group by MG_NUM) maxz
+	where  b.RECORD_NUM 
+	in (select whish from (SELECT whish FROM member union all select whish from group_member group by whish)where whish=#{record_num})
+    and d.PL_TYPE='thum'
+    and SUBSTR(d.PL_PATH,INSTR(d.PL_PATH,'-')+1,7)= MAXZ.MAXDATE
 </select>
 <!-- 장바구니 -->
 <select id="cartList" parameterType="whishAndCart" resultType="whishAndCart">
 	/*myPage - cartList*/
-	select d.PL_PATH,a.mg_name,a.mg_period,c.PD_SALE 
+	select distinct  d.pl_path,a.mg_name,a.mg_period,c.PD_SALE 
 	,SUBSTR(A.MG_PERIOD,INSTR(A.MG_PERIOD,'(')+1,INSTR(A.MG_PERIOD,'회')-INSTR(A.MG_PERIOD,'(')-1)as pd_cost
-	,b.ea ,b.RECORD_NUM ,c.pd_num,a.mg_num
-	from magazine a join record b 
+	,b.ea ,b.RECORD_NUM ,a.mg_num
+	from magazine a join record b
+	on a.mg_num=b.mg_num 
+	join PRODUCT c 
+	on  a.mg_num=c.mg_num
+    join product_image d
+    on c.pd_num=d.pd_num
+    ,(select MG_NUM, max(substr(pl_path,instr(pl_path,'-')+1,7)) maxdate from product_image group by MG_NUM) maxz
+	where  b.RECORD_NUM 
+	in (select cart from (SELECT cart FROM member union all select cart from group_member group by cart)where cart=#{record_num})
+    and d.PL_TYPE='thum'
+    and SUBSTR(d.PL_PATH,INSTR(d.PL_PATH,'-')+1,7)= MAXZ.MAXDATE
+	<!-- select distinct  a.mg_name,a.mg_period,c.PD_SALE 
+	,SUBSTR(A.MG_PERIOD,INSTR(A.MG_PERIOD,'(')+1,INSTR(A.MG_PERIOD,'회')-INSTR(A.MG_PERIOD,'(')-1)as pd_cost
+	,b.ea ,b.RECORD_NUM ,a.mg_num
+	from magazine a join record b
 	on a.mg_num=b.mg_num 
 	join PRODUCT c 
 	on  a.mg_num=c.mg_num 
-	join product_image d 
-	on c.pd_num = d.pd_num 
 	where  b.RECORD_NUM 
-	in (select cart from (SELECT cart FROM member union all select cart from group_member)
-	 where cart=#{record_num} and pl_type='썸네일')
+	in (select cart from (SELECT cart FROM member union all select cart from group_member group by cart)where cart=#{record_num}) -->
 </select>
 <!--주문내역-->
 <select id="orderList" parameterType="orderList" resultType="orderList">

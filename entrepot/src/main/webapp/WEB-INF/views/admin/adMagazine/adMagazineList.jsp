@@ -3,27 +3,23 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ include file="/WEB-INF/views/common/common.jspf" %>
 <div class="container-fluid">
-<<<<<<< HEAD
-	<table id="magListTable">
-=======
 	<c:if test="${detailInsertResult != null }">
 		<h1 id="showResult">결과 : ${detailInsertResult }</h1>
 	</c:if>
-	
-	<table>
->>>>>>> branch 'master' of https://github.com/cojange/entrepotSite.git
+	<table id="magListTable">
+
 		<thead>
-			<tr>
-				<th colspan="17">
-					<div>
-						<input type="text" id="magSearchText" name="magSearch">
-						<input type="button" id="magSearch" value="검색">
-					</div>
-				</th>
-			</tr>
 			<tr>
 				<th>
 					<input type="button" value="등록" id="mgInsert">
+				</th>
+				<th colspan="15">
+				</th>
+				<th>
+					<div style="text-align: right;">
+						<input type="text" id="magSearchText" name="magSearch">
+						<input type="button" id="magSearch" value="검색">
+					</div>
 				</th>
 			</tr>
 			<tr>

@@ -61,18 +61,17 @@
 	<delete id="clImgbDelete" parameterType="imgb">
 	delete from img_board where imgb_no =#{imgb_no}
 	</delete>
-	
-	<!-- 진우형 쿼리 -->
-	<select id="fotolist" parameterType="imgb" resultType="imgb">
-   		SELECT imgb_no,imgb_title,m_name,IMGB_IMG1,IMGB_CNT
-        FROM(
-        select ROWNUM as RNUM,imgb_no,imgb_title,m_name,IMGB_IMG1,IMGB_CNT
-        from foto_view
-        )WHERE RNUM between 1 and 12
-   </select>
    <select id="getMg_num" resultType="java.lang.String">
    		select substr(pd_num,0,3) mg_num from order_list join sell on order_list.order_num = sell.order_num
         where m_num = #{m_num}
    </select>
+   
+   <select id="fotolist" parameterType="imgb" resultType="imgb">
+   SELECT imgb_no,imgb_title,m_name,IMGB_THUMB,IMGB_CNT
+        FROM(
+        select ROWNUM as RNUM,imgb_no,imgb_title,m_name,IMGB_CNT,IMGB_THUMB
+        from foto_view
+        )WHERE RNUM between 1 and 12
+   </select>	
 </mapper>
 <!-- mybatis xml mapper파일 -->

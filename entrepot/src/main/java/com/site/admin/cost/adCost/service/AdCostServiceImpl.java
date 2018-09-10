@@ -42,13 +42,14 @@ public class AdCostServiceImpl implements AdCostService{
 			
 			//중복 월수 파일 삭제 같은 날 올린 건 덮어쓰기
 			int idx=0;
+			idx = cost_file.lastIndexOf("_")+1;
 			for(int i=0;i<files.length;i++) {
 				if(files[i].isFile()) {
 					indexName = files[i].getName();
 					
 					//업로드 파일과 기존 파일 이름이 같지 않다면 기존 파일 삭제
 					if(!indexName.equals(cost_file)) {
-						idx = indexName.lastIndexOf("_")+1;
+						
 						if(indexName.substring(idx, idx+3).
 								equals(cost_file.substring(idx,idx+3))) {
 							FileUploadUtil.fileDelete(indexName,"cost","cost", request);
@@ -57,23 +58,23 @@ public class AdCostServiceImpl implements AdCostService{
 					}
 				}
 			}
+				//당일 파일 업댓은 파일만 업데이트하고 db는 건너뛴다.
+				if(acvo.getLastFile()!="") {
+					return 1;
+				}
 			acvo.setCost_file(cost_file);
 			//db에 존재하면 insert 생략
 			if(adCostDao.excelSelect(cost_file.substring(idx,idx+3))!=null) {
 				result=adCostDao.excelUpdate(acvo);
 				return result;
+			}else {
+				result = adCostDao.excelInsert(acvo);
+				
+				return result;
 			}
 		}else {
-			cost_file ="";
-			acvo.setCost_file(cost_file);
-			return 1;
+			return 0;
 		}
-		
-		
-		
-		result = adCostDao.excelInsert(acvo);
-		
-		return result;
 	}
 
 	//card에 쓸 파일 등록
@@ -115,6 +116,6 @@ public class AdCostServiceImpl implements AdCostService{
 	public List<String> selectExcelList(int selectmonth) {
 		
 		return adCostDao.selectExcelList(selectmonth);
-	}
+	} 
 
 }
