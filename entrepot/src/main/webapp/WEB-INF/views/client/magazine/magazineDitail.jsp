@@ -184,7 +184,7 @@
         								 <tbody>
         								 	<tr>
 												<td valign="top">
-            										<img src="/uploadStorage/magazineImage/main/ ${magazine.pl_path}" width="350" height="450" border="0">
+            										<img src="/uploadStorage/magazineImage/main/${magazine.pl_path}" width="350" height="450" border="0">
 				
 												  <br><br><br><br>
           										</td>
@@ -305,7 +305,6 @@
 					<a href="#a"><img  src="/resources/images/ditail/dir_blue_01_over.gif" border="0"></a>
 					<a href="#b"><img  src="/resources/images/ditail/dir_blue_03.gif" border="0"></a>
 					<a href="#c"><img  src="/resources/images/ditail/dir_blue_06.gif" border="0"></a> 	
-					<a href="#d"><img  src="/resources/images/ditail/dir_blue_04.gif" border="0"></a>
 				</td>
 			</tr>
 		</table>
@@ -321,7 +320,7 @@
 		<c:when test="${not empty free}">
 			<c:forEach var="free" items="${free}" varStatus="status">
 				<div>
-					<img src="/uploadStorage/magazineImage/prev/ ${free.pl_path}" width="700" border="0" >
+					<img src="/uploadStorage/magazineImage/prev/${free.pl_path}" width="700" border="0" >
 				</div>
 			</c:forEach>
 		</c:when>
@@ -336,7 +335,6 @@
 					<a href="#a"><img  src="/resources/images/ditail/dir_blue_01.gif" border="0"></a>
 					<a href="#b"><img  src="/resources/images/ditail/dir_blue_03_over.gif" border="0"></a>
 					<a href="#c"><img  src="/resources/images/ditail/dir_blue_06.gif" border="0"></a>
-					<a href="#d"><img  src="/resources/images/ditail/dir_blue_04.gif" border="0"></a>					 	
 				</td>
 			</tr>
 		</table>
@@ -375,7 +373,7 @@
 								  			<tr>
 												<td align="center" bgcolor="#FFFFFF">
 													<font color="blue">
-														<img src="/uploadStorage/magazineImage/main/ ${list.pl_path}" width="240" height="325" border="0">
+														<img src="/uploadStorage/magazineImage/main/${list.pl_path}" width="240" height="325" border="0">
 													</font>
 												</td>
 								  			</tr>
@@ -441,8 +439,7 @@
 				<td align="left">
 					<a href="#a"><img  src="/resources/images/ditail/dir_blue_01.gif" border="0"></a>
 					<a href="#b"><img  src="/resources/images/ditail/dir_blue_03.gif" border="0"></a>
-					<a href="#c"><img  src="/resources/images/ditail/dir_blue_06_over.gif" border="0"></a>
-					<a href="#d"><img  src="/resources/images/ditail/dir_blue_04.gif" border="0"></a>					 	
+					<a href="#c"><img  src="/resources/images/ditail/dir_blue_06_over.gif" border="0"></a>					 	
 				</td>
 			</tr>
 		</table>
