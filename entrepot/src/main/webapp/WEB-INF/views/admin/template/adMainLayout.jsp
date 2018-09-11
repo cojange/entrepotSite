@@ -704,7 +704,7 @@
 	    			/* 잡지코드 리스트창에서 등록버튼 클릭 */
 	    			$(document).on('click', ".magCodeAddForm", function(){
 	    				console.log("가");
-	    				var rowItem = "<tr><td>-</td><td><input type='text' id='mgnum' name='mg_num' placeholder='잡지코드'></td>";
+	    				var rowItem = "<tr><td><i class='fas fa-minus-circle' id='codeAddFormDel' style='font-size:20px; color:red;'></i></td><td><input type='text' id='mgnum' name='mg_num' placeholder='잡지코드'></td>";
 	    				rowItem += "<td><input type='text' id='mgname' name='mg_name' placeholder='잡지이름'></td><td><input type='text' id='mgperiod' name='mg_period' placeholder='출간주기'></td>";
 	    				rowItem += "<td><input type='text' id='comno' name='com_no' placeholder='사업자등록번호'></td></tr>";
 	    				
@@ -727,7 +727,10 @@
 		    			}
 	      				$("#magCodeForm").submit();
 	    			});
-	    			
+	    			//등록 중 취소 버튼
+	    			$('#magCodeTable').on("click", "#codeAddFormDel", function(){
+	    				$(this).closest("tr").remove();
+	    			});
 	    			
 	    			var codeCurrLi;
 	    			/* 잡지 코드테이블 선택행 블록처리 */
@@ -1804,7 +1807,7 @@
             
             /* 잡지거래처 상세 정보 */
             function mgDetail(currLiMg){
-            	console.log(currLiMg.html());
+            	//console.log(currLiMg.html());
             	var comName = currLiMg.children().eq(0);
             	var charManager = currLiMg.children().eq(1);
             	var charTel = currLiMg.children().eq(2);

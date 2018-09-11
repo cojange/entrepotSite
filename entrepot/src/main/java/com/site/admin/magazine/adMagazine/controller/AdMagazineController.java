@@ -92,7 +92,6 @@ public class AdMagazineController {
 	public String adDetailInsert( MagazineSearchVO msvo, HttpServletRequest request, Model model) {	
 		logger.info("detail 입력하기 ");
 		logger.info("list all : " + msvo.toString());
-		logger.info("imagesize : " + msvo.getPrevfile().size());
 		
 		String contentResult = adMagazineService.adDetailInsert(msvo, request);
 		
