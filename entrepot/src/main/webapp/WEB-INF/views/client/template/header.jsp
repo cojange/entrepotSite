@@ -193,7 +193,7 @@ function errorCodeCheck(){}
          		 <li>
          		  <a href="/client/list/magazinelist.do?key1=요리&key2=식생활&key3=리빙&listkey=3&home=베스트" accesskey="1" title="">요리/식생활/리빙</a>
          		 </li>
-         		 <li>
+<!--          		 <li>
          		  <a href="/client/list/magazinelist.do?key1=기술&key2=업종&key3=산업&listkey=3&home=베스트" accesskey="1" title="">기술/업종/산업</a>
          		 </li>
          		 <li>
@@ -207,16 +207,16 @@ function errorCodeCheck(){}
          		 </li>
          		 <li>
          		  <a href="/client/list/magazinelist.do?key1=자동차&key2=항공&key3=제품&listkey=3&home=베스트" accesskey="1" title="">자동차/항공/제품</a>
-         		 </li>
+         		 </li> -->
          		   <li>
          		  <a href="/client/list/magazinelist.do?key1=애니&key2=캐릭터&key3=게임&listkey=3&home=베스트" accesskey="1" title="">애니/캐릭터/게임</a>
          		 </li> 
-         		  <li>
+         	<!-- 	  <li>
          		  <a href="/client/list/magazinelist.do?key1=라이프&key2=건강&key3=스포츠&listkey=3&home=베스트" accesskey="1" title="">라이프/건강/스포츠</a>
          		 </li>
          		 <li>
          		  <a href="/client/list/magazinelist.do?key1=건축&key2=인테리어&listkey=2&home=베스트" accesskey="1" title="">건축/인테리어/</a>
-         		 </li>       		              
+         		 </li>  -->      		              
          	</ul> 
          </li>
          <li class="san"><a href="#" accesskey="2" title="">해외잡지</a>
@@ -224,13 +224,13 @@ function errorCodeCheck(){}
          		<li>
          			<a href="/client/list/magazinelist.do?key1=미국&listkey=1&home=해외잡지" accesskey="1" title="미국">미국</a>
          		</li>
-         		<li>
+<!--          		<li>
          			<a href="/client/list/magazinelist.do?key1=영국&listkey=1&home=해외잡지" accesskey="1" title="영국">영국</a>
-         		</li>
+         		</li> -->
          		<li>
          			<a href="/client/list/magazinelist.do?key1=일본&listkey=1&home=해외잡지" accesskey="1" title="일본">일본</a>
          		</li>
-         		<li>
+         		<!-- <li>
          			<a href="/client/list/magazinelist.do?key1=프랑스&listkey=1&home=해외잡지" accesskey="1" title="프랑스">프랑스</a>
          		</li>
          		<li>
@@ -238,7 +238,7 @@ function errorCodeCheck(){}
          		</li>
          		<li>
          			<a href="/client/list/magazinelist.do?key1=이탈리아&listkey=1&home=해외잡지" accesskey="1" title="이탈리아">이탈리아</a>
-         		</li>    
+         		</li>     -->
          	</ul>
          </li>
          <li  class="san"><a href="/client/list/magazinelist.do?listkey=5" accesskey="3" title="">이달의부록</a></li>

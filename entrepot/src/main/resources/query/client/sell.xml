@@ -10,8 +10,8 @@
 		</selectKey>
 		Insert into SELL (ORDER_NUM,SELL_EA,SELL_DATE,
 		SELL_MONEY,BANK_NAME,BANK,COUPON_NO,M_NUM,MT,ENDDATE) 
-		values (#{order_num},#{sell_ea},sysdate,
-		#{sell_money},#{bank_name},#{bank},
+		values (#{order_num},to_number(#{sell_ea}),sysdate,
+		to_number(#{sell_money}),#{bank_name},#{bank},
 		#{coupon_no},#{m_num},#{mt},to_char(trunc(add_months(sysdate, 12), 'dd'),'yyyy/mm/dd'))
 		
 	</insert>
@@ -22,9 +22,9 @@
 	</select>
 
 	<insert id="orderListInsert" parameterType="orderList">
-		<selectKey keyProperty="order_num" resultType="String" order="BEFORE">
-			select order_num from sell where (select count())
-		</selectKey>
+		insert into order_list(order_num, pd_num, order_date, order_ea, order_money, order_ok, transit_num)
+		values (#{order_num}, #{pd_num}, sysdate, to_number(#{order_ea}), to_number(#{order_money}), '주문대기_'||to_char(sysdate,'yymmdd_hh24miss),
+		'30232-851-'||transit_seq.nextval)
 	</insert>
 	<delete id="paymentBack" parameterType="sell">
 	/*결재완료 부결시 결제 취소*/
