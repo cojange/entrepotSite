@@ -88,7 +88,7 @@ public class ClMController{
 		  // 세션에서 로그인 정보 중 아이디만 가지고 해당 아이디에 대한 상세내역  DB에서 조회
 		  ClMVO cvo = clMService.memberSelect(login.getM_id());
 		  mav.addObject("member", cvo);
-		  mav.setViewName("client/member/member/memberModify"); 
+		  mav.setViewName("client/member/member/memberModify");
 		  return mav;
 	 } 
 	 /**************************************************************
@@ -101,18 +101,17 @@ public class ClMController{
 		 LoginVO login =(LoginVO)session.getAttribute("login");
 		  
 		 if(login==null){
-		 mav.setViewName("client/member/member/memberModify"); 
+		 mav.setViewName("client/login/login");
 		 return mav;
 		}
 		  // 세션으로 얻은 로그인 정보를 가지고 다시 회원테이블에 존재하는 확인
 		  cvo.setM_id(login.getM_id());
 		  ClMVO vo = clMService.memberSelect(login.getM_id());
-		 // 기존 비빌번호로 회원정보를 확인하여 일치하면 수정 가능하도록 확인 작업
-		  
+		 // 기존 비빌번호로 회원정보를 확인하여 일치하면 수정 가능하도록 확인 작업		  
 		  if (clLoginService.loginSelect(cvo.getM_id(), cvo.getOldUserPw()) == null ) {
 		   mav.addObject("status", 1);
 		   mav.addObject("member",vo);
-		   mav.setViewName("client/member/member/mamberModify");
+		   mav.setViewName("client/member/member/memberModify");
 		   return mav;
 		  } 
 	

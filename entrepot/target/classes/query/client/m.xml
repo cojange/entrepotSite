@@ -24,7 +24,7 @@
 		<!-- SELECT m_id FROM 
 		(SELECT m_id FROM GROUP_MEMBER UNION ALL SELECT m_id FROM member ) 
 		GROUP BY m_id HAVING m_id=#{m_id} -->
-		select m_num, m_id, m_pwd, m_name,m_birth,m_email,m_phone
+		select m_num, m_id, m_pwd, m_name,m_birth,m_email,m_phone,m_job
 		from member
 		where m_id = #{m_id}
 	</select>
