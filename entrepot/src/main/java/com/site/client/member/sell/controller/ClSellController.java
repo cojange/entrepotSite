@@ -86,10 +86,11 @@ public class ClSellController {
 	@RequestMapping(value="/member/payment.do",method = RequestMethod.POST)
 	public ModelAndView paymentInsert(ClMultiOrderListVO cmovo,ModelAndView mav) {
 		logger.info("payment.do post 방식에 의한 메서드 호출 성공");
+		logger.info("order_list value= " + cmovo.getOrder_List().size());
 		int result;
 		result = clSellService.paymentInsert(cmovo);
 		
-					
+				System.out.println("result " + result);	
 			
 			/*logger.info("");
 			clMyPageService.orderListInsert(ordervo);*/

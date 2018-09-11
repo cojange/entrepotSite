@@ -28,5 +28,12 @@ public class ClSellDAOImpl implements ClSellDAO {
 		return session.insert("orderListInsert", covo);
 	}
 
+	@Override
+	public int paymentBack(ClSellVO csvo) {
+		return session.delete("paymentBack",csvo);
+	}
+	
+	
+
 
 }

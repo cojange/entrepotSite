@@ -8,5 +8,6 @@ public interface ClSellDAO {
 	public int paymentInsert(ClSellVO csvo);
 	public int getOrder_Money(ClOrderListVO covo);
 	public int orderListInsert(ClOrderListVO covo);
+	public int paymentBack(ClSellVO csvo);
 
 }

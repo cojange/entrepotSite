@@ -42,11 +42,12 @@ $(function() {
 	$("#paymentBtn").click(function() {	
 		var message = confirm("결제를 진행 하시겠습니까?");
 			if(message == true){
-				$(".paymentForm").attr({
+				console.log("aa");
+				$("#paymentForm").attr({
 					"method":"post",
 					"action":"/client/member/payment.do"
 			});
-			 $(".paymentForm").submit();
+			 $("#paymentForm").submit();
 			}
 			return false;
 	});
