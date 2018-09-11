@@ -218,7 +218,7 @@
 									 <!-- 작은이미지만 보일 경우 
 			      <img src="../../data_book/2092-9625/s_2092-9625_2018_9_0_Y_20180817021056.jpg" width="200" height="270" border=0 /> -->
 									<!-- 먼저 작은이미지를 보이고, 없으면 큰 이미지를 보이게 할 경우 --> <img
-									src="/uploadStorage/magazineImage/thum/ ${list.pl_path}" width="200" height="270" border="0">
+									src="/uploadStorage/magazineImage/main/${list.pl_path}" width="200" height="270" border="0">
 							
 							</td>
 							<td width="5"></td>
