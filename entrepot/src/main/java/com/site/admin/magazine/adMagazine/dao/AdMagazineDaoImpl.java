@@ -65,4 +65,14 @@ public class AdMagazineDaoImpl implements AdMagazineDao {
 	public int insertImgContent(MagazineImgVO mivo) {
 		return session.insert("insertImgContent", mivo);
 	}
+
+	@Override
+	public String selectPrevContent(MagazineSearchVO msvo) {
+		return session.selectOne("selectPrevContent",msvo);
+	}
+
+	@Override
+	public int updateDetailContent(MagazineSearchVO msvo) {
+		return session.update("updateDetailContent", msvo);
+	}
 }

@@ -19,7 +19,7 @@ function aa_open()
 
 </script>
 </head>
- <link rel="stylesheet" href="../../nice_common/text.css" type="TEXT/CSS"><!--사이드메뉴css-->
+<!--  <link rel="stylesheet" href="../../nice_common/text.css" type="TEXT/CSS"> --><!--사이드메뉴css-->
  <!-- Custom fonts for this template-->
   <!-- <link href="/resources/include/client/css/all.min.css" rel="stylesheet" type="text/css"> -->
 
@@ -152,7 +152,7 @@ function aa_open()
 												<tr height="35" bgcolor="#E8ECED">							
 													<td width="33" align="center"><a href="#" class="allCheck"><u>ALL</u></a></td>
 													<td align="center" width="36"><b>No</b></td>
-													<td align="center" width="155"><b>상품코드<br>발행사</b></td>
+													<td align="center" width="155"><b>잡지코드<br>발행사</b></td>
 													<td align="center" width="110"><b>잡지명</b></td>
 													<td align="center" width="130"><b>잡지주기(개월수)</b></td>
 													<td align="center" width="170"><b>정기구독가</b></td>
@@ -164,12 +164,12 @@ function aa_open()
 														<tr class="myList trSize" width="807" height="70">
 															<td width="33" align="center" class="checkP">
 																<input type="checkbox" class="deleteCheck">
-																<input type="hidden" class="mg_num" value="${vo.mg_num}">
+																<input type="hidden" class="mg_num" value="${vo.mg_num}"  style="width:100%;">
 																<input type="hidden" class="deleteCheckVal" name="mg_num" value="">
 																<input type="hidden" class="listType" value="Whish">	
 															</td>
 															<td width="36" align="center"><input type="text" class="index" readonly="readonly" size="2" value=""></td>
-															<td width="155" align="center"><img src="${vo.mg_num}"/></td>
+															<td width="155" align="center"><img src="/uploadStorage/magazineImage/thum/${vo.pl_path}" style="width:100%;"/></td>
 															<td width="110" align="center">${vo.mg_name}</td> 
 															<td width="130" align="center">${vo.mg_period}</td>
 															<td width="170" align="right">
@@ -198,7 +198,7 @@ function aa_open()
 														<a href="#" class="allCheck"><u>ALL</u></a>
 													</td>
 													<td align="center" width="36"><b>No</b></td>
-													<td align="center" width="155"><b>상품코드<br>발행사</b></td>
+													<td align="center" width="155"><b>잡지코드<br>발행사</b></td>
 													<td align="center" width="110"><b>잡지명</b></td>
 													<td align="center" width="130"><b>잡지주기(개월수)</b></td>
 													<td align="center" width="170"><b>정기구독가</b></td>
@@ -214,8 +214,8 @@ function aa_open()
 																<input type="hidden" class="deleteCheckVal"  name="mg_num" value="">
 																<input type="hidden" class="listType" value="Cart">
 															</td>
-															<td width="36" align="center"><input type="text" class="index" readonly="readonly" size="2" value=""></td>
-															<td width="155" align="center"><img src="${vo.mg_num}"/></td>
+															<td width="36" align="center"><input type="text" class="index" readonly="readonly" size="2" value=""></td> 
+															<td width="155" align="center"><img src="/uploadStorage/magazineImage/thum/${vo.pl_path}" style="width:100%;"/></td>
 															<td width="110" align="center">${vo.mg_name}</td>
 															<td width="130" align="center">${vo.mg_period}</td>
 															

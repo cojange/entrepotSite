@@ -9,12 +9,20 @@
 			SELECT to_char(trunc(add_months(sysdate, 12), 'dd'),'yyyy/mm/dd') FROM dual
 		</selectKey> 
 		Insert into SELL (ORDER_NUM,SELL_EA,SELL_DATE,
-		SELL_MONEY,BANK_NAME,BANK,
-		COUPON_NO,M_NUM,MT,ENDDATE) 
+		SELL_MONEY,BANK_NAME,BANK,COUPON_NO,M_NUM,MT,ENDDATE) 
 		values (TO_CHAR(SYSDATE, 'YYYY/MM/DD')||'_'||sell_seq.nextval,#{sell_ea},sysdate,
 		#{sell_money},#{bank_name},#{bank},
 		#{coupon_no},#{m_num},#{mt},#{enddate})
 	</insert>
 
+	<select id="getOrder_Money" parameterType="orderList" resultType="int">
+	/*단품 단가 주입조회*/
+		select pd_cost from product where pd_num = #{pd_num}
+	</select>
 
+	<insert id="orderListInsert" parameterType="orderList">
+		<selectKey keyProperty="order_num" resultType="String" order="BEFORE">
+			select order_num from sell where (select count())aaaaaaaaaaaaaaaaaaaaaaaaaaaa
+		</selectKey>
+	</insert>
 </mapper>

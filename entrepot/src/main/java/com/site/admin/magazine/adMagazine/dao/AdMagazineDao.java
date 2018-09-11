@@ -17,4 +17,6 @@ public interface AdMagazineDao {
 	public String getPdNum(MagazineSearchVO msvo);
 	public int insertDetailContent(MagazineSearchVO msvo);
 	public int insertImgContent(MagazineImgVO mivo);
+	public String selectPrevContent(MagazineSearchVO msvo);
+	public int updateDetailContent(MagazineSearchVO msvo);
 }

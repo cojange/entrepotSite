@@ -27,7 +27,7 @@
 	/*업로드 파일 업뎃시 파일명 업뎃*/
 		update cost
 		set cost_file = #{cost_file}, ad_id='entrepot'
-		where cost_file like '%'||#{lastFile}||'%'
+		where cost_file = #{lastFile}
 	</update>
 	
 	<select id="selectExcelList" parameterType="int" resultType="String">

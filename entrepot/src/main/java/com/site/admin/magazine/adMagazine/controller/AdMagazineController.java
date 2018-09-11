@@ -1,5 +1,6 @@
 package com.site.admin.magazine.adMagazine.controller;
 
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -20,6 +21,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.site.admin.magazine.adMagazine.service.AdMagazineService;
 import com.site.admin.magazine.adMagazine.vo.MagazineSearchVO;
 import com.site.client.magazine.ditail.vo.MagazineVO;
+import com.site.common.file.FileUploadUtil;
+import com.site.common.vo.ThumListVO;
 
 @Controller
 @RequestMapping(value="admin/magazine/adMagazine")
@@ -153,15 +156,4 @@ public class AdMagazineController {
 		return result;
 
 	}
-	
-/*	//상세등록
-	@RequestMapping(value="/insertDetail.do")
-	public String insertDetail(MagazineSearchVO msvo, Model model) {
-		logger.info("insertDetail 호출 성공");
-		
-		System.out.println(msvo.toString());
-		MagazineSearchVO newmvo = new MagazineSearchVO();
-		
-		return adMagazineList(newmvo,model);
-	}*/	
 }

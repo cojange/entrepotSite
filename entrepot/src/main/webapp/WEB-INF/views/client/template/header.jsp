@@ -3,11 +3,14 @@
 <%@ include file="/WEB-INF/views/common/common.jspf" %>
 
 
+
 <script type="text/javascript" src="/resources/include/client/js/jquery-1.12.4.min.js"></script>
+
+
 <%-- <script type="text/javascript">
 </script>
 
-=======
+
 <div id="header" class="container">
 	<div id="logo">
 		<h1><a href="#">앙뜨흐뽀</a></h1>
@@ -56,6 +59,7 @@
 		</ul>
 	</div>
  --%>
+
 <script type="text/javascript">
 function errorCodeCheck(){}
 	function surchlist() {
@@ -145,7 +149,7 @@ function errorCodeCheck(){}
           </c:if>
          <!-- <a href="/client/member/login.do" onClick="popct(this.href, '300', '350');return false">로그인</a> -->
       </div>
-   </div><!--/.nav-collapse -->
+   </div><!--/.nav-collapse --> 
 </div>
    <div id="menu" class="container">
       <ul>
@@ -222,19 +226,16 @@ function errorCodeCheck(){}
          <li  class="san"><a href="#" accesskey="4" title="">게시판</a>
          	<ul>
          		<li>
-         			 <a href="/client/board/personalListboard.do" accesskey="1" title="">1대1문의 게시판</a>
+         			 <a href="/client/board/personal/personalList.do?board_no=1" accesskey="1" title="">1대1문의 게시판</a>
          		</li>
          		<li>
-         			 <a href="/client/board/climgbListboard.do" accesskey="1" title="">포토 게시판</a>
+         			 <a href="/client/board/imgb/clImgbList.do?board_no=3" accesskey="1" title="">포토 게시판</a>
          		</li>
          		<li>
-         			<a href="/client/board/adminListboard.do" accesskey="1" title="">공지게시판</a>
+         			<a href="/client/board/adminboard/adminboardList.do?board_no=5" accesskey="1" title="">공지및 이벤트게시판</a>
          		</li>
          		<li>
-         			  <a href="/client/board/eventListboard.do" accesskey="1" title="">이벤트 게시판</a>
-         		</li>
-         		<li>
-         		 <a href="/client/board/userfulListboard.do" accesskey="1" title="">자주묻는 게시판</a>
+         		 <a href="/client/board/useful/usefulList.do?board_no=6" accesskey="1" title="">자주묻는 게시판</a>
          		 </li>
          	</ul>
          </li>

@@ -27,7 +27,7 @@ $(function() {
 		//합계의합계	
 		sumNumIndex=$(".sumNum:eq("+i+")").val();
 		sumNum = parseInt(sumNumIndex);
-		total=total+sumNum;
+		total=(total+sumNum)*(1-($("#coupon_no").find("option:selected").attr("data-discount")*0.01));
 		console.log("total : "+ total);
 		//갯수의합계
 		sumEa=sumEa+ea;

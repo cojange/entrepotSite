@@ -5,6 +5,7 @@ import com.site.client.member.sell.vo.ClSellVO;
 public class ClOrderListVO extends ClSellVO{
 	
 	//주문내역
+		private String order_num;
 		private String	pd_num;		//	상품코드
 		private String	order_date;		//	주문일
 		private String	order_ea;		//	수량
@@ -14,6 +15,13 @@ public class ClOrderListVO extends ClSellVO{
 		private String  pd_cost;//잡지 개월수
 		private String  mg_name;//잡지명
 		
+		
+		public String getOrder_num() {
+			return order_num;
+		}
+		public void setOrder_num(String order_num) {
+			this.order_num = order_num;
+		}
 		public String getPd_num() {
 			return pd_num;
 		}
@@ -61,6 +69,12 @@ public class ClOrderListVO extends ClSellVO{
 		}
 		public void setMg_name(String mg_name) {
 			this.mg_name = mg_name;
+		}
+		@Override
+		public String toString() {
+			return "ClOrderListVO [pd_num=" + pd_num + ", order_date=" + order_date + ", order_ea=" + order_ea
+					+ ", order_money=" + order_money + ", order_ok=" + order_ok + ", transit_num=" + transit_num
+					+ ", pd_cost=" + pd_cost + ", mg_name=" + mg_name + "]";
 		}
 		
 		
