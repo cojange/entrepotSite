@@ -61,7 +61,8 @@ public class AdCostServiceImpl implements AdCostService{
 				
 			acvo.setCost_file(cost_file);
 			//db에 존재하면 insert 생략
-			if(adCostDao.excelSelect(cost_file.substring(idx,idx+3))!=null) {
+			AdCostVO exvo = adCostDao.excelSelect(cost_file.substring(idx,idx+3));
+			if(exvo!=null) {
 				result=adCostDao.excelUpdate(acvo);
 				return result;
 			}else {
@@ -70,7 +71,7 @@ public class AdCostServiceImpl implements AdCostService{
 				return result;
 			}
 		}else {
-			return 0;
+			return result;
 		}
 	}
 

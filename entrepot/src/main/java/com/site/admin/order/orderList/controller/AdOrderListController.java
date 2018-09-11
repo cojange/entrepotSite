@@ -168,8 +168,9 @@ public class AdOrderListController {
 		public String confirmOrder(CommonVO cvo, Model model) {
 			
 			adOrderListService.confirmOrder(cvo);
+			  getSellList(model);
 			
-			return getSellList(model);
+			return "redirect:/admin/order/orderList/getSell.do";
 		}
 
 

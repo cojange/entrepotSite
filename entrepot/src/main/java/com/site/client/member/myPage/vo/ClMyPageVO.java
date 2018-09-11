@@ -13,7 +13,6 @@ public class ClMyPageVO extends MagazineVO{
 	private int	ea;		//찜&장바구니수량
 	
 	
-	
 	public String getRecord_num() {
 		return record_num;
 	}

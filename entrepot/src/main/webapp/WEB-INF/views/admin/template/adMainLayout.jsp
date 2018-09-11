@@ -151,11 +151,7 @@
 					var chartURL = "/admin/adChart/odSellRC.do"
 	    				 $.getJSON(chartURL,function(columnchart){
 	    					console.log(columnchart);
-							/* "categoryField": "date",
-							"dataDateFormat": "MM-DD",
-							"categoryAxis": {
-								"parseDates": true
-							}, */
+							/* 환불 교환 주문 판매 차트 만들기 */
 	    					AmCharts.makeChart("odSellRC",
 	    							{
 	    								"type": "serial",
