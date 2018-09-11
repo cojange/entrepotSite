@@ -45,17 +45,17 @@
 							<tr class="tableSize">
 								<td width="36" align="center">
 									<input type="text" class="index" readonly="readonly" size="2" value="">
-									<input type="hidden" id="mg_num" value="${vo.mg_num}" name="mg_num">
-									<input type="hidden" id="pd_num" name="order_list[${status.index }].pd_num" value="${vo.pd_num}">
+									<input type="hidden" id="mg_num" value="${vo.mg_num}" name="mg_numList">
+									<input type="hidden" id="pd_num" name="pd_numList" value="${vo.pd_num}">
 									<input type="hidden" id="record_num" value="${vo.record_num}">
 								</td>
 					    		<td>${vo.mg_name}</td>
 					    		<td>${vo.mg_period}</td>
 					    		<td>
-					    			<input type="text" class="money" readonly="readonly" value="${vo.pd_sale}" style = "text-align:center;">
+					    			<input type="text" class="money" readonly="readonly" name="order_moneyList" value="${vo.pd_sale}" style = "text-align:center;">
 					    		</td>
 					    		<td style="text-align:right;">${vo.ea}권
-					    			<input type="hidden" class="ea" readonly="readonly" name="order_list[${status.index }].order_ea"  size="2" value="${vo.ea}" style = "text-align:center;">
+					    			<input type="hidden" class="ea" readonly="readonly" name="order_eaList"  size="2" value="${vo.ea}" style = "text-align:center;">
 					    		</td>
 					    		<td> 
 					    			<input type="text" class="sum" readonly="readonly" style = "text-align:center;">
@@ -71,18 +71,18 @@
 								
 								<td width="36" align="center">
 									<input type="text" class="index" readonly="readonly" size="2" value="">
-									<input type="hidden" id="mg_num" name="mg_num" value="${vo.mg_num}">
-									<input type="hidden" id="pd_num" name="pd_num" value="${vo.pd_num}" name="order_list[${status.index }].pd_num">
+									<input type="hidden" id="mg_num"  value="${vo.mg_num}" name="mg_numList">
+									<input type="hidden" id="pd_num"  value="${vo.pd_num}" name="pd_numList">
 									<input type="hidden" id="record_num" name="record_num" value="${vo.record_num}">
 								</td>
 								
 					    		<td>${vo.mg_name}</td>
 					    		<td>${vo.mg_period}</td>
 					    		<td>
-					    			<input type="text" class="money" readonly="readonly" name="sell.sell_money" value="${vo.pd_sale}" style = "text-align:center;">
+					    			<input type="text" class="money" readonly="readonly" name="order_moneyList" value="${vo.pd_sale}" style = "text-align:center;">
 					    		</td>
 					    		<td style="text-align:right;">${vo.ea}권
-					    			<input type="hidden" class="ea" readonly="readonly" name="order_list[${status.index }].order_ea" size="2" value="${vo.ea}" style = "text-align:center;">
+					    			<input type="hidden" class="ea" readonly="readonly" name="order_eaList" size="2" value="${vo.ea}" style = "text-align:center;">
 					    		</td>
 					    		<td>
 					    			<input type="text" class="sum" readonly="readonly" style = "text-align:center;">
@@ -102,7 +102,7 @@
 		    		<input type="hidden" id="m_num" name="sell.m_num" value="${login.m_num}">
 		    		<input type="hidden" id="mt" name="sell.mt" value="${login.mt}">
 		    		<span style="background-color: #dddddd;font-size: 12pt; color: red;">
-		    			<strong>총수량&nbsp;:&nbsp;<input type="text" id="sumEa" name="sell.sell_ea" size="5"  readonly="readonly" > </strong>
+		    			<strong>총수량&nbsp;:&nbsp;<input type="text" id="sumEa"  size="5"  readonly="readonly" > </strong>
 		    			<input type="hidden" id="sell_ea" name="sell.sell_ea" value="">
 		    		</span>
 		    		<span style="background-color: #dddddd;font-size: 12pt; color: red;">
