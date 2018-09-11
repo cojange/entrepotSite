@@ -150,7 +150,7 @@
 	        				<tr>
 	        					<td colspan="3">
 	        						<input type="button" id="abSaveBtn" value="등록">
-	        						<input type="button" id="abResetBtn" value="초기화">
+	        						<input type="button" class="abResetBtn" value="초기화">
 	        					</td>
 	        				</tr>
 	        			</tfoot>
