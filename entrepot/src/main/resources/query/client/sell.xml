@@ -23,7 +23,7 @@
 
 	<insert id="orderListInsert" parameterType="orderList">
 		insert into order_list(order_num, pd_num, order_date, order_ea, order_money, order_ok, transit_num)
-		values (#{order_num}, #{pd_num}, sysdate, to_number(#{order_ea}), to_number(#{order_money}), '주문대기_'||to_char(sysdate,'yymmdd_hh24miss),
+		values (#{order_num}, #{pd_num}, sysdate, to_number(#{order_ea}), to_number(#{order_money}), '주문대기_'||to_char(sysdate,'yymmdd_hh24miss'),
 		'30232-851-'||transit_seq.nextval)
 	</insert>
 	<delete id="paymentBack" parameterType="sell">

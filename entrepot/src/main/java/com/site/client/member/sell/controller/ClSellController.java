@@ -87,14 +87,9 @@ public class ClSellController {
 	public ModelAndView paymentInsert(ClMultiOrderListVO cmovo,ModelAndView mav) {
 		logger.info("payment.do post 방식에 의한 메서드 호출 성공");
 		
-		int result;
-		result = clSellService.paymentInsert(cmovo);
+		clSellService.paymentInsert(cmovo);
 		
-				System.out.println("result " + result);	
-			
-			/*logger.info("");
-			clMyPageService.orderListInsert(ordervo);*/
-			mav.setViewName("client/member/member/paymentSuccess");
+		mav.setViewName("client/member/member/paymentSuccess");
 		
 		return mav;
 	}

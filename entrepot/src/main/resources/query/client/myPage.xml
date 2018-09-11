@@ -47,7 +47,7 @@
 	/*myPage - cartList*/
 	select distinct  d.pl_path,a.mg_name,a.mg_period,c.PD_SALE 
 	,SUBSTR(A.MG_PERIOD,INSTR(A.MG_PERIOD,'(')+1,INSTR(A.MG_PERIOD,'회')-INSTR(A.MG_PERIOD,'(')-1)as pd_cost
-	,b.ea ,b.RECORD_NUM ,a.mg_num
+	,b.ea ,b.RECORD_NUM ,a.mg_num,c.pd_num
 	from magazine a join record b
 	on a.mg_num=b.mg_num 
 	join PRODUCT c 

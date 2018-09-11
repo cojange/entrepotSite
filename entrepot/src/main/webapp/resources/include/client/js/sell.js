@@ -4,6 +4,7 @@ $(function() {
 	var sumEa=0;
 	var sumNum=0;
 	var arr=[];
+	var moneyList=[];
 	for (var i = 0; i < $(".tableSize").size(); i++) {
 		console.log("tableSize : " + $(".tableSize").size());
 		//인덱스
@@ -18,7 +19,9 @@ $(function() {
 		//console.log(money);
 		//합계
 		sum = money*ea;
+		moneyList[i] = sum;
 		console.log("sum : " + sum);
+		console.log("moneyList : "+ moneyList);
 		money = comma(money);
 		$(".money:eq("+i+")").val(money+"원");
 		$(".sumNum:eq("+i+")").val(sum); 
@@ -42,7 +45,9 @@ $(function() {
 	$("#paymentBtn").click(function() {	
 		var message = confirm("결제를 진행 하시겠습니까?");
 			if(message == true){
-				console.log("aa");
+				for (var i = 0; i < $(".tableSize").size(); i++) {
+					$("input[name='order_moneyList']").val(moneyList[i]);
+				}
 				$("#paymentForm").attr({
 					"method":"post",
 					"action":"/client/member/payment.do"
