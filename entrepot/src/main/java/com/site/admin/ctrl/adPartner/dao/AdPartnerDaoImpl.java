@@ -70,4 +70,10 @@ public class AdPartnerDaoImpl implements AdPartnerDao {
 	public int magCodeInsert(MagazineSearchVO msvo) {
 		return session.insert("magCodeInsert", msvo);
 	}
+	
+	//잡지코드 수정
+	@Override
+	public int magCodeUpdate(MagazineSearchVO msvo) {
+		return session.update("magCodeUpdate", msvo);
+	}
 }

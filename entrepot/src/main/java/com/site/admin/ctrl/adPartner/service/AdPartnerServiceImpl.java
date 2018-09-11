@@ -104,4 +104,10 @@ public class AdPartnerServiceImpl implements AdPartnerService {
 		}
 		return result;
 	}
+
+	@Override
+	public int magCodeUpdate(MagazineSearchVO msvo) {
+		int result = adPartnerDao.magCodeUpdate(msvo);
+		return result;
+	}
 }
