@@ -60,4 +60,14 @@
 		values(#{pl_path}, #{pd_num}, #{pl_type}, #{mg_num})
 	</insert>
 	
+	<select id="selectPrevContent" resultType="java.lang.String" parameterType="msvo">
+		/*detail 등록전 사전 등록 여부 확인*/
+		select mg_num from details where mg_num = #{mg_num}
+	</select>
+	
+	<update id="updateDetailContent" parameterType="msvo">
+		/*detail 중복시 업댓*/
+		update details set dt_target=#{dt_target}, dt_brief=#{dt_brief}, dt_detail=#{dt_detail},
+		dt_contents=#{dt_contents},dt_keyword=#{dt_keyword} where mg_num=#{mg_num}
+	</update>	
 </mapper>

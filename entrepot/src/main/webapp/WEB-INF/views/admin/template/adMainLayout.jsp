@@ -104,6 +104,50 @@
 				ad_card();
 				
 				if($(location).attr("href")== "http://localhost:8080/admin"){
+					
+					
+					
+					
+					
+					var table=$("#magazineDataTable").DataTable( {
+    			        "order": [[1, 'asc']]
+    			    } );
+					$('.table tbody').on('click', 'td.details-control', function () {
+        	   	    	var od_num = $(this).next().html();
+    	   	    		
+    				var targetTd = $(this);
+    	   	    	//subtable 요청
+    	   	    	var subTableURL = "/admin/order/orderList/getOrder.do";
+    	   	    	$.getJSON(subTableURL,{
+    	   	    		order_num:od_num
+    	   	    	},function(subElements){
+        	   	    	addTable= subtable(subElements);
+        	   	    	
+        	   	    	//클릭시 subtable 보여주기
+        	   	    	var tr = targetTd.closest('tr');
+        	   	        var row = table.row( tr );
+    	    	   	     if ( row.child.isShown() ) {
+    	    	             // This row is already open - close it
+    	    	             row.child.hide();
+    	    	             if(tr.find('i').hasClass('fa-minus-circle green')){
+    	    	            	 tr.find('i').removeClass('fa-minus-circle green');
+    	    	            	 tr.find('i').addClass('fa-plus-circle red');	    	            	 
+    	    	             }
+    	    	             
+    	    	         }
+    	    	         else {
+    	    	             // Open this row
+    	    	             
+    	    	             row.child(addTable).show();
+    	    	             tr.find('i').removeClass('fa-plus-circle red');
+    	    	             tr.find('i').addClass('fa-minus-circle green'); // FontAwesome 5
+    	    	             
+    	    	         }
+    	   	    	});
+    	   	    	
+    	   	        
+    	   	    } );//아이콘 접기,펴기
+					
 					var chartURL = "/admin/adChart/odSellRC.do"
 	    				 $.getJSON(chartURL,function(columnchart){
 	    					console.log(columnchart);
@@ -660,7 +704,7 @@
 	    			/* 잡지코드 리스트창에서 등록버튼 클릭 */
 	    			$(document).on('click', ".magCodeAddForm", function(){
 	    				console.log("가");
-	    				var rowItem = "<tr><td>-</td><td><input type='text' id='mgnum' name='mg_num' placeholder='잡지코드'></td>";
+	    				var rowItem = "<tr><td><i class='fas fa-minus-circle' id='codeAddFormDel' style='font-size:20px; color:red;'></i></td><td><input type='text' id='mgnum' name='mg_num' placeholder='잡지코드'></td>";
 	    				rowItem += "<td><input type='text' id='mgname' name='mg_name' placeholder='잡지이름'></td><td><input type='text' id='mgperiod' name='mg_period' placeholder='출간주기'></td>";
 	    				rowItem += "<td><input type='text' id='comno' name='com_no' placeholder='사업자등록번호'></td></tr>";
 	    				
@@ -683,7 +727,81 @@
 		    			}
 	      				$("#magCodeForm").submit();
 	    			});
-	    		} 
+	    			//등록 중 취소 버튼
+	    			$('#magCodeTable').on("click", "#codeAddFormDel", function(){
+	    				$(this).closest("tr").remove();
+	    			});
+	    			
+	    			var codeCurrLi;
+	    			/* 잡지 코드테이블 선택행 블록처리 */
+	    			$("#magCodeTable").on("click","tr",function(){
+	    				console.log("this:"+$(this).html());
+	    				if ( $(this).hasClass('selected') ) {
+	    		            $(this).removeClass('selected');
+	    		            codeCurrLi="";
+	    		        }
+	    		        else {
+	    		            $('#magCodeTable tr.selected').removeClass('selected');
+	    		            $(this).addClass('selected');
+	    		            codeCurrLi= $(this);
+	    		        }	    				
+	    			});
+	    			var mg_num;
+	    			/* 잡지코드 리스트창에서 등록버튼 클릭 */
+	    			$(document).on('click', ".magCodeUpForm", function(){
+	    				console.log("업1");
+	    				console.log(codeCurrLi.html());
+	                	mg_num = codeCurrLi.children().eq(1);
+	                	var mgname = codeCurrLi.children().eq(2);
+	                	var mgperiod = codeCurrLi.children().eq(3);
+	                	var comno = codeCurrLi.children().eq(5);
+	                
+	    				var rowItem = "<tr><td><i class='fas fa-minus-circle' id='codeFormDel' style='font-size:20px; color:red;'></i></td><td><input type='text' id='mgnum' name='mg_num' placeholder='잡지코드' value='"+mg_num.html()+"' disabled='disabled'></td>";
+	    				rowItem += "<td><input type='text' id='mg_name' name='mg_name' placeholder='잡지이름' value='"+mgname.html()+"'></td><td><input type='text' id='mg_period' name='mg_period' placeholder='출간주기' value='"+mgperiod.html()+"'></td>";
+	    				rowItem += "<td><input type='text' id='com_num' name='com_no' placeholder='사업자등록번호' value='"+comno.html()+"'></td></tr>";
+	    				
+	    				$("#magCodeTable").append(rowItem);
+	    				$("#magCodeUpBtn").removeClass("magCodeUpForm");
+	    				$("#magCodeUpBtn").addClass("mgCodeUpdate");
+	    			});
+	    			//수정 중 취소 버튼
+	    			$('#magCodeTable').on("click", "#codeFormDel", function(){
+	    				$(this).closest("tr").remove();
+	    			});
+	    			/* 잡지코드 등록창에서 등록버튼 클릭 */
+	    			$(document).on('click', ".mgCodeUpdate", function(){
+	    				console.log("업2 / "+$("#com_num").val());
+	    				if(!chkData($('#mg_name'),"잡지 이름을")) return;
+	      				else if(!chkData($('#mg_period'),"출간주기를")) return;
+	      				else  if(!chkData($('#com_num'),"사업자등록번호를")) return;
+	      				else{
+    						$.ajax({
+    							url:'/admin/ctrl/adPartner/'+mg_num.html()+'.do',
+    							type:"put",
+    							headers:{
+    								"Content-Type":"application/json",
+    								"X-HTTP_Method_Override":"PUT"//대소문자 구별
+    							},
+    							data:JSON.stringify({
+    								mg_name:$("#mg_name").val(),
+    								com_no:$("#com_num").val(),
+    								mg_period:$('#mg_period').val()
+    							}),
+    							dataType:"text",
+    							error:function(){
+    								alert('시스템 오류 입니다. 관리자에게 문의하세요.');
+    							},
+    							success:function(result){
+    								console.log("result : "+result);
+    								if(result == "SUCCESS"){
+    									alert("수정이 완료되었습니다.");
+    									location.href="/admin/ctrl/adPartner/adPartnerListCtrl.do";
+    								}
+    							}
+    						});
+    					 } 
+	    			});
+	    		}
 	    		
 	    		//약관 관리탭
 	    		if($(location).attr("href") == "http://localhost:8080/admin/adBoard/regulations/regulationsList.do"){
@@ -746,7 +864,7 @@
 	      				}
 	    			});
 	    			
-	    			$("#abResetBtn").click(function(){
+	    			$(".abResetBtn").click(function(){
 	    				resetData();
 	    			});
 	    			
@@ -1673,7 +1791,7 @@
            		rowUp += "</td></tr><tr><td colspan='2'>게시유형  : <select id='ab_pre' name='ab_pre'><option value='일반'>일반</option>";
            		rowUp += "<option value='팝업'>팝업</option><option value='상단고정'>상단고정</option></select>";
            		rowUp += "<br/><span style='font-size:12px;'>기존 유형 : "+abPre.html()+"</span></td><td>아이디 : "+abId.html()+"</td></tr><tfoot>";
-           		rowUp += "<tr><td colspan='3'><input type='button' id='abUpdateBtn' value='수정'>	<input type='button' id='abResetBtn' value='초기화'>";
+           		rowUp += "<tr><td colspan='3'><input type='button' id='abUpdateBtn' value='수정'>	<input type='button' class='abResetBtn' value='초기화'>";
            		rowUp += "</td></tr></tfoot></table>";
 				
            		$(document).on('mouseenter', '.fileImg', function() {
@@ -1689,7 +1807,7 @@
             
             /* 잡지거래처 상세 정보 */
             function mgDetail(currLiMg){
-            	console.log(currLiMg.html());
+            	//console.log(currLiMg.html());
             	var comName = currLiMg.children().eq(0);
             	var charManager = currLiMg.children().eq(1);
             	var charTel = currLiMg.children().eq(2);

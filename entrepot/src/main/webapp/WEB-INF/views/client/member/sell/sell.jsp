@@ -27,6 +27,7 @@
     <div class="contentContainer">
     	
 		<div class="well">
+		<form id ="paymentForm" name="paymentForm">
 		    <table border="1">
 		    <tbody>
 		    	<tr bgcolor="#E8ECED">
@@ -40,41 +41,41 @@
 		    	
 		    	<c:choose>
 					<c:when test="${not empty whishList}">
-						<c:forEach var="vo" items="${whishList}">
+						<c:forEach var="vo" items="${whishList}" varStatus="status">
 							<tr class="tableSize">
 								<td width="36" align="center">
 									<input type="text" class="index" readonly="readonly" size="2" value="">
-									<input type="hidden" id="mg_num" name="mg_num" value="${vo.mg_num}">
-									<input type="hidden" id="pd_num" name="pd_num" value="${vo.pd_num}">
-									<input type="hidden" id="record_num" name="record_num" value="${vo.record_num}">
-									
+									<input type="hidden" id="mg_num" value="${vo.mg_num}">
+									<input type="hidden" id="pd_num" name="order_list[${status.index }].pd_num" value="${vo.pd_num}">
+									<input type="hidden" id="record_num" value="${vo.record_num}">
 								</td>
 					    		<td>${vo.mg_name}</td>
 					    		<td>${vo.mg_period}</td>
 					    		<td>
-					    			<input type="text" class="money" readonly="readonly"  value="${vo.pd_sale}" style = "text-align:center;">
+					    			<input type="text" class="money" readonly="readonly" value="${vo.pd_sale}" style = "text-align:center;">
 					    		</td>
 					    		<td style="text-align:right;">${vo.ea}권
-					    			<input type="hidden" class="ea" readonly="readonly"  size="2" value="${vo.ea}" style = "text-align:center;">
+					    			<input type="hidden" class="ea" readonly="readonly" name="order_list[${status.index }]"  size="2" value="${vo.ea}" style = "text-align:center;">
 					    		</td>
 					    		<td> 
 					    			<input type="text" class="sum" readonly="readonly" style = "text-align:center;">
 					    			<input type="hidden" class="sumNum" value="">
 					    		</td>
 					    	</tr>
+					    	
 				    	</c:forEach>
 					</c:when>
 					<c:when test="${not empty cartList}">
 						<c:forEach var="vo" items="${cartList}">
 							<tr class="tableSize">
-								<form class="listForm">
+								
 								<td width="36" align="center">
 									<input type="text" class="index" readonly="readonly" size="2" value="">
 									<input type="hidden" id="mg_num" name="mg_num" value="${vo.mg_num}">
 									<input type="hidden" id="pd_num" name="pd_num" value="${vo.pd_num}">
 									<input type="hidden" id="record_num" name="record_num" value="${vo.record_num}">
 								</td>
-								</form>
+								
 					    		<td>${vo.mg_name}</td>
 					    		<td>${vo.mg_period}</td>
 					    		<td>
@@ -94,20 +95,19 @@
 		    </tbody>
 		    </table>
 		    <br>
-		   	<form class="paymentForm">
 		    <div>
 		    	<!-- <input type="button" value="결제하기" id="paymentBtn" class="buttons">
 		    	<input type="button" value="결제취소" id="cancelBtn" class="buttons"><br><br> --> 
 		    	<div>
-		    		<input type="hidden" id="m_num" name="m_num" value="${login.m_num}">
-		    		<input type="hidden" id="mt" name="mt" value="${login.mt}">
+		    		<input type="hidden" id="m_num" name="sell.m_num" value="${login.m_num}">
+		    		<input type="hidden" id="mt" name="sell.mt" value="${login.mt}">
 		    		<span style="background-color: #dddddd;font-size: 12pt; color: red;">
 		    			<strong>총수량&nbsp;:&nbsp;<input type="text" id="sumEa" size="5"  readonly="readonly" > </strong>
-		    			<input type="hidden" id="sell_ea" name="sell_ea" value="">
+		    			<input type="hidden" id="sell_ea" name="sell.sell_ea" value="">
 		    		</span>
 		    		<span style="background-color: #dddddd;font-size: 12pt; color: red;">
 		    			<strong>총결제금액&nbsp;:&nbsp;<input type="text" id="total"  readonly="readonly" > </strong>
-		    			<input type="hidden" id="sell_money" name="sell_money" value="">
+		    			<input type="hidden" id="sell_money" name="sell.sell_money" value="">
 		    		</span>
 		    	</div><br><br>
 		    	<font style="color: orange;">* 배송받으실주소 및 회원님의 정보입니다.</font>
@@ -121,6 +121,22 @@
 			    		<tr>
 			    			<td>이메일</td>
 			    			<td>${member.m_email}</td>
+			    		</tr>
+			    		<tr>
+			    			<td><span style="background-color: #dddddd;font-size: 12pt; color: blue;">입금자명</span></td>
+			    			<td><input type="text" placeholder="입금자명을입력해주세요" id="bank_name" name="sell.bank_name"></td>
+			    		</tr>
+			    		<tr>
+			    			<td><span style="background-color: #dddddd;font-size: 12pt; color: blue;">입금은행</span></td>
+			    			<td><input type="text" placeholder="입금은행을입력해주세요" id="bank" name="sell.bank"></td>
+			    		</tr>
+			    		<tr>
+			    			<td><span style="background-color: #dddddd;font-size: 12pt; color: blue;">쿠폰여부</span></td>
+			    			<td>
+			    				<select id="coupon_no" name="sell.coupon_no">
+			    					<option value=${member.coupon_no } data-discount=${member.coupon_discount }>${member.coupon_no }</option>
+			    				</select>
+			    			</td>
 			    		</tr>
 
 			    		
@@ -140,11 +156,11 @@
 			    		</tr>
 			    		<tr>
 			    			<td><span style="background-color: #dddddd;font-size: 12pt; color: blue;">입금자명</span></td>
-			    			<td><input type="text" placeholder="입금자명을입력해주세요" id="bank_name" name="bank_name" value="조범구"></td>
+			    			<td><input type="text" placeholder="입금자명을입력해주세요" id="bank_name" name="sell.bank_name" value="조범구"></td>
 			    		</tr>
 			    		<tr>
 			    			<td><span style="background-color: #dddddd;font-size: 12pt; color: blue;">입금은행</span></td>
-			    			<td><input type="text" placeholder="입금은행을입력해주세요" id="bank" name="bank" value="신한"></td>
+			    			<td><input type="text" placeholder="입금은행을입력해주세요" id="bank" name="sell.bank" value="신한"></td>
 			    		</tr>
 			    		<tr>
 			    			<td><span style="background-color: #dddddd;font-size: 12pt; color: blue;">주소</span></td>
@@ -152,7 +168,7 @@
 			    		</tr>
 			    		<tr>
 			    			<td><span style="background-color: #dddddd;font-size: 12pt; color: blue;">쿠폰여부</span></td>
-			    			<td><select id="coupon_no" name="coupon_no"><option value="cp_level_1">1단계</option></select></td>
+			    			<td><select id="coupon_no" name="sell.coupon_no"><option value="cp_level_1">1단계</option></select></td>
 			    		</tr>
 			    	</tbody>
 			    	</table>
@@ -166,6 +182,7 @@
 		    </form>
 		</div>
 	  </div>
+	  
     </div> <!-- /container -->
     </div>
   </body>

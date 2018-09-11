@@ -74,6 +74,12 @@ public class ClSellVO {
 	public void setEnddate(String enddate) {
 		this.enddate = enddate;
 	}
+	@Override
+	public String toString() {
+		return "ClSellVO [order_num=" + order_num + ", sell_ea=" + sell_ea + ", sell_date=" + sell_date
+				+ ", sell_money=" + sell_money + ", bank_name=" + bank_name + ", bank=" + bank + ", coupon_no="
+				+ coupon_no + ", m_num=" + m_num + ", mt=" + mt + ", enddate=" + enddate + "]";
+	}
 	
 	
 

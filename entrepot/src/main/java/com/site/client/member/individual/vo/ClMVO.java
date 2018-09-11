@@ -17,6 +17,8 @@ public class ClMVO extends LoginVO{
 	private String quiz;		//	비밀번호질문유형
 	private String ans;		//	비밀번호질문답
 	private String grade;		//	등급
+	private String coupon_no;
+	private int coupon_discount;
 	
 	private int mt_num; //회원타입번호
 	
@@ -35,6 +37,18 @@ public class ClMVO extends LoginVO{
 	
 	public String getM_birth() {
 		return m_birth;
+	}
+	public String getCoupon_no() {
+		return coupon_no;
+	}
+	public void setCoupon_no(String coupon_no) {
+		this.coupon_no = coupon_no;
+	}
+	public int getCoupon_discount() {
+		return coupon_discount;
+	}
+	public void setCoupon_discount(int coupon_discount) {
+		this.coupon_discount = coupon_discount;
 	}
 	public void setM_birth(String m_birth) {
 		this.m_birth = m_birth;

@@ -79,4 +79,11 @@
 		insert into magazine(mg_num, mg_name, mg_period, com_no)
 		values(#{mg_num}, #{mg_name}, #{mg_period}, #{com_no})		
 	</insert>
+	
+	<update id="magCodeUpdate" parameterType="msvo">
+		/*잡지 코드 수정*/
+		UPDATE magazine
+		SET mg_name = #{mg_name}, mg_period = #{mg_period}, com_no = #{com_no}
+		WHERE mg_num = #{mg_num}
+	</update>
 </mapper>

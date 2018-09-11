@@ -602,7 +602,7 @@
 	  <div class="modal-dialog modal-lg">
 	    <div class="modal-content">
 	      <div class="modal-header">	       	
-	        <h4 class="modal-title" id="magazineCodeModalLabel">잡지 거래처 등록</h4>
+	        <h4 class="modal-title" id="magazineCodeModalLabel">잡지 코드 등록</h4>
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	      </div>
 	      <div class="modal-body">
@@ -656,6 +656,7 @@
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-primary magCodeAddForm" id="magCodeBtn">등록</button>
+	        <button type="button" class="btn btn-primary magCodeUpForm" id="magCodeUpBtn">수정</button>
 	        <button type="button" class="btn btn-default" data-dismiss="modal" id="magDel">닫기</button>
 	      </div>
 	    </div>

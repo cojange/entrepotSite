@@ -27,7 +27,7 @@ $(function() {
 		//합계의합계	
 		sumNumIndex=$(".sumNum:eq("+i+")").val();
 		sumNum = parseInt(sumNumIndex);
-		total=total+sumNum;
+		total=(total+sumNum)*(1-($("#coupon_no").find("option:selected").attr("data-discount")*0.01));
 		console.log("total : "+ total);
 		//갯수의합계
 		sumEa=sumEa+ea;
@@ -42,11 +42,12 @@ $(function() {
 	$("#paymentBtn").click(function() {	
 		var message = confirm("결제를 진행 하시겠습니까?");
 			if(message == true){
-				$(".paymentForm").attr({
+				console.log("aa");
+				$("#paymentForm").attr({
 					"method":"post",
 					"action":"/client/member/payment.do"
 			});
-			 $(".paymentForm").submit();
+			 $("#paymentForm").submit();
 			}
 			return false;
 	});

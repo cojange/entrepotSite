@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.site.client.board.adminboard.dao.ClAdminBoardDao">
+	<select id="adminboardList" parameterType="cladminboard" resultType="cladminboard">
+		select a.ab_no ab_no, ab_type, ab_title, b.ad_id, 
+        to_char(ab_date, 'YYYY-MM-DD') as ab_date from admin_board a inner join admin b
+        on a.AD_ID = b.AD_ID
+        order by ab_no desc
+	</select>
+	
+	<select id="adminboardDetail" parameterType="cladminboard" resultType="cladminboard">
+		 select a.ab_no ab_no, ab_type, ab_title, ab_content, b.ad_id, 
+        to_char(ab_date, 'YYYY-MM-DD') as ab_date from admin_board a inner join admin b
+        on a.AD_ID = b.AD_ID
+        where ab_no=#{ab_no}
+        order by ab_no desc
+	</select>
+</mapper>

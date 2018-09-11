@@ -9,10 +9,14 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.site.admin.adBoard.adminBoard.vo.CouponVO;
 import com.site.admin.ctrl.adPartner.service.AdPartnerService;
 import com.site.admin.ctrl.adPartner.vo.CourierPartnerVO;
 import com.site.admin.ctrl.adPartner.vo.MagazinePartnerVO;
@@ -138,5 +142,23 @@ public class AdPartnerController {
 			url = "/admin/ctrl/adPartner/magazineInsert.do"; 
 		}
 		return "redirect:"+url;
+	}
+	
+	/**
+	 * 잡지코드 수정 하기
+	 * **/
+	@ResponseBody
+	@RequestMapping(value = "/{mg_num}.do", method = RequestMethod.PUT)
+	public String magCodeUpdate(@PathVariable("mg_num") String mg_num, @RequestBody MagazineSearchVO msvo){
+		logger.info("magCodeUpdate 호출 성공");
+		msvo.setMg_num(mg_num);
+		logger.info("값확인 controller :" + msvo.getMg_num());
+
+		int reasult = adPartnerService.magCodeUpdate(msvo);
+		if (reasult==1) {
+			return "SUCCESS";
+		}else {
+			return "FALSE";
+		}
 	}
 }
