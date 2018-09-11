@@ -9,5 +9,6 @@ public interface ClMService {
 	public ClMVO memberSelect(String m_id);
 	public int memberUpdate(ClMVO mvo);
 	public ClMVO memberSellSelect(String m_num);
+	public int memberDelete(String m_id);
 
 }

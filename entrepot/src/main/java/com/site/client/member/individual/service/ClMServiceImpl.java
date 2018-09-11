@@ -69,5 +69,12 @@ public class ClMServiceImpl implements ClMService {
 		ClMVO cvo = clMDao.memberSellSelect(m_num);
 		return cvo;
 	}
+
+	@Override
+	public int memberDelete(String m_id) {
+		int result = clMDao.memberDelete(m_id);
+		result = clMDao.securityDelete(m_id);
+		return result;
+	}
 	
 }
