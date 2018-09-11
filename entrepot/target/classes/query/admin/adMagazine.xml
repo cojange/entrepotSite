@@ -68,6 +68,6 @@
 	<update id="updateDetailContent" parameterType="msvo">
 		/*detail 중복시 업댓*/
 		update details set dt_target=#{dt_target}, dt_brief=#{dt_brief}, dt_detail=#{dt_detail},
-		dt_contents=#{dt_contents},dt_keyword=#{dt_keyword}
+		dt_contents=#{dt_contents},dt_keyword=#{dt_keyword} where mg_num=#{mg_num}
 	</update>	
 </mapper>

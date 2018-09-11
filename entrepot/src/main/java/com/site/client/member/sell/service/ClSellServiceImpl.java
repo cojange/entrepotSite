@@ -7,7 +7,6 @@ import com.site.client.member.myPage.dao.ClMyPageDao;
 import com.site.client.member.myPage.vo.ClOrderListVO;
 import com.site.client.member.sell.dao.ClSellDAO;
 import com.site.client.member.sell.vo.ClMultiOrderListVO;
-import com.site.client.member.sell.vo.ClSellVO;
 
 @Service
 public class ClSellServiceImpl implements ClSellService {
@@ -23,7 +22,12 @@ public class ClSellServiceImpl implements ClSellService {
 		int resultDelete = 0;
 		int insertOrderList = 0;
 		//전체 sell 테이블 insert
-		insertSellresult = clSellDAO.paymentInsert(cmovo.getSell());
+		 insertSellresult = clSellDAO.paymentInsert(cmovo.getSell());
+
+		 System.out.println("order_num : " + cmovo.getSell().getOrder_num());
+		 
+		 //String order_num = clSellDAO.getOrder_num(cmovo.getSell());
+		
 			if(insertSellresult==1) {
 				
 				//sell 테이블에 insert 성공시 장바구니 비우기
@@ -31,6 +35,7 @@ public class ClSellServiceImpl implements ClSellService {
 				
 				//단품 단가 주입
 				for(ClOrderListVO covo : cmovo.getOrder_List()) {
+					covo.setOrder_num(cmovo.getSell().getOrder_num());
 					covo.setOrder_money(String.valueOf(clSellDAO.getOrder_Money(covo)));
 				}
 				
@@ -41,11 +46,12 @@ public class ClSellServiceImpl implements ClSellService {
 				
 				
 			}else if(insertSellresult != 1) {
+				clSellDAO.paymentBack(cmovo.getSell());
 				return insertSellresult;
 			}
 			
 			
-		return result;
+		return 1;
 	}
 
 }
