@@ -84,6 +84,18 @@ public class ClGmDaoImpl implements ClMDao {
 		return null;
 	}
 
+	@Override
+	public int memberDelete(String m_id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int securityDelete(String m_Id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 
 
 	

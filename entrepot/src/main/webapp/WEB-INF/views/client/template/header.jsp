@@ -99,6 +99,25 @@ function errorCodeCheck(){}
          <div class="after"></div>
       </fieldset>
       <fieldset class="enter">
+      		<p></p>
+      		<div class="loginMenu" style="width: 300px;height:100px; align-content: center;">
+      			 
+         			<a id="logout" href="#"><i class="demo-icon icon-cancel"  style="width: 10px;" ></i><strong>로그아웃</strong></a>
+         		<c:if test="${login.mt == '개인'}">
+         			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         			<a href="/client/member/myPageWhish.do"><i class="demo-icon icon-calendar-inv"  style="width: 10px;" ></i><strong>마이페이지</strong></a><br><br>
+         			<a href="/client/member/memberModify.do"><i class="demo-icon  icon-adult"  style="width: 10px;" ></i><strong>정보수정</strong></a>
+         			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         			<a href="/"><strong><i class="demo-icon  icon-smile"  style="width: 10px;" ></i>홈페이지</strong></a>
+         		</c:if>
+         		<c:if test="${login.mt == '단체'}">
+         			<a href="/client/member/myPageWhish.do"><i class="demo-icon icon-calendar-inv"  style="width: 10px;" ></i><strong>마이페이지</strong></a><br><br>
+         			<a href="/client/member/memberModify.do"><i class="demo-icon  icon-adult"  style="width: 10px;" ></i><strong>정보수정</strong></a>
+         			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         			<a href="/"><strong><i class="demo-icon  icon-smile"  style="width: 10px;" ></i>홈페이지</strong></a>
+         			
+         		</c:if>
+        </div> 
          <button  class="surchbtn" value="검색"></button>
       </fieldset>
    </form>
@@ -112,21 +131,21 @@ function errorCodeCheck(){}
             </ul>
       </div> -->
 
-   <div class="container" id="social">
+   <div class="container" id="social" >
       <div class="memberlogin" style="font-size: 10pt;">
          <!-- <a href="javascript:void(window.open('/client/login/login.do','_blank','width=300px, height=350px',))">로그인</a> -->
          <c:if test="${login.m_id != null and login.m_id != ''}">
-         <div class="menu"  style="font-size: 10pt;,display: inline-block;">
+         <div class="menu"  style="font-size: 10pt;display: inline-block;"> 
          <span>[ ${login.m_name} ]님 환영합니다.</span>
          <form class="m_idxForm">
          	<!-- <input type="hidden" value="찜리스트" id="m_idx" name="m_idx"> -->
          </form>
          <br><br>
-         <a id="menuDownUp" href="#"></a>
-         <span class="menuDown"><i class="icon-th-list">메뉴&nbsp;<span>▼</span><a id="menuDown" href="#"></a></i></span><br>
-         <span class="menuUp"><i class="icon-th-list">메뉴&nbsp;<span>▲</span><a id="menuUp" href="#"></a></i></span><br>
-         		<div class="loginMenu">
-         			<a id="logout" href="#">로그아웃</a><br>
+         <a id="menuDownUp" href="#"></a> 
+         <span class="menuDown"><span>▼</span>회원메뉴&nbsp;<i class="icon-th-list"><a id="menuDown" href="#"></a></i></span><br>
+         <span class="menuUp"><span>▲</span>회원메뉴&nbsp;<i class="icon-th-list"><a id="menuUp" href="#"></a></i></span><br>
+         		<%-- <div class="loginMenu">
+         			<a id="logout" href="#">로그아웃</a><br> 
          			<c:if test="${login.mt == '개인'}">
          			<a href="/client/member/myPageWhish.do">마이페이지</a><br>
          			<a href="/client/member/memberModify.do">정보수정</a><br>
@@ -135,7 +154,7 @@ function errorCodeCheck(){}
          			<a href="/client/member/myPageWhish.do">마이페이지</a><p></p>
          			<a href="/client/member/memberModify.do">정보수정</a><br>
          			</c:if>
-         		</div>
+         		</div>  --%>
 			 <!--  <input type="button" id="logout" value="로그아웃"><br>
 		      <input type="button" id="myPage" value="마이페이지"><br>
 		      <input type="button" id="#" value="정보수정(비밀번호변경)"> -->

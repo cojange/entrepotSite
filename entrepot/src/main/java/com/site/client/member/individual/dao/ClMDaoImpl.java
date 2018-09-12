@@ -33,12 +33,22 @@ public class ClMDaoImpl implements ClMDao {
 		logger.info("memberInsert 실행");
 		return session.insert("memberInsert",cmvo);
 	}
+	
+	@Override
+	public int memberDelete(String m_id) {
+		return session.delete("memberDelete", m_id);
+	}
 
 
 	@Override
 	public int securityInsert(ClMSecurity set) {
 		logger.info("securityInsert 실행");
 		return session.insert("securityInsert",set);
+	}
+	
+	@Override
+	public int securityDelete(String m_Id) {
+		return session.delete("securityDelete", m_Id);
 	}
 
 
@@ -84,6 +94,8 @@ public class ClMDaoImpl implements ClMDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
 
 
 }

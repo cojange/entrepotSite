@@ -113,7 +113,7 @@
 			            </div>
 			         </div>
 			         <div class="form-group form-group-sm">
-			            <label for="phone" class="col-sm-2 control-label">핸드폰 번호</label>
+			            <label for="m_phone" class="col-sm-2 control-label">핸드폰 번호</label>
 			            <div class="col-sm-3">
 			               <input type="text" id="m_phone" name="m_phone" maxlength="13" class="form-control  inputText" placeholder="Phone Number">   
 			            </div>

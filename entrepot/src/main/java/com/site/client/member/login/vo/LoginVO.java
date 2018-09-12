@@ -10,13 +10,14 @@ public class LoginVO extends LoginHistory{
 	private String whish;//	찜번호
 	private String cart;//	장바구니번호
 	private String m_job;//직업,업종
+	private String oldUserPw; // 기존 비밀번호
 	
 	
 	public LoginVO() {}
 
 	
 
-	public LoginVO(String m_num, String m_id, String m_pwd, String m_name, String mt, String whish, String cart,String m_job) {
+	public LoginVO(String m_num, String m_id, String m_pwd, String m_name, String mt, String whish, String cart,String m_job,String oldUserPw) {
 		super();
 		this.m_num = m_num;
 		this.m_id = m_id;
@@ -26,6 +27,7 @@ public class LoginVO extends LoginHistory{
 		this.whish = whish;
 		this.cart = cart;
 		this.m_job = m_job;
+		this.oldUserPw = oldUserPw;
 	}
 
 
@@ -104,6 +106,20 @@ public class LoginVO extends LoginHistory{
 	public void setM_job(String m_job) {
 		this.m_job = m_job;
 	}
+
+
+
+	public String getOldUserPw() {
+		return oldUserPw;
+	}
+
+
+
+	public void setOldUserPw(String oldUserPw) {
+		this.oldUserPw = oldUserPw;
+	}
+	
+	
 	
 	
 	
