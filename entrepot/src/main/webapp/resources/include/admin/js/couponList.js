@@ -1,6 +1,6 @@
 /* 쿠폰추가 및 쿠폰추가 테이블 삭제 그리고 쿠폰수정 및 삭제 */
 function addCoupon(){
-	nowTime();
+	nowTime2()
 	
 	/* 쿠폰 수정, 삭제 버튼 비활성화 */ 
 	defaultBtn();
@@ -8,7 +8,7 @@ function addCoupon(){
 	/* 쿠폰추가 */
 	$("#addCou").click(function(){
 		var rowItem = "<tr><td>-</td><td>-</td><td>event</td><td><input type='number' id='couDiscount' name='couDiscount' style='width: 50px;'>%</td>";
-		rowItem += "<td>"+today+"</td><td>-</td><td><input type='text' style='width: 100px;' id='couMemo' name='couMemo' value='-'></td>";
+		rowItem += "<td>"+today2+"</td><td>-</td><td><input type='text' style='width: 100px;' id='couMemo' name='couMemo' value='-'></td>";
 		rowItem += "<td><input type='checkbox' id='couUse' name='couUse' checked='checked'> <i class='fas fa-minus-circle' id='couDel' style='font-size:20px; color:red;'></i>";
 		rowItem += " <i class='fas fa-save' id='couSave' style='font-size:20px; color:green;'></i></td></tr>";
 		
@@ -132,7 +132,7 @@ function addCoupon(){
 }
 
 function couUpdate(currLi){
-	console.log(currLi.html());
+	console.log(currLi.html() | today1);
 	var code = currLi.children().eq(1);
 	var type = currLi.children().eq(2);
 	var dis = currLi.children().eq(3); //문자형태이므로 숫자형태로 형변환 필요!!('%'제거 후)
@@ -144,7 +144,7 @@ function couUpdate(currLi){
 	var disc = dis.html().replace('%',"");
 	
 	var rowChan = "<td>-</td><td>"+code.html()+"</td><td>"+type.html()+"</td><td><input type='number' id='couDiscount' name='couDiscount' style='width: 50px;' value="+parseInt(disc)+">%</td>";
-	rowChan += "<td>"+date.html()+"</td><td>"+today+"</td>";
+	rowChan += "<td>"+date.html()+"</td><td>"+today2+"</td>";
 	rowChan += "<td><input type='text' style='width: 100px;' id='couMemo' name='couMemo' value="+memo.html()+"></td>";
 	if(use.html()=='활성'){
 		rowChan += "<td><input type='checkbox' id='couUse' name='couUse' checked='checked'>";

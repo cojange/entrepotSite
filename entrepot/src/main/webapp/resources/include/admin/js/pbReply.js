@@ -4,7 +4,7 @@
 		return ret;
 	}
 	
-	nowTime()
+	nowTime2()
 	
 	var column = ['게시글번호','번호','내용','아이디','등록일','수정일'];
 		ret = "<table cellpadding='5' cellspacing='0' border='0'><tr>";
@@ -24,7 +24,7 @@
 		}
 		dlist+='<tr><td>-</td><td><textarea rows="2" cols="50" class="pbre_content" name="pbre_content"></textarea></td>';
 		dlist+='<td><input type="text" class="writer" name="writer"></td>';
-		dlist+='<td>'+today+'</td>';
+		dlist+='<td>'+today2+'</td>';
 		dlist+='<td><input type="date" class="pbre_update" name="pbre_update" disabled="disabled"></td></tr></table><input type="button" id="savePbReply" value="등록">';
 		
 		ret += dlist;

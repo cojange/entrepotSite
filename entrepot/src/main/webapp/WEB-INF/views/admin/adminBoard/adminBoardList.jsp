@@ -101,7 +101,7 @@
 	        <!-- 공지사항 or 이벤트 입력 -->
 	        <div>
 	        	<form id="adBoardForm">
-	        		<table style="width: 600px;">
+	        		<table style="width: 600px;" id="inputAdForm">
 	        			<colgroup>
 	        				<col width="10%">
 	        				<col width="30%">
@@ -146,16 +146,13 @@
 	        				</td>
 	        				<td>아이디 : <input type="text" id="ad_id" name="ad_id"></td>
 	        			</tr>
-	        			<tfoot>
-	        				<tr>
-	        					<td colspan="3">
-	        						<input type="button" id="abSaveBtn" value="등록">
-	        						<input type="button" class="abResetBtn" value="초기화">
-	        					</td>
-	        				</tr>
-	        			</tfoot>
-	        		</table>
+	        		</table>	        		
 	        	</form>
+	        	<div>
+		        		<input type="button" id="abSaveBtn" value="등록">
+		        		<input type='button' id='abUpdateBtn' value='수정'>
+		        		<input type="button" id="abResetBtn" value="초기화">
+		        	</div>
 	        </div>
           
 	        <!-- 공지사항 & 이벤트 공지사항 리스트 -->		
