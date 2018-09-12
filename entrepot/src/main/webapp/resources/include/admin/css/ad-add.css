@@ -78,3 +78,9 @@ font: FontAwesome !important;
 .selected{
 	background-color:#e8e8e8;
 }
+#mbType{
+	margin-left:15px;
+	background-color:#ffffff;
+	border:solid #e7eaed 1.5px;
+	width:85px;
+}

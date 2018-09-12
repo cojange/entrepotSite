@@ -136,9 +136,11 @@
               </tbody>
              </table>
         </div>
-         <button type="button" id="refundChangeBtn" class="btn btn-primary btn-sm" disabled="disabled" data-toggle="modal" data-target="#orderWaitModal">교환 환불처리</button>
-         <button type="button" id="orderConfirmBtn" class="btn btn-primary btn-sm" disabled="disabled" data-toggle="modal" data-target="#orderConfirmModal">발주 확인처리</button>
-         <button type="button" id="orderChangeBtn" class="btn btn-primary btn-sm" disabled="disabled" data-toggle="modal" data-target=".bs-orderChange-modal-sm">상태 변경</button>
+        <div class="btntl">
+         <button type="button" id="refundChangeBtn" class="btn btn-primary btn-sm btncss" disabled="disabled" data-toggle="modal" data-target="#orderWaitModal">교환 환불처리</button>
+         <button type="button" id="orderConfirmBtn" class="btn btn-primary btn-sm btncss" disabled="disabled" data-toggle="modal" data-target="#orderConfirmModal">발주 확인처리</button>
+         <button type="button" id="orderChangeBtn" class="btn btn-primary btn-sm btncss" disabled="disabled" data-toggle="modal" data-target=".bs-orderChange-modal-sm">상태 변경</button>
+       	</div>
        </div>
      </div>
      

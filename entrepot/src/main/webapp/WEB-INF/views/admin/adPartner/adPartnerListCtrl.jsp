@@ -2,28 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ include file="/WEB-INF/views/common/common.jspf" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-	<head>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-     	<!-- 브라우저의 호환성 보기 모드를 막고, 해당 브러우저에서 지원하는 가장 최신 버전의 방식으로 HTML 보여주도록 설정. -->
-      
-     	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
-     	<!-- viewport : 화면에 보이는 영역을 제어하는 기술. width는 device-width로 설정. initial-scale는 초기비율 -->
-      
-      	<!-- 모바일 웹 페이지 설정 -->
-      	<link rel="shortcut icon" href="/resources/images/admin/adLog.ico" />
-      	<link rel="apple-touch-icon" href="/resources/images/admin/adLog.ico"  />
-      	<!-- 모바일 웹 페이지 설정 종료 -->
-      
-      	<!-- IE8이하 브라우저에서 HTML5를 인식하기 위해서는 아래의 패스필터를 적용하면 된다. -->
-      	<!-- [if lt IE 9] -->
-      	<!-- <script src="/resources/include/js/html5shiv.js"</script> -->
-      	<!-- [endif] -->
- 	
-      	
-	</head>
-	<body>
+
 	<!-- 잡지거래처 리스트 -->		
 	<div class="container-fluid" >
 		<div class="card mb-3" id="adMagazine">
@@ -129,12 +108,12 @@
 					</c:choose>
                   </tbody>
                 </table>
-                <div>
+                <div class="btntl">
 	                 <!-- Button trigger modal -->
-					 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#magazineModal">
+					 <button type="button" class="btn btn-primary btn-sm btncss" data-toggle="modal" data-target="#magazineModal">
 					  등록
 					 </button>
-					 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#magazineDetailModal" id="mgDetailBtn">
+					 <button type="button" class="btn btn-primary btn-sm btncss" data-toggle="modal" data-target="#magazineDetailModal" id="mgDetailBtn">
 					  상세보기
 					 </button>
 				</div>
@@ -168,7 +147,6 @@
                       <th>거래시작일</th>
                       <th>거래종료일</th>
                       <th>등록일</th>
-                      <th style="display: none;">수정일</th>
                       <th style="display: none;">사업자번호</th>
 	                  <th style="display: none;">회사연락처</th>
 	                  <th style="display: none;">회사fax</th>
@@ -186,7 +164,6 @@
                       <th>거래시작일</th>
                       <th>거래종료일</th>
                       <th>등록일</th>
-                      <th style="display: none;">수정일</th>
                       <th style="display: none;">사업자번호</th>
 	                  <th style="display: none;">회사연락처</th>
 	                  <th style="display: none;">회사fax</th>
@@ -206,8 +183,7 @@
 									<td>${couPartner.couacc_cost}</td>
 									<td>${couPartner.startdate}</td>
 									<td>${couPartner.enddate}</td>
-									<td>${couPartner.couacc_date}</td>
-									<td style="display: none;">${couPartner.couacc_update}</td>	
+									<td>${couPartner.couacc_date}</td>	
 									<td style="display: none;">${couPartner.com_no}</td>
 			                        <td style="display: none;">${couPartner.couacc_tel}</td>
 			                        <td style="display: none;">${couPartner.couacc_fax}</td>
@@ -223,12 +199,12 @@
 					</c:choose>
                   </tbody>
                 </table>
-                <div>
+                <div class="btntl">
 	                <!-- Button trigger modal -->
-					<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#courierModal">
+					<button type="button" class="btn btn-primary btn-sm btncss" data-toggle="modal" data-target="#courierModal">
 					  등록
 					</button>
-					<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#courierDetailModal" id="couDetailBtn">
+					<button type="button" class="btn btn-primary btn-sm btncss" data-toggle="modal" data-target="#courierDetailModal" id="couDetailBtn">
 					  상세보기
 					</button>
 				</div>
@@ -256,7 +232,6 @@
 	                    <label for="mcom_date">거래처 정보 등록일</label>
 	                  </div>
 	                </div>
-	                ~
 	                <div class="col-md-6">
 	                  <div class="form-label-group">
 	                    <input type="date" id="mcom_update" name="mcom_update" class="form-control" placeholder="거래처 정보 수정일" required="required" autofocus="autofocus" disabled="disabled">
@@ -438,20 +413,9 @@
 	      <div class="modal-body">
 	        <form id="courierInsertForm" name="courierInsertForm">
 	           <div class="form-group">
-	              <div class="form-row">
-	                <div class="col-md-6">
-	                  <div class="form-label-group">
-	                    <input type="text" id="couacc_date" name="couacc_date" class="form-control" placeholder="거래처 정보 등록일" required="required" autofocus="autofocus">
-	                    <label for="couacc_date">거래처 정보 등록일</label>
-	                  </div>
-	                </div>
-	                ~
-	                <div class="col-md-6">
-	                  <div class="form-label-group">
-	                    <input type="date" id="couacc_update" name="couacc_update" class="form-control" placeholder="거래처 정보 수정일" required="required" autofocus="autofocus" disabled="disabled">
-	                    <label for="couacc_update">거래처 정보 수정일</label>
-	                  </div>
-	                </div>
+                  <div class="form-label-group">
+                    <input type="text" id="couacc_date" name="couacc_date" class="form-control" placeholder="거래처 정보 등록일" required="required" autofocus="autofocus">
+                    <label for="couacc_date">거래처 정보 등록일</label>
 	              </div>
 	            </div>
 	           <div class="form-group">
@@ -556,7 +520,7 @@
 	  </div>
 	</div>
 	
-<!-- magUpdate Modal --------------------------------------------------------->
+<!-- magUpdate/Detail Modal --------------------------------------------------------->
 	<div class="modal fade bs-example-modal-lg" id="magazineDetailModal" tabindex="-1" role="dialog" aria-labelledby="magDetailModalLabel" aria-hidden="true">
 	  <div class="modal-dialog modal-lg">
 	    <div class="modal-content">
@@ -574,28 +538,24 @@
 	    </div>
 	  </div>
 	</div>
-	</body>
-</html>
 
-<!-- couUpdate Modal --------------------------------------------------------->
-	<div class="modal fade bs-example-modal-lg" id="courierDetailModal" tabindex="-1" role="dialog" aria-labelledby="couDetailModalLabel" aria-hidden="true">
-	  <div class="modal-dialog modal-lg">
-	    <div class="modal-content">
-	      <div class="modal-header">	       	
-	        <h4 class="modal-title" id="couDetailModalLabel">택배 거래처 정보</h4>
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	      </div>
-	      <div class="modal-body" id="couContent">
-	    		
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal" id="couDel">닫기</button>	        
-	      </div>
-	    </div>
-	  </div>
-	</div>
-	</body>
-</html>
+<!-- couDetail Modal --------------------------------------------------------->
+   <div class="modal fade bs-example-modal-lg" id="courierDetailModal" tabindex="-1" role="dialog" aria-labelledby="couDetailModalLabel" aria-hidden="true">
+     <div class="modal-dialog modal-lg">
+       <div class="modal-content">
+         <div class="modal-header">             
+           <h4 class="modal-title" id="couDetailModalLabel">택배 거래처 정보</h4>
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+         </div>
+         <div class="modal-body" id="couContent">
+             
+         </div>
+         <div class="modal-footer">
+           <button type="button" class="btn btn-default" data-dismiss="modal" id="couDel">닫기</button>           
+         </div>
+       </div>
+     </div>
+   </div>
 
 <!-- magazine code Modal --------------------------------------------------------->
 	<div class="modal fade bs-example-modal-lg" id="magazineCodeModal" tabindex="-1" role="dialog" aria-labelledby="magazineCodeModalLabel" aria-hidden="true">

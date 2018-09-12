@@ -864,7 +864,7 @@
 	      				}
 	    			});
 	    			
-	    			$(".abResetBtn").click(function(){
+	    			$("#abResetBtn").click(function(){
 	    				resetData();
 	    			});
 	    			
@@ -1774,10 +1774,10 @@
             	//console.log("idx1:"+idx1);
             	
             	var rowUp;
-            	nowTime();
+            	nowTime2();
             	
-           		rowUp = "<table style='width: 600px;'><colgroup><col width='10%'><col width='30%'><col width='70%'></colgroup>";
-           		rowUp += "<tr>등록일 : "+abDate.html()+" | 수정일 : "+today+" | 글번호 : "+abNo.html()+"</tr><tr><td colspan='2'>글유형  : <select id='ab_type' name='ab_type'>";
+           		rowUp = "<table style='width: 600px;' id='updateAdForm'><colgroup><col width='10%'><col width='30%'><col width='70%'></colgroup>";
+           		rowUp += "<tr>등록일 : "+abDate.html()+" | 수정일 : "+today2+" | 글번호 : "+abNo.html()+"</tr><tr><td colspan='2'>글유형  : <select id='ab_type' name='ab_type'>";
            		rowUp += "<option value='공지사항'>공지사항</option><option value='이벤트'>이벤트</option></select><br/>";
            		rowUp += "<span style='font-size:12px;'>기존 유형 : "+abType.html()+"</span></td>";
            		rowUp += "<td>제목 : <input type='text' id='ab_title' name='ab_title' value="+abTitle.html()+"></td></tr>";
@@ -1790,9 +1790,7 @@
            		rowUp += "<div class='fileImgShow' style='display:none;'><img style='width:500px; hight:500px;' src='/uploadStorage/adminBoardImg/abImg/"+file2.html()+"' style='display:none;'></div>";
            		rowUp += "</td></tr><tr><td colspan='2'>게시유형  : <select id='ab_pre' name='ab_pre'><option value='일반'>일반</option>";
            		rowUp += "<option value='팝업'>팝업</option><option value='상단고정'>상단고정</option></select>";
-           		rowUp += "<br/><span style='font-size:12px;'>기존 유형 : "+abPre.html()+"</span></td><td>아이디 : "+abId.html()+"</td></tr><tfoot>";
-           		rowUp += "<tr><td colspan='3'><input type='button' id='abUpdateBtn' value='수정'>	<input type='button' class='abResetBtn' value='초기화'>";
-           		rowUp += "</td></tr></tfoot></table>";
+           		rowUp += "<br/><span style='font-size:12px;'>기존 유형 : "+abPre.html()+"</span></td><td>아이디 : "+abId.html()+"</td></tr></table>";
 				
            		$(document).on('mouseenter', '.fileImg', function() {
            			$(this).next().css("display", "block");
@@ -1858,14 +1856,13 @@
             	var startdate = currLi.children().eq(6);
             	var enddate = currLi.children().eq(7);
             	var couaccDate = currLi.children().eq(8);
-            	var couaccUpdate = currLi.children().eq(9);
-            	var comNo = currLi.children().eq(10);
-            	var couaccTel = currLi.children().eq(11);
-            	var couaccFax = currLi.children().eq(12);
-            	var couaccEmail = currLi.children().eq(13);
+            	var comNo = currLi.children().eq(9);
+            	var couaccTel = currLi.children().eq(10);
+            	var couaccFax = currLi.children().eq(11);
+            	var couaccEmail = currLi.children().eq(12);
             	
             	var rowUp;            	
-           		rowUp = "<table><tr><td colspan='2'>등록일 : "+couaccDate.html()+" | 수정일 : "+couaccUpdate.html()+"</td></tr>";
+           		rowUp = "<table><tr><td colspan='3'>등록일 : "+couaccDate.html()+"</td></tr>";
            		rowUp += "<tr><td width='50%'>사업자 번호 : "+comNo.html()+"</td><td width='50%'>거래시작일 : "+startdate.html()+" | 거래종료일 : "+enddate.html()+"</td></tr>";
            		rowUp += "<tr><td colspan='2' width='50%'>회사명 : "+couaccName.html()+"</td></tr><tr><td width='50%'>계약 지역 : "+couaccArea.html()+"</td><td width='50%'>거래건수 : "+couaccCnt.html()+" (건당할인요금 : "+couaccCost.html()+"원)</td></tr>";
            		rowUp += "<tr><td colspan='2'><label>회사</label></td></tr>";
@@ -1924,9 +1921,9 @@
             	console.log(formatDate(date));
             	
             	var rowUp;
-            	nowTime();
+            	nowTime2();
          	
-           		rowUp = "<form class='magUpdateSaveForm'><table><tr><td>등록일 : "+mcomDate.html()+" | 수정일 : "+today+"</td></tr>";
+           		rowUp = "<form class='magUpdateSaveForm'><table><tr><td>등록일 : "+mcomDate.html()+" | 수정일 : "+today2+"</td></tr>";
            		rowUp += "<tr><td>사업자 번호 : "+comNo.html()+"</td><td>거래시작일 : <input type='date' id='upMgStartdate' name='startdate' value='"+formatDate(date)+"'> | 거래종료일 : ";
            		rowUp += "<input type='date' id='upMgEnddate' name='enddate' value='20"+enddate.html()+"'><input type='checkbox' id='checked' value='true'></td></tr>";
            		rowUp += "<tr><td>회사명 : "+comName.html()+"</td></tr><tr><td>대표 이름 : "+mcomName.html()+"</td><td>대표 연락처 : "+mcomTel.html()+"</td></tr>";

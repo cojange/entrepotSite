@@ -1,6 +1,6 @@
 /* 약관추가 및 약관추가 테이블 삭제 */
 function addRegulation(){
-	nowTime();
+	nowTime2();
 	
 	/* 약관추가 */
 	$("#addReg").click(function(){
@@ -8,7 +8,7 @@ function addRegulation(){
 		rowItem += "<option value='[단체회원]사이트이용약관'>[단체회원]사이트이용약관</option><option value='[개인회원]정보이용동의약관'>[개인회원]정보이용동의약관</option>";
 		rowItem += "<option value='[단체회원]정보이용동의약관'>[단체회원]정보이용동의약관</option><option value='[개인회원]환불·취소규정약관'>[개인회원]환불·취소규정약관</option>";
 		rowItem += "<option value='[단체회원]환불·취소규정약관'>[단체회원]환불·취소규정약관</option><option value='기타'>기타</option></select></td>";
-		rowItem += "<td>"+today+"</td><td>-</td><td><input type='date' style='width: 135px;' id='reg_open' name='reg_open'></td>";
+		rowItem += "<td>"+today2+"</td><td>-</td><td><input type='date' style='width: 135px;' id='reg_open' name='reg_open'></td>";
 		rowItem += "<td><input type='date' style='width: 135px;' id='reg_close' name='reg_close' disabled='disabled'></td>";
 		rowItem += "<td><input type='file' style='width: 220px;' id='file' name='file'><i class='fas fa-minus-circle' id='regDel' style='font-size:20px; color:red;'></i>";
 		rowItem += " <i class='fas fa-save' id='regSave' style='font-size:20px; color:green;'></i></td></tr>";
@@ -137,13 +137,13 @@ function regUpdate(currLi){
 		rowUp += "<option value='[단체회원]사이트이용약관'>[단체회원]사이트이용약관</option><option value='[개인회원]정보이용동의약관'>[개인회원]정보이용동의약관</option>";
 		rowUp += "<option value='[단체회원]정보이용동의약관'>[단체회원]정보이용동의약관</option><option value='[개인회원]환불·취소규정약관'>[개인회원]환불·취소규정약관</option>";
 		rowUp += "<option value='[단체회원]환불·취소규정약관'>[단체회원]환불·취소규정약관</option><option value='기타'>기타</option></select><br/><span style='font-size:12px;'>기존 유형 : "+type.html()+"</span></td>";
-		rowUp += "<td>"+date.html()+"</td><td>"+today+"</td>";
+		rowUp += "<td>"+date.html()+"</td><td>"+today2+"</td>";
 		rowUp += "<td><input type='date' id='opneDate' name='openDate'></td><td><input type='date' id='closeDate' name='closeDate' disabled='disabled'></td>";
 		rowUp += "<td><input type='file' style='width: 220px;' id='regFile' name='regFile'> <i class='fas fa-minus-circle' id='regDel' style='font-size:20px; color:red;'></i>";
 		rowUp += " <i class='fas fa-save' id='regSave' style='font-size:20px; color:green;'></i><br/><span style='font-size:12px;'>기존 파일명 : "+file.html()+"</span></td>";		
 	}else{
 		rowUp = "<td>-</td><td>"+type.html()+"</td>";
-		rowUp += "<td>"+date.html()+"</td><td>"+today+"</td>";
+		rowUp += "<td>"+date.html()+"</td><td>"+today2+"</td>";
 		rowUp += "<td>"+open.html()+"</td><td><input type='date' id='closeDate' name='closeDate'></td>";
 		rowUp += "<td>"+file.html()+"<i class='fas fa-minus-circle' id='regDel' style='font-size:20px; color:red;'></i>";
 		rowUp += " <i class='fas fa-save' id='regSave' style='font-size:20px; color:green;'></i></td>";		
