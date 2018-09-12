@@ -10,11 +10,20 @@ public class ClMultiOrderListVO {
 	private List<String> pd_numList;
 	private List<String> order_moneyList;
 	private List<String> order_eaList;
+	private String record_num;
 
 	private ClSellVO sell;
 
 
 	
+
+	public String getRecord_num() {
+		return record_num;
+	}
+
+	public void setRecord_num(String record_num) {
+		this.record_num = record_num;
+	}
 
 	public List<String> getMg_numList() {
 		return mg_numList;
