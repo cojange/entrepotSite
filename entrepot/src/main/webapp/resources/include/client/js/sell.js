@@ -58,8 +58,8 @@ $(function() {
 	$("#total").val(total+"원"); 
 	$("#totalAll").val(totalAll+"원");
 	//결제버튼 클릭시
-	$("#paymentBtn").click(function() {	
-		
+	$("#paymentBtn").click(function() {
+		console.log("ㅇ?");
 		if(!formCheck($("#bank_name"),$(".error:eq(0)"),"입금자명을"))return;
 		else if(!inputVerify(9,"#bank_name",".error:eq(0)","","member"))return;
 		else if(!formCheck($("#bank"),$(".error:eq(1)"),"입금은행을"))return;
@@ -81,6 +81,9 @@ $(function() {
 	});
 	//결제취소시
 	$("#cancelBtn").click(function() {
-		location.href="/client/member/myPageWhish.do";
+		var message = confirm("결제를 취소 하시겠습니까?");
+		if(message == true){
+			location.href="/client/member/myPageWhish.do";
+		}
 	});
 });
