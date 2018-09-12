@@ -148,8 +148,9 @@ $(function() {
 			
 			var pd_nunTarget = $(this).parent().parent().find("input[name='pd_num']").val();
 			var order_numTarget=$(this).parent().parent().attr("data-num");
+			console.log("order_numTarget : " + order_numTarget);
 			var ea = $(this).parent().parent().find("input.ea").val();
-			var rc_formHTML = "<tr class='trSize myList appendRC' align ='center'><input type='hidden' name='ea' value='"+ea+"'><input type='hidden' name='order_num' value='"+order_numTarget+"' ><td colspan='9'><form id='rc_form' name='rc_from'><div><input type='radio' id='exam' value='제품하자' name='ieu'>";
+			var rc_formHTML = "<tr class='trSize myList appendRC' align ='center'><td colspan='9'><form id='rc_form' name='rc_from'><input type='hidden' name='ea' value='"+ea+"'><input type='hidden' name='order_num' value='"+order_numTarget+"' ><div><input type='radio' id='exam' value='제품하자' name='ieu'>";
 			rc_formHTML += "<label for='exam'>제품하자"+nbspText+"</label><input type='radio' value='기타' id='etc' name='ieu'><label for='etc'>기타"+nbspText+"</label><label>"+mode+"<input type='text' name='pd_num' readonly value='"+pd_nunTarget+"'><br/>";
 			if(path=='refund'){
 				rc_formHTML += "<label>입금은행</label><input type='text' name='bank'><br/><label>계좌번호</label><input type='text' name='bank_num'>"
@@ -178,9 +179,14 @@ $(function() {
 		$("#mytable").on("click","input.rc_submit",function(){
 			$("#rc_form").attr({
 				"method":"post",
-				"action":"/client/member/refund"+path+".do"
+				"action":"/client/member/rc"+path+".do"
 			});
 			$("#rc_form").submit();
+		})
+		
+		//취소시 delete row
+		$("#mytable").on("click","input.rc_cancel",function(){
+			$(".appendRC").remove();
 		})
 	
 	

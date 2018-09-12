@@ -95,17 +95,17 @@ public class ClSellController {
 		return mav;
 	}
 	
-	@RequestMapping(value="/member/rcSubmit{mode}.do",method=RequestMethod.POST)
+	@RequestMapping(value="/member/rc{mode}.do",method=RequestMethod.POST)
 	public String rcSubmit(@PathVariable String mode, ClRcVO rcvo) {
 		logger.info("rcSubmit" + mode + " 호출 성공");
-		
-		/*//환불
+		logger.info("paramVo : " + rcvo.toString());
+		//환불
 		if(mode.equals("refund")) {
 			clSellService.refundInsert(rcvo);
-		}else {
+		}else if(mode.equals("change")){
 			clSellService.changeInsert(rcvo);
 		}
-		*/
+		
 		return "redirect:/client/member/myPageOrderList.do";
 	}
 }

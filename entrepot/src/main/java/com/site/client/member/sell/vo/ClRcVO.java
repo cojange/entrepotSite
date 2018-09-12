@@ -3,24 +3,34 @@ package com.site.client.member.sell.vo;
 public class ClRcVO {
 	private String order_num;
 	private String pd_num;
-	private String ieu;
-	private String usermemo;
+	private String ieu="";
+	private String usermemo="";
 	private String ea;
 	private String bank;
-	private String bank_name;
+	private String bank_num;
+	private int r_money;
 	
 	
+	
+	
+	public int getR_money() {
+		return r_money;
+	}
+	public void setR_money(int r_money) {
+		this.r_money = r_money;
+	}
 	public String getBank() {
 		return bank;
 	}
 	public void setBank(String bank) {
 		this.bank = bank;
 	}
-	public String getBank_name() {
-		return bank_name;
+	
+	public String getBank_num() {
+		return bank_num;
 	}
-	public void setBank_name(String bank_name) {
-		this.bank_name = bank_name;
+	public void setBank_num(String bank_num) {
+		this.bank_num = bank_num;
 	}
 	public String getEa() {
 		return ea;
@@ -52,7 +62,12 @@ public class ClRcVO {
 	public void setUsermemo(String usermemo) {
 		this.usermemo = usermemo;
 	}
-	
+	@Override
+	public String toString() {
+		return "ClRcVO [order_num=" + order_num + ", pd_num=" + pd_num + ", ieu=" + ieu + ", usermemo=" + usermemo
+				+ ", ea=" + ea + ", bank=" + bank + ", bank_num=" + bank_num + ", r_money=" + r_money + "]";
+	}
+
 	
 
 }
