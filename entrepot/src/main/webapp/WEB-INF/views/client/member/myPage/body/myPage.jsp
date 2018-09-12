@@ -67,7 +67,7 @@ function aa_open()
 										</table>
 									</c:if>
 									<c:if test="${not empty orderList}">
-										<table border="0" cellpadding="0" cellspacing="0" width="807.5">
+										<table border="0" cellpadding="0" cellspacing="0" width="807.5" >
 										<tbody>
 											<tr height="20">
 												<td colspan="2"><i class="demo-icon icon-calendar-inv"  style="width: 10px;" >
@@ -142,7 +142,7 @@ function aa_open()
 									</tbody>
 									</table>  
 			
-									<table style="width: 100% ;" border="0" cellpadding="0" cellspacing="0" >
+									<table style="width: 100% ;" border="0" cellpadding="0" cellspacing="0"  id="mytable">
 									<tbody>
 										<tr>
 											<td colspan="9" bgcolor="#CDCDCD" height="2"></td>

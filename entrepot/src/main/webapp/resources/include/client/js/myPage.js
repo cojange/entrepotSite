@@ -131,17 +131,42 @@ $(function() {
 	
 	//환불, 교환 버튼 클릭제어
 		$(".refundBtn, .changeBtn").bind("click",function(){
-			var trHTML = "<tr>";
-			var tdHTML = "<td colspan='6'>"
-			var radio1 = "<input type='radio'"
-			var inputHTML="<textarea>";
+			
+			
+			$(".appendRC").remove();
+			var mode="";
+			var name="";
+			if($(this).attr("class")=='refundBtn'){
+				name = "r_ieu";
+				mode="환불대상 : ";
+			} else{
+				name = "chg_ieu";
+				mode="교환대상 : ";
+			}
+			var nbspText = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
+			
+			var pd_nunTarget = $(this).parent().parent().find("input[name='pd_num']").val();
+			var rc_formHTML = "<tr class='trSize myList appendRC' align ='center'><td colspan='9'><form id='rc_form' name='rc_from'><div><input type='radio' id='exam' value='제품하자' name='"+name+"'>";
+			rc_formHTML += "<label for='exam'>제품하자"+nbspText+"</label><input type='radio' value='기타' id='etc' name='"+name+"'><label for='etc'>기타"+nbspText+"</label><label>"+mode+"<input type='text' name='pd_num' readonly value='"+pd_nunTarget+"'>";
+			rc_formHTML += "<div width ='350px'><textarea class='rftxt'  style='border:1px solid black;' rows='5' cols='50' name='usermemo' maxlength='100'></textarea></div>";
+			rc_formHTML += "<div><input type='button' value='전송' class='rc_submit'><input type='button' value='취소' class='rc_cancel'><div></td></tr>";
 			
 			//환불 tr만들기
-			if($(this).attr("class")=="refundBtn"){
-				
-			}
+			$(this).parent().parent().after(rc_formHTML);
 			
+		});
+		
+		//교환 환불 메모 기타 버튼 클릭시
+		$("#mytable").on("click","input[type='radio']",function(){
+			if($("input#etc").prop("checked")){
+				
+				$("textarea.rftxt").prop("disabled","false");
+			}else{
+				$("textarea.rftxt").prop("disabled","true");
+			}
 		})
+		
+		//교환 환불 전송버튼
 		
 	
 	
