@@ -129,7 +129,18 @@ $(function() {
 	/*});*/
 	
 	
-	
+	//환불, 교환 버튼 클릭제어
+		$(".refundBtn, .changeBtn").bind("click",function(){
+			var trHTML = "";
+			var inputHTML="";
+			
+			//환불 tr만들기
+			if($(this).attr("class")=="refundBtn"){
+				
+			}
+			
+		})
+		
 	
 	
 	

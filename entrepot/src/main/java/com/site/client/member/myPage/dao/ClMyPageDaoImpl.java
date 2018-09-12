@@ -38,7 +38,7 @@ public class ClMyPageDaoImpl implements ClMyPageDao {
 	}
 
 	@Override
-	public int listAllDelete() {
+	public int listAllDelete(ClMyPageVO myPageVo) {
 		return session.delete("listAllDelete");
 	}
 

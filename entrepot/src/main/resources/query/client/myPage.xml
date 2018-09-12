@@ -47,7 +47,7 @@
 	/*myPage - cartList*/
 	select distinct  d.pl_path,a.mg_name,a.mg_period,c.PD_SALE 
 	,SUBSTR(A.MG_PERIOD,INSTR(A.MG_PERIOD,'(')+1,INSTR(A.MG_PERIOD,'회')-INSTR(A.MG_PERIOD,'(')-1)as pd_cost
-	,b.ea ,b.RECORD_NUM ,a.mg_num
+	,b.ea ,b.RECORD_NUM ,a.mg_num,c.pd_num
 	from magazine a join record b
 	on a.mg_num=b.mg_num 
 	join PRODUCT c 
@@ -73,13 +73,22 @@
 <select id="orderList" parameterType="orderList" resultType="orderList">
 	/*myPage - orderList*/
 	
-	select b.ORDER_NUM, b.PD_NUM, b.ORDER_DATE, b.ORDER_EA, b.ORDER_MONEY, b.ORDER_OK,b.transit_num ,
+	<!-- select b.ORDER_NUM, b.PD_NUM, b.ORDER_DATE, b.ORDER_EA, b.ORDER_MONEY, b.ORDER_OK,b.transit_num ,
 	SUBSTR(a.MG_PERIOD,INSTR(a.MG_PERIOD,'(')+1,INSTR(a.MG_PERIOD,'회')-INSTR(a.MG_PERIOD,'(')-1) pd_cost,
 	a.MG_NAME
 from order_list b join  product c on b.pd_num = c.pd_num 
     join magazine a  on a.mg_num=c.mg_num
 	where b.order_num in (SELECT DISTINCT order_num FROM 
-	sell d where d.m_num=#{m_num})
+	sell d where d.m_num=#{m_num}) -->
+	select distinct b.ORDER_NUM, b.PD_NUM, b.ORDER_DATE, b.ORDER_EA, b.ORDER_MONEY, b.ORDER_OK,b.transit_num ,
+	SUBSTR(a.MG_PERIOD,INSTR(a.MG_PERIOD,'(')+1,INSTR(a.MG_PERIOD,'회')-INSTR(a.MG_PERIOD,'(')-1)as pd_cost,
+	a.MG_NAME
+from order_list b join  product c on b.pd_num = c.pd_num
+    join magazine a  on a.mg_num=c.mg_num,
+    (select mg_num,max(substr(pd_num,instr(pd_num,'-')+1,7)) maxdate from product group by MG_NUM) maxz
+	where b.order_num in (SELECT DISTINCT order_num FROM 
+	sell d where d.m_num=#{m_num}) and SUBSTR(c.pd_num,INSTR(c.pd_num,'-')+1,7)= MAXZ.MAXDATE
+	order by b.order_num desc
 </select>
 
 <delete id="listDelete" parameterType="whishAndCart">
@@ -96,7 +105,7 @@ delete from record where record_num=#{record_num} and mg_num=#{mg_num}
 
 
 <delete id="listAllDelete" parameterType="whishAndCart">
-delete from record
+delete from record where record_num=#{record_num} 
 </delete>
 
 </mapper>

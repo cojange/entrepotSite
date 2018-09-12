@@ -245,10 +245,11 @@ function aa_open()
 													<td align="center" width="130"><b>개월수</b></td>
 													<td align="center" width="170"><b>정기구독가</b></td>
 													<td align="center" width="50"><b>권수</b>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-													<td align="center" width="170"><b>합계</b></td>			
+													<td align="center" width="170"><b>합계</b></td>
+													<td></td>			
 												</tr>
 												<c:forEach var="vo" items="${orderList}">
-													<tr class="trSize myList" width="807">		
+													<tr class="trSize myList" width="807" data-num=${vo.order_num }>		
 														<td width="33" align="center"  class="checkP"></td>
 														<td width="36" align="center">${vo.order_num}<input type="hidden" class="index" readonly="readonly" size="2" value="">
 														</td>
@@ -269,6 +270,10 @@ function aa_open()
 																<input type="text" class="sum" readonly="readonly" style="text-align:right;" value="">
 																<input type="hidden" class="sumNum" readonly="readonly" size="8" value="">
 															</font>
+														</td>
+														<td>
+															<input type="button" class="refundBtn" value="환불">
+															<input type="button" class="changeBtn" value="교환">
 														</td>
 													</tr>
 												</c:forEach>
@@ -322,6 +327,6 @@ function aa_open()
 		</table>
 		</div>
 	<!-- </form> -->
-	</div>	
+	</div>
 </body>
 </html>

@@ -6,16 +6,55 @@ import com.site.client.member.myPage.vo.ClOrderListVO;
 
 public class ClMultiOrderListVO {
 
-	private List<ClOrderListVO> order_List;
-	
+	private List<String> mg_numList;
+	private List<String> pd_numList;
+	private List<String> order_moneyList;
+	private List<String> order_eaList;
+	private String record_num;
+
 	private ClSellVO sell;
 
-	public List<ClOrderListVO> getOrder_List() {
-		return order_List;
+
+	
+
+	public String getRecord_num() {
+		return record_num;
 	}
 
-	public void setOrder_List(List<ClOrderListVO> order_List) {
-		this.order_List = order_List;
+	public void setRecord_num(String record_num) {
+		this.record_num = record_num;
+	}
+
+	public List<String> getMg_numList() {
+		return mg_numList;
+	}
+
+	public void setMg_numList(List<String> mg_numList) {
+		this.mg_numList = mg_numList;
+	}
+
+	public List<String> getPd_numList() {
+		return pd_numList;
+	}
+
+	public void setPd_numList(List<String> pd_numList) {
+		this.pd_numList = pd_numList;
+	}
+
+	public List<String> getOrder_moneyList() {
+		return order_moneyList;
+	}
+
+	public void setOrder_moneyList(List<String> order_moneyList) {
+		this.order_moneyList = order_moneyList;
+	}
+
+	public List<String> getOrder_eaList() {
+		return order_eaList;
+	}
+
+	public void setOrder_eaList(List<String> order_eaList) {
+		this.order_eaList = order_eaList;
 	}
 
 	public ClSellVO getSell() {
@@ -26,10 +65,7 @@ public class ClMultiOrderListVO {
 		this.sell = sell;
 	}
 
-	@Override
-	public String toString() {
-		return "ClMultiOrderListVO [order_List=" + order_List + ", sell=" + sell + "]";
-	}
+
 	
 	
 }

@@ -90,7 +90,7 @@
 		         <select id="selectkey" name="keyword">
 		         	<option value="all">전체</option>
 		         	<option value="주문">주문</option>
-		         	<option value="판매">판매</option>
+		         	<option value="구매">구매</option>
 		         	<option value="교환">교환</option>
 		         	<option value="환불">환불</option>
 		         </select>

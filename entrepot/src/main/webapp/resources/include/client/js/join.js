@@ -129,7 +129,7 @@ $(function() {
 		$("#m_id").val(getTrimStr($("#m_id").val()));
 		console.log("aft : " + $("#m_id").val());*/
 		if($(direct).is(":checked")==false){
-			$("#emailDirect").val("domain.com");
+			$("#emailDirect").val("naver.com");
 		}
 		
 		//입력값 체크

@@ -28,6 +28,7 @@
   	<link href="/resources/include/client/css/content.css" rel="stylesheet" type="text/css" media="all" />
   	<link href="/resources/include/client/font/fonts.css" rel="stylesheet" type="text/css" media="all" />
 	<link rel="styleSheet" href="/resources/includ	e/client/css/normalize.css"  type="text/css" media="all"/> 
+	
 
     <!-- Custom styles for this template -->
 

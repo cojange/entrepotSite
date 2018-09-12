@@ -27,7 +27,7 @@
          		 <li>
          		  <a href="/client/list/magazinelist.do?key1=요리&key2=식생활&key3=리빙&listkey=3&home=베스트" accesskey="1" title="">요리/식생활/리빙</a>
          		 </li>
-         		 <li>
+         		<!--  <li>
          		  <a href="/client/list/magazinelist.do?key1=기술&key2=업종&key3=산업&listkey=3&home=베스트" accesskey="1" title="">기술/업종/산업</a>
          		 </li>
          		 <li>
@@ -41,16 +41,16 @@
          		 </li>
          		 <li>
          		  <a href="/client/list/magazinelist.do?key1=자동차&key2=항공&key3=제품&listkey=3&home=베스트" accesskey="1" title="">자동차/항공/제품</a>
-         		 </li>
+         		 </li> -->
          		   <li>
          		  <a href="/client/list/magazinelist.do?key1=애니&key2=캐릭터&key3=게임&listkey=3&home=베스트" accesskey="1" title="">애니/캐릭터/게임</a>
          		 </li> 
-         		  <li>
+         		<!--   <li>
          		  <a href="/client/list/magazinelist.do?key1=라이프&key2=건강&key3=스포츠&listkey=3&home=베스트" accesskey="1" title="">라이프/건강/스포츠</a>
          		 </li>
          		 <li>
          		  <a href="/client/list/magazinelist.do?key1=건축&key2=인테리어&listkey=2&home=베스트" accesskey="1" title="">건축/인테리어/</a>
-         		 </li>       		      
+         		 </li>    -->    		      
     </ul>
   </div>
 </div>  
