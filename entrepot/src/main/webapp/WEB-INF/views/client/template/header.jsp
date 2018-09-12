@@ -165,6 +165,8 @@ function errorCodeCheck(){}
           <a href="/client/member/login.do" id="logingo">로그인</a>
           <span>/</span>
           <a href="/client/member/mChoose.do" id="joingo">회원가입</a>
+          <br><span>/</span>
+          <a href="/client/member/findUser.do" id="joingo">아이디/비밀번호찾기</a>
           </c:if>
          <!-- <a href="/client/member/login.do" onClick="popct(this.href, '300', '350');return false">로그인</a> -->
       </div>

@@ -4,6 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.site.client.member.individual.vo.ClMVO;
 import com.site.client.member.login.vo.LoginVO;
 
 @Repository
@@ -35,6 +36,16 @@ public class ClLoginDaoImpl implements ClLoginDao {
 	@Override
 	public LoginVO loginHistorySelect(String m_id) {
 		return (LoginVO) session.selectOne("loginHistorySelect", m_id);
+	}
+
+	@Override
+	public ClMVO idSelect(ClMVO cvo) {
+		return (ClMVO) session.selectOne("idSelect", cvo);
+	}
+
+	@Override
+	public ClMVO pwdSelect(ClMVO cvo) {
+		return (ClMVO) session.selectOne("pwdSelect", cvo);
 	}
 
 }
