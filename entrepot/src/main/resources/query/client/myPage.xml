@@ -96,7 +96,7 @@ delete from record where record_num=#{record_num} and mg_num=#{mg_num}
 
 
 <delete id="listAllDelete" parameterType="whishAndCart">
-delete from record
+delete from record where record_num=#{record_num} 
 </delete>
 
 </mapper>
