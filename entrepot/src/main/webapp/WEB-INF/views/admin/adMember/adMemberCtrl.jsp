@@ -129,8 +129,10 @@
                   </tbody>
                 </table>
               </div>
-              	<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#adminModal">등록</button>
-              	<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#confirmModal">삭제</button>
+              <div class="btntl">
+              	<button type="button" class="btn btn-primary btn-sm btncss" data-toggle="modal" data-target="#adminModal">등록</button>
+              	<button type="button" class="btn btn-primary btn-sm btncss" data-toggle="modal" data-target="#confirmModal">삭제</button>
+              </div>
             </div>
             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
           </div>

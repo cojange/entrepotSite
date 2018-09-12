@@ -12,7 +12,6 @@ public class CourierPartnerVO {
 	private String startdate;
 	private String enddate;
 	private String couacc_date;
-	private String couacc_update;
 	private String couacc_cost;
 	private String couacc_cnt;	
 	
@@ -21,8 +20,8 @@ public class CourierPartnerVO {
 		return "CourierPartnerVO [com_no=" + com_no + ", couacc_area=" + couacc_area + ", couacc_name=" + couacc_name
 				+ ", couacc_tel=" + couacc_tel + ", couacc_fax=" + couacc_fax + ", couacc_email=" + couacc_email
 				+ ", char_manager=" + char_manager + ", char_tel=" + char_tel + ", startdate=" + startdate
-				+ ", enddate=" + enddate + ", couacc_date=" + couacc_date + ", couacc_update=" + couacc_update
-				+ ", couacc_cost=" + couacc_cost + ", couacc_cnt=" + couacc_cnt + "]";
+				+ ", enddate=" + enddate + ", couacc_date=" + couacc_date + ", couacc_cost=" + couacc_cost
+				+ ", couacc_cnt=" + couacc_cnt + "]";
 	}
 	public String getCouacc_date() {
 		return couacc_date;
@@ -89,12 +88,6 @@ public class CourierPartnerVO {
 	}
 	public void setEnddate(String enddate) {
 		this.enddate = enddate;
-	}
-	public String getCouacc_update() {
-		return couacc_update;
-	}
-	public void setCouacc_update(String couacc_update) {
-		this.couacc_update = couacc_update;
 	}
 	public String getCouacc_cost() {
 		return couacc_cost;

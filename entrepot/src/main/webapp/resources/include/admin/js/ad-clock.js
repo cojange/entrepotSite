@@ -60,8 +60,8 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 }
 
 //sysdate용 (연도 2개짜리)
-var today;
-function nowTime(){
+var today2;
+function nowTime2(){
 	today = new Date();
 	var dd = today.getDate();
 	var mm = today.getMonth()+1; //January is 0!
@@ -75,7 +75,7 @@ function nowTime(){
 	    mm='0'+mm
 	} 
 	
-	return today = yy+'-'+mm+'-'+dd;
+	return today2 = yy+'-'+mm+'-'+dd;
 }
 
 //sysdate용 (연도 4개짜리)
