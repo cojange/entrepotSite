@@ -131,8 +131,10 @@ $(function() {
 	
 	//환불, 교환 버튼 클릭제어
 		$(".refundBtn, .changeBtn").bind("click",function(){
-			var trHTML = "";
-			var inputHTML="";
+			var trHTML = "<tr>";
+			var tdHTML = "<td colspan='6'>"
+			var radio1 = "<input type='radio'"
+			var inputHTML="<textarea>";
 			
 			//환불 tr만들기
 			if($(this).attr("class")=="refundBtn"){
