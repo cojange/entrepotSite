@@ -32,8 +32,8 @@
 						<div align="center" style="border: solid;display: ">
 						<div class="form-group form-group-sm">
 				            <label for="m_name" class="col-sm-2 control-label">회원이름</label>
-				            <div class="col-sm-3">
-				               <input type="text" id="m_name" name="m_name" maxlength="10" class="form-control" placeholder="이름을 입력해주세요" >
+				            <div class="col-sm-3" style="text-align: left; margin-left: 71px">
+				               <input type="text" id="m_name" name="m_name" maxlength="10" class="form-control inputText" placeholder="이름을 입력해주세요" >
 				            </div>
 				            <div class="col-sm-5">
 				               <p class="form-control-static error"></p>
@@ -41,7 +41,7 @@
 				        </div>
 				        <div class="form-group form-group-sm">
 				           <label for="m_phone" class="col-sm-2 control-label">핸드폰 번호</label>
-				           <div class="col-sm-3">
+				           <div class="col-sm-3" style="text-align: left; margin-left: 71px">
 				              <input type="text" id="m_phone" name="m_phone" maxlength="13" class="form-control  inputText" placeholder="핸드폰번호를입력해주세요">   
 				           </div>
 				           <div class="col-sm-5">
@@ -50,7 +50,7 @@
 				        </div> 
 				        <div class="form-group form-group-sm">
 				           <label for="emailName" class="col-sm-2 control-label">가입시 이메일</label>
-				           <div class="col-sm-3">
+				           <div class="col-sm-3" style="text-align: left; margin-left: 71px">
 				              <input type="text" id="emailName" name="emailName" class="form-control inputText" placeholder="이메일을입력해주세요">	
 				           </div>
 						   <div class="col-sm-3">
@@ -87,7 +87,7 @@
 						<div align="center">
 						<div class="form-group form-group-sm">
 				            <label for="m_name" class="col-sm-2 control-label">회원이름</label>
-				            <div class="col-sm-3">
+				            <div class="col-sm-3" style="text-align: left; margin-left: 71px">
 				               <input type="text" id="m_name" name="m_name" maxlength="10" class="form-control inputText" placeholder="이름을 입력해주세요" >
 				            </div>
 				            <div class="col-sm-5">
@@ -96,16 +96,16 @@
 				        </div>
 				        <div class="form-group form-group-sm">
 				           <label for="m_phone" class="col-sm-2 control-label">핸드폰 번호</label>
-				           <div class="col-sm-3">
+				           <div class="col-sm-3" style="text-align: left; margin-left: 71px">
 				              <input type="text" id="m_phone" name="m_phone" maxlength="13" class="form-control  inputText" placeholder="핸드폰번호를입력해주세요">   
 				           </div>
 				           <div class="col-sm-5">
 				              <p class="form-control-static error"></p>
-				           </div>
+				             </div>
 				        </div> 
 				        <div class="form-group form-group-sm">
 				           <label for="emailName" class="col-sm-2 control-label">가입시 이메일</label>
-				           <div class="col-sm-3">
+				           <div class="col-sm-3" style="text-align: left; margin-left: 71px">
 				              <input type="text" id="emailName" name="emailName" class="form-control inputText" placeholder="이메일을입력해주세요">	
 				           </div>
 						   <div class="col-sm-3">
