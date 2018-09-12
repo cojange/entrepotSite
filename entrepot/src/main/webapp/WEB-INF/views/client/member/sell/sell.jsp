@@ -37,17 +37,20 @@
 		    		<td align="center">정기구독가</td>
 		    		<td align="center">구매권수</td>
 		    		<td align="center">합계</td>
+		    		<td align="center">1년 구독가</td>
 		    	</tr>
 		    	
 		    	<c:choose>
 					<c:when test="${not empty whishList}">
+						<input type="hidden" id="record_num" value="${vo.record_num}">
 						<c:forEach var="vo" items="${whishList}" varStatus="status">
 							<tr class="tableSize">
 								<td width="36" align="center">
 									<input type="text" class="index" readonly="readonly" size="2" value="">
 									<input type="hidden" id="mg_num" value="${vo.mg_num}" name="mg_numList">
 									<input type="hidden" id="pd_num" name="pd_numList" value="${vo.pd_num}">
-									<input type="hidden" id="record_num" value="${vo.record_num}">
+									
+									<input type="hidden" id="pd_cost" value="${vo.pd_cost}">
 								</td>
 					    		<td>${vo.mg_name}</td>
 					    		<td>${vo.mg_period}</td>
@@ -61,19 +64,24 @@
 					    			<input type="text" class="sum" readonly="readonly" style = "text-align:center;">
 					    			<input type="hidden" class="sumNum" value="">
 					    		</td>
+					    		<td>
+					    			<input type="text" class="sumAll" readonly="readonly" style = "text-align:center;">
+					    			<input type="hidden" class="sumAllNum" value="">
+					    		</td>
 					    	</tr>
 					    	
 				    	</c:forEach>
 					</c:when>
 					<c:when test="${not empty cartList}">
+					<input type="hidden" id="record_num" name="record_num" value="${vo.record_num}">
 						<c:forEach var="vo" items="${cartList}" varStatus="status">
 							<tr class="tableSize">
 								
 								<td width="36" align="center">
 									<input type="text" class="index" readonly="readonly" size="2" value="">
 									<input type="hidden" id="mg_num"  value="${vo.mg_num}" name="mg_numList">
-									<input type="hidden" id="pd_num"  value="${vo.pd_num}" name="pd_numList">
-									<input type="hidden" id="record_num" name="record_num" value="${vo.record_num}">
+									<input type="hidden" id="pd_num"  value="${vo.pd_num}" name="pd_numList">									
+									<input type="hidden" id="pd_cost" value="${vo.pd_cost}">
 								</td>
 								
 					    		<td>${vo.mg_name}</td>
@@ -88,6 +96,11 @@
 					    			<input type="text" class="sum" readonly="readonly" style = "text-align:center;">
 					    			<input type="hidden" class="sumNum" value="">
 					    		</td>
+					    		<td>
+					    			<input type="text" class="sumAll" readonly="readonly" style = "text-align:center;">
+					    			<input type="hidden" class="sumAllNum" value="">
+					    		</td>
+					    		
 					    	</tr>
 				    	</c:forEach>
 					</c:when>
@@ -106,7 +119,11 @@
 		    			<input type="hidden" id="sell_ea" name="sell.sell_ea" value="">
 		    		</span>
 		    		<span style="background-color: #dddddd;font-size: 12pt; color: red;">
-		    			<strong>총결제금액&nbsp;:&nbsp;<input type="text" id="total"   readonly="readonly" > </strong>
+		    			<strong>총금액&nbsp;:&nbsp;<input type="text" id="total"   readonly="readonly" > </strong>
+		    			<input type="hidden">
+		    		</span>
+		    		<span style="background-color: #dddddd;font-size: 12pt; color: red;">
+		    			<strong>1년구독 총결제금액&nbsp;:&nbsp;<input type="text" id="totalAll"   readonly="readonly" > </strong>
 		    			<input type="hidden" id="sell_money" name="sell.sell_money" value="">
 		    		</span>
 		    	</div><br><br>
