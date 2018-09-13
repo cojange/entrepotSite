@@ -10,7 +10,7 @@ $(function() {
 		else{
 			$("#idForm").attr({
 				"method":"post",
-				"action":"/client/member/mForm.do"
+				"action":"/client/member/findUserID.do"
 			});
 			$("#idForm").submit();
 		}
@@ -26,7 +26,7 @@ $(function() {
 		else{
 			$("#pwdForm").attr({
 				"method":"post",
-				"action":"/client/member/mForm.do"
+				"action":"/client/member/findUserPWD.do"
 			});
 			$("#pwdForm").submit();
 		}	

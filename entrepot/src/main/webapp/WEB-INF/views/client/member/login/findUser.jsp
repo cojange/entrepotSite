@@ -122,7 +122,7 @@
 				        <div class="form-group form-group-sm">
 				           <label for="m_email" class="col-sm-2 control-label">가입시 이메일</label>
 				           <div class="col-sm-3" style="text-align: left; margin-left: 71px">
-				              <input type="text"  class="form-control inputText m_email" placeholder="이메일을입력해주세요">	
+				              <input type="text" name="m_email" class="form-control inputText m_email" placeholder="이메일을입력해주세요">	
 				           </div>
 						   <div class="col-sm-3">
 				              <p class="form-control-static error" style="text-align: left; margin-left: 5px"></p>

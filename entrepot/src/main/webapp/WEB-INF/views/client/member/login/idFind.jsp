@@ -17,6 +17,16 @@
 		</script>
 	</head>
 <body>
-	<p>찾으시는 아이디  : ${id.m_id}</p>
+	<div id="page" class="container joinform">
+	  	<div class="title"> 
+			<h1>찾으시는 ID정보</h1>
+		</div>
+		<div class="contentContainer">
+			<div class="content well"style="display: inline;">
+				<h1><p>찾으시는 아이디  : ${id.m_id}</p></h1>
+			</div>
+		</div>
+	</div>
+	
 </body>
 </html>

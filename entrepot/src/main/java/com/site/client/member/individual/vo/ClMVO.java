@@ -186,6 +186,14 @@ public class ClMVO extends LoginVO{
 	public void setM_job(String m_job) {
 		this.m_job = m_job;
 	}*/
+	@Override
+	public String toString() {
+		return "ClMVO [m_birth=" + m_birth + ", m_gender=" + m_gender + ", m_address=" + m_address + ", m_zipcode="
+				+ m_zipcode + ", m_phone=" + m_phone + ", m_email=" + m_email + ", m_date=" + m_date + ", m_update="
+				+ m_update + ", pwdCheck=" + pwdCheck + ", black=" + black + ", quiz=" + quiz + ", ans=" + ans
+				+ ", grade=" + grade + ", coupon_no=" + coupon_no + ", coupon_discount=" + coupon_discount + ", mt_num="
+				+ mt_num + "]";
+	}
 	
 
 	

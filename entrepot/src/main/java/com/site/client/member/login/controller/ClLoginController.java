@@ -137,7 +137,7 @@ public class ClLoginController{
 	public ModelAndView goodfind(@PathVariable String m_idx,ModelAndView mav,ClMVO cvo){
 		logger.info("findUser.do post 방식에 의한 메서드 호출 성공");
 		switch(m_idx) {
-		   case "id": 
+		   case "ID": 
 			   logger.info("id 찾기호출 성공");
 			   ClMVO idfind = clLoginService.idSelect(cvo);
 			   if(idfind == null) {
@@ -148,7 +148,7 @@ public class ClLoginController{
 			   mav.addObject("id",idfind);
 			   mav.setViewName("client/member/login/idFind");	   
 			   break;
-		   case "pwd":
+		   case "PWD":
 			   logger.info("pwd 찾기호출 성공");
 			   ClMVO ipwdind = clLoginService.pwdSelect(cvo);
 			   if(ipwdind == null) {
