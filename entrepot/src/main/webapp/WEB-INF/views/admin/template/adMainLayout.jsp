@@ -828,11 +828,11 @@
 	    				console.log($("#file1").val());
 	    				console.log($("#file2").val());
 	    				//입력값 체크
-	      				if(!chkData($('#ab_title'),"이름을")) return;
+	      				/* if(!chkData($('#ab_title'),"이름을")) return;
 	      				else if(!chkData($('#ab_content'),"제목을")) return;
 	      				else if(!chkData($('#ab_content'),"작성할 내용을")) return;
 	      				else if(!chkData($('#ad_id'),"아이디를")) return;
-	      				else{
+	      				else{ */
 	      					var insertUrl = "/admin/adBoard/adminBoard/adboardInsert.do";
 	      					var abtype = $('select[name=ab_type]').val();
 	      					var abpre = $('select[name=ab_pre]').val();
@@ -857,7 +857,7 @@
     							}
 	      					});
 	      					$("#adBoardForm").submit();
-	      				}
+	      				/* } */
 	    			});
 	    			
 	    			$("#abResetBtn").click(function(){

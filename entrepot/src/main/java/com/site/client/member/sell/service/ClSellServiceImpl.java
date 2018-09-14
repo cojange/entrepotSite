@@ -51,19 +51,20 @@ public class ClSellServiceImpl implements ClSellService {
 					clSellDAO.orderListInsert(od);
 				}
 				
-				//범구 이부분 가능? 결제 완료후 장바구니 비우기 record번호 가져와서 주입만해주면 가능할듯?
+				//결제 후 장바구니 비우기
 				ClMyPageVO myPageVo = new ClMyPageVO();
 				myPageVo.setRecord_num(cmovo.getRecord_num());
 				System.out.println(cmovo.getRecord_num());
 				clMyPageDao.listAllDelete(myPageVo);
 				
 			}else {
+				//결제 실패시 결제내역 되돌리기
 				clSellDAO.paymentBack(cmovo.getSell());
 				return insertSellresult;
 			}
 			
 			
-		return 1;
+		return insertSellresult;
 	}
 
 }

@@ -84,6 +84,7 @@ function addRegulation(){
 	
 	//수정 중 취소 버튼
 	$('#regBoard').on("click", "#regDel", function(){
+		//console.log($(this).closest("tr"));
 		$(this).closest("tr").remove();
 	});
 	
@@ -133,21 +134,21 @@ function regUpdate(currLi){
 	
 	var rowUp;
 	if (open.html()==null || open.html()==""){
-		rowUp = "<td>-</td><td><select id='regType' name='regType'><option value='default'>-------선택해주세요-------</option><option value='[개인회원]사이트이용약관'>[개인회원]사이트이용약관</option>";
+		rowUp = "<tr><td>-</td><td><select id='regType' name='regType'><option value='default'>-------선택해주세요-------</option><option value='[개인회원]사이트이용약관'>[개인회원]사이트이용약관</option>";
 		rowUp += "<option value='[단체회원]사이트이용약관'>[단체회원]사이트이용약관</option><option value='[개인회원]정보이용동의약관'>[개인회원]정보이용동의약관</option>";
 		rowUp += "<option value='[단체회원]정보이용동의약관'>[단체회원]정보이용동의약관</option><option value='[개인회원]환불·취소규정약관'>[개인회원]환불·취소규정약관</option>";
 		rowUp += "<option value='[단체회원]환불·취소규정약관'>[단체회원]환불·취소규정약관</option><option value='기타'>기타</option></select><br/><span style='font-size:12px;'>기존 유형 : "+type.html()+"</span></td>";
 		rowUp += "<td>"+date.html()+"</td><td>"+today2+"</td>";
 		rowUp += "<td><input type='date' id='opneDate' name='openDate'></td><td><input type='date' id='closeDate' name='closeDate' disabled='disabled'></td>";
 		rowUp += "<td><input type='file' style='width: 220px;' id='regFile' name='regFile'> <i class='fas fa-minus-circle' id='regDel' style='font-size:20px; color:red;'></i>";
-		rowUp += " <i class='fas fa-save' id='regSave' style='font-size:20px; color:green;'></i><br/><span style='font-size:12px;'>기존 파일명 : "+file.html()+"</span></td>";		
+		rowUp += " <i class='fas fa-save' id='regSave' style='font-size:20px; color:green;'></i><br/><span style='font-size:12px;'>기존 파일명 : "+file.html()+"</span></td></tr>";		
 	}else{
-		rowUp = "<td>-</td><td>"+type.html()+"</td>";
+		rowUp = "<tr><td>-</td><td>"+type.html()+"</td>";
 		rowUp += "<td>"+date.html()+"</td><td>"+today2+"</td>";
 		rowUp += "<td>"+open.html()+"</td><td><input type='date' id='closeDate' name='closeDate'></td>";
 		rowUp += "<td>"+file.html()+"<i class='fas fa-minus-circle' id='regDel' style='font-size:20px; color:red;'></i>";
-		rowUp += " <i class='fas fa-save' id='regSave' style='font-size:20px; color:green;'></i></td>";		
+		rowUp += " <i class='fas fa-save' id='regSave' style='font-size:20px; color:green;'></i></td></tr>";		
 	}
 	
-	$("#regBoard .selected").html(rowUp);
+	$("#regBoard").append(rowUp);
 }

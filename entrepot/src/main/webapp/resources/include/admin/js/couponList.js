@@ -143,7 +143,7 @@ function couUpdate(currLi){
 
 	var disc = dis.html().replace('%',"");
 	
-	var rowChan = "<td>-</td><td>"+code.html()+"</td><td>"+type.html()+"</td><td><input type='number' id='couDiscount' name='couDiscount' style='width: 50px;' value="+parseInt(disc)+">%</td>";
+	var rowChan = "<tr><td>-</td><td>"+code.html()+"</td><td>"+type.html()+"</td><td><input type='number' id='couDiscount' name='couDiscount' style='width: 50px;' value="+parseInt(disc)+">%</td>";
 	rowChan += "<td>"+date.html()+"</td><td>"+today2+"</td>";
 	rowChan += "<td><input type='text' style='width: 100px;' id='couMemo' name='couMemo' value="+memo.html()+"></td>";
 	if(use.html()=='활성'){
@@ -152,9 +152,9 @@ function couUpdate(currLi){
 		rowChan += "<td><input type='checkbox' id='couUse' name='couUse'>";
 	}	
 	rowChan += " <i class='fas fa-minus-circle' id='couUpDel' style='font-size:20px; color:red;'></i>";
-	rowChan += " <i class='fas fa-save' id='couUp' style='font-size:20px; color:green;'></i></td>";
+	rowChan += " <i class='fas fa-save' id='couUp' style='font-size:20px; color:green;'></i></td></tr>";
 	
-	$("#coupon_table .selected").html(rowChan);
+	$("#coupon_table").append(rowChan);
 }
 
 function defaultBtn(){
