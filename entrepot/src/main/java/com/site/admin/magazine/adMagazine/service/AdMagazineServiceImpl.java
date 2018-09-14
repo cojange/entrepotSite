@@ -93,7 +93,7 @@ public class AdMagazineServiceImpl implements AdMagazineService {
 					prevImg = FileUploadUtil.fileUpload(msvo.getPrevfile().get(i), "magazineImage", request, msvo.getMg_num(), "prev");
 					imgList.add(prevImg);
 				}
-			
+				FileUploadUtil.sequence=0;
 			//thum파일 생성 및 업로드
 				String thumImg = FileUploadUtil.makeThumbnail(mainImg,"details", request);
 				imgList.add(thumImg);
@@ -152,7 +152,8 @@ public class AdMagazineServiceImpl implements AdMagazineService {
 			if(contentInsert != 1 || imgInsert<imgList.size()) {
 				return "dao insert fails";
 			}
-		
+		//prev 파일 sequence 초기화
+		FileUploadUtil.sequence=0;
 		//무사히 성공...
 		return "success";
 		

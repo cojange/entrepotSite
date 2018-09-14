@@ -26,6 +26,9 @@ public class AdMainController {
 		
 		//비용테이블
 		List<AdSellListVO> sellData =  adOrderListService.getSellList();
+		//구독중인 잡지 발주
+	
+		
 		
 		//데이터 테이블
 		mav.addAttribute("booklist",scraper.getBook());
@@ -33,11 +36,6 @@ public class AdMainController {
 		mav.addAttribute("update" , gdu.getDate());
 		mav.addAttribute("sellDt",sellData);
 		return "admin/adHome";
-	}
-	
-	@RequestMapping(value="/admin/common/thumFileUpload")
-	public String thumFileUpload() {
-		return "/common/thumFileUpload";
 	}
 	
 	/*@RequestMapping(value="/admin/kakaopayImpl")

@@ -11,8 +11,11 @@
 	
 	<select id="getOrderList" parameterType="slvo" resultType="ovo">
 		/*판매 목록 내역 조회*/
-		select pd_num, order_ea, order_money, order_ok, transit_num
-		from order_list where order_num = #{order_num}
+		 select distinct pd_num, order_ea, order_money, order_ok, transit_num
+		from order_list join (select max(substr(pd_num,instr(pd_num,'-')+1,6)) maxd 
+		from order_list group by substr(pd_num,0,instr(pd_num,'-')-1)) maxdate 
+        on pd_num like '%'||maxd
+        where order_num = #{order_num}
 	</select>
 	
 	<select id="getSearchDate" parameterType="mkvo" resultType="slvo">
@@ -36,8 +39,9 @@
 		select pd_num, mg_name, mcom_name, char_manager, char_tel, char_email, total_ea, total_cost, memo
 		from orderProduct
 		<where>
+			memo not like '구매확정%'
 			<if test="keyword != 'all'">
-				memo like #{keyword}||'%'
+				and memo like #{keyword}||'%'
 			</if>
 		</where>
 	</select>

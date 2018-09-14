@@ -19,4 +19,5 @@ public interface AdMagazineDao {
 	public int insertImgContent(MagazineImgVO mivo);
 	public String selectPrevContent(MagazineSearchVO msvo);
 	public int updateDetailContent(MagazineSearchVO msvo);
+	
 }

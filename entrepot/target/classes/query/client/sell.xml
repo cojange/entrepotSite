@@ -33,7 +33,7 @@
 	<insert id="refundInsert" parameterType="rcvo">
 	/*환불 신청 */
 		insert into refund (r_num, r_date, r_money, r_ok, r_ieu, bank, bank_num, r_ea, order_num, pd_num)
-		values ('r_'||refund_seq.nextval ,sydate,#{r_money},'환불대기_'||to_char(sysdate,'yymmdd_hh24miss'),
+		values ('r_'||refund_seq.nextval ,sysdate,#{r_money},'환불대기_'||to_char(sysdate,'yymmdd_hh24miss'),
 		<if test="ieu!=''">
 			#{ieu},
 		</if>
@@ -60,13 +60,13 @@
 	</select>
 	<select id="getExtraPeriod" parameterType="rcvo" resultType="int">
 	/*남은 개월수 가져오기*/
-		select substr(mg_period,instr(mg_period,'(')+3,2)-(substr(mg_period,instr(mg_period,'(')+3,2)-cnt) extraperiod from magazine m
+		select substr(mg_period,instr(mg_period,'(')+1,2)-(substr(mg_period,instr(mg_period,'(')+1,2)-cnt) extraperiod from magazine m
 	    join (select count(pd_num) cnt, substr(pd_num,0,instr(pd_num,'-')-1) mg_num from order_list where order_num = #{order_num} and pd_num =#{pd_num} group by pd_num) p
 	    on m.mg_num = p.mg_num
 	</select>
 	<select id="getOrgPeriod" parameterType="rcvo" resultType="int">
 	/*전체기간*/
-		select substr(mg_period,instr(mg_period,'(')+3,2) from magazine where mg_num = substr(#{pd_num},0,instr(#{pd_num},'-')-1)
+		select substr(mg_period,instr(mg_period,'(')+1,2) from magazine where mg_num = substr(#{pd_num},0,instr(#{pd_num},'-')-1)
 	</select>
 	
 	<select id="getAd_money" parameterType="rcvo" resultType="int">
