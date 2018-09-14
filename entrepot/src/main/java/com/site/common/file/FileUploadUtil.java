@@ -15,7 +15,7 @@ import com.site.common.util.GetDateUtil;
 
 public class FileUploadUtil {
 	static Logger logger = Logger.getLogger(FileUploadUtil.class);
-	
+	public static int sequence = 0;
 	/*파일 업로드할 폴더 생성*/
 	public static void makeDir(String docRoot) {
 		File fileDir = new File(docRoot);
@@ -61,7 +61,7 @@ public class FileUploadUtil {
 				real_name = fileName + "-" + code + "_" + mode + "_" + code + extenser;
 			}else if(mode.equals("prev")){
 				//product prev
-				real_name = fileName+"-" + code + "_" + mode + "_" +gdu.getTime().replaceAll(" : ", "") + extenser;
+				real_name = fileName+"-" + code + "_" + mode + "_" +gdu.getTime().replaceAll(" : ", "")+"_"+ (sequence++) + extenser;
 			}else {
 				real_name = fileName + "_" + code +"_" +org_name;
 			}

@@ -68,7 +68,7 @@ $(function() {
 			var message = confirm("결제를 진행 하시겠습니까?");
 			if(message == true){
 				for (var i = 0; i < $(".tableSize").size(); i++) {
-					$("input[name='order_moneyList']").val(moneyList[i]);
+					$("input[name='order_moneyList']:eq("+i+")").val(moneyList[i]);
 				}
 				$("#paymentForm").attr({
 					"method":"post",

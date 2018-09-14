@@ -57,7 +57,7 @@
 	<insert id="insertImgContent" parameterType="mivo">
 		/*details image 등록*/
 		insert into product_image(pl_path, pd_num, pl_type, mg_num)
-		values(#{pl_path}, #{pd_num}, #{pl_type}, #{mg_num})
+		values(#{pl_path}||'_'||prev_seq.nextval, #{pd_num}, #{pl_type}, #{mg_num})
 	</insert>
 	
 	<select id="selectPrevContent" resultType="java.lang.String" parameterType="msvo">

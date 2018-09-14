@@ -75,4 +75,6 @@ public class AdMagazineDaoImpl implements AdMagazineDao {
 	public int updateDetailContent(MagazineSearchVO msvo) {
 		return session.update("updateDetailContent", msvo);
 	}
+
+	
 }

@@ -11,6 +11,7 @@ import com.site.client.member.myPage.vo.ClMyPageVO;
 import com.site.client.member.myPage.vo.ClOrderListVO;
 import com.site.client.member.sell.dao.ClSellDAO;
 import com.site.client.member.sell.vo.ClMultiOrderListVO;
+import com.site.client.member.sell.vo.ClRcVO;
 
 @Service
 public class ClSellServiceImpl implements ClSellService {
@@ -65,6 +66,42 @@ public class ClSellServiceImpl implements ClSellService {
 			
 			
 		return insertSellresult;
+	}
+	
+	//환불 입력
+	@Override
+	public int refundInsert(ClRcVO rcvo) {
+		
+		int pd_sale = clSellDAO.getR_money(rcvo);
+		int pd_cost = clSellDAO.getAd_money(rcvo);
+		int extraPeriod = clSellDAO.getExtraPeriod(rcvo);
+		int orgPeriod = clSellDAO.getOrgPeriod(rcvo);
+		System.out.println(" select result : " + pd_sale +"/"+pd_cost+"/"+extraPeriod+"/"+orgPeriod);
+		int org_money = pd_cost*orgPeriod;
+		int sale_money = pd_sale*extraPeriod;
+		int r_money =org_money - sale_money;
+		
+		rcvo.setR_money(r_money);
+		
+		//환불테이블 입력
+		int result = clSellDAO.refundInsert(rcvo);
+		if(result ==1) {
+			clSellDAO.updateOrderf(rcvo);
+		}
+		return result;
+	}
+	
+	//교환 입력
+	@Override
+	public int changeInsert(ClRcVO rcvo) {
+		
+		
+		//교환테이블 입력
+		int result = clSellDAO.changeInsert(rcvo);
+		if(result ==1) {
+			clSellDAO.updateOrderc(rcvo);
+		}
+		return result;
 	}
 
 }

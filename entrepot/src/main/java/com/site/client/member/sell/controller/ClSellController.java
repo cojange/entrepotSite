@@ -23,6 +23,7 @@ import com.site.client.member.myPage.vo.ClMyPageVO;
 import com.site.client.member.myPage.vo.ClOrderListVO;
 import com.site.client.member.sell.service.ClSellService;
 import com.site.client.member.sell.vo.ClMultiOrderListVO;
+import com.site.client.member.sell.vo.ClRcVO;
 import com.site.client.member.sell.vo.ClSellVO;
 
 @Controller
@@ -92,5 +93,19 @@ public class ClSellController {
 		mav.setViewName("client/member/member/paymentSuccess");
 		
 		return mav;
+	}
+	
+	@RequestMapping(value="/member/rc{mode}.do",method=RequestMethod.POST)
+	public String rcSubmit(@PathVariable String mode, ClRcVO rcvo) {
+		logger.info("rcSubmit" + mode + " 호출 성공");
+		logger.info("paramVo : " + rcvo.toString());
+		//환불
+		if(mode.equals("refund")) {
+			clSellService.refundInsert(rcvo);
+		}else if(mode.equals("change")){
+			clSellService.changeInsert(rcvo);
+		}
+		
+		return "redirect:/client/member/myPageOrderList.do";
 	}
 }
