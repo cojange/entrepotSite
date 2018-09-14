@@ -3,6 +3,7 @@ package com.site.client.member.login.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,14 +11,18 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.site.client.member.individual.vo.ClMVO;
 import com.site.client.member.login.service.ClLoginService;
 import com.site.client.member.login.vo.LoginVO;
+import com.site.client.member.myPage.vo.ClMyPageVO;
+import com.site.client.member.myPage.vo.ClOrderListVO;
 
 @Controller
 @SessionAttributes("login")
@@ -121,8 +126,41 @@ public class ClLoginController{
 	**************************************************************/
 	@RequestMapping(value="/member/findUser.do",method = RequestMethod.GET)
 	public String findUser(){
-		logger.info("login.do get 방식에 의한 메서드 호출 성공");
+		logger.info("findUser.do get 방식에 의한 메서드 호출 성공");
 		return "client/member/login/findUser";
+	}
+	
+	/**************************************************************
+	* 아이디 비밀번호 찾기 (post)
+	**************************************************************/
+	@RequestMapping(value="/member/findUser{m_idx}.do",method = RequestMethod.POST)
+	public ModelAndView goodfind(@PathVariable String m_idx,ModelAndView mav,ClMVO cvo){
+		logger.info("findUser.do post 방식에 의한 메서드 호출 성공");
+		switch(m_idx) {
+		   case "ID": 
+			   logger.info("id 찾기호출 성공");
+			   ClMVO idfind = clLoginService.idSelect(cvo);
+			   if(idfind == null) {
+				   mav.addObject("status", 1);
+				   mav.setViewName("redirect:/client/member/findUser");
+				   return mav;
+			   }
+			   mav.addObject("id",idfind);
+			   mav.setViewName("client/member/login/idFind");	   
+			   break;
+		   case "PWD":
+			   logger.info("pwd 찾기호출 성공");
+			   ClMVO ipwdind = clLoginService.pwdSelect(cvo);
+			   if(ipwdind == null) {
+				   mav.addObject("status", 1);
+				   mav.setViewName("redirect:/client/member/findUser");
+				   return mav;
+			   }else {
+				   
+			   }
+			  
+		   }
+		return mav;
 	}
 
 }

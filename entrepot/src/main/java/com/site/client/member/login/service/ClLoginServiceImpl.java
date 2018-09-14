@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.site.client.member.individual.dao.ClMDao;
 import com.site.client.member.individual.vo.ClMSecurity;
+import com.site.client.member.individual.vo.ClMVO;
 import com.site.client.member.login.dao.ClLoginDao;
 import com.site.client.member.login.vo.LoginVO;
 import com.site.common.util.OpenCrypt;
@@ -62,7 +63,13 @@ public class ClLoginServiceImpl implements ClLoginService {
 	public LoginVO loginHistorySelect(String m_id) {
 		return clLoginDao.loginHistorySelect(m_id);
 	}
-
-
+	@Override
+	public ClMVO idSelect(ClMVO cvo) {
+		return clLoginDao.idSelect(cvo);
+	}
+	@Override
+	public ClMVO pwdSelect(ClMVO cvo) {
+		return clLoginDao.pwdSelect(cvo);
+	}
 
 }

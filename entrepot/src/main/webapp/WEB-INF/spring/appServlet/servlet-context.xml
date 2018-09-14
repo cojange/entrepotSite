@@ -48,7 +48,20 @@
 	
 	<!-- client 뿐이 아닌 admin도 접근 가능하도록 **로 변경 / @Component필요 / 자동 객체 생성 -->
 	<context:component-scan base-package="com.site.**.**.**.**" />
-	
-	
+	<!-- mail bean -->
+	<beans:bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+ <beans:property name="host" value="smtp.gmail.com" />
+ <beans:property name="port" value="587" />
+ <beans:property name="username" value="jinsonju31@gmail.com" />  <!-- 구글 계정 아이디 -->
+ <beans:property name="password" value="jyn2384677@" /><!-- 구글 계정 비밀번호 -->
+ <beans:property name="javaMailProperties">
+  <beans:props>
+   <beans:prop key="mail.smtp.auth">true</beans:prop>
+   <beans:prop key="mail.smtp.starttls.enable">true</beans:prop>
+   <beans:prop key="mail.smtp.timeout">8500</beans:prop> <!-- 메일 서버 연결시 timeout 시간 설정 -->
+   <beans:prop key="mail.debug">true</beans:prop>  <!-- log를 보고 싶다면 사용 -->
+  </beans:props>
+ </beans:property>
+</beans:bean>
 	
 </beans:beans>
