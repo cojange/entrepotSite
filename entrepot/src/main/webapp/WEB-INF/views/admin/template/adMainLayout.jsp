@@ -52,7 +52,11 @@
         	</div>
 		</div>
 			<tiles:insertAttribute name="adEtc"/>
-	
+			
+		<!-- Scroll to Top Button-->
+	    <a class="scroll-to-top rounded" href="#page-top">
+	      <i class="fas fa-angle-up"></i>
+	    </a>
 		
 		<!-- Bootstrap core JavaScript-->
 	    <script src="/resources/include/admin/vendor/jquery/jquery.min.js"></script>
@@ -1193,7 +1197,7 @@
     	   	    
     	   	    var productTableURL = "/admin/order/orderList/getKindOrder.do";
     	   	    $("#selectkey").change(function(){
-    	   	    	//모달이 숨겨저 ㅇ잇으면
+    	   	    	//모달이 숨겨저 잇으면
     	   	    	$("#orderWaitModal:hidden").find("#refundChangeDiv").html("");
     	   	    	$("#refundChangeBtn").prop("disabled",true);
     	   	    	$("#orderConfirmBtn").prop("disabled",true);

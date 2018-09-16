@@ -2,10 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.site.client.member.sell.dao.ClSellDAO">
 
-<insert id="paymentInsert" parameterType="sell" useGeneratedKeys="true" keyProperty="order_num">
+	<insert id="paymentInsert" parameterType="sell" useGeneratedKeys="true" keyProperty="order_num">
 		/*member - memberInsert*/
 		 <selectKey keyProperty="order_num" resultType="java.lang.String" order="BEFORE">
-			<!-- SELECT last_day((SELECT to_char(trunc(add_months(sysdate, 11), 'dd'),'YYYY/MM/DD') FROM dual)) FROM dual -->
 			SELECT to_char(sysdate,'yyyy/mm/dd')||'_'||sell_seq.nextval from dual
 		</selectKey>
 		Insert into SELL (ORDER_NUM,SELL_EA,SELL_DATE,

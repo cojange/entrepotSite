@@ -6,7 +6,6 @@ public class PbReplyVO {
     private String pbre_content;
     private String writer;
     private String pbre_date;
-    private String pbre_update;
     
 	public int getPb_no() {
 		return pb_no;
@@ -37,11 +36,5 @@ public class PbReplyVO {
 	}
 	public void setPbre_date(String pbre_date) {
 		this.pbre_date = pbre_date;
-	}
-	public String getPbre_update() {
-		return pbre_update;
-	}
-	public void setPbre_update(String pbre_update) {
-		this.pbre_update = pbre_update;
 	}
 }
